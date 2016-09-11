@@ -1,0 +1,535 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="RESTful," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言阅读《AngularJS高级程序设计》这本书的第三章，作者对一些概念也是解释的很随意，直接来了一句“我觉得传递json就实现了RESTful”就把我们打发了。实在忍不了，上网搜了一大堆解释，都扯的云里雾里的，现在差不多有点头绪了，记录一下，防止自己以后再蒙圈。    
+一句话概括RESTfulURL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。    
+为什么会有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对RESTful架构的理解">
+<meta property="og:url" content="http://maruko.com/2016/09/08/restful/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言阅读《AngularJS高级程序设计》这本书的第三章，作者对一些概念也是解释的很随意，直接来了一句“我觉得传递json就实现了RESTful”就把我们打发了。实在忍不了，上网搜了一大堆解释，都扯的云里雾里的，现在差不多有点头绪了，记录一下，防止自己以后再蒙圈。    
+一句话概括RESTfulURL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。    
+为什么会有">
+<meta property="og:updated_time" content="2016-09-11T00:44:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对RESTful架构的理解">
+<meta name="twitter:description" content="前言阅读《AngularJS高级程序设计》这本书的第三章，作者对一些概念也是解释的很随意，直接来了一句“我觉得传递json就实现了RESTful”就把我们打发了。实在忍不了，上网搜了一大堆解释，都扯的云里雾里的，现在差不多有点头绪了，记录一下，防止自己以后再蒙圈。    
+一句话概括RESTfulURL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。    
+为什么会有">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 对RESTful架构的理解 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                对RESTful架构的理解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-08T00:00:00+08:00" content="2016-09-08">
+              2016-09-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>阅读《AngularJS高级程序设计》这本书的第三章，作者对一些概念也是解释的很随意，直接来了一句“我觉得传递json就实现了RESTful”就把我们打发了。实在忍不了，上网搜了一大堆解释，都扯的云里雾里的，现在差不多有点头绪了，记录一下，防止自己以后再蒙圈。    </p>
+<h2 id="一句话概括RESTful"><a href="#一句话概括RESTful" class="headerlink" title="一句话概括RESTful"></a>一句话概括RESTful</h2><p>URL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。    </p>
+<h2 id="为什么会有RESTful"><a href="#为什么会有RESTful" class="headerlink" title="为什么会有RESTful"></a>为什么会有RESTful</h2><p>上面那句绝不是耍流氓，仔细想想RESTful难道不就是这样的吗？？？？<br>要知道RESTful的特性和意义，就必须了解RESTful之前的那个时代。在”古代”网页是前端后端融在一起的，比如之前的PHP，JSP等。近年来移动互联网的发展，各种类型的客户端层出不穷，RESTful可以通过一套统一的接口为 Web，iOS和Android提供服务。另外对于广大平台来说，比如Facebook platform，微博开放平台，微信公共平台等，它们不需要有显式的前端，只需要一套提供服务的接口，于是RESTful更是它们最好的选择。在RESTful架构下，服务器的核心任务是提供数据和改变数据状态，它就是围着数据转，其它的事情让前端去做。相应的，前端就要渲染页面和处理简单的商务逻辑（AngularJS之流就登场了）。    </p>
+<h2 id="RESTful的翻译式理解"><a href="#RESTful的翻译式理解" class="headerlink" title="RESTful的翻译式理解"></a>RESTful的翻译式理解</h2><p>REST – REpresentational State Transfer<br>翻译过来叫“表现层状态转移”<br>这个名字太恶心了，看名字谁知道你想干啥啊。表现层是啥？？？转移到哪里去？？你给我说清楚啊？？？？（掀桌）<br>其实可以这样理解，“表现层”就是数据的表现形式，可以是json，可以是xml，“状态转移”就是这个数据对应的状态的改变，就是我们老生常谈的增删改查。<br>现在我们瞅瞅上面那句“URL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。”的解释，是不是没啥问题？定位资源（表现层），描述操作（状态转移）。    </p>
+<h2 id="RESTful的特点"><a href="#RESTful的特点" class="headerlink" title="RESTful的特点"></a>RESTful的特点</h2><p>其实上面也已经说了个差不多，我们来做个总结。<br>所谓RESTful，它本质是一种架构设计方式，它的特点是面向<em>资源</em>，资源是核心，服务器端不必操心你的网页长什么样，只需要专心于操作数据和与数据相关的逻辑就可以了。因此在REST里面：    </p>
+<ul>
+<li>一切都被认为是一种资源</li>
+<li>每个资源有唯一的url标识</li>
+<li>客户端程序在建立起的资源url上发送请求，使用<em>请求方法</em>表示期望的操作。</li>
+<li>无状态</li>
+</ul>
+<h2 id="RESTful给前端带来了什么"><a href="#RESTful给前端带来了什么" class="headerlink" title="RESTful给前端带来了什么"></a>RESTful给前端带来了什么</h2><p>其实我到觉得是前端的变化促使了RESTful的产生。随着我们客户端形式的多样化，pc端已经远远不能满足人们的需要，如果一台服务器同时负责pc端页面的渲染，移动端页面的渲染，那不仅服务器会感到很疲惫，它渲染出来的内容咋样还是另一说，另外在使用原生的手机应用时，更是不可能指望把一切都交给服务器端。况且，现在前端能做的事情越来越多了，一些业务逻辑完全可以用js来做，于是乎，服务器端似乎只需要管好数据就行了(当然主要任务是管数据，它还是有它应该有的业务逻辑的)，RESTful应运而生。<br>RESTful架构使得前后端变得泾渭分明，同时因为前后端逻辑的分离，使一台服务器完全可以同时为web页面，安卓和ios应用同时提供服务。说明白点，服务器统一提供一套RESTful API（这里的api不再是我们平时表达的函数接口的意思，而是数据接口），web+ios+android作为同等公民调用API。各端发展到现在，都有一套比较成熟的框架来帮开发者事半功倍。（比如我现在正在学的AngularJS！）    </p>
+<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><p>写了这么多，都是在给最近正在上手的AngularJS做铺垫。<br>立个flag：<br>下一篇文章绝对要把Angular中的mvc模式整明白！    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RESTful/" rel="tag">#RESTful</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/06/jsonp/" rel="next" title="JSONP全接触：JSONP原理，在js与jQuery中的实现">
+                <i class="fa fa-chevron-left"></i> JSONP全接触：JSONP原理，在js与jQuery中的实现
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/10/mvvm/" rel="prev" title="MVC,MVVM与AngularJS">
+                MVC,MVVM与AngularJS <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一句话概括RESTful"><span class="nav-number">2.</span> <span class="nav-text">一句话概括RESTful</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么会有RESTful"><span class="nav-number">3.</span> <span class="nav-text">为什么会有RESTful</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful的翻译式理解"><span class="nav-number">4.</span> <span class="nav-text">RESTful的翻译式理解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful的特点"><span class="nav-number">5.</span> <span class="nav-text">RESTful的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful给前端带来了什么"><span class="nav-number">6.</span> <span class="nav-text">RESTful给前端带来了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挖坑"><span class="nav-number">7.</span> <span class="nav-text">挖坑</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

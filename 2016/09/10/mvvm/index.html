@@ -1,0 +1,525 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="前端框架," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言：学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    
+什么是MVCMVC是一种">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MVC,MVVM与AngularJS">
+<meta property="og:url" content="http://maruko.com/2016/09/10/mvvm/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言：学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    
+什么是MVCMVC是一种">
+<meta property="og:updated_time" content="2016-09-11T00:44:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MVC,MVVM与AngularJS">
+<meta name="twitter:description" content="前言：学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    
+什么是MVCMVC是一种">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> MVC,MVVM与AngularJS | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MVC,MVVM与AngularJS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-10T00:00:00+08:00" content="2016-09-10">
+              2016-09-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    </p>
+<h2 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC"></a>什么是MVC</h2><p>MVC是一种软件架构。它是说，可以把软件分成三个部分，视图（view），控制器（controller），<br>模型（model）。这个视图就是说用户界面，控制器就是业务逻辑，模型就是数据保存。它们之间的关系大概是，视图传送指令到控制器，控制器根据情况去改变数据，然后把新的数据反馈给视图层面。<br>视图传送的指令，是由于用户在视图层面的某些操作发出的，其实用户还可以直接跳过视图层，向controller直接传递指令。前者通过DOM事件接收指令，后者直接改变url。    </p>
+<h2 id="什么是MVVM"><a href="#什么是MVVM" class="headerlink" title="什么是MVVM"></a>什么是MVVM</h2><p>MVVM模式中，各部分之间的通信都是双向的。（可以注意到MVC模式中的数据传递都是单向的）。同时视图层不与Model发生接触，一切都通过中间的ViewModel传递(ViewModel简写就是VM)。一个操作的流程大概是这样的：<br>用户通过View层传递指令，View层触发了ViewModel层的变化，然后ViewModel层再去修改Model层，修改之后的Model层又通过ViewModel反馈给了View层。<br>MVVM的特点是，它采用<em>双向绑定</em>，View的变动，会带动ViewModel的变动，反过来，ViewModel的变动，也会带动View的变动，两者是“一根绳上的蚂蚱”，一起变化。    </p>
+<h2 id="AngularJS与MVC-MVVM"><a href="#AngularJS与MVC-MVVM" class="headerlink" title="AngularJS与MVC,MVVM"></a>AngularJS与MVC,MVVM</h2><p>虽然我接触到的许多资料告诉我们AngularJS是一个MVC框架，但是仔细想想，我还是认为<em>AngularJS是一个MVVM框架</em>，原因如下:    </p>
+<ul>
+<li>AngularJS中，数据是双向传递的，View层（视图模版）的变化会引发ViewModel（这里$scope应该充当这个角色）的变化，反过来,ViewModel层的变化也会引发View层的变化.</li>
+<li>View不能直接与Model交互，而是要通过$scope才可以。</li>
+<li>View层和ViewModel层是双向绑定的，两者同步变化<h3 id="AngularJS为什么会被认为是MVC框架"><a href="#AngularJS为什么会被认为是MVC框架" class="headerlink" title="AngularJS为什么会被认为是MVC框架"></a>AngularJS为什么会被认为是MVC框架</h3>其实这么理解也没有错，因为AngularJS中存在一个Controller，但是在我看来，Controller更像是ViewModel层逻辑的一部分。但这个MV后面到底该跟啥，其实没有那么重要，AngularJS的作者希望我们把注意力放在一实现一个成功的，具有好的设计以及遵循“分离关注点”原则的应用程序上，而非专注于概念的争论，因此我们不必在这一点上太过执着。    </li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天这篇文章与其说是想给AngularJS的模式下个定义，不如说是把MVC模式和MVVM模式给整明白了一遍（笑哭）。虽然不必执着于对这个框架模式的死定义，但是这两个模式还是有必要弄清楚的，其实还有一个叫做MVP的模式，MVVM模式有点像是从它里面脱胎的，但没有这两种出镜频率高，因此就着重讲了MVC和MVVM^_^。概念搞清楚了，接下来就开始实战吧！💪</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/前端框架/" rel="tag">#前端框架</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/08/restful/" rel="next" title="对RESTful架构的理解">
+                <i class="fa fa-chevron-left"></i> 对RESTful架构的理解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是MVC"><span class="nav-number">2.</span> <span class="nav-text">什么是MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是MVVM"><span class="nav-number">3.</span> <span class="nav-text">什么是MVVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AngularJS与MVC-MVVM"><span class="nav-number">4.</span> <span class="nav-text">AngularJS与MVC,MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS为什么会被认为是MVC框架"><span class="nav-number">4.1.</span> <span class="nav-text">AngularJS为什么会被认为是MVC框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
