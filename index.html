@@ -261,7 +261,13 @@
 <p>或者让width自动继承宽度:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">width</span><span class="selector-pseudo">:auto</span>;</div></pre></td></tr></table></figure></p>
 <p>当然还可以用em，rem。<br>总之别用px就行😂.<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">font-size</span><span class="selector-pseudo">:1.5em</span>;</div></pre></td></tr></table></figure></p>
 <p>或者<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">font-size</span><span class="selector-pseudo">:150</span>%;</div></pre></td></tr></table></figure></p>
-<p>上面两行一个意思，是说字体大小是其父元素的1.5倍大。<br>这里提到一下rem这个单位，rem永远相对于html设定的字体大小，而em相对于它父元素的元素大小。    </p>
+<p>上面两行一个意思，是说字体大小是其父元素的1.5倍大。<br>这里提到一下rem这个单位，rem永远相对于html设定的字体大小，而em相对于它父元素的元素大小。  </p>
+<h4 id="chrome下的字体设置bug"><a href="#chrome下的字体设置bug" class="headerlink" title="chrome下的字体设置bug"></a>chrome下的字体设置bug</h4><p>在对chrome设置html根元素字体时，我试图把它设置为62.5％(10px),然而最后出错了，因为chrome下字体设置的最小值就是12px，它不会比12px更小。针对这个现在我有两个办法:    </p>
+<ul>
+<li>更改你电脑的chrome配置</li>
+<li>把根元素的字体大小写死</li>
+<li>不管(在字体大小不碍事的情况下)</li>
+</ul>
 <h3 id="通过媒体属性确定加载样式"><a href="#通过媒体属性确定加载样式" class="headerlink" title="通过媒体属性确定加载样式"></a>通过媒体属性确定加载样式</h3><p>有时候一个html结构会在不同的设备大小下对应不同的css样式，而且不同样式之间差别也许比较大，你需要根据布局大小的不同对css文件进行选择:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"style1.css"</span> <span class="attr">media</span>=<span class="string">"screen and (max-device:400px)"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
 <p>增加一个限制:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"style2.css"</span> <span class="attr">media</span>=<span class="string">"screen and (min-device-width:400px) and (max-device-width="</span><span class="attr">600px</span>") /&gt;</span></div></pre></td></tr></table></figure></p>
 <p>上面两段代码分别用于识别宽度小于等于400px时对应的css文件和宽度在400px在600px之间加载的css文件。    </p>
