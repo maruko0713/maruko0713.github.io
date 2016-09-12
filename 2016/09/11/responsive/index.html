@@ -73,7 +73,7 @@
 可以自动识别屏幕宽度、并做出相应调整的网页设计
 
 响应式布局的特性自适应屏幕">
-<meta property="og:updated_time" content="2016-09-12T01:05:44.000Z">
+<meta property="og:updated_time" content="2016-09-12T01:12:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="响应式布局重要概念总结">
 <meta name="twitter:description" content="前言暑假做了一个响应式页面的练习，然而前两天随着我硬盘的狗带，这个小练习也不见了，以至于现在要开始重写一遍作为复习。在重写的过程中，针对响应式这个概念就自己的理解做一下总结。    
@@ -270,7 +270,7 @@
 <p>或者让width自动继承宽度:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">width</span><span class="selector-pseudo">:auto</span>;</div></pre></td></tr></table></figure></p>
 <p>总之别用px就行😂.<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">font-size</span><span class="selector-pseudo">:1.5em</span>;</div></pre></td></tr></table></figure></p>
 <p>或者<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">font-size</span><span class="selector-pseudo">:150</span>%;</div></pre></td></tr></table></figure></p>
-<p>上面两行一个意思，是说字体大小是其父元素的1.5倍大。    </p>
+<p>上面两行一个意思，是说字体大小是其父元素的1.5倍大。<br>这里提到一下rem这个单位，rem永远相对于html设定的字体大小，而em相对于它父元素的元素大小。    </p>
 <h3 id="通过媒体属性确定加载样式"><a href="#通过媒体属性确定加载样式" class="headerlink" title="通过媒体属性确定加载样式"></a>通过媒体属性确定加载样式</h3><p>有时候一个html结构会在不同的设备大小下对应不同的css样式，而且不同样式之间差别也许比较大，你需要根据布局大小的不同对css文件进行选择:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"style1.css"</span> <span class="attr">media</span>=<span class="string">"screen and (max-device:400px)"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
 <p>增加一个限制:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"style2.css"</span> <span class="attr">media</span>=<span class="string">"screen and (min-device-width:400px) and (max-device-width="</span><span class="attr">600px</span>") /&gt;</span></div></pre></td></tr></table></figure></p>
 <p>上面两段代码分别用于识别宽度小于等于400px时对应的css文件和宽度在400px在600px之间加载的css文件。    </p>
