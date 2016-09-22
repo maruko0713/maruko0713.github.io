@@ -64,7 +64,7 @@
 
 响应式布局的特性自适应屏幕">
 <meta property="og:type" content="article">
-<meta property="og:title" content="响应式布局重要概念总结">
+<meta property="og:title" content="响应式布局核心招数总结">
 <meta property="og:url" content="http://maruko.com/2016/09/11/responsive/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
 <meta property="og:description" content="前言暑假做了一个响应式页面的练习，然而前两天随着我硬盘的狗带，这个小练习也不见了，以至于现在要开始重写一遍作为复习。在重写的过程中，针对响应式这个概念就自己的理解做一下总结。    
@@ -73,9 +73,9 @@
 可以自动识别屏幕宽度、并做出相应调整的网页设计
 
 响应式布局的特性自适应屏幕">
-<meta property="og:updated_time" content="2016-09-12T08:30:20.000Z">
+<meta property="og:updated_time" content="2016-09-18T00:54:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="响应式布局重要概念总结">
+<meta name="twitter:title" content="响应式布局核心招数总结">
 <meta name="twitter:description" content="前言暑假做了一个响应式页面的练习，然而前两天随着我硬盘的狗带，这个小练习也不见了，以至于现在要开始重写一遍作为复习。在重写的过程中，针对响应式这个概念就自己的理解做一下总结。    
 响应式布局的概念响应式布局(Responsive Web Design),这个概念在2010年由Ethan Marcotte提出，指的是
 
@@ -99,7 +99,7 @@
   };
 </script>
 
-  <title> 响应式布局重要概念总结 | Maruko0713的实验室 </title>
+  <title> 响应式布局核心招数总结 | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -219,7 +219,7 @@
             
             
               
-                响应式布局重要概念总结
+                响应式布局核心招数总结
               
             
           </h1>
@@ -264,19 +264,14 @@
 <p>可以自动识别屏幕宽度、并做出相应调整的网页设计</p>
 </blockquote>
 <h2 id="响应式布局的特性"><a href="#响应式布局的特性" class="headerlink" title="响应式布局的特性"></a>响应式布局的特性</h2><h3 id="自适应屏幕的网页宽度"><a href="#自适应屏幕的网页宽度" class="headerlink" title="自适应屏幕的网页宽度"></a>自适应屏幕的网页宽度</h3><p>牛逼哄哄的响应式布局第一步，就是这一行:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
-<p>这行代码是对视口的宽度做一个设定，这个视口指的是布局视口(layout viewport)，它指的是你网页布局的实际宽度，这个宽度要和设备宽度(device-width)贴合，随着屏幕的变化而变化,initial-scale=1是说这个页面的初始化状态是原有大小（因为没有设置不允许用户缩放，后期用户可以缩放这个页面）。<br>当然，可爱的IE6,7,8是不支持这玩意儿的:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line">&lt;script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"&gt;&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure></p>
+<p>这行代码是对视口的宽度做一个设定，这个视口指的是布局视口(layout viewport)，其实就是你页面本身的宽度，这个宽度要和设备宽度(device-width)贴合，随着屏幕的变化而变化,initial-scale=1是说这个页面的初始化状态是原有大小（因为没有设置不允许用户缩放，后期用户可以缩放这个页面）。<br>当然，可爱的IE6,7,8是不支持这玩意儿的:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line">&lt;script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"&gt;&lt;/script&gt;</div><div class="line">&lt;![endif]--&gt;</div></pre></td></tr></table></figure></p>
 <p>需要我们用上面的js文件来弥补这个特性。    </p>
 <h3 id="使用相对单位和相对宽度"><a href="#使用相对单位和相对宽度" class="headerlink" title="使用相对单位和相对宽度"></a>使用相对单位和相对宽度</h3><p>既然是变化的网页，那么宽度和元素大小必定都是随着我们布局大小的变化而变化，所以绝对不能再用px把大小写死，要使用灵活的相对单位和百分比来解决:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">width</span><span class="selector-pseudo">:x</span>%;</div></pre></td></tr></table></figure></p>
 <p>或者让width自动继承宽度:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">width</span><span class="selector-pseudo">:auto</span>;</div></pre></td></tr></table></figure></p>
 <p>当然还可以用em，rem。<br>总之别用px就行😂.<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">font-size</span><span class="selector-pseudo">:1.5em</span>;</div></pre></td></tr></table></figure></p>
 <p>或者<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">font-size</span><span class="selector-pseudo">:150</span>%;</div></pre></td></tr></table></figure></p>
 <p>上面两行一个意思，是说字体大小是其父元素的1.5倍大。<br>这里提到一下rem这个单位，rem永远相对于html设定的字体大小，而em相对于它父元素的元素大小。  </p>
-<h4 id="chrome下的字体设置bug"><a href="#chrome下的字体设置bug" class="headerlink" title="chrome下的字体设置bug"></a>chrome下的字体设置bug</h4><p>在对chrome设置html根元素字体时，我试图把它设置为62.5％(10px),然而最后出错了，因为chrome下字体设置的最小值就是12px，它不会比12px更小。针对这个现在我有两个办法:    </p>
-<ul>
-<li>更改你电脑的chrome配置</li>
-<li>把根元素的字体大小写死</li>
-<li>不管(在字体大小不碍事的情况下)</li>
-</ul>
+<h4 id="chrome下的字体设置bug"><a href="#chrome下的字体设置bug" class="headerlink" title="chrome下的字体设置bug"></a>chrome下的字体设置bug</h4><p>在对chrome设置html根元素字体时，我试图把它设置为62.5％(10px),然而最后出错了，因为chrome下字体设置的最小值就是12px，它不会比12px更小。针对这个现在我有两个办法.不过亲测后感觉，chrome下表现的还是挺不错的，暂时不妨碍。</p>
 <h3 id="通过媒体属性确定加载样式"><a href="#通过媒体属性确定加载样式" class="headerlink" title="通过媒体属性确定加载样式"></a>通过媒体属性确定加载样式</h3><p>有时候一个html结构会在不同的设备大小下对应不同的css样式，而且不同样式之间差别也许比较大，你需要根据布局大小的不同对css文件进行选择:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"style1.css"</span> <span class="attr">media</span>=<span class="string">"screen and (max-device:400px)"</span> /&gt;</span></div></pre></td></tr></table></figure></p>
 <p>增加一个限制:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"style2.css"</span> <span class="attr">media</span>=<span class="string">"screen and (min-device-width:400px) and (max-device-width="</span><span class="attr">600px</span>") /&gt;</span></div></pre></td></tr></table></figure></p>
 <p>上面两段代码分别用于识别宽度小于等于400px时对应的css文件和宽度在400px在600px之间加载的css文件。    </p>
