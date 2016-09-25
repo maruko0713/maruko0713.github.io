@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器appreader引发了一些思考。今天把ajax知识点做个整合。    
+<meta name="description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器app reader引发了一些思考。今天把ajax知识点做个整合。    
 Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个概念是2005年提出的，它把静态网页转换成具有交互性能的web应用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ajax全接触：原生js中的ajax和jQuery中的js">
+<meta property="og:title" content="Ajax全接触：原生js中的ajax和jQuery中的ajax">
 <meta property="og:url" content="http://maruko.com/2016/09/25/ajax/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器appreader引发了一些思考。今天把ajax知识点做个整合。    
+<meta property="og:description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器app reader引发了一些思考。今天把ajax知识点做个整合。    
 Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个概念是2005年提出的，它把静态网页转换成具有交互性能的web应用。">
-<meta property="og:updated_time" content="2016-09-25T04:52:14.000Z">
+<meta property="og:updated_time" content="2016-09-25T04:58:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ajax全接触：原生js中的ajax和jQuery中的js">
-<meta name="twitter:description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器appreader引发了一些思考。今天把ajax知识点做个整合。    
+<meta name="twitter:title" content="Ajax全接触：原生js中的ajax和jQuery中的ajax">
+<meta name="twitter:description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器app reader引发了一些思考。今天把ajax知识点做个整合。    
 Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个概念是2005年提出的，它把静态网页转换成具有交互性能的web应用。">
 
 
@@ -87,7 +87,7 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
   };
 </script>
 
-  <title> Ajax全接触：原生js中的ajax和jQuery中的js | Maruko0713的实验室 </title>
+  <title> Ajax全接触：原生js中的ajax和jQuery中的ajax | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +207,7 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
             
             
               
-                Ajax全接触：原生js中的ajax和jQuery中的js
+                Ajax全接触：原生js中的ajax和jQuery中的ajax
               
             
           </h1>
@@ -246,7 +246,7 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>我之前写过一篇针对jsonp的文章<a href="https://maruko0713.github.io/2016/09/06/jsonp/" target="_blank" rel="external">JSONP全接触：JSONP原理，在js与jQuery中的实现</a>,主要是因为一个阅读器app<a href="https://github.com/maruko0713/Reader" target="_blank" rel="external">reader</a>引发了一些思考。今天把ajax知识点做个整合。    </p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>我之前写过一篇针对jsonp的文章<a href="https://maruko0713.github.io/2016/09/06/jsonp/" target="_blank" rel="external">JSONP全接触：JSONP原理，在js与jQuery中的实现</a>,主要是因为一个阅读器app <a href="https://github.com/maruko0713/Reader" target="_blank" rel="external">reader</a>引发了一些思考。今天把ajax知识点做个整合。    </p>
 <h2 id="Ajax是什么"><a href="#Ajax是什么" class="headerlink" title="Ajax是什么"></a>Ajax是什么</h2><p>Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个概念是2005年提出的，它把静态网页转换成具有交互性能的web应用。  </p>
 <h2 id="Ajax在原生javascript中的实现"><a href="#Ajax在原生javascript中的实现" class="headerlink" title="Ajax在原生javascript中的实现"></a>Ajax在原生javascript中的实现</h2><p>什么都不如直接写代码，让我们用原生js来封装一个简陋版的ajax函数(get方法)：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">function ajax(url,success,fail) &#123;</div><div class="line">    var oAjax = null;</div><div class="line">    if(XMLHttpRequest) &#123;</div><div class="line">        oAjax = new XMLHttpRequest();</div><div class="line">    &#125;   else &#123;</div><div class="line">        oAjax = new ActiveXObject("Microsoft.XMLHTTP")</div><div class="line">    &#125;</div><div class="line">    oAjax.open("get,url,true);</div><div class="line">    oAjax.send();</div><div class="line">    oAjax.onstatechange = function() &#123;</div><div class="line">        if(oAjax.readyState == 4) &#123;</div><div class="line">            if(oAjax.status == 200) &#123;</div><div class="line">                success(oAjax.responseText);</div><div class="line">            &#125; else &#123;</div><div class="line">                if(fail)&#123;</div><div class="line">                    fail();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>好的,这是我们调用ajax(url地址，请求类型，成功回调，失败回调)就可以搞定一个ajax请求啦！<br>下面，让我们仔细研究一下原生ajax api中的猫腻:     </p>
