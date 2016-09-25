@@ -65,7 +65,7 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
 <meta property="og:site_name" content="Maruko0713的实验室">
 <meta property="og:description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器app reader引发了一些思考。今天把ajax知识点做个整合。    
 Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个概念是2005年提出的，它把静态网页转换成具有交互性能的web应用。">
-<meta property="og:updated_time" content="2016-09-25T04:58:57.000Z">
+<meta property="og:updated_time" content="2016-09-25T05:00:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax全接触：原生js中的ajax和jQuery中的ajax">
 <meta name="twitter:description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器app reader引发了一些思考。今天把ajax知识点做个整合。    
@@ -266,7 +266,8 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
 <li>3:ajax对象正在解码服务器端的响应内容    </li>
 <li>4:服务器端的内容解码完成，大功告成    </li>
 </ul>
-<h2 id="jQuery中的ajax"><a href="#jQuery中的ajax" class="headerlink" title="jQuery中的ajax"></a>jQuery中的ajax</h2><h3 id="最简单的load方法"><a href="#最简单的load方法" class="headerlink" title="最简单的load方法"></a>最简单的load方法</h3><p>$(选择器).load(url地址,requestData)<br>这个方法把url地址返回的响应内容全部加载进选择器对应的dom节点中，简单粗暴，如果url的返回值恰好是html，那皆大欢喜，然而如果返回个json或者xml啥的，恐怕用户要懵比一会儿了。<br>注意第二个参数可选，没有第二个参数时默认是get请求，有第二个参数时自动变成post请求.</p>
+<h2 id="jQuery中的ajax"><a href="#jQuery中的ajax" class="headerlink" title="jQuery中的ajax"></a>jQuery中的ajax</h2><h3 id="最简单的load方法"><a href="#最简单的load方法" class="headerlink" title="最简单的load方法"></a>最简单的load方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(选择器).load(url地址,requestData)</div></pre></td></tr></table></figure>
+<p>这个方法把url地址返回的响应内容全部加载进选择器对应的dom节点中，简单粗暴，如果url的返回值恰好是html，那皆大欢喜，然而如果返回个json或者xml啥的，恐怕用户要懵比一会儿了。<br>注意第二个参数可选，没有第二个参数时默认是get请求，有第二个参数时自动变成post请求.</p>
 <h3 id="取得json数据的getJSON方法"><a href="#取得json数据的getJSON方法" class="headerlink" title="取得json数据的getJSON方法"></a>取得json数据的getJSON方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.getJSON(<span class="string">"json文件地址"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">   对data的操作啦啦啦～～ </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>这个方法也不难，第一个参数是json文件地址，第二个是返回成功的回调函数.<br>注意getJSON对jsonp的实现，比如我的jsonp请求地址是<a href="http://www.xixi.com/jsonp.php,服务器端定义了回调函数名应该储存在url的callback参数里，那么我这么写" target="_blank" rel="external">http://www.xixi.com/jsonp.php,服务器端定义了回调函数名应该储存在url的callback参数里，那么我这么写</a>:<br>$.getJSON(“<a href="http://www.xixi.com/jsonp.php?callback=?&quot;)就可以实现一个jsonp请求，而不会报跨域的错误，回调函数里的data就是jsonp加载进来的函数调用代码段中的实参。" target="_blank" rel="external">http://www.xixi.com/jsonp.php?callback=?&quot;)就可以实现一个jsonp请求，而不会报跨域的错误，回调函数里的data就是jsonp加载进来的函数调用代码段中的实参。</a>    </p>
 <h3 id="get方法，post方法"><a href="#get方法，post方法" class="headerlink" title="get方法，post方法"></a>get方法，post方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.get(<span class="string">"url地址"</span>,requestData,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">    回调函数内容</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
