@@ -206,6 +206,116 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/28/对HTML不限制大小写的测试/" itemprop="url">
+                  小细节:css中的的大小写区分
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-28T00:00:00+08:00" content="2016-08-28">
+              2016-08-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇文章看起来可能没有什么技术含量，是对一个小细节的验证。起因是读《javascript权威指南》这本书时，里面提到说js是大小写敏感的语言，而html不是，因此html中设定属性时属性名属性值不限制大小写，标签名也不限制。由此想到，css中的属性名和属性值以及选择器是否限制大小写呢，今天就是为了验证一下这个问题。     </p>
+<h2 id="对HTML不限制大小写的测试"><a href="#对HTML不限制大小写的测试" class="headerlink" title="对HTML不限制大小写的测试"></a>对HTML不限制大小写的测试</h2><p>js大小写敏感还是比较明显比较常见的，先用一个小例子来看一下HTML对大小写不敏感的是什么样子的:<br>来个花样作死的写法:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Input</span> <span class="attr">TYPE</span>=<span class="string">"TEXT"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">TYPE</span>=<span class="string">"BUTTON"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>得到的效果和全小写时一样:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog4%E6%B5%8B%E8%AF%951.jpg" alt="html测试图">;    </p>
+<p>当然，为了规范，我们平时还是要坚持全小写为妙。</p>
+<h2 id="对css是否支持不区分大小写的测试"><a href="#对css是否支持不区分大小写的测试" class="headerlink" title="对css是否支持不区分大小写的测试"></a>对css是否支持不区分大小写的测试</h2><p>直觉上应该是不支持的。。。但我们还是用代码来看一下:<br>首先我们从id下手:<br>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#Test</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:red;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#fff</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">33px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结构部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test&gt;&lt;/div&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>大小写不同，我们看到火狐君给我们的效果是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog22.jpg" alt="大小写测试css1"><br>一片空白，服了，id要区分大小写.    </p>
+<p>虽然感觉已经知道结果了，但还是来一发class:<br>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Test</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:red;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#fff</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">33px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结构部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test&gt;&lt;/div&gt;</span></span></div><div class="line">&lt;div class="<span class="attr">Test</span>&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>得到的结果是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog4%E6%B5%8B%E8%AF%952.jpg" alt="大小写测试css2">    </p>
+<p>好啦，心服口服,class和id是不能模糊大小写的，所以更要坚持全小写啦。</p>
+<p>那么选择器在书写的时候，是否完全区分大小写呢？经测试，id和class选择器是必然要区分的，而标签选择器就比较随意啦，不区分大小写,写”H2”照样可以选中二号标题标签^_^    </p>
+<p>对于属性值和属性名,它们也是不区分大小写滴～～～～比如:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">    .test &#123;</div><div class="line">        Height:100px;</div><div class="line">        width:100px;</div><div class="line">        Background:red;</div><div class="line">        color:#fff;</div><div class="line">        font-size:33PX;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
+<p>html部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span>哈<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>我们看到这个height，width属性名和font-size的属性值都模糊了大小写。<br>然而我们仍然可以得到:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/css%E5%A4%A7%E5%B0%8F%E5%86%99%E5%B1%9E%E6%80%A7%E6%B5%8B%E8%AF%95.jpg" alt="css属性大小写测试">    </p>
+<p>于是，我们得出结论：在css中:    </p>
+<ul>
+<li>id名和class名是区分大小写的    </li>
+<li>选择器中，只有标签选择器不区分大小写    </li>
+<li>属性名和属性值是不区分大小写的    </li>
+</ul>
+<p>这样一来,css大小写敏感的问题就解决啦，但是为了规范，我们平时还是要坚持小写到底啊～～～哈哈</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/26/gulp/" itemprop="url">
                   自动化管理工具gulp的初体验
                 </a>
@@ -535,7 +645,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -545,7 +655,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

@@ -331,6 +331,128 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/28/buffer/" itemprop="url">
+                  node中的Buffer对象
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-28T00:00:00+08:00" content="2016-09-28">
+              2016-09-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这段时间在学习用nodejs做一个微信公众号的后端开发。node真是百闻不如一见，这回见着了，觉得node和浏览器端js差别还是挺明显的（众：你这不废话吗！）。嘿嘿，今天处理一段request数据时，用了一个办法是先把它转成buffer对象，然后再将其重新编码，所以今天就来侃侃Buffer吧！     </p>
+<h2 id="Buffer是啥？"><a href="#Buffer是啥？" class="headerlink" title="Buffer是啥？"></a>Buffer是啥？</h2><p>字面理解一下Buffer（缓冲）对象:   </p>
+<blockquote>
+<p>一般编程所说的缓冲区指的是内存缓冲区,这是程序所设置的一块内存区域,用来暂存从其他设备读入的数据或即将写入其他设备的数据.</p>
+</blockquote>
+<p>好，下面我们关心一下node里面的缓冲对象:<br>对于JavaScript来说，对Unicode编码的数据很容易处理的但是对于二进制数据就没什么处理方法了。但是在一些TCP数据流或者在操作一些文件数据流的时候，字节流的处理方法还是必须的。nodeJS中便出了处理的策略方法~提供了与String类似对等的全局构造函数Buffer（与其说与String对等，还不如说与Array类似但是有些不同方面还是需要注意），全局那么自然就不要每次的require了。Buffer是node中储存二进制数据的中介者。</p>
+<h2 id="创建一个Buffer对象！"><a href="#创建一个Buffer对象！" class="headerlink" title="创建一个Buffer对象！"></a>创建一个Buffer对象！</h2><p>形式就是地球人都知道的 var xx = new Buffer()嘿嘿嘿.<br>（啊呸，当然没那么随意！）<br>（正经脸）    </p>
+<ul>
+<li>方式一: new Buffer(size)    </li>
+<li>方式二: new Buffer(array)</li>
+<li>方式三: new Buffer(string, 编码方式)    </li>
+</ul>
+<p>解读:    第一种形式中，size是你想要建立的buffer对象所占的内存的字节个数。第二种形式中，直接传入你想要建立的buffer对象的数组形式，当然数组的每一个元素都是16进制表示的一个字节，第三种方式中，传入一个字符串，然后第二个参数告诉Buffer你字符串的编码方式，它会按照你告诉他的编码方式去拆分这个字符串，把它解码为16进制的字节。     </p>
+<p>示例:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一    </span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="number">10</span>);</div><div class="line"></div><div class="line"><span class="comment">// 方法二</span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer([<span class="number">01</span>,<span class="number">02</span>,<span class="number">03</span>,<span class="number">04</span>]);</div><div class="line"></div><div class="line"><span class="comment">// 方法三(参数二可选)</span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="string">"hello"</span>,<span class="string">"utf-8"</span>);</div></pre></td></tr></table></figure>
+<h2 id="区分Buffer对象和字符串对象"><a href="#区分Buffer对象和字符串对象" class="headerlink" title="区分Buffer对象和字符串对象"></a>区分Buffer对象和字符串对象</h2><p>其实没有什么好区分的（毕竟完全不一样啊喂！😂），这里主要是强调一下它们的读写特征。<br>我们知道，字符串是只读的，比如这样写:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"hello"</span>;</div><div class="line">a[<span class="number">1</span>] = <span class="string">"b"</span>;</div></pre></td></tr></table></figure>
+<p>猜猜a最后长什么样子？答案是a仍然是”hello”而不是”bello”!因为字符串是只读的，一旦你创建了一个字符串，那么它就在那里，然而我们的缓冲对象是灵活的，你改了它，它就会给你变变变，因此，如果我们想基于一个缓冲对象做一些改变，又不想失去这个对象本身，我们最好这么做:<br>请出伟大的copy方法:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">buf.copy(targetBuffer,[targetStart],[sourceStart],[sourceEnd]);</div></pre></td></tr></table></figure>
+<p>参数解释：    </p>
+<blockquote>
+<p>在Buffer对象的copy方法中，使用四个参数，第一个参数为必须指定的参数，其余三个参数均为可选参数。第一个参数用于指定复制的目标Buffer对象。第二个参数用于指定目标Buffer对象中从第几个字节开始写入数据，参数值为一个小于目标的Buffer对象长度的整数值，默认值为0(从开始处写入数据)。第三个参数用于指定从复制源Buffer对象中获取数据时的开始位置，默认值为0，即从复制源Buffer对象中的第一个字节开始获取数据，第四个参数用于指定从复制源Buffer对象中获取数据时的结束位置，默认值为复制源Buffer对象的长度，即一直获取完毕复制源Buffer对象中的所有剩余数据。</p>
+</blockquote>
+<p>来个栗子： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="string">"我喜欢写代码"</span>);</div><div class="line"><span class="keyword">var</span> b1 = <span class="keyword">new</span> Buffer(<span class="number">128</span>);</div><div class="line">b1.fill(<span class="number">0</span>);</div><div class="line">b.copy(b1,<span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>敲进你的终端里try一下吧！会有新发现的！哈哈～    </p>
+<h2 id="常用的静态方法"><a href="#常用的静态方法" class="headerlink" title="常用的静态方法"></a>常用的静态方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.isBuffer(obj)</div></pre></td></tr></table></figure>
+<p>用于判断obj对象是否是Buffer类型    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.byteLength(string,[encoding]);</div></pre></td></tr></table></figure>
+<p>用于计算传入的string的字节长度，encoding是编码方式，默认编码方式是utf8.    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.concat(list,[totalLength]);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.isEncoding(encoding);</div></pre></td></tr></table></figure>
+<p>encoding是编码格式，如果这个编码格式是有效的，比如”utf8”穿进去，那铁定没问题，但是如果是个别的，比如你写个”xixi”,那你就呵呵吧。。。。。（逃。。。。。）    </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>(咦怎么就总结了？？)<br>哈哈，这当然没完，但是以上都是我感觉中Buffer比较基础和核心的部分，所以我把它们记录下来（严肃脸），因为目前对node的各种对象的api的实践都是有限的，所以只能吐这么墨水出来啦。以后随着学习的推进，会增加更丰富的内容的^<em>^</em></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/25/ajax/" itemprop="url">
                   Ajax全接触：原生js中的ajax和jQuery中的ajax
                 </a>
@@ -1162,116 +1284,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/对HTML不限制大小写的测试/" itemprop="url">
-                  小细节:css中的的大小写区分
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T00:00:00+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇文章看起来可能没有什么技术含量，是对一个小细节的验证。起因是读《javascript权威指南》这本书时，里面提到说js是大小写敏感的语言，而html不是，因此html中设定属性时属性名属性值不限制大小写，标签名也不限制。由此想到，css中的属性名和属性值以及选择器是否限制大小写呢，今天就是为了验证一下这个问题。     </p>
-<h2 id="对HTML不限制大小写的测试"><a href="#对HTML不限制大小写的测试" class="headerlink" title="对HTML不限制大小写的测试"></a>对HTML不限制大小写的测试</h2><p>js大小写敏感还是比较明显比较常见的，先用一个小例子来看一下HTML对大小写不敏感的是什么样子的:<br>来个花样作死的写法:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Input</span> <span class="attr">TYPE</span>=<span class="string">"TEXT"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">TYPE</span>=<span class="string">"BUTTON"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>得到的效果和全小写时一样:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog4%E6%B5%8B%E8%AF%951.jpg" alt="html测试图">;    </p>
-<p>当然，为了规范，我们平时还是要坚持全小写为妙。</p>
-<h2 id="对css是否支持不区分大小写的测试"><a href="#对css是否支持不区分大小写的测试" class="headerlink" title="对css是否支持不区分大小写的测试"></a>对css是否支持不区分大小写的测试</h2><p>直觉上应该是不支持的。。。但我们还是用代码来看一下:<br>首先我们从id下手:<br>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#Test</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:red;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#fff</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">33px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>结构部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test&gt;&lt;/div&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>大小写不同，我们看到火狐君给我们的效果是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog22.jpg" alt="大小写测试css1"><br>一片空白，服了，id要区分大小写.    </p>
-<p>虽然感觉已经知道结果了，但还是来一发class:<br>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Test</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:red;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#fff</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">33px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>结构部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test&gt;&lt;/div&gt;</span></span></div><div class="line">&lt;div class="<span class="attr">Test</span>&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>得到的结果是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog4%E6%B5%8B%E8%AF%952.jpg" alt="大小写测试css2">    </p>
-<p>好啦，心服口服,class和id是不能模糊大小写的，所以更要坚持全小写啦。</p>
-<p>那么选择器在书写的时候，是否完全区分大小写呢？经测试，id和class选择器是必然要区分的，而标签选择器就比较随意啦，不区分大小写,写”H2”照样可以选中二号标题标签^_^    </p>
-<p>对于属性值和属性名,它们也是不区分大小写滴～～～～比如:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">    .test &#123;</div><div class="line">        Height:100px;</div><div class="line">        width:100px;</div><div class="line">        Background:red;</div><div class="line">        color:#fff;</div><div class="line">        font-size:33PX;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
-<p>html部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span>哈<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>我们看到这个height，width属性名和font-size的属性值都模糊了大小写。<br>然而我们仍然可以得到:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/css%E5%A4%A7%E5%B0%8F%E5%86%99%E5%B1%9E%E6%80%A7%E6%B5%8B%E8%AF%95.jpg" alt="css属性大小写测试">    </p>
-<p>于是，我们得出结论：在css中:    </p>
-<ul>
-<li>id名和class名是区分大小写的    </li>
-<li>选择器中，只有标签选择器不区分大小写    </li>
-<li>属性名和属性值是不区分大小写的    </li>
-</ul>
-<p>这样一来,css大小写敏感的问题就解决啦，但是为了规范，我们平时还是要坚持小写到底啊～～～哈哈</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1317,7 +1329,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1327,7 +1339,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

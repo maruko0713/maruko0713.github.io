@@ -1,0 +1,561 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言:这段时间在学习用nodejs做一个微信公众号的后端开发。node真是百闻不如一见，这回见着了，觉得node和浏览器端js差别还是挺明显的（众：你这不废话吗！）。嘿嘿，今天处理一段request数据时，用了一个办法是先把它转成buffer对象，然后再将其重新编码，所以今天就来侃侃Buffer吧！     
+Buffer是啥？字面理解一下Buffer（缓冲）对象:   
+
+一般编程所说的缓冲区指">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node中的Buffer对象">
+<meta property="og:url" content="http://maruko.com/2016/09/28/buffer/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言:这段时间在学习用nodejs做一个微信公众号的后端开发。node真是百闻不如一见，这回见着了，觉得node和浏览器端js差别还是挺明显的（众：你这不废话吗！）。嘿嘿，今天处理一段request数据时，用了一个办法是先把它转成buffer对象，然后再将其重新编码，所以今天就来侃侃Buffer吧！     
+Buffer是啥？字面理解一下Buffer（缓冲）对象:   
+
+一般编程所说的缓冲区指">
+<meta property="og:updated_time" content="2016-10-02T15:24:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node中的Buffer对象">
+<meta name="twitter:description" content="前言:这段时间在学习用nodejs做一个微信公众号的后端开发。node真是百闻不如一见，这回见着了，觉得node和浏览器端js差别还是挺明显的（众：你这不废话吗！）。嘿嘿，今天处理一段request数据时，用了一个办法是先把它转成buffer对象，然后再将其重新编码，所以今天就来侃侃Buffer吧！     
+Buffer是啥？字面理解一下Buffer（缓冲）对象:   
+
+一般编程所说的缓冲区指">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> node中的Buffer对象 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                node中的Buffer对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-28T00:00:00+08:00" content="2016-09-28">
+              2016-09-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这段时间在学习用nodejs做一个微信公众号的后端开发。node真是百闻不如一见，这回见着了，觉得node和浏览器端js差别还是挺明显的（众：你这不废话吗！）。嘿嘿，今天处理一段request数据时，用了一个办法是先把它转成buffer对象，然后再将其重新编码，所以今天就来侃侃Buffer吧！     </p>
+<h2 id="Buffer是啥？"><a href="#Buffer是啥？" class="headerlink" title="Buffer是啥？"></a>Buffer是啥？</h2><p>字面理解一下Buffer（缓冲）对象:   </p>
+<blockquote>
+<p>一般编程所说的缓冲区指的是内存缓冲区,这是程序所设置的一块内存区域,用来暂存从其他设备读入的数据或即将写入其他设备的数据.</p>
+</blockquote>
+<p>好，下面我们关心一下node里面的缓冲对象:<br>对于JavaScript来说，对Unicode编码的数据很容易处理的但是对于二进制数据就没什么处理方法了。但是在一些TCP数据流或者在操作一些文件数据流的时候，字节流的处理方法还是必须的。nodeJS中便出了处理的策略方法~提供了与String类似对等的全局构造函数Buffer（与其说与String对等，还不如说与Array类似但是有些不同方面还是需要注意），全局那么自然就不要每次的require了。Buffer是node中储存二进制数据的中介者。</p>
+<h2 id="创建一个Buffer对象！"><a href="#创建一个Buffer对象！" class="headerlink" title="创建一个Buffer对象！"></a>创建一个Buffer对象！</h2><p>形式就是地球人都知道的 var xx = new Buffer()嘿嘿嘿.<br>（啊呸，当然没那么随意！）<br>（正经脸）    </p>
+<ul>
+<li>方式一: new Buffer(size)    </li>
+<li>方式二: new Buffer(array)</li>
+<li>方式三: new Buffer(string, 编码方式)    </li>
+</ul>
+<p>解读:    第一种形式中，size是你想要建立的buffer对象所占的内存的字节个数。第二种形式中，直接传入你想要建立的buffer对象的数组形式，当然数组的每一个元素都是16进制表示的一个字节，第三种方式中，传入一个字符串，然后第二个参数告诉Buffer你字符串的编码方式，它会按照你告诉他的编码方式去拆分这个字符串，把它解码为16进制的字节。     </p>
+<p>示例:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一    </span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="number">10</span>);</div><div class="line"></div><div class="line"><span class="comment">// 方法二</span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer([<span class="number">01</span>,<span class="number">02</span>,<span class="number">03</span>,<span class="number">04</span>]);</div><div class="line"></div><div class="line"><span class="comment">// 方法三(参数二可选)</span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="string">"hello"</span>,<span class="string">"utf-8"</span>);</div></pre></td></tr></table></figure>
+<h2 id="区分Buffer对象和字符串对象"><a href="#区分Buffer对象和字符串对象" class="headerlink" title="区分Buffer对象和字符串对象"></a>区分Buffer对象和字符串对象</h2><p>其实没有什么好区分的（毕竟完全不一样啊喂！😂），这里主要是强调一下它们的读写特征。<br>我们知道，字符串是只读的，比如这样写:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"hello"</span>;</div><div class="line">a[<span class="number">1</span>] = <span class="string">"b"</span>;</div></pre></td></tr></table></figure>
+<p>猜猜a最后长什么样子？答案是a仍然是”hello”而不是”bello”!因为字符串是只读的，一旦你创建了一个字符串，那么它就在那里，然而我们的缓冲对象是灵活的，你改了它，它就会给你变变变，因此，如果我们想基于一个缓冲对象做一些改变，又不想失去这个对象本身，我们最好这么做:<br>请出伟大的copy方法:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">buf.copy(targetBuffer,[targetStart],[sourceStart],[sourceEnd]);</div></pre></td></tr></table></figure>
+<p>参数解释：    </p>
+<blockquote>
+<p>在Buffer对象的copy方法中，使用四个参数，第一个参数为必须指定的参数，其余三个参数均为可选参数。第一个参数用于指定复制的目标Buffer对象。第二个参数用于指定目标Buffer对象中从第几个字节开始写入数据，参数值为一个小于目标的Buffer对象长度的整数值，默认值为0(从开始处写入数据)。第三个参数用于指定从复制源Buffer对象中获取数据时的开始位置，默认值为0，即从复制源Buffer对象中的第一个字节开始获取数据，第四个参数用于指定从复制源Buffer对象中获取数据时的结束位置，默认值为复制源Buffer对象的长度，即一直获取完毕复制源Buffer对象中的所有剩余数据。</p>
+</blockquote>
+<p>来个栗子： </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="string">"我喜欢写代码"</span>);</div><div class="line"><span class="keyword">var</span> b1 = <span class="keyword">new</span> Buffer(<span class="number">128</span>);</div><div class="line">b1.fill(<span class="number">0</span>);</div><div class="line">b.copy(b1,<span class="number">10</span>);</div></pre></td></tr></table></figure>
+<p>敲进你的终端里try一下吧！会有新发现的！哈哈～    </p>
+<h2 id="常用的静态方法"><a href="#常用的静态方法" class="headerlink" title="常用的静态方法"></a>常用的静态方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.isBuffer(obj)</div></pre></td></tr></table></figure>
+<p>用于判断obj对象是否是Buffer类型    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.byteLength(string,[encoding]);</div></pre></td></tr></table></figure>
+<p>用于计算传入的string的字节长度，encoding是编码方式，默认编码方式是utf8.    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.concat(list,[totalLength]);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.isEncoding(encoding);</div></pre></td></tr></table></figure>
+<p>encoding是编码格式，如果这个编码格式是有效的，比如”utf8”穿进去，那铁定没问题，但是如果是个别的，比如你写个”xixi”,那你就呵呵吧。。。。。（逃。。。。。）    </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>(咦怎么就总结了？？)<br>哈哈，这当然没完，但是以上都是我感觉中Buffer比较基础和核心的部分，所以我把它们记录下来（严肃脸），因为目前对node的各种对象的api的实践都是有限的，所以只能吐这么墨水出来啦。以后随着学习的推进，会增加更丰富的内容的^<em>^</em></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/25/ajax/" rel="next" title="Ajax全接触：原生js中的ajax和jQuery中的ajax">
+                <i class="fa fa-chevron-left"></i> Ajax全接触：原生js中的ajax和jQuery中的ajax
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/02/keng/" rel="prev" title="移动端项目“五一E起游”开发中遇到的坑总结">
+                移动端项目“五一E起游”开发中遇到的坑总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Buffer是啥？"><span class="nav-number">2.</span> <span class="nav-text">Buffer是啥？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个Buffer对象！"><span class="nav-number">3.</span> <span class="nav-text">创建一个Buffer对象！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区分Buffer对象和字符串对象"><span class="nav-number">4.</span> <span class="nav-text">区分Buffer对象和字符串对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的静态方法"><span class="nav-number">5.</span> <span class="nav-text">常用的静态方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
