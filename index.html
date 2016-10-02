@@ -206,6 +206,151 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/02/keng/" itemprop="url">
+                  移动端项目“五一E起游”开发中遇到的坑总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-02T00:00:00+08:00" content="2016-10-02">
+              2016-10-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这次的博客内容来源于我的第一个完整的移动端项目练习<a href="https://github.com/maruko0713/Travel_comment_website" target="_blank" rel="external">游客意见数据统计</a>的开发过程总结，集中纪录了几个把我折腾的够呛的坑。在github上的readme里面虽然已经有一份了，但是还是决定把它写成博客，希望能帮更多的人减少踩坑的经历^<em>^</em></p>
+<h2 id="开发笔记"><a href="#开发笔记" class="headerlink" title="开发笔记"></a>开发笔记</h2><h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><ul>
+<li>先看这段代码:<br>css部分:    <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.mask</span> &#123;</div><div class="line">    <span class="attribute">transition</span>:<span class="number">1s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">addClass(oMask,<span class="string">"pageShow"</span>);</div><div class="line">oMask.style.opacity=<span class="number">1</span>;</div></pre></td></tr></table></figure>
+<p>我设置了mask模块的转换完成时间为1s，js部分中pageShow的作用是把原来的display:none转换成display:block,目的是先把这个模块显示出来，然后再让它完成一个1s之内从opacity为0到opacity为1的转变。<br>然而结果并没有如我所愿，而是很简单粗暴地直接显示出来了，没有淡入的那个过程，查了一下资料，自己现在理解的原因是： </p>
+<blockquote>
+<p>当display在none和block之间转换的时候，需要时间去渲染，这段代码里，在设置了display:block之后立刻设置了opacity:1,这时浏览器还没把模块渲染出来，就读取了opacity＝1的设定，然后在渲染出来那一刻它就是不透明的了，这个转换就体现不出来了。    </p>
+</blockquote>
+<p>因此我们需要给它留出渲染的时间，等渲染结束了，再去设置opacity，这时候transition就是起作用的了:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">addClass(oMask,&quot;pageShow&quot;);</div><div class="line">setTimeout(function()&#123;</div><div class="line">    oMask.style.opacity=1;  </div><div class="line">&#125;,14);</div><div class="line">`</div></pre></td></tr></table></figure></p>
+<p>至于这个时间为啥选14，因为在网上查到各浏览器的最小延迟时间都在10-15微秒之间，我就取了个14，这里主要是想取一个尽可能小的时间延迟，就算是这么小的时间延迟，也已经够浏览器渲染出这个模块了。（亲测）    </p>
+<p>－ 09.17<br>chrome的模拟器虽然很方便，但是还是不能完全的信任啊啊啊啊，今天用我的5s（难道是因为我的手机太旧？？？）测试了一下，发现input里面的button类型标签在重置了默认样式之后依然无法还原pc端测试出来的效果，一开始我是这样重置的:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">input</span>,<span class="selector-tag">textarea</span>&#123;</div><div class="line">    <span class="attribute">outline</span>:none;</div><div class="line">    <span class="attribute">border</span>:none;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/79FC9D6F-7566-48BC-85DB-67DAC8B92EFF.png" alt="按钮图片"><br>然后结果呢，反正不长这样，特别丑，为了说明差距很大我用手机截了个屏幕:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/22C3E7C5-59A9-42B4-858B-04F790CE5BA8.png" alt="浏览器默认样式按钮"><br>一脸懵比，这差距大到我想不出来该去重置哪个css属性！<br>论科学上网的重要性，后来我搜出了一个办法，只需一行：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-appearance</span><span class="selector-pseudo">:none</span>;</div></pre></td></tr></table></figure></p>
+<p> 就可以干掉手机safari下独有的这个bug哈哈哈哈。<br> 今晚等室友回来再用她的6测试一下，看一下是不是我手机系统太老的问题.<br> 填坑：不是系统的问题，6里的safari也这个德行，必须-webkit-appearance:none;才行<br> vivo浏览器测试正常(是的我把室友的手机全试了一遍啊哈哈哈)    </p>
+<h3 id="大坑"><a href="#大坑" class="headerlink" title="大坑"></a>大坑</h3><p>大坑就是搞了很久才搞明白而且非常诡异的坑，今天上午我就遇到一个.</p>
+<h4 id="label标签里被隐藏的input会骗人"><a href="#label标签里被隐藏的input会骗人" class="headerlink" title="label标签里被隐藏的input会骗人"></a>label标签里被隐藏的input会骗人</h4><p>这个事情不单独搞出来讲绝对不能解恨，项目里面我在标签选择那一块写了一个事件委托，如果用户戳到span或者label标签那么就去判断input(input我设置了display:none)的checked属性,如果checked属性为真，那么label标签就去掉active状态，反之加上active状态，从而实现一个状态切换的效果。<br>思路看起来好像没问题，但是在我操作的过程中会出现我明明点上了label，但是不变色的现象(active状态是要变色的)，为此，我测试了那一块代码我能测试的几乎所有地方，但是就是改不掉。后来干脆单独写了个demo来检查label标签，它的狐狸尾巴就露出来了:    </p>
+<pre><code class="html"><span class="meta">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>
+<span class="tag">&lt;<span class="name">head</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">title</span>&gt;</span>test<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=200"</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css">
+        <span class="selector-tag">label</span> {
+            <span class="attribute">border</span>:<span class="number">1px</span> solid black;
+            <span class="attribute">padding</span>:<span class="number">10px</span>;
+            <span class="attribute">margin</span>:<span class="number">10px</span>;
+        }
+        <span class="selector-tag">input</span> {
+            <span class="attribute">display</span>:none;
+        }
+    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript">
+        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
+            <span class="keyword">var</span> oLabel = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"label"</span>)[<span class="number">0</span>];
+            oLabel.addEventListener(<span class="string">"touchend"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>{
+                <span class="keyword">var</span> oInput = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"input"</span>)[<span class="number">0</span>];
+                <span class="built_in">console</span>.log(oInput.checked);
+                <span class="built_in">console</span>.log(event.target);
+            });
+            <span class="built_in">document</span>.addEventListener(<span class="string">"touchend"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>{
+                <span class="built_in">console</span>.log(event.target.tagName);
+            })
+        }
+    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
+<span class="tag">&lt;<span class="name">body</span>&gt;</span>  
+    <span class="tag">&lt;<span class="name">label</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>
+        <span class="tag">&lt;<span class="name">span</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+    <span class="tag">&lt;/<span class="name">label</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
+</code></pre>
+<p>布局长这样:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/input.png" alt="label标签"><br>注意我戳的位置（是戳不是点，事件名称是touchend,click的话不存在这个bug，因为click你只能点到一个点，而touch却能覆盖一小片区域了）<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/input2.png" alt="加了范围演示的label标签"><br>注意小圆点，这个小圆点（就是你戳手机的时候手指覆盖的范围）一旦有大于一半的面积滞留在label标签外面，神奇的事情就会发生，这时label标签的touch事件不会被触发，但是input的checked值会被改变，别问我为什么，浏览器非这么干，整整一个上午的测试告诉我，就是这样！    </p>
+<h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><p>现在我的办法是，input的checked值既然和touch事件是不同步的，那么我就不用它进行判断。在touch事件被触发的时候，我去判断一个自定义属性，这里我给input新增了一个on属性，on属性只有在touch事件触发的时候才改变，把这个地方改了之后，状态切换就变得很灵敏了。    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/25/ajax/" itemprop="url">
                   Ajax全接触：原生js中的ajax和jQuery中的ajax
                 </a>
@@ -1147,123 +1292,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/26/gulp/" itemprop="url">
-                  自动化管理工具gulp的初体验
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-26T00:00:00+08:00" content="2016-08-26">
-              2016-08-26
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>前言:</p>
-<p>最近写了一个响应式的demo，推在github上<a href="https://github.com/maruko0713/To_Be_Responsive" target="_blank" rel="external">响应式demo</a>,在这个项目里，我第一次接触前端自动化管理工具，结合我自己的情况，我选择了gulp。这篇文章主要是对gulp的学习和使用做一个记录，同时文章后面会做一些gulp的比较好的插件的推荐.    </p>
-<h2 id="什么是gulp"><a href="#什么是gulp" class="headerlink" title="什么是gulp"></a>什么是gulp</h2><blockquote>
-<p>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。    </p>
-</blockquote>
-<h2 id="gulp如何使用"><a href="#gulp如何使用" class="headerlink" title="gulp如何使用"></a>gulp如何使用</h2><p>使用gulp之前，我们首先要安装gulp<br>因为我是mac的系统，所以采取了命令行安装的形式，如果需要其他帮助，请查看<a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">gulp官方网站</a>的说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp --g</div></pre></td></tr></table></figure></p>
-<p>通过这个操作，可以完成对gulp的全局安装     </p>
-<p>之后，我们需要在根目录下建立一个名为gulpfile.js的文件，这个文件非常重要，因为我们在后续的更新和重新操作的过程中会反复使用它，因为我的项目不大，所以采取了一些比较基础的操作，如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>); <span class="comment">//它是大boss</span></div><div class="line"><span class="keyword">var</span> rev = <span class="built_in">require</span>(<span class="string">"gulp-rev"</span>); <span class="comment">// 插件 用于在更新文件内容后更新文件名</span></div><div class="line"><span class="comment">// 插件(用于在目录下的文件名更新后更新html文件中的文件名)</span></div><div class="line"><span class="keyword">var</span> revReplace = <span class="built_in">require</span>(<span class="string">"gulp-rev-replace"</span>); </div><div class="line"><span class="comment">// 插件(用于分析html文件中带有注释的css文件和js文件)</span></div><div class="line"><span class="keyword">var</span> useref = <span class="built_in">require</span>(<span class="string">"gulp-useref"</span>); </div><div class="line"><span class="keyword">var</span> filter = <span class="built_in">require</span>(<span class="string">"gulp-filter"</span>);<span class="comment">// 插件 用于筛选出已标记的css文件和js文件</span></div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">"gulp-uglify"</span>); <span class="comment">//压缩js文件</span></div><div class="line"><span class="keyword">var</span> csso = <span class="built_in">require</span>(<span class="string">"gulp-csso"</span>); <span class="comment">//压缩css文件</span></div><div class="line">gulp.task(<span class="string">"default"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//filter操作可以筛选出相应的文件 restore参数表示该文件可以被返回到dist目录下</span></div><div class="line">    <span class="keyword">var</span> jsFilter = filter(<span class="string">"**/*.js"</span>,&#123;restore:<span class="literal">true</span>&#125;);</div><div class="line">    <span class="keyword">var</span> cssFilter = filter(<span class="string">"**/*.css"</span>, &#123;restore:<span class="literal">true</span>&#125;); </div><div class="line">    <span class="comment">//感叹号代表排除 filter内第一个参数可以为字符串也可以为数组</span></div><div class="line">    <span class="keyword">var</span> indexHtmlFilter = filter([<span class="string">"**/*"</span>,<span class="string">"!**/index.html"</span>], &#123;restore:<span class="literal">true</span>&#125;);</div><div class="line">    <span class="keyword">return</span> gulp.src(<span class="string">"src/index.html"</span>) <span class="comment">//找到要处理的文件</span></div><div class="line">        .pipe(useref()) <span class="comment">//分析文件中带有注释标志的地方</span></div><div class="line">        .pipe(jsFilter) <span class="comment">//筛选出标记的js文件 丢进文件流中</span></div><div class="line">        .pipe(uglify()) <span class="comment">//压缩操作</span></div><div class="line">        .pipe(jsFilter.restore) <span class="comment">// 将丢入文件流的文件放回原有的位置</span></div><div class="line">        .pipe(cssFilter) <span class="comment">//将筛选出的css文件丢进文件流 </span></div><div class="line">        .pipe(csso()) <span class="comment">//压缩</span></div><div class="line">        .pipe(cssFilter.restore) <span class="comment">//再丢回去</span></div><div class="line">        .pipe(indexHtmlFilter) <span class="comment">// 把index.html文件取出 剩余的匹配文件丢入文件流</span></div><div class="line">        .pipe(rev()) <span class="comment">//生成此刻文件流中所有文件的版本号</span></div><div class="line">        .pipe(indexHtmlFilter.restore) <span class="comment">//丢回去</span></div><div class="line">        .pipe(revReplace()) <span class="comment">//改名字（名字后面加上文件版本号）</span></div><div class="line">        .pipe(gulp.dest(<span class="string">"dist"</span>)); <span class="comment">// 把文件流扔进dist文件夹</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>上面提到要在html文件中进行标记，格式如下:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- build:css css/combined.css --&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/normalize.css"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/main.css"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/owl/owl-carousel/owl.carousel.css"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/owl/owl-carousel/owl.theme.css"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div></pre></td></tr></table></figure></p>
-<p>js也是相同的格式，不过需要把css改成js:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- build:js js/combined.js --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vendor/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"css/owl/owl-carousel/owl.carousel.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vendor/picturefill.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div></pre></td></tr></table></figure></p>
-<p>运行命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp</div></pre></td></tr></table></figure></p>
-<p>(因为我们的任务名叫做default 所以gulp后面不用跟任何参数就会执行我们的文件)<br>如此一来，我们就可以把多个文件压缩到一个文件里面.<br>需要注意的是，在压缩的过程中，注释会被丢掉，如果在css文件中有不想被丢掉的注释采取在注释中星号后面添加一个叹号的方式注释，就不会被压缩掉了:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp1.jpg" alt="gulp1">    </p>
-<p>加上叹号后，叹号下面的炮灰注释在压缩文件中全都找不见了，但是叹号注释的内容还在:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp2.jpg" alt="gulp2">    </p>
-<p>压缩后，我们可以看到css文件和js文件都会变成我们给它的新名字+版本号的形式:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp3.jpg" alt="gulp3">  </p>
-<p>如果对文件内容进行了改动，便会生成一个新的版本号:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp4.jpg" alt="gulp4">  </p>
-<p>当然，html文件里面对应的名字也会跟着变化:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp5.jpg" alt="gulp5">    </p>
-<p>好了，这样一来，我们就成功地使用gulp实现了我们的一个自动化压缩文件，自动化处理文件名的一个流程，当然啦，gulp的本领还不只这些，它有许许多多的插件，比如:     </p>
-<ul>
-<li>gulp-watch插件 它可以监听文件变化 自动执行gulp命令</li>
-<li>gulp-postcss插件 它可以自动给css属性添加浏览器的兼容前缀（比如-webkit-<br>-moz-之类的）</li>
-<li>gulp-concat插件 单纯地合并多个文件但不压缩</li>
-<li>gulp-responsive插件 自动生成响应式图片</li>
-</ul>
-<p>等等等等，我们可以在gulp-npm命令行的指引下寻找到更多地插件，gulp官方网站上为我们提供了各种各样的插件的使用说明，甚至还教授我们如何为gulp编写插件.<br>好啦，今天的gulp学习记录就到这里，自动化管理工具并非gulp这一种，在接下来的学习中，也应该学习和接触更多的工具，学会根据不同的场景转换工具的使用，使自己的工作更有效率^_^    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1309,7 +1337,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1319,7 +1347,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
