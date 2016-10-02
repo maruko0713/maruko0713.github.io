@@ -393,10 +393,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"hello"</span>;</div><div class="line">a[<span class="number">1</span>] = <span class="string">"b"</span>;</div></pre></td></tr></table></figure>
 <p>猜猜a最后长什么样子？答案是a仍然是”hello”而不是”bello”!因为字符串是只读的，一旦你创建了一个字符串，那么它就在那里，然而我们的缓冲对象是灵活的，你改了它，它就会给你变变变，因此，如果我们想基于一个缓冲对象做一些改变，又不想失去这个对象本身，我们最好这么做:<br>请出伟大的copy方法:    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">buf.copy(targetBuffer,[targetStart],[sourceStart],[sourceEnd]);</div></pre></td></tr></table></figure>
-<p>参数解释：    </p>
-<blockquote>
-<p>在Buffer对象的copy方法中，使用四个参数，第一个参数为必须指定的参数，其余三个参数均为可选参数。第一个参数用于指定复制的目标Buffer对象。第二个参数用于指定目标Buffer对象中从第几个字节开始写入数据，参数值为一个小于目标的Buffer对象长度的整数值，默认值为0(从开始处写入数据)。第三个参数用于指定从复制源Buffer对象中获取数据时的开始位置，默认值为0，即从复制源Buffer对象中的第一个字节开始获取数据，第四个参数用于指定从复制源Buffer对象中获取数据时的结束位置，默认值为复制源Buffer对象的长度，即一直获取完毕复制源Buffer对象中的所有剩余数据。</p>
-</blockquote>
+<p>参数解释：<br>在Buffer对象的copy方法中，使用四个参数，第一个参数为必须指定的参数，其余三个参数均为可选参数。第一个参数用于指定复制的目标Buffer对象。第二个参数用于指定目标Buffer对象中从第几个字节开始写入数据，参数值为一个小于目标的Buffer对象长度的整数值，默认值为0(从开始处写入数据)。第三个参数用于指定从复制源Buffer对象中获取数据时的开始位置，默认值为0，即从复制源Buffer对象中的第一个字节开始获取数据，第四个参数用于指定从复制源Buffer对象中获取数据时的结束位置，默认值为复制源Buffer对象的长度，即一直获取完毕复制源Buffer对象中的所有剩余数据。</p>
 <p>来个栗子： </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="string">"我喜欢写代码"</span>);</div><div class="line"><span class="keyword">var</span> b1 = <span class="keyword">new</span> Buffer(<span class="number">128</span>);</div><div class="line">b1.fill(<span class="number">0</span>);</div><div class="line">b.copy(b1,<span class="number">10</span>);</div></pre></td></tr></table></figure>
 <p>敲进你的终端里try一下吧！会有新发现的！哈哈～    </p>
@@ -405,6 +402,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.byteLength(string,[encoding]);</div></pre></td></tr></table></figure>
 <p>用于计算传入的string的字节长度，encoding是编码方式，默认编码方式是utf8.    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.concat(list,[totalLength]);</div></pre></td></tr></table></figure>
+<p>Buffer的连接，用于连接Buffer的数组。我们可以手动分配Buffer对象合并后的Buffer空间大小(参数二)，如果Buffer空间不够了，则数据会被截断。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.isEncoding(encoding);</div></pre></td></tr></table></figure>
 <p>encoding是编码格式，如果这个编码格式是有效的，比如”utf8”穿进去，那铁定没问题，但是如果是个别的，比如你写个”xixi”,那你就呵呵吧。。。。。（逃。。。。。）    </p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>(咦怎么就总结了？？)<br>哈哈，这当然没完，但是以上都是我感觉中Buffer比较基础和核心的部分，所以我把它们记录下来（严肃脸），因为目前对node的各种对象的api的实践都是有限的，所以只能吐这么墨水出来啦。以后随着学习的推进，会增加更丰富的内容的^<em>^</em></p>
