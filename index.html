@@ -206,6 +206,113 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/11/node_mongodb/" itemprop="url">
+                  在node应用中使用mongodb来存储数据
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-11T00:00:00+08:00" content="2016-10-11">
+              2016-10-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>这两天用node做了一个<a href="https://github.com/maruko0713/node-demos/tree/master/louNote" target="_blank" rel="external">在线笔记demo</a>,对于笔记信息和session信息的存储都用到了mongodb。     </p>
+<h2 id="什么是MongoDB"><a href="#什么是MongoDB" class="headerlink" title="什么是MongoDB"></a>什么是MongoDB</h2><p>MongoDB是时下流行的noSQL数据库之一，MongoDb中有三个非常重要的概念:    </p>
+<ul>
+<li>数据库: 数据库是一个物理容器集合。一个单一的MongoDB服务器通常有多个数据库.    </li>
+<li>集合: 集合是一组MongoDB文档，相当于我们之前在MySQL中表的概念。    </li>
+<li>文档: 文档是一组键值对。很多个文档构成一个集合。 </li>
+</ul>
+<p>从关系上来看，文档组成集合，集合组成数据库，多个数据库可以运行在同一台服务器中。噢耶！</p>
+<h2 id="node中的MongoDB"><a href="#node中的MongoDB" class="headerlink" title="node中的MongoDB"></a>node中的MongoDB</h2><p>node中对MongoDB数据库的操作是通过mongoose库实现的。主要有以下操作：    </p>
+<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</div><div class="line">mongoose.connect(<span class="string">"mongodb://localhost:27017/dbName"</span>);</div></pre></td></tr></table></figure>
+<p>通过connect方法的调用可以实现对数据库的连接，楼上的代码中dbName是你想要打开的数据库的名字，如果没有这个数据库，那么就自动创建一个并且打开，不会报错^_^。    </p>
+<h3 id="建立一个表，存储数据"><a href="#建立一个表，存储数据" class="headerlink" title="建立一个表，存储数据"></a>建立一个表，存储数据</h3><p>mongoose中建表是通过mongoose.Schema这个构造函数。<br>比如我想建立一个用户表:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 引入mongoose</span></div><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</div><div class="line"><span class="comment">// 把构造函数搞出来</span></div><div class="line"><span class="keyword">var</span> Schema = mongoose.Schema;</div><div class="line"><span class="comment">// 建立一个模版</span></div><div class="line"><span class="keyword">var</span> userSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">    username: <span class="built_in">String</span>,</div><div class="line">    password: <span class="built_in">String</span>,</div><div class="line">    email:<span class="built_in">String</span>,</div><div class="line">    createTime: &#123;</div><div class="line">        type:<span class="built_in">Date</span>,</div><div class="line">        <span class="keyword">default</span>:<span class="built_in">Date</span>.now</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 针对上面的集合建立一个模型</span></div><div class="line"><span class="keyword">var</span> User = mongoose.model(<span class="string">"User"</span>,userSchema);</div><div class="line"><span class="comment">// 用User模型创建一个新用户</span></div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(&#123;</div><div class="line">    username:<span class="string">"xiaowang"</span>,</div><div class="line">    password:<span class="number">123</span>,</div><div class="line">    email:hehe@qq.com</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 保存这个用户</span></div><div class="line">user.save(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"fail to save"</span>);</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Schema与Model"><a href="#Schema与Model" class="headerlink" title="Schema与Model"></a>Schema与Model</h2><p>Schema-&gt;创建集合<br>Model-&gt;操作集合<br>我们可以这么想,Schema对应的是集合。Model把这个集合抽象出来，通过model可以创建，修改，删除和更新表中的文档。<br>Model是活的，Schema对象作为参数传入model方法后，会作为Model对象的实现标准，但是Model对象本身还具有其它的属性和行为，可以进行数据库操作，而Schema不可以。  </p>
+<h2 id="Model对象的基本方法"><a href="#Model对象的基本方法" class="headerlink" title="Model对象的基本方法"></a>Model对象的基本方法</h2><p>楼上介绍了一个save方法是增加操作。除此之外还有：    </p>
+<h3 id="更新操作"><a href="#更新操作" class="headerlink" title="更新操作:"></a>更新操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 更新操作   </span></div><div class="line">User.update(&#123;_id:someone.id&#125;,&#123;</div><div class="line">    $set:&#123;username:xxxx,password:xxxx&#125;</div><div class="line">    &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(err)&#123;</div><div class="line">            <span class="built_in">console</span>.log(err);</div><div class="line">            <span class="keyword">return</span></div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"更新成功"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作:"></a>删除操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">User.remove(&#123;</div><div class="line">    _id:id</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">        <span class="built_in">console</span>.log(err);</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"删除成功！"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作:"></a>查找操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">User.find(&#123;_id:xxx&#125;)</div><div class="line">    .exec(<span class="function"><span class="keyword">function</span>(<span class="params">err,arts</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(err)&#123;</div><div class="line">            <span class="built_in">console</span>.log(err);</div><div class="line">            <span class="keyword">return</span> </div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"查找成功！"</span>)</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>如此，就是mongoose为我们提供的增删改查啦！     </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/07/koa_generator/" itemprop="url">
                   koa框架核心--中间件的使用与实现
                 </a>
@@ -1206,107 +1313,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/08/restful/" itemprop="url">
-                  对RESTful架构的理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-08T00:00:00+08:00" content="2016-09-08">
-              2016-09-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>阅读《AngularJS高级程序设计》这本书的第三章，作者对一些概念也是解释的很随意，直接来了一句“我觉得传递json就实现了RESTful”就把我们打发了。实在忍不了，上网搜了一大堆解释，都扯的云里雾里的，现在差不多有点头绪了，记录一下，防止自己以后再蒙圈。    </p>
-<h2 id="一句话概括RESTful"><a href="#一句话概括RESTful" class="headerlink" title="一句话概括RESTful"></a>一句话概括RESTful</h2><p>URL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。    </p>
-<h2 id="为什么会有RESTful"><a href="#为什么会有RESTful" class="headerlink" title="为什么会有RESTful"></a>为什么会有RESTful</h2><p>上面那句绝不是耍流氓，仔细想想RESTful难道不就是这样的吗？？？？<br>要知道RESTful的特性和意义，就必须了解RESTful之前的那个时代。在”古代”网页是前端后端融在一起的，比如之前的PHP，JSP等。近年来移动互联网的发展，各种类型的客户端层出不穷，RESTful可以通过一套统一的接口为 Web，iOS和Android提供服务。另外对于广大平台来说，比如Facebook platform，微博开放平台，微信公共平台等，它们不需要有显式的前端，只需要一套提供服务的接口，于是RESTful更是它们最好的选择。在RESTful架构下，服务器的核心任务是提供数据和改变数据状态，它就是围着数据转，其它的事情让前端去做。相应的，前端就要渲染页面和处理简单的商务逻辑（AngularJS之流就登场了）。    </p>
-<h2 id="RESTful的翻译式理解"><a href="#RESTful的翻译式理解" class="headerlink" title="RESTful的翻译式理解"></a>RESTful的翻译式理解</h2><p>REST – REpresentational State Transfer<br>翻译过来叫“表现层状态转移”<br>这个名字太恶心了，看名字谁知道你想干啥啊。表现层是啥？？？转移到哪里去？？你给我说清楚啊？？？？（掀桌）<br>其实可以这样理解，“表现层”就是数据的表现形式，可以是json，可以是xml，“状态转移”就是这个数据对应的状态的改变，就是我们老生常谈的增删改查。<br>现在我们瞅瞅上面那句“URL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。”的解释，是不是没啥问题？定位资源（表现层），描述操作（状态转移）。    </p>
-<h2 id="RESTful的特点"><a href="#RESTful的特点" class="headerlink" title="RESTful的特点"></a>RESTful的特点</h2><p>其实上面也已经说了个差不多，我们来做个总结。<br>所谓RESTful，它本质是一种架构设计方式，它的特点是面向<em>资源</em>，资源是核心，服务器端不必操心你的网页长什么样，只需要专心于操作数据和与数据相关的逻辑就可以了。因此在REST里面：    </p>
-<ul>
-<li>一切都被认为是一种资源</li>
-<li>每个资源有唯一的url标识</li>
-<li>客户端程序在建立起的资源url上发送请求，使用<em>请求方法</em>表示期望的操作。</li>
-<li>无状态</li>
-</ul>
-<h2 id="RESTful给前端带来了什么"><a href="#RESTful给前端带来了什么" class="headerlink" title="RESTful给前端带来了什么"></a>RESTful给前端带来了什么</h2><p>其实我到觉得是前端的变化促使了RESTful的产生。随着我们客户端形式的多样化，pc端已经远远不能满足人们的需要，如果一台服务器同时负责pc端页面的渲染，移动端页面的渲染，那不仅服务器会感到很疲惫，它渲染出来的内容咋样还是另一说，另外在使用原生的手机应用时，更是不可能指望把一切都交给服务器端。况且，现在前端能做的事情越来越多了，一些业务逻辑完全可以用js来做，于是乎，服务器端似乎只需要管好数据就行了(当然主要任务是管数据，它还是有它应该有的业务逻辑的)，RESTful应运而生。<br>RESTful架构使得前后端变得泾渭分明，同时因为前后端逻辑的分离，使一台服务器完全可以同时为web页面，安卓和ios应用同时提供服务。说明白点，服务器统一提供一套RESTful API（这里的api不再是我们平时表达的函数接口的意思，而是数据接口），web+ios+android作为同等公民调用API。各端发展到现在，都有一套比较成熟的框架来帮开发者事半功倍。（比如我现在正在学的AngularJS！）    </p>
-<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><p>写了这么多，都是在给最近正在上手的AngularJS做铺垫。<br>立个flag：<br>下一篇文章绝对要把Angular中的mvc模式整明白！    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1352,7 +1358,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1362,7 +1368,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">15</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

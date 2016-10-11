@@ -1,0 +1,547 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs,数据库," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言：这两天用node做了一个在线笔记demo,对于笔记信息和session信息的存储都用到了mongodb。     
+什么是MongoDBMongoDB是时下流行的noSQL数据库之一，MongoDb中有三个非常重要的概念:    
+
+数据库: 数据库是一个物理容器集合。一个单一的MongoDB服务器通常有多个数据库.    
+集合: 集合是一组MongoDB文档，相当于我们之前在MySQL中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在node应用中使用mongodb来存储数据">
+<meta property="og:url" content="http://maruko.com/2016/10/11/node_mongodb/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言：这两天用node做了一个在线笔记demo,对于笔记信息和session信息的存储都用到了mongodb。     
+什么是MongoDBMongoDB是时下流行的noSQL数据库之一，MongoDb中有三个非常重要的概念:    
+
+数据库: 数据库是一个物理容器集合。一个单一的MongoDB服务器通常有多个数据库.    
+集合: 集合是一组MongoDB文档，相当于我们之前在MySQL中">
+<meta property="og:updated_time" content="2016-10-11T09:57:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在node应用中使用mongodb来存储数据">
+<meta name="twitter:description" content="前言：这两天用node做了一个在线笔记demo,对于笔记信息和session信息的存储都用到了mongodb。     
+什么是MongoDBMongoDB是时下流行的noSQL数据库之一，MongoDb中有三个非常重要的概念:    
+
+数据库: 数据库是一个物理容器集合。一个单一的MongoDB服务器通常有多个数据库.    
+集合: 集合是一组MongoDB文档，相当于我们之前在MySQL中">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 在node应用中使用mongodb来存储数据 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                在node应用中使用mongodb来存储数据
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-11T00:00:00+08:00" content="2016-10-11">
+              2016-10-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>这两天用node做了一个<a href="https://github.com/maruko0713/node-demos/tree/master/louNote" target="_blank" rel="external">在线笔记demo</a>,对于笔记信息和session信息的存储都用到了mongodb。     </p>
+<h2 id="什么是MongoDB"><a href="#什么是MongoDB" class="headerlink" title="什么是MongoDB"></a>什么是MongoDB</h2><p>MongoDB是时下流行的noSQL数据库之一，MongoDb中有三个非常重要的概念:    </p>
+<ul>
+<li>数据库: 数据库是一个物理容器集合。一个单一的MongoDB服务器通常有多个数据库.    </li>
+<li>集合: 集合是一组MongoDB文档，相当于我们之前在MySQL中表的概念。    </li>
+<li>文档: 文档是一组键值对。很多个文档构成一个集合。 </li>
+</ul>
+<p>从关系上来看，文档组成集合，集合组成数据库，多个数据库可以运行在同一台服务器中。噢耶！</p>
+<h2 id="node中的MongoDB"><a href="#node中的MongoDB" class="headerlink" title="node中的MongoDB"></a>node中的MongoDB</h2><p>node中对MongoDB数据库的操作是通过mongoose库实现的。主要有以下操作：    </p>
+<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</div><div class="line">mongoose.connect(<span class="string">"mongodb://localhost:27017/dbName"</span>);</div></pre></td></tr></table></figure>
+<p>通过connect方法的调用可以实现对数据库的连接，楼上的代码中dbName是你想要打开的数据库的名字，如果没有这个数据库，那么就自动创建一个并且打开，不会报错^_^。    </p>
+<h3 id="建立一个表，存储数据"><a href="#建立一个表，存储数据" class="headerlink" title="建立一个表，存储数据"></a>建立一个表，存储数据</h3><p>mongoose中建表是通过mongoose.Schema这个构造函数。<br>比如我想建立一个用户表:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 引入mongoose</span></div><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</div><div class="line"><span class="comment">// 把构造函数搞出来</span></div><div class="line"><span class="keyword">var</span> Schema = mongoose.Schema;</div><div class="line"><span class="comment">// 建立一个模版</span></div><div class="line"><span class="keyword">var</span> userSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">    username: <span class="built_in">String</span>,</div><div class="line">    password: <span class="built_in">String</span>,</div><div class="line">    email:<span class="built_in">String</span>,</div><div class="line">    createTime: &#123;</div><div class="line">        type:<span class="built_in">Date</span>,</div><div class="line">        <span class="keyword">default</span>:<span class="built_in">Date</span>.now</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 针对上面的集合建立一个模型</span></div><div class="line"><span class="keyword">var</span> User = mongoose.model(<span class="string">"User"</span>,userSchema);</div><div class="line"><span class="comment">// 用User模型创建一个新用户</span></div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(&#123;</div><div class="line">    username:<span class="string">"xiaowang"</span>,</div><div class="line">    password:<span class="number">123</span>,</div><div class="line">    email:hehe@qq.com</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 保存这个用户</span></div><div class="line">user.save(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"fail to save"</span>);</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="Schema与Model"><a href="#Schema与Model" class="headerlink" title="Schema与Model"></a>Schema与Model</h2><p>Schema-&gt;创建集合<br>Model-&gt;操作集合<br>我们可以这么想,Schema对应的是集合。Model把这个集合抽象出来，通过model可以创建，修改，删除和更新表中的文档。<br>Model是活的，Schema对象作为参数传入model方法后，会作为Model对象的实现标准，但是Model对象本身还具有其它的属性和行为，可以进行数据库操作，而Schema不可以。  </p>
+<h2 id="Model对象的基本方法"><a href="#Model对象的基本方法" class="headerlink" title="Model对象的基本方法"></a>Model对象的基本方法</h2><p>楼上介绍了一个save方法是增加操作。除此之外还有：    </p>
+<h3 id="更新操作"><a href="#更新操作" class="headerlink" title="更新操作:"></a>更新操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 更新操作   </span></div><div class="line">User.update(&#123;_id:someone.id&#125;,&#123;</div><div class="line">    $set:&#123;username:xxxx,password:xxxx&#125;</div><div class="line">    &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(err)&#123;</div><div class="line">            <span class="built_in">console</span>.log(err);</div><div class="line">            <span class="keyword">return</span></div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"更新成功"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作:"></a>删除操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">User.remove(&#123;</div><div class="line">    _id:id</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">        <span class="built_in">console</span>.log(err);</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"删除成功！"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作:"></a>查找操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">User.find(&#123;_id:xxx&#125;)</div><div class="line">    .exec(<span class="function"><span class="keyword">function</span>(<span class="params">err,arts</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(err)&#123;</div><div class="line">            <span class="built_in">console</span>.log(err);</div><div class="line">            <span class="keyword">return</span> </div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"查找成功！"</span>)</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
+<p>如此，就是mongoose为我们提供的增删改查啦！     </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/数据库/" rel="tag">#数据库</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/07/koa_generator/" rel="next" title="koa框架核心--中间件的使用与实现">
+                <i class="fa fa-chevron-left"></i> koa框架核心--中间件的使用与实现
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是MongoDB"><span class="nav-number">2.</span> <span class="nav-text">什么是MongoDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#node中的MongoDB"><span class="nav-number">3.</span> <span class="nav-text">node中的MongoDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接数据库"><span class="nav-number">3.1.</span> <span class="nav-text">连接数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建立一个表，存储数据"><span class="nav-number">3.2.</span> <span class="nav-text">建立一个表，存储数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Schema与Model"><span class="nav-number">4.</span> <span class="nav-text">Schema与Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Model对象的基本方法"><span class="nav-number">5.</span> <span class="nav-text">Model对象的基本方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#更新操作"><span class="nav-number">5.1.</span> <span class="nav-text">更新操作:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除操作"><span class="nav-number">5.2.</span> <span class="nav-text">删除操作:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找操作"><span class="nav-number">5.3.</span> <span class="nav-text">查找操作:</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
