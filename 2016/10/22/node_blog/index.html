@@ -1,0 +1,578 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,nodejs,express," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言:接触node一段时间了，最近在利用node做一些小demo和一个功能相对复杂一些完整一些的博客系统.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    
+新工具在开发的过程中，我们经常需要修改代码进行debug，但是一旦修改了我们就不得不终止node服务器重启后才可以在浏览器里看到修改后的效果，这样很麻烦，因此，我们可以使用一个叫做supervisor的工具~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用nodejs搭建一个完整的博客系统">
+<meta property="og:url" content="http://maruko.com/2016/10/22/node_blog/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言:接触node一段时间了，最近在利用node做一些小demo和一个功能相对复杂一些完整一些的博客系统.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    
+新工具在开发的过程中，我们经常需要修改代码进行debug，但是一旦修改了我们就不得不终止node服务器重启后才可以在浏览器里看到修改后的效果，这样很麻烦，因此，我们可以使用一个叫做supervisor的工具~">
+<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/node-project1.png">
+<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/node-project2.png">
+<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/node-project22.png">
+<meta property="og:updated_time" content="2016-10-22T03:45:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用nodejs搭建一个完整的博客系统">
+<meta name="twitter:description" content="前言:接触node一段时间了，最近在利用node做一些小demo和一个功能相对复杂一些完整一些的博客系统.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    
+新工具在开发的过程中，我们经常需要修改代码进行debug，但是一旦修改了我们就不得不终止node服务器重启后才可以在浏览器里看到修改后的效果，这样很麻烦，因此，我们可以使用一个叫做supervisor的工具~">
+<meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/node-project1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 用nodejs搭建一个完整的博客系统 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                用nodejs搭建一个完整的博客系统
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-22T00:00:00+08:00" content="2016-10-22">
+              2016-10-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>接触node一段时间了，最近在利用node做一些<a href="https://github.com/maruko0713/node-demos" target="_blank" rel="external">小demo</a>和一个功能相对复杂一些完整一些的<a href="https://github.com/maruko0713/node-blog" target="_blank" rel="external">博客系统</a>.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    </p>
+<h2 id="新工具"><a href="#新工具" class="headerlink" title="新工具"></a>新工具</h2><p>在开发的过程中，我们经常需要修改代码进行debug，但是一旦修改了我们就不得不终止node服务器重启后才可以在浏览器里看到修改后的效果，这样很麻烦，因此，我们可以使用一个叫做supervisor的工具~~~~<br>安装supervisor^_^:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g supervisor</div></pre></td></tr></table></figure>
+<p>启动supervisor：    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisor app.js</div></pre></td></tr></table></figure>
+<p>于是我们就可以实现修改后自动刷新啦！</p>
+<h2 id="选择一个喜欢的模版渲染引擎"><a href="#选择一个喜欢的模版渲染引擎" class="headerlink" title="选择一个喜欢的模版渲染引擎"></a>选择一个喜欢的模版渲染引擎</h2><p>在进行开发的时候，我选用了比较经典的express框架，express框架默认使用jade作为它的渲染引擎。jade的语法虽然有很多人追捧，但是我不太喜欢，我觉得每一行都要小心翼翼地缩进对齐，tab和空格还不能一起用，太痛苦了。我更喜欢ejs,它是一个和原生html长得很像的东西，有了它，我们就可以在html里面嵌入一些js语句了，它的核心用法如下:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% code %&gt;</div></pre></td></tr></table></figure>
+<p>在两个百分号之间，嵌入的是纯js语句，express会帮你去解释它.    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%= code %&gt;</div></pre></td></tr></table></figure>
+<p>中间的code仍然是js语句，但是这个js语句会有一个返回值，返回的内容即使你传入的内容，不会进行html的解析.    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- code %&gt;</div></pre></td></tr></table></figure>
+<p>与楼上很像，但是它返回的内容会被当作html解析。    </p>
+<h2 id="用bootstrap做一个快速的页面布局"><a href="#用bootstrap做一个快速的页面布局" class="headerlink" title="用bootstrap做一个快速的页面布局"></a>用bootstrap做一个快速的页面布局</h2><p>bootstrap是一个非常好用的前端框架，它的用法网上有很多，我就不啰嗦啦，如果不太熟悉boostrap的小伙伴，吃我一发安利噢～～～用力点这个——<a href="http://www.imooc.com/learn/141" target="_blank" rel="external">玩转boostrap</a>  ,这是大漠老师在慕课上的bootstrap基础课程，学完它，你就可以自己飞快地搭建漂亮的页面啦！<br>因为懒（羞羞），也因为还没有用bootstrap进行过真正的项目开发，所以这次我用了一下boostrap。哎呀，不用不知道，一用吓一跳啊！真的好用～～～（捂脸）    </p>
+<h3 id="bootstrap重要功能点复习"><a href="#bootstrap重要功能点复习" class="headerlink" title="bootstrap重要功能点复习"></a>bootstrap重要功能点复习</h3><p>这个模块我要讲一讲开发过程中我遇到的比较厉害的boostrap的用法噢！</p>
+<h4 id="响应式导航条"><a href="#响应式导航条" class="headerlink" title="响应式导航条"></a>响应式导航条</h4><p>我先给你变个魔术吧！^_^<br>如果你想自己玩，可以把我的项目代码克隆到本地，然后这么做:  </p>
+<p>克隆项目到本地:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/maruko0713/node-blog.git node-blog</div></pre></td></tr></table></figure>
+<p>进入项目根目录:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd node-blog</div></pre></td></tr></table></figure>
+<p>安装npm依赖:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
+<p>进入public文件夹:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd public</div></pre></td></tr></table></figure>
+<p>安装bower依赖:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bower install</div></pre></td></tr></table></figure>
+<p>回到根目录:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd ..</div></pre></td></tr></table></figure>
+<p>运行入口文件^_^：    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node app</div></pre></td></tr></table></figure>
+<p>然后在你的浏览器里输入:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localhost:3000</div></pre></td></tr></table></figure>
+<p>是不是就可以看到啦？^_^  </p>
+<p>我登录了我的xixi账号，然后我的导航条在浏览器窗口大于等于768px的时候，长这个样子:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/node-project1.png" alt="导航条">    </p>
+<p>如果我把窗口缩小一下呢？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/node-project2.png" alt="小的导航条">    </p>
+<p>发生了啥????<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/node-project22.png" alt="小小的导航条">    </p>
+<p>嘻嘻，如果你点一下这里，之前消失掉的导航条还是会出现噢！    </p>
+<p>请出前端(ejs)代码:    </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"navbar-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"collapse"</span> <span class="attr">data-target</span>=<span class="string">"#bs-example-navbar-collapse-1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>Toggle navigation<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span>&gt;</span>WanBlog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"collapse navbar-collapse"</span> <span class="attr">id</span>=<span class="string">"bs-example-navbar-collapse-1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span>(<span class="attr">user</span>) &#123; %&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav navbar-left"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/post"</span>&gt;</span>发表<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav navbar-right"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span>(<span class="attr">user</span>) &#123; %&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">user.username</span> %&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"caret"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/u/&lt;%= user.username %&gt;"</span>&gt;</span>账户信息<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/logout"</span>&gt;</span>退出登录<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%</span> &#125; <span class="attr">else</span> &#123; %&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/login"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/reg"</span>&gt;</span>注册<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"navbar-form navbar-right"</span> <span class="attr">action</span>=<span class="string">"/search"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Search"</span> <span class="attr">name</span>=<span class="string">"title"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>搜索<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>有点长，别害怕…<br>因为我们给按钮添加了”navbar-toggle”类名，这使它在宽度小于768px的时候会显示，大于即消失。<br>而data-toggle=”collapse”这句，是写给bootstrap的js代码看的，它会实现我们在点它一下的时候，消失的菜单重新跳出。    </p>
+<p>我们对菜单模块添加了类名collapse navbar-collapse,前者保证它在宽度变小时消失，后者可以实现它小屏和大屏显示下不同的样式变化。<br>于是，响应式导航条就诞生啦！    </p>
+<h2 id="mongodb的使用"><a href="#mongodb的使用" class="headerlink" title="mongodb的使用"></a>mongodb的使用</h2><p>mongodb的使用其实还是那几个套路，在<a href="https://maruko0713.github.io/2016/10/11/node_mongodb/" target="_blank" rel="external">上一篇博客</a>讲过的噢。    </p>
+<h2 id="crypto模块的使用"><a href="#crypto模块的使用" class="headerlink" title="crypto模块的使用"></a>crypto模块的使用</h2><p>crypto模块可以帮助我们对密码进行加密.    </p>
+<p>引入crypto模块:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> crypto = <span class="built_in">require</span>(<span class="string">"crypto"</span>);</div></pre></td></tr></table></figure>
+<p>加密:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> md5 = crypto.createHash(<span class="string">"md5"</span>);</div><div class="line">md5password = md5.update(password).digest(<span class="string">"hex"</span>);</div></pre></td></tr></table></figure>
+<p>第一步我们设置加密的编码格式。第二步我们进行加密，digest中传入参数表明我们想要的返回格式，hex返回十六进制数据，latin1返回字符串，base64返回base64格式，什么都不传就返回buffer对象。    </p>
+<h2 id="moment-js模块的使用"><a href="#moment-js模块的使用" class="headerlink" title="moment.js模块的使用"></a>moment.js模块的使用</h2><p>momentjs可以用于时间日期的格式化～～    </p>
+<p>引入momentjs:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> moment = <span class="built_in">require</span>(<span class="string">"moment"</span>);</div></pre></td></tr></table></figure>
+<p>我想格式化成中文:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>  time = moment(date参数).locale(<span class="string">"zh-cn"</span>).format(<span class="string">"LL"</span>)</div></pre></td></tr></table></figure>
+<p>打开终端 输入node 在解释器里自己试一下吧！^_^</p>
+<p>locale返回的是一个所有信息都被中文化的moment对象，然后format是它的一个格式化方法～～～    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/nodejs/" rel="tag">#nodejs</a>
+          
+            <a href="/tags/express/" rel="tag">#express</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/11/node_mongodb/" rel="next" title="在node应用中使用mongodb来存储数据">
+                <i class="fa fa-chevron-left"></i> 在node应用中使用mongodb来存储数据
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新工具"><span class="nav-number">2.</span> <span class="nav-text">新工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择一个喜欢的模版渲染引擎"><span class="nav-number">3.</span> <span class="nav-text">选择一个喜欢的模版渲染引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用bootstrap做一个快速的页面布局"><span class="nav-number">4.</span> <span class="nav-text">用bootstrap做一个快速的页面布局</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#bootstrap重要功能点复习"><span class="nav-number">4.1.</span> <span class="nav-text">bootstrap重要功能点复习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#响应式导航条"><span class="nav-number">4.1.1.</span> <span class="nav-text">响应式导航条</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mongodb的使用"><span class="nav-number">5.</span> <span class="nav-text">mongodb的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crypto模块的使用"><span class="nav-number">6.</span> <span class="nav-text">crypto模块的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#moment-js模块的使用"><span class="nav-number">7.</span> <span class="nav-text">moment.js模块的使用</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
