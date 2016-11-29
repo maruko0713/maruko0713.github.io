@@ -207,7 +207,7 @@
               
                 
                 <a class="post-title-link" href="/2016/11/20/laravel5/" itemprop="url">
-                  Laravel笔记4:laravel中的Model的创建和数据库表的基本操作
+                  Laravel笔记5:laravel中的Model的创建和数据库表的基本操作
                 </a>
               
             
@@ -251,7 +251,7 @@
           
             <h2 id="创建一个model"><a href="#创建一个model" class="headerlink" title="创建一个model"></a>创建一个model</h2><p>(前提是你已经创建了一个articles表)<br>命令行:    </p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model Article</div></pre></td></tr></table></figure>
-<p>执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的article表呼应的，它用来对article表进行操作。    </p>
+<p>执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的articles表呼应的，它用来对articles表进行操作。    </p>
 <p>在laravel的环境下打开一个php解释器：    </p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan tinker</div></pre></td></tr></table></figure>
 <p>输入:    </p>
@@ -259,8 +259,8 @@
 <p>你就得到了一个Article对象。<br>你可以对它进行一些操作:    </p>
 <h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$article-&gt;title = <span class="string">"My first Title"</span>;</div><div class="line">$article-&gt;content = <span class="string">"content"</span>;</div></pre></td></tr></table></figure>
 <p>存储这个元组:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">article-&gt;save();</div></pre></td></tr></table></figure>
-<p>创建一个新的元组(一般还都是这么做的):    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article-&gt;save();</div></pre></td></tr></table></figure>
+<p>创建一个新的元组(一般还都是这么做的,快):    </p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article=App\Article::create([<span class="string">"title"</span>=&gt;<span class="string">"Second title"</span>,<span class="string">"content"</span>=&gt;<span class="string">"second content"</span>]);</div></pre></td></tr></table></figure>
 <h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first = App\Article::find(<span class="number">1</span>);</div></pre></td></tr></table></figure>
 <p>这里按照id为1进行查找。</p>
