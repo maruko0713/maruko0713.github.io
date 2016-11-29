@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="css," />
+  <meta name="keywords" content="laravel," />
 
 
 
@@ -57,29 +57,19 @@
 
 
 
-<meta name="description" content="前言:在此之前我一直以为在浏览器里html默认和浏览器窗口等高，而body默认和html等高，现在想想自己为什么会这么想，主要是因为这个:    
-body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
-当我这么干的时候，得到了这个结果：看，body的背景色占据了整个浏览器窗口，这样想来body撑开浏览器什么的也不是匪夷所思了，但书上告诉我们">
+<meta name="description" content="Blade模版引擎
+Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blad">
 <meta property="og:type" content="article">
-<meta property="og:title" content="body和html到底有多高&&浏览器的背景色问题">
-<meta property="og:url" content="http://maruko.com/2016/08/24/body_html/index.html">
+<meta property="og:title" content="Laravel笔记3:Laravel中的Blade模版引擎">
+<meta property="og:url" content="http://maruko.com/2016/11/15/laravel3/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言:在此之前我一直以为在浏览器里html默认和浏览器窗口等高，而body默认和html等高，现在想想自己为什么会这么想，主要是因为这个:    
-body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
-当我这么干的时候，得到了这个结果：看，body的背景色占据了整个浏览器窗口，这样想来body撑开浏览器什么的也不是匪夷所思了，但书上告诉我们">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/gaodu_1.jpg">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/test_2.jpg">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/test_3.jpg">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/test_4.jpg">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/test_5.jpg">
-<meta property="og:updated_time" content="2016-09-11T00:44:08.000Z">
+<meta property="og:description" content="Blade模版引擎
+Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blad">
+<meta property="og:updated_time" content="2016-11-28T06:23:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="body和html到底有多高&&浏览器的背景色问题">
-<meta name="twitter:description" content="前言:在此之前我一直以为在浏览器里html默认和浏览器窗口等高，而body默认和html等高，现在想想自己为什么会这么想，主要是因为这个:    
-body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
-当我这么干的时候，得到了这个结果：看，body的背景色占据了整个浏览器窗口，这样想来body撑开浏览器什么的也不是匪夷所思了，但书上告诉我们">
-<meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/gaodu_1.jpg">
+<meta name="twitter:title" content="Laravel笔记3:Laravel中的Blade模版引擎">
+<meta name="twitter:description" content="Blade模版引擎
+Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blad">
 
 
 
@@ -97,7 +87,7 @@ body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
   };
 </script>
 
-  <title> body和html到底有多高&&浏览器的背景色问题 | Maruko0713的实验室 </title>
+  <title> Laravel笔记3:Laravel中的Blade模版引擎 | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -217,7 +207,7 @@ body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
             
             
               
-                body和html到底有多高&&浏览器的背景色问题
+                Laravel笔记3:Laravel中的Blade模版引擎
               
             
           </h1>
@@ -229,8 +219,8 @@ body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-24T00:00:00+08:00" content="2016-08-24">
-              2016-08-24
+            <time itemprop="dateCreated" datetime="2016-11-15T00:00:00+08:00" content="2016-11-15">
+              2016-11-15
             </time>
           </span>
 
@@ -256,17 +246,21 @@ body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在此之前我一直以为在浏览器里html默认和浏览器窗口等高，而body默认和html等高，现在想想自己为什么会这么想，主要是因为这个:    </p>
-<h2 id="body和html的高度测试代码"><a href="#body和html的高度测试代码" class="headerlink" title="body和html的高度测试代码"></a>body和html的高度测试代码</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">    <span class="attribute">background</span>:blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当我这么干的时候，得到了这个结果：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gaodu_1.jpg" alt="css1"><br>看，body的背景色占据了整个浏览器窗口，这样想来body撑开浏览器什么的也不是匪夷所思了，但书上告诉我们正常情况的高度是不会继承的，那么这个body到底有多高呢？我们添加一行:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">    <span class="attribute">background</span>:blue;</div><div class="line">    <span class="attribute">border</span>:<span class="number">5px</span> solid black;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>神奇的事情发生了:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/test_2.jpg" alt="css2"><br>啥？？？body没高度？？那浏览器的颜色是哪里来的？？？？？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg" alt="smile"><br>还没完，还有更神奇的事情，一起来看下:<br>在以上代码的基础上，我添加了这样两行style：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">background</span>:yellow;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>它又变成黄色了。。。。。<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/test_3.jpg" alt="css3"><br>嗯，这样想的话，难道是html标签撑开了窗口???<br>一探究竟:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">background</span>:yellow;</div><div class="line">    <span class="attribute">border</span>:<span class="number">5px</span> solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后我们看到html仿佛有点高度？？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/test_4.jpg" alt="css4"><br>当然不，这是body的外边距啦2333让我们去掉这个东西:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">background</span>:blue;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>于是真相是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/test_5.jpg" alt="css5">    </p>
-<p>魔性的事情出现了，html原来也是没有高度的hhhhh。    </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不过话说回来，这不刚好和我们宽度默认继承父级和浏览器窗口等宽，而高度默认不继承为0相吻合吗？所以html和body标签默认高度为0这点，是毋庸置疑的。<br>那么问题来了，body和html并没有高度，那么满屏的黄色和蓝色是怎么显示出来的？    </p>
-<p>我觉得这和浏览器本身的机制有关，我们可以认为浏览器是一个会“吸收”颜色的东西，当我们给body设置颜色时，虽然body没有高，但是浏览器底板需要颜色，它看到了body的颜色，就想要拿来变成自己的，然后它把自己搞成了body设置的那个blue，当我们给html也设置了一个颜色后，浏览器发现，html好像离我更近啊，于是就就近渲染了html标签的背景色yellow给自己.<br>这样一来，我们看到的浏览器窗口又变成黄色了。 </p>
-<p>因此，我们所看到的那个背景色，既不属于body标签，也不属于html，它属于更底层的那个底板，是浏览器窗口本身吸收了body和html标签中更靠近自己的那个后，渲染出来的浏览器窗口底板的颜色。    </p>
+        <h2 id="Blade模版引擎"><a href="#Blade模版引擎" class="headerlink" title="Blade模版引擎"></a>Blade模版引擎</h2><blockquote>
+<p>Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blade.php 文件扩展名，并且一般被存放在 resources/views 目录。</p>
+</blockquote>
+<h2 id="Blade实现模版的继承"><a href="#Blade实现模版的继承" class="headerlink" title="Blade实现模版的继承"></a>Blade实现模版的继承</h2><p>如果你想重用一个已经存在的blade.php文件(假设它叫做app.blade.php)，那么你这么做:<br>用这个命令：    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div></pre></td></tr></table></figure>
+<p>你就把它引用进来啦。<br>既然引用了这个文件，那么在文件的基础上如果想要做一些改动，比如说我想要在这个文件内部插入一段自定义的代码(假如是在body标签之间进行插入)，那么在app.blade.php里这样写:        </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    @yield('content');</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这就告诉了blade，content这个区域是可以自定义的。<br>回到我们的新文件里，我们可以这样写:    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div><div class="line">@section(<span class="string">'content'</span>)</div><div class="line">&lt;h1&gt;I am maruko0713&lt;/h1&gt;</div><div class="line">@stop</div></pre></td></tr></table></figure>
+<p>注意，每个section末尾都要跟一个stop。      </p>
+<h2 id="Blade里面插入逻辑语句"><a href="#Blade里面插入逻辑语句" class="headerlink" title="Blade里面插入逻辑语句"></a>Blade里面插入逻辑语句</h2><p>格式如下：    </p>
+<p>判断:    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">if</span>(判断条件)</div><div class="line">html代码</div><div class="line">@<span class="keyword">else</span></div><div class="line">html代码</div></pre></td></tr></table></figure>
+<p>循环:    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">foreach</span>($people <span class="keyword">as</span> $person)</div><div class="line">&lt;li&gt;&#123;&#123; $person &#125;&#125;&lt;/li&gt;</div><div class="line">@<span class="keyword">endforeach</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -281,7 +275,7 @@ body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
       
         <div class="post-tags">
           
-            <a href="/tags/css/" rel="tag">#css</a>
+            <a href="/tags/laravel/" rel="tag">#laravel</a>
           
         </div>
       
@@ -290,16 +284,16 @@ body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/22/hello/" rel="next" title="About Me">
-                <i class="fa fa-chevron-left"></i> About Me
+              <a href="/2016/11/14/laravel2/" rel="next" title="Laravel笔记2:Laravel向视图传递变量">
+                <i class="fa fa-chevron-left"></i> Laravel笔记2:Laravel向视图传递变量
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/26/gulp/" rel="prev" title="自动化管理工具gulp的初体验">
-                自动化管理工具gulp的初体验 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/11/17/laravel4/" rel="prev" title="Laravel笔记4:Laravel中的数据库和Migration">
+                Laravel笔记4:Laravel中的数据库和Migration <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -420,7 +414,7 @@ body和html的高度测试代码123body&amp;#123;    background:blue;&amp;#125;
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#body和html的高度测试代码"><span class="nav-number">2.</span> <span class="nav-text">body和html的高度测试代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Blade模版引擎"><span class="nav-number">1.</span> <span class="nav-text">Blade模版引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blade实现模版的继承"><span class="nav-number">2.</span> <span class="nav-text">Blade实现模版的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blade里面插入逻辑语句"><span class="nav-number">3.</span> <span class="nav-text">Blade里面插入逻辑语句</span></a></li></ol></div>
             
           </div>
         </section>
