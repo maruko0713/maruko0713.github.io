@@ -206,6 +206,106 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/30/node_async/" itemprop="url">
+                  Node中的异步i/o和事件轮询机制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-30T00:00:00+08:00" content="2016-11-30">
+              2016-11-30
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    </p>
+<h2 id="从所谓“单线程”说起"><a href="#从所谓“单线程”说起" class="headerlink" title="从所谓“单线程”说起"></a>从所谓“单线程”说起</h2><p>我们常常听到的一句话是”javascript是单线程的”，然而这句话其实应该是”javascript的主线程师单线程的“，怎么理解呢。我记得在java里面，通过类的继承，我们是可以利用这个语言自己去开辟线程的。然而javascript不可以，整个应用层就只有一个线程从头到尾执行下来。<br>因此我们要说”javascript中开发者的代码是单线程的（只能运行在主线程中）“。    </p>
+<h2 id="异步的实现"><a href="#异步的实现" class="headerlink" title="异步的实现"></a>异步的实现</h2><p>第一次接触到js的异步，是浏览器端的Ajax请求。当时就对上面的单线程有了困惑，查了资料之后知道虽然js是单线程的，但是浏览器是多线程的，因此可以一边运行主线程，一边处理http请求，对http的请求其实相当于开了一个新线程。    </p>
+<p>（这里我有一个疑问，往往认为ajax异步是“不影响”主线程运行的，但是线程与线程之间，微观上应该是有切换的，同一时间一个进程中只能有一个线程在运行，因此切换来切换去，虽然实现了并行，但是总的运行时间并没有减少啊，所以我暂时认为异步会一定程度上放慢主线程的执行速度。如果以后有了新的想法，再回来改正。）    </p>
+<p>Node也是如此，js是单线程的，但是Node这个平台是多线程的，除了我们的主线程，还有负责处理I/O操作的线程池，还有事件循环线程。    </p>
+<p>因此，异步的实现，是依赖于平台的多线程的。    </p>
+<h2 id="事件轮询机制"><a href="#事件轮询机制" class="headerlink" title="事件轮询机制"></a>事件轮询机制</h2><h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><blockquote>
+<p>在进程启动时，Node就会开辟一个线程，这个线程用来执行一个类似于while(true)的循环，每执行一次循环体的过程就称之为Tick。每一次Tick的时候就查询看是否有待处理的事件，有的话就取出事件和相关的函数，如果存在关联的回调函数，就执行它们。    </p>
+</blockquote>
+<p>以上这段选自朴灵的《深入浅出Node.js》，我觉得写得挺形象的，就直接拿来用了。    </p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>Node的异步i/o是在线程池中进行的，线程池是Node调用它底层的c++模块实现的。    </p>
+<h3 id="一个异步调用的开始到结束"><a href="#一个异步调用的开始到结束" class="headerlink" title="一个异步调用的开始到结束"></a>一个异步调用的开始到结束</h3><p>主线程抛出一个异步i/o请求之后，封装请求对象，设置参数和回调函数，然后将请求对象放入线程池等待执行。<br>放入线程池这一步可以理解为开辟了一个i/o操作的新线程，然后主线程继续往下走，新线程执行i/o操作，事件循环仍然在不停地检查事件队列里面有没有未执行的事件。<br>某一个时刻，执行i/o操作的线程完成了任务，它就会把执行结果和相应的回调函数一起放进事件队列，这个线程就结束了。<br>事件循环按照事件队列顺序执行队列里的回调函数和事件结果，轮到到事件队列里面新出现的这个事件信息和回调函数时，就连事件信息和回调函数一起取出并且执行。    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/20/laravel5/" itemprop="url">
                   Laravel笔记5:laravel中的Model的创建和数据库表的基本操作
                 </a>
@@ -1182,116 +1282,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/04/promise2/" itemprop="url">
-                  node碎碎念之Promise之静态方法promisify,resolve和reject
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-04T00:00:00+08:00" content="2016-10-04">
-              2016-10-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前写过一篇关于Promise的文章，介绍了Promise对象的创建，特性等一些基本的知识点。最近用node进行微信公众号实际开发的时候才发现原来Promise的应用到了node这边真是漫天飞呀，今天先说几个用的多的。    </p>
-<h2 id="Promise-resolve和Promise-reject"><a href="#Promise-resolve和Promise-reject" class="headerlink" title="Promise.resolve和Promise.reject"></a>Promise.resolve和Promise.reject</h2><p>先从好啃的写起，抛砖引玉！<br>这是两个静态方法，第一次见到它们，我是懵比的。因为我对Promise的认知仅仅局限于在构造函数里面输入一个小小的”resolve/reject（可选参数）”然后就改变Promise对象的状态，长成这样的我真没见过。感谢万能的吃瓜群众，我找到了它们的内涵:<br>Promise.resolve()等价于这样:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</div><div class="line">    resolve();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>同理Promise.reject()等价于下面这样:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">    reject();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>看到这里，是不是恍然大悟了？<br>因此：<br>Promise.resolve()/Promise.reject()的作用即使创建一个Promise对象并将其状态置为resolved/rejected。<br>用处：<br>好处大大的有啊！想一想，有的时候我们并不care你的Promise构造函数内的主体是干啥的，只是关心then里面的内容是干啥的，这种情况下，我们省略Promise构造函数内参数的书写，直接来一个静态方法就把它的状态整出来了，这样我们是不是就只用操心我们该操心的then了？？      </p>
-<h2 id="Promise-promisify"><a href="#Promise-promisify" class="headerlink" title="Promise.promisify"></a>Promise.promisify</h2><p>(论科学上网的重要性hhhh)虽然查这个东西花去不少时间，但是最后还是有搜获滴！让我们来看看这玩意儿到底是个啥！    </p>
-<h3 id="promisify方法的用途"><a href="#promisify方法的用途" class="headerlink" title="promisify方法的用途"></a>promisify方法的用途</h3><blockquote>
-<p>prmoisify的作是：将一个 nodeCallback 形式函数调用转为 promise 对象。</p>
-</blockquote>
-<p>写到这里有人要问，啥是nodeCallback?    </p>
-<h3 id="nodeCallback形式的函数"><a href="#nodeCallback形式的函数" class="headerlink" title="nodeCallback形式的函数"></a>nodeCallback形式的函数</h3><p>nodeCallback 是Nodojs中的一个常用词。表达是意思是：Nodejs中，以错误优先的回调函数的总称。<br>这么描述还是有点反人类，它应该长这样：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fooCallBack</span>(<span class="params">err, a, b</span>)</span>&#123;</div><div class="line">  <span class="comment">// something</span></div><div class="line">  <span class="built_in">console</span>.log(a,b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>重点是啥？<br>重点是第一个参数是err!! 也就是说,noodeCallBack 函数的第一个参数<strong>一定</strong>传入的是 err ，而不能是别的参数。只要满足了这个条件，同时满足了回调函数出现的顺序在异步函数的最后一个，都能称之为nodeCallback函数。    </p>
-<p>比如我们经常见面额readFile小姐:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fs.readFile(<span class="string">'./test.js'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>看到没？回调函数位于最后一个参数，回调函数的第一个参数为err,这样的函数就叫做nodeCallback函数.    </p>
-<h3 id="promisify方法的好处"><a href="#promisify方法的好处" class="headerlink" title="promisify方法的好处"></a>promisify方法的好处</h3><p>好处大大的有啊！有了可爱的promisify方法，我们就可以把nodeCallback函数转换为高级的Promise对象，对它进行各种Promise对象的操作，使它具备各种Promise对象才有的高级操作，代码更优雅，书写更舒服。。。。等等等等，总之，还是要善待这个方法！    </p>
-<h3 id="promisify的加强版promisifyAll"><a href="#promisify的加强版promisifyAll" class="headerlink" title="promisify的加强版promisifyAll"></a>promisify的加强版promisifyAll</h3><p>promisify 只能一次转一个函数，那 promisifyall 的作用就是一次把一个库的方法转完,并且给他们都加上一个叫做Async的后缀。     </p>
-<p>拿nodeCallback函数云集的fs库开刀:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'bluebird'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> fs = <span class="built_in">Promise</span>.promisifyall(<span class="built_in">require</span>(<span class="string">'fs'</span>));</div><div class="line"></div><div class="line">fs.readFileAsync(<span class="string">'./test.js'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">&#125;).catch(<span class="built_in">console</span>.log);</div></pre></td></tr></table></figure>
-<p>楼上的代码运行是没有问题的，由此我们确信，promisify方法可以把传入的对象的所有nodeCallback方法全部转换为promise对象并且给它们取一个有Async后缀的新名字～～    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1337,7 +1327,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1347,7 +1337,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

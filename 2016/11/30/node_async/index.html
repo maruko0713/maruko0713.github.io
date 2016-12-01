@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="laravel," />
+  <meta name="keywords" content="Node," />
 
 
 
@@ -57,19 +57,19 @@
 
 
 
-<meta name="description" content="Blade模版引擎
-Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blad">
+<meta name="description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    
+从所谓“单线程”说起我们常常听到的一句话是”javascript是单线">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Laravel笔记3:Laravel中的Blade模版引擎">
-<meta property="og:url" content="http://maruko.com/2016/11/15/laravel3/index.html">
+<meta property="og:title" content="Node中的异步i/o和事件轮询机制">
+<meta property="og:url" content="http://maruko.com/2016/11/30/node_async/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="Blade模版引擎
-Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blad">
-<meta property="og:updated_time" content="2016-11-28T06:23:41.000Z">
+<meta property="og:description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    
+从所谓“单线程”说起我们常常听到的一句话是”javascript是单线">
+<meta property="og:updated_time" content="2016-12-01T03:04:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Laravel笔记3:Laravel中的Blade模版引擎">
-<meta name="twitter:description" content="Blade模版引擎
-Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blad">
+<meta name="twitter:title" content="Node中的异步i/o和事件轮询机制">
+<meta name="twitter:description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    
+从所谓“单线程”说起我们常常听到的一句话是”javascript是单线">
 
 
 
@@ -87,7 +87,7 @@ Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他�
   };
 </script>
 
-  <title> Laravel笔记3:Laravel中的Blade模版引擎 | Maruko0713的实验室 </title>
+  <title> Node中的异步i/o和事件轮询机制 | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +207,7 @@ Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他�
             
             
               
-                Laravel笔记3:Laravel中的Blade模版引擎
+                Node中的异步i/o和事件轮询机制
               
             
           </h1>
@@ -219,8 +219,8 @@ Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-15T00:00:00+08:00" content="2016-11-15">
-              2016-11-15
+            <time itemprop="dateCreated" datetime="2016-11-30T00:00:00+08:00" content="2016-11-30">
+              2016-11-30
             </time>
           </span>
 
@@ -246,21 +246,18 @@ Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他�
       
 
       
-        <h2 id="Blade模版引擎"><a href="#Blade模版引擎" class="headerlink" title="Blade模版引擎"></a>Blade模版引擎</h2><blockquote>
-<p>Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blade.php 文件扩展名，并且一般被存放在 resources/views 目录。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    </p>
+<h2 id="从所谓“单线程”说起"><a href="#从所谓“单线程”说起" class="headerlink" title="从所谓“单线程”说起"></a>从所谓“单线程”说起</h2><p>我们常常听到的一句话是”javascript是单线程的”，然而这句话其实应该是”javascript的主线程师单线程的“，怎么理解呢。我记得在java里面，通过类的继承，我们是可以利用这个语言自己去开辟线程的。然而javascript不可以，整个应用层就只有一个线程从头到尾执行下来。<br>因此我们要说”javascript中开发者的代码是单线程的（只能运行在主线程中）“。    </p>
+<h2 id="异步的实现"><a href="#异步的实现" class="headerlink" title="异步的实现"></a>异步的实现</h2><p>第一次接触到js的异步，是浏览器端的Ajax请求。当时就对上面的单线程有了困惑，查了资料之后知道虽然js是单线程的，但是浏览器是多线程的，因此可以一边运行主线程，一边处理http请求，对http的请求其实相当于开了一个新线程。    </p>
+<p>（这里我有一个疑问，往往认为ajax异步是“不影响”主线程运行的，但是线程与线程之间，微观上应该是有切换的，同一时间一个进程中只能有一个线程在运行，因此切换来切换去，虽然实现了并行，但是总的运行时间并没有减少啊，所以我暂时认为异步会一定程度上放慢主线程的执行速度。如果以后有了新的想法，再回来改正。）    </p>
+<p>Node也是如此，js是单线程的，但是Node这个平台是多线程的，除了我们的主线程，还有负责处理I/O操作的线程池，还有事件循环线程。    </p>
+<p>因此，异步的实现，是依赖于平台的多线程的。    </p>
+<h2 id="事件轮询机制"><a href="#事件轮询机制" class="headerlink" title="事件轮询机制"></a>事件轮询机制</h2><h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><blockquote>
+<p>在进程启动时，Node就会开辟一个线程，这个线程用来执行一个类似于while(true)的循环，每执行一次循环体的过程就称之为Tick。每一次Tick的时候就查询看是否有待处理的事件，有的话就取出事件和相关的函数，如果存在关联的回调函数，就执行它们。    </p>
 </blockquote>
-<h2 id="Blade实现模版的继承"><a href="#Blade实现模版的继承" class="headerlink" title="Blade实现模版的继承"></a>Blade实现模版的继承</h2><p>如果你想重用一个已经存在的blade.php文件(假设它叫做app.blade.php)，那么你这么做:<br>用这个命令：    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div></pre></td></tr></table></figure>
-<p>你就把它引用进来啦。<br>既然引用了这个文件，那么在文件的基础上如果想要做一些改动，比如说我想要在这个文件内部插入一段自定义的代码(假如是在body标签之间进行插入)，那么在app.blade.php里这样写:        </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    @yield('content');</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>这就告诉了blade，content这个区域是可以自定义的。<br>回到我们的新文件里，我们可以这样写:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div><div class="line">@section(<span class="string">'content'</span>)</div><div class="line">&lt;h1&gt;I am maruko0713&lt;/h1&gt;</div><div class="line">@stop</div></pre></td></tr></table></figure>
-<p>注意，每个section末尾都要跟一个stop。      </p>
-<h2 id="Blade里面插入逻辑语句"><a href="#Blade里面插入逻辑语句" class="headerlink" title="Blade里面插入逻辑语句"></a>Blade里面插入逻辑语句</h2><p>格式如下：    </p>
-<p>判断:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">if</span>(判断条件)</div><div class="line">html代码</div><div class="line">@<span class="keyword">else</span></div><div class="line">html代码</div></pre></td></tr></table></figure>
-<p>循环:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">foreach</span>($people <span class="keyword">as</span> $person)</div><div class="line">&lt;li&gt;&#123;&#123; $person &#125;&#125;&lt;/li&gt;</div><div class="line">@<span class="keyword">endforeach</span></div></pre></td></tr></table></figure>
+<p>以上这段选自朴灵的《深入浅出Node.js》，我觉得写得挺形象的，就直接拿来用了。    </p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>Node的异步i/o是在线程池中进行的，线程池是Node调用它底层的c++模块实现的。    </p>
+<h3 id="一个异步调用的开始到结束"><a href="#一个异步调用的开始到结束" class="headerlink" title="一个异步调用的开始到结束"></a>一个异步调用的开始到结束</h3><p>主线程抛出一个异步i/o请求之后，封装请求对象，设置参数和回调函数，然后将请求对象放入线程池等待执行。<br>放入线程池这一步可以理解为开辟了一个i/o操作的新线程，然后主线程继续往下走，新线程执行i/o操作，事件循环仍然在不停地检查事件队列里面有没有未执行的事件。<br>某一个时刻，执行i/o操作的线程完成了任务，它就会把执行结果和相应的回调函数一起放进事件队列，这个线程就结束了。<br>事件循环按照事件队列顺序执行队列里的回调函数和事件结果，轮到到事件队列里面新出现的这个事件信息和回调函数时，就连事件信息和回调函数一起取出并且执行。    </p>
 
       
     </div>
@@ -275,7 +272,7 @@ Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他�
       
         <div class="post-tags">
           
-            <a href="/tags/laravel/" rel="tag">#laravel</a>
+            <a href="/tags/Node/" rel="tag">#Node</a>
           
         </div>
       
@@ -284,17 +281,13 @@ Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他�
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/14/laravel2/" rel="next" title="Laravel笔记2:Laravel向视图传递变量">
-                <i class="fa fa-chevron-left"></i> Laravel笔记2:Laravel向视图传递变量
+              <a href="/2016/11/20/laravel5/" rel="next" title="Laravel笔记5:laravel中的Model的创建和数据库表的基本操作">
+                <i class="fa fa-chevron-left"></i> Laravel笔记5:laravel中的Model的创建和数据库表的基本操作
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/17/laravel4/" rel="prev" title="Laravel笔记4:Laravel中的数据库和Migration">
-                Laravel笔记4:Laravel中的数据库和Migration <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -414,7 +407,7 @@ Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Blade模版引擎"><span class="nav-number">1.</span> <span class="nav-text">Blade模版引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blade实现模版的继承"><span class="nav-number">2.</span> <span class="nav-text">Blade实现模版的继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Blade里面插入逻辑语句"><span class="nav-number">3.</span> <span class="nav-text">Blade里面插入逻辑语句</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从所谓“单线程”说起"><span class="nav-number">2.</span> <span class="nav-text">从所谓“单线程”说起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步的实现"><span class="nav-number">3.</span> <span class="nav-text">异步的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件轮询机制"><span class="nav-number">4.</span> <span class="nav-text">事件轮询机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件循环"><span class="nav-number">4.1.</span> <span class="nav-text">事件循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number">4.2.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个异步调用的开始到结束"><span class="nav-number">4.3.</span> <span class="nav-text">一个异步调用的开始到结束</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

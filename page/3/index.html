@@ -206,6 +206,102 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/04/prototype/" itemprop="url">
+                  实现一个长长的正确的原型链
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-04T00:00:00+08:00" content="2016-09-04">
+              2016-09-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。我想接触过js的小伙伴们一定对作用域和原型这两个概念不陌生。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。不过，一旦真的理解了，其实也蛮简单的。所以啃基础的时候，一定要克服自己的畏难心理！（严肃脸）。<br>好了，上面一段基本上是一段鸡汤，这篇文章主要是记录一下今天发现的一个奇妙的实现长长的原型链的办法。</p>
+<h2 id="js的继承为什么搞得这么麻烦"><a href="#js的继承为什么搞得这么麻烦" class="headerlink" title="js的继承为什么搞得这么麻烦"></a>js的继承为什么搞得这么麻烦</h2><p>学过java的小伙伴一定对java中类的继承特性不陌生，一个类继承另一个类，只需简单的一个extends即可。然而js的麻烦之处就在于它根本没有class的类型，没有class，语言的功能就会被削弱很多，那咋整。不怕，虽然我们没有class这种类型，但我们有class的概念啊！在js中，我们把一个构造函数看作是js的一个类，想要继承的属性和方法，我们写进构造函数的prototype属性上，用构造函数new出来的对象就可以引用prototype中的属性和方法。平时我们写代码，见过最多的肯定是一层的继承，那万一我想继承很多个呢?</p>
+<h2 id="多层继承实现遇到的困难"><a href="#多层继承实现遇到的困难" class="headerlink" title="多层继承实现遇到的困难"></a>多层继承实现遇到的困难</h2><p>一起来看一个单层的原型继承怎么实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = props.name || <span class="string">""</span> ;</div><div class="line">&#125;</div><div class="line">Student.prototype.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"hello!"</span> + <span class="keyword">this</span>.name + <span class="string">"!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此时我想增加一层GoodStudent,让它继承Student，我们当然可以这么做:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GoodStudent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    Student.call(<span class="keyword">this</span>, props);</div><div class="line">    <span class="keyword">this</span>.study = <span class="string">"good"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样，如果我们去new一个GoodStudent的实例出来的话，它是不能引用Student.prototype对象的，为啥呢，因为我们在确定一个对象的__proto__属性（即它的原型）时，其实是找的它构造函数的prototype属性里的constructor属性，这里我们既然是用GoodStudent来new的，那么我们的实例就是GoodStudent的实例，GoodStudent的prototype是谁，这里我们没定义，那就是一个仅有constructor属性的Object对象.再往上找，Object对象的__proto__属性是谁，是Object构造函数的prototype属性，再往上找,Object的prototype属性的__proto__就是null了，看到没，这里根本就没有Student的戏份。<br>于是我们知道，我们之所以只能实现一个从自定义构造函数向Object构造函数的上溯，是因为我们的自定义构造函数的GoodStudent的prototype的<em>默认值</em>就是一个只有constructor的Object的对象，它只能上溯去找Object！那么这就简单啦，我们把它的prototype改成别的对象不就行了么！    </p>
+<h2 id="道格拉斯的原型链加长法"><a href="#道格拉斯的原型链加长法" class="headerlink" title="道格拉斯的原型链加长法"></a>道格拉斯的原型链加长法</h2><p>道格拉斯，就是发明JSON的那个道格拉斯。废话不多说，我们来改良上面的代码:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// GoodStudent构造函数:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GoodStudent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    Student.call(<span class="keyword">this</span>, props);</div><div class="line">    <span class="keyword">this</span>.study = <span class="string">"good"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 空函数F:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> *注意这里，当我们把Student原型赋给F的原型对象时，F.prototype.constructor返回的就是</div><div class="line"> *Student了，于是F创建出来的实例都将被认为是Student的实例.</div><div class="line"> */</div><div class="line">F.prototype = Student.prototype;</div><div class="line"></div><div class="line"><span class="comment">// 把GoodStudent的原型指向一个新的F对象，F对象的原型正好指向Student.prototype:</span></div><div class="line">GoodStudent.prototype = <span class="keyword">new</span> F();</div><div class="line"></div><div class="line"><span class="comment">//注意我们把prototype重写了，它不再拥有默认的constructor属性，我们给他补上</span></div><div class="line">GoodStudent.prototype.constructor = GoodStudent;</div><div class="line"></div><div class="line"><span class="comment">// 继续在GoodStudent原型（就是new F()对象）上定义方法：</span></div><div class="line">GoodStudent.prototype.getStudy = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.study;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 创建xiaoming:</span></div><div class="line"><span class="keyword">var</span> xiaoming = <span class="keyword">new</span> GoodStudent(&#123;</div><div class="line">    name: <span class="string">"小明"</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(xiaoming.name); <span class="comment">// '小明'</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming.study); <span class="comment">// good</span></div><div class="line"></div><div class="line"><span class="comment">// 验证原型:</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming.__proto__ === GoodStudent.prototype); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming.__proto__.__proto__ === Student.prototype); <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="comment">// 验证继承关系:</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming <span class="keyword">instanceof</span> GoodStudent); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming <span class="keyword">instanceof</span> Student); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p>成功了!</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所有的自定义构造函数在创建之初，它都有一个默认的prototype属性，这个属性指向一个Object对象，如果我们想要延长原型链，在当前构造函数和Object构造函数之间增加一个类的继承，我们就需要去改造当前构造函数的prototype属性，使它指向一个可以指向“别处”（即它的“父类”）的对象，以此来实现一个加长版的原型链^<em>^</em></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/30/promise/" itemprop="url">
                   告别回调地狱－－ES6标准中的Promise对象
                 </a>
@@ -756,7 +852,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -766,7 +862,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
