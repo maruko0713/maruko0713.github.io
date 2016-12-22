@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端框架," />
+  <meta name="keywords" content="ES6," />
 
 
 
@@ -57,19 +57,31 @@
 
 
 
-<meta name="description" content="前言：学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    
-什么是MVCMVC是一种">
+<meta name="description" content="前言这篇会比较短小，因为仅仅讲一个变量声明嘛～不过还是想要感慨一下下哦，js进化了，连const都出来了，嘻嘻。    
+const基本特性const这个声明头之前在强类型语言（比如c和java）中见过，它是声明一个常量。    
+那么js中的const是什么样的呢？    
+1const a;
+运行试试，发现报错。说明const在声明变量时这个变量必须有值    
+12const happy =">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MVC,MVVM与AngularJS">
-<meta property="og:url" content="http://maruko.com/2016/09/10/mvvm/index.html">
+<meta property="og:title" content="ES6学习笔记1:const命令">
+<meta property="og:url" content="http://maruko.com/2016/12/04/ES01/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言：学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    
-什么是MVCMVC是一种">
-<meta property="og:updated_time" content="2016-09-11T00:44:08.000Z">
+<meta property="og:description" content="前言这篇会比较短小，因为仅仅讲一个变量声明嘛～不过还是想要感慨一下下哦，js进化了，连const都出来了，嘻嘻。    
+const基本特性const这个声明头之前在强类型语言（比如c和java）中见过，它是声明一个常量。    
+那么js中的const是什么样的呢？    
+1const a;
+运行试试，发现报错。说明const在声明变量时这个变量必须有值    
+12const happy =">
+<meta property="og:updated_time" content="2016-12-22T14:00:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MVC,MVVM与AngularJS">
-<meta name="twitter:description" content="前言：学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    
-什么是MVCMVC是一种">
+<meta name="twitter:title" content="ES6学习笔记1:const命令">
+<meta name="twitter:description" content="前言这篇会比较短小，因为仅仅讲一个变量声明嘛～不过还是想要感慨一下下哦，js进化了，连const都出来了，嘻嘻。    
+const基本特性const这个声明头之前在强类型语言（比如c和java）中见过，它是声明一个常量。    
+那么js中的const是什么样的呢？    
+1const a;
+运行试试，发现报错。说明const在声明变量时这个变量必须有值    
+12const happy =">
 
 
 
@@ -87,7 +99,7 @@
   };
 </script>
 
-  <title> MVC,MVVM与AngularJS | Maruko0713的实验室 </title>
+  <title> ES6学习笔记1:const命令 | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +219,7 @@
             
             
               
-                MVC,MVVM与AngularJS
+                ES6学习笔记1:const命令
               
             
           </h1>
@@ -219,8 +231,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-10T00:00:00+08:00" content="2016-09-10">
-              2016-09-10
+            <time itemprop="dateCreated" datetime="2016-12-04T00:00:00+08:00" content="2016-12-04">
+              2016-12-04
             </time>
           </span>
 
@@ -246,16 +258,22 @@
       
 
       
-        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    </p>
-<h2 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC"></a>什么是MVC</h2><p>MVC是一种软件架构。它是说，可以把软件分成三个部分，视图（view），控制器（controller），<br>模型（model）。这个视图就是说用户界面，控制器就是业务逻辑，模型就是数据保存。它们之间的关系大概是，视图传送指令到控制器，控制器根据情况去改变数据，然后把新的数据反馈给视图层面。<br>视图传送的指令，是由于用户在视图层面的某些操作发出的，其实用户还可以直接跳过视图层，向controller直接传递指令。前者通过DOM事件接收指令，后者直接改变url。    </p>
-<h2 id="什么是MVVM"><a href="#什么是MVVM" class="headerlink" title="什么是MVVM"></a>什么是MVVM</h2><p>MVVM模式中，各部分之间的通信都是双向的。（可以注意到MVC模式中的数据传递都是单向的）。同时视图层不与Model发生接触，一切都通过中间的ViewModel传递(ViewModel简写就是VM)。一个操作的流程大概是这样的：<br>用户通过View层传递指令，View层触发了ViewModel层的变化，然后ViewModel层再去修改Model层，修改之后的Model层又通过ViewModel反馈给了View层。<br>MVVM的特点是，它采用<em>双向绑定</em>，View的变动，会带动ViewModel的变动，反过来，ViewModel的变动，也会带动View的变动，两者是“一根绳上的蚂蚱”，一起变化。    </p>
-<h2 id="AngularJS与MVC-MVVM"><a href="#AngularJS与MVC-MVVM" class="headerlink" title="AngularJS与MVC,MVVM"></a>AngularJS与MVC,MVVM</h2><p>虽然我接触到的许多资料告诉我们AngularJS是一个MVC框架，但是仔细想想，我还是认为<em>AngularJS是一个MVVM框架</em>，原因如下:    </p>
-<ul>
-<li>AngularJS中，数据是双向传递的，View层（视图模版）的变化会引发ViewModel（这里$scope应该充当这个角色）的变化，反过来,ViewModel层的变化也会引发View层的变化.</li>
-<li>View不能直接与Model交互，而是要通过$scope才可以。</li>
-<li>View层和ViewModel层是双向绑定的，两者同步变化<h3 id="AngularJS为什么会被认为是MVC框架"><a href="#AngularJS为什么会被认为是MVC框架" class="headerlink" title="AngularJS为什么会被认为是MVC框架"></a>AngularJS为什么会被认为是MVC框架</h3>其实这么理解也没有错，因为AngularJS中存在一个Controller，但是在我看来，Controller更像是ViewModel层逻辑的一部分。但这个MV后面到底该跟啥，其实没有那么重要，AngularJS的作者希望我们把注意力放在一实现一个成功的，具有好的设计以及遵循“分离关注点”原则的应用程序上，而非专注于概念的争论，因此我们不必在这一点上太过执着。    </li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天这篇文章与其说是想给AngularJS的模式下个定义，不如说是把MVC模式和MVVM模式给整明白了一遍（笑哭）。虽然不必执着于对这个框架模式的死定义，但是这两个模式还是有必要弄清楚的，其实还有一个叫做MVP的模式，MVVM模式有点像是从它里面脱胎的，但没有这两种出镜频率高，因此就着重讲了MVC和MVVM^_^。概念搞清楚了，接下来就开始实战吧！💪</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇会比较短小，因为仅仅讲一个变量声明嘛～<br>不过还是想要感慨一下下哦，js进化了，连const都出来了，嘻嘻。    </p>
+<h2 id="const基本特性"><a href="#const基本特性" class="headerlink" title="const基本特性"></a>const基本特性</h2><p>const这个声明头之前在强类型语言（比如c和java）中见过，它是声明一个常量。    </p>
+<p>那么js中的const是什么样的呢？    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a;</div></pre></td></tr></table></figure>
+<p>运行试试，发现报错。<br>说明<strong>const在声明变量时这个变量必须有值</strong>    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> happy = <span class="literal">true</span>;</div><div class="line">happy = <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<p>报错了，说明<strong>这个值不能被改变，一改就报错</strong>。    </p>
+<h2 id="const声明变量指向一个对象的时候要注意"><a href="#const声明变量指向一个对象的时候要注意" class="headerlink" title="const声明变量指向一个对象的时候要注意"></a>const声明变量指向一个对象的时候要注意</h2><p>看一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> user = &#123;name:<span class="string">"xiaowanzi"</span>&#125;;</div><div class="line"><span class="keyword">const</span> happy = user;</div><div class="line">user.name = <span class="string">"maruko0713"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"user:"</span>,user);</div></pre></td></tr></table></figure>
+<p>运行后发现没有报错，说明user的<strong>值</strong>可以改变。<br>或者你直接这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> user = &#123;name: <span class="string">"xiaowanzi"</span>&#125;;</div><div class="line">user.name = <span class="string">"maruko0713"</span>;</div><div class="line"><span class="built_in">console</span>.log(user);</div></pre></td></tr></table></figure>
+<p>你会发现也没毛病。<br>啥，可是咱刚刚不是说const都是<strong>常量</strong>吗。<br>是的,const声明的都是常量，不可更改，此处不可更改的，是<strong>对象的内存地址</strong>。    </p>
+<p>你要是这样:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> user = &#123;name:<span class="string">"xiaowanzi"</span>&#125;;</div><div class="line">user = &#123;&#125;;</div></pre></td></tr></table></figure>
+<p>分分钟报错给你看，因为此时user已经指向另一个内存地址了。     </p>
+<h2 id="结语-amp-amp-小贴士"><a href="#结语-amp-amp-小贴士" class="headerlink" title="结语&amp;&amp;小贴士"></a>结语&amp;&amp;小贴士</h2><p><strong>作用域强调</strong><br>const和let一样，都是<strong>块级作用域</strong>。<br>出了当前代码块找不到的哦！     </p>
 
       
     </div>
@@ -270,7 +288,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端框架/" rel="tag">#前端框架</a>
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
           
         </div>
       
@@ -279,17 +297,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/08/restful/" rel="next" title="对RESTful架构的理解">
-                <i class="fa fa-chevron-left"></i> 对RESTful架构的理解
+              <a href="/2016/12/03/ES60/" rel="next" title="ES6学习笔记0:let命令">
+                <i class="fa fa-chevron-left"></i> ES6学习笔记0:let命令
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/11/responsive/" rel="prev" title="响应式布局核心招数总结">
-                响应式布局核心招数总结 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -409,7 +423,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是MVC"><span class="nav-number">2.</span> <span class="nav-text">什么是MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是MVVM"><span class="nav-number">3.</span> <span class="nav-text">什么是MVVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AngularJS与MVC-MVVM"><span class="nav-number">4.</span> <span class="nav-text">AngularJS与MVC,MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS为什么会被认为是MVC框架"><span class="nav-number">4.1.</span> <span class="nav-text">AngularJS为什么会被认为是MVC框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const基本特性"><span class="nav-number">2.</span> <span class="nav-text">const基本特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const声明变量指向一个对象的时候要注意"><span class="nav-number">3.</span> <span class="nav-text">const声明变量指向一个对象的时候要注意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语-amp-amp-小贴士"><span class="nav-number">4.</span> <span class="nav-text">结语&&小贴士</span></a></li></ol></div>
             
           </div>
         </section>
