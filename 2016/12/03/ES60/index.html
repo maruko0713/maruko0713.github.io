@@ -1,0 +1,537 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言看了一下Vue的文档后真的感叹啊现在ES6真是越来越普及了。之前只是零星地接触了一下，缺乏系统的学习。现在觉得很有必要学一下。接下来的博客主要是围绕阮一峰老师的《ES6入门》做教材，杂七杂八的博客做参考，然后自己做一个总结。    
+let命令之先撸两个demo先来一个这样的:     
+12345var a=1;let b=2;console.log(&quot;a:&quot;,a);console.log(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习笔记0:let命令">
+<meta property="og:url" content="http://maruko.com/2016/12/03/ES60/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言看了一下Vue的文档后真的感叹啊现在ES6真是越来越普及了。之前只是零星地接触了一下，缺乏系统的学习。现在觉得很有必要学一下。接下来的博客主要是围绕阮一峰老师的《ES6入门》做教材，杂七杂八的博客做参考，然后自己做一个总结。    
+let命令之先撸两个demo先来一个这样的:     
+12345var a=1;let b=2;console.log(&quot;a:&quot;,a);console.log(">
+<meta property="og:updated_time" content="2016-12-22T13:31:27.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习笔记0:let命令">
+<meta name="twitter:description" content="前言看了一下Vue的文档后真的感叹啊现在ES6真是越来越普及了。之前只是零星地接触了一下，缺乏系统的学习。现在觉得很有必要学一下。接下来的博客主要是围绕阮一峰老师的《ES6入门》做教材，杂七杂八的博客做参考，然后自己做一个总结。    
+let命令之先撸两个demo先来一个这样的:     
+12345var a=1;let b=2;console.log(&quot;a:&quot;,a);console.log(">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ES6学习笔记0:let命令 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ES6学习笔记0:let命令
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-03T00:00:00+08:00" content="2016-12-03">
+              2016-12-03
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看了一下Vue的文档后真的感叹啊现在ES6真是越来越普及了。之前只是零星地接触了一下，缺乏系统的学习。现在觉得很有必要学一下。接下来的博客主要是围绕阮一峰老师的《ES6入门》做教材，杂七杂八的博客做参考，然后自己做一个总结。    </p>
+<h2 id="let命令之先撸两个demo"><a href="#let命令之先撸两个demo" class="headerlink" title="let命令之先撸两个demo"></a>let命令之先撸两个demo</h2><p>先来一个这样的:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line"><span class="keyword">let</span> b=<span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>,b);</div></pre></td></tr></table></figure>
+<p>运行一下，直接输出a和b，没毛病。<br>从这里我们看出，let和var都可以声明一个变量。    </p>
+<p>再来：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">    <span class="keyword">let</span> b = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>,b);</div></pre></td></tr></table></figure>
+<p>然后悲伤的事情发生了，b变成了未定义。    </p>
+<h2 id="let命令之楼上到底是怎么回事？"><a href="#let命令之楼上到底是怎么回事？" class="headerlink" title="let命令之楼上到底是怎么回事？"></a>let命令之楼上到底是怎么回事？</h2><p>这是因为var和let对“域”的限制不同。<br>var是啥？var只要没在函数里，就是全局。 在函数里，就是局部。<br>而这个let，遇到代码块，就是个域。<br>出了这个代码块，let定义的变量就找不着了。    </p>
+<p>除此之外，let在for语句中的情况比较常见。    </p>
+<h2 id="let在for语句中"><a href="#let在for语句中" class="headerlink" title="let在for语句中"></a>let在for语句中</h2><p>举个例子:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"i:"</span>,i);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"i:"</span>,i);</div></pre></td></tr></table></figure>
+<p>输出啥？？？<br>肯定顺序输出0到5啊。<br>然而我们对后来那个i＝5感兴趣吗？并不啊，我们只对参与循环的i感兴趣。<br>于是，我们把var改成let,我们就可以愉快地看到一个报错，说i未定义。<br>这就是let的用法之一。    </p>
+<h2 id="变量提升有毒啊！！！let不用它！"><a href="#变量提升有毒啊！！！let不用它！" class="headerlink" title="变量提升有毒啊！！！let不用它！"></a>变量提升有毒啊！！！let不用它！</h2><p>变量提升是啥？？？？<br>不熟悉真要啪啪打脸了，回去刷红宝书吧你！！<br>不过既然说到了，还是要复习一下:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="keyword">var</span> a;</div></pre></td></tr></table></figure>
+<p>你猜输出啥？？？<br>你猜会报错吗？？？？<br>不会啊朋友！！！<br>因为所有的声明都被提升到代码的最前面啦，所以console语句其实是在var后面执行的，于是我们输出的是一个undefined。<br>其实这样写还是有点不太规范，而且输出一个undefined也必定不是我们想要的结果，很可能会导致进一步的错误，那么我们可以让它直接跳红字告诉我们这里不对劲吗？？？？<br>当然可以啦。      </p>
+<p>所以如果你敢这么做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="keyword">let</span> a;</div></pre></td></tr></table></figure>
+<p>你的命运只能是被愉快地报错，因为let不存在变量声明的提升，所以console在a声明之前就执行了，那么它必定是找不到a的，于是就报错说你有一个未声明的变量呀！     </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>一开始想做个对比，不过想想其实没有必要。<br>因为根本不存在谁更好，只能说谁更合适，在具体的开发情境下。<br>所以需要做的就是对let和var的特性足够熟悉，这就够了，不需要过分解读出一些了不得的东西。<br>就是这样! </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/30/node_async/" rel="next" title="Node中的异步i/o和事件轮询机制">
+                <i class="fa fa-chevron-left"></i> Node中的异步i/o和事件轮询机制
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let命令之先撸两个demo"><span class="nav-number">2.</span> <span class="nav-text">let命令之先撸两个demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let命令之楼上到底是怎么回事？"><span class="nav-number">3.</span> <span class="nav-text">let命令之楼上到底是怎么回事？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#let在for语句中"><span class="nav-number">4.</span> <span class="nav-text">let在for语句中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量提升有毒啊！！！let不用它！"><span class="nav-number">5.</span> <span class="nav-text">变量提升有毒啊！！！let不用它！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
