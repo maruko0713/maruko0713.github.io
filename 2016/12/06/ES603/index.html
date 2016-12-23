@@ -1,0 +1,563 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对对象形式做一个记录。   
+变量的解构赋值之基本用法以前如果你想要提取出来对象中的一些值，你这样做：    
+1234567var obj = &amp;#123;    a: 1,    b: 2&amp;#125;var a = obj.a;var b = obj.b;
+ES6中，我们不这样做。它变简单了：     
+12345">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习笔记3:变量的解构赋值对象篇">
+<meta property="og:url" content="http://maruko.com/2016/12/06/ES603/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对对象形式做一个记录。   
+变量的解构赋值之基本用法以前如果你想要提取出来对象中的一些值，你这样做：    
+1234567var obj = &amp;#123;    a: 1,    b: 2&amp;#125;var a = obj.a;var b = obj.b;
+ES6中，我们不这样做。它变简单了：     
+12345">
+<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg">
+<meta property="og:updated_time" content="2016-12-23T05:53:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习笔记3:变量的解构赋值对象篇">
+<meta name="twitter:description" content="前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对对象形式做一个记录。   
+变量的解构赋值之基本用法以前如果你想要提取出来对象中的一些值，你这样做：    
+1234567var obj = &amp;#123;    a: 1,    b: 2&amp;#125;var a = obj.a;var b = obj.b;
+ES6中，我们不这样做。它变简单了：     
+12345">
+<meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ES6学习笔记3:变量的解构赋值对象篇 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ES6学习笔记3:变量的解构赋值对象篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-06T00:00:00+08:00" content="2016-12-06">
+              2016-12-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>变量的解构赋值。<br>一个使多变量赋值变得更加简单的东西。<br>它有很多形式，这篇博客是对对象形式做一个记录。   </p>
+<h2 id="变量的解构赋值之基本用法"><a href="#变量的解构赋值之基本用法" class="headerlink" title="变量的解构赋值之基本用法"></a>变量的解构赋值之基本用法</h2><p>以前如果你想要提取出来对象中的一些值，你这样做：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = obj.a;</div><div class="line"><span class="keyword">var</span> b = obj.b;</div></pre></td></tr></table></figure>
+<p>ES6中，我们不这样做。<br>它变简单了：     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123;a, b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>如果你尝试输出a, b,你会发现就是你想要的结果。    </p>
+<h2 id="对象解构赋值过程中要注意的点"><a href="#对象解构赋值过程中要注意的点" class="headerlink" title="对象解构赋值过程中要注意的点"></a>对象解构赋值过程中要注意的点</h2><p>楼上我们的全局变量是a, b,这个全局变量是可以随便起名字吗？？？？<br>答案是不，因为对象里面的元素的无序的，所以无法像数组里那样去根据顺序一一对应。<br>因此我们必须把全局变量设置为对象里面属性名一模一样的一个名字，才能把对象中对应的属性名给召唤出来。    </p>
+<p>如果你不小心这么做了：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123;c, b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>完蛋，你就等着被报错吧。     </p>
+<h2 id="我想起个新名字"><a href="#我想起个新名字" class="headerlink" title="我想起个新名字"></a>我想起个新名字</h2><p>我就是想起个新名字咋办？？？？？<br>比如你就是想让第一个值叫做c，这样做：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123;a:c, b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>然后你就可以试试输出c了，这下不会报错，会很顺利的。    </p>
+<p>由此我们也可以想到，我们最原始的那个过程其实是：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123;a:a, b:b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>这段代码的略写。    </p>
+<p>小贴士：<br>let不像var，var可以把一个名字的变量重复定义多次，都没问题，let只允许你定义一次，定义第二次的时候会报错。<br>所以楼上的所有代码中的解构赋值的变量名千万不要定义第二次。     </p>
+<h2 id="修改解构赋值的值"><a href="#修改解构赋值的值" class="headerlink" title="修改解构赋值的值"></a>修改解构赋值的值</h2><p>有时候我们不仅仅需要在赋值的时候用解构赋值，我们还想在修改的时候也可以这么简单。<br>你会想到要这么写:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> a=<span class="number">0</span>;</div><div class="line">&#123;a, b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>你要是敢这么写，就只能被报错。<br>这是为什么？？？？？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg" alt="smile">    </p>
+<p>这是因为，在js中，大括号你在不加任何其他操作的时候，它就是个代码块，当右边的大括号合上的时候，这个代码块就结束了，等号左边其实是找不到变量的。<br>因此，我们需要手动告诉解释器这个大括号是语句的一部分：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(&#123;a, b&#125; = obj);</div></pre></td></tr></table></figure>
+<p>输出试试看，你会发现a变成1了。    </p>
+<h2 id="把对象里面的数组里面的变量抓出来"><a href="#把对象里面的数组里面的变量抓出来" class="headerlink" title="把对象里面的数组里面的变量抓出来"></a>把对象里面的数组里面的变量抓出来</h2><p>有时候对象里面嵌套数组，数组里面嵌套的变量值才是我们想要的，这咋整。<br>这样做：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    arr: [</div><div class="line">      <span class="string">'Yo'</span>,</div><div class="line">      &#123;</div><div class="line">        a: <span class="number">1</span>,</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123;arr:[greet, &#123;a&#125;]&#125; = obj;</div></pre></td></tr></table></figure>
+<p>没问题了。<br>这已经算是比较复杂的一种情况了。    </p>
+<h2 id="对象解构赋值中默认值的情况"><a href="#对象解构赋值中默认值的情况" class="headerlink" title="对象解构赋值中默认值的情况"></a>对象解构赋值中默认值的情况</h2><p>默认值在对象解构赋值中也是有的：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;a=<span class="number">1</span>, b=<span class="number">2</span>&#125; = &#123;a:<span class="number">10</span>&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>, a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>, b);</div></pre></td></tr></table></figure>
+<p>输出a的值是10，b的值因为对象里面的变量不够了，所以输出的是默认值2。    </p>
+<p>更复杂一点，如果既有默认值，又有新名字，我们应该这样写：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;a:A=<span class="number">1</span>, b:B=<span class="number">2</span>&#125; = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>, A);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>, B);</div></pre></td></tr></table></figure>
+<p>把默认值跟在新名字后面。    </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>以上我们解构了各式各样的对象里面的属性，事实上，还可以解构方法。<br>办法是一样的！^_^<br>解构赋值大法好！    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/05/ES602/" rel="next" title="ES6学习笔记2:变量的解构赋值数组篇">
+                <i class="fa fa-chevron-left"></i> ES6学习笔记2:变量的解构赋值数组篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/08/ES604/" rel="prev" title="ES6学习笔记4:变量的解构赋值杂七杂八一锅端篇">
+                ES6学习笔记4:变量的解构赋值杂七杂八一锅端篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的解构赋值之基本用法"><span class="nav-number">2.</span> <span class="nav-text">变量的解构赋值之基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象解构赋值过程中要注意的点"><span class="nav-number">3.</span> <span class="nav-text">对象解构赋值过程中要注意的点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我想起个新名字"><span class="nav-number">4.</span> <span class="nav-text">我想起个新名字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改解构赋值的值"><span class="nav-number">5.</span> <span class="nav-text">修改解构赋值的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#把对象里面的数组里面的变量抓出来"><span class="nav-number">6.</span> <span class="nav-text">把对象里面的数组里面的变量抓出来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象解构赋值中默认值的情况"><span class="nav-number">7.</span> <span class="nav-text">对象解构赋值中默认值的情况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">8.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
