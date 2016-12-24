@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="life," />
+  <meta name="keywords" content="ES6," />
 
 
 
@@ -57,16 +57,31 @@
 
 
 
-<meta name="description" content="这里是Maruko0713的技术博客。  Maruko0713是一只大三信息汪，喜欢编程，热爱生活.和写代码的缘分说来话长，学过c，python，java，php，现在正在前端的道路上自行摸索。  认认真真写代码，不懈怠每一天～！">
+<meta name="description" content="前言ES标准以前有啥数据类型？？？回顾一下：     
+123456undefinednullBooleanStringNumberObject
+一共六种 没了！ES6新增了一种了叫做Symbol的数据类型  
+Symbol的特征Symbol的意思，就是标记。它这样用：    
+1let a = Symbol();
+特征是每创建一个新的Symbol，它代表的值都不一样括号里面可以传入参数，是你描述">
 <meta property="og:type" content="article">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="http://maruko.com/2016/08/22/hello/index.html">
+<meta property="og:title" content="ES6学习笔记6:新数据类型！Symbol登场！">
+<meta property="og:url" content="http://maruko.com/2016/12/10/ES606/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="这里是Maruko0713的技术博客。  Maruko0713是一只大三信息汪，喜欢编程，热爱生活.和写代码的缘分说来话长，学过c，python，java，php，现在正在前端的道路上自行摸索。  认认真真写代码，不懈怠每一天～！">
-<meta property="og:updated_time" content="2016-09-11T00:44:08.000Z">
+<meta property="og:description" content="前言ES标准以前有啥数据类型？？？回顾一下：     
+123456undefinednullBooleanStringNumberObject
+一共六种 没了！ES6新增了一种了叫做Symbol的数据类型  
+Symbol的特征Symbol的意思，就是标记。它这样用：    
+1let a = Symbol();
+特征是每创建一个新的Symbol，它代表的值都不一样括号里面可以传入参数，是你描述">
+<meta property="og:updated_time" content="2016-12-24T09:23:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="这里是Maruko0713的技术博客。  Maruko0713是一只大三信息汪，喜欢编程，热爱生活.和写代码的缘分说来话长，学过c，python，java，php，现在正在前端的道路上自行摸索。  认认真真写代码，不懈怠每一天～！">
+<meta name="twitter:title" content="ES6学习笔记6:新数据类型！Symbol登场！">
+<meta name="twitter:description" content="前言ES标准以前有啥数据类型？？？回顾一下：     
+123456undefinednullBooleanStringNumberObject
+一共六种 没了！ES6新增了一种了叫做Symbol的数据类型  
+Symbol的特征Symbol的意思，就是标记。它这样用：    
+1let a = Symbol();
+特征是每创建一个新的Symbol，它代表的值都不一样括号里面可以传入参数，是你描述">
 
 
 
@@ -84,7 +99,7 @@
   };
 </script>
 
-  <title> About Me | Maruko0713的实验室 </title>
+  <title> ES6学习笔记6:新数据类型！Symbol登场！ | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -204,7 +219,7 @@
             
             
               
-                About Me
+                ES6学习笔记6:新数据类型！Symbol登场！
               
             
           </h1>
@@ -216,8 +231,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-22T12:39:04+08:00" content="2016-08-22">
-              2016-08-22
+            <time itemprop="dateCreated" datetime="2016-12-10T00:00:00+08:00" content="2016-12-10">
+              2016-12-10
             </time>
           </span>
 
@@ -243,7 +258,29 @@
       
 
       
-        <p>  这里是<a href="https://github.com/maruko0713" target="_blank" rel="external">Maruko0713</a>的技术博客。<br>  Maruko0713是一只大三信息汪，喜欢编程，热爱生活.和写代码的缘分说来话长，学过c，python，java，php，现在正在前端的道路上自行摸索。<br>  认认真真写代码，不懈怠每一天～！</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES标准以前有啥数据类型？？？<br>回顾一下：     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="literal">undefined</span></div><div class="line"><span class="literal">null</span></div><div class="line"><span class="built_in">Boolean</span></div><div class="line"><span class="built_in">String</span></div><div class="line"><span class="built_in">Number</span></div><div class="line"><span class="built_in">Object</span></div></pre></td></tr></table></figure>
+<p>一共六种 没了！<br>ES6新增了一种了叫做<strong>Symbol</strong>的数据类型  </p>
+<h2 id="Symbol的特征"><a href="#Symbol的特征" class="headerlink" title="Symbol的特征"></a>Symbol的特征</h2><p>Symbol的意思，就是标记。<br>它这样用：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>();</div></pre></td></tr></table></figure>
+<p>特征是<strong>每创建一个新的Symbol，它代表的值都不一样</strong><br>括号里面可以传入参数，是你描述的东西的内容。<br>不过就算你不传值，你用相同的方式创建的两个Symbol都是不一样的。    </p>
+<p>看下面：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>();</div><div class="line"><span class="keyword">let</span> b = <span class="built_in">Symbol</span>();</div><div class="line"><span class="built_in">console</span>.log(a===b);</div></pre></td></tr></table></figure>
+<p>输出false,说明它俩不是一回事。    </p>
+<h2 id="Symbol能干啥"><a href="#Symbol能干啥" class="headerlink" title="Symbol能干啥"></a>Symbol能干啥</h2><p>Symbol可以<strong>生成唯一的标识</strong><br><strong>已知最大的用处是做对象的属性名称，防止这个属性名称被重写</strong><br>怎么理解？    </p>
+<p>平时我们如果有一个属性：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.name = <span class="string">'wang'</span>;</div></pre></td></tr></table></figure>
+<p>此时如果有个人来一行：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.name = <span class="string">'li'</span>;</div></pre></td></tr></table></figure>
+<p>如果你的name是不希望被改变的，那么此时此刻你会很难过。    </p>
+<p>这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> person = &#123;&#125;;</div><div class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</div><div class="line">person[name] = <span class="string">'wang'</span>;</div><div class="line">person[name] = <span class="string">'li'</span>;</div></pre></td></tr></table></figure>
+<p>这时，它仍然输出了li，还是被改变了。<br>那你说个p啊！！完全没用啊摔！！！    </p>
+<p>因此楼上这种情况，是不起作用的，我们说属性名称不能被重写，是这种情况：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> person = &#123;&#125;;</div><div class="line">    person[name] = <span class="string">'File1'</span>;</div><div class="line">&#125;   </div><div class="line"> </div><div class="line">&#123;</div><div class="line">    person.name = <span class="string">'File2'</span>; </div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(person);</div></pre></td></tr></table></figure>
+<p>输出的对象里面有两个键，一个是Symbol类型，一个是name。<br>此时你除了用person[name]这种形式外，都无法访问和修改这个Symbol类型对应的值。    </p>
+<p>其实硬要改也是可以的，只是限制了你，必须调用你最初Symbol()出来的那个Symbol类型数据，别的没用。<br>准确的说，是避免了你“无意中”覆盖已有变量。   </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这个新类型，功能比较单一。<br>不过也是很实用的，点赞。<br>楼上只是介绍了一个主要的原因，以后一定还会有更多的发现的^_^。    </p>
 
       
     </div>
@@ -258,7 +295,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/life/" rel="tag">#life</a>
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
           
         </div>
       
@@ -267,13 +304,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/09/ES605/" rel="next" title="ES6学习笔记5:字符串的新面貌">
+                <i class="fa fa-chevron-left"></i> ES6学习笔记5:字符串的新面貌
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/24/body_html/" rel="prev" title="body和html到底有多高&&浏览器的背景色问题">
-                body和html到底有多高&&浏览器的背景色问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -393,7 +430,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol的特征"><span class="nav-number">2.</span> <span class="nav-text">Symbol的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol能干啥"><span class="nav-number">3.</span> <span class="nav-text">Symbol能干啥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
           </div>
         </section>
