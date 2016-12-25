@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="laravel," />
+  <meta name="keywords" content="ES6," />
 
 
 
@@ -57,28 +57,31 @@
 
 
 
-<meta name="description" content="创建一个model(前提是你已经创建了一个articles表)命令行:    
-1php artisan make:model Article
-执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的articles表呼应的，它用来对articles表进行操作。    
-在laravel的环境下打开一个php解释器：    
-1php artisan">
+<meta name="description" content="前言ES标准以前有啥数据类型？？？回顾一下：     
+123456undefinednullBooleanStringNumberObject
+一共六种 没了！ES6新增了一种了叫做Symbol的数据类型  
+Symbol的特征Symbol的意思，就是标记。它这样用：    
+1let a = Symbol();
+特征是每创建一个新的Symbol，它代表的值都不一样括号里面可以传入参数，是你描述">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Laravel笔记5:laravel中的Model的创建和数据库表的基本操作">
-<meta property="og:url" content="http://maruko.com/2016/11/20/laravel5/index.html">
+<meta property="og:title" content="ES6学习笔记6:新数据类型!Symbol登场！">
+<meta property="og:url" content="http://maruko.com/2016/12/11/ES606/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="创建一个model(前提是你已经创建了一个articles表)命令行:    
-1php artisan make:model Article
-执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的articles表呼应的，它用来对articles表进行操作。    
-在laravel的环境下打开一个php解释器：    
-1php artisan">
-<meta property="og:updated_time" content="2016-11-30T12:25:58.000Z">
+<meta property="og:description" content="前言ES标准以前有啥数据类型？？？回顾一下：     
+123456undefinednullBooleanStringNumberObject
+一共六种 没了！ES6新增了一种了叫做Symbol的数据类型  
+Symbol的特征Symbol的意思，就是标记。它这样用：    
+1let a = Symbol();
+特征是每创建一个新的Symbol，它代表的值都不一样括号里面可以传入参数，是你描述">
+<meta property="og:updated_time" content="2016-12-25T09:25:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Laravel笔记5:laravel中的Model的创建和数据库表的基本操作">
-<meta name="twitter:description" content="创建一个model(前提是你已经创建了一个articles表)命令行:    
-1php artisan make:model Article
-执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的articles表呼应的，它用来对articles表进行操作。    
-在laravel的环境下打开一个php解释器：    
-1php artisan">
+<meta name="twitter:title" content="ES6学习笔记6:新数据类型!Symbol登场！">
+<meta name="twitter:description" content="前言ES标准以前有啥数据类型？？？回顾一下：     
+123456undefinednullBooleanStringNumberObject
+一共六种 没了！ES6新增了一种了叫做Symbol的数据类型  
+Symbol的特征Symbol的意思，就是标记。它这样用：    
+1let a = Symbol();
+特征是每创建一个新的Symbol，它代表的值都不一样括号里面可以传入参数，是你描述">
 
 
 
@@ -96,7 +99,7 @@
   };
 </script>
 
-  <title> Laravel笔记5:laravel中的Model的创建和数据库表的基本操作 | Maruko0713的实验室 </title>
+  <title> ES6学习笔记6:新数据类型!Symbol登场！ | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -216,7 +219,7 @@
             
             
               
-                Laravel笔记5:laravel中的Model的创建和数据库表的基本操作
+                ES6学习笔记6:新数据类型!Symbol登场！
               
             
           </h1>
@@ -228,8 +231,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-20T00:00:00+08:00" content="2016-11-20">
-              2016-11-20
+            <time itemprop="dateCreated" datetime="2016-12-11T00:00:00+08:00" content="2016-12-11">
+              2016-12-11
             </time>
           </span>
 
@@ -255,35 +258,29 @@
       
 
       
-        <h2 id="创建一个model"><a href="#创建一个model" class="headerlink" title="创建一个model"></a>创建一个model</h2><p>(前提是你已经创建了一个articles表)<br>命令行:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model Article</div></pre></td></tr></table></figure>
-<p>执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的articles表呼应的，它用来对articles表进行操作。    </p>
-<p>在laravel的环境下打开一个php解释器：    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan tinker</div></pre></td></tr></table></figure>
-<p>输入:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article = <span class="keyword">new</span> App\Article;</div></pre></td></tr></table></figure>
-<p>你就得到了一个Article对象。<br>你可以对它进行一些操作:    </p>
-<h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$article-&gt;title = <span class="string">"My first Title"</span>;</div><div class="line">$article-&gt;content = <span class="string">"content"</span>;</div></pre></td></tr></table></figure>
-<p>存储这个元组:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article-&gt;save();</div></pre></td></tr></table></figure>
-<p>创建一个新的元组(一般还都是这么做的,快):    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article=App\Article::create([<span class="string">"title"</span>=&gt;<span class="string">"Second title"</span>,<span class="string">"content"</span>=&gt;<span class="string">"second content"</span>]);</div></pre></td></tr></table></figure>
-<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first = App\Article::find(<span class="number">1</span>);</div></pre></td></tr></table></figure>
-<p>这里按照id为1进行查找。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$second = App\Article::where(<span class="string">"content"</span>,<span class="string">"="</span>,<span class="string">"content"</span>)-&gt;get();</div></pre></td></tr></table></figure>
-<p>取出content为content的元组们。<br>这里get()得到一个<strong>collection</strong>对象。<br>这个对象很重要，这里留个坑，以后写笔记会着重纪录。<br>当然你可以这样写:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$second = App\Article::where(<span class="string">"content"</span>,<span class="string">"content"</span>)-&gt;get();</div></pre></td></tr></table></figure>
-<p>效果是一样的。<br>或者有时候你只需要一条数据，一条类型为App\Article的数据:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$third = App\Article::where(<span class="string">"content"</span>,<span class="string">"content"</span>)-&gt;first();</div></pre></td></tr></table></figure>
-<p>直接对它进行Article对象的操作就可以啦。</p>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$first-&gt;title = <span class="string">"update"</span>;</div><div class="line">$first-&gt;save();</div></pre></td></tr></table></figure>
-<p>用数组去更新（更新多个的时候）:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first-&gt;update([<span class="string">"title"</span>=&gt;<span class="string">"update"</span>]);</div></pre></td></tr></table></figure>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>两种方法:    </p>
-<p>实例方法：delete方法:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first-&gt;delete();</div></pre></td></tr></table></figure>
-<p>类方法：destroy方法:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">App\Article::destroy(<span class="number">1</span>);</div><div class="line">App\Article::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</div><div class="line">App\Article::destroy(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</div></pre></td></tr></table></figure>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES标准以前有啥数据类型？？？<br>回顾一下：     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="literal">undefined</span></div><div class="line"><span class="literal">null</span></div><div class="line"><span class="built_in">Boolean</span></div><div class="line"><span class="built_in">String</span></div><div class="line"><span class="built_in">Number</span></div><div class="line"><span class="built_in">Object</span></div></pre></td></tr></table></figure>
+<p>一共六种 没了！<br>ES6新增了一种了叫做<strong>Symbol</strong>的数据类型  </p>
+<h2 id="Symbol的特征"><a href="#Symbol的特征" class="headerlink" title="Symbol的特征"></a>Symbol的特征</h2><p>Symbol的意思，就是标记。<br>它这样用：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>();</div></pre></td></tr></table></figure>
+<p>特征是<strong>每创建一个新的Symbol，它代表的值都不一样</strong><br>括号里面可以传入参数，是你描述的东西的内容。<br>不过就算你不传值，你用相同的方式创建的两个Symbol都是不一样的。    </p>
+<p>看下面：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>();</div><div class="line"><span class="keyword">let</span> b = <span class="built_in">Symbol</span>();</div><div class="line"><span class="built_in">console</span>.log(a===b);</div></pre></td></tr></table></figure>
+<p>输出false,说明它俩不是一回事。    </p>
+<h2 id="Symbol能干啥"><a href="#Symbol能干啥" class="headerlink" title="Symbol能干啥"></a>Symbol能干啥</h2><p>Symbol可以<strong>生成唯一的标识</strong><br><strong>已知最大的用处是做对象的属性名称，防止这个属性名称被重写</strong><br>怎么理解？    </p>
+<p>平时我们如果有一个属性：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.name = <span class="string">'wang'</span>;</div></pre></td></tr></table></figure>
+<p>此时如果有个人来一行：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.name = <span class="string">'li'</span>;</div></pre></td></tr></table></figure>
+<p>如果你的name是不希望被改变的，那么此时此刻你会很难过。    </p>
+<p>这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> person = &#123;&#125;;</div><div class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</div><div class="line">person[name] = <span class="string">'wang'</span>;</div><div class="line">person[name] = <span class="string">'li'</span>;</div></pre></td></tr></table></figure>
+<p>这时，它仍然输出了li，还是被改变了。<br>那你说个p啊！！完全没用啊摔！！！    </p>
+<p>因此楼上这种情况，是不起作用的，我们说属性名称不能被重写，是这种情况：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> person = &#123;&#125;;</div><div class="line">    person[name] = <span class="string">'File1'</span>;</div><div class="line">&#125;   </div><div class="line"> </div><div class="line">&#123;</div><div class="line">    person.name = <span class="string">'File2'</span>; </div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(person);</div></pre></td></tr></table></figure>
+<p>输出的对象里面有两个键，一个是Symbol类型，一个是name。<br>此时你除了用person[name]这种形式外，都无法访问和修改这个Symbol类型对应的值。    </p>
+<p>其实硬要改也是可以的，只是限制了你，必须调用你最初Symbol()出来的那个Symbol类型数据，别的没用。<br>准确的说，是避免了你“无意中”覆盖已有变量。   </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这个新类型，功能比较单一。<br>不过也是很实用的，点赞。<br>楼上只是介绍了一个主要的原因，以后一定还会有更多的发现的^_^。    </p>
 
       
     </div>
@@ -298,7 +295,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/laravel/" rel="tag">#laravel</a>
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
           
         </div>
       
@@ -307,16 +304,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/17/laravel4/" rel="next" title="Laravel笔记4:Laravel中的数据库和Migration">
-                <i class="fa fa-chevron-left"></i> Laravel笔记4:Laravel中的数据库和Migration
+              <a href="/2016/12/10/ES607/" rel="next" title="ES6学习笔记7:新概念Proxy登场！">
+                <i class="fa fa-chevron-left"></i> ES6学习笔记7:新概念Proxy登场！
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/30/node_async/" rel="prev" title="Node中的异步i/o和事件轮询机制">
-                Node中的异步i/o和事件轮询机制 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/12/ES608/" rel="prev" title="ES6学习笔记8:新的数据结构Set">
+                ES6学习笔记8:新的数据结构Set <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -437,7 +434,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建一个model"><span class="nav-number">1.</span> <span class="nav-text">创建一个model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#增加"><span class="nav-number">1.1.</span> <span class="nav-text">增加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找"><span class="nav-number">1.2.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新"><span class="nav-number">1.3.</span> <span class="nav-text">更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除"><span class="nav-number">1.4.</span> <span class="nav-text">删除</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol的特征"><span class="nav-number">2.</span> <span class="nav-text">Symbol的特征</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Symbol能干啥"><span class="nav-number">3.</span> <span class="nav-text">Symbol能干啥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
           </div>
         </section>

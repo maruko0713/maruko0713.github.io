@@ -206,6 +206,227 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/30/promise/" itemprop="url">
+                  告别回调地狱－－ES6标准中的Promise对象
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>最近在阅读一本很好的开源电子书——<a href="http://es6.ruanyifeng.com/#docs/promise#Promise-all" target="_blank" rel="external">阮一峰老师的ES6入门</a>,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。  </p>
+<h2 id="初识Promise对象"><a href="#初识Promise对象" class="headerlink" title="初识Promise对象"></a>初识Promise对象</h2><p>正如标题所说,Promise对象的出现，是为了解决层层嵌套的回调地狱。当回调函数太多的时候，会使代码的结构变得糟糕，读代码的时候，你得一层一层扒着往里找半天才能找到自己想看到那个功能效果对应的回调，改代码的时候更糟心，删除一个功能还得瞻前顾后连着外函数和内函数一起修改。总之，回调一多，事情就变得麻烦了。<br>上面blabla这么多，我们来看阮一峰老师对Promise的语法上的定义:    </p>
+<blockquote>
+<p>从语法上说，Promise是一个对象，从它可以获取异步操作的消息。Promise提供统一的API，各种异步操作都可以用同样的方法进行处理。</p>
+</blockquote>
+<p>更进一步地，Promise对象代表一个异步操作，它有三种状态（这一点等一下会在代码里演示）,这三种状态分别是:     </p>
+<ul>
+<li>Pending(进行中)</li>
+<li>Resolved(已经完成)</li>
+<li>Reject(已失败)<br>至于现在你到底处于什么状态，要看异步操作执行到哪个结果。</li>
+</ul>
+<p>关于状态的重要一点:<br>一旦状态改变（从Pending变为Resolved或者从Pending变为Rejected），那么就走到终点了，状态就定格在这里，不会再改变了。</p>
+<h2 id="自己对Promise的感性认识"><a href="#自己对Promise的感性认识" class="headerlink" title="自己对Promise的感性认识"></a>自己对Promise的感性认识</h2><p>其实Promise并没有为我们省去多少代码，也没有实现什么功能，但是Promise好就好在它使我们的代码更加“好看”，没有那么多“套路”了，一条直线贯穿了整个异步操作的所有操作流程，同时每个流程内部的代码从视觉上来看是相互独立的，不会说修改的时候“牵一发而动内外”，让代码更加好读，也更加容易维护。总而言之，Promise为我们编写具有多层回调的函数提供了一种更优雅的书写方式。</p>
+<h2 id="Promise特性在代码中的体现"><a href="#Promise特性在代码中的体现" class="headerlink" title="Promise特性在代码中的体现"></a>Promise特性在代码中的体现</h2><p>让我们来实现一个小小的Promise实例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>这里我新建一个Promise对象，里面传进的参数就是我第一步首先要执行的那个最外层函数的内容，我现在没让resolve和reject干活，所以这两个函数暂时是个摆设。让我们来看一下运行的效果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise1.png" alt="promise1"><br>看，我们仅仅是new了一个实例出来，它居然顺便直接把我们传进去的函数内容给执行了！从这里我们可以看出，当我们创建Promise实例时，传入的函数内容是可以立即执行的.<br>我们让resolve登场:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">   resolve();</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"执行到啦最后一句"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>执行结果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise2.png" alt="promise2"><br>resolve和reject。它们是两个函数，由JavaScript引擎提供，不用自己部署。resolve在这里仿佛是啥也没干？？？别急，要想知道resolve干了啥,这时候就需要请出Promise对象的then方法了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">  <span class="keyword">var</span> value = <span class="string">"resolve"</span>;</div><div class="line">  <span class="keyword">if</span>(value==<span class="string">"resolve"</span>)&#123;</div><div class="line">    resolve(value);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    reject(value);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"执行到啦最后一句!"</span>);</div><div class="line">&#125;);</div><div class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(word);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(word);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>在上面的then方法中，传入了两个回调函数，如果Promise构造函数传入的回调函数中，resolve被行了，那么此时这个promise对象的状态就是resolved,这个resolved状态，会促使then方法在执的时候执行第一个函数，reject同理。resolve和reject都是可以传参数进去的，这个参数会被传出去，作为then中定义的函数的实参.<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise4.png" alt="promise4"><br>整个过程应该差不多是这样的:构造函数跑完了传入函数内容的所有代码，并由此确定当前对象的状态.如果构造函数跑到一半出错了，那就不跑了，同时对象状态就变成了rejected,接下来它会调用then中的rejected状态对应的那个函数（第二个）。如果执行很顺利，执行到了resolve函数，那么就转变为resolved状态。<br>现在我们更进一步，研究一下resolve函数和reject函数的关系。<br>上面那段代码中，我们的if语句人为控制了resolve函数和reject函数的执行，使它们只能执行一个.那如果我这样写呢:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">  <span class="keyword">var</span> result = <span class="string">"result"</span>;</div><div class="line">  resolve(result);</div><div class="line">  reject(result);</div><div class="line">&#125;);</div><div class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(result+<span class="string">":resolve"</span>);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(result+<span class="string">":reject"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>在这段代码里，我们很强势地告诉Promise对象，你既要给我执行出个resolve,也要给我执行出个reect！<br>那么Promise对象是怎么想的呢：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise5.png" alt="promise5"><br>它说，你想多了，我只能改变一次状态，我就不干了。<br>我们在上面一段代码的后半段改成这样，输出then方法的返回对象p:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(result+<span class="string">":resolve"</span>);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(result+<span class="string">":reject"</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(p);</div></pre></td></tr></table></figure></p>
+<p>输出：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise6.png" alt="promise6"><br>有个小细节是p在then方法之前输出了，因此也印证了Promise对象代表一个<em>异步操作</em>，不影响后续代码的执行.因此我们这里输出p的时候，p还没执行完，于是返回了一个pending中的Promise对象，我们给它点时间缓缓:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(p);</div><div class="line">&#125;,<span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
+<p>输出:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise7.png" alt="promise7"><br>我们看到，p仍然返回一个promise对象，不过等等，为啥你给我的描述是个undefined？？？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg" alt="黑人问号"><br>莫慌，我们修改一下resolve函数的返回值:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(result+<span class="string">":resolve"</span>);</div><div class="line">   <span class="keyword">return</span>  <span class="string">"我是resolve的return值"</span>;</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(result+<span class="string">":reject"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>输出:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise8.png" alt="promise8"><br>机智的我们发现，返回的都是Promise对象，区别在于Promise对象的描述内容，也就是valueOf()的返回值,如果状态为Pending，返回为Pending,如果是resolve或者reject，那么根据resolve或者reject的return值进行返回。(如果resolve或者reject返回的也是一个Promise对象，那么里面的描述还是undefined~~~,因为undefined是一个非pending状态的Promise对象的默认valueOf()返回值).<br>综上所述，改变状态后，Promise对象是绝对不会给你改变第二次的！（冷漠脸）    </p>
+<p>“返回值都是Promise对象“这一点，使得Promise对象具有链式调用的优良特性:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">    <span class="keyword">var</span> result = <span class="string">"result"</span>;</div><div class="line">    resolve(result);</div><div class="line">    reject(result);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">promise</div><div class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(result+<span class="string">":resolve"</span>);</div><div class="line">        <span class="keyword">return</span>  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"resolve1号返回了Promise对象，我是它的构造函数内容"</span>);</div><div class="line">            resolve();</div><div class="line">        &#125;);</div><div class="line">    &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(result+<span class="string">":reject"</span>);</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"resolve1号嵌套的resolve2号执行啦"</span>);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure></p>
+<p>输出:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise9.png" alt="promise9"><br>这样一来，不管有多少层嵌套，我们只需要调用层层返回的Promise对象的then方法就可以啦!    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/28/对HTML不限制大小写的测试/" itemprop="url">
+                  小细节:css中的的大小写区分
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-28T00:00:00+08:00" content="2016-08-28">
+              2016-08-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇文章看起来可能没有什么技术含量，是对一个小细节的验证。起因是读《javascript权威指南》这本书时，里面提到说js是大小写敏感的语言，而html不是，因此html中设定属性时属性名属性值不限制大小写，标签名也不限制。由此想到，css中的属性名和属性值以及选择器是否限制大小写呢，今天就是为了验证一下这个问题。     </p>
+<h2 id="对HTML不限制大小写的测试"><a href="#对HTML不限制大小写的测试" class="headerlink" title="对HTML不限制大小写的测试"></a>对HTML不限制大小写的测试</h2><p>js大小写敏感还是比较明显比较常见的，先用一个小例子来看一下HTML对大小写不敏感的是什么样子的:<br>来个花样作死的写法:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Input</span> <span class="attr">TYPE</span>=<span class="string">"TEXT"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">TYPE</span>=<span class="string">"BUTTON"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>得到的效果和全小写时一样:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog4%E6%B5%8B%E8%AF%951.jpg" alt="html测试图">;    </p>
+<p>当然，为了规范，我们平时还是要坚持全小写为妙。</p>
+<h2 id="对css是否支持不区分大小写的测试"><a href="#对css是否支持不区分大小写的测试" class="headerlink" title="对css是否支持不区分大小写的测试"></a>对css是否支持不区分大小写的测试</h2><p>直觉上应该是不支持的。。。但我们还是用代码来看一下:<br>首先我们从id下手:<br>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#Test</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:red;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#fff</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">33px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结构部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test&gt;&lt;/div&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>大小写不同，我们看到火狐君给我们的效果是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog22.jpg" alt="大小写测试css1"><br>一片空白，服了，id要区分大小写.    </p>
+<p>虽然感觉已经知道结果了，但还是来一发class:<br>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Test</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:red;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#fff</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">33px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>结构部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test&gt;&lt;/div&gt;</span></span></div><div class="line">&lt;div class="<span class="attr">Test</span>&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>得到的结果是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog4%E6%B5%8B%E8%AF%952.jpg" alt="大小写测试css2">    </p>
+<p>好啦，心服口服,class和id是不能模糊大小写的，所以更要坚持全小写啦。</p>
+<p>那么选择器在书写的时候，是否完全区分大小写呢？经测试，id和class选择器是必然要区分的，而标签选择器就比较随意啦，不区分大小写,写”H2”照样可以选中二号标题标签^_^    </p>
+<p>对于属性值和属性名,它们也是不区分大小写滴～～～～比如:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">    .test &#123;</div><div class="line">        Height:100px;</div><div class="line">        width:100px;</div><div class="line">        Background:red;</div><div class="line">        color:#fff;</div><div class="line">        font-size:33PX;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
+<p>html部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span>哈<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>我们看到这个height，width属性名和font-size的属性值都模糊了大小写。<br>然而我们仍然可以得到:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/css%E5%A4%A7%E5%B0%8F%E5%86%99%E5%B1%9E%E6%80%A7%E6%B5%8B%E8%AF%95.jpg" alt="css属性大小写测试">    </p>
+<p>于是，我们得出结论：在css中:    </p>
+<ul>
+<li>id名和class名是区分大小写的    </li>
+<li>选择器中，只有标签选择器不区分大小写    </li>
+<li>属性名和属性值是不区分大小写的    </li>
+</ul>
+<p>这样一来,css大小写敏感的问题就解决啦，但是为了规范，我们平时还是要坚持小写到底啊～～～哈哈</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/26/gulp/" itemprop="url">
                   自动化管理工具gulp的初体验
                 </a>
@@ -535,7 +756,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
