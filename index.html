@@ -206,6 +206,195 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/14/jQuery1/" itemprop="url">
+                  jQuery复习1:jQuery的DOM操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-14T00:00:00+08:00" content="2016-12-14">
+              2016-12-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>所谓DOM的行为，其实就是api。     </p>
+<h2 id="原生js中的DOM"><a href="#原生js中的DOM" class="headerlink" title="原生js中的DOM"></a>原生js中的DOM</h2><p>DOM操作一般分为三个方法面，即DOM Core（核心），HTML－DOM和CSS－DOM</p>
+<h3 id="DOM-Core"><a href="#DOM-Core" class="headerlink" title="DOM Core"></a>DOM Core</h3><p>DOM Core并不专属于Javascript,任何一种支持DOM的程序设计语言都可以使用它。<br>我们用的比较多的DOM Core主要是getElementById(),getElementsByTagName(),getAttribute()和setAttribute()等方法。    </p>
+<h3 id="HTML-DOM"><a href="#HTML-DOM" class="headerlink" title="HTML-DOM"></a>HTML-DOM</h3><p>用于描述HTML的各种属性。<br>比如：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.src;</div></pre></td></tr></table></figure>
+<h3 id="CSS-DOM"><a href="#CSS-DOM" class="headerlink" title="CSS-DOM"></a>CSS-DOM</h3><p>就是针对CSS的操作。<br>js中CSS-DOM一般是利用style获取和设置各种样式。<br>比如：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.style.color = <span class="string">"red"</span>;</div></pre></td></tr></table></figure>
+<h2 id="jQuery中DOM"><a href="#jQuery中DOM" class="headerlink" title="jQuery中DOM"></a>jQuery中DOM</h2><h3 id="查找元素节点"><a href="#查找元素节点" class="headerlink" title="查找元素节点"></a>查找元素节点</h3><p>查找元素节点：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $dom = $(<span class="string">"选择器"</span>);</div><div class="line"><span class="keyword">var</span> $target = $dom.eq(index);</div></pre></td></tr></table></figure>
+<p>eq方法用于获取数组中的一个元素，注意不能用$dom[index]或者$dom.get(index)来获取，这两者都是用来得到原生DOM对象的。    </p>
+<h3 id="创建元素节点"><a href="#创建元素节点" class="headerlink" title="创建元素节点"></a>创建元素节点</h3><p>这个很简单：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> new_node = $(<span class="string">"&lt;div&gt;我是新的&lt;/div&gt;"</span>);</div></pre></td></tr></table></figure>
+<p>只要像上面那样，往括号里面写入html代码就可以了。    </p>
+<h3 id="插入元素节点"><a href="#插入元素节点" class="headerlink" title="插入元素节点"></a>插入元素节点</h3><p>内部尾部追加：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">target.append(html代码｜jQuery对象| 选择器);</div><div class="line">element.appendTo(选择器 | jQuery对象);</div></pre></td></tr></table></figure>
+<p>第一个是往调用方法的元素内部添加，第二个是调用方法的对象被添加进参数元素的内部。    </p>
+<p>内部前置：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">target.prepend(html代码 | jQuery对象| 选择器);</div><div class="line">element.prependTo(jQuery对象 | 选择器);</div></pre></td></tr></table></figure>
+<p>和楼上的机制一样，只不过是把内部后置变成了内部前置。    </p>
+<p>外部后置:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">target.after(html代码 | jQuery对象 | 选择器);</div><div class="line">element.insertAfter(jQuery对象 | 选择器);</div></pre></td></tr></table></figure>
+<p>把元素插入到指定元素的后面，两者在同一层。比如:    </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>美少女<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"p"</span>).after(<span class="string">"&lt;h1&gt;你有毒&lt;/h1&gt;"</span>);</div></pre></td></tr></table></figure>
+<p>楼上两段代码结合，成功得到:    </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>美少女<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>你有毒<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>同样的道理，我们有before和insertBefore方法对应。    </p>
+<h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><p>jQuery提供了三种删除节点的方法：    </p>
+<ul>
+<li>remove()</li>
+<li>detach()</li>
+<li>empty()</li>
+</ul>
+<h4 id="remove方法"><a href="#remove方法" class="headerlink" title="remove方法"></a>remove方法</h4><p>remove方法的返回值是所删除的那个节点对应的jQuery对象，因此删除后可以用一个变量承接这个节点，然后可以继续使用这个节点。<br>然而，remove方法的返回值仅仅保留这个节点的内容，而不会保留这个节点绑定的事件。    </p>
+<h4 id="detach方法"><a href="#detach方法" class="headerlink" title="detach方法"></a>detach方法</h4><p>detach的特别之处就在于，它在删除后返回给你的那个jQuery对象，是保留绑定事件的，你再次把这个东西附加到某个元素后，恢复它在DOM树中的存在，它仍能还原删除前的行为。    </p>
+<h4 id="empty方法"><a href="#empty方法" class="headerlink" title="empty方法"></a>empty方法</h4><p>empty方法是有删除的作用，但它其实是清空。<br>它的作用是删除调用方法的对象的所有后代节点，把它变成一个空节点。    </p>
+<h3 id="复制节点"><a href="#复制节点" class="headerlink" title="复制节点"></a>复制节点</h3><p>注意我们前面所有的前置添加也好后置添加也好，我们其实是在干啥？？<br>是在移动节点，我们把元素添加过去了，原来的那个位置就没有这个元素了。<br>有时候我希望的是在保留这个元素的基础上，把它的副本拿出去。<br>这时候复制节点就很有必要了。    </p>
+<h3 id="clone方法："><a href="#clone方法：" class="headerlink" title="clone方法："></a>clone方法：</h3><p>复制的实现通过clone方法：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.clone();</div></pre></td></tr></table></figure>
+<p>注意我们克隆下来的仅仅是一个静态的元素，它没有任何的行为，不监听任何的事件。<br>如果我们需要连行为一起复制，就这样做：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.clone(<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p>记得传参数就行。    </p>
+<h3 id="替换节点"><a href="#替换节点" class="headerlink" title="替换节点"></a>替换节点</h3><p>replaceWith和replaceAll方法都可以实现节点的替换。<br>它们的功能一模模一样。<br>不过要注意它们用起来的顺序是相反的：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">element.replaceWith(target);</div><div class="line">target.replaceAll(element);</div></pre></td></tr></table></figure>
+<p>tip!注意节点一旦被替换，它事先被绑定的事件会随着被替换掉的元素一起消失，因此我们需要重新绑定事件。    </p>
+<h3 id="包裹节点"><a href="#包裹节点" class="headerlink" title="包裹节点"></a>包裹节点</h3><p>先来看一段html代码：    </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>我想要针对每个li标签进行包裹，裹上一个ul,我可以这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"li"</span>).wrap(<span class="string">"ul"</span>);</div></pre></td></tr></table></figure>
+<p>于是我得到:    </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如果我想要把所有的li包裹在一起:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"li"</span>).wrapAll(<span class="string">"ul"</span>);</div></pre></td></tr></table></figure>
+<p>就会得到:    </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如果我想要只包裹内部的文本:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"li"</span>).wrapInner(<span class="string">"b"</span>);</div></pre></td></tr></table></figure>
+<p>我就可以得到：   </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="jQuery中的DOM属性操作"><a href="#jQuery中的DOM属性操作" class="headerlink" title="jQuery中的DOM属性操作"></a>jQuery中的DOM属性操作</h2><p>在jQuery中，用attr()方法来获取和设置元素属性,removeAttr()方法来删除元素属性。    </p>
+<h3 id="获取元素属性："><a href="#获取元素属性：" class="headerlink" title="获取元素属性："></a>获取元素属性：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $target = element.attr(<span class="string">"属性名"</span>);</div></pre></td></tr></table></figure>
+<p>设置元素属性:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.attr(<span class="string">"属性名"</span>,<span class="string">"属性值"</span>);</div></pre></td></tr></table></figure>
+<p>一口气设置很多个属性值：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.attr(&#123;<span class="string">"属性名"</span>: <span class="string">"属性值"</span>, <span class="string">"属性名"</span>: <span class="string">"属性值"</span>&#125;);</div></pre></td></tr></table></figure>
+<h3 id="删除元素属性"><a href="#删除元素属性" class="headerlink" title="删除元素属性"></a>删除元素属性</h3><p>用removeAttr()实现。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.removeAttr(<span class="string">"属性名"</span>);</div></pre></td></tr></table></figure>
+<h2 id="jQuery中的css操作"><a href="#jQuery中的css操作" class="headerlink" title="jQuery中的css操作"></a>jQuery中的css操作</h2><h3 id="针对class的操作"><a href="#针对class的操作" class="headerlink" title="针对class的操作"></a>针对class的操作</h3><h4 id="添加class"><a href="#添加class" class="headerlink" title="添加class:"></a>添加class:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.addClass(<span class="string">"类名"</span>);</div></pre></td></tr></table></figure>
+<h4 id="删除class"><a href="#删除class" class="headerlink" title="删除class:"></a>删除class:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.removeClass(<span class="string">"类名"</span>);</div></pre></td></tr></table></figure>
+<p>如果没有这个类，也不会报错。如果想要删除全部：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.removeClass();</div></pre></td></tr></table></figure>
+<h4 id="切换class-在有和没有之间切换"><a href="#切换class-在有和没有之间切换" class="headerlink" title="切换class(在有和没有之间切换):"></a>切换class(在有和没有之间切换):</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.toggleClass(<span class="string">"类名"</span>);</div></pre></td></tr></table></figure>
+<h4 id="判断是否含有某个class"><a href="#判断是否含有某个class" class="headerlink" title="判断是否含有某个class"></a>判断是否含有某个class</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.hasClass(<span class="string">"类名"</span>)</div></pre></td></tr></table></figure>
+<h3 id="对CSS-DOM的操作"><a href="#对CSS-DOM的操作" class="headerlink" title="对CSS-DOM的操作"></a>对CSS-DOM的操作</h3><p>获取和修改元素的样式属性</p>
+<h4 id="用css-方法："><a href="#用css-方法：" class="headerlink" title="用css()方法："></a>用css()方法：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">element.css(<span class="string">"样式属性名"</span>);   </div><div class="line">element.css(<span class="string">"样式属性名"</span>, <span class="string">"样式属性值"</span>);</div><div class="line">element.css(&#123;<span class="string">"样式属性名"</span>: <span class="string">"样式属性值"</span>, <span class="string">"样式属性名"</span>: <span class="string">"样式属性值"</span>&#125;);</div></pre></td></tr></table></figure>
+<h4 id="另外高度和宽度可以单独获取："><a href="#另外高度和宽度可以单独获取：" class="headerlink" title="另外高度和宽度可以单独获取："></a>另外高度和宽度可以单独获取：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">element.height();</div><div class="line">element.width();</div></pre></td></tr></table></figure>
+<p>括号里传入参数可以对height或width进行设置。（下同）。    </p>
+<h4 id="获取元素在当前视窗的相对偏移"><a href="#获取元素在当前视窗的相对偏移" class="headerlink" title="获取元素在当前视窗的相对偏移"></a>获取元素在当前视窗的相对偏移</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> offset = element.offset();</div></pre></td></tr></table></figure>
+<p>它返回的是一个对象，对象里有left(左偏移)和top(顶部偏移)。    </p>
+<h4 id="获取元素的position定位"><a href="#获取元素的position定位" class="headerlink" title="获取元素的position定位"></a>获取元素的position定位</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> position = element.position();</div></pre></td></tr></table></figure>
+<p>返回一个对象，对象里有相对于定位父元素的左偏移和顶部偏移。    </p>
+<h4 id="获取元素滚动的距离"><a href="#获取元素滚动的距离" class="headerlink" title="获取元素滚动的距离"></a>获取元素滚动的距离</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scrollTop = element.scrollTop();</div><div class="line"><span class="keyword">var</span> scrollLeft = element.scrollLeft();</div></pre></td></tr></table></figure>
+<p>分别用来获取滚动条距离顶端和距离和滚动条距离左侧的距离。    </p>
+<h2 id="设置和获取html-文本和值"><a href="#设置和获取html-文本和值" class="headerlink" title="设置和获取html,文本和值"></a>设置和获取html,文本和值</h2><h3 id="获取html："><a href="#获取html：" class="headerlink" title="获取html："></a>获取html：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> html = element.html();</div></pre></td></tr></table></figure>
+<p>设置只需要往html里面传参：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.html(<span class="string">"html代码"</span>);</div></pre></td></tr></table></figure>
+<h3 id="获取text"><a href="#获取text" class="headerlink" title="获取text:"></a>获取text:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = element.text();</div></pre></td></tr></table></figure>
+<p>设置text也是一样的道理：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.text(<span class="string">"text内容"</span>);</div></pre></td></tr></table></figure>
+<h3 id="获取和修改一个元素的value属性也是一样的道理："><a href="#获取和修改一个元素的value属性也是一样的道理：" class="headerlink" title="获取和修改一个元素的value属性也是一样的道理："></a>获取和修改一个元素的value属性也是一样的道理：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> value = element.val();</div><div class="line">element.val(<span class="string">"value属性值"</span>);</div></pre></td></tr></table></figure>
+<h2 id="遍历DOM节点"><a href="#遍历DOM节点" class="headerlink" title="遍历DOM节点"></a>遍历DOM节点</h2><ul>
+<li>children()方法 用于获取节点的子元素的集合    </li>
+<li>next()方法 用于获取匹配元素后面的紧邻同辈元素</li>
+<li>prev()方法 用于获取匹配元素前面的紧邻同辈元素</li>
+<li>siblings()方法 用于获取匹配元素前后所有的同辈元素</li>
+<li>parent()方法 获取匹配元素的父元素</li>
+<li>parents()方法 获取匹配元素的所有祖先元素</li>
+<li>closest()方法 获取离匹配元素最近的上层元素    </li>
+</ul>
+<p>tip: 在上面的所有方法的括号里，都可以传参数进去，用于进一步筛选元素～～～    </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>累死了累死了哈哈哈哈。<br>在jQuery里面，其实有很多api，是在重复选择器的操作。<br>嘛～～不过这样也好，选择会变多。<br>就是要记熟要记熟要记熟啊！！！     </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/13/jQuery0/" itemprop="url">
                   jQuery复习0:jQuery选择器一锅端
                 </a>
@@ -1203,113 +1392,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/03/ES60/" itemprop="url">
-                  ES6学习笔记0:let命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-03T00:00:00+08:00" content="2016-12-03">
-              2016-12-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看了一下Vue的文档后真的感叹啊现在ES6真是越来越普及了。之前只是零星地接触了一下，缺乏系统的学习。现在觉得很有必要学一下。接下来的博客主要是围绕阮一峰老师的《ES6入门》做教材，杂七杂八的博客做参考，然后自己做一个总结。    </p>
-<h2 id="let命令之先撸两个demo"><a href="#let命令之先撸两个demo" class="headerlink" title="let命令之先撸两个demo"></a>let命令之先撸两个demo</h2><p>先来一个这样的:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line"><span class="keyword">let</span> b=<span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>,b);</div></pre></td></tr></table></figure>
-<p>运行一下，直接输出a和b，没毛病。<br>从这里我们看出，let和var都可以声明一个变量。    </p>
-<p>再来：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">    <span class="keyword">let</span> b = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>,b);</div></pre></td></tr></table></figure>
-<p>然后悲伤的事情发生了，b变成了未定义。    </p>
-<h2 id="let命令之楼上到底是怎么回事？"><a href="#let命令之楼上到底是怎么回事？" class="headerlink" title="let命令之楼上到底是怎么回事？"></a>let命令之楼上到底是怎么回事？</h2><p>这是因为var和let对“域”的限制不同。<br>var是啥？var只要没在函数里，就是全局。 在函数里，就是局部。<br>而这个let，遇到代码块，就是个域。<br>出了这个代码块，let定义的变量就找不着了。    </p>
-<p>除此之外，let在for语句中的情况比较常见。    </p>
-<h2 id="let在for语句中"><a href="#let在for语句中" class="headerlink" title="let在for语句中"></a>let在for语句中</h2><p>举个例子:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"i:"</span>,i);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"i:"</span>,i);</div></pre></td></tr></table></figure>
-<p>输出啥？？？<br>肯定顺序输出0到5啊。<br>然而我们对后来那个i＝5感兴趣吗？并不啊，我们只对参与循环的i感兴趣。<br>于是，我们把var改成let,我们就可以愉快地看到一个报错，说i未定义。<br>这就是let的用法之一。    </p>
-<h2 id="变量提升有毒啊！！！let不用它！"><a href="#变量提升有毒啊！！！let不用它！" class="headerlink" title="变量提升有毒啊！！！let不用它！"></a>变量提升有毒啊！！！let不用它！</h2><p>变量提升是啥？？？？<br>不熟悉真要啪啪打脸了，回去刷红宝书吧你！！<br>不过既然说到了，还是要复习一下:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="keyword">var</span> a;</div></pre></td></tr></table></figure>
-<p>你猜输出啥？？？<br>你猜会报错吗？？？？<br>不会啊朋友！！！<br>因为所有的声明都被提升到代码的最前面啦，所以console语句其实是在var后面执行的，于是我们输出的是一个undefined。<br>其实这样写还是有点不太规范，而且输出一个undefined也必定不是我们想要的结果，很可能会导致进一步的错误，那么我们可以让它直接跳红字告诉我们这里不对劲吗？？？？<br>当然可以啦。      </p>
-<p>所以如果你敢这么做:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="keyword">let</span> a;</div></pre></td></tr></table></figure>
-<p>你的命运只能是被愉快地报错，因为let不存在变量声明的提升，所以console在a声明之前就执行了，那么它必定是找不到a的，于是就报错说你有一个未声明的变量呀！     </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>一开始想做个对比，不过想想其实没有必要。<br>因为根本不存在谁更好，只能说谁更合适，在具体的开发情境下。<br>所以需要做的就是对let和var的特性足够熟悉，这就够了，不需要过分解读出一些了不得的东西。<br>就是这样! </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1355,7 +1437,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

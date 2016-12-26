@@ -206,6 +206,103 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/07/koa_generator/" itemprop="url">
+                  koa框架核心--中间件的使用与实现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-07T00:00:00+08:00" content="2016-10-07">
+              2016-10-07
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当当当当！我又来说node啦！这次来聊一聊一个可爱的node框架——koa。koa框架的特点就是小，轻量。它不绑定任何中间件（就是说中间件你得全自己写啊），而它的核心也就是这个中间件怎么写的问题。所以今天我们来讲讲这个中间件。    </p>
+<h2 id="中间件的demo"><a href="#中间件的demo" class="headerlink" title="中间件的demo"></a>中间件的demo</h2><p>额，这个我就直接上官网的例子嘛，它的形式大概是这样的：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</div><div class="line"><span class="keyword">var</span> app = koa();</div><div class="line"></div><div class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.body = <span class="string">'Hello World'</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>让我们看向楼上，这个use函数，里面写入的这个回调就是一个中间件。这是中间件“安装”的办法，中间件的关键特性在这里:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'koa'</span>)(),</div><div class="line">    router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)();</div><div class="line"></div><div class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">    <span class="keyword">yield</span> next;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">5</span>);</div><div class="line">&#125;);</div><div class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</div><div class="line">    <span class="keyword">yield</span> next;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">4</span>);</div><div class="line">&#125;);</div><div class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
+<p>楼上的接收到请求后的输出结果，熟悉koa和ES6规范中生成器的小伙伴应该知道，是12345.<br>当遇到yield语句时，中间件往下跳，跳进第二个安装上去的中间件，输出一个2又往下跳一下，依此类推。<br>那么中间件机制是咋实现的呢？为啥我输个yield就能往下跳了呢？<br>其实这个next，这里我们可以看作是next(),而next就是一个生成器函数，它返回一个iterator。</p>
+<h2 id="koa中间件的实现－－compose"><a href="#koa中间件的实现－－compose" class="headerlink" title="koa中间件的实现－－compose"></a>koa中间件的实现－－compose</h2><p>compose是koa源码中的一个模块.<br>compose函数中有这么个玩意儿:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(i--)&#123;</div><div class="line">    next = middleware[i].call(<span class="keyword">this</span>, next);</div><div class="line">&#125;</div><div class="line"><span class="keyword">yield</span> *next;</div></pre></td></tr></table></figure>
+<p>看到了吧,next就是一个迭代器对象，哈哈，所以我们yield的时候自然可以进入这个迭代器对象啦。<br>详细来说，compose中把所有待执行的中间件写入一个数组，然后next就是数组中下一个中间件产生的一个迭代器对象，因此当我执行yield next时，可以跳进下一个中间件执行里面的代码，直至执行到一个中间件它里面的代码不再往下跳，执行完这个中间件的内容之后，它就开始回跳，逐层向上去执行离它最近的调用方的代码，一直到执行回第一个中间件yield next下面的代码为止。    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/04/promise2/" itemprop="url">
                   node碎碎念之Promise之静态方法promisify,resolve和reject
                 </a>
@@ -1210,110 +1307,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/06/jsonp/" itemprop="url">
-                  JSONP全接触：JSONP原理，在js与jQuery中的实现
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-06T00:00:00+08:00" content="2016-09-06">
-              2016-09-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>让我来记住这个历史性的事件：《jQuery基础教程（第4版）》第133页下面介绍了一种用$.getJSON方法实现跨域请求的办法，这种办法的大概意思就是把方法的第一个参数传递为所需的url地址＋”?callback=?”的形式，于是我们就能实现jsonp了。这个书很多地方都是一笔带过，这个地方也是半页纸就写完了，于是从今天上午到现在（下午四点）我断断续续一直在揣摩这个问题，顺便专门复习了一遍jsonp的原理（泪目），网上查出来的文章有不少，但是真正有用的不多，用这篇文章整合一下，也算没白费这么大功夫😂.</p>
-<h2 id="JSONP是啥"><a href="#JSONP是啥" class="headerlink" title="JSONP是啥"></a>JSONP是啥</h2><p>JSONP(JSON with padding,填充式JSON),是一种利用script标签从远程获取JSON数据的手段,这个技术的出现很好地解决了ajax无法进行跨域请求的弊端。JSONP的格式是把标准的JSON文件包装在一对圆括号中，然后圆括号前置任意一个字符串（当然也可以是空字符串），乍一看有一种函数调用的即视感，这个字符串就是所谓的填充padding啦。这样数据传递回来并且被解析时，就可能会导致一次函数调用。那么JSONP这种格式在服务器端的实现是咋整的呢,这样: </p>
-<h3 id="JSONP格式的服务器端实现"><a href="#JSONP格式的服务器端实现" class="headerlink" title="JSONP格式的服务器端实现:"></a>JSONP格式的服务器端实现:</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">  <span class="keyword">print</span>($_GET[<span class="string">'callback'</span>].<span class="string">'('</span>.$data.<span class="string">')'</span>);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<p>看不懂PHP也没关系，这段的意思是说，利用$_GET方法从客户端请求过来的url里面截取callback参数，注意这个参数也可以是fn，fx啥的，叫啥名字都行，只要你客户端写url的时候能够照上这个名字，它就能获取过来，然后data就是你想要的数据，中间的小点点是字符串拼接的意思，这整个是说输出一个前面拼接了客户端url指定名称的函数的函数调用（如果被解析成js格式的话）。</p>
-<h2 id="js中的JSONP实现"><a href="#js中的JSONP实现" class="headerlink" title="js中的JSONP实现"></a>js中的JSONP实现</h2><p>因为标签和前言里面也写了这个主要是针对jQuery写的文章，所以简要谈谈在原生js里面怎么搞就行了。原生js里面我们一般是把这个JSONP请求绑定到某个事件（比如点击事件）上，当这个事件被触发的时候，我们在事件处理程序里面创建一个新的script标签，并且把它丢进head标签或者body标签里去，这个新的script标签的src属性是指向我们目标的那个资源地址的，末尾跟上类似于?callback=xxx这样的参数内容，于是我们就能从远程得到一个内容形如”xxx(data)”的响应，这个内容被当作js解析出来，于是data就会根据xxx函数的定义被操作。因此，我们在实现JSONP格式的数据的请求的之前，务必要记得定义一个与xxx同名的函数，不然就会报错说xxx is undefined啥的，那样就很尴尬啦。</p>
-<h2 id="jQuery中的JSONP实现"><a href="#jQuery中的JSONP实现" class="headerlink" title="jQuery中的JSONP实现"></a>jQuery中的JSONP实现</h2><p>这段是这篇文章的重点，因为我就是从这段入坑的,我们先来看我入坑的这一段书上的示例代码:<br>用getJSON方法实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.getJSON(url+<span class="string">"?callback=?"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">    ....</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>省略了很多，但这已经够了，这段的意思就是在请求的URL后面加上”callback”(服务器段所需的参数名字)=?这部分，jQuery就不会报错说你跨域失败了，而会把它当做一个jsonp类型的请求去处理，注意这个?非常重要，jQuery会把它替换成一个长长的字符串，然后会把服务器返回内容的data部分（即去掉padding的纯json部分）传递给后面的success函数，于是success函数就可以使用data了，ok,大功告成！<br>这里有两个要注意的地方:    </p>
-<ul>
-<li>callback不能少 也可以是别的名字 这里用callback是因为服务器端所需的函数名是callback 你也可以提供其他的，前提是和服务器端的要求相符</li>
-<li>=号后面必须跟问号，或者在你知道对方服务器需要的函数名的情况下把真正的函数名写进去，不然就会报错说你跨域请求失败了。    </li>
-</ul>
-<p>第二种方法更加灵活,用$.ajax()方法实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">     type: <span class="string">"get"</span>,</div><div class="line">     url: <span class="string">"http://examples.learningjquery.com/jsonp/g.php"</span>,</div><div class="line">     dataType: <span class="string">"jsonp"</span>,</div><div class="line">     jsonp: <span class="string">"callback"</span>,</div><div class="line">     jsonpCallback: <span class="string">"hehe"</span>,</div><div class="line">     success: <span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(json);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>$.ajax()相对上面来说，是一种更为底层的方式，所以我们能够自定义操作的内容更多。这里在我们把dataType设置为”jsonp”之后，它就会自动执行一些针对jsonp的规则，比如它不会再报错给你说你跨域了，然后这个jsonp属性设置的就是服务器端需要的那个函数名参数对应的名称，比如我们上文的callback就是这样一个参数名（形参），jsonpCallback里面对应的是函数名参数对应的值（实参），这里我们这样操作，会把一个”callback=hehe”传递给php页面，然后php页面get到的padding前缀就会是hehe,我们得到的jsonp数据就会是hehe(data)这个样子了。<br>注意：不管我们传入的函数名存不存在，都不会报错.如果存在，那么就执行，如果不存在，也没关系^_^<br>相对于第一种方法，我们不必一定要把callback设置为问号了，可以传入任意你想传的函数名，同时，这个jsonp格式的数据（形如hehe(data)）请求回来之后，hehe函数内部的data内容会被当做第一个参数传入success方法，这里，我们进行的操作是在控制台输出返回的data结果.        </p>
-<p>写到这里，已经有点累了，但是还没完，我们还有最爽的一种方式，就是用插件！！！！<br>传送门：<a href="https://github.com/jaubourg/jquery-jsonp" target="_blank" rel="external">jquery的jsonp插件</a>.<br>直接上代码,请求同样的数据:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$.jsonp(&#123;</div><div class="line">    url:<span class="string">"http://examples.learningjquery.com/jsonp/g.php"</span>,</div><div class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(data);</div><div class="line">    &#125;,</div><div class="line">    callback:<span class="string">"xixi"</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>是的，你没有看错，从请求到输出，我们只用了两行。<br>两行啊！！！！！<br>下面的callback要提一下，这个jsonp插件的callback和ajax方法里的callback有所不同，这个callback是在发出jsonp请求之前在本地定义一个叫做xixi的函数，并不会对请求的url造成影响。如果我们想要把远程的函数命名为xixi的话，需要直接在url后面传入callback=xixi。而ajax里面的jsonp和jsonpCallback不仅会在本地定义，还会直接把这个函数名增加到url末尾进行请求。</p>
-<p>综上所述，我们总结jQuery中jsonp的三种实现方法，最推荐的就是最后一种，jsonp插件，简单，快捷，强大，前两天我做了一个阅读器应用，就用了它！总之就是超级好用啦！当然，前两种也是有必要理解的。不过在清楚了原生js原理的基础上，这应该不会很麻烦^_^</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1359,7 +1352,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
