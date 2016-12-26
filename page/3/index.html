@@ -206,6 +206,116 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/04/promise2/" itemprop="url">
+                  node碎碎念之Promise之静态方法promisify,resolve和reject
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-04T00:00:00+08:00" content="2016-10-04">
+              2016-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前写过一篇关于Promise的文章，介绍了Promise对象的创建，特性等一些基本的知识点。最近用node进行微信公众号实际开发的时候才发现原来Promise的应用到了node这边真是漫天飞呀，今天先说几个用的多的。    </p>
+<h2 id="Promise-resolve和Promise-reject"><a href="#Promise-resolve和Promise-reject" class="headerlink" title="Promise.resolve和Promise.reject"></a>Promise.resolve和Promise.reject</h2><p>先从好啃的写起，抛砖引玉！<br>这是两个静态方法，第一次见到它们，我是懵比的。因为我对Promise的认知仅仅局限于在构造函数里面输入一个小小的”resolve/reject（可选参数）”然后就改变Promise对象的状态，长成这样的我真没见过。感谢万能的吃瓜群众，我找到了它们的内涵:<br>Promise.resolve()等价于这样:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</div><div class="line">    resolve();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>同理Promise.reject()等价于下面这样:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">    reject();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>看到这里，是不是恍然大悟了？<br>因此：<br>Promise.resolve()/Promise.reject()的作用即使创建一个Promise对象并将其状态置为resolved/rejected。<br>用处：<br>好处大大的有啊！想一想，有的时候我们并不care你的Promise构造函数内的主体是干啥的，只是关心then里面的内容是干啥的，这种情况下，我们省略Promise构造函数内参数的书写，直接来一个静态方法就把它的状态整出来了，这样我们是不是就只用操心我们该操心的then了？？      </p>
+<h2 id="Promise-promisify"><a href="#Promise-promisify" class="headerlink" title="Promise.promisify"></a>Promise.promisify</h2><p>(论科学上网的重要性hhhh)虽然查这个东西花去不少时间，但是最后还是有搜获滴！让我们来看看这玩意儿到底是个啥！    </p>
+<h3 id="promisify方法的用途"><a href="#promisify方法的用途" class="headerlink" title="promisify方法的用途"></a>promisify方法的用途</h3><blockquote>
+<p>prmoisify的作是：将一个 nodeCallback 形式函数调用转为 promise 对象。</p>
+</blockquote>
+<p>写到这里有人要问，啥是nodeCallback?    </p>
+<h3 id="nodeCallback形式的函数"><a href="#nodeCallback形式的函数" class="headerlink" title="nodeCallback形式的函数"></a>nodeCallback形式的函数</h3><p>nodeCallback 是Nodojs中的一个常用词。表达是意思是：Nodejs中，以错误优先的回调函数的总称。<br>这么描述还是有点反人类，它应该长这样：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fooCallBack</span>(<span class="params">err, a, b</span>)</span>&#123;</div><div class="line">  <span class="comment">// something</span></div><div class="line">  <span class="built_in">console</span>.log(a,b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>重点是啥？<br>重点是第一个参数是err!! 也就是说,noodeCallBack 函数的第一个参数<strong>一定</strong>传入的是 err ，而不能是别的参数。只要满足了这个条件，同时满足了回调函数出现的顺序在异步函数的最后一个，都能称之为nodeCallback函数。    </p>
+<p>比如我们经常见面额readFile小姐:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fs.readFile(<span class="string">'./test.js'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>看到没？回调函数位于最后一个参数，回调函数的第一个参数为err,这样的函数就叫做nodeCallback函数.    </p>
+<h3 id="promisify方法的好处"><a href="#promisify方法的好处" class="headerlink" title="promisify方法的好处"></a>promisify方法的好处</h3><p>好处大大的有啊！有了可爱的promisify方法，我们就可以把nodeCallback函数转换为高级的Promise对象，对它进行各种Promise对象的操作，使它具备各种Promise对象才有的高级操作，代码更优雅，书写更舒服。。。。等等等等，总之，还是要善待这个方法！    </p>
+<h3 id="promisify的加强版promisifyAll"><a href="#promisify的加强版promisifyAll" class="headerlink" title="promisify的加强版promisifyAll"></a>promisify的加强版promisifyAll</h3><p>promisify 只能一次转一个函数，那 promisifyall 的作用就是一次把一个库的方法转完,并且给他们都加上一个叫做Async的后缀。     </p>
+<p>拿nodeCallback函数云集的fs库开刀:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'bluebird'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> fs = <span class="built_in">Promise</span>.promisifyall(<span class="built_in">require</span>(<span class="string">'fs'</span>));</div><div class="line"></div><div class="line">fs.readFileAsync(<span class="string">'./test.js'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">&#125;).catch(<span class="built_in">console</span>.log);</div></pre></td></tr></table></figure>
+<p>楼上的代码运行是没有问题的，由此我们确信，promisify方法可以把传入的对象的所有nodeCallback方法全部转换为promise对象并且给它们取一个有Async后缀的新名字～～    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/03/clip&origin/" itemprop="url">
                   css3碎碎念之好基友background-clip和background-origin
                 </a>
@@ -1204,102 +1314,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/04/prototype/" itemprop="url">
-                  实现一个长长的正确的原型链
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-04T00:00:00+08:00" content="2016-09-04">
-              2016-09-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。我想接触过js的小伙伴们一定对作用域和原型这两个概念不陌生。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。不过，一旦真的理解了，其实也蛮简单的。所以啃基础的时候，一定要克服自己的畏难心理！（严肃脸）。<br>好了，上面一段基本上是一段鸡汤，这篇文章主要是记录一下今天发现的一个奇妙的实现长长的原型链的办法。</p>
-<h2 id="js的继承为什么搞得这么麻烦"><a href="#js的继承为什么搞得这么麻烦" class="headerlink" title="js的继承为什么搞得这么麻烦"></a>js的继承为什么搞得这么麻烦</h2><p>学过java的小伙伴一定对java中类的继承特性不陌生，一个类继承另一个类，只需简单的一个extends即可。然而js的麻烦之处就在于它根本没有class的类型，没有class，语言的功能就会被削弱很多，那咋整。不怕，虽然我们没有class这种类型，但我们有class的概念啊！在js中，我们把一个构造函数看作是js的一个类，想要继承的属性和方法，我们写进构造函数的prototype属性上，用构造函数new出来的对象就可以引用prototype中的属性和方法。平时我们写代码，见过最多的肯定是一层的继承，那万一我想继承很多个呢?</p>
-<h2 id="多层继承实现遇到的困难"><a href="#多层继承实现遇到的困难" class="headerlink" title="多层继承实现遇到的困难"></a>多层继承实现遇到的困难</h2><p>一起来看一个单层的原型继承怎么实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = props.name || <span class="string">""</span> ;</div><div class="line">&#125;</div><div class="line">Student.prototype.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"hello!"</span> + <span class="keyword">this</span>.name + <span class="string">"!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>此时我想增加一层GoodStudent,让它继承Student，我们当然可以这么做:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GoodStudent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    Student.call(<span class="keyword">this</span>, props);</div><div class="line">    <span class="keyword">this</span>.study = <span class="string">"good"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这样，如果我们去new一个GoodStudent的实例出来的话，它是不能引用Student.prototype对象的，为啥呢，因为我们在确定一个对象的__proto__属性（即它的原型）时，其实是找的它构造函数的prototype属性里的constructor属性，这里我们既然是用GoodStudent来new的，那么我们的实例就是GoodStudent的实例，GoodStudent的prototype是谁，这里我们没定义，那就是一个仅有constructor属性的Object对象.再往上找，Object对象的__proto__属性是谁，是Object构造函数的prototype属性，再往上找,Object的prototype属性的__proto__就是null了，看到没，这里根本就没有Student的戏份。<br>于是我们知道，我们之所以只能实现一个从自定义构造函数向Object构造函数的上溯，是因为我们的自定义构造函数的GoodStudent的prototype的<em>默认值</em>就是一个只有constructor的Object的对象，它只能上溯去找Object！那么这就简单啦，我们把它的prototype改成别的对象不就行了么！    </p>
-<h2 id="道格拉斯的原型链加长法"><a href="#道格拉斯的原型链加长法" class="headerlink" title="道格拉斯的原型链加长法"></a>道格拉斯的原型链加长法</h2><p>道格拉斯，就是发明JSON的那个道格拉斯。废话不多说，我们来改良上面的代码:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// GoodStudent构造函数:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GoodStudent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    Student.call(<span class="keyword">this</span>, props);</div><div class="line">    <span class="keyword">this</span>.study = <span class="string">"good"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 空函数F:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> *注意这里，当我们把Student原型赋给F的原型对象时，F.prototype.constructor返回的就是</div><div class="line"> *Student了，于是F创建出来的实例都将被认为是Student的实例.</div><div class="line"> */</div><div class="line">F.prototype = Student.prototype;</div><div class="line"></div><div class="line"><span class="comment">// 把GoodStudent的原型指向一个新的F对象，F对象的原型正好指向Student.prototype:</span></div><div class="line">GoodStudent.prototype = <span class="keyword">new</span> F();</div><div class="line"></div><div class="line"><span class="comment">//注意我们把prototype重写了，它不再拥有默认的constructor属性，我们给他补上</span></div><div class="line">GoodStudent.prototype.constructor = GoodStudent;</div><div class="line"></div><div class="line"><span class="comment">// 继续在GoodStudent原型（就是new F()对象）上定义方法：</span></div><div class="line">GoodStudent.prototype.getStudy = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.study;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 创建xiaoming:</span></div><div class="line"><span class="keyword">var</span> xiaoming = <span class="keyword">new</span> GoodStudent(&#123;</div><div class="line">    name: <span class="string">"小明"</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(xiaoming.name); <span class="comment">// '小明'</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming.study); <span class="comment">// good</span></div><div class="line"></div><div class="line"><span class="comment">// 验证原型:</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming.__proto__ === GoodStudent.prototype); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming.__proto__.__proto__ === Student.prototype); <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="comment">// 验证继承关系:</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming <span class="keyword">instanceof</span> GoodStudent); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming <span class="keyword">instanceof</span> Student); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<p>成功了!</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所有的自定义构造函数在创建之初，它都有一个默认的prototype属性，这个属性指向一个Object对象，如果我们想要延长原型链，在当前构造函数和Object构造函数之间增加一个类的继承，我们就需要去改造当前构造函数的prototype属性，使它指向一个可以指向“别处”（即它的“父类”）的对象，以此来实现一个加长版的原型链^<em>^</em></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1345,7 +1359,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
