@@ -206,6 +206,110 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/04/ES01/" itemprop="url">
+                  ES6学习笔记1:const命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-04T00:00:00+08:00" content="2016-12-04">
+              2016-12-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇会比较短小，因为仅仅讲一个变量声明嘛～<br>不过还是想要感慨一下下哦，js进化了，连const都出来了，嘻嘻。    </p>
+<h2 id="const基本特性"><a href="#const基本特性" class="headerlink" title="const基本特性"></a>const基本特性</h2><p>const这个声明头之前在强类型语言（比如c和java）中见过，它是声明一个常量。    </p>
+<p>那么js中的const是什么样的呢？    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a;</div></pre></td></tr></table></figure>
+<p>运行试试，发现报错。<br>说明<strong>const在声明变量时这个变量必须有值</strong>    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> happy = <span class="literal">true</span>;</div><div class="line">happy = <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<p>报错了，说明<strong>这个值不能被改变，一改就报错</strong>。    </p>
+<h2 id="const声明变量指向一个对象的时候要注意"><a href="#const声明变量指向一个对象的时候要注意" class="headerlink" title="const声明变量指向一个对象的时候要注意"></a>const声明变量指向一个对象的时候要注意</h2><p>看一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> user = &#123;name:<span class="string">"xiaowanzi"</span>&#125;;</div><div class="line"><span class="keyword">const</span> happy = user;</div><div class="line">user.name = <span class="string">"maruko0713"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"user:"</span>,user);</div></pre></td></tr></table></figure>
+<p>运行后发现没有报错，说明user的<strong>值</strong>可以改变。<br>或者你直接这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> user = &#123;name: <span class="string">"xiaowanzi"</span>&#125;;</div><div class="line">user.name = <span class="string">"maruko0713"</span>;</div><div class="line"><span class="built_in">console</span>.log(user);</div></pre></td></tr></table></figure>
+<p>你会发现也没毛病。<br>啥，可是咱刚刚不是说const都是<strong>常量</strong>吗。<br>是的,const声明的都是常量，不可更改，此处不可更改的，是<strong>对象的内存地址</strong>。    </p>
+<p>你要是这样:     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> user = &#123;name:<span class="string">"xiaowanzi"</span>&#125;;</div><div class="line">user = &#123;&#125;;</div></pre></td></tr></table></figure>
+<p>分分钟报错给你看，因为此时user已经指向另一个内存地址了。     </p>
+<h2 id="结语-amp-amp-小贴士"><a href="#结语-amp-amp-小贴士" class="headerlink" title="结语&amp;&amp;小贴士"></a>结语&amp;&amp;小贴士</h2><p><strong>作用域强调</strong><br>const和let一样，都是<strong>块级作用域</strong>。<br>出了当前代码块找不到的哦！     </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/03/ES60/" itemprop="url">
                   ES6学习笔记0:let命令
                 </a>
@@ -1186,113 +1290,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/11/node_mongodb/" itemprop="url">
-                  在node应用中使用mongodb来存储数据
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-11T00:00:00+08:00" content="2016-10-11">
-              2016-10-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>这两天用node做了一个<a href="https://github.com/maruko0713/node-demos/tree/master/louNote" target="_blank" rel="external">在线笔记demo</a>,对于笔记信息和session信息的存储都用到了mongodb。     </p>
-<h2 id="什么是MongoDB"><a href="#什么是MongoDB" class="headerlink" title="什么是MongoDB"></a>什么是MongoDB</h2><p>MongoDB是时下流行的noSQL数据库之一，MongoDb中有三个非常重要的概念:    </p>
-<ul>
-<li>数据库: 数据库是一个物理容器集合。一个单一的MongoDB服务器通常有多个数据库.    </li>
-<li>集合: 集合是一组MongoDB文档，相当于我们之前在MySQL中表的概念。    </li>
-<li>文档: 文档是一组键值对。很多个文档构成一个集合。 </li>
-</ul>
-<p>从关系上来看，文档组成集合，集合组成数据库，多个数据库可以运行在同一台服务器中。噢耶！</p>
-<h2 id="node中的MongoDB"><a href="#node中的MongoDB" class="headerlink" title="node中的MongoDB"></a>node中的MongoDB</h2><p>node中对MongoDB数据库的操作是通过mongoose库实现的。主要有以下操作：    </p>
-<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</div><div class="line">mongoose.connect(<span class="string">"mongodb://localhost:27017/dbName"</span>);</div></pre></td></tr></table></figure>
-<p>通过connect方法的调用可以实现对数据库的连接，楼上的代码中dbName是你想要打开的数据库的名字，如果没有这个数据库，那么就自动创建一个并且打开，不会报错^_^。    </p>
-<h3 id="建立一个表，存储数据"><a href="#建立一个表，存储数据" class="headerlink" title="建立一个表，存储数据"></a>建立一个表，存储数据</h3><p>mongoose中建表是通过mongoose.Schema这个构造函数。<br>比如我想建立一个用户表:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 引入mongoose</span></div><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</div><div class="line"><span class="comment">// 把构造函数搞出来</span></div><div class="line"><span class="keyword">var</span> Schema = mongoose.Schema;</div><div class="line"><span class="comment">// 建立一个模版</span></div><div class="line"><span class="keyword">var</span> userSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">    username: <span class="built_in">String</span>,</div><div class="line">    password: <span class="built_in">String</span>,</div><div class="line">    email:<span class="built_in">String</span>,</div><div class="line">    createTime: &#123;</div><div class="line">        type:<span class="built_in">Date</span>,</div><div class="line">        <span class="keyword">default</span>:<span class="built_in">Date</span>.now</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 针对上面的集合建立一个模型</span></div><div class="line"><span class="keyword">var</span> User = mongoose.model(<span class="string">"User"</span>,userSchema);</div><div class="line"><span class="comment">// 用User模型创建一个新用户</span></div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(&#123;</div><div class="line">    username:<span class="string">"xiaowang"</span>,</div><div class="line">    password:<span class="number">123</span>,</div><div class="line">    email:<span class="string">"hehe@qq.com"</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">// 保存这个用户</span></div><div class="line">user.save(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"fail to save"</span>);</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="Schema与Model"><a href="#Schema与Model" class="headerlink" title="Schema与Model"></a>Schema与Model</h2><p>Schema-&gt;创建集合<br>Model-&gt;操作集合<br>我们可以这么想,Schema对应的是集合。Model把这个集合抽象出来，通过model可以创建，修改，删除和更新表中的文档。<br>Model是活的，Schema对象作为参数传入model方法后，会作为Model对象的实现标准，但是Model对象本身还具有其它的属性和行为，可以进行数据库操作，而Schema不可以。  </p>
-<h2 id="Model对象的基本方法"><a href="#Model对象的基本方法" class="headerlink" title="Model对象的基本方法"></a>Model对象的基本方法</h2><p>楼上介绍了一个save方法是增加操作。除此之外还有：    </p>
-<h3 id="更新操作"><a href="#更新操作" class="headerlink" title="更新操作:"></a>更新操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 更新操作   </span></div><div class="line">User.update(&#123;_id:someone.id&#125;,&#123;</div><div class="line">    $set:&#123;username:xxxx,password:xxxx&#125;</div><div class="line">    &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(err)&#123;</div><div class="line">            <span class="built_in">console</span>.log(err);</div><div class="line">            <span class="keyword">return</span></div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"更新成功"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作:"></a>删除操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">User.remove(&#123;</div><div class="line">    _id:id</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">        <span class="built_in">console</span>.log(err);</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"删除成功！"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作:"></a>查找操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">User.find(&#123;_id:xxx&#125;)</div><div class="line">    .exec(<span class="function"><span class="keyword">function</span>(<span class="params">err,arts</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(err)&#123;</div><div class="line">            <span class="built_in">console</span>.log(err);</div><div class="line">            <span class="keyword">return</span> </div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"查找成功！"</span>)</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
-<p>如此，就是mongoose为我们提供的增删改查啦！     </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1338,7 +1335,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-count">38</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
