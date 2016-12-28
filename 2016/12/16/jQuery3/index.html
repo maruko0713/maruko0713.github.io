@@ -1,0 +1,551 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jQuery," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言:前面几篇都在复习用法，这一篇要回忆一下机制。大概的一个轮廓是，事件传播机制（事件冒泡，事件捕获，事件对象）和事件委托（事件绑定）。    
+事件的旅程————事件传播机制首先再熟悉一遍原生js中的事件传播机制。    
+这里有一个html结构:    
+12345&amp;lt;div class=&quot;foo&quot;&amp;gt;    &amp;lt;span class=&quot;bar&quot;&amp;gt;        &amp;lt;a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery复习3:jQuery中的事件传播机制和事件委托">
+<meta property="og:url" content="http://maruko.com/2016/12/16/jQuery3/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言:前面几篇都在复习用法，这一篇要回忆一下机制。大概的一个轮廓是，事件传播机制（事件冒泡，事件捕获，事件对象）和事件委托（事件绑定）。    
+事件的旅程————事件传播机制首先再熟悉一遍原生js中的事件传播机制。    
+这里有一个html结构:    
+12345&amp;lt;div class=&quot;foo&quot;&amp;gt;    &amp;lt;span class=&quot;bar&quot;&amp;gt;        &amp;lt;a">
+<meta property="og:updated_time" content="2016-12-28T02:38:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery复习3:jQuery中的事件传播机制和事件委托">
+<meta name="twitter:description" content="前言:前面几篇都在复习用法，这一篇要回忆一下机制。大概的一个轮廓是，事件传播机制（事件冒泡，事件捕获，事件对象）和事件委托（事件绑定）。    
+事件的旅程————事件传播机制首先再熟悉一遍原生js中的事件传播机制。    
+这里有一个html结构:    
+12345&amp;lt;div class=&quot;foo&quot;&amp;gt;    &amp;lt;span class=&quot;bar&quot;&amp;gt;        &amp;lt;a">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> jQuery复习3:jQuery中的事件传播机制和事件委托 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                jQuery复习3:jQuery中的事件传播机制和事件委托
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-16T00:00:00+08:00" content="2016-12-16">
+              2016-12-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>前面几篇都在复习用法，这一篇要回忆一下机制。<br>大概的一个轮廓是，事件传播机制（事件冒泡，事件捕获，事件对象）和事件委托（事件绑定）。    </p>
+<h2 id="事件的旅程————事件传播机制"><a href="#事件的旅程————事件传播机制" class="headerlink" title="事件的旅程————事件传播机制"></a>事件的旅程————事件传播机制</h2><p>首先再熟悉一遍原生js中的事件传播机制。    </p>
+<p>这里有一个html结构:    </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foo"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"bar"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.example.com"</span>&gt;</span>这是一个测试<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h3><p>如果我给a元素绑定了一个click事件，然后我去点击a，此时我的浏览器如果采取的事件传播机制是事件捕获，那么我的事件是从外到里面进来的，就是说如果三个元素上都有事件侦听程序，那么第一个响应的元素是div,第二个响应的元素是bar,最后一个响应事件的才是a元素上的事件监听程序。     </p>
+<p><strong>这种事件首先交给最外层元素，接着再交给更具体的元素</strong>的事件传播过程叫做事件捕获。    </p>
+<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><p>还是这段程序，还是为每个元素都安装事件舰艇程序，我还是去点击a，如果此时我的浏览器采取的是事件冒泡机制，那么事件传播的顺序是a-&gt;span-&gt;foo。<br>反过来了！<br><strong>这种当事件发生时，首先发送给最具体的元素，在这个元素获得响应机会之后，事件向上冒泡到更一般的元素</strong>的事件传播机制叫做事件冒泡。    </p>
+<h3 id="实际应用中的情况"><a href="#实际应用中的情况" class="headerlink" title="实际应用中的情况"></a>实际应用中的情况</h3><p>毫不奇怪，不同的浏览器开发者最初采用的是不同的事件传播模型，因此，最终出台的DOM标准规定应该同时使用这两种策略。<br>首先，事件从一般元素到具体元素逐层捕获。然后事件再通过冒泡返回DOM树的顶层。<br>而事件处理程序也可以注册到这个过程中的任何一个阶段。     </p>
+<h2 id="jQuery中的事件传播模型"><a href="#jQuery中的事件传播模型" class="headerlink" title="jQuery中的事件传播模型"></a>jQuery中的事件传播模型</h2><p>为了确保跨浏览器的一致性，也为了更让人容易理解。<br><strong>jQuery始终会在模型的冒泡阶段注册事件处理程序</strong>  </p>
+<h2 id="jQuery中的事件对象"><a href="#jQuery中的事件对象" class="headerlink" title="jQuery中的事件对象"></a>jQuery中的事件对象</h2><p>我们可以通过在处理函数中添加一个参数的形式引用事件对象：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="string">"#switcher"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>楼上这段程序，传入的event承接了事件对象，这个event名字不唯一，叫什么都行，只要它是事件处理程序中的第一个参数。    </p>
+<p>利用event对象，我们可以得到事件目标(event.target),还可以利用它来阻止事件冒泡(event.stopPropagation)。      </p>
+<h3 id="阻止默认操作"><a href="#阻止默认操作" class="headerlink" title="阻止默认操作"></a>阻止默认操作</h3><p>有时候浏览器会给我们一些很不讨人喜欢的默认操作。<br>比如我点一下提交按钮，我想给它自定义一个响应，不让它跳转，而让它按我说的做。然后我为它安装事件处理程序，然后我会发现安装后它仍然会直接跳转，这时候怎么办。<br>这个跳转，就是浏览器的一个默认操作，我需要阻止它：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event.preventDefault()</div></pre></td></tr></table></figure>
+<p>tip: 既想阻止冒泡，又想阻止默认行为，这时候在事件处理函数里面返回一个false就可以了。    </p>
+<h2 id="jQuery中的事件委托机制"><a href="#jQuery中的事件委托机制" class="headerlink" title="jQuery中的事件委托机制"></a>jQuery中的事件委托机制</h2><p>这个比较重要。因为涉及到一个非常重要的方法on。    </p>
+<p>事件委托是利用事件冒泡的一项高级技术。通过事件委托，可以借助一个元素上的事件处理程序完成很多工作。    </p>
+<p>想象一个巨大的表格，它里面有一堆小格子，我希望每个小格子被点击时都有事件处理程序来响应它，那我难不成要给成千上万个小格子都安装事件处理程序？？？<br>不不不，累死了，毁性能毁内存。    </p>
+<p>为了解决这个问题，可以只在DOM的一个祖先元素上指定一个单击处理程序，借助事件冒泡，拦截子元素的事件，然后再作出响应。    </p>
+<h3 id="on-方法"><a href="#on-方法" class="headerlink" title="on()方法"></a>on()方法</h3><p>on()方法的常见调用形式:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.on(事件名， 事件处理程序);</div></pre></td></tr></table></figure>
+<p>利用这种形式，我们可以给一个元素安装指定的事件的事件监听程序。    </p>
+<p>on()方法的事件委托实现:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.on(事件名, 子元素, 事件处理程序);</div></pre></td></tr></table></figure>
+<p>楼上，多出的这个参数，就是事件的委托方，而element是事件的被委托方。<br>（子元素的传入形式是一个选择符表达式）。   </p>
+<p><strong>如果on()方法传入的第二个参数是一个选择符表达式，jQuery会把对应的事件处理程序绑定到element对象，同时比较event.target和选择符表达式，如果匹配，jQuery会把this关键字映射到匹配的元素，否则不会执行事件处理程序</strong>   </p>
+<h2 id="off-方法移除事件处理程序"><a href="#off-方法移除事件处理程序" class="headerlink" title="off()方法移除事件处理程序"></a>off()方法移除事件处理程序</h2><p>off()方法的用法也比较简单，它是和on()方法呼应的，我们直接看一段demo思路就会比较清晰:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">btnClick1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert( <span class="keyword">this</span>.value + <span class="string">"-1"</span> );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">btnClick2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert( <span class="keyword">this</span>.value + <span class="string">"-2"</span> );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> $body = $(<span class="string">"body"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 为所有button元素的click事件绑定事件处理函数btnClick1</span></div><div class="line">$body.on(<span class="string">"click"</span>, <span class="string">":button"</span>, btnClick1 );</div><div class="line"></div><div class="line"><span class="comment">// 为所有button元素的click事件绑定事件处理函数btnClick2</span></div><div class="line">$body.on(<span class="string">"click"</span>, <span class="string">":button"</span>, btnClick2 );</div><div class="line"></div><div class="line"><span class="comment">//为所有a元素绑定click、mouseover、mouseleave事件</span></div><div class="line">$body.on(<span class="string">"click mouseover mouseleave"</span>, <span class="string">"a"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>( event.type == <span class="string">"click"</span> )&#123;</div><div class="line">        alert(<span class="string">"点击事件"</span>);</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>( event.type == <span class="string">"mouseover"</span> )&#123;</div><div class="line">        $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"red"</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"blue"</span>);       </div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 移除body元素为所有button元素的click事件绑定的事件处理函数btnClick2</span></div><div class="line"><span class="comment">// 点击按钮，btnClick1照样执行</span></div><div class="line">$body.off(<span class="string">"click"</span>, <span class="string">":button"</span>, btnClick2);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 移除body元素为所有button元素的click事件绑定的所有事件处理函数(btnClick1和btnClick2)</span></div><div class="line"><span class="comment">// 点击按钮，不会执行任何事件处理函数</span></div><div class="line"><span class="comment">// $body.off("click", ":button");</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 注意： $body.off("click", "#btn1"); 无法移除btn1的点击事件，off()函数指定的选择器必须与on()函数传入的选择器一致。</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 移除body元素为所有元素(包括button和&lt;a&gt;元素)的click事件绑定的所有处理函数</span></div><div class="line"><span class="comment">// 点击按钮或链接，都不会触发执行任何事件处理函数</span></div><div class="line"><span class="comment">// $("body").off("click");</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 移除body元素为所有元素的任何事件绑定的所有处理函数</span></div><div class="line"><span class="comment">// 点击按钮，或点击链接或者鼠标移入/移出链接，都不会触发执行任何事件处理函数</span></div><div class="line"><span class="comment">// $("body").off( );</span></div></pre></td></tr></table></figure>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>jQuery具有良好的跨浏览器运行能力，对于事件传播机制的处理方式验证了这一点。<br>在jQuery中，不仅有on()方法，还有一个功能类似的delegate()和undelegate()方法。<br>虽然最重要的也最多用的仍然是on()和off()方法，不过另外两个方法也很有说头，我会另写博客做说明。    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jQuery/" rel="tag">#jQuery</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/15/jQuery2/" rel="next" title="jQuery复习2:jQuery中的事件之事件基础篇">
+                <i class="fa fa-chevron-left"></i> jQuery复习2:jQuery中的事件之事件基础篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件的旅程————事件传播机制"><span class="nav-number">2.</span> <span class="nav-text">事件的旅程————事件传播机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件捕获"><span class="nav-number">2.1.</span> <span class="nav-text">事件捕获</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件冒泡"><span class="nav-number">2.2.</span> <span class="nav-text">事件冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实际应用中的情况"><span class="nav-number">2.3.</span> <span class="nav-text">实际应用中的情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery中的事件传播模型"><span class="nav-number">3.</span> <span class="nav-text">jQuery中的事件传播模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery中的事件对象"><span class="nav-number">4.</span> <span class="nav-text">jQuery中的事件对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#阻止默认操作"><span class="nav-number">4.1.</span> <span class="nav-text">阻止默认操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jQuery中的事件委托机制"><span class="nav-number">5.</span> <span class="nav-text">jQuery中的事件委托机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#on-方法"><span class="nav-number">5.1.</span> <span class="nav-text">on()方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#off-方法移除事件处理程序"><span class="nav-number">6.</span> <span class="nav-text">off()方法移除事件处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">7.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
