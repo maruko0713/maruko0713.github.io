@@ -206,6 +206,127 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/06/ES603/" itemprop="url">
+                  ES6学习笔记3:变量的解构赋值对象篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-06T00:00:00+08:00" content="2016-12-06">
+              2016-12-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>变量的解构赋值。<br>一个使多变量赋值变得更加简单的东西。<br>它有很多形式，这篇博客是对对象形式做一个记录。   </p>
+<h2 id="变量的解构赋值之基本用法"><a href="#变量的解构赋值之基本用法" class="headerlink" title="变量的解构赋值之基本用法"></a>变量的解构赋值之基本用法</h2><p>以前如果你想要提取出来对象中的一些值，你这样做：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = obj.a;</div><div class="line"><span class="keyword">var</span> b = obj.b;</div></pre></td></tr></table></figure>
+<p>ES6中，我们不这样做。<br>它变简单了：     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123;a, b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>如果你尝试输出a, b,你会发现就是你想要的结果。    </p>
+<h2 id="对象解构赋值过程中要注意的点"><a href="#对象解构赋值过程中要注意的点" class="headerlink" title="对象解构赋值过程中要注意的点"></a>对象解构赋值过程中要注意的点</h2><p>楼上我们的全局变量是a, b,这个全局变量是可以随便起名字吗？？？？<br>答案是不，因为对象里面的元素的无序的，所以无法像数组里那样去根据顺序一一对应。<br>因此我们必须把全局变量设置为对象里面属性名一模一样的一个名字，才能把对象中对应的属性名给召唤出来。    </p>
+<p>如果你不小心这么做了：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123;c, b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>完蛋，你就等着被报错吧。     </p>
+<h2 id="我想起个新名字"><a href="#我想起个新名字" class="headerlink" title="我想起个新名字"></a>我想起个新名字</h2><p>我就是想起个新名字咋办？？？？？<br>比如你就是想让第一个值叫做c，这样做：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123;a:c, b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>然后你就可以试试输出c了，这下不会报错，会很顺利的。    </p>
+<p>由此我们也可以想到，我们最原始的那个过程其实是：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> &#123;a:a, b:b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>这段代码的略写。    </p>
+<p>小贴士：<br>let不像var，var可以把一个名字的变量重复定义多次，都没问题，let只允许你定义一次，定义第二次的时候会报错。<br>所以楼上的所有代码中的解构赋值的变量名千万不要定义第二次。     </p>
+<h2 id="修改解构赋值的值"><a href="#修改解构赋值的值" class="headerlink" title="修改解构赋值的值"></a>修改解构赋值的值</h2><p>有时候我们不仅仅需要在赋值的时候用解构赋值，我们还想在修改的时候也可以这么简单。<br>你会想到要这么写:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    a: <span class="number">1</span>,</div><div class="line">    b: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> a=<span class="number">0</span>;</div><div class="line">&#123;a, b&#125; = obj;</div></pre></td></tr></table></figure>
+<p>你要是敢这么写，就只能被报错。<br>这是为什么？？？？？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg" alt="smile">    </p>
+<p>这是因为，在js中，大括号你在不加任何其他操作的时候，它就是个代码块，当右边的大括号合上的时候，这个代码块就结束了，等号左边其实是找不到变量的。<br>因此，我们需要手动告诉解释器这个大括号是语句的一部分：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(&#123;a, b&#125; = obj);</div></pre></td></tr></table></figure>
+<p>输出试试看，你会发现a变成1了。    </p>
+<h2 id="把对象里面的数组里面的变量抓出来"><a href="#把对象里面的数组里面的变量抓出来" class="headerlink" title="把对象里面的数组里面的变量抓出来"></a>把对象里面的数组里面的变量抓出来</h2><p>有时候对象里面嵌套数组，数组里面嵌套的变量值才是我们想要的，这咋整。<br>这样做：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    arr: [</div><div class="line">      <span class="string">'Yo'</span>,</div><div class="line">      &#123;</div><div class="line">        a: <span class="number">1</span>,</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> &#123;arr:[greet, &#123;a&#125;]&#125; = obj;</div></pre></td></tr></table></figure>
+<p>没问题了。<br>这已经算是比较复杂的一种情况了。    </p>
+<h2 id="对象解构赋值中默认值的情况"><a href="#对象解构赋值中默认值的情况" class="headerlink" title="对象解构赋值中默认值的情况"></a>对象解构赋值中默认值的情况</h2><p>默认值在对象解构赋值中也是有的：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;a=<span class="number">1</span>, b=<span class="number">2</span>&#125; = &#123;a:<span class="number">10</span>&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>, a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>, b);</div></pre></td></tr></table></figure>
+<p>输出a的值是10，b的值因为对象里面的变量不够了，所以输出的是默认值2。    </p>
+<p>更复杂一点，如果既有默认值，又有新名字，我们应该这样写：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> &#123;a:A=<span class="number">1</span>, b:B=<span class="number">2</span>&#125; = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>, A);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>, B);</div></pre></td></tr></table></figure>
+<p>把默认值跟在新名字后面。    </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>以上我们解构了各式各样的对象里面的属性，事实上，还可以解构方法。<br>办法是一样的！^_^<br>解构赋值大法好！    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/05/ES602/" itemprop="url">
                   ES6学习笔记2:变量的解构赋值数组篇
                 </a>
@@ -1151,110 +1272,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/11/laravel0/" itemprop="url">
-                  Laravel笔记0:Laravel的安装和相关的工具
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-11T00:00:00+08:00" content="2016-11-11">
-              2016-11-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Laravel"><a href="#Laravel" class="headerlink" title="Laravel"></a>Laravel</h2><p>一个php框架，百科里说它：    </p>
-<blockquote>
-<p>是一套简洁、优雅的PHP Web开发框架(PHP Web Framework)。它可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。</p>
-</blockquote>
-<p>它是一个很受欢迎的php框架，也是我学习的第一个php框架。    </p>
-<h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p>php的包管理工具，是现在比较好用的一个。<br>一个很重要的工具，可以下载一些很好用的php的轮子，嘿嘿。<br>想要的包可以在这里找到:<br><a href="https://packagist.org/" target="_blank" rel="external">packgist网站</a><br>下载Composer的网站:<br><a href="https://getcomposer.org/" target="_blank" rel="external">getcomposer</a>    </p>
-<h2 id="利用Composer创建laravel项目"><a href="#利用Composer创建laravel项目" class="headerlink" title="利用Composer创建laravel项目"></a>利用Composer创建laravel项目</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project laravel/laravel LaravelTest</div></pre></td></tr></table></figure>
-<p>LaravelTest是我随便起的名字，不用在意。    </p>
-<h2 id="看看我们的laravel项目长什么样吧-！"><a href="#看看我们的laravel项目长什么样吧-！" class="headerlink" title="看看我们的laravel项目长什么样吧^_^！"></a>看看我们的laravel项目长什么样吧^_^！</h2><p>开启一下php自己的服务器:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -S localhost:8888</div></pre></td></tr></table></figure>
-<p>端口号也是随便写的，8888，发发发发～～～     </p>
-<p>然后你会发现，出现了404错误，这是为什么?<br>因为你现在的根目录是总的那个最大的LaravelTest目录，你需要改变根目录，这样:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -S localhost:8080 -t public</div></pre></td></tr></table></figure>
-<p>它会自己在根目录下查找index名字的页面哦。<br>加上-t 就可以修改php服务器的根目录啦。<br>然后你会发现，出现了一个很简单，但是很好看的页面，那就是laravel的默认主页面啦.    </p>
-<h2 id="laravel的命令行工具"><a href="#laravel的命令行工具" class="headerlink" title="laravel的命令行工具"></a>laravel的命令行工具</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan + 各种各样的命令</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇博客记录了一个laravel小demo诞生的全过程，熟悉了几个命令行，接下来就要走进laravel里面的世界去看一看啦！    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1300,7 +1317,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-count">40</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
