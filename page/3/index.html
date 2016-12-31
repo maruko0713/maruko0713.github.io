@@ -206,6 +206,109 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/15/laravel3/" itemprop="url">
+                  Laravel笔记3:Laravel中的Blade模版引擎
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-15T00:00:00+08:00" content="2016-11-15">
+              2016-11-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Blade模版引擎"><a href="#Blade模版引擎" class="headerlink" title="Blade模版引擎"></a>Blade模版引擎</h2><blockquote>
+<p>Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blade.php 文件扩展名，并且一般被存放在 resources/views 目录。</p>
+</blockquote>
+<h2 id="Blade实现模版的继承"><a href="#Blade实现模版的继承" class="headerlink" title="Blade实现模版的继承"></a>Blade实现模版的继承</h2><p>如果你想重用一个已经存在的blade.php文件(假设它叫做app.blade.php)，那么你这么做:<br>用这个命令：    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div></pre></td></tr></table></figure>
+<p>你就把它引用进来啦。<br>既然引用了这个文件，那么在文件的基础上如果想要做一些改动，比如说我想要在这个文件内部插入一段自定义的代码(假如是在body标签之间进行插入)，那么在app.blade.php里这样写:        </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    @yield('content');</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这就告诉了blade，content这个区域是可以自定义的。<br>回到我们的新文件里，我们可以这样写:    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div><div class="line">@section(<span class="string">'content'</span>)</div><div class="line">&lt;h1&gt;I am maruko0713&lt;/h1&gt;</div><div class="line">@stop</div></pre></td></tr></table></figure>
+<p>注意，每个section末尾都要跟一个stop。      </p>
+<h2 id="Blade里面插入逻辑语句"><a href="#Blade里面插入逻辑语句" class="headerlink" title="Blade里面插入逻辑语句"></a>Blade里面插入逻辑语句</h2><p>格式如下：    </p>
+<p>判断:    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">if</span>(判断条件)</div><div class="line">html代码</div><div class="line">@<span class="keyword">else</span></div><div class="line">html代码</div></pre></td></tr></table></figure>
+<p>循环:    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">foreach</span>($people <span class="keyword">as</span> $person)</div><div class="line">&lt;li&gt;&#123;&#123; $person &#125;&#125;&lt;/li&gt;</div><div class="line">@<span class="keyword">endforeach</span></div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/14/laravel2/" itemprop="url">
                   Laravel笔记2:Laravel向视图传递变量
                 </a>
@@ -1220,126 +1323,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/28/buffer/" itemprop="url">
-                  node中的Buffer对象
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-28T00:00:00+08:00" content="2016-09-28">
-              2016-09-28
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这段时间在学习用nodejs做一个微信公众号的后端开发。node真是百闻不如一见，这回见着了，觉得node和浏览器端js差别还是挺明显的（众：你这不废话吗！）。嘿嘿，今天处理一段request数据时，用了一个办法是先把它转成buffer对象，然后再将其重新编码，所以今天就来侃侃Buffer吧！     </p>
-<h2 id="Buffer是啥？"><a href="#Buffer是啥？" class="headerlink" title="Buffer是啥？"></a>Buffer是啥？</h2><p>字面理解一下Buffer（缓冲）对象:   </p>
-<blockquote>
-<p>一般编程所说的缓冲区指的是内存缓冲区,这是程序所设置的一块内存区域,用来暂存从其他设备读入的数据或即将写入其他设备的数据.</p>
-</blockquote>
-<p>好，下面我们关心一下node里面的缓冲对象:<br>对于JavaScript来说，对Unicode编码的数据很容易处理的但是对于二进制数据就没什么处理方法了。但是在一些TCP数据流或者在操作一些文件数据流的时候，字节流的处理方法还是必须的。nodeJS中便出了处理的策略方法~提供了与String类似对等的全局构造函数Buffer（与其说与String对等，还不如说与Array类似但是有些不同方面还是需要注意），全局那么自然就不要每次的require了。Buffer是node中储存二进制数据的中介者。</p>
-<h2 id="创建一个Buffer对象！"><a href="#创建一个Buffer对象！" class="headerlink" title="创建一个Buffer对象！"></a>创建一个Buffer对象！</h2><p>形式就是地球人都知道的 var xx = new Buffer()嘿嘿嘿.<br>（啊呸，当然没那么随意！）<br>（正经脸）    </p>
-<ul>
-<li>方式一: new Buffer(size)    </li>
-<li>方式二: new Buffer(array)</li>
-<li>方式三: new Buffer(string, 编码方式)    </li>
-</ul>
-<p>解读:    第一种形式中，size是你想要建立的buffer对象所占的内存的字节个数。第二种形式中，直接传入你想要建立的buffer对象的数组形式，当然数组的每一个元素都是16进制表示的一个字节，第三种方式中，传入一个字符串，然后第二个参数告诉Buffer你字符串的编码方式，它会按照你告诉他的编码方式去拆分这个字符串，把它解码为16进制的字节。     </p>
-<p>示例:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一    </span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="number">10</span>);</div><div class="line"></div><div class="line"><span class="comment">// 方法二</span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer([<span class="number">01</span>,<span class="number">02</span>,<span class="number">03</span>,<span class="number">04</span>]);</div><div class="line"></div><div class="line"><span class="comment">// 方法三(参数二可选)</span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="string">"hello"</span>,<span class="string">"utf-8"</span>);</div></pre></td></tr></table></figure>
-<h2 id="区分Buffer对象和字符串对象"><a href="#区分Buffer对象和字符串对象" class="headerlink" title="区分Buffer对象和字符串对象"></a>区分Buffer对象和字符串对象</h2><p>其实没有什么好区分的（毕竟完全不一样啊喂！😂），这里主要是强调一下它们的读写特征。<br>我们知道，字符串是只读的，比如这样写:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"hello"</span>;</div><div class="line">a[<span class="number">1</span>] = <span class="string">"b"</span>;</div></pre></td></tr></table></figure>
-<p>猜猜a最后长什么样子？答案是a仍然是”hello”而不是”bello”!因为字符串是只读的，一旦你创建了一个字符串，那么它就在那里，然而我们的缓冲对象是灵活的，你改了它，它就会给你变变变，因此，如果我们想基于一个缓冲对象做一些改变，又不想失去这个对象本身，我们最好这么做:<br>请出伟大的copy方法:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">buf.copy(targetBuffer,[targetStart],[sourceStart],[sourceEnd]);</div></pre></td></tr></table></figure>
-<p>参数解释：<br>在Buffer对象的copy方法中，使用四个参数，第一个参数为必须指定的参数，其余三个参数均为可选参数。第一个参数用于指定复制的目标Buffer对象。第二个参数用于指定目标Buffer对象中从第几个字节开始写入数据，参数值为一个小于目标的Buffer对象长度的整数值，默认值为0(从开始处写入数据)。第三个参数用于指定从复制源Buffer对象中获取数据时的开始位置，默认值为0，即从复制源Buffer对象中的第一个字节开始获取数据，第四个参数用于指定从复制源Buffer对象中获取数据时的结束位置，默认值为复制源Buffer对象的长度，即一直获取完毕复制源Buffer对象中的所有剩余数据。</p>
-<p>来个栗子： </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="string">"我喜欢写代码"</span>);</div><div class="line"><span class="keyword">var</span> b1 = <span class="keyword">new</span> Buffer(<span class="number">128</span>);</div><div class="line">b1.fill(<span class="number">0</span>);</div><div class="line">b.copy(b1,<span class="number">10</span>);</div></pre></td></tr></table></figure>
-<p>敲进你的终端里try一下吧！会有新发现的！哈哈～    </p>
-<h2 id="常用的静态方法"><a href="#常用的静态方法" class="headerlink" title="常用的静态方法"></a>常用的静态方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.isBuffer(obj)</div></pre></td></tr></table></figure>
-<p>用于判断obj对象是否是Buffer类型    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.byteLength(string,[encoding]);</div></pre></td></tr></table></figure>
-<p>用于计算传入的string的字节长度，encoding是编码方式，默认编码方式是utf8.    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.concat(list,[totalLength]);</div></pre></td></tr></table></figure>
-<p>Buffer的连接，用于连接Buffer的数组。我们可以手动分配Buffer对象合并后的Buffer空间大小(参数二)，如果Buffer空间不够了，则数据会被截断。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.isEncoding(encoding);</div></pre></td></tr></table></figure>
-<p>encoding是编码格式，如果这个编码格式是有效的，比如”utf8”穿进去，那铁定没问题，但是如果是个别的，比如你写个”xixi”,那你就呵呵吧。。。。。（逃。。。。。）    </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>(咦怎么就总结了？？)<br>哈哈，这当然没完，但是以上都是我感觉中Buffer比较基础和核心的部分，所以我把它们记录下来（严肃脸），因为目前对node的各种对象的api的实践都是有限的，所以只能吐这么墨水出来啦。以后随着学习的推进，会增加更丰富的内容的^<em>^</em></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1385,7 +1368,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

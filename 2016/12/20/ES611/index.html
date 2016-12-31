@@ -1,0 +1,556 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言在ES6里面，对象越来越“对象”了。这么说有点奇怪吧，哈哈哈，还是一点一点写代码来看吧。
+创建对象的新形式先看一段代码:    
+12345678910&apos;use strict&apos;let dessert = &quot;🍰&quot;, drink=&quot;🍹&quot;;let food = &amp;#123;  dessert: dessert,  drink: drink&amp;#125;console.log(food);
+我们输出">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习笔记11:对象的新面貌">
+<meta property="og:url" content="http://maruko.com/2016/12/20/ES611/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言在ES6里面，对象越来越“对象”了。这么说有点奇怪吧，哈哈哈，还是一点一点写代码来看吧。
+创建对象的新形式先看一段代码:    
+12345678910&apos;use strict&apos;let dessert = &quot;🍰&quot;, drink=&quot;🍹&quot;;let food = &amp;#123;  dessert: dessert,  drink: drink&amp;#125;console.log(food);
+我们输出">
+<meta property="og:updated_time" content="2016-12-31T06:22:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习笔记11:对象的新面貌">
+<meta name="twitter:description" content="前言在ES6里面，对象越来越“对象”了。这么说有点奇怪吧，哈哈哈，还是一点一点写代码来看吧。
+创建对象的新形式先看一段代码:    
+12345678910&apos;use strict&apos;let dessert = &quot;🍰&quot;, drink=&quot;🍹&quot;;let food = &amp;#123;  dessert: dessert,  drink: drink&amp;#125;console.log(food);
+我们输出">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ES6学习笔记11:对象的新面貌 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ES6学习笔记11:对象的新面貌
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-20T00:00:00+08:00" content="2016-12-20">
+              2016-12-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在ES6里面，对象越来越“对象”了。<br>这么说有点奇怪吧，哈哈哈，还是一点一点写代码来看吧。</p>
+<h2 id="创建对象的新形式"><a href="#创建对象的新形式" class="headerlink" title="创建对象的新形式"></a>创建对象的新形式</h2><p>先看一段代码:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>, drink=<span class="string">"🍹"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> food = &#123;</div><div class="line">  dessert: dessert,</div><div class="line">  drink: drink</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(food);</div></pre></td></tr></table></figure>
+<p>我们输出了food，food中是🍰和🍹，没毛病。    </p>
+<p>但是ES6中，给同名的属性和变量提供了便利，我们可以把它写成这样：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>, drink = <span class="string">"🍹"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> food = &#123;</div><div class="line">  dessert,</div><div class="line">  drink</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(food);</div></pre></td></tr></table></figure>
+<p>我们可以得到一样的效果。   </p>
+<p>此外，ES6中方法的定义可以简写：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> food = &#123;</div><div class="line">  breakfast(): &#123;</div><div class="line">    <span class="comment">// todo</span></div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>像楼上这样就可以。    </p>
+<h2 id="Object-is-方法"><a href="#Object-is-方法" class="headerlink" title="Object.is()方法"></a>Object.is()方法</h2><p>对比两个值是否相等，我们以前用”==”和”===”。</p>
+<p>但这样会有一些问题：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+<span class="number">0</span> == <span class="number">-0</span>;</div><div class="line">+<span class="number">0</span> === <span class="number">-0</span>;</div><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>;</div></pre></td></tr></table></figure>
+<p>前两个都返回了true,而它们显然不是一个东西。<br>最后一个虽然是一个东西，但是它返回了false。<br>对于这个，我们的解决办法是：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.is(<span class="string">"+0"</span>,<span class="string">"-0"</span>);</div><div class="line"><span class="built_in">Object</span>.is(<span class="literal">NaN</span>, <span class="literal">NaN</span>);</div></pre></td></tr></table></figure>
+<p>第一个返回了false,第二个返回了true,得到了我们想要的结果😄。<br>当然大部分情况下我们还是可以使用两个等号或者三个等号来判断两个值是不是相等的。 </p>
+<h2 id="Object-assign-方法"><a href="#Object-assign-方法" class="headerlink" title="Object.assign()方法"></a>Object.assign()方法</h2><p>Object.assign(a, b, ….)可以用来把一个对象中的方法和属性复制到另一个对象里去。<br>如果a和b(以及更后面的对象)中有一样的属性，那么b中的属性会覆盖a中的属性，如果b中的属性a没有，那么b中的这个新属性会添加给a。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(</div><div class="line">  breakfast,</div><div class="line">  &#123;drink: <span class="string">"🍺"</span>&#125;,</div><div class="line">  &#123;food: <span class="string">"🍎"</span>&#125;</div><div class="line">);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(breakfast);</div></pre></td></tr></table></figure>
+<p>嘻嘻，是不是添加进来啦？    </p>
+<h2 id="ES6中的原型"><a href="#ES6中的原型" class="headerlink" title="ES6中的原型"></a>ES6中的原型</h2><p>ES6中为我们提供了getPrototypeOf()和setPrototypeOf()两个好用的方法。   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = &#123;</div><div class="line">  getDrink() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"🍵"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> dinner = &#123;</div><div class="line">  getDrink() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"🍹"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> sunday = <span class="built_in">Object</span>.create(breakfast);</div><div class="line"><span class="built_in">console</span>.log(sunday.getDrink());</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(sunday));</div></pre></td></tr></table></figure>
+<p>这段代码首先基于breakfast创建了一个新对象sunday,然后我们调用了原型对象中的方法，没毛病。最后输出它的原型确实是breakfast,没毛病，嘻嘻。    </p>
+<p>此时我们在它的基础上如果想要更改原型，就可以请出setPrototypeOf()这个方法：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.setPrototypeOf(sunday, dinner);</div></pre></td></tr></table></figure>
+<p>然后我们再输出：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getDrink());</div></pre></td></tr></table></figure>
+<p>输出了🍹啦！    </p>
+<p>再确认一下：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(sunday));</div></pre></td></tr></table></figure>
+<p>输出的就是dinner对象，没毛病！    </p>
+<h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>super也来啦！！word妈！JS你这是要上天，越来越像“正统语言”了哈哈哈哈。<br>看一段代码：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> breakfast = &#123;</div><div class="line">  drink() &#123;</div><div class="line">    <span class="keyword">return</span> 🍹;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> sunday = &#123;</div><div class="line">  __proto__: breakfast,</div><div class="line">  getDrink() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.getDrink() + <span class="string">"🍼"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(sunday.getDrink());</div></pre></td></tr></table></figure>
+<p>然后就输出了果汁和奶瓶，嘻嘻。    </p>
+<p>就是说如果你需要在子对象的<strong>方法</strong>中使用父对象的方法或者属性，你就应该使用super这个东西。<br>在其它情况下，你调用super,是会报错的。    </p>
+<p>```</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/19/es610/" rel="next" title="ES6学习笔记10:函数的新面貌和"..."操作符">
+                <i class="fa fa-chevron-left"></i> ES6学习笔记10:函数的新面貌和"..."操作符
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建对象的新形式"><span class="nav-number">2.</span> <span class="nav-text">创建对象的新形式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-is-方法"><span class="nav-number">3.</span> <span class="nav-text">Object.is()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-assign-方法"><span class="nav-number">4.</span> <span class="nav-text">Object.assign()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES6中的原型"><span class="nav-number">5.</span> <span class="nav-text">ES6中的原型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#super"><span class="nav-number">6.</span> <span class="nav-text">super</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

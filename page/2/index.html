@@ -206,6 +206,117 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/10/ES606/" itemprop="url">
+                  ES6学习笔记6:新数据类型!Symbol登场！
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-10T00:00:00+08:00" content="2016-12-10">
+              2016-12-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES标准以前有啥数据类型？？？<br>回顾一下：     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="literal">undefined</span></div><div class="line"><span class="literal">null</span></div><div class="line"><span class="built_in">Boolean</span></div><div class="line"><span class="built_in">String</span></div><div class="line"><span class="built_in">Number</span></div><div class="line"><span class="built_in">Object</span></div></pre></td></tr></table></figure>
+<p>一共六种 没了！<br>ES6新增了一种了叫做<strong>Symbol</strong>的数据类型  </p>
+<h2 id="Symbol的特征"><a href="#Symbol的特征" class="headerlink" title="Symbol的特征"></a>Symbol的特征</h2><p>Symbol的意思，就是标记。<br>它这样用：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>();</div></pre></td></tr></table></figure>
+<p>特征是<strong>每创建一个新的Symbol，它代表的值都不一样</strong><br>括号里面可以传入参数，是你描述的东西的内容。<br>不过就算你不传值，你用相同的方式创建的两个Symbol都是不一样的。    </p>
+<p>看下面：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = <span class="built_in">Symbol</span>();</div><div class="line"><span class="keyword">let</span> b = <span class="built_in">Symbol</span>();</div><div class="line"><span class="built_in">console</span>.log(a===b);</div></pre></td></tr></table></figure>
+<p>输出false,说明它俩不是一回事。    </p>
+<h2 id="Symbol能干啥"><a href="#Symbol能干啥" class="headerlink" title="Symbol能干啥"></a>Symbol能干啥</h2><p>Symbol可以<strong>生成唯一的标识</strong><br><strong>已知最大的用处是做对象的属性名称，防止这个属性名称被重写</strong><br>怎么理解？    </p>
+<p>平时我们如果有一个属性：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.name = <span class="string">'wang'</span>;</div></pre></td></tr></table></figure>
+<p>此时如果有个人来一行：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">person.name = <span class="string">'li'</span>;</div></pre></td></tr></table></figure>
+<p>如果你的name是不希望被改变的，那么此时此刻你会很难过。    </p>
+<p>这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> person = &#123;&#125;;</div><div class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</div><div class="line">person[name] = <span class="string">'wang'</span>;</div><div class="line">person[name] = <span class="string">'li'</span>;</div></pre></td></tr></table></figure>
+<p>这时，它仍然输出了li，还是被改变了。<br>那你说个p啊！！完全没用啊摔！！！    </p>
+<p>因此楼上这种情况，是不起作用的，我们说属性名称不能被重写，是这种情况：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> name = <span class="built_in">Symbol</span>();</div><div class="line">&#123;</div><div class="line">    <span class="keyword">var</span> person = &#123;&#125;;</div><div class="line">    person[name] = <span class="string">'File1'</span>;</div><div class="line">&#125;   </div><div class="line"> </div><div class="line">&#123;</div><div class="line">    person.name = <span class="string">'File2'</span>; </div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(person);</div></pre></td></tr></table></figure>
+<p>输出的对象里面有两个键，一个是Symbol类型，一个是name。<br>此时你除了用person[name]这种形式外，都无法访问和修改这个Symbol类型对应的值。    </p>
+<p>其实硬要改也是可以的，只是限制了你，必须调用你最初Symbol()出来的那个Symbol类型数据，别的没用。<br>准确的说，是避免了你“无意中”覆盖已有变量。   </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这个新类型，功能比较单一。<br>不过也是很实用的，点赞。<br>楼上只是介绍了一个主要的原因，以后一定还会有更多的发现的^_^。    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/09/ES605/" itemprop="url">
                   ES6学习笔记5:字符串的新面貌
                 </a>
@@ -1164,109 +1275,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/15/laravel3/" itemprop="url">
-                  Laravel笔记3:Laravel中的Blade模版引擎
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-15T00:00:00+08:00" content="2016-11-15">
-              2016-11-15
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Blade模版引擎"><a href="#Blade模版引擎" class="headerlink" title="Blade模版引擎"></a>Blade模版引擎</h2><blockquote>
-<p>Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blade.php 文件扩展名，并且一般被存放在 resources/views 目录。</p>
-</blockquote>
-<h2 id="Blade实现模版的继承"><a href="#Blade实现模版的继承" class="headerlink" title="Blade实现模版的继承"></a>Blade实现模版的继承</h2><p>如果你想重用一个已经存在的blade.php文件(假设它叫做app.blade.php)，那么你这么做:<br>用这个命令：    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div></pre></td></tr></table></figure>
-<p>你就把它引用进来啦。<br>既然引用了这个文件，那么在文件的基础上如果想要做一些改动，比如说我想要在这个文件内部插入一段自定义的代码(假如是在body标签之间进行插入)，那么在app.blade.php里这样写:        </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    @yield('content');</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>这就告诉了blade，content这个区域是可以自定义的。<br>回到我们的新文件里，我们可以这样写:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div><div class="line">@section(<span class="string">'content'</span>)</div><div class="line">&lt;h1&gt;I am maruko0713&lt;/h1&gt;</div><div class="line">@stop</div></pre></td></tr></table></figure>
-<p>注意，每个section末尾都要跟一个stop。      </p>
-<h2 id="Blade里面插入逻辑语句"><a href="#Blade里面插入逻辑语句" class="headerlink" title="Blade里面插入逻辑语句"></a>Blade里面插入逻辑语句</h2><p>格式如下：    </p>
-<p>判断:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">if</span>(判断条件)</div><div class="line">html代码</div><div class="line">@<span class="keyword">else</span></div><div class="line">html代码</div></pre></td></tr></table></figure>
-<p>循环:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">foreach</span>($people <span class="keyword">as</span> $person)</div><div class="line">&lt;li&gt;&#123;&#123; $person &#125;&#125;&lt;/li&gt;</div><div class="line">@<span class="keyword">endforeach</span></div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1312,7 +1320,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

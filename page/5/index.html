@@ -206,6 +206,123 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/26/gulp/" itemprop="url">
+                  自动化管理工具gulp的初体验
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-26T00:00:00+08:00" content="2016-08-26">
+              2016-08-26
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>前言:</p>
+<p>最近写了一个响应式的demo，推在github上<a href="https://github.com/maruko0713/To_Be_Responsive" target="_blank" rel="external">响应式demo</a>,在这个项目里，我第一次接触前端自动化管理工具，结合我自己的情况，我选择了gulp。这篇文章主要是对gulp的学习和使用做一个记录，同时文章后面会做一些gulp的比较好的插件的推荐.    </p>
+<h2 id="什么是gulp"><a href="#什么是gulp" class="headerlink" title="什么是gulp"></a>什么是gulp</h2><blockquote>
+<p>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。    </p>
+</blockquote>
+<h2 id="gulp如何使用"><a href="#gulp如何使用" class="headerlink" title="gulp如何使用"></a>gulp如何使用</h2><p>使用gulp之前，我们首先要安装gulp<br>因为我是mac的系统，所以采取了命令行安装的形式，如果需要其他帮助，请查看<a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">gulp官方网站</a>的说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp --g</div></pre></td></tr></table></figure></p>
+<p>通过这个操作，可以完成对gulp的全局安装     </p>
+<p>之后，我们需要在根目录下建立一个名为gulpfile.js的文件，这个文件非常重要，因为我们在后续的更新和重新操作的过程中会反复使用它，因为我的项目不大，所以采取了一些比较基础的操作，如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>); <span class="comment">//它是大boss</span></div><div class="line"><span class="keyword">var</span> rev = <span class="built_in">require</span>(<span class="string">"gulp-rev"</span>); <span class="comment">// 插件 用于在更新文件内容后更新文件名</span></div><div class="line"><span class="comment">// 插件(用于在目录下的文件名更新后更新html文件中的文件名)</span></div><div class="line"><span class="keyword">var</span> revReplace = <span class="built_in">require</span>(<span class="string">"gulp-rev-replace"</span>); </div><div class="line"><span class="comment">// 插件(用于分析html文件中带有注释的css文件和js文件)</span></div><div class="line"><span class="keyword">var</span> useref = <span class="built_in">require</span>(<span class="string">"gulp-useref"</span>); </div><div class="line"><span class="keyword">var</span> filter = <span class="built_in">require</span>(<span class="string">"gulp-filter"</span>);<span class="comment">// 插件 用于筛选出已标记的css文件和js文件</span></div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">"gulp-uglify"</span>); <span class="comment">//压缩js文件</span></div><div class="line"><span class="keyword">var</span> csso = <span class="built_in">require</span>(<span class="string">"gulp-csso"</span>); <span class="comment">//压缩css文件</span></div><div class="line">gulp.task(<span class="string">"default"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//filter操作可以筛选出相应的文件 restore参数表示该文件可以被返回到dist目录下</span></div><div class="line">    <span class="keyword">var</span> jsFilter = filter(<span class="string">"**/*.js"</span>,&#123;restore:<span class="literal">true</span>&#125;);</div><div class="line">    <span class="keyword">var</span> cssFilter = filter(<span class="string">"**/*.css"</span>, &#123;restore:<span class="literal">true</span>&#125;); </div><div class="line">    <span class="comment">//感叹号代表排除 filter内第一个参数可以为字符串也可以为数组</span></div><div class="line">    <span class="keyword">var</span> indexHtmlFilter = filter([<span class="string">"**/*"</span>,<span class="string">"!**/index.html"</span>], &#123;restore:<span class="literal">true</span>&#125;);</div><div class="line">    <span class="keyword">return</span> gulp.src(<span class="string">"src/index.html"</span>) <span class="comment">//找到要处理的文件</span></div><div class="line">        .pipe(useref()) <span class="comment">//分析文件中带有注释标志的地方</span></div><div class="line">        .pipe(jsFilter) <span class="comment">//筛选出标记的js文件 丢进文件流中</span></div><div class="line">        .pipe(uglify()) <span class="comment">//压缩操作</span></div><div class="line">        .pipe(jsFilter.restore) <span class="comment">// 将丢入文件流的文件放回原有的位置</span></div><div class="line">        .pipe(cssFilter) <span class="comment">//将筛选出的css文件丢进文件流 </span></div><div class="line">        .pipe(csso()) <span class="comment">//压缩</span></div><div class="line">        .pipe(cssFilter.restore) <span class="comment">//再丢回去</span></div><div class="line">        .pipe(indexHtmlFilter) <span class="comment">// 把index.html文件取出 剩余的匹配文件丢入文件流</span></div><div class="line">        .pipe(rev()) <span class="comment">//生成此刻文件流中所有文件的版本号</span></div><div class="line">        .pipe(indexHtmlFilter.restore) <span class="comment">//丢回去</span></div><div class="line">        .pipe(revReplace()) <span class="comment">//改名字（名字后面加上文件版本号）</span></div><div class="line">        .pipe(gulp.dest(<span class="string">"dist"</span>)); <span class="comment">// 把文件流扔进dist文件夹</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>上面提到要在html文件中进行标记，格式如下:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- build:css css/combined.css --&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/normalize.css"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/main.css"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/owl/owl-carousel/owl.carousel.css"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/owl/owl-carousel/owl.theme.css"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div></pre></td></tr></table></figure></p>
+<p>js也是相同的格式，不过需要把css改成js:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- build:js js/combined.js --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vendor/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"css/owl/owl-carousel/owl.carousel.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vendor/picturefill.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div></pre></td></tr></table></figure></p>
+<p>运行命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp</div></pre></td></tr></table></figure></p>
+<p>(因为我们的任务名叫做default 所以gulp后面不用跟任何参数就会执行我们的文件)<br>如此一来，我们就可以把多个文件压缩到一个文件里面.<br>需要注意的是，在压缩的过程中，注释会被丢掉，如果在css文件中有不想被丢掉的注释采取在注释中星号后面添加一个叹号的方式注释，就不会被压缩掉了:    </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp1.jpg" alt="gulp1">    </p>
+<p>加上叹号后，叹号下面的炮灰注释在压缩文件中全都找不见了，但是叹号注释的内容还在:    </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp2.jpg" alt="gulp2">    </p>
+<p>压缩后，我们可以看到css文件和js文件都会变成我们给它的新名字+版本号的形式:    </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp3.jpg" alt="gulp3">  </p>
+<p>如果对文件内容进行了改动，便会生成一个新的版本号:    </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp4.jpg" alt="gulp4">  </p>
+<p>当然，html文件里面对应的名字也会跟着变化:    </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp5.jpg" alt="gulp5">    </p>
+<p>好了，这样一来，我们就成功地使用gulp实现了我们的一个自动化压缩文件，自动化处理文件名的一个流程，当然啦，gulp的本领还不只这些，它有许许多多的插件，比如:     </p>
+<ul>
+<li>gulp-watch插件 它可以监听文件变化 自动执行gulp命令</li>
+<li>gulp-postcss插件 它可以自动给css属性添加浏览器的兼容前缀（比如-webkit-<br>-moz-之类的）</li>
+<li>gulp-concat插件 单纯地合并多个文件但不压缩</li>
+<li>gulp-responsive插件 自动生成响应式图片</li>
+</ul>
+<p>等等等等，我们可以在gulp-npm命令行的指引下寻找到更多地插件，gulp官方网站上为我们提供了各种各样的插件的使用说明，甚至还教授我们如何为gulp编写插件.<br>好啦，今天的gulp学习记录就到这里，自动化管理工具并非gulp这一种，在接下来的学习中，也应该学习和接触更多的工具，学会根据不同的场景转换工具的使用，使自己的工作更有效率^_^    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/24/body_html/" itemprop="url">
                   body和html到底有多高&&浏览器的背景色问题
                 </a>
@@ -418,7 +535,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-count">43</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
