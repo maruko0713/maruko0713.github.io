@@ -206,6 +206,121 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/19/es610/" itemprop="url">
+                  ES6学习笔记10:函数的新面貌和"..."操作符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-19T00:00:00+08:00" content="2016-12-19">
+              2016-12-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>“…”是ES6中新添加的一种操作符。<br>函数在ES6中有了更强的特性。<br>放在一起梳理一下～～    </p>
+<h2 id="…操作符"><a href="#…操作符" class="headerlink" title="…操作符"></a>…操作符</h2><p>主要有两个作用”spread”和”rest”。    </p>
+<p>spread：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="string">'use strcit'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruits = [<span class="string">"🍎"</span>, <span class="string">"🍌"</span>],</div><div class="line">    foods = [<span class="string">"🍰"</span>, ...fruits];</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fruits);</div><div class="line"><span class="built_in">console</span>.log(...fruits);</div><div class="line"><span class="built_in">console</span>.log(foods);</div></pre></td></tr></table></figure>
+<p>第一行就是单纯地输出数组，然后第二行会看到数组里面的内容被展开了，分别输出。<br>然后第三行我们可以看到fruits是先被拆开然后放进数组foods里面去的。    </p>
+<p>rest(用在函数参数里):    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">breakfast</span>(<span class="params">dessert, drink, ...foods</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(dessert, drink, foods);</div><div class="line">&#125;</div><div class="line"></div><div class="line">breakfast(<span class="string">"🍰"</span>, <span class="string">"🍎"</span>, <span class="string">"🍹"</span>, <span class="string">"🍐"</span>);</div></pre></td></tr></table></figure>
+<p>表示传进来的参数里剩下的所有值。<br>输出后”🍹”，”🍐”被合并成一个数组，被当作剩余的参数集体被foods接受了～～～    </p>
+<h2 id="函数的新面貌"><a href="#函数的新面貌" class="headerlink" title="函数的新面貌"></a>函数的新面貌</h2><h3 id="ES6为函数新添加了name属性"><a href="#ES6为函数新添加了name属性" class="headerlink" title="ES6为函数新添加了name属性"></a>ES6为函数新添加了name属性</h3><p>看一段代码：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">breakfast</span>(<span class="params">argument</span>) </span>&#123;</div><div class="line">  <span class="comment">// body...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(</div><div class="line">    breakfast.name;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>如此我们便能输出函数的名字。    </p>
+<p>换一种定义方式:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = <span class="function"><span class="keyword">function</span>(<span class="params">argument</span>) </span>&#123;</div><div class="line">  <span class="comment">// body</span></div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(</div><div class="line">  breakfast.name;</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>函数定义表达式中，输出的就是函数定义表达式左侧的名字。    </p>
+<p>如果我在函数定义表达式的右侧传递一个非匿名的函数声明：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = <span class="function"><span class="keyword">function</span> <span class="title">super</span>(<span class="params">argument</span>) </span>&#123;</div><div class="line">  <span class="comment">// body</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(</div><div class="line">  breakfast.name;</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>输出的就是super这个名字。    </p>
+<p>所以函数的name属性，当函数表达式和函数声明同时存在的时候，在函数声明非匿名的时候就会认准函数声明中的名字，在函数声明匿名的情况下会认准函数表达式里面的名字。     </p>
+<h2 id="函数的简化写法————箭头函数"><a href="#函数的简化写法————箭头函数" class="headerlink" title="函数的简化写法————箭头函数"></a>函数的简化写法————箭头函数</h2><p>ES6介绍了一种新的定义函数的方法叫做箭头函数:      </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = dessert =&gt; dessert;</div></pre></td></tr></table></figure>
+<p>箭头的左边是参数，右边是return的值。<br>它等价于：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> breakfast = <span class="function"><span class="keyword">function</span> <span class="title">breakfast</span>(<span class="params">dessert</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> dessert;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果参数和返回值稍微多点就这样写:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> breakfast = (dessert, drink) =&gt; dessert + drink;</div></pre></td></tr></table></figure>
+<p>如果函数不是简单地返回点东西的话：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = (dessert, drink) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"我要输出啦！"</span>);</div><div class="line">  <span class="keyword">return</span> dessert + drink;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>…的用法和箭头函数比较重要，因为在实际的开发中它们真的很有用，嘻嘻。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/18/ES609/" itemprop="url">
                   ES6学习笔记9:字符串更进一步之标签模版字符串
                 </a>
@@ -1328,118 +1443,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/09/ES605/" itemprop="url">
-                  ES6学习笔记5:字符串的新面貌
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-09T00:00:00+08:00" content="2016-12-09">
-              2016-12-09
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6中的字符串要登场啦！！<br>这一篇会写的有点杂，因为我想把字符串一锅端哈哈哈哈哈哈～～    </p>
-<h2 id="新增字符串方法"><a href="#新增字符串方法" class="headerlink" title="新增字符串方法"></a>新增字符串方法</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>以前我们如果想要在字符串里面找一个字母，我们这样做:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"yo"</span>.indexOf(<span class="string">"Y"</span>) !== <span class="number">-1</span>);</div></pre></td></tr></table></figure>
-<p>我们用indexOf方法，如果可以返回一个非-1索引，那么就存在,否则不存在。<br>在ES6中，有了一个更好的办法：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"yo"</span>.includes(<span class="string">"Y"</span>));</div></pre></td></tr></table></figure>
-<p>字符串对象多了一个includes方法，直接返回布尔值，当我们只想知道它是否存在，而不care<br>它存在于哪里时，就可以这样啦！    </p>
-<h3 id="开始和结束"><a href="#开始和结束" class="headerlink" title="开始和结束"></a>开始和结束</h3><p>直接看代码：    </p>
-<p>startsWith方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"yo"</span>.startsWith(<span class="string">"a"</span>));</div></pre></td></tr></table></figure>
-<p>返回的是一个布尔值，判断字符串是否是由某个字母开始的。     </p>
-<p>endsWith方法:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"yo"</span>.endsWith(<span class="string">"a"</span>));</div></pre></td></tr></table></figure>
-<p>返回一个布尔值，判断字符串是否是由某个字母结束的。    </p>
-<h3 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h3><p>很厉害的一个方法:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"yo"</span>.repeat(<span class="number">300</span>));</div></pre></td></tr></table></figure>
-<p>楼上这个repeat方法返回一个字符串对象，这个对象的内容就是把yo重复了300次哈哈哈哈哈。    </p>
-<h2 id="新的字符串概念————模版字符串"><a href="#新的字符串概念————模版字符串" class="headerlink" title="新的字符串概念————模版字符串"></a>新的字符串概念————模版字符串</h2><p>曾经我们想要在html里面嵌套js变量的时候:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> tpl = <span class="string">"&lt;div&gt;"</span> + <span class="string">"&lt;span&gt;"</span> + title + <span class="string">"&lt;/span&gt;"</span> + <span class="string">"&lt;/div&gt;"</span>;</div></pre></td></tr></table></figure>
-<p>巨丑，而且写的如果很长的话，读起来特别困难。<br>在ES6中如果想要这样做，会舒服很多：    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let tpl = `</div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">span</span>&gt;</span>$&#123;title&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">`</div></pre></td></tr></table></figure>
-<p>注意中间的那个写法，是${}中间填变量名，这样就行了。很好看，少写了很多代码。<br>我们所有的缩进都会以我们输入的那种形式输出。        </p>
-<p>值得一提的是，我们可以往模版字符串里面再写一个模版字符串。    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">let tpl2 = `</div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">   <span class="tag">&lt;<span class="name">span</span>&gt;</span>$&#123;title + `</div><div class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>$&#123;1234&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    `&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">`</div></pre></td></tr></table></figure>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>ES6让字符串变得更强了！！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1485,7 +1488,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">41</span>
+              <span class="site-state-item-count">42</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
