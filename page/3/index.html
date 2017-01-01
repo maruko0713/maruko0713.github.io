@@ -206,6 +206,112 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/17/laravel4/" itemprop="url">
+                  Laravel笔记4:Laravel中的数据库和Migration
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-17T00:00:00+08:00" content="2016-11-17">
+              2016-11-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Migration是啥"><a href="#Migration是啥" class="headerlink" title="Migration是啥"></a>Migration是啥</h2><p>Migration是数据库的版本控制。    </p>
+<h2 id="Migration命令"><a href="#Migration命令" class="headerlink" title="Migration命令"></a>Migration命令</h2><p>在migrations这个文件夹下面。<br>默认有两个，打开其中的create_users_table文件，里面会有一个对象，对象有up方法和down方法。<br>文件代码:    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateUsersTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::create(<span class="string">'users'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">            $table-&gt;increments(<span class="string">'id'</span>);</div><div class="line">            $table-&gt;string(<span class="string">'name'</span>);</div><div class="line">            $table-&gt;string(<span class="string">'email'</span>)-&gt;unique();</div><div class="line">            $table-&gt;string(<span class="string">'password'</span>);</div><div class="line">            $table-&gt;rememberToken();</div><div class="line">            $table-&gt;timestamps();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::drop(<span class="string">'users'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在命令行里输入:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
+<p>将创建migration文件夹下面的所有表。<br>这实质上是把up方法给执行了。    </p>
+<p>那么啥时候执行down呢？<br>这个命令行:    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate:rollback</div></pre></td></tr></table></figure>
+<h2 id="创建一个新的migration文件"><a href="#创建一个新的migration文件" class="headerlink" title="创建一个新的migration文件"></a>创建一个新的migration文件</h2><p>用这个命令行来创建新的migration文件:   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_表名_table --create=表名</div></pre></td></tr></table></figure>
+<p>其中，”create_表名_table”这个东西是文件名，后面的那个等号后面的表名才是你真正到时候创建出来的表名，不过事实上，它们往往是一致的。    </p>
+<h2 id="数据库中表的字段的设置"><a href="#数据库中表的字段的设置" class="headerlink" title="数据库中表的字段的设置"></a>数据库中表的字段的设置</h2><p>在Schema::create这个方法的第二个参数的函数体里面去写你想要的数据库中的表的格式。<br>举个例子：    </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$table-&gt;increments(<span class="string">'id'</span>);</div><div class="line">$table-&gt;string(<span class="string">'name'</span>);</div><div class="line">$table-&gt;string(<span class="string">'email'</span>)-&gt;unique();</div><div class="line">$table-&gt;timestamps();</div></pre></td></tr></table></figure>
+<p>楼上increments是说这个id是自增的，string就是name的格式是string类型的意思，unique是说这个字段必须是唯一的～～～<br>注意这个timestamps方法，它会在表里面生成created_at字段和updated_at字段，这个字段会在你生成一个元组和更新这个元组的时候自动把创建和更新的时间也存进数据库。  </p>
+<h2 id="数据库表的结构的改变"><a href="#数据库表的结构的改变" class="headerlink" title="数据库表的结构的改变"></a>数据库表的结构的改变</h2><p>这个时候需要请出命令行哦。    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration add_列名字_column_to_表名字 --table=表名字</div></pre></td></tr></table></figure>
+<p>add_intro_column_to_表名字,这依然是个文件名，没错这个命令行还是创建了一个新文件出来。<br>然后在这个文件的up方法里面，写入你想要的改变，比如添加（上面写过了），删除（dropColumn）和重命名（renameColumn）等等等等。    </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>现在明白了，所谓migration,其实就是通过创建版本文件，然后再利用migrate命令行去执行它的up方法或者利用migrate:rollback命令行去执行它的down方法，从而实现对数据库的一个操作。<br>注意，每个版本文件只能被执行一次。每次migrate的时候只能去执行最新的没有被执行过的那些个up方法。    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/15/laravel3/" itemprop="url">
                   Laravel笔记3:Laravel中的Blade模版引擎
                 </a>
@@ -1198,131 +1304,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/02/keng/" itemprop="url">
-                  移动端项目“五一E起游”开发中遇到的坑总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-02T00:00:00+08:00" content="2016-10-02">
-              2016-10-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这次的博客内容来源于我的第一个完整的移动端项目练习<a href="https://github.com/maruko0713/Travel_comment_website" target="_blank" rel="external">游客意见数据统计</a>的开发过程总结，集中纪录了几个把我折腾的够呛的坑。在github上的readme里面虽然已经有一份了，但是还是决定把它写成博客，希望能帮更多的人减少踩坑的经历^<em>^</em></p>
-<h2 id="开发笔记"><a href="#开发笔记" class="headerlink" title="开发笔记"></a>开发笔记</h2><h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><p>先看这段代码:<br>css部分:    </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.mask</span> &#123;</div><div class="line">    <span class="attribute">transition</span>:<span class="number">1s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>js部分</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">addClass(oMask,<span class="string">"pageShow"</span>);</div><div class="line">oMask.style.opacity=<span class="number">1</span>;</div></pre></td></tr></table></figure>
-<p>我设置了mask模块的转换完成时间为1s，js部分中pageShow的作用是把原来的display:none转换成display:block,目的是先把这个模块显示出来，然后再让它完成一个1s之内从opacity为0到opacity为1的转变。<br>然而结果并没有如我所愿，而是很简单粗暴地直接显示出来了，没有淡入的那个过程，查了一下资料，自己现在理解的原因是： </p>
-<blockquote>
-<p>当display在none和block之间转换的时候，需要时间去渲染，这段代码里，在设置了display:block之后立刻设置了opacity:1,这时浏览器还没把模块渲染出来，就读取了opacity＝1的设定，然后在渲染出来那一刻它就是不透明的了，这个转换就体现不出来了。    </p>
-</blockquote>
-<p>因此我们需要给它留出渲染的时间，等渲染结束了，再去设置opacity，这时候transition就是起作用的了:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">addClass(oMask,<span class="string">"pageShow"</span>);</div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    oMask.style.opacity=<span class="number">1</span>;  </div><div class="line">&#125;,<span class="number">14</span>);</div></pre></td></tr></table></figure>
-<p>至于这个时间为啥选14，因为在网上查到各浏览器的最小延迟时间都在10-15微秒之间，我就取了个14，这里主要是想取一个尽可能小的时间延迟，就算是这么小的时间延迟，也已经够浏览器渲染出这个模块了。（亲测）    </p>
-<h3 id="坑-1"><a href="#坑-1" class="headerlink" title="坑"></a>坑</h3><p>chrome的模拟器虽然很方便，但是还是不能完全的信任啊啊啊啊，今天用我的5s（难道是因为我的手机太旧？？？）测试了一下，发现input里面的button类型标签在重置了默认样式之后依然无法还原pc端测试出来的效果，一开始我是这样重置的:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">input</span>,<span class="selector-tag">textarea</span>&#123;</div><div class="line">    <span class="attribute">outline</span>:none;</div><div class="line">    <span class="attribute">border</span>:none;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/79FC9D6F-7566-48BC-85DB-67DAC8B92EFF.png" alt="按钮图片"><br>然后结果呢，反正不长这样，特别丑，为了说明差距很大我用手机截了个屏幕:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/22C3E7C5-59A9-42B4-858B-04F790CE5BA8.png" alt="浏览器默认样式按钮"><br>一脸懵比，这差距大到我想不出来该去重置哪个css属性！<br>论科学上网的重要性，后来我搜出了一个办法，只需一行：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-appearance</span><span class="selector-pseudo">:none</span>;</div></pre></td></tr></table></figure></p>
-<p> 就可以干掉手机safari下独有的这个bug哈哈哈哈。<br> 今晚等室友回来再用她的6测试一下，看一下是不是我手机系统太老的问题.<br> 填坑：不是系统的问题，6里的safari也这个德行，必须-webkit-appearance:none;才行<br> vivo浏览器测试正常(是的我把室友的手机全试了一遍啊哈哈哈)    </p>
-<h3 id="大坑"><a href="#大坑" class="headerlink" title="大坑"></a>大坑</h3><p>大坑就是搞了很久才搞明白而且非常诡异的坑，今天上午我就遇到一个.</p>
-<h4 id="label标签里被隐藏的input会骗人"><a href="#label标签里被隐藏的input会骗人" class="headerlink" title="label标签里被隐藏的input会骗人"></a>label标签里被隐藏的input会骗人</h4><p>这个事情不单独搞出来讲绝对不能解恨，项目里面我在标签选择那一块写了一个事件委托，如果用户戳到span或者label标签那么就去判断input(input我设置了display:none)的checked属性,如果checked属性为真，那么label标签就去掉active状态，反之加上active状态，从而实现一个状态切换的效果。<br>思路看起来好像没问题，但是在我操作的过程中会出现我明明点上了label，但是不变色的现象(active状态是要变色的)，为此，我测试了那一块代码我能测试的几乎所有地方，但是就是改不掉。后来干脆单独写了个demo来检查label标签，它的狐狸尾巴就露出来了: </p>
-<p>html部分:</p>
-<pre><code class="html"><span class="meta">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>
-<span class="tag">&lt;<span class="name">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">title</span>&gt;</span>test<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=200"</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
-<span class="tag">&lt;<span class="name">body</span>&gt;</span>  
-    <span class="tag">&lt;<span class="name">label</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">span</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">span</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">label</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
-</code></pre>
-<p>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">label</span> &#123;</div><div class="line">    <span class="attribute">border</span>:<span class="number">1px</span> solid black;</div><div class="line">    <span class="attribute">padding</span>:<span class="number">10px</span>;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">10px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">input</span> &#123;</div><div class="line">    <span class="attribute">display</span>:none;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>js部分:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> oLabel = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"label"</span>)[<span class="number">0</span>];</div><div class="line">    oLabel.addEventListener(<span class="string">"touchend"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> oInput = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"input"</span>)[<span class="number">0</span>];</div><div class="line">        <span class="built_in">console</span>.log(oInput.checked);</div><div class="line">        <span class="built_in">console</span>.log(event.target);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">"touchend"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event.target.tagName);</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>布局长这样:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/input.png" alt="label标签"><br>注意我戳的位置（是戳不是点，事件名称是touchend,click的话不存在这个bug，因为click你只能点到一个点，而touch却能覆盖一小片区域了）<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/input2.png" alt="加了范围演示的label标签"><br>注意小圆点，这个小圆点（就是你戳手机的时候手指覆盖的范围）一旦有大于一半的面积滞留在label标签外面，神奇的事情就会发生，这时label标签的touch事件不会被触发，但是input的checked值会被改变，别问我为什么，浏览器非这么干，整整一个上午的测试告诉我，就是这样！    </p>
-<h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><p>现在我的办法是，input的checked值既然和touch事件是不同步的，那么我就不用它进行判断。在touch事件被触发的时候，我去判断一个自定义属性，这里我给input新增了一个on属性，on属性只有在touch事件触发的时候才改变，把这个地方改了之后，状态切换就变得很灵敏了。    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1368,7 +1349,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">43</span>
+              <span class="site-state-item-count">44</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1428,7 +1409,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
