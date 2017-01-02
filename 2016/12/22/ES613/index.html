@@ -1,0 +1,535 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ES6," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言类！！！！！千呼万唤始出来！！！！    
+JS中类的形态其实和java里面没什么差啦！嘿嘿。    
+1234567891011121314&apos;use strict&apos;class Chef &amp;#123;  constructor(food) &amp;#123;    this.food = food;  &amp;#125;  cook() &amp;#123;    console.log(this.food);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6学习笔记13:ES6中的类">
+<meta property="og:url" content="http://maruko.com/2016/12/22/ES613/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言类！！！！！千呼万唤始出来！！！！    
+JS中类的形态其实和java里面没什么差啦！嘿嘿。    
+1234567891011121314&apos;use strict&apos;class Chef &amp;#123;  constructor(food) &amp;#123;    this.food = food;  &amp;#125;  cook() &amp;#123;    console.log(this.food);">
+<meta property="og:updated_time" content="2017-01-02T13:00:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ES6学习笔记13:ES6中的类">
+<meta name="twitter:description" content="前言类！！！！！千呼万唤始出来！！！！    
+JS中类的形态其实和java里面没什么差啦！嘿嘿。    
+1234567891011121314&apos;use strict&apos;class Chef &amp;#123;  constructor(food) &amp;#123;    this.food = food;  &amp;#125;  cook() &amp;#123;    console.log(this.food);">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> ES6学习笔记13:ES6中的类 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ES6学习笔记13:ES6中的类
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-22T00:00:00+08:00" content="2016-12-22">
+              2016-12-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>类</strong>！！！！！<br>千呼万唤始出来！！！！    </p>
+<h2 id="JS中类的形态"><a href="#JS中类的形态" class="headerlink" title="JS中类的形态"></a>JS中类的形态</h2><p>其实和java里面没什么差啦！嘿嘿。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cook() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"🍅"</span>);</div><div class="line">wanzi.cook();</div></pre></td></tr></table></figure>
+<p>有没有似曾相识！！有没有似曾相识！！<br>除了基本的语法不太像，这尼玛简直就是java啊！！    </p>
+<h2 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h2><p>还记得当年学java的时候，最讨厌的就是手写setter和getter,因为属性定义很简单，连写两个方法却很麻烦。。。。。<br>JS中现在也强调getter和setter了哟！    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">    <span class="keyword">this</span>.dish = [];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get menu() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dish;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  set menu(dish) &#123;</div><div class="line">    <span class="keyword">this</span>.dish.push(dish);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cook() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"🍅"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu = <span class="string">"🍹"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu = <span class="string">"🍕"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu);</div></pre></td></tr></table></figure>
+<p>get 属性名，定义我们获取这个属性的时候发生的事情。<br>set 属性名(value)， 定义我们为该属性名赋值的时候发生的事情。    </p>
+<h2 id="静态方法（static-method）"><a href="#静态方法（static-method）" class="headerlink" title="静态方法（static method）"></a>静态方法（static method）</h2><p>静态方法就是不需要实例化就能使用的一个方法。<br>就是可以直接通过类去调用的一个方法～～～<br>来让我们把cook()变成一个静态方法:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">    <span class="keyword">this</span>.dish = [];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get menu() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dish;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  set menu(dish) &#123;</div><div class="line">    <span class="keyword">this</span>.dish.push(dish);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> cook(food) &#123;</div><div class="line">    <span class="built_in">console</span>.log(food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Chef.cook(<span class="string">"🍹"</span>);</div></pre></td></tr></table></figure>
+<p>嘻嘻，会输出果汁噢！    </p>
+<h2 id="继承-extends"><a href="#继承-extends" class="headerlink" title="继承(extends)"></a>继承(extends)</h2><p>一个类可以通过继承去拥有其它类里面的东西^_^。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.birthday = birthday;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  intro() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.name&#125;</span>, <span class="subst">$&#123;this.birthday&#125;</span>`</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">super</span>(name, birthday);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"wanzi"</span>, <span class="string">"1996-07-13"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.intro());</div></pre></td></tr></table></figure>
+<p>如此，我们就完成了一个最基本的继承工作啦！<br>同时，我们还可以通过super.xxx()来调用父类里面的方法^_^。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.birthday = birthday;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  intro() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.name&#125;</span>, <span class="subst">$&#123;this.birthday&#125;</span>`</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  world() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"world"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">super</span>(name, birthday);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  hello() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.world();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"wanzi"</span>, <span class="string">"1996-07-13"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.hello());</div></pre></td></tr></table></figure>
+<p>最后会输出”world”这个单词噢！！    </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>JS终于也是有类的语言啦～！<br>撒花～～～～    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/21/ES612/" rel="next" title="ES6学习笔记12:迭代器和生成器">
+                <i class="fa fa-chevron-left"></i> ES6学习笔记12:迭代器和生成器
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
+ 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS中类的形态"><span class="nav-number">2.</span> <span class="nav-text">JS中类的形态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#get和set"><span class="nav-number">3.</span> <span class="nav-text">get和set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态方法（static-method）"><span class="nav-number">4.</span> <span class="nav-text">静态方法（static method）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承-extends"><span class="nav-number">5.</span> <span class="nav-text">继承(extends)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">6.</span> <span class="nav-text">结语</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

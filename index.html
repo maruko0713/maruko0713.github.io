@@ -57,15 +57,18 @@
 
 
 
-<meta name="description" content="大三信息汪 喜欢写代码">
+<meta name="description" content="大三信息汪 喜欢写代码 
+ 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Maruko0713的实验室">
 <meta property="og:url" content="http://maruko.com/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="大三信息汪 喜欢写代码">
+<meta property="og:description" content="大三信息汪 喜欢写代码 
+ 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maruko0713的实验室">
-<meta name="twitter:description" content="大三信息汪 喜欢写代码">
+<meta name="twitter:description" content="大三信息汪 喜欢写代码 
+ 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
 
 
 
@@ -184,6 +187,110 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/22/ES613/" itemprop="url">
+                  ES6学习笔记13:ES6中的类
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-22T00:00:00+08:00" content="2016-12-22">
+              2016-12-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>类</strong>！！！！！<br>千呼万唤始出来！！！！    </p>
+<h2 id="JS中类的形态"><a href="#JS中类的形态" class="headerlink" title="JS中类的形态"></a>JS中类的形态</h2><p>其实和java里面没什么差啦！嘿嘿。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cook() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"🍅"</span>);</div><div class="line">wanzi.cook();</div></pre></td></tr></table></figure>
+<p>有没有似曾相识！！有没有似曾相识！！<br>除了基本的语法不太像，这尼玛简直就是java啊！！    </p>
+<h2 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h2><p>还记得当年学java的时候，最讨厌的就是手写setter和getter,因为属性定义很简单，连写两个方法却很麻烦。。。。。<br>JS中现在也强调getter和setter了哟！    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">    <span class="keyword">this</span>.dish = [];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get menu() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dish;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  set menu(dish) &#123;</div><div class="line">    <span class="keyword">this</span>.dish.push(dish);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cook() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"🍅"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu = <span class="string">"🍹"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu = <span class="string">"🍕"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu);</div></pre></td></tr></table></figure>
+<p>get 属性名，定义我们获取这个属性的时候发生的事情。<br>set 属性名(value)， 定义我们为该属性名赋值的时候发生的事情。    </p>
+<h2 id="静态方法（static-method）"><a href="#静态方法（static-method）" class="headerlink" title="静态方法（static method）"></a>静态方法（static method）</h2><p>静态方法就是不需要实例化就能使用的一个方法。<br>就是可以直接通过类去调用的一个方法～～～<br>来让我们把cook()变成一个静态方法:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">    <span class="keyword">this</span>.dish = [];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get menu() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dish;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  set menu(dish) &#123;</div><div class="line">    <span class="keyword">this</span>.dish.push(dish);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> cook(food) &#123;</div><div class="line">    <span class="built_in">console</span>.log(food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Chef.cook(<span class="string">"🍹"</span>);</div></pre></td></tr></table></figure>
+<p>嘻嘻，会输出果汁噢！    </p>
+<h2 id="继承-extends"><a href="#继承-extends" class="headerlink" title="继承(extends)"></a>继承(extends)</h2><p>一个类可以通过继承去拥有其它类里面的东西^_^。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.birthday = birthday;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  intro() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.name&#125;</span>, <span class="subst">$&#123;this.birthday&#125;</span>`</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">super</span>(name, birthday);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"wanzi"</span>, <span class="string">"1996-07-13"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.intro());</div></pre></td></tr></table></figure>
+<p>如此，我们就完成了一个最基本的继承工作啦！<br>同时，我们还可以通过super.xxx()来调用父类里面的方法^_^。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.birthday = birthday;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  intro() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.name&#125;</span>, <span class="subst">$&#123;this.birthday&#125;</span>`</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  world() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"world"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">super</span>(name, birthday);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  hello() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.world();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"wanzi"</span>, <span class="string">"1996-07-13"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.hello());</div></pre></td></tr></table></figure>
+<p>最后会输出”world”这个单词噢！！    </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>JS终于也是有类的语言啦～！<br>撒花～～～～    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -1348,113 +1455,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/12/ES608/" itemprop="url">
-                  ES6学习笔记8:新的数据结构Set
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-12T00:00:00+08:00" content="2016-12-12">
-              2016-12-12
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一篇应该会是最短的一篇，也是最轻松的一篇了，也算是对这个系列文章做一个小的补充和调剂，讲一个其它语言里面基本都有的数据结构，叫做Set。<br>现在js里面也有啦！    </p>
-<h2 id="Set基本概念"><a href="#Set基本概念" class="headerlink" title="Set基本概念"></a>Set基本概念</h2><p>在java，python这样的后端语言里面，我们都可以见到Set的身影。<br>所谓Set，就是对一组数据去重，然后无序存放。    </p>
-<h2 id="Set小🌰"><a href="#Set小🌰" class="headerlink" title="Set小🌰"></a>Set小🌰</h2><p>看代码：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>]);</div><div class="line"><span class="built_in">console</span>.log(s);</div></pre></td></tr></table></figure>
-<p>输出的结果是:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Set</span> &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure>
-<p>这就是Set的特点，它里面的值全都是唯一的。    </p>
-<h2 id="Set的常用api总结"><a href="#Set的常用api总结" class="headerlink" title="Set的常用api总结"></a>Set的常用api总结</h2><p>一锅端！    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.size;</div></pre></td></tr></table></figure>
-<p>size属性相当于其它数据结构里面的length，输出长度。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.add(<span class="number">4</span>)</div></pre></td></tr></table></figure>
-<p>添加操作用add实现。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.delete(<span class="number">2</span>);</div></pre></td></tr></table></figure>
-<p>删除操作用delete实现。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.has(<span class="number">5</span>);</div></pre></td></tr></table></figure>
-<p>返回一个布尔值，判断s中是否有5这个数存在。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.clear();</div></pre></td></tr></table></figure>
-<p>把Set里面的值全部清空。    </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>到现在，ES6系列的学习笔记就告一段落了。<br>其实还有一些关键点没有写，像import export。<br>但是这说到底还是我一个人的学习记录，而不是一个规范的教程。<br>更多的还是根据自己的感觉来对一些点做一下纪录。<br>日后如果有新的知识或者发现，我会及时更新，可能是在原文，也可能是新写，总之，知识在往前走，我也不会停下，加油！    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1495,12 +1495,13 @@
                src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
-          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
+ 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">44</span>
+              <span class="site-state-item-count">45</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
