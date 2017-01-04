@@ -209,6 +209,230 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/25/ES615/" itemprop="url">
+                  ES6学习笔记15:ES6中的模块(module)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-25T00:00:00+08:00" content="2016-12-25">
+              2016-12-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。<br>前段时间用Node写demo的时候，完全离不开modules啊。<br>当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。<br>总之，重要！！</p>
+<h2 id="模块的导出和导入"><a href="#模块的导出和导入" class="headerlink" title="模块的导出和导入"></a>模块的导出和导入</h2><p>先来看如何写一个模块并把它导出！<br>假设我们现在有同一个目录下的两个文件，script1.js和script2.js</p>
+<p>script1.js:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>;</div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> &#123;fruit, dessert&#125;;</div></pre></td></tr></table></figure>
+<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;fruit, dessert&#125; <span class="keyword">from</span> <span class="string">"./script1"</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fruit, dessert);</div></pre></td></tr></table></figure>
+<p>当然，如果想要导入<strong>全部</strong>内容，我们有更简单的写法:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> xxx <span class="keyword">from</span> <span class="string">"./script1"</span>;</div></pre></td></tr></table></figure>
+<p>经过测试，必须有as!必须有as!!    </p>
+<h2 id="重命名导入导出模块中的东西"><a href="#重命名导入导出模块中的东西" class="headerlink" title="重命名导入导出模块中的东西"></a>重命名导入导出模块中的东西</h2><p>我可以这样写script1.js:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>；</div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dinner</span>(<span class="params">fruit, dessert</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`今天晚餐是: <span class="subst">$&#123;fruit&#125;</span>与<span class="subst">$&#123;dessert&#125;</span>`</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> &#123;fruit, dessert, dinner <span class="keyword">as</span> supper&#125;</div></pre></td></tr></table></figure>
+<p>于是script2.js里面必须这样写：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;fruit, dessert, supper&#125; <span class="keyword">from</span> <span class="string">"./script1"</span>;</div></pre></td></tr></table></figure>
+<p>当然我还可以导入的时候再改一次名字:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;fruit, dessert, supper <span class="keyword">as</span> dinner&#125; <span class="keyword">from</span> <span class="string">"./script1"</span>;</div></pre></td></tr></table></figure>
+<p>ok,万事大吉！    </p>
+<h2 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h2><p>我们可以设置一下模块默认要导出的东西：   </p>
+<p>script1.js: </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>；</div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">dinner</span>(<span class="params">fruit, dessert</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`今天晚餐是: <span class="subst">$&#123;fruit&#125;</span>与<span class="subst">$&#123;dessert&#125;</span>`</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者写成另一种格式:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> &#123;dinner <span class="keyword">as</span> <span class="keyword">default</span>&#125;;</div></pre></td></tr></table></figure>
+<p>然后在script2中就可以这样做啦：    </p>
+<p>script2.js:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> xxx <span class="keyword">from</span> <span class="string">"./script1.js"</span>;</div></pre></td></tr></table></figure>
+<p>xxx是你给这个默认导入的东西起的名字。<br>比如:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> chef <span class="keyword">from</span> <span class="string">"./script1.js"</span>;</div></pre></td></tr></table></figure>
+<p>于是chef就和dinner函数是一个东西！   </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>至此，总算差不多把ES6给整了个差不多明白了。<br>好，开始写demo，写demo，写demo！   </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/23/ES614/" itemprop="url">
+                  ES6学习笔记14:撒花！欢迎新数据类型Map~~~!
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-23T00:00:00+08:00" content="2016-12-23">
+              2016-12-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Map!<br>哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。<br>其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！<br>然后说正事！！<br>那个啥！！<br>Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    </p>
+<h2 id="JS中的Map"><a href="#JS中的Map" class="headerlink" title="JS中的Map"></a>JS中的Map</h2><p>其实就还是那回事！    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> food = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line"><span class="keyword">let</span> fruit = &#123;&#125;, cook = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;, dessert = <span class="string">"甜点"</span>;</div><div class="line"></div><div class="line">food.set(fruit, <span class="string">"🍋"</span>);</div><div class="line">food.set(cook, <span class="string">"🍴"</span>);</div><div class="line">food.set(dessert, <span class="string">"🍩"</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(food);</div></pre></td></tr></table></figure>
+<p>如果你在chrome控制台输出，你会看到:   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Map &#123;Object &#123;&#125; =&gt; &quot;🍋&quot;, </div><div class="line">function function =&gt; &quot;🍴&quot;,</div><div class="line">&quot;甜点&quot; =&gt; &quot;🍩&quot;&#125;</div></pre></td></tr></table></figure>
+<p>哈哈哈哈，简直是对象的究极进化版本！对象也能做键了哈哈哈！！  </p>
+<h2 id="Map的api和属性一锅端"><a href="#Map的api和属性一锅端" class="headerlink" title="Map的api和属性一锅端"></a>Map的api和属性一锅端</h2><p>常见api们！！<br>还拿上面的food开刀吧 ！！   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.size</div></pre></td></tr></table></figure>
+<p>和set一个德性，输出长度！    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.get(fruit);</div></pre></td></tr></table></figure>
+<p>根据键名得到键值。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.delete(dessert);</div></pre></td></tr></table></figure>
+<p>根据键名删除键值。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.has(dessert);</div></pre></td></tr></table></figure>
+<p>判断food中是不是有dessert这个键。   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">food.forEach((value, key) =&gt; &#123;</div><div class="line">  <span class="comment">// todo</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>对food中的每个键值对进行操作，value是值， key是键名。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.clear();</div></pre></td></tr></table></figure>
+<p>清空这个Map!    </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>至此，ES6中的两个重大的数据类型都说完啦哈哈哈哈。<br>另一个Set类型在这里 <a href="https://maruko0713.github.io/2016/12/12/ES608/" target="_blank" rel="external">Set类型的学习笔记</a>,嘻嘻。<br>马上就要新年啦。<br>要加油！   </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/22/ES613/" itemprop="url">
                   ES6学习笔记13:ES6中的类
                 </a>
@@ -1120,341 +1344,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/14/jQuery1/" itemprop="url">
-                  jQuery复习1:jQuery的DOM操作
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-14T00:00:00+08:00" content="2016-12-14">
-              2016-12-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>所谓DOM的行为，其实就是api。     </p>
-<h2 id="原生js中的DOM"><a href="#原生js中的DOM" class="headerlink" title="原生js中的DOM"></a>原生js中的DOM</h2><p>DOM操作一般分为三个方法面，即DOM Core（核心），HTML－DOM和CSS－DOM</p>
-<h3 id="DOM-Core"><a href="#DOM-Core" class="headerlink" title="DOM Core"></a>DOM Core</h3><p>DOM Core并不专属于Javascript,任何一种支持DOM的程序设计语言都可以使用它。<br>我们用的比较多的DOM Core主要是getElementById(),getElementsByTagName(),getAttribute()和setAttribute()等方法。    </p>
-<h3 id="HTML-DOM"><a href="#HTML-DOM" class="headerlink" title="HTML-DOM"></a>HTML-DOM</h3><p>用于描述HTML的各种属性。<br>比如：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.src;</div></pre></td></tr></table></figure>
-<h3 id="CSS-DOM"><a href="#CSS-DOM" class="headerlink" title="CSS-DOM"></a>CSS-DOM</h3><p>就是针对CSS的操作。<br>js中CSS-DOM一般是利用style获取和设置各种样式。<br>比如：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.style.color = <span class="string">"red"</span>;</div></pre></td></tr></table></figure>
-<h2 id="jQuery中DOM"><a href="#jQuery中DOM" class="headerlink" title="jQuery中DOM"></a>jQuery中DOM</h2><h3 id="查找元素节点"><a href="#查找元素节点" class="headerlink" title="查找元素节点"></a>查找元素节点</h3><p>查找元素节点：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $dom = $(<span class="string">"选择器"</span>);</div><div class="line"><span class="keyword">var</span> $target = $dom.eq(index);</div></pre></td></tr></table></figure>
-<p>eq方法用于获取数组中的一个元素，注意不能用$dom[index]或者$dom.get(index)来获取，这两者都是用来得到原生DOM对象的。    </p>
-<h3 id="创建元素节点"><a href="#创建元素节点" class="headerlink" title="创建元素节点"></a>创建元素节点</h3><p>这个很简单：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> new_node = $(<span class="string">"&lt;div&gt;我是新的&lt;/div&gt;"</span>);</div></pre></td></tr></table></figure>
-<p>只要像上面那样，往括号里面写入html代码就可以了。    </p>
-<h3 id="插入元素节点"><a href="#插入元素节点" class="headerlink" title="插入元素节点"></a>插入元素节点</h3><p>内部尾部追加：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">target.append(html代码｜jQuery对象| 选择器);</div><div class="line">element.appendTo(选择器 | jQuery对象);</div></pre></td></tr></table></figure>
-<p>第一个是往调用方法的元素内部添加，第二个是调用方法的对象被添加进参数元素的内部。    </p>
-<p>内部前置：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">target.prepend(html代码 | jQuery对象| 选择器);</div><div class="line">element.prependTo(jQuery对象 | 选择器);</div></pre></td></tr></table></figure>
-<p>和楼上的机制一样，只不过是把内部后置变成了内部前置。    </p>
-<p>外部后置:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">target.after(html代码 | jQuery对象 | 选择器);</div><div class="line">element.insertAfter(jQuery对象 | 选择器);</div></pre></td></tr></table></figure>
-<p>把元素插入到指定元素的后面，两者在同一层。比如:    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>美少女<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"p"</span>).after(<span class="string">"&lt;h1&gt;你有毒&lt;/h1&gt;"</span>);</div></pre></td></tr></table></figure>
-<p>楼上两段代码结合，成功得到:    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>美少女<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">h1</span>&gt;</span>你有毒<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>同样的道理，我们有before和insertBefore方法对应。    </p>
-<h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><p>jQuery提供了三种删除节点的方法：    </p>
-<ul>
-<li>remove()</li>
-<li>detach()</li>
-<li>empty()</li>
-</ul>
-<h4 id="remove方法"><a href="#remove方法" class="headerlink" title="remove方法"></a>remove方法</h4><p>remove方法的返回值是所删除的那个节点对应的jQuery对象，因此删除后可以用一个变量承接这个节点，然后可以继续使用这个节点。<br>然而，remove方法的返回值仅仅保留这个节点的内容，而不会保留这个节点绑定的事件。    </p>
-<h4 id="detach方法"><a href="#detach方法" class="headerlink" title="detach方法"></a>detach方法</h4><p>detach的特别之处就在于，它在删除后返回给你的那个jQuery对象，是保留绑定事件的，你再次把这个东西附加到某个元素后，恢复它在DOM树中的存在，它仍能还原删除前的行为。    </p>
-<h4 id="empty方法"><a href="#empty方法" class="headerlink" title="empty方法"></a>empty方法</h4><p>empty方法是有删除的作用，但它其实是清空。<br>它的作用是删除调用方法的对象的所有后代节点，把它变成一个空节点。    </p>
-<h3 id="复制节点"><a href="#复制节点" class="headerlink" title="复制节点"></a>复制节点</h3><p>注意我们前面所有的前置添加也好后置添加也好，我们其实是在干啥？？<br>是在移动节点，我们把元素添加过去了，原来的那个位置就没有这个元素了。<br>有时候我希望的是在保留这个元素的基础上，把它的副本拿出去。<br>这时候复制节点就很有必要了。    </p>
-<h3 id="clone方法："><a href="#clone方法：" class="headerlink" title="clone方法："></a>clone方法：</h3><p>复制的实现通过clone方法：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.clone();</div></pre></td></tr></table></figure>
-<p>注意我们克隆下来的仅仅是一个静态的元素，它没有任何的行为，不监听任何的事件。<br>如果我们需要连行为一起复制，就这样做：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.clone(<span class="literal">true</span>);</div></pre></td></tr></table></figure>
-<p>记得传参数就行。    </p>
-<h3 id="替换节点"><a href="#替换节点" class="headerlink" title="替换节点"></a>替换节点</h3><p>replaceWith和replaceAll方法都可以实现节点的替换。<br>它们的功能一模模一样。<br>不过要注意它们用起来的顺序是相反的：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">element.replaceWith(target);</div><div class="line">target.replaceAll(element);</div></pre></td></tr></table></figure>
-<p>tip!注意节点一旦被替换，它事先被绑定的事件会随着被替换掉的元素一起消失，因此我们需要重新绑定事件。    </p>
-<h3 id="包裹节点"><a href="#包裹节点" class="headerlink" title="包裹节点"></a>包裹节点</h3><p>先来看一段html代码：    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>我想要针对每个li标签进行包裹，裹上一个ul,我可以这样做:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"li"</span>).wrap(<span class="string">"ul"</span>);</div></pre></td></tr></table></figure>
-<p>于是我得到:    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>如果我想要把所有的li包裹在一起:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"li"</span>).wrapAll(<span class="string">"ul"</span>);</div></pre></td></tr></table></figure>
-<p>就会得到:    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>如果我想要只包裹内部的文本:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"li"</span>).wrapInner(<span class="string">"b"</span>);</div></pre></td></tr></table></figure>
-<p>我就可以得到：   </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">b</span>&gt;</span>咩咩是猪<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="jQuery中的DOM属性操作"><a href="#jQuery中的DOM属性操作" class="headerlink" title="jQuery中的DOM属性操作"></a>jQuery中的DOM属性操作</h2><p>在jQuery中，用attr()方法来获取和设置元素属性,removeAttr()方法来删除元素属性。    </p>
-<h3 id="获取元素属性："><a href="#获取元素属性：" class="headerlink" title="获取元素属性："></a>获取元素属性：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $target = element.attr(<span class="string">"属性名"</span>);</div></pre></td></tr></table></figure>
-<p>设置元素属性:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.attr(<span class="string">"属性名"</span>,<span class="string">"属性值"</span>);</div></pre></td></tr></table></figure>
-<p>一口气设置很多个属性值：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.attr(&#123;<span class="string">"属性名"</span>: <span class="string">"属性值"</span>, <span class="string">"属性名"</span>: <span class="string">"属性值"</span>&#125;);</div></pre></td></tr></table></figure>
-<h3 id="删除元素属性"><a href="#删除元素属性" class="headerlink" title="删除元素属性"></a>删除元素属性</h3><p>用removeAttr()实现。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.removeAttr(<span class="string">"属性名"</span>);</div></pre></td></tr></table></figure>
-<h2 id="jQuery中的css操作"><a href="#jQuery中的css操作" class="headerlink" title="jQuery中的css操作"></a>jQuery中的css操作</h2><h3 id="针对class的操作"><a href="#针对class的操作" class="headerlink" title="针对class的操作"></a>针对class的操作</h3><h4 id="添加class"><a href="#添加class" class="headerlink" title="添加class:"></a>添加class:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.addClass(<span class="string">"类名"</span>);</div></pre></td></tr></table></figure>
-<h4 id="删除class"><a href="#删除class" class="headerlink" title="删除class:"></a>删除class:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.removeClass(<span class="string">"类名"</span>);</div></pre></td></tr></table></figure>
-<p>如果没有这个类，也不会报错。如果想要删除全部：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.removeClass();</div></pre></td></tr></table></figure>
-<h4 id="切换class-在有和没有之间切换"><a href="#切换class-在有和没有之间切换" class="headerlink" title="切换class(在有和没有之间切换):"></a>切换class(在有和没有之间切换):</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.toggleClass(<span class="string">"类名"</span>);</div></pre></td></tr></table></figure>
-<h4 id="判断是否含有某个class"><a href="#判断是否含有某个class" class="headerlink" title="判断是否含有某个class"></a>判断是否含有某个class</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.hasClass(<span class="string">"类名"</span>)</div></pre></td></tr></table></figure>
-<h3 id="对CSS-DOM的操作"><a href="#对CSS-DOM的操作" class="headerlink" title="对CSS-DOM的操作"></a>对CSS-DOM的操作</h3><p>获取和修改元素的样式属性</p>
-<h4 id="用css-方法："><a href="#用css-方法：" class="headerlink" title="用css()方法："></a>用css()方法：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">element.css(<span class="string">"样式属性名"</span>);   </div><div class="line">element.css(<span class="string">"样式属性名"</span>, <span class="string">"样式属性值"</span>);</div><div class="line">element.css(&#123;<span class="string">"样式属性名"</span>: <span class="string">"样式属性值"</span>, <span class="string">"样式属性名"</span>: <span class="string">"样式属性值"</span>&#125;);</div></pre></td></tr></table></figure>
-<h4 id="另外高度和宽度可以单独获取："><a href="#另外高度和宽度可以单独获取：" class="headerlink" title="另外高度和宽度可以单独获取："></a>另外高度和宽度可以单独获取：</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">element.height();</div><div class="line">element.width();</div></pre></td></tr></table></figure>
-<p>括号里传入参数可以对height或width进行设置。（下同）。    </p>
-<h4 id="获取元素在当前视窗的相对偏移"><a href="#获取元素在当前视窗的相对偏移" class="headerlink" title="获取元素在当前视窗的相对偏移"></a>获取元素在当前视窗的相对偏移</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> offset = element.offset();</div></pre></td></tr></table></figure>
-<p>它返回的是一个对象，对象里有left(左偏移)和top(顶部偏移)。    </p>
-<h4 id="获取元素的position定位"><a href="#获取元素的position定位" class="headerlink" title="获取元素的position定位"></a>获取元素的position定位</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> position = element.position();</div></pre></td></tr></table></figure>
-<p>返回一个对象，对象里有相对于定位父元素的左偏移和顶部偏移。    </p>
-<h4 id="获取元素滚动的距离"><a href="#获取元素滚动的距离" class="headerlink" title="获取元素滚动的距离"></a>获取元素滚动的距离</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> scrollTop = element.scrollTop();</div><div class="line"><span class="keyword">var</span> scrollLeft = element.scrollLeft();</div></pre></td></tr></table></figure>
-<p>分别用来获取滚动条距离顶端和距离和滚动条距离左侧的距离。    </p>
-<h2 id="设置和获取html-文本和值"><a href="#设置和获取html-文本和值" class="headerlink" title="设置和获取html,文本和值"></a>设置和获取html,文本和值</h2><h3 id="获取html："><a href="#获取html：" class="headerlink" title="获取html："></a>获取html：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> html = element.html();</div></pre></td></tr></table></figure>
-<p>设置只需要往html里面传参：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.html(<span class="string">"html代码"</span>);</div></pre></td></tr></table></figure>
-<h3 id="获取text"><a href="#获取text" class="headerlink" title="获取text:"></a>获取text:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = element.text();</div></pre></td></tr></table></figure>
-<p>设置text也是一样的道理：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.text(<span class="string">"text内容"</span>);</div></pre></td></tr></table></figure>
-<h3 id="获取和修改一个元素的value属性也是一样的道理："><a href="#获取和修改一个元素的value属性也是一样的道理：" class="headerlink" title="获取和修改一个元素的value属性也是一样的道理："></a>获取和修改一个元素的value属性也是一样的道理：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> value = element.val();</div><div class="line">element.val(<span class="string">"value属性值"</span>);</div></pre></td></tr></table></figure>
-<h2 id="遍历DOM节点"><a href="#遍历DOM节点" class="headerlink" title="遍历DOM节点"></a>遍历DOM节点</h2><ul>
-<li>children()方法 用于获取节点的子元素的集合    </li>
-<li>next()方法 用于获取匹配元素后面的紧邻同辈元素</li>
-<li>prev()方法 用于获取匹配元素前面的紧邻同辈元素</li>
-<li>siblings()方法 用于获取匹配元素前后所有的同辈元素</li>
-<li>parent()方法 获取匹配元素的父元素</li>
-<li>parents()方法 获取匹配元素的所有祖先元素</li>
-<li>closest()方法 获取离匹配元素最近的上层元素    </li>
-</ul>
-<p>tip: 在上面的所有方法的括号里，都可以传参数进去，用于进一步筛选元素～～～    </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>累死了累死了哈哈哈哈。<br>在jQuery里面，其实有很多api，是在重复选择器的操作。<br>嘛～～不过这样也好，选择会变多。<br>就是要记熟要记熟要记熟啊！！！     </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/13/jQuery0/" itemprop="url">
-                  jQuery复习0:jQuery选择器一锅端
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-13T00:00:00+08:00" content="2016-12-13">
-              2016-12-13
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>jQuery是我接触的第一个前端库，在学习的过程中，我借助了jQuery文档，《锋利的jQuery》和《jQuery基础教程》这三个学习材料，同时参考一本叫做《精通jQuery》的厚厚的大部头。<br>然而，jQuery知识点比较碎，所以我还是决定写一个系列博客，既是总结，也是加强自己的记忆。    </p>
-<h2 id="jQuery选择器概述"><a href="#jQuery选择器概述" class="headerlink" title="jQuery选择器概述"></a>jQuery选择器概述</h2><p>jQuery选择器就是一个用来查找并且返回指定DOM元素的东西，它是跨浏览器兼容的。<br>它比css选择器厉害多了。    </p>
-<p><strong>前方高能</strong><br>虽然可能会又臭又长但是我觉得这些都有必要过一遍。<br>还是决定默写一下。。。。。。😂      </p>
-<h3 id="jQuery选择器一锅端"><a href="#jQuery选择器一锅端" class="headerlink" title="jQuery选择器一锅端"></a>jQuery选择器一锅端</h3><h2 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#id"</span>);</div><div class="line">$(<span class="string">".class"</span>);</div><div class="line">$(<span class="string">"element"</span>);</div><div class="line">$(<span class="string">"*"</span>);</div><div class="line">$(<span class="string">"xx,xx,xx"</span>);</div></pre></td></tr></table></figure>
-<p>首先id选择器，类选择器和element选择器，通配符选择器，都是直接传入对应的css选择器就好。<br>最后这个“xx”系列，它的意思是，可以同时选择多个元素，比如$(“#id, .class, element”),它可以将你选择的所有元素组成一个数组，然后返回给你。     </p>
-<h2 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"ancestor descendant"</span>);</div><div class="line">$(<span class="string">"parent &gt; child"</span>);</div><div class="line">$(<span class="string">"prev + next"</span>);</div><div class="line">$(<span class="string">"prev ~ sibilings"</span>);</div></pre></td></tr></table></figure>
-<p>其实还是css选择器的知识点，中间是空格的时候表示选中所有的后代子元素，箭头表示选中所有的子代元素，加号表示选中它紧邻的后面的next元素， 波浪线表示选中它所有的后面的元素。    </p>
-<p>其中,ancestor,descendant,parent,child,prev,prev,sibilings本身通通都是基本选择器。    </p>
-<h2 id="过滤选择器"><a href="#过滤选择器" class="headerlink" title="过滤选择器"></a>过滤选择器</h2><h3 id="基本过滤选择器"><a href="#基本过滤选择器" class="headerlink" title="基本过滤选择器"></a>基本过滤选择器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"xxx:first"</span>);</div><div class="line">$(<span class="string">"xxx:last"</span>);</div><div class="line">$(<span class="string">"xxx:not(selector)"</span>);</div><div class="line">$(<span class="string">"xxx:even"</span>);</div><div class="line">$(<span class="string">"xxx:odd"</span>);</div><div class="line">$(<span class="string">"xxx:eq(index)"</span>);</div><div class="line">$(<span class="string">"xxx:gt(index)"</span>);</div><div class="line">$(<span class="string">"xxx:lt(index)"</span>);</div><div class="line">$(<span class="string">":header"</span>);</div><div class="line">$(<span class="string">"xxx:animated"</span>);</div><div class="line">$(<span class="string">":focus"</span>);</div></pre></td></tr></table></figure>
-<p>“xxx”本身也是选择器。啥也不写的时候表示全局。<br>first,last,分别选中第一个和最后一个元素。<br>not(seletor)选择器在已有的选择器中过滤掉匹配到selector的选择器。<br>even和odd选择器在选中的元素中筛选出索引为偶数和奇数的元素，返回数组。<br>eq(index)这个直接在当前数组中返回index所指向的元素。<br>gt,lt分别返回大于和小于里面传入的index的元素集合。<br>header选择器是专门用来选择标题的，也就是h1，h2, h3….这样的。<br>animated就是在当前元素集合中选出正在运动的元素集合。<br>focus,获取页面中当前获取焦点的元素。    </p>
-<h3 id="内容过滤选择器"><a href="#内容过滤选择器" class="headerlink" title="内容过滤选择器"></a>内容过滤选择器</h3><p> 内容过滤过滤的是子元素和文本内容。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"xxx:contains(text)"</span>);</div><div class="line">$(<span class="string">"xxx:empty"</span>);</div><div class="line">$(<span class="string">"xxx:has(selector)"</span>);</div><div class="line">$(<span class="string">"xxx:parent"</span>);</div></pre></td></tr></table></figure>
-<p>其中xxx本身也是选择器，啥也不写的时候表示全局。<br>contains用来选中拥有指定<strong>文本内容</strong>的元素。<br>empty选取不包含任何子元素和文本元素的空元素。<br>parent选取<strong>自己本身拥有子元素</strong>的元素。     </p>
-<h3 id="可见性过滤选择器"><a href="#可见性过滤选择器" class="headerlink" title="可见性过滤选择器"></a>可见性过滤选择器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"xxx:hidden"</span>);</div><div class="line">$(<span class="string">"xxx:visible"</span>);</div></pre></td></tr></table></figure>
-<p>分别选中当前页面所有不可见和可见的元素。<br>其中不可见，是说你设置了type=”hidden”或者display=”none”，它都是不可见的。    </p>
-<h3 id="属性过滤选择器"><a href="#属性过滤选择器" class="headerlink" title="属性过滤选择器"></a>属性过滤选择器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"xxx[属性名]"</span>);</div><div class="line">$(<span class="string">"xxx[属性名＝值]"</span>);</div><div class="line">$(<span class="string">"xxx[属性名!=值]"</span>);</div><div class="line">$(<span class="string">"xxx[属性名^=值]"</span>);</div><div class="line">$(<span class="string">"xxx[属性名$=值]"</span>);</div><div class="line">$(<span class="string">"xxx[属性名*=值]"</span>);</div><div class="line">$(<span class="string">"xxx[属性名|=值]"</span>);</div><div class="line">$(<span class="string">"xxx[属性名~=值]"</span>);</div><div class="line">$(<span class="string">"xxx[属性选择器][属性选择器][....]"</span>);</div></pre></td></tr></table></figure>
-<p>这一块有点正则表达式的意思了。<br>第一个用来选择<strong>拥有</strong>某个属性的元素。<br>xxx[属性名=值]用来选择<strong>属性名等于某个值</strong>的元素。<br>xxx[属性名!=值]用来选择<strong>属性名不等于某个值</strong>的元素。<br>xxx[属性名^=值]用来选择<strong>属性名以指定值开始</strong>的元素。<br>xxx[属性名$=值]用来选择<strong>属性名以指定值结束</strong>的元素。<br>xxx[属性名|=值]用来选择<strong>以指定值为前缀</strong>的元素。<br>这个可能不太好理解，举个例子：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div[title|='en']"</span>)</div></pre></td></tr></table></figure>
-<p>它选中的是形容”en”或者”en-xxxx”这样的元素。    </p>
-<p>xxx[属性名<em>=值]用来选择<strong>属性名对应的值中含有指定值</strong>的元素。<br>xxx[属性名～=值]用来选择<em>*属性名对应的值中用空格风格的值中包含给定值</em></em>的元素。<br>xxx[属性选择器][属性选择器][….]是说并列多个属性选择器从而实现复合筛选的效果。<br>举个🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"div[id][title$='test']"</span>);</div></pre></td></tr></table></figure>
-<p>用以选取既拥有id属性，title属性的值又以test结尾的元素。    </p>
-<h3 id="子元素过滤选择器"><a href="#子元素过滤选择器" class="headerlink" title="子元素过滤选择器"></a>子元素过滤选择器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"xxx:first-child"</span>);</div><div class="line">$(<span class="string">"xxx:last-child"</span>);</div><div class="line">$(<span class="string">"xxx:only-child"</span>);</div></pre></td></tr></table></figure>
-<p>上面三个都比较简单，就是选择<strong>元素自身</strong>是父元素的第一个，最后一个和唯一一个子元素的元素。<br>比如:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"ul li:first-child"</span>);</div></pre></td></tr></table></figure>
-<p>就是说我要选中所有ul下的第一个li元素。    </p>
-<p>还有一个情况多一些的：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"xxx:nth-child(index/even/odd/equation)"</span>);</div></pre></td></tr></table></figure>
-<p>这个分情况来看：    </p>
-<ul>
-<li>nth-child(index),index是数字，表示<strong>把当前元素（即xxx选中的元素）看作是父元素下的指定索引的子元素选出来</strong>   </li>
-<li>nth-child(even)和nth-child(odd)分别选择索引序号为偶数或者奇数的元素   </li>
-<li>nth-child(equation)用来根据<strong>表达式</strong>对元素进行选择，比如这样：nth-child(3n+1)选择符合3n+1这个表达式的数字做索引的元素。    </li>
-</ul>
-<h3 id="表单对象属性过滤选择器"><a href="#表单对象属性过滤选择器" class="headerlink" title="表单对象属性过滤选择器"></a>表单对象属性过滤选择器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"xxx:enabled"</span>);</div><div class="line">$(<span class="string">"xxx:disbled"</span>);</div><div class="line">$(<span class="string">"xxx:checked"</span>);</div><div class="line">$(<span class="string">"xxx:selected"</span>);</div></pre></td></tr></table></figure>
-<p>这个主要是针对表单元素进行选择：    </p>
-<ul>
-<li>enabled在指定范围的元素中选取<strong>可用的元素</strong>    </li>
-<li>disabled在指定范围的元素中选取<strong>不可用的元素</strong></li>
-<li>checked在指定范围中选取所有被选中的元素.主要针对单选框，复选框。（勾选方式） </li>
-<li>selected在指定范围的元素中选取所有被选中的元素。主要针对下拉列表。    </li>
-</ul>
-<h3 id="表单选择器"><a href="#表单选择器" class="headerlink" title="表单选择器"></a>表单选择器</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">":input"</span>);</div><div class="line">$(<span class="string">":text"</span>);</div><div class="line">$(<span class="string">":password"</span>);</div><div class="line">$(<span class="string">":radio"</span>);</div><div class="line">$(<span class="string">":checkbox"</span>);</div><div class="line">$(<span class="string">":submit"</span>);</div><div class="line">$(<span class="string">":image"</span>);</div><div class="line">$(<span class="string">":reset"</span>);</div><div class="line">$(<span class="string">":button"</span>);</div><div class="line">$(<span class="string">":file"</span>);</div></pre></td></tr></table></figure>
-<ul>
-<li>input 选取的是一类元素，包括<code>&lt;input&gt;,&lt;textarea&gt;,&lt;select&gt;和&lt;button&gt;</code>元素</li>
-<li>text 选取的是单行的文本框 即 <code>&lt;input type=&quot;text&quot;&gt;</code></li>
-<li>password 选取的是密码框 即 <code>&lt;input type=&quot;password&quot;&gt;</code></li>
-<li>radio 选取的是单选框 即 <code>&lt;input type=&quot;radio&quot;&gt;</code></li>
-<li>checkbox 选取所有的多选框 <code>&lt;input type=&quot;checkbox&quot;&gt;</code></li>
-<li>submit 选取的是所有的提交按钮 <code>&lt;input type=&quot;submit&quot;&gt;</code></li>
-<li>image 选取的是所有的图像按钮 <code>&lt;input type=&quot;image&quot;&gt;</code></li>
-<li>reset 选取的是所有的重置按钮 <code>&lt;input type=&quot;reset&quot;&gt;</code></li>
-<li>button 选取的是所有的按钮 必须是button标签 input不行</li>
-<li>file 选取所有的type属性为file的input元素 <code>&lt;input type=&quot;file&quot;&gt;</code></li>
-</ul>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>jQuery选择器其实是有一些繁琐的，而且许多细节必须去实践才能解除自己的困惑。<br>（终于写完了，长出一口气）。<br>另外要注意，有时候我们想要把获取到的jQuery对象转换成DOM对象，这时候应该这样做：<br>比如这个元素的id为dom:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> $dom = $(<span class="string">"#dom"</span>);</div><div class="line"><span class="keyword">var</span> dom = $dom.get(<span class="number">0</span>);</div><div class="line"><span class="keyword">var</span> dom_copy = $dom[<span class="number">0</span>]</div></pre></td></tr></table></figure>
-<p>利用get(index)或者直接写成数组获取元素的形式即可。    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1501,7 +1390,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
+              <span class="site-state-item-count">47</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

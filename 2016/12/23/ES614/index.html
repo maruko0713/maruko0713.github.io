@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端框架," />
+  <meta name="keywords" content="ES6," />
 
 
 
@@ -57,19 +57,22 @@
 
 
 
-<meta name="description" content="前言：学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    
-什么是MVCMVC是一种">
+<meta name="description" content="前言Map!哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！然后说正事！！那个啥！！Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    
+JS中的Map其实就还是那回事！    
+12345678910&apos;use">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MVC,MVVM与AngularJS">
-<meta property="og:url" content="http://maruko.com/2016/09/10/mvvm/index.html">
+<meta property="og:title" content="ES6学习笔记14:撒花！欢迎新数据类型Map~~~!">
+<meta property="og:url" content="http://maruko.com/2016/12/23/ES614/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言：学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    
-什么是MVCMVC是一种">
-<meta property="og:updated_time" content="2016-09-11T00:44:08.000Z">
+<meta property="og:description" content="前言Map!哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！然后说正事！！那个啥！！Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    
+JS中的Map其实就还是那回事！    
+12345678910&apos;use">
+<meta property="og:updated_time" content="2017-01-02T13:25:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MVC,MVVM与AngularJS">
-<meta name="twitter:description" content="前言：学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    
-什么是MVCMVC是一种">
+<meta name="twitter:title" content="ES6学习笔记14:撒花！欢迎新数据类型Map~~~!">
+<meta name="twitter:description" content="前言Map!哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！然后说正事！！那个啥！！Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    
+JS中的Map其实就还是那回事！    
+12345678910&apos;use">
 
 
 
@@ -87,7 +90,7 @@
   };
 </script>
 
-  <title> MVC,MVVM与AngularJS | Maruko0713的实验室 </title>
+  <title> ES6学习笔记14:撒花！欢迎新数据类型Map~~~! | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -207,7 +210,7 @@
             
             
               
-                MVC,MVVM与AngularJS
+                ES6学习笔记14:撒花！欢迎新数据类型Map~~~!
               
             
           </h1>
@@ -219,8 +222,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-10T00:00:00+08:00" content="2016-09-10">
-              2016-09-10
+            <time itemprop="dateCreated" datetime="2016-12-23T00:00:00+08:00" content="2016-12-23">
+              2016-12-23
             </time>
           </span>
 
@@ -246,16 +249,26 @@
       
 
       
-        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    </p>
-<h2 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC"></a>什么是MVC</h2><p>MVC是一种软件架构。它是说，可以把软件分成三个部分，视图（view），控制器（controller），<br>模型（model）。这个视图就是说用户界面，控制器就是业务逻辑，模型就是数据保存。它们之间的关系大概是，视图传送指令到控制器，控制器根据情况去改变数据，然后把新的数据反馈给视图层面。<br>视图传送的指令，是由于用户在视图层面的某些操作发出的，其实用户还可以直接跳过视图层，向controller直接传递指令。前者通过DOM事件接收指令，后者直接改变url。    </p>
-<h2 id="什么是MVVM"><a href="#什么是MVVM" class="headerlink" title="什么是MVVM"></a>什么是MVVM</h2><p>MVVM模式中，各部分之间的通信都是双向的。（可以注意到MVC模式中的数据传递都是单向的）。同时视图层不与Model发生接触，一切都通过中间的ViewModel传递(ViewModel简写就是VM)。一个操作的流程大概是这样的：<br>用户通过View层传递指令，View层触发了ViewModel层的变化，然后ViewModel层再去修改Model层，修改之后的Model层又通过ViewModel反馈给了View层。<br>MVVM的特点是，它采用<em>双向绑定</em>，View的变动，会带动ViewModel的变动，反过来，ViewModel的变动，也会带动View的变动，两者是“一根绳上的蚂蚱”，一起变化。    </p>
-<h2 id="AngularJS与MVC-MVVM"><a href="#AngularJS与MVC-MVVM" class="headerlink" title="AngularJS与MVC,MVVM"></a>AngularJS与MVC,MVVM</h2><p>虽然我接触到的许多资料告诉我们AngularJS是一个MVC框架，但是仔细想想，我还是认为<em>AngularJS是一个MVVM框架</em>，原因如下:    </p>
-<ul>
-<li>AngularJS中，数据是双向传递的，View层（视图模版）的变化会引发ViewModel（这里$scope应该充当这个角色）的变化，反过来,ViewModel层的变化也会引发View层的变化.</li>
-<li>View不能直接与Model交互，而是要通过$scope才可以。</li>
-<li>View层和ViewModel层是双向绑定的，两者同步变化<h3 id="AngularJS为什么会被认为是MVC框架"><a href="#AngularJS为什么会被认为是MVC框架" class="headerlink" title="AngularJS为什么会被认为是MVC框架"></a>AngularJS为什么会被认为是MVC框架</h3>其实这么理解也没有错，因为AngularJS中存在一个Controller，但是在我看来，Controller更像是ViewModel层逻辑的一部分。但这个MV后面到底该跟啥，其实没有那么重要，AngularJS的作者希望我们把注意力放在一实现一个成功的，具有好的设计以及遵循“分离关注点”原则的应用程序上，而非专注于概念的争论，因此我们不必在这一点上太过执着。    </li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天这篇文章与其说是想给AngularJS的模式下个定义，不如说是把MVC模式和MVVM模式给整明白了一遍（笑哭）。虽然不必执着于对这个框架模式的死定义，但是这两个模式还是有必要弄清楚的，其实还有一个叫做MVP的模式，MVVM模式有点像是从它里面脱胎的，但没有这两种出镜频率高，因此就着重讲了MVC和MVVM^_^。概念搞清楚了，接下来就开始实战吧！💪</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Map!<br>哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。<br>其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！<br>然后说正事！！<br>那个啥！！<br>Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    </p>
+<h2 id="JS中的Map"><a href="#JS中的Map" class="headerlink" title="JS中的Map"></a>JS中的Map</h2><p>其实就还是那回事！    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> food = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line"><span class="keyword">let</span> fruit = &#123;&#125;, cook = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;, dessert = <span class="string">"甜点"</span>;</div><div class="line"></div><div class="line">food.set(fruit, <span class="string">"🍋"</span>);</div><div class="line">food.set(cook, <span class="string">"🍴"</span>);</div><div class="line">food.set(dessert, <span class="string">"🍩"</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(food);</div></pre></td></tr></table></figure>
+<p>如果你在chrome控制台输出，你会看到:   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Map &#123;Object &#123;&#125; =&gt; &quot;🍋&quot;, </div><div class="line">function function =&gt; &quot;🍴&quot;,</div><div class="line">&quot;甜点&quot; =&gt; &quot;🍩&quot;&#125;</div></pre></td></tr></table></figure>
+<p>哈哈哈哈，简直是对象的究极进化版本！对象也能做键了哈哈哈！！  </p>
+<h2 id="Map的api和属性一锅端"><a href="#Map的api和属性一锅端" class="headerlink" title="Map的api和属性一锅端"></a>Map的api和属性一锅端</h2><p>常见api们！！<br>还拿上面的food开刀吧 ！！   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.size</div></pre></td></tr></table></figure>
+<p>和set一个德性，输出长度！    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.get(fruit);</div></pre></td></tr></table></figure>
+<p>根据键名得到键值。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.delete(dessert);</div></pre></td></tr></table></figure>
+<p>根据键名删除键值。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.has(dessert);</div></pre></td></tr></table></figure>
+<p>判断food中是不是有dessert这个键。   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">food.forEach((value, key) =&gt; &#123;</div><div class="line">  <span class="comment">// todo</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>对food中的每个键值对进行操作，value是值， key是键名。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.clear();</div></pre></td></tr></table></figure>
+<p>清空这个Map!    </p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>至此，ES6中的两个重大的数据类型都说完啦哈哈哈哈。<br>另一个Set类型在这里 <a href="https://maruko0713.github.io/2016/12/12/ES608/" target="_blank" rel="external">Set类型的学习笔记</a>,嘻嘻。<br>马上就要新年啦。<br>要加油！   </p>
 
       
     </div>
@@ -270,7 +283,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端框架/" rel="tag">#前端框架</a>
+            <a href="/tags/ES6/" rel="tag">#ES6</a>
           
         </div>
       
@@ -279,16 +292,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/08/restful/" rel="next" title="对RESTful架构的理解">
-                <i class="fa fa-chevron-left"></i> 对RESTful架构的理解
+              <a href="/2016/12/22/ES613/" rel="next" title="ES6学习笔记13:ES6中的类">
+                <i class="fa fa-chevron-left"></i> ES6学习笔记13:ES6中的类
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/11/responsive/" rel="prev" title="响应式布局核心招数总结">
-                响应式布局核心招数总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/12/25/ES615/" rel="prev" title="ES6学习笔记15:ES6中的模块(module)">
+                ES6学习笔记15:ES6中的模块(module) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -410,7 +423,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是MVC"><span class="nav-number">2.</span> <span class="nav-text">什么是MVC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是MVVM"><span class="nav-number">3.</span> <span class="nav-text">什么是MVVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AngularJS与MVC-MVVM"><span class="nav-number">4.</span> <span class="nav-text">AngularJS与MVC,MVVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#AngularJS为什么会被认为是MVC框架"><span class="nav-number">4.1.</span> <span class="nav-text">AngularJS为什么会被认为是MVC框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS中的Map"><span class="nav-number">2.</span> <span class="nav-text">JS中的Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map的api和属性一锅端"><span class="nav-number">3.</span> <span class="nav-text">Map的api和属性一锅端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结语"><span class="nav-number">4.</span> <span class="nav-text">结语</span></a></li></ol></div>
             
           </div>
         </section>
