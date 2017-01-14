@@ -57,16 +57,16 @@
 
 
 
-<meta name="description" content="前言作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。我想接触过js的小伙伴们一定对作用域和原型这两个概念不陌生。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。不过，一旦真的理解">
+<meta name="description" content="前言作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。（无耻鸡汤入）不过，一旦真的理解了，其实也蛮简单的。所以啃基础的时候，一定要克">
 <meta property="og:type" content="article">
 <meta property="og:title" content="实现一个长长的正确的原型链">
 <meta property="og:url" content="http://maruko.com/2016/09/04/prototype/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。我想接触过js的小伙伴们一定对作用域和原型这两个概念不陌生。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。不过，一旦真的理解">
-<meta property="og:updated_time" content="2016-09-11T00:44:08.000Z">
+<meta property="og:description" content="前言作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。（无耻鸡汤入）不过，一旦真的理解了，其实也蛮简单的。所以啃基础的时候，一定要克">
+<meta property="og:updated_time" content="2017-01-14T14:27:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="实现一个长长的正确的原型链">
-<meta name="twitter:description" content="前言作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。我想接触过js的小伙伴们一定对作用域和原型这两个概念不陌生。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。不过，一旦真的理解">
+<meta name="twitter:description" content="前言作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。（无耻鸡汤入）不过，一旦真的理解了，其实也蛮简单的。所以啃基础的时候，一定要克">
 
 
 
@@ -243,7 +243,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。我想接触过js的小伙伴们一定对作用域和原型这两个概念不陌生。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。不过，一旦真的理解了，其实也蛮简单的。所以啃基础的时候，一定要克服自己的畏难心理！（严肃脸）。<br>好了，上面一段基本上是一段鸡汤，这篇文章主要是记录一下今天发现的一个奇妙的实现长长的原型链的办法。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。（无耻鸡汤入）不过，一旦真的理解了，其实也蛮简单的。所以啃基础的时候，一定要克服自己的畏难心理（严肃脸）。<br>（无耻鸡汤出）。这篇文章主要是记录一下今天发现的一个奇妙的实现长长的原型链的办法。</p>
 <h2 id="js的继承为什么搞得这么麻烦"><a href="#js的继承为什么搞得这么麻烦" class="headerlink" title="js的继承为什么搞得这么麻烦"></a>js的继承为什么搞得这么麻烦</h2><p>学过java的小伙伴一定对java中类的继承特性不陌生，一个类继承另一个类，只需简单的一个extends即可。然而js的麻烦之处就在于它根本没有class的类型，没有class，语言的功能就会被削弱很多，那咋整。不怕，虽然我们没有class这种类型，但我们有class的概念啊！在js中，我们把一个构造函数看作是js的一个类，想要继承的属性和方法，我们写进构造函数的prototype属性上，用构造函数new出来的对象就可以引用prototype中的属性和方法。平时我们写代码，见过最多的肯定是一层的继承，那万一我想继承很多个呢?</p>
 <h2 id="多层继承实现遇到的困难"><a href="#多层继承实现遇到的困难" class="headerlink" title="多层继承实现遇到的困难"></a>多层继承实现遇到的困难</h2><p>一起来看一个单层的原型继承怎么实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = props.name || <span class="string">""</span> ;</div><div class="line">&#125;</div><div class="line">Student.prototype.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"hello!"</span> + <span class="keyword">this</span>.name + <span class="string">"!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>此时我想增加一层GoodStudent,让它继承Student，我们当然可以这么做:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GoodStudent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    Student.call(<span class="keyword">this</span>, props);</div><div class="line">    <span class="keyword">this</span>.study = <span class="string">"good"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -355,7 +355,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">47</span>
+              <span class="site-state-item-count">48</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -1,0 +1,609 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言:这个系列的文章是对Javascript基础知识的复习和巩固，也是对这段时间读过的书的一个交代。文章的内容来源于对《javascript高级程序设计》，《javascript权威指南》两本书的阅读，总结和反思。很好的书，没有白买。    
+Javascript的六种数据类型原始类型
+number
+string
+boolean
+null
+undefined
+
+对象
+object
+
+有的时候，我们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript系统复习：Javascript数据类型">
+<meta property="og:url" content="http://maruko.com/2016/08/10/js1/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言:这个系列的文章是对Javascript基础知识的复习和巩固，也是对这段时间读过的书的一个交代。文章的内容来源于对《javascript高级程序设计》，《javascript权威指南》两本书的阅读，总结和反思。很好的书，没有白买。    
+Javascript的六种数据类型原始类型
+number
+string
+boolean
+null
+undefined
+
+对象
+object
+
+有的时候，我们">
+<meta property="og:updated_time" content="2017-01-14T15:29:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript系统复习：Javascript数据类型">
+<meta name="twitter:description" content="前言:这个系列的文章是对Javascript基础知识的复习和巩固，也是对这段时间读过的书的一个交代。文章的内容来源于对《javascript高级程序设计》，《javascript权威指南》两本书的阅读，总结和反思。很好的书，没有白买。    
+Javascript的六种数据类型原始类型
+number
+string
+boolean
+null
+undefined
+
+对象
+object
+
+有的时候，我们">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Javascript系统复习：Javascript数据类型 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Javascript系统复习：Javascript数据类型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-10T00:00:00+08:00" content="2016-08-10">
+              2016-08-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这个系列的文章是对Javascript基础知识的复习和巩固，也是对这段时间读过的书的一个交代。<br>文章的内容来源于对《javascript高级程序设计》，《javascript权威指南》两本书的阅读，总结和反思。很好的书，没有白买。    </p>
+<h2 id="Javascript的六种数据类型"><a href="#Javascript的六种数据类型" class="headerlink" title="Javascript的六种数据类型"></a>Javascript的六种数据类型</h2><h3 id="原始类型"><a href="#原始类型" class="headerlink" title="原始类型"></a>原始类型</h3><ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>null</li>
+<li>undefined</li>
+</ul>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><ul>
+<li>object</li>
+</ul>
+<p>有的时候，我们把Array也归为一个单独的类型，事实上，它仍然是object的一种体现。    </p>
+<h2 id="弱类型语言"><a href="#弱类型语言" class="headerlink" title="弱类型语言"></a>弱类型语言</h2><p>在js中定义变量的时候，不需要指定类型。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">32</span>;</div><div class="line">num = <span class="string">"this"</span>;</div></pre></td></tr></table></figure>
+<p>上面这样，是没毛病的。<br>因此，js是一个<strong>弱类型</strong>的语言。<br>弱类型虽然在定义的时候省事，但是也因此使我们在进行<strong>隐式转换</strong>的时候要格外留心。    </p>
+<h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><p>当字符串和数字在一个表达式中同时出现时：   </p>
+<h3 id="加减号"><a href="#加减号" class="headerlink" title="加减号"></a>加减号</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="string">"37"</span> + <span class="number">7</span>;</div><div class="line"><span class="keyword">var</span> y = <span class="string">"37"</span> - <span class="number">7</span>;</div></pre></td></tr></table></figure>
+<p>如果中间是加号，那么加号两边就会都被当成字符串处理。<br>如果中间是减号，那么减号两边都会被当成数字来处理。<br>因此x是377,y是30。   </p>
+<h2 id="等号"><a href="#等号" class="headerlink" title="等号"></a>等号</h2><h3 id="严格等于"><a href="#严格等于" class="headerlink" title="严格等于"></a>严格等于</h3><p>严格等于是三个等号。<br>严格等于首先会判断两遍的类型，如果类型不同，那么直接false。<br>如果类型相同，才会再比下去。<br>对于对象，对象之间比较的是引用（其实就是内存地址）。因此对象和对象之间比的是内存地址噢，    </p>
+<h3 id="非严格等于"><a href="#非严格等于" class="headerlink" title="非严格等于"></a>非严格等于</h3><p>非严格等于是两个等号。<br>当两边类型相同时，它的模式和严格等于是一样的。<br>跨类型的时候，隐式转换就登场了。<br>跨类型举一些🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">null</span> == <span class="literal">undefined</span></div></pre></td></tr></table></figure>
+<p>输出true,这个是死的。这两个类型就是这种关系～    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"1"</span> == <span class="number">1</span>;</div></pre></td></tr></table></figure>
+<p>也是true, 当等号两边是字符串和数字的时候，字符串会转换成数字再比较。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span> == <span class="string">"1"</span>;</div></pre></td></tr></table></figure>
+<p>输出true, 当等号两边有一边是布尔值时，不管另一边是什么，布尔值自己先转换成number再说。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hi"</span>) == <span class="string">"hi"</span>;</div><div class="line">object == number | string</div></pre></td></tr></table></figure>
+<p>对象和基本类型做比较的时候，只有对于number和string， 它会尝试把自己转换为基本类型再做比较。<br>其它全都是false。    </p>
+<p>注： NaN类型和谁都不等，连NaN ==（＝） NaN都返回的是false。    </p>
+<h2 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h2><p>包装对象主要是说string类型和String对象,number类型和Number对象，boolean类型和Boolean对象。<br>以String对象为例：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"string"</span>;</div><div class="line"><span class="keyword">var</span> strObj = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"string"</span>);</div><div class="line">str.t = <span class="number">10</span>;</div><div class="line"><span class="built_in">console</span>.log(str.length);</div><div class="line"><span class="built_in">console</span>.log(strObj.length);</div><div class="line"><span class="built_in">console</span>.log(str.t);</div></pre></td></tr></table></figure>
+<p>输出的是6，6，undefined。<br>当我们尝试用访问String对象的方式访问string类型的时候，js解释器会自动new一个String对象给你，这个String对象的值就是string字符串的值，此时这个字符串就像被包装了一层一样，继续参与下面的运算。因此我们输出str.length，也成功了。<br>正因为每次我们这样尝试调用，都会创建新的String对象，所以每次创建的都不一样。str.t=10这个赋值，赋值给了第一次包装起来的String对象，它随即被释放了，紧接着又创建了一个新的String对象，这个String对象可没有t属性，它只有String类型的内置属性，因此t是undefined。    </p>
+<h2 id="类型检测"><a href="#类型检测" class="headerlink" title="类型检测"></a>类型检测</h2><p>在js中，检测类型的方法有很多：<br>－ typeof运算符</p>
+<ul>
+<li>instanceof运算符</li>
+<li>Object.prototype.toString.apply()方法</li>
+<li>constructor</li>
+<li>duck type</li>
+</ul>
+<h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>最常见的类型运算符。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> <span class="number">100</span>;</div><div class="line"><span class="keyword">typeof</span> <span class="literal">true</span>;</div></pre></td></tr></table></figure>
+<p>输出”number”, “boolean”,它输出的是字符串。<br>特殊的是如果这样输入:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> <span class="literal">null</span>;</div></pre></td></tr></table></figure>
+<p>输出的也是object,但是其实null就是null,这个注意一下就行了。    </p>
+<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>这个在对象里面用的比较多。<br>instanceof是基于原型链来进行判断的。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj <span class="keyword">instanceof</span> <span class="built_in">Object</span>;</div></pre></td></tr></table></figure>
+<p>它会判断obj的原型链上是否有Object这个对象。    </p>
+<p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>] <span class="keyword">instanceof</span> <span class="built_in">Array</span> == <span class="literal">true</span>;</div><div class="line"><span class="keyword">new</span> <span class="built_in">Object</span>() <span class="keyword">instanceof</span> <span class="built_in">Array</span> === <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<p>两个都是正确的。<br>任何一个构造函数，都会有一个prototype对象属性。<br>这些属性连接起来，就是一个原型链。   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//to-do</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//to-do</span></div><div class="line">&#125;</div><div class="line">Student.prototype = <span class="keyword">new</span> Person();</div><div class="line">Student.prototype.constructor = Student;</div><div class="line"><span class="keyword">var</span> wanzi = <span class="keyword">new</span> Student(); </div><div class="line">wanzi <span class="keyword">instanceof</span> Student;  <span class="comment">// true</span></div><div class="line"><span class="keyword">var</span> wanzi2  = <span class="keyword">new</span> Person();</div><div class="line">wanzi2 <span class="keyword">instanceof</span> Person; <span class="comment">// true</span></div><div class="line">wanzi2 <span class="keyword">instanceof</span> Student; <span class="comment">// false</span></div><div class="line">wanzi <span class="keyword">instanceof</span> Person; <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>上面这种情况，就是由原型链造就的。<br>原型链这个得再写个文章了，不急。<br>上面创建了一个wanzi对象，wanzi为什么student和person都是true？<br>首先wanzi有个prototype，它指向的是Student。<br>wanzi instanceof Person这句执行的时候，在第一次查找__proto__(即原型链中的第一个原型对象)属性的时候，没有找到自己想要的Person对象，它就继续向原型链上面查找。wanzi._proto_返回的是Student，它继续查找Student.__proto__,此时找到了Person,于是就断定返回为true了。    </p>
+<h3 id="Object-prototype-toString的方法们"><a href="#Object-prototype-toString的方法们" class="headerlink" title="Object.prototype.toString的方法们"></a>Object.prototype.toString的方法们</h3><p>直接看🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.prototype.toString.apply([]) === <span class="string">"[object]"</span>;</div><div class="line"><span class="built_in">Object</span>.prototype.toString.apply(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;) === <span class="string">"[object Function]"</span>;</div><div class="line"><span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">null</span>) === <span class="string">"[Object Null]"</span>;</div><div class="line"><span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">undefined</span>) === <span class="string">"[Object Undefined]"</span>;</div></pre></td></tr></table></figure>
+<p>我都这么写了，这些等式肯定是都成立的。    </p>
+<h3 id="construtor"><a href="#construtor" class="headerlink" title="construtor"></a>construtor</h3><p>任何一个对象都有一个constructor属性，指向它的构造函数。<br>因为它很容易被改写，所以不靠谱。     </p>
+<h3 id="duck-type"><a href="#duck-type" class="headerlink" title="duck type"></a>duck type</h3><p>duck type 是说通过一些特征来判断数据的类型。    </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最常见的还是下面两个:    </p>
+<ul>
+<li>typeof 适合基本类型和function的检测，碰到null就狗带</li>
+<li>instanceof 主要用来处理对象</li>
+</ul>
+<p>欧了！数据类型get！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/22/hello/" rel="prev" title="About Me">
+                About Me <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
+ 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">48</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript的六种数据类型"><span class="nav-number">2.</span> <span class="nav-text">Javascript的六种数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始类型"><span class="nav-number">2.1.</span> <span class="nav-text">原始类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象"><span class="nav-number">2.2.</span> <span class="nav-text">对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弱类型语言"><span class="nav-number">3.</span> <span class="nav-text">弱类型语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式转换"><span class="nav-number">4.</span> <span class="nav-text">隐式转换</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加减号"><span class="nav-number">4.1.</span> <span class="nav-text">加减号</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#等号"><span class="nav-number">5.</span> <span class="nav-text">等号</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#严格等于"><span class="nav-number">5.1.</span> <span class="nav-text">严格等于</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非严格等于"><span class="nav-number">5.2.</span> <span class="nav-text">非严格等于</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装对象"><span class="nav-number">6.</span> <span class="nav-text">包装对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类型检测"><span class="nav-number">7.</span> <span class="nav-text">类型检测</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof"><span class="nav-number">7.1.</span> <span class="nav-text">typeof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceof"><span class="nav-number">7.2.</span> <span class="nav-text">instanceof</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-prototype-toString的方法们"><span class="nav-number">7.3.</span> <span class="nav-text">Object.prototype.toString的方法们</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#construtor"><span class="nav-number">7.4.</span> <span class="nav-text">construtor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#duck-type"><span class="nav-number">7.5.</span> <span class="nav-text">duck type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
