@@ -935,6 +935,192 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/14/js3/" itemprop="url">
+                  Javascript系统复习：Javascript语句和严格模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-14T00:00:00+08:00" content="2016-08-14">
+              2016-08-14
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇博客的两大块，分别是语句和严格模式。<br>Javascript程序由<strong><em>语句</em></strong>组成，语句遵守特定的语法规则。<br>例如: if语句， while语句， with语句等。<br>详细说的话，语句可以分为非常多的种类，这里拣几个重要的来说一下。    </p>
+<p><strong><em>严格模式</em></strong>是一种特殊的执行模式，它修复了部分语言上的不足，提供更强的错误检查，增强安全性。    </p>
+<h2 id="块-block"><a href="#块-block" class="headerlink" title="块 block"></a>块 block</h2><p>块语句常用于组合0～多个语句。<br>块语句用一对花括号定义。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">语法：    </div><div class="line">&#123;</div><div class="line">    语句<span class="number">1</span>；</div><div class="line">    语句<span class="number">2</span>；</div><div class="line">    ...</div><div class="line">    语句n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一般和if或者while这样的结合起来使用。<br>关于这个花括号的用途，我们要结合语境来看:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;a:<span class="number">1</span>, b:<span class="number">2</span>&#125;;</div><div class="line"><span class="keyword">var</span> o = &#123;a:<span class="number">1</span>, b:<span class="number">2</span>&#125;;</div></pre></td></tr></table></figure>
+<p>楼上 第一句会报错，因为当花括号单独出现在句首的时候，就被认为是一个块语句的开头，往下读发现一个冒号，解释器就不明白了，因为冒号在此处并不能被理解为一个合法的运算符，于是报错。<br>（第二句没毛病）。    </p>
+<p><strong><em>注意: 没有块级作用域</em></strong><br>(ES6里面是有的)    </p>
+<h2 id="声明语句"><a href="#声明语句" class="headerlink" title="声明语句"></a>声明语句</h2><p>就是声明变量的语句。   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div></pre></td></tr></table></figure>
+<p>这就是一个标准的声明。    </p>
+<p>这里有个小点：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = b = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">foo();</div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// 输出 "undefined"</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b); <span class="comment">// 输出 "number"</span></div></pre></td></tr></table></figure>
+<p>楼上，我们看到a是正常的，b很奇怪，明明是在函数里面定义的，出了这个作用域怎么还有呢。<br>当我们在声明的同时连续赋值的时候，这个赋值的顺序是从右往左进行的，于是先给b赋值1，b前面并没有var,非严格模式下，b被认为是全局变量赋值了，随后被声明的a才被赋值，于是就有了这样的结果。<br>如果想要实现它们全都在自己当前作用域下，这样做：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>;</div></pre></td></tr></table></figure>
+<h2 id="try-catch语句"><a href="#try-catch语句" class="headerlink" title="try-catch语句"></a>try-catch语句</h2><p>try-catch是常见的异常捕获机制。<br>先尝试执行try中的代码，然后如果过程中出了错，那么catch语句就去捕获这个错误。<br>js中的三种try-catch有三种形式：    </p>
+<ul>
+<li>try&amp;catch</li>
+<li>try&amp;finally</li>
+<li>try&amp;catch&amp;finally</li>
+</ul>
+<p>我们需要关注的是三者嵌套时的顺序:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"oops"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">finally</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"finally"</span>);</div><div class="line">    &#125;</div><div class="line">&#125; <span class="keyword">catch</span>(ex) &#123;</div><div class="line">    <span class="built_in">console</span>.error(<span class="string">"outer"</span>, ex.message);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>比如这段代码怎么走呢？<br>输出的结果是:  先”finally”, 后”outer” “opps”。<br>为什么呢？就是说里面的那个错误在被抛出之前，必须先把自己的这个系列的代码执行完，然后才能跳出来。<br>再看一种情况:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"oops"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(ex) &#123;</div><div class="line">        <span class="built_in">console</span>.error(<span class="string">"inner"</span>, ex.message);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">finally</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"finally"</span>);</div><div class="line">    &#125;</div><div class="line">&#125; <span class="keyword">catch</span>(ex) &#123;</div><div class="line">    <span class="built_in">console</span>.error(<span class="string">"outer"</span>, ex.message);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>怎么走？<br>肯定是先”inner” “oops”,然后”finally”啊！<br>“outer”不会再输出了，因为错误已经被内部捕获过了^_^。    </p>
+<h2 id="function-函数"><a href="#function-函数" class="headerlink" title="function 函数"></a>function 函数</h2><p>function语句用来定义函数^_^。<br>看一段代码:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fd</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// do sth</span></div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这玩意儿叫做函数声明。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fe = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// do sth;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这玩意儿叫函数表达式。<br>区别是啥？<br>函数声明会被前置，而函数定义表达式不会。<br>在函数声明前面调用这个函数也没差，但是函数定义表达式不行。<br>这个写到函数的时候再细说。    </p>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="for-in-用来遍历对象的属性。"><a href="#for-in-用来遍历对象的属性。" class="headerlink" title="for in 用来遍历对象的属性。"></a>for in 用来遍历对象的属性。</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p;</div><div class="line"><span class="keyword">var</span> obj = &#123;x:<span class="number">1</span>, y:<span class="number">2</span>&#125;;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(p <span class="keyword">in</span> obj) &#123;</div><div class="line">    <span class="comment">// todo</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>楼上就可以遍历obj的所有属性了。<br>需要注意的几点：    </p>
+<ul>
+<li>顺序是不确定的</li>
+<li>enumerable为false时不会出现（这个是对属性的配置 写到对象的时候再复习一遍）</li>
+<li>for in 对象属性受原型链的影响</li>
+</ul>
+<h3 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h3><p>这个其实没啥好说的，哈哈。    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> val = <span class="number">2</span>;</div><div class="line"><span class="keyword">switch</span>(val) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">2</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">0</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>此处输出的就是2。<br>如果我不写break,它会继续走下去，走下面的default,然后输出2 0。<br>switch如果合写的话：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> val = <span class="number">2</span>;</div><div class="line"><span class="keyword">switch</span>(val) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">    <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">    <span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">123</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">    <span class="keyword">case</span> <span class="number">5</span>::</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">45</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>楼上，几种情况如果合写的话，就是前面几个后面啥都不跟，把要作出的反应写在这一系列情况中的最后一个下面就行了。<br>楼上输出123。   </p>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>还有while啊， do while啊， for啊，啥的，几乎所有的编程教材都讲的， 就不再说了。    </p>
+<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><p>with语句可以修改当前的作用域。   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>(&#123;x:<span class="number">1</span>&#125;) &#123;</div><div class="line">    <span class="built_in">console</span>.log(x);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们看到with后面接个对象的时候，可以直接根据属性名输出。<br>当我们的代码有很多层的时候，我们就可以用with来帮我们省事。<br>比如我们需要处理一个表单:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>(<span class="built_in">document</span>.forms[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="built_in">console</span>.log(name.value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>楼上，是不是少些了不少代码？<br>不过我们还有一个少写代码的方法:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.forms[<span class="number">0</span>];</div><div class="line"><span class="built_in">console</span>.log(form.name.value);</div></pre></td></tr></table></figure>
+<p><strong><em>在js中不建议使用with</em></strong><br>原因如下:    </p>
+<ul>
+<li>让js引擎优化更难</li>
+<li>可读性差</li>
+<li>可以被代替</li>
+<li>严格模式下被禁用</li>
+</ul>
+<p>因此，with这块虽然是做个了解，但是以后还是忘了它吧！    </p>
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>第二个boss登场。<br>如何进入严格模式？<br>很简单:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div></pre></td></tr></table></figure>
+<p>注意，如果我想给一个函数设置严格模式，我这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="meta">    'use strict'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果我想要给整个文件设置严格模式，我这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>从’use strict’往下的部分，就是严格模式执行的范围。   </p>
+<p><strong><em>严格模式的特别之处如下：</em></strong></p>
+<h3 id="不允许使用with"><a href="#不允许使用with" class="headerlink" title="不允许使用with"></a>不允许使用with</h3><p>严格模式下使用了with, 就会报错。    </p>
+<h3 id="不允许未声明变量被赋值"><a href="#不允许未声明变量被赋值" class="headerlink" title="不允许未声明变量被赋值"></a>不允许未声明变量被赋值</h3><p>看这段代码：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    x=<span class="number">1</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">//1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>普通模式下，没毛病，x被当作一个全局变量被声明了。<br>但是严格模式下，直接报错。     </p>
+<h3 id="arguments变为参数的静态副本"><a href="#arguments变为参数的静态副本" class="headerlink" title="arguments变为参数的静态副本"></a>arguments变为参数的静态副本</h3><p>看这段代码：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="number">100</span>;</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">&#125;)(<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<p>如果我这样做的话，普通模式下，参数a就会被修改为100。<br>但是严格模式下，arguments是一个静态副本，和参数变化不同步。<br>因此，这里输出的a仍然是1。    </p>
+<h3 id="delete参数报错"><a href="#delete参数报错" class="headerlink" title="delete参数报错"></a>delete参数报错</h3><p>看这段代码:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">delete</span> a);</div><div class="line">&#125;)(<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<p>一般模式下，如果想要删除一个参数，是会失败的，但是不会报错。<br>但是如果是严格模式下，就会报错。    </p>
+<h3 id="delete不可配置的属性报错"><a href="#delete不可配置的属性报错" class="headerlink" title="delete不可配置的属性报错"></a>delete不可配置的属性报错</h3><p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">    <span class="built_in">Object</span>.defineProperty(obj,</div><div class="line">        <span class="string">"a"</span>,&#123;configurable: <span class="literal">false</span>&#125;);</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">delete</span> obj.a);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一般模式下，会返回false，不会报错。<br>但是严格模式下，会报错。    </p>
+<h3 id="对象字面量重复属性名报错"><a href="#对象字面量重复属性名报错" class="headerlink" title="对象字面量重复属性名报错"></a>对象字面量重复属性名报错</h3><p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> obj = &#123;x : <span class="number">1</span>, x : <span class="number">2</span>&#125;;</div><div class="line">    <span class="built_in">console</span>.log(obj.x);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
+<p>一般模式下，是没毛病的。<br>严格模式报错。   </p>
+<h3 id="禁止八进制字面量"><a href="#禁止八进制字面量" class="headerlink" title="禁止八进制字面量"></a>禁止八进制字面量</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">0123</span>);</div></pre></td></tr></table></figure>
+<p>一般模式下按照八进制输出，严格模式报错。    </p>
+<h3 id="eval-arguments变为关键字，-不能作为变量或者函数名"><a href="#eval-arguments变为关键字，-不能作为变量或者函数名" class="headerlink" title="eval, arguments变为关键字， 不能作为变量或者函数名"></a>eval, arguments变为关键字， 不能作为变量或者函数名</h3><p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">eval</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    &#125;;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">eval</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一般模式没毛病，严格模式报错。    </p>
+<h3 id="eval独立作用域"><a href="#eval独立作用域" class="headerlink" title="eval独立作用域"></a>eval独立作用域</h3><p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">eval</span>(<span class="string">"var evalVal = 2"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> evalVal);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>非严格模式输出 “number”。<br>严格模式下，eval中的代码有一个自己的作用域，此时输出undefined。    </p>
+<p>还有一部分，不展开讲了，但是还是做一下记录:    </p>
+<ul>
+<li>一般函数调用时，this指向null,  而不是全局对象</li>
+<li>若使用apply/call, 传入null或者undefined时， this指向null或者undefined, 而不是全局对象</li>
+<li>试图修改不可写属性（writable=false）时，在不可扩展的对象上添加属性时，全都报错。而不是默默地失败。    </li>
+<li>arguments.caller,arguments.callee被禁用</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章写到这里，我只想说。<br>严格模式好，以后每次都加上一个”use strict”吧！^_^</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/12/js2/" itemprop="url">
                   Javascript系统复习：Javascript表达式和运算符
                 </a>
@@ -1270,7 +1456,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
+              <span class="site-state-item-count">50</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
