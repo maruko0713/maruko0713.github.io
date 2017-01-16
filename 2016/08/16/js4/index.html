@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="life," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -57,16 +57,22 @@
 
 
 
-<meta name="description" content="这里是Maruko0713的技术博客。  Maruko0713是一只大三信息汪，喜欢编程，热爱生活.^_^  认认真真写代码，不懈怠每一天～！">
+<meta name="description" content="前言:对象是js中的一个非常重要的概念。因为在js中，除了基本类型，就是对象。对象中包含一系列属性，这些属性是无序的。每个属性都有一个字符串key和对应的value。    
+对象的keykey的类型，你在赋值的时候，你可以给key起任何的名字。但是随便起名字归随便起名字，名字起完之后，js解释器还是会自动把你起的名字想方设法地转换为字符串，所以最后key的类型还是字符串。    
+对象中的属性的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="http://maruko.com/2016/08/22/hello/index.html">
+<meta property="og:title" content="Javascript系统复习：Javascript对象">
+<meta property="og:url" content="http://maruko.com/2016/08/16/js4/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="这里是Maruko0713的技术博客。  Maruko0713是一只大三信息汪，喜欢编程，热爱生活.^_^  认认真真写代码，不懈怠每一天～！">
-<meta property="og:updated_time" content="2017-01-14T15:37:21.000Z">
+<meta property="og:description" content="前言:对象是js中的一个非常重要的概念。因为在js中，除了基本类型，就是对象。对象中包含一系列属性，这些属性是无序的。每个属性都有一个字符串key和对应的value。    
+对象的keykey的类型，你在赋值的时候，你可以给key起任何的名字。但是随便起名字归随便起名字，名字起完之后，js解释器还是会自动把你起的名字想方设法地转换为字符串，所以最后key的类型还是字符串。    
+对象中的属性的">
+<meta property="og:updated_time" content="2017-01-16T09:03:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="这里是Maruko0713的技术博客。  Maruko0713是一只大三信息汪，喜欢编程，热爱生活.^_^  认认真真写代码，不懈怠每一天～！">
+<meta name="twitter:title" content="Javascript系统复习：Javascript对象">
+<meta name="twitter:description" content="前言:对象是js中的一个非常重要的概念。因为在js中，除了基本类型，就是对象。对象中包含一系列属性，这些属性是无序的。每个属性都有一个字符串key和对应的value。    
+对象的keykey的类型，你在赋值的时候，你可以给key起任何的名字。但是随便起名字归随便起名字，名字起完之后，js解释器还是会自动把你起的名字想方设法地转换为字符串，所以最后key的类型还是字符串。    
+对象中的属性的">
 
 
 
@@ -84,7 +90,7 @@
   };
 </script>
 
-  <title> About Me | Maruko0713的实验室 </title>
+  <title> Javascript系统复习：Javascript对象 | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -204,7 +210,7 @@
             
             
               
-                About Me
+                Javascript系统复习：Javascript对象
               
             
           </h1>
@@ -216,8 +222,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-22T12:39:04+08:00" content="2016-08-22">
-              2016-08-22
+            <time itemprop="dateCreated" datetime="2016-08-16T00:00:00+08:00" content="2016-08-16">
+              2016-08-16
             </time>
           </span>
 
@@ -243,7 +249,21 @@
       
 
       
-        <p>  这里是<a href="https://github.com/maruko0713" target="_blank" rel="external">Maruko0713</a>的技术博客。<br>  Maruko0713是一只大三信息汪，喜欢编程，热爱生活.^_^<br>  认认真真写代码，不懈怠每一天～！</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>对象是js中的一个非常重要的概念。<br>因为在js中，除了基本类型，就是对象。<br>对象中包含一系列属性，这些属性是无序的。<br>每个属性都有一个字符串key和对应的value。    </p>
+<h2 id="对象的key"><a href="#对象的key" class="headerlink" title="对象的key"></a>对象的key</h2><p>key的类型，你在赋值的时候，你可以给key起任何的名字。<br>但是随便起名字归随便起名字，名字起完之后，js解释器还是会自动把你起的名字想方设法地转换为字符串，所以最后<strong><em>key的类型还是字符串</em></strong>。    </p>
+<h2 id="对象中的属性的标签"><a href="#对象中的属性的标签" class="headerlink" title="对象中的属性的标签"></a>对象中的属性的标签</h2><p>每一个属性，它自身都有很多标签，比如:    </p>
+<ul>
+<li>writable</li>
+<li>enumerable</li>
+<li>configurable</li>
+<li>value</li>
+<li>get/set<br>这些东西用于为每一个属性提供它的权限控制，比如是否可写啥的。<br>有点杂，决定单独写篇文章写吧。。。。    </li>
+</ul>
+<h2 id="对象的标签"><a href="#对象的标签" class="headerlink" title="对象的标签"></a>对象的标签</h2><p>除了每个属性都有标签和get／set方法之外，每个对象都有一个原型。  </p>
+<h3 id="对象的prototype标签"><a href="#对象的prototype标签" class="headerlink" title="对象的prototype标签"></a>对象的prototype标签</h3><p>每个对象都有一个prototype属性，设置原型用的。<br>🌰：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">&#125;;</div><div class="line">foo.prototype.z = <span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> foo();</div></pre></td></tr></table></figure>
+<p>此时我们如果访问obj.z,是可以返回3的，因为顺着它的原型链，它找到了z。    </p>
+<h3 id="对象的class标签和extensible标签"><a href="#对象的class标签和extensible标签" class="headerlink" title="对象的class标签和extensible标签"></a>对象的class标签和extensible标签</h3><p>class标签表示对象属于哪个种类。<br>extensible标签表示这个对象是否还允许增加新的属性。    </p>
 
       
     </div>
@@ -258,7 +278,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/life/" rel="tag">#life</a>
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
           
         </div>
       
@@ -267,16 +287,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/16/js4/" rel="next" title="Javascript系统复习：Javascript对象">
-                <i class="fa fa-chevron-left"></i> Javascript系统复习：Javascript对象
+              <a href="/2016/08/14/js3/" rel="next" title="Javascript系统复习：Javascript语句和严格模式">
+                <i class="fa fa-chevron-left"></i> Javascript系统复习：Javascript语句和严格模式
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/24/body_html/" rel="prev" title="body和html到底有多高&&浏览器的背景色问题">
-                body和html到底有多高&&浏览器的背景色问题 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/22/hello/" rel="prev" title="About Me">
+                About Me <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -398,7 +418,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的key"><span class="nav-number">2.</span> <span class="nav-text">对象的key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象中的属性的标签"><span class="nav-number">3.</span> <span class="nav-text">对象中的属性的标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的标签"><span class="nav-number">4.</span> <span class="nav-text">对象的标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的prototype标签"><span class="nav-number">4.1.</span> <span class="nav-text">对象的prototype标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象的class标签和extensible标签"><span class="nav-number">4.2.</span> <span class="nav-text">对象的class标签和extensible标签</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
