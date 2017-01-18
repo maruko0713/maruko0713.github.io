@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ES6," />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -57,34 +57,16 @@
 
 
 
-<meta name="description" content="前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对数组形式做一个记录。   
-变量的解构赋值之基本用法以前如果你想要给几个变量同时赋值，你这样做：    
-123var a = 1;var b = 2;var c = 3;
-简化后:    
-1var a = 1, b = 2, c = 3;
-但是在ES6中，你还可以这样搞:    
-1var [a, b, c] =">
+<meta name="description" content="前言:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6学习笔记2:变量的解构赋值数组篇">
-<meta property="og:url" content="http://maruko.com/2016/12/05/ES602/index.html">
+<meta property="og:title" content="Javascript系统复习：对象标签和对象序列化">
+<meta property="og:url" content="http://maruko.com/2016/08/19/js6/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对数组形式做一个记录。   
-变量的解构赋值之基本用法以前如果你想要给几个变量同时赋值，你这样做：    
-123var a = 1;var b = 2;var c = 3;
-简化后:    
-1var a = 1, b = 2, c = 3;
-但是在ES6中，你还可以这样搞:    
-1var [a, b, c] =">
-<meta property="og:updated_time" content="2016-12-23T05:13:36.000Z">
+<meta property="og:description" content="前言:">
+<meta property="og:updated_time" content="2017-01-18T14:51:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6学习笔记2:变量的解构赋值数组篇">
-<meta name="twitter:description" content="前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对数组形式做一个记录。   
-变量的解构赋值之基本用法以前如果你想要给几个变量同时赋值，你这样做：    
-123var a = 1;var b = 2;var c = 3;
-简化后:    
-1var a = 1, b = 2, c = 3;
-但是在ES6中，你还可以这样搞:    
-1var [a, b, c] =">
+<meta name="twitter:title" content="Javascript系统复习：对象标签和对象序列化">
+<meta name="twitter:description" content="前言:">
 
 
 
@@ -102,7 +84,7 @@
   };
 </script>
 
-  <title> ES6学习笔记2:变量的解构赋值数组篇 | Maruko0713的实验室 </title>
+  <title> Javascript系统复习：对象标签和对象序列化 | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -222,7 +204,7 @@
             
             
               
-                ES6学习笔记2:变量的解构赋值数组篇
+                Javascript系统复习：对象标签和对象序列化
               
             
           </h1>
@@ -234,8 +216,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-05T00:00:00+08:00" content="2016-12-05">
-              2016-12-05
+            <time itemprop="dateCreated" datetime="2016-08-19T00:00:00+08:00" content="2016-08-19">
+              2016-08-19
             </time>
           </span>
 
@@ -261,27 +243,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>变量的解构赋值。<br>一个使多变量赋值变得更加简单的东西。<br>它有很多形式，这篇博客是对数组形式做一个记录。   </p>
-<h2 id="变量的解构赋值之基本用法"><a href="#变量的解构赋值之基本用法" class="headerlink" title="变量的解构赋值之基本用法"></a>变量的解构赋值之基本用法</h2><p>以前如果你想要给几个变量同时赋值，你这样做：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</div><div class="line"><span class="keyword">var</span> c = <span class="number">3</span>;</div></pre></td></tr></table></figure>
-<p>简化后:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span>;</div></pre></td></tr></table></figure>
-<p>但是在ES6中，你还可以这样搞:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div></pre></td></tr></table></figure>
-<p>你还可以随便往里面加括号:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [a, [b, c]] = [<span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>]];</div></pre></td></tr></table></figure>
-<p>这样也没问题。     </p>
-<h2 id="变量的解构赋值之一堆小🌰"><a href="#变量的解构赋值之一堆小🌰" class="headerlink" title="变量的解构赋值之一堆小🌰"></a>变量的解构赋值之一堆小🌰</h2><h3 id="挑着赋值"><a href="#挑着赋值" class="headerlink" title="挑着赋值"></a>挑着赋值</h3><p>如果你只想赋值a,c而此时却只有一个三个元素的数组，你还可以这样:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [a, , c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div></pre></td></tr></table></figure>
-<p>挑着赋值，嘻嘻。  </p>
-<h3 id="多元素赋值"><a href="#多元素赋值" class="headerlink" title="多元素赋值"></a>多元素赋值</h3><p>有时候我们希望把剩下的一堆元素全部赋值给一个变量。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [a, ...c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>, a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"c:"</span>, c);</div></pre></td></tr></table></figure>
-<p>这段程序输出的c是一个数组[2, 3]。<br>c会自动把里面的元素组成一个数组。    </p>
-<h3 id="存在默认值"><a href="#存在默认值" class="headerlink" title="存在默认值"></a>存在默认值</h3><p>有时候我们会见到默认值存在的情况。比如:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> [a, b, c=<span class="string">"default"</span>, d=<span class="string">"default"</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>,b);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"c:"</span>,c);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"d:"</span>,d);</div></pre></td></tr></table></figure>
-<p>输出结果是d:default;<br>虽然等号右边的元素并不够，但是d还是顺利输出了。     </p>
-<h2 id="解构赋值的好处"><a href="#解构赋值的好处" class="headerlink" title="解构赋值的好处"></a>解构赋值的好处</h2><p>很明显，我们的代码变得简单了，用更少的信息量，表达了我们想表达的东西。<br>所以解构赋值大法好呀！^_^</p>
-
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2>
       
     </div>
 
@@ -295,7 +257,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ES6/" rel="tag">#ES6</a>
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
           
         </div>
       
@@ -304,16 +266,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/04/ES01/" rel="next" title="ES6学习笔记1:const命令">
-                <i class="fa fa-chevron-left"></i> ES6学习笔记1:const命令
+              <a href="/2016/08/17/js5/" rel="next" title="Javascript系统复习：get和set方法／属性标签深入">
+                <i class="fa fa-chevron-left"></i> Javascript系统复习：get和set方法／属性标签深入
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/06/ES603/" rel="prev" title="ES6学习笔记3:变量的解构赋值对象篇">
-                ES6学习笔记3:变量的解构赋值对象篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/22/hello/" rel="prev" title="About Me">
+                About Me <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -435,7 +397,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的解构赋值之基本用法"><span class="nav-number">2.</span> <span class="nav-text">变量的解构赋值之基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的解构赋值之一堆小🌰"><span class="nav-number">3.</span> <span class="nav-text">变量的解构赋值之一堆小🌰</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挑着赋值"><span class="nav-number">3.1.</span> <span class="nav-text">挑着赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多元素赋值"><span class="nav-number">3.2.</span> <span class="nav-text">多元素赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存在默认值"><span class="nav-number">3.3.</span> <span class="nav-text">存在默认值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构赋值的好处"><span class="nav-number">4.</span> <span class="nav-text">解构赋值的好处</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li></ol></div>
             
           </div>
         </section>
