@@ -1,0 +1,622 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言:数组！一个出镜率非常高的数据结构～～定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     
+🌰：   
+1var arr = [1, true, null, undefined, &amp;#123;x:1&amp;#125;, [1,2,3]];
+看看，是不是啥都有？^">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript系统复习：数组专栏">
+<meta property="og:url" content="http://maruko.com/2016/08/21/js7/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言:数组！一个出镜率非常高的数据结构～～定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     
+🌰：   
+1var arr = [1, true, null, undefined, &amp;#123;x:1&amp;#125;, [1,2,3]];
+看看，是不是啥都有？^">
+<meta property="og:updated_time" content="2017-01-21T02:09:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript系统复习：数组专栏">
+<meta name="twitter:description" content="前言:数组！一个出镜率非常高的数据结构～～定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     
+🌰：   
+1var arr = [1, true, null, undefined, &amp;#123;x:1&amp;#125;, [1,2,3]];
+看看，是不是啥都有？^">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Javascript系统复习：数组专栏 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Javascript系统复习：数组专栏
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-21T00:00:00+08:00" content="2016-08-21">
+              2016-08-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>数组！一个出镜率非常高的数据结构～～<br>定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     </p>
+<p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="literal">true</span>, <span class="literal">null</span>, <span class="literal">undefined</span>, &#123;x:<span class="number">1</span>&#125;, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]];</div></pre></td></tr></table></figure>
+<p>看看，是不是啥都有？^_^    </p>
+<h2 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h2><p>直接看代码：    </p>
+<h3 id="字面量形式创建数组："><a href="#字面量形式创建数组：" class="headerlink" title="字面量形式创建数组："></a>字面量形式创建数组：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bat = [<span class="string">"ali"</span>, <span class="string">"tecent"</span>, <span class="string">"baidu"</span>];</div><div class="line"><span class="keyword">var</span> students = [&#123;name:<span class="string">"xiaoming"</span>, age:<span class="number">27</span>&#125;];</div></pre></td></tr></table></figure>
+<p>我们可以用逗号来留空：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> commasArr1 = [<span class="number">1</span>, , <span class="number">2</span>]; <span class="comment">// 1, undefined, 2</span></div><div class="line"><span class="keyword">var</span> commasArr2 = [,,]; <span class="comment">// 允许最后有个多余的逗号，它会被忽略</span></div></pre></td></tr></table></figure>
+<p>数组的长度是有限制的，最小的是0，最大的是2^23-1(4294967295)。   </p>
+<h3 id="Array构造函数创建数组："><a href="#Array构造函数创建数组：" class="headerlink" title="Array构造函数创建数组："></a>Array构造函数创建数组：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">var</span> arr100 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">100</span>);</div><div class="line"><span class="keyword">var</span> arrLikesLiteral = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">null</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="string">"hi"</span>);</div></pre></td></tr></table></figure>
+<p>如果你啥都不传，就是一个空数组。<br>如果你传入的仅仅是一个数字，那么它就是这个数组的长度。<br>如果你传入了多个参数，那么它们就成为了数组的内容。    </p>
+<h2 id="数组元素的读写"><a href="#数组元素的读写" class="headerlink" title="数组元素的读写"></a>数组元素的读写</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr[<span class="number">1</span>]; <span class="comment">//2</span></div><div class="line">arr.length; <span class="comment">//5</span></div></pre></td></tr></table></figure>
+<p>楼上我们用索引访问数组元素，用length属性访问它的长度。   </p>
+<h2 id="数组元素的增删"><a href="#数组元素的增删" class="headerlink" title="数组元素的增删"></a>数组元素的增删</h2><p>我们可以动态地给数组赋值来增加它的元素：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr[<span class="number">5</span>] = <span class="number">6</span>;</div><div class="line">arr.length;<span class="comment">// 6</span></div></pre></td></tr></table></figure>
+<p>这样它就多了一个元素，变成了长度为6的数组。    </p>
+<p>我们还可以用push方法在尾部增加元素:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>];</div><div class="line">arr.push(<span class="number">3</span>);</div><div class="line">arr; <span class="comment">// [1,2,3];</span></div></pre></td></tr></table></figure>
+<p>用unshift方法在头部增加元素:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr.unshift(<span class="number">0</span>);</div><div class="line">arr; <span class="comment">//[0,1,2,3,4]</span></div></pre></td></tr></table></figure>
+<p>我们还可以删除数组元素，用delete运算符：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">delete</span> arr[<span class="number">0</span>];</div><div class="line">arr[<span class="number">0</span>]; <span class="comment">//undefined</span></div><div class="line">arr.length; <span class="comment">// 5</span></div></pre></td></tr></table></figure>
+<p>数组长度是不变的，只是把第一个元素变成了undefined而已～～～<br>缩减数组长度，最简单粗暴就是修改length:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</div><div class="line">arr.length -= <span class="number">1</span>;</div><div class="line">arr; <span class="comment">// [1,2,3], 4 is removed</span></div></pre></td></tr></table></figure>
+<p>pop方法删除尾部元素:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</div><div class="line">arr.pop();</div><div class="line">arr; [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div></pre></td></tr></table></figure>
+<p>shift方法删除头部元素:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</div><div class="line">arr.shift();</div><div class="line">arr; <span class="comment">// [2,3,4];</span></div></pre></td></tr></table></figure>
+<h2 id="数组迭代"><a href="#数组迭代" class="headerlink" title="数组迭代"></a>数组迭代</h2><p>到数组方法那一块我们会介绍forEach方法，这里我们主要介绍原始策略:    </p>
+<p>最容易想到的数组迭代方式就是for循环：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>, n = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">for</span>(; i &lt; n; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(arr[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或者for in 循环：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> arr) &#123;</div><div class="line">    <span class="built_in">console</span>.log(arr[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意，如果用for in ，数组也是对象，它也有原型，for in会把原型链上的东西也输出。<br>还有个坑， for in是无序的，所以如果想要有序输出，还是for吧！   </p>
+<h2 id="数组的两种特殊形式"><a href="#数组的两种特殊形式" class="headerlink" title="数组的两种特殊形式"></a>数组的两种特殊形式</h2><h3 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h3><p>比如这样的：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]];</div></pre></td></tr></table></figure>
+<p>数组套数组，里面的数组里面不再套数组，这样的就是二维数组。    </p>
+<h3 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h3><p><strong><em>稀疏数组就是并不含有从0开始的连续索引的数组，一般length属性值比实际元素个数大</em></strong></p>
+<p>举个例子：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="literal">undefined</span>];</div><div class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>);</div><div class="line"><span class="number">0</span> <span class="keyword">in</span> arr1;<span class="comment">// true</span></div><div class="line"><span class="number">0</span> <span class="keyword">in</span> arr2;<span class="comment">// false</span></div><div class="line">arr1.length = <span class="number">100</span>;</div><div class="line">arr1[<span class="number">99</span>] = <span class="number">123</span>;</div><div class="line"><span class="number">99</span> <span class="keyword">in</span> arr1;<span class="comment">// true</span></div><div class="line"><span class="number">98</span> <span class="keyword">in</span> arr1;<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>第一个中，我们的arr1是有元素的，只不过元素的值是undefined。<br>第二个中，虽然创建了一个长度为1的数组，但是没给它赋值，所以它里面0索引是不存在的。   </p>
+<p>稀疏数组在实际的应用中其实不是很常见，我们一般用in来遍历它，来减少开销。    </p>
+<h2 id="Javascript数组方法"><a href="#Javascript数组方法" class="headerlink" title="Javascript数组方法"></a>Javascript数组方法</h2><p>楼上我们是不是调用了很多数组的方法，数组的方法从哪里来？<br>当然是来自原型链啦！<br>数组对象的原型就是Array.prototype~~   </p>
+<p>让我们来一个全家桶吧！  </p>
+<h3 id="join方法-将数组转换为字符串："><a href="#join方法-将数组转换为字符串：" class="headerlink" title="join方法,将数组转换为字符串："></a>join方法,将数组转换为字符串：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.join(); <span class="comment">// "1,2,3"</span></div><div class="line">arr.join(<span class="string">"_"</span>); <span class="comment">// "1_2_3"</span></div></pre></td></tr></table></figure>
+<p>不写参数，默认把数组元素以逗号隔开。    </p>
+<h3 id="reverse方法-将数组逆序"><a href="#reverse方法-将数组逆序" class="headerlink" title="reverse方法  将数组逆序"></a>reverse方法  将数组逆序</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">arr.reverse();</div><div class="line">arr; <span class="comment">//[3,2,1];</span></div></pre></td></tr></table></figure>
+<h3 id="sort方法-排序"><a href="#sort方法-排序" class="headerlink" title="sort方法 排序"></a>sort方法 排序</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">"a"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"b"</span>];</div><div class="line">arr.sort(); <span class="comment">// ["a", "b", "c", "d"]</span></div></pre></td></tr></table></figure>
+<p>sort方法对什么都是按照字符串的排序方法排序的。<br>因此排序数字时：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">arr = [<span class="number">13</span>, <span class="number">24</span>, <span class="number">51</span>, <span class="number">3</span>];</div><div class="line">arr.sort();</div><div class="line">arr; <span class="comment">// [13, 23, 3, 51]</span></div></pre></td></tr></table></figure>
+<p>非常尴尬<br>因此我们可以自定义sort:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> a-b;</div><div class="line">&#125;);</div><div class="line">arr; [<span class="number">3</span>, <span class="number">13</span>, <span class="number">24</span>, <span class="number">51</span>]</div></pre></td></tr></table></figure>
+<p>自定义sort函数，我们在sort中传入我们希望的排序规则，即比较函数。<br>在排序的时候，任两个元素都会被传入比较函数中，如果它的返回值是负数，那么不改变原有的顺序，如果它的返回值是正数，那么交换两个数的顺序～～。    </p>
+<h3 id="concat方法-合并"><a href="#concat方法-合并" class="headerlink" title="concat方法 合并"></a>concat方法 合并</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.concat(<span class="number">4</span>, <span class="number">5</span>); <span class="comment">// [1,2,3,4,5]</span></div><div class="line">arr; <span class="comment">//[1, 2, 3]</span></div></pre></td></tr></table></figure>
+<p>注意concat和楼上那些方法的不同在于concat并不改变数组本身。<br>concat可以直接传入数组，这样传入的数组会被拉平(只会拉平一次)。  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr.concat([<span class="number">10</span>, <span class="number">11</span>], <span class="number">13</span>);</div><div class="line">arr; <span class="comment">// [1, 2, 3, 10, 11, 13]</span></div></pre></td></tr></table></figure>
+<h3 id="slice-方法-返回数组片段"><a href="#slice-方法-返回数组片段" class="headerlink" title="slice 方法 返回数组片段"></a>slice 方法 返回数组片段</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">arr.slice(<span class="number">1</span>, <span class="number">3</span>); <span class="comment">// [2,3]</span></div><div class="line">arr.slice(<span class="number">1</span>); <span class="comment">// [2,3,4,5]</span></div><div class="line">arr.slice(<span class="number">1</span>, <span class="number">-1</span>); <span class="comment">// [2,3,4]</span></div><div class="line">arr.slice(<span class="number">-4</span>, <span class="number">-3</span>); <span class="comment">// [2]</span></div></pre></td></tr></table></figure>
+<p>第一个参数是截取开始的索引，第二个参数的截取结束的后一个索引。<br>也就是左闭右开区间。   如果第二个参数省略，默认输出后面的所有。<br>－1代表最后一个索引，－2代表倒数第二个索引，以此类推。<br>注意，原数组仍然不被修改。 </p>
+<h3 id="splice方法-数组删除和拼接"><a href="#splice方法-数组删除和拼接" class="headerlink" title="splice方法 数组删除和拼接"></a>splice方法 数组删除和拼接</h3><p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">arr.splice(<span class="number">2</span>); <span class="comment">//returns [3,4,5]</span></div><div class="line">arr; <span class="comment">// [1,2] 原数组被修改</span></div><div class="line"></div><div class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.splice(<span class="number">2</span>,<span class="number">2</span>); <span class="comment">// return [3,4] </span></div><div class="line">arr; <span class="comment">// [1,2,5]</span></div><div class="line"></div><div class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">"a"</span>,<span class="string">"b"</span>); <span class="comment">//returns [2]</span></div><div class="line">arr; <span class="comment">// [1,"a","b",3,4,5]</span></div></pre></td></tr></table></figure>
+<p>splice 第一个参数是说你从哪里开始删除，第二个位置是说你要指定删除几个，第三个位置是说你要往删除位置上填补什么东西。<br>后两个都可以省略。<br>第二第三一起省略的时候，就是删除从第一个参数开始包括到最后一个元素全都删除。<br>第三个元素省略的时候，就是删除指定位置指定个数的元素。<br>三个参数全都有，就是说先删除后填补～～    </p>
+<p><strong><em>注意splice方法是修改原数组的</em></strong>   </p>
+<h3 id="forEach方法"><a href="#forEach方法" class="headerlink" title="forEach方法"></a>forEach方法</h3><p>这就是数组迭代那一块我说的forEach方法。   </p>
+<p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">x, index, a</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(x + <span class="string">"|"</span> + index + <span class="string">"|"</span> + (a===arr));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 1|0|true</span></div><div class="line"><span class="comment">// 2|1|true</span></div><div class="line"><span class="comment">// 3|2|true</span></div><div class="line"><span class="comment">// 4|3|true</span></div><div class="line"><span class="comment">// 5|4|true</span></div></pre></td></tr></table></figure>
+<p>forEach中的函数有三个参数，第一个是元素的值，第二个是元素的索引，最后的a是指向数组本身。    </p>
+<h3 id="map方法"><a href="#map方法" class="headerlink" title="map方法"></a>map方法</h3><p>对数组做映射的方法。<br>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x+<span class="number">10</span>;</div><div class="line">&#125;);<span class="comment">// [11,12,13]</span></div><div class="line">arr; <span class="comment">// [1,2,3]</span></div></pre></td></tr></table></figure>
+<p>map会在遍历每一个元素的时候去调用。<br>map的返回值会组成一个新数组，不会修改原来的数组。   </p>
+<h3 id="filter方法-数组过滤"><a href="#filter方法-数组过滤" class="headerlink" title="filter方法 数组过滤"></a>filter方法 数组过滤</h3><p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr= [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>];</div><div class="line">arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x, index</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> index % <span class="number">3</span> === <span class="number">0</span> || x &gt;= <span class="number">8</span>;</div><div class="line">&#125;); <span class="comment">// returns [1, 4, 7, 8, 9, 10]</span></div></pre></td></tr></table></figure>
+<p>filter中传入一个过滤函数，这个过滤函数有两个参数，分别是元素的值和元素的索引。<br>filter的返回值会组成一个新数组，不会修改原来的数组。 </p>
+<h3 id="every和some方法"><a href="#every和some方法" class="headerlink" title="every和some方法"></a>every和some方法</h3><p>这两个方法都是返回布尔值，所以是对数组元素进行判断的方法。<br>every在<strong>**每个数组元素</strong>作为参数传入它的判断函数中都返回true的情况下返回true。<br>some在<strong>**存在一个数组元素</strong>作为参数传入它的判断函数中返回true的情况下返回true。   </p>
+<p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x &lt; <span class="number">10</span>;</div><div class="line">&#125;); <span class="comment">//true</span></div><div class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x &lt; <span class="number">3</span>;</div><div class="line">&#125;); <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x === <span class="number">3</span>;</div><div class="line">&#125;); <span class="comment">// true</span></div><div class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x === <span class="number">100</span>;</div><div class="line">&#125;); <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h3 id="reduce和reduceRight方法"><a href="#reduce和reduceRight方法" class="headerlink" title="reduce和reduceRight方法"></a>reduce和reduceRight方法</h3><p>是对数组元素的两两操作～～<br>reduce🌰：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> sum = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;); <span class="comment">// 6</span></div><div class="line">arr; <span class="comment">// [1,2,3]</span></div></pre></td></tr></table></figure>
+<p>其中x第一次调用的时候是第一个元素，后面调用的时候都是前一次reduce的值。   </p>
+<p>reduceRight和reduce相似，只不过是从右边开始遍历的。  </p>
+<h3 id="indexOf和lastIndexOf"><a href="#indexOf和lastIndexOf" class="headerlink" title="indexOf和lastIndexOf"></a>indexOf和lastIndexOf</h3><p>查找索引的方法。   </p>
+<p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.indexOf(<span class="number">2</span>); <span class="comment">//1</span></div><div class="line">arr.indexOf(<span class="number">99</span>); <span class="comment">//-1</span></div><div class="line">arr.indexOf(<span class="number">1</span>,<span class="number">1</span>); <span class="comment">//4</span></div><div class="line">arr.indexOf(<span class="number">1</span>,<span class="number">-3</span>); <span class="comment">//4</span></div><div class="line">arr.indexOf(<span class="number">2</span>,<span class="number">-1</span>); <span class="comment">//3</span></div><div class="line">arr.lastIndexOf(<span class="number">2</span>,<span class="number">-2</span>); <span class="comment">//3</span></div><div class="line">arr.lastIndexOf(<span class="number">2</span>,<span class="number">-3</span>); <span class="comment">//1</span></div></pre></td></tr></table></figure>
+<p>第一个参数是我们希望找到的那个值。<br>如果只传入第一个参数，就在整个数组范围内查找。<br>注意返回值在元素存在的情况下是非负整数，在元素不存在的情况下是-1。<br>第二个参数是开始查找的元素的索引。比如我们想要从第二个元素开始查找，就把第二个参数设为1.<br>lastIndexOf大同小异，只是说它查找的顺序从右往左，而楼上是从左往右。   </p>
+<h3 id="Array-isArray方法"><a href="#Array-isArray方法" class="headerlink" title="Array.isArray方法"></a>Array.isArray方法</h3><p>这个是用来判断一个东西是不是数组的。<br>判断是否为数组有很多方法:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.isArray([]); <span class="comment">//true</span></div><div class="line">[] <span class="keyword">instanceof</span> <span class="built_in">Array</span>; <span class="comment">//true</span></div><div class="line">(&#123;&#125;).toString.apply([]) === <span class="string">"[object Array]"</span>; <span class="comment">// true</span></div><div class="line">[].constructor === <span class="built_in">Array</span>; <span class="string">"true"</span></div></pre></td></tr></table></figure>
+<h2 id="总结（补充数组和字符串）"><a href="#总结（补充数组和字符串）" class="headerlink" title="总结（补充数组和字符串）"></a>总结（补充数组和字符串）</h2><p>今天复习了数组的概念和方法。<br>其实数组也是对象的一种，只是它自身有一些特殊的机制，是特殊的对象。<br>明显的不同是：   </p>
+<ul>
+<li>数组自动更新length</li>
+<li>按索引访问数组元素的速度比按属性访问对象属性的速度快</li>
+<li>数组对象继承了Array.prototype上的大量数组操作方法</li>
+</ul>
+<p>另外，补充一下，字符串和数组也是很有一些关系的。   </p>
+<p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"hello world"</span>;</div><div class="line">str.charAt(<span class="number">0</span>); <span class="comment">//"h"</span></div><div class="line">str[<span class="number">1</span>]; <span class="comment">// e</span></div><div class="line"></div><div class="line"><span class="built_in">Array</span>.prototype.join.call(str, <span class="string">"_"</span>);</div><div class="line"><span class="comment">// "h_e_l_l_o__w_o_r_l_d"</span></div></pre></td></tr></table></figure>
+<p>字符串是一种类数组，它有很多类似于数组的操作。<br>它不是数组，只是相似～～<br>但是正因为相似，它可以直接使用数组上的一些方法。   </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/19/js6/" rel="next" title="Javascript系统复习：对象标签和对象序列化">
+                <i class="fa fa-chevron-left"></i> Javascript系统复习：对象标签和对象序列化
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/22/hello/" rel="prev" title="About Me">
+                About Me <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
+ 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的创建"><span class="nav-number">2.</span> <span class="nav-text">数组的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#字面量形式创建数组："><span class="nav-number">2.1.</span> <span class="nav-text">字面量形式创建数组：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array构造函数创建数组："><span class="nav-number">2.2.</span> <span class="nav-text">Array构造函数创建数组：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组元素的读写"><span class="nav-number">3.</span> <span class="nav-text">数组元素的读写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组元素的增删"><span class="nav-number">4.</span> <span class="nav-text">数组元素的增删</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组迭代"><span class="nav-number">5.</span> <span class="nav-text">数组迭代</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的两种特殊形式"><span class="nav-number">6.</span> <span class="nav-text">数组的两种特殊形式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二维数组"><span class="nav-number">6.1.</span> <span class="nav-text">二维数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稀疏数组"><span class="nav-number">6.2.</span> <span class="nav-text">稀疏数组</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript数组方法"><span class="nav-number">7.</span> <span class="nav-text">Javascript数组方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#join方法-将数组转换为字符串："><span class="nav-number">7.1.</span> <span class="nav-text">join方法,将数组转换为字符串：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reverse方法-将数组逆序"><span class="nav-number">7.2.</span> <span class="nav-text">reverse方法  将数组逆序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort方法-排序"><span class="nav-number">7.3.</span> <span class="nav-text">sort方法 排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concat方法-合并"><span class="nav-number">7.4.</span> <span class="nav-text">concat方法 合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice-方法-返回数组片段"><span class="nav-number">7.5.</span> <span class="nav-text">slice 方法 返回数组片段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice方法-数组删除和拼接"><span class="nav-number">7.6.</span> <span class="nav-text">splice方法 数组删除和拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach方法"><span class="nav-number">7.7.</span> <span class="nav-text">forEach方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#map方法"><span class="nav-number">7.8.</span> <span class="nav-text">map方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#filter方法-数组过滤"><span class="nav-number">7.9.</span> <span class="nav-text">filter方法 数组过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#every和some方法"><span class="nav-number">7.10.</span> <span class="nav-text">every和some方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reduce和reduceRight方法"><span class="nav-number">7.11.</span> <span class="nav-text">reduce和reduceRight方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf和lastIndexOf"><span class="nav-number">7.12.</span> <span class="nav-text">indexOf和lastIndexOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-isArray方法"><span class="nav-number">7.13.</span> <span class="nav-text">Array.isArray方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结（补充数组和字符串）"><span class="nav-number">8.</span> <span class="nav-text">总结（补充数组和字符串）</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

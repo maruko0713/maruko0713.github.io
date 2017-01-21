@@ -209,6 +209,160 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/16/js4/" itemprop="url">
+                  Javascript系统复习：Javascript对象和原型链
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-16T00:00:00+08:00" content="2016-08-16">
+              2016-08-16
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>对象是js中的一个非常重要的概念。<br>因为在js中，除了基本类型，就是对象。<br>对象中包含一系列属性，这些属性是无序的。<br>每个属性都有一个字符串key和对应的value。    </p>
+<h2 id="对象的key"><a href="#对象的key" class="headerlink" title="对象的key"></a>对象的key</h2><p>key的类型，你在赋值的时候，你可以给key起任何的名字。<br>但是随便起名字归随便起名字，名字起完之后，js解释器还是会自动把你起的名字想方设法地转换为字符串，所以最后<strong><em>key的类型还是字符串</em></strong>。    </p>
+<h2 id="对象中的属性的标签"><a href="#对象中的属性的标签" class="headerlink" title="对象中的属性的标签"></a>对象中的属性的标签</h2><p>每一个属性，它自身都有很多标签，比如:    </p>
+<ul>
+<li>writable</li>
+<li>enumerable</li>
+<li>configurable</li>
+<li>value</li>
+<li>get/set<br>这些东西用于为每一个属性提供它的权限控制，比如是否可写啥的。<br>有点杂，决定单独写篇文章写吧。。。。    </li>
+</ul>
+<h2 id="对象的标签"><a href="#对象的标签" class="headerlink" title="对象的标签"></a>对象的标签</h2><p>除了每个属性都有标签和get／set方法之外，每个对象都有一个原型。  </p>
+<h3 id="对象的prototype标签"><a href="#对象的prototype标签" class="headerlink" title="对象的prototype标签"></a>对象的prototype标签</h3><p>每个对象都有一个prototype属性，设置原型用的。<br>🌰：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">&#125;;</div><div class="line">foo.prototype.z = <span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> foo();</div></pre></td></tr></table></figure>
+<p>此时我们如果访问obj.z,是可以返回3的，因为顺着它的原型链，它找到了z。    </p>
+<h3 id="对象的class标签和extensible标签"><a href="#对象的class标签和extensible标签" class="headerlink" title="对象的class标签和extensible标签"></a>对象的class标签和extensible标签</h3><p>class标签表示对象属于哪个种类。<br>extensible标签表示这个对象是否还允许增加新的属性。   </p>
+<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>创建对象有两种方法:    </p>
+<h3 id="对象字面量"><a href="#对象字面量" class="headerlink" title="对象字面量"></a>对象字面量</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;x: <span class="number">1</span>, y:<span class="number">2</span>&#125;;</div></pre></td></tr></table></figure>
+<h3 id="new-构造函数"><a href="#new-构造函数" class="headerlink" title="new 构造函数"></a>new 构造函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">foo.prototype.z = <span class="number">3</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> foo();</div><div class="line">obj.y = <span class="number">2</span>;</div><div class="line">obj.x = <span class="number">1</span>;</div><div class="line">obj.x;</div><div class="line">obj.y;</div><div class="line">obj.z;</div></pre></td></tr></table></figure>
+<h3 id="Object-create-方法"><a href="#Object-create-方法" class="headerlink" title="Object.create()方法"></a>Object.create()方法</h3><p>看一段代码：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(&#123;x: <span class="number">1</span>&#125;);</div><div class="line">obj.x; <span class="comment">// 1</span></div><div class="line"><span class="keyword">typeof</span> obj.toString <span class="comment">// "function"</span></div><div class="line">obj.hasOwnProperty(<span class="string">"x"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line">obj.toString <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
+<p>往create方法里面传入对象，也可以创建一个新对象。<br>注意这个新对象的原型，就是传入的这个参数。<br>如果我们传入的是一个字面量，那么这个字面量创建的对象原型就是Object，自然可以引出它的Object.toString方法。<br>如果我们传入的是null,我们的对象就没有原型，自然也就调用不出toString方法了。    </p>
+<p>这里我们引出了原型。<br>我们访问x和y的时候，都正常输出，但你访问z也可以正常输出，这是为什么。<br>这就是因为我们沿着原型链向上查找了，所以x其实是foo.prototype对象里面的属性。    </p>
+<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>原型链就是每一个构造函数的prototype，一个挨一个向上查找，所组成的链条。<br>每一个对象的原型链溯源尽头都是Object,Object.prototype为null。    </p>
+<p>还是上面那段代码，我们这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">"z"</span> <span class="keyword">in</span> obj; <span class="comment">//true</span></div><div class="line">obj.hasOwnProperty(<span class="string">"z"</span>); <span class="comment">//false</span></div></pre></td></tr></table></figure>
+<p>就是说虽然你在obj中可以遍历出z这个属性，但是这个属性并不是这个obj对象上的，而是对象的原型链上的。    </p>
+<p>如果我们这时候这么干：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj.z = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<p>这个操作，是为obj对象增加一个z属性，并不是修改prototype的z属性，现在obj就有了一个自己的z属性了。<br>只要你给z赋值，那么obj就拥有了一个自由的属性z，而不再使用原型链里的z。    </p>
+<h2 id="对象的属性操作"><a href="#对象的属性操作" class="headerlink" title="对象的属性操作"></a>对象的属性操作</h2><p>对象的属性我们分这几个方面来看:   </p>
+<ul>
+<li>读写对象属性</li>
+<li>属性异常</li>
+<li>删除属性</li>
+<li>检测属性</li>
+<li>枚举属性</li>
+</ul>
+<h3 id="属性的读写"><a href="#属性的读写" class="headerlink" title="属性的读写"></a>属性的读写</h3><p>很常见，就是这样:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;x: <span class="number">1</span>, y: <span class="number">2</span>&#125;;</div><div class="line">obj.x;</div><div class="line">obj[<span class="string">"y"</span>];</div><div class="line"></div><div class="line">obj[<span class="string">"x"</span>];</div><div class="line">obj.y = <span class="number">4</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意我们在遍历属性的时候经常用for in，for in 的一个缺陷就是它会把原型链上的属性也全部都遍历出来。   </p>
+<h3 id="属性读写的异常"><a href="#属性读写的异常" class="headerlink" title="属性读写的异常"></a>属性读写的异常</h3><p>🌰：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;x: <span class="number">1</span>&#125;;</div><div class="line">obj.y;</div><div class="line"><span class="keyword">var</span> yz = obj.y.z;</div><div class="line">obj.y.z = <span class="number">2</span>;</div></pre></td></tr></table></figure>
+<p>常见的异常就是像这样，尝试获取undefined上面的一个属性，就会报错。     </p>
+<h3 id="属性的删除"><a href="#属性的删除" class="headerlink" title="属性的删除"></a>属性的删除</h3><p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;age: <span class="number">28</span>, title: <span class="string">"fe"</span>&#125;;</div><div class="line"><span class="keyword">delete</span> person.age; <span class="comment">// true</span></div><div class="line"><span class="keyword">delete</span> person[<span class="string">"title"</span>]; <span class="comment">// true</span></div><div class="line">person.age; <span class="comment">// undefined</span></div><div class="line"><span class="keyword">delete</span> person.age; <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p>注意我们重复删除已经不存在的属性,它仍然返回true。<br>只要这个属性能达到一个不存在的状态，那么都是true。   </p>
+<p>有一些属性是不允许被删除的：     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> <span class="built_in">Object</span>.prototype; <span class="comment">//false</span></div></pre></td></tr></table></figure>
+<p>就会false了～～   </p>
+<h3 id="属性的标签"><a href="#属性的标签" class="headerlink" title="属性的标签"></a>属性的标签</h3><p>对于每一个属性，都会有一系列标签，来控制它的权限。<br>简单尝试一下:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> descriptor = <span class="built_in">Object</span>.getOwnPropertyDescriptor(<span class="built_in">Object</span>, <span class="string">"prototype"</span>);</div><div class="line">descriptor.configurable; <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>descriptor承接下了prototype的所有标签，比如我们试图输出它是否可配置，答案就是false。    </p>
+<h3 id="var-定义的变量不能被删除"><a href="#var-定义的变量不能被删除" class="headerlink" title="var 定义的变量不能被删除"></a>var 定义的变量不能被删除</h3><p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> globalVal = <span class="number">1</span>;</div><div class="line"><span class="keyword">delete</span> globalVal;</div></pre></td></tr></table></figure>
+<p>delete是删除不了这样的变量的。<br>我们还是用它删除属性吧。    </p>
+<p>delete删除一个变量，首先就是要看它的声明方式。<br>比如同样是全局变量，我这样:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">delete</span> a; <span class="comment">// false</span></div><div class="line"><span class="built_in">window</span>.a = <span class="number">1</span>;</div><div class="line"><span class="keyword">delete</span> a; <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>delete只认变量形式的声明。    </p>
+<h3 id="属性检测"><a href="#属性检测" class="headerlink" title="属性检测"></a>属性检测</h3><p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> <span class="built_in">Object</span>;</div><div class="line">cat.legs = <span class="number">4</span>;</div><div class="line">cat.name = <span class="string">"kitty"</span>;</div><div class="line"></div><div class="line"><span class="string">"legs"</span> <span class="keyword">in</span> cat;<span class="comment">// true</span></div><div class="line"><span class="string">"abc"</span> <span class="keyword">in</span> cat;<span class="comment">// false</span></div><div class="line"><span class="string">"toString"</span> <span class="keyword">in</span> cat;<span class="comment">// true 继承得到的    </span></div><div class="line">    </div><div class="line">cat.hasOwnProperty(<span class="string">"legs"</span>);<span class="comment">// true</span></div><div class="line">cat.hasOwnProperty(<span class="string">"toString"</span>)<span class="comment">// false</span></div><div class="line"></div><div class="line">cat.propertyIsEnumerable(<span class="string">"legs"</span>);<span class="comment">// true</span></div><div class="line">cat.propertyIsEnumerable(<span class="string">"toString"</span>);<span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p>首先我们用in，我们会发现它自己的属性和方法和原型链中的属性和方法都会被检测出来。<br>检测对象自身的属性我们使用hasOwnProperty。<br>propertyIsEnumerable是用来查看属性是否可以被枚举的。<br>啥叫可枚举？当我们console.log的时候，只会显示对象上的直接属性，这是因为原型链上的大部分属性的Enumerable属性都是false，因此不会显示。    </p>
+<h3 id="定义属性标签"><a href="#定义属性标签" class="headerlink" title="定义属性标签"></a>定义属性标签</h3><p>如何设置属性的标签?<br>用defineProperty()方法。    </p>
+<p>举个例子:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.defineProperty(cat, <span class="string">"price"</span>, &#123;enumerable:<span class="literal">false</span>, value:<span class="number">100</span>&#125;);</div></pre></td></tr></table></figure>
+<p>第一个参数传入对象名，第二个参数传入属性名，最后一个参数传入属性标签的设定。<br>要注意，<strong><em>当我们自己用new Object或者对象字面量创建对象的时候，它默认是属性标签都为true</em></strong>。而我们用defineObject()方法创建一个属性的时候，它的标签如果你不特殊写的话，默认都是false~~~,所以楼上的enumerable有点多此一举啦～～    </p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>没想到写了这么长，只能暂时打住了，不然下次再看会花眼。<br>这篇文章中篇幅比较大的还是属性方面的知识点。<br>下一次会继续复习属性，嘿嘿～～</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/14/js3/" itemprop="url">
                   Javascript系统复习：Javascript语句和严格模式
                 </a>
@@ -730,7 +884,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-count">54</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
