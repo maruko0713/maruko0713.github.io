@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -65,7 +65,7 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
 <meta property="og:site_name" content="Maruko0713的实验室">
 <meta property="og:description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器app reader引发了一些思考。今天把ajax知识点做个整合。    
 Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个概念是2005年提出的，它把静态网页转换成具有交互性能的web应用。">
-<meta property="og:updated_time" content="2016-09-25T05:11:28.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:59:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax全接触：原生js中的ajax和jQuery中的ajax">
 <meta name="twitter:description" content="前言:我之前写过一篇针对jsonp的文章JSONP全接触：JSONP原理，在js与jQuery中的实现,主要是因为一个阅读器app reader引发了一些思考。今天把ajax知识点做个整合。    
@@ -76,7 +76,7 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -248,7 +248,8 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>我之前写过一篇针对jsonp的文章<a href="https://maruko0713.github.io/2016/09/06/jsonp/" target="_blank" rel="external">JSONP全接触：JSONP原理，在js与jQuery中的实现</a>,主要是因为一个阅读器app <a href="https://github.com/maruko0713/Reader" target="_blank" rel="external">reader</a>引发了一些思考。今天把ajax知识点做个整合。    </p>
 <h2 id="Ajax是什么"><a href="#Ajax是什么" class="headerlink" title="Ajax是什么"></a>Ajax是什么</h2><p>Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个概念是2005年提出的，它把静态网页转换成具有交互性能的web应用。  </p>
-<h2 id="Ajax在原生javascript中的实现"><a href="#Ajax在原生javascript中的实现" class="headerlink" title="Ajax在原生javascript中的实现"></a>Ajax在原生javascript中的实现</h2><p>什么都不如直接写代码，让我们用原生js来封装一个简陋版的ajax函数(get方法)：    </p>
+<h2 id="Ajax在原生javascript中的实现"><a href="#Ajax在原生javascript中的实现" class="headerlink" title="Ajax在原生javascript中的实现"></a>Ajax在原生javascript中的实现</h2><a id="more"></a> 
+<p>什么都不如直接写代码，让我们用原生js来封装一个简陋版的ajax函数(get方法)：    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url,success,fail</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> oAjax = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">if</span>(XMLHttpRequest) &#123;</div><div class="line">        oAjax = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125;   <span class="keyword">else</span> &#123;</div><div class="line">        oAjax = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>)</div><div class="line">    &#125;</div><div class="line">    oAjax.open(<span class="string">"GET"</span>,url,<span class="literal">true</span>);</div><div class="line">    oAjax.send();</div><div class="line">    oAjax.onstatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(oAjax.readyState == <span class="number">4</span>) &#123;</div><div class="line">            <span class="keyword">if</span>(oAjax.status == <span class="number">200</span>) &#123;</div><div class="line">                success(oAjax.responseText);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span>(fail)&#123;</div><div class="line">                    fail();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>好的,这是我们调用ajax(url地址，请求类型，成功回调，失败回调)就可以搞定一个ajax请求啦！<br>下面，让我们仔细研究一下原生ajax api中的猫腻:     </p>
 <h3 id="ajax对象构造函数"><a href="#ajax对象构造函数" class="headerlink" title="ajax对象构造函数:"></a>ajax对象构造函数:</h3><p>在原生js中，我们一般采用XMLHttpRequest对象来构建一个ajax对象，但是低版本ie中没有这个对象，因此我们在else中指定了另一个对象ActiveXObject来构造ajax对象，注意里面需要传入参数，写出来就是这样: new ActiveXObject(“Microsoft.XMLHTTP”).      </p>
@@ -382,12 +383,12 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -397,7 +398,7 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -472,7 +473,7 @@ Ajax是什么Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

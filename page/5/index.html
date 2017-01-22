@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="maruko" />
 
 
 
@@ -57,25 +57,22 @@
 
 
 
-<meta name="description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="description" content="大三信息汪 喜欢写代码">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Maruko0713的实验室">
 <meta property="og:url" content="http://maruko.com/page/5/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta property="og:description" content="大三信息汪 喜欢写代码">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maruko0713的实验室">
-<meta name="twitter:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="twitter:description" content="大三信息汪 喜欢写代码">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -209,6 +206,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/08/restful/" itemprop="url">
+                  对RESTful架构的理解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-08T00:00:00+08:00" content="2016-09-08">
+              2016-09-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>阅读《AngularJS高级程序设计》这本书的第三章，作者对一些概念也是解释的很随意，直接来了一句“我觉得传递json就实现了RESTful”就把我们打发了。实在忍不了，上网搜了一大堆解释，都扯的云里雾里的，现在差不多有点头绪了，记录一下，防止自己以后再蒙圈。    </p>
+<h2 id="一句话概括RESTful"><a href="#一句话概括RESTful" class="headerlink" title="一句话概括RESTful"></a>一句话概括RESTful</h2><p>URL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。    </p>
+<h2 id="为什么会有RESTful"><a href="#为什么会有RESTful" class="headerlink" title="为什么会有RESTful"></a>为什么会有RESTful</h2><p>上面那句绝不是耍流氓，仔细想想RESTful难道不就是这样的吗？？？？<br>要知道RESTful的特性和意义，就必须了解RESTful之前的那个时代。在”古代”网页是前端后端融在一起的，比如之前的PHP，JSP等。近年来移动互联网的发展，各种类型的客户端层出不穷，RESTful可以通过一套统一的接口为 Web，iOS和Android提供服务。另外对于广大平台来说，比如Facebook platform，微博开放平台，微信公共平台等，它们不需要有显式的前端，只需要一套提供服务的接口，于是RESTful更是它们最好的选择。在RESTful架构下，服务器的核心任务是提供数据和改变数据状态，它就是围着数据转，其它的事情让前端去做。相应的，前端就要渲染页面和处理简单的商务逻辑（AngularJS之流就登场了）。    </p>
+<h2 id="RESTful的翻译式理解"><a href="#RESTful的翻译式理解" class="headerlink" title="RESTful的翻译式理解"></a>RESTful的翻译式理解</h2><p>REST – REpresentational State Transfer<br>翻译过来叫“表现层状态转移”<br>这个名字太恶心了，看名字谁知道你想干啥啊。表现层是啥？？？转移到哪里去？？你给我说清楚啊？？？？（掀桌）<br>其实可以这样理解，“表现层”就是数据的表现形式，可以是json，可以是xml，“状态转移”就是这个数据对应的状态的改变，就是我们老生常谈的增删改查。<br>现在我们瞅瞅上面那句“URL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。”的解释，是不是没啥问题？定位资源（表现层），描述操作（状态转移）。    </p>
+<h2 id="RESTful的特点"><a href="#RESTful的特点" class="headerlink" title="RESTful的特点"></a>RESTful的特点</h2><p>其实上面也已经说了个差不多，我们来做个总结。<br>所谓RESTful，它本质是一种架构设计方式，它的特点是面向<em>资源</em>，资源是核心，服务器端不必操心你的网页长什么样，只需要专心于操作数据和与数据相关的逻辑就可以了。因此在REST里面：    </p>
+<ul>
+<li>一切都被认为是一种资源</li>
+<li>每个资源有唯一的url标识</li>
+<li>客户端程序在建立起的资源url上发送请求，使用<em>请求方法</em>表示期望的操作。</li>
+<li>无状态</li>
+</ul>
+<h2 id="RESTful给前端带来了什么"><a href="#RESTful给前端带来了什么" class="headerlink" title="RESTful给前端带来了什么"></a>RESTful给前端带来了什么</h2><p>其实我到觉得是前端的变化促使了RESTful的产生。随着我们客户端形式的多样化，pc端已经远远不能满足人们的需要，如果一台服务器同时负责pc端页面的渲染，移动端页面的渲染，那不仅服务器会感到很疲惫，它渲染出来的内容咋样还是另一说，另外在使用原生的手机应用时，更是不可能指望把一切都交给服务器端。况且，现在前端能做的事情越来越多了，一些业务逻辑完全可以用js来做，于是乎，服务器端似乎只需要管好数据就行了(当然主要任务是管数据，它还是有它应该有的业务逻辑的)，RESTful应运而生。<br>RESTful架构使得前后端变得泾渭分明，同时因为前后端逻辑的分离，使一台服务器完全可以同时为web页面，安卓和ios应用同时提供服务。说明白点，服务器统一提供一套RESTful API（这里的api不再是我们平时表达的函数接口的意思，而是数据接口），web+ios+android作为同等公民调用API。各端发展到现在，都有一套比较成熟的框架来帮开发者事半功倍。（比如我现在正在学的AngularJS！）    </p>
+<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><p>写了这么多，都是在给最近正在上手的AngularJS做铺垫。<br>立个flag：<br>下一篇文章绝对要把Angular中的mvc模式整明白！    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/06/jsonp/" itemprop="url">
                   JSONP全接触：JSONP原理，在js与jQuery中的实现
                 </a>
@@ -251,25 +349,12 @@
 
       
         
-          
-            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>让我来记住这个历史性的事件：《jQuery基础教程（第4版）》第133页下面介绍了一种用$.getJSON方法实现跨域请求的办法，这种办法的大概意思就是把方法的第一个参数传递为所需的url地址＋”?callback=?”的形式，于是我们就能实现jsonp了。这个书很多地方都是一笔带过，这个地方也是半页纸就写完了，于是从今天上午到现在（下午四点）我断断续续一直在揣摩这个问题，顺便专门复习了一遍jsonp的原理（泪目），网上查出来的文章有不少，但是真正有用的不多，用这篇文章整合一下，也算没白费这么大功夫😂.</p>
-<h2 id="JSONP是啥"><a href="#JSONP是啥" class="headerlink" title="JSONP是啥"></a>JSONP是啥</h2><p>JSONP(JSON with padding,填充式JSON),是一种利用script标签从远程获取JSON数据的手段,这个技术的出现很好地解决了ajax无法进行跨域请求的弊端。JSONP的格式是把标准的JSON文件包装在一对圆括号中，然后圆括号前置任意一个字符串（当然也可以是空字符串），乍一看有一种函数调用的即视感，这个字符串就是所谓的填充padding啦。这样数据传递回来并且被解析时，就可能会导致一次函数调用。那么JSONP这种格式在服务器端的实现是咋整的呢,这样: </p>
-<h3 id="JSONP格式的服务器端实现"><a href="#JSONP格式的服务器端实现" class="headerlink" title="JSONP格式的服务器端实现:"></a>JSONP格式的服务器端实现:</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">  <span class="keyword">print</span>($_GET[<span class="string">'callback'</span>].<span class="string">'('</span>.$data.<span class="string">')'</span>);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<p>看不懂PHP也没关系，这段的意思是说，利用$_GET方法从客户端请求过来的url里面截取callback参数，注意这个参数也可以是fn，fx啥的，叫啥名字都行，只要你客户端写url的时候能够照上这个名字，它就能获取过来，然后data就是你想要的数据，中间的小点点是字符串拼接的意思，这整个是说输出一个前面拼接了客户端url指定名称的函数的函数调用（如果被解析成js格式的话）。</p>
-<h2 id="js中的JSONP实现"><a href="#js中的JSONP实现" class="headerlink" title="js中的JSONP实现"></a>js中的JSONP实现</h2><p>因为标签和前言里面也写了这个主要是针对jQuery写的文章，所以简要谈谈在原生js里面怎么搞就行了。原生js里面我们一般是把这个JSONP请求绑定到某个事件（比如点击事件）上，当这个事件被触发的时候，我们在事件处理程序里面创建一个新的script标签，并且把它丢进head标签或者body标签里去，这个新的script标签的src属性是指向我们目标的那个资源地址的，末尾跟上类似于?callback=xxx这样的参数内容，于是我们就能从远程得到一个内容形如”xxx(data)”的响应，这个内容被当作js解析出来，于是data就会根据xxx函数的定义被操作。因此，我们在实现JSONP格式的数据的请求的之前，务必要记得定义一个与xxx同名的函数，不然就会报错说xxx is undefined啥的，那样就很尴尬啦。</p>
-<h2 id="jQuery中的JSONP实现"><a href="#jQuery中的JSONP实现" class="headerlink" title="jQuery中的JSONP实现"></a>jQuery中的JSONP实现</h2><p>这段是这篇文章的重点，因为我就是从这段入坑的,我们先来看我入坑的这一段书上的示例代码:<br>用getJSON方法实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.getJSON(url+<span class="string">"?callback=?"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">    ....</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>省略了很多，但这已经够了，这段的意思就是在请求的URL后面加上”callback”(服务器段所需的参数名字)=?这部分，jQuery就不会报错说你跨域失败了，而会把它当做一个jsonp类型的请求去处理，注意这个?非常重要，jQuery会把它替换成一个长长的字符串，然后会把服务器返回内容的data部分（即去掉padding的纯json部分）传递给后面的success函数，于是success函数就可以使用data了，ok,大功告成！<br>这里有两个要注意的地方:    </p>
-<ul>
-<li>callback不能少 也可以是别的名字 这里用callback是因为服务器端所需的函数名是callback 你也可以提供其他的，前提是和服务器端的要求相符</li>
-<li>=号后面必须跟问号，或者在你知道对方服务器需要的函数名的情况下把真正的函数名写进去，不然就会报错说你跨域请求失败了。    </li>
-</ul>
-<p>第二种方法更加灵活,用$.ajax()方法实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">     type: <span class="string">"get"</span>,</div><div class="line">     url: <span class="string">"http://examples.learningjquery.com/jsonp/g.php"</span>,</div><div class="line">     dataType: <span class="string">"jsonp"</span>,</div><div class="line">     jsonp: <span class="string">"callback"</span>,</div><div class="line">     jsonpCallback: <span class="string">"hehe"</span>,</div><div class="line">     success: <span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(json);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>$.ajax()相对上面来说，是一种更为底层的方式，所以我们能够自定义操作的内容更多。这里在我们把dataType设置为”jsonp”之后，它就会自动执行一些针对jsonp的规则，比如它不会再报错给你说你跨域了，然后这个jsonp属性设置的就是服务器端需要的那个函数名参数对应的名称，比如我们上文的callback就是这样一个参数名（形参），jsonpCallback里面对应的是函数名参数对应的值（实参），这里我们这样操作，会把一个”callback=hehe”传递给php页面，然后php页面get到的padding前缀就会是hehe,我们得到的jsonp数据就会是hehe(data)这个样子了。<br>注意：不管我们传入的函数名存不存在，都不会报错.如果存在，那么就执行，如果不存在，也没关系^_^<br>相对于第一种方法，我们不必一定要把callback设置为问号了，可以传入任意你想传的函数名，同时，这个jsonp格式的数据（形如hehe(data)）请求回来之后，hehe函数内部的data内容会被当做第一个参数传入success方法，这里，我们进行的操作是在控制台输出返回的data结果.        </p>
-<p>写到这里，已经有点累了，但是还没完，我们还有最爽的一种方式，就是用插件！！！！<br>传送门：<a href="https://github.com/jaubourg/jquery-jsonp" target="_blank" rel="external">jquery的jsonp插件</a>.<br>直接上代码,请求同样的数据:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$.jsonp(&#123;</div><div class="line">    url:<span class="string">"http://examples.learningjquery.com/jsonp/g.php"</span>,</div><div class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(data);</div><div class="line">    &#125;,</div><div class="line">    callback:<span class="string">"xixi"</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>是的，你没有看错，从请求到输出，我们只用了两行。<br>两行啊！！！！！<br>下面的callback要提一下，这个jsonp插件的callback和ajax方法里的callback有所不同，这个callback是在发出jsonp请求之前在本地定义一个叫做xixi的函数，并不会对请求的url造成影响。如果我们想要把远程的函数命名为xixi的话，需要直接在url后面传入callback=xixi。而ajax里面的jsonp和jsonpCallback不仅会在本地定义，还会直接把这个函数名增加到url末尾进行请求。</p>
-<p>综上所述，我们总结jQuery中jsonp的三种实现方法，最推荐的就是最后一种，jsonp插件，简单，快捷，强大，前两天我做了一个阅读器应用，就用了它！总之就是超级好用啦！当然，前两种也是有必要理解的。不过在清楚了原生js原理的基础上，这应该不会很麻烦^_^</p>
-
-          
+          <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>让我来记住这个历史性的事件：《jQuery基础教程（第4版）》第133页下面介绍了一种用$.getJSON方法实现跨域请求的办法，这种办法的大概意思就是把方法的第一个参数传递为所需的url地址＋”?callback=?”的形式，于是我们就能实现jsonp了。这个书很多地方都是一笔带过，这个地方也是半页纸就写完了，于是从今天上午到现在（下午四点）我断断续续一直在揣摩这个问题，顺便专门复习了一遍jsonp的原理（泪目），网上查出来的文章有不少，但是真正有用的不多，用这篇文章整合一下，也算没白费这么大功夫😂.</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/06/jsonp/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -355,17 +440,13 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一只野路子前端狗，理论基础不扎实会给日常开发带来很多困扰。上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。（无耻鸡汤入）不过，一旦真的理解了，其实也蛮简单的。所以啃基础的时候，一定要克服自己的畏难心理（严肃脸）。<br>（无耻鸡汤出）。这篇文章主要是记录一下今天发现的一个奇妙的实现长长的原型链的办法。</p>
-<h2 id="js的继承为什么搞得这么麻烦"><a href="#js的继承为什么搞得这么麻烦" class="headerlink" title="js的继承为什么搞得这么麻烦"></a>js的继承为什么搞得这么麻烦</h2><p>学过java的小伙伴一定对java中类的继承特性不陌生，一个类继承另一个类，只需简单的一个extends即可。然而js的麻烦之处就在于它根本没有class的类型，没有class，语言的功能就会被削弱很多，那咋整。不怕，虽然我们没有class这种类型，但我们有class的概念啊！在js中，我们把一个构造函数看作是js的一个类，想要继承的属性和方法，我们写进构造函数的prototype属性上，用构造函数new出来的对象就可以引用prototype中的属性和方法。平时我们写代码，见过最多的肯定是一层的继承，那万一我想继承很多个呢?</p>
-<h2 id="多层继承实现遇到的困难"><a href="#多层继承实现遇到的困难" class="headerlink" title="多层继承实现遇到的困难"></a>多层继承实现遇到的困难</h2><p>一起来看一个单层的原型继承怎么实现:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = props.name || <span class="string">""</span> ;</div><div class="line">&#125;</div><div class="line">Student.prototype.hello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"hello!"</span> + <span class="keyword">this</span>.name + <span class="string">"!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>此时我想增加一层GoodStudent,让它继承Student，我们当然可以这么做:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GoodStudent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    Student.call(<span class="keyword">this</span>, props);</div><div class="line">    <span class="keyword">this</span>.study = <span class="string">"good"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这样，如果我们去new一个GoodStudent的实例出来的话，它是不能引用Student.prototype对象的，为啥呢，因为我们在确定一个对象的__proto__属性（即它的原型）时，其实是找的它构造函数的prototype属性里的constructor属性，这里我们既然是用GoodStudent来new的，那么我们的实例就是GoodStudent的实例，GoodStudent的prototype是谁，这里我们没定义，那就是一个仅有constructor属性的Object对象.再往上找，Object对象的__proto__属性是谁，是Object构造函数的prototype属性，再往上找,Object的prototype属性的__proto__就是null了，看到没，这里根本就没有Student的戏份。<br>于是我们知道，我们之所以只能实现一个从自定义构造函数向Object构造函数的上溯，是因为我们的自定义构造函数的GoodStudent的prototype的<em>默认值</em>就是一个只有constructor的Object的对象，它只能上溯去找Object！那么这就简单啦，我们把它的prototype改成别的对象不就行了么！    </p>
-<h2 id="道格拉斯的原型链加长法"><a href="#道格拉斯的原型链加长法" class="headerlink" title="道格拉斯的原型链加长法"></a>道格拉斯的原型链加长法</h2><p>道格拉斯，就是发明JSON的那个道格拉斯。废话不多说，我们来改良上面的代码:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// GoodStudent构造函数:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">GoodStudent</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">    Student.call(<span class="keyword">this</span>, props);</div><div class="line">    <span class="keyword">this</span>.study = <span class="string">"good"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 空函数F:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"> *注意这里，当我们把Student原型赋给F的原型对象时，F.prototype.constructor返回的就是</div><div class="line"> *Student了，于是F创建出来的实例都将被认为是Student的实例.</div><div class="line"> */</div><div class="line">F.prototype = Student.prototype;</div><div class="line"></div><div class="line"><span class="comment">// 把GoodStudent的原型指向一个新的F对象，F对象的原型正好指向Student.prototype:</span></div><div class="line">GoodStudent.prototype = <span class="keyword">new</span> F();</div><div class="line"></div><div class="line"><span class="comment">//注意我们把prototype重写了，它不再拥有默认的constructor属性，我们给他补上</span></div><div class="line">GoodStudent.prototype.constructor = GoodStudent;</div><div class="line"></div><div class="line"><span class="comment">// 继续在GoodStudent原型（就是new F()对象）上定义方法：</span></div><div class="line">GoodStudent.prototype.getStudy = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.study;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 创建xiaoming:</span></div><div class="line"><span class="keyword">var</span> xiaoming = <span class="keyword">new</span> GoodStudent(&#123;</div><div class="line">    name: <span class="string">"小明"</span></div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(xiaoming.name); <span class="comment">// '小明'</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming.study); <span class="comment">// good</span></div><div class="line"></div><div class="line"><span class="comment">// 验证原型:</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming.__proto__ === GoodStudent.prototype); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming.__proto__.__proto__ === Student.prototype); <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="comment">// 验证继承关系:</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming <span class="keyword">instanceof</span> GoodStudent); <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(xiaoming <span class="keyword">instanceof</span> Student); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<p>成功了!</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>所有的自定义构造函数在创建之初，它都有一个默认的prototype属性，这个属性指向一个Object对象，如果我们想要延长原型链，在当前构造函数和Object构造函数之间增加一个类的继承，我们就需要去改造当前构造函数的prototype属性，使它指向一个可以指向“别处”（即它的“父类”）的对象，以此来实现一个加长版的原型链^<em>^</em></p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上个月入了《javascript权威指南》和《javascript高级程序设计》（电子版的排版总把我搞得云里雾里，咬咬牙还是买了实体书）回来后，一阵猛刷。对于入门时的我来说，这两个概念是整本书当中比较复杂的知识点，也是我反复阅读反复尝试反复琢磨最多的地方。（无耻鸡汤入）不过，一旦真的理解了，其实也蛮简单的。所以啃基础的时候，一定要克服自己的畏难心理（严肃脸）。<br>（无耻鸡汤出）。这篇文章主要是记录一下今天发现的一个奇妙的实现长长的原型链的办法。</p>
+<h2 id="js的继承为什么搞得这么麻烦"><a href="#js的继承为什么搞得这么麻烦" class="headerlink" title="js的继承为什么搞得这么麻烦"></a>js的继承为什么搞得这么麻烦</h2>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/04/prototype/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -451,32 +532,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>最近在阅读一本很好的开源电子书——<a href="http://es6.ruanyifeng.com/#docs/promise#Promise-all" target="_blank" rel="external">阮一峰老师的ES6入门</a>,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。  </p>
-<h2 id="初识Promise对象"><a href="#初识Promise对象" class="headerlink" title="初识Promise对象"></a>初识Promise对象</h2><p>正如标题所说,Promise对象的出现，是为了解决层层嵌套的回调地狱。当回调函数太多的时候，会使代码的结构变得糟糕，读代码的时候，你得一层一层扒着往里找半天才能找到自己想看到那个功能效果对应的回调，改代码的时候更糟心，删除一个功能还得瞻前顾后连着外函数和内函数一起修改。总之，回调一多，事情就变得麻烦了。<br>上面blabla这么多，我们来看阮一峰老师对Promise的语法上的定义:    </p>
-<blockquote>
-<p>从语法上说，Promise是一个对象，从它可以获取异步操作的消息。Promise提供统一的API，各种异步操作都可以用同样的方法进行处理。</p>
-</blockquote>
-<p>更进一步地，Promise对象代表一个异步操作，它有三种状态（这一点等一下会在代码里演示）,这三种状态分别是:     </p>
-<ul>
-<li>Pending(进行中)</li>
-<li>Resolved(已经完成)</li>
-<li>Reject(已失败)<br>至于现在你到底处于什么状态，要看异步操作执行到哪个结果。</li>
-</ul>
-<p>关于状态的重要一点:<br>一旦状态改变（从Pending变为Resolved或者从Pending变为Rejected），那么就走到终点了，状态就定格在这里，不会再改变了。</p>
-<h2 id="自己对Promise的感性认识"><a href="#自己对Promise的感性认识" class="headerlink" title="自己对Promise的感性认识"></a>自己对Promise的感性认识</h2><p>其实Promise并没有为我们省去多少代码，也没有实现什么功能，但是Promise好就好在它使我们的代码更加“好看”，没有那么多“套路”了，一条直线贯穿了整个异步操作的所有操作流程，同时每个流程内部的代码从视觉上来看是相互独立的，不会说修改的时候“牵一发而动内外”，让代码更加好读，也更加容易维护。总而言之，Promise为我们编写具有多层回调的函数提供了一种更优雅的书写方式。</p>
-<h2 id="Promise特性在代码中的体现"><a href="#Promise特性在代码中的体现" class="headerlink" title="Promise特性在代码中的体现"></a>Promise特性在代码中的体现</h2><p>让我们来实现一个小小的Promise实例：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>这里我新建一个Promise对象，里面传进的参数就是我第一步首先要执行的那个最外层函数的内容，我现在没让resolve和reject干活，所以这两个函数暂时是个摆设。让我们来看一下运行的效果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise1.png" alt="promise1"><br>看，我们仅仅是new了一个实例出来，它居然顺便直接把我们传进去的函数内容给执行了！从这里我们可以看出，当我们创建Promise实例时，传入的函数内容是可以立即执行的.<br>我们让resolve登场:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">   resolve();</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"执行到啦最后一句"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>执行结果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise2.png" alt="promise2"><br>resolve和reject。它们是两个函数，由JavaScript引擎提供，不用自己部署。resolve在这里仿佛是啥也没干？？？别急，要想知道resolve干了啥,这时候就需要请出Promise对象的then方法了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">  <span class="keyword">var</span> value = <span class="string">"resolve"</span>;</div><div class="line">  <span class="keyword">if</span>(value==<span class="string">"resolve"</span>)&#123;</div><div class="line">    resolve(value);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    reject(value);</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"执行到啦最后一句!"</span>);</div><div class="line">&#125;);</div><div class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(word);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(word);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>在上面的then方法中，传入了两个回调函数，如果Promise构造函数传入的回调函数中，resolve被行了，那么此时这个promise对象的状态就是resolved,这个resolved状态，会促使then方法在执的时候执行第一个函数，reject同理。resolve和reject都是可以传参数进去的，这个参数会被传出去，作为then中定义的函数的实参.<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise4.png" alt="promise4"><br>整个过程应该差不多是这样的:构造函数跑完了传入函数内容的所有代码，并由此确定当前对象的状态.如果构造函数跑到一半出错了，那就不跑了，同时对象状态就变成了rejected,接下来它会调用then中的rejected状态对应的那个函数（第二个）。如果执行很顺利，执行到了resolve函数，那么就转变为resolved状态。<br>现在我们更进一步，研究一下resolve函数和reject函数的关系。<br>上面那段代码中，我们的if语句人为控制了resolve函数和reject函数的执行，使它们只能执行一个.那如果我这样写呢:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">  <span class="keyword">var</span> result = <span class="string">"result"</span>;</div><div class="line">  resolve(result);</div><div class="line">  reject(result);</div><div class="line">&#125;);</div><div class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(result+<span class="string">":resolve"</span>);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(result+<span class="string">":reject"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>在这段代码里，我们很强势地告诉Promise对象，你既要给我执行出个resolve,也要给我执行出个reect！<br>那么Promise对象是怎么想的呢：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise5.png" alt="promise5"><br>它说，你想多了，我只能改变一次状态，我就不干了。<br>我们在上面一段代码的后半段改成这样，输出then方法的返回对象p:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(result+<span class="string">":resolve"</span>);</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(result+<span class="string">":reject"</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(p);</div></pre></td></tr></table></figure></p>
-<p>输出：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise6.png" alt="promise6"><br>有个小细节是p在then方法之前输出了，因此也印证了Promise对象代表一个<em>异步操作</em>，不影响后续代码的执行.因此我们这里输出p的时候，p还没执行完，于是返回了一个pending中的Promise对象，我们给它点时间缓缓:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(p);</div><div class="line">&#125;,<span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
-<p>输出:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise7.png" alt="promise7"><br>我们看到，p仍然返回一个promise对象，不过等等，为啥你给我的描述是个undefined？？？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg" alt="黑人问号"><br>莫慌，我们修改一下resolve函数的返回值:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(result+<span class="string">":resolve"</span>);</div><div class="line">   <span class="keyword">return</span>  <span class="string">"我是resolve的return值"</span>;</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(result+<span class="string">":reject"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>输出:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise8.png" alt="promise8"><br>机智的我们发现，返回的都是Promise对象，区别在于Promise对象的描述内容，也就是valueOf()的返回值,如果状态为Pending，返回为Pending,如果是resolve或者reject，那么根据resolve或者reject的return值进行返回。(如果resolve或者reject返回的也是一个Promise对象，那么里面的描述还是undefined~~~,因为undefined是一个非pending状态的Promise对象的默认valueOf()返回值).<br>综上所述，改变状态后，Promise对象是绝对不会给你改变第二次的！（冷漠脸）    </p>
-<p>“返回值都是Promise对象“这一点，使得Promise对象具有链式调用的优良特性:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"promise"</span>);</div><div class="line">    <span class="keyword">var</span> result = <span class="string">"result"</span>;</div><div class="line">    resolve(result);</div><div class="line">    reject(result);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">promise</div><div class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(result+<span class="string">":resolve"</span>);</div><div class="line">        <span class="keyword">return</span>  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"resolve1号返回了Promise对象，我是它的构造函数内容"</span>);</div><div class="line">            resolve();</div><div class="line">        &#125;);</div><div class="line">    &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">word</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(result+<span class="string">":reject"</span>);</div><div class="line">    &#125;)</div><div class="line">    .then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"resolve1号嵌套的resolve2号执行啦"</span>);</div><div class="line">    &#125;);</div></pre></td></tr></table></figure></p>
-<p>输出:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/promise9.png" alt="promise9"><br>这样一来，不管有多少层嵌套，我们只需要调用层层返回的Promise对象的then方法就可以啦!    </p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>最近在阅读一本很好的开源电子书——<a href="http://es6.ruanyifeng.com/#docs/promise#Promise-all">阮一峰老师的ES6入门</a>,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/30/promise/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -562,31 +623,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇文章看起来可能没有什么技术含量，是对一个小细节的验证。起因是读《javascript权威指南》这本书时，里面提到说js是大小写敏感的语言，而html不是，因此html中设定属性时属性名属性值不限制大小写，标签名也不限制。由此想到，css中的属性名和属性值以及选择器是否限制大小写呢，今天就是为了验证一下这个问题。     </p>
-<h2 id="对HTML不限制大小写的测试"><a href="#对HTML不限制大小写的测试" class="headerlink" title="对HTML不限制大小写的测试"></a>对HTML不限制大小写的测试</h2><p>js大小写敏感还是比较明显比较常见的，先用一个小例子来看一下HTML对大小写不敏感的是什么样子的:<br>来个花样作死的写法:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Input</span> <span class="attr">TYPE</span>=<span class="string">"TEXT"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">TYPE</span>=<span class="string">"BUTTON"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>得到的效果和全小写时一样:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog4%E6%B5%8B%E8%AF%951.jpg" alt="html测试图">;    </p>
-<p>当然，为了规范，我们平时还是要坚持全小写为妙。</p>
-<h2 id="对css是否支持不区分大小写的测试"><a href="#对css是否支持不区分大小写的测试" class="headerlink" title="对css是否支持不区分大小写的测试"></a>对css是否支持不区分大小写的测试</h2><p>直觉上应该是不支持的。。。但我们还是用代码来看一下:<br>首先我们从id下手:<br>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-id">#Test</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:red;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#fff</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">33px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>结构部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test&gt;&lt;/div&gt;</span></span></div></pre></td></tr></table></figure></p>
-<p>大小写不同，我们看到火狐君给我们的效果是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog22.jpg" alt="大小写测试css1"><br>一片空白，服了，id要区分大小写.    </p>
-<p>虽然感觉已经知道结果了，但还是来一发class:<br>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Test</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:red;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#fff</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">33px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>结构部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test&gt;&lt;/div&gt;</span></span></div><div class="line">&lt;div class="<span class="attr">Test</span>&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>得到的结果是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/blog4%E6%B5%8B%E8%AF%952.jpg" alt="大小写测试css2">    </p>
-<p>好啦，心服口服,class和id是不能模糊大小写的，所以更要坚持全小写啦。</p>
-<p>那么选择器在书写的时候，是否完全区分大小写呢？经测试，id和class选择器是必然要区分的，而标签选择器就比较随意啦，不区分大小写,写”H2”照样可以选中二号标题标签^_^    </p>
-<p>对于属性值和属性名,它们也是不区分大小写滴～～～～比如:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;style&gt;</div><div class="line">    .test &#123;</div><div class="line">        Height:100px;</div><div class="line">        width:100px;</div><div class="line">        Background:red;</div><div class="line">        color:#fff;</div><div class="line">        font-size:33PX;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div></pre></td></tr></table></figure></p>
-<p>html部分:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span>哈<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>我们看到这个height，width属性名和font-size的属性值都模糊了大小写。<br>然而我们仍然可以得到:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/css%E5%A4%A7%E5%B0%8F%E5%86%99%E5%B1%9E%E6%80%A7%E6%B5%8B%E8%AF%95.jpg" alt="css属性大小写测试">    </p>
-<p>于是，我们得出结论：在css中:    </p>
-<ul>
-<li>id名和class名是区分大小写的    </li>
-<li>选择器中，只有标签选择器不区分大小写    </li>
-<li>属性名和属性值是不区分大小写的    </li>
-</ul>
-<p>这样一来,css大小写敏感的问题就解决啦，但是为了规范，我们平时还是要坚持小写到底啊～～～哈哈</p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇文章看起来可能没有什么技术含量，是对一个小细节的验证。起因是读《javascript权威指南》这本书时，里面提到说js是大小写敏感的语言，而html不是，因此html中设定属性时属性名属性值不限制大小写，标签名也不限制。由此想到，css中的属性名和属性值以及选择器是否限制大小写呢，今天就是为了验证一下这个问题。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/28/对HTML不限制大小写的测试/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -672,38 +714,16 @@
 
       
         
-          
-            <p>前言:</p>
-<p>最近写了一个响应式的demo，推在github上<a href="https://github.com/maruko0713/To_Be_Responsive" target="_blank" rel="external">响应式demo</a>,在这个项目里，我第一次接触前端自动化管理工具，结合我自己的情况，我选择了gulp。这篇文章主要是对gulp的学习和使用做一个记录，同时文章后面会做一些gulp的比较好的插件的推荐.    </p>
+          <p>前言:</p>
+<p>最近写了一个响应式的demo，推在github上<a href="https://github.com/maruko0713/To_Be_Responsive">响应式demo</a>,在这个项目里，我第一次接触前端自动化管理工具，结合我自己的情况，我选择了gulp。这篇文章主要是对gulp的学习和使用做一个记录，同时文章后面会做一些gulp的比较好的插件的推荐.    </p>
 <h2 id="什么是gulp"><a href="#什么是gulp" class="headerlink" title="什么是gulp"></a>什么是gulp</h2><blockquote>
 <p>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。    </p>
 </blockquote>
-<h2 id="gulp如何使用"><a href="#gulp如何使用" class="headerlink" title="gulp如何使用"></a>gulp如何使用</h2><p>使用gulp之前，我们首先要安装gulp<br>因为我是mac的系统，所以采取了命令行安装的形式，如果需要其他帮助，请查看<a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">gulp官方网站</a>的说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp --g</div></pre></td></tr></table></figure></p>
-<p>通过这个操作，可以完成对gulp的全局安装     </p>
-<p>之后，我们需要在根目录下建立一个名为gulpfile.js的文件，这个文件非常重要，因为我们在后续的更新和重新操作的过程中会反复使用它，因为我的项目不大，所以采取了一些比较基础的操作，如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>); <span class="comment">//它是大boss</span></div><div class="line"><span class="keyword">var</span> rev = <span class="built_in">require</span>(<span class="string">"gulp-rev"</span>); <span class="comment">// 插件 用于在更新文件内容后更新文件名</span></div><div class="line"><span class="comment">// 插件(用于在目录下的文件名更新后更新html文件中的文件名)</span></div><div class="line"><span class="keyword">var</span> revReplace = <span class="built_in">require</span>(<span class="string">"gulp-rev-replace"</span>); </div><div class="line"><span class="comment">// 插件(用于分析html文件中带有注释的css文件和js文件)</span></div><div class="line"><span class="keyword">var</span> useref = <span class="built_in">require</span>(<span class="string">"gulp-useref"</span>); </div><div class="line"><span class="keyword">var</span> filter = <span class="built_in">require</span>(<span class="string">"gulp-filter"</span>);<span class="comment">// 插件 用于筛选出已标记的css文件和js文件</span></div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">"gulp-uglify"</span>); <span class="comment">//压缩js文件</span></div><div class="line"><span class="keyword">var</span> csso = <span class="built_in">require</span>(<span class="string">"gulp-csso"</span>); <span class="comment">//压缩css文件</span></div><div class="line">gulp.task(<span class="string">"default"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//filter操作可以筛选出相应的文件 restore参数表示该文件可以被返回到dist目录下</span></div><div class="line">    <span class="keyword">var</span> jsFilter = filter(<span class="string">"**/*.js"</span>,&#123;restore:<span class="literal">true</span>&#125;);</div><div class="line">    <span class="keyword">var</span> cssFilter = filter(<span class="string">"**/*.css"</span>, &#123;restore:<span class="literal">true</span>&#125;); </div><div class="line">    <span class="comment">//感叹号代表排除 filter内第一个参数可以为字符串也可以为数组</span></div><div class="line">    <span class="keyword">var</span> indexHtmlFilter = filter([<span class="string">"**/*"</span>,<span class="string">"!**/index.html"</span>], &#123;restore:<span class="literal">true</span>&#125;);</div><div class="line">    <span class="keyword">return</span> gulp.src(<span class="string">"src/index.html"</span>) <span class="comment">//找到要处理的文件</span></div><div class="line">        .pipe(useref()) <span class="comment">//分析文件中带有注释标志的地方</span></div><div class="line">        .pipe(jsFilter) <span class="comment">//筛选出标记的js文件 丢进文件流中</span></div><div class="line">        .pipe(uglify()) <span class="comment">//压缩操作</span></div><div class="line">        .pipe(jsFilter.restore) <span class="comment">// 将丢入文件流的文件放回原有的位置</span></div><div class="line">        .pipe(cssFilter) <span class="comment">//将筛选出的css文件丢进文件流 </span></div><div class="line">        .pipe(csso()) <span class="comment">//压缩</span></div><div class="line">        .pipe(cssFilter.restore) <span class="comment">//再丢回去</span></div><div class="line">        .pipe(indexHtmlFilter) <span class="comment">// 把index.html文件取出 剩余的匹配文件丢入文件流</span></div><div class="line">        .pipe(rev()) <span class="comment">//生成此刻文件流中所有文件的版本号</span></div><div class="line">        .pipe(indexHtmlFilter.restore) <span class="comment">//丢回去</span></div><div class="line">        .pipe(revReplace()) <span class="comment">//改名字（名字后面加上文件版本号）</span></div><div class="line">        .pipe(gulp.dest(<span class="string">"dist"</span>)); <span class="comment">// 把文件流扔进dist文件夹</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>上面提到要在html文件中进行标记，格式如下:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- build:css css/combined.css --&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/normalize.css"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/main.css"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/owl/owl-carousel/owl.carousel.css"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/owl/owl-carousel/owl.theme.css"</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div></pre></td></tr></table></figure></p>
-<p>js也是相同的格式，不过需要把css改成js:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- build:js js/combined.js --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vendor/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"css/owl/owl-carousel/owl.carousel.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/vendor/picturefill.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="comment">&lt;!-- endbuild --&gt;</span></div></pre></td></tr></table></figure></p>
-<p>运行命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gulp</div></pre></td></tr></table></figure></p>
-<p>(因为我们的任务名叫做default 所以gulp后面不用跟任何参数就会执行我们的文件)<br>如此一来，我们就可以把多个文件压缩到一个文件里面.<br>需要注意的是，在压缩的过程中，注释会被丢掉，如果在css文件中有不想被丢掉的注释采取在注释中星号后面添加一个叹号的方式注释，就不会被压缩掉了:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp1.jpg" alt="gulp1">    </p>
-<p>加上叹号后，叹号下面的炮灰注释在压缩文件中全都找不见了，但是叹号注释的内容还在:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp2.jpg" alt="gulp2">    </p>
-<p>压缩后，我们可以看到css文件和js文件都会变成我们给它的新名字+版本号的形式:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp3.jpg" alt="gulp3">  </p>
-<p>如果对文件内容进行了改动，便会生成一个新的版本号:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp4.jpg" alt="gulp4">  </p>
-<p>当然，html文件里面对应的名字也会跟着变化:    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gulp5.jpg" alt="gulp5">    </p>
-<p>好了，这样一来，我们就成功地使用gulp实现了我们的一个自动化压缩文件，自动化处理文件名的一个流程，当然啦，gulp的本领还不只这些，它有许许多多的插件，比如:     </p>
-<ul>
-<li>gulp-watch插件 它可以监听文件变化 自动执行gulp命令</li>
-<li>gulp-postcss插件 它可以自动给css属性添加浏览器的兼容前缀（比如-webkit-<br>-moz-之类的）</li>
-<li>gulp-concat插件 单纯地合并多个文件但不压缩</li>
-<li>gulp-responsive插件 自动生成响应式图片</li>
-</ul>
-<p>等等等等，我们可以在gulp-npm命令行的指引下寻找到更多地插件，gulp官方网站上为我们提供了各种各样的插件的使用说明，甚至还教授我们如何为gulp编写插件.<br>好啦，今天的gulp学习记录就到这里，自动化管理工具并非gulp这一种，在接下来的学习中，也应该学习和接触更多的工具，学会根据不同的场景转换工具的使用，使自己的工作更有效率^_^    </p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/26/gulp/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -789,20 +809,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在此之前我一直以为在浏览器里html默认和浏览器窗口等高，而body默认和html等高，现在想想自己为什么会这么想，主要是因为这个:    </p>
-<h2 id="body和html的高度测试代码"><a href="#body和html的高度测试代码" class="headerlink" title="body和html的高度测试代码"></a>body和html的高度测试代码</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">    <span class="attribute">background</span>:blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>当我这么干的时候，得到了这个结果：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/gaodu_1.jpg" alt="css1"><br>看，body的背景色占据了整个浏览器窗口，这样想来body撑开浏览器什么的也不是匪夷所思了，但书上告诉我们正常情况的高度是不会继承的，那么这个body到底有多高呢？我们添加一行:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">    <span class="attribute">background</span>:blue;</div><div class="line">    <span class="attribute">border</span>:<span class="number">5px</span> solid black;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>神奇的事情发生了:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/test_2.jpg" alt="css2"><br>啥？？？body没高度？？那浏览器的颜色是哪里来的？？？？？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg" alt="smile"><br>还没完，还有更神奇的事情，一起来看下:<br>在以上代码的基础上，我添加了这样两行style：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">background</span>:yellow;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>它又变成黄色了。。。。。<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/test_3.jpg" alt="css3"><br>嗯，这样想的话，难道是html标签撑开了窗口???<br>一探究竟:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">html</span> &#123;</div><div class="line">    <span class="attribute">background</span>:yellow;</div><div class="line">    <span class="attribute">border</span>:<span class="number">5px</span> solid red;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后我们看到html仿佛有点高度？？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/test_4.jpg" alt="css4"><br>当然不，这是body的外边距啦2333让我们去掉这个东西:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">background</span>:blue;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>于是真相是:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/test_5.jpg" alt="css5">    </p>
-<p>魔性的事情出现了，html原来也是没有高度的hhhhh。    </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>不过话说回来，这不刚好和我们宽度默认继承父级和浏览器窗口等宽，而高度默认不继承为0相吻合吗？所以html和body标签默认高度为0这点，是毋庸置疑的。<br>那么问题来了，body和html并没有高度，那么满屏的黄色和蓝色是怎么显示出来的？    </p>
-<p>我觉得这和浏览器本身的机制有关，我们可以认为浏览器是一个会“吸收”颜色的东西，当我们给body设置颜色时，虽然body没有高，但是浏览器底板需要颜色，它看到了body的颜色，就想要拿来变成自己的，然后它把自己搞成了body设置的那个blue，当我们给html也设置了一个颜色后，浏览器发现，html好像离我更近啊，于是就就近渲染了html标签的背景色yellow给自己.<br>这样一来，我们看到的浏览器窗口又变成黄色了。 </p>
-<p>因此，我们所看到的那个背景色，既不属于body标签，也不属于html，它属于更底层的那个底板，是浏览器窗口本身吸收了body和html标签中更靠近自己的那个后，渲染出来的浏览器窗口底板的颜色。    </p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在此之前我一直以为在浏览器里html默认和浏览器窗口等高，而body默认和html等高，现在想想自己为什么会这么想，主要是因为这个:    </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/24/body_html/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -977,105 +989,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>数组！一个出镜率非常高的数据结构～～<br>定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     </p>
-<p>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="literal">true</span>, <span class="literal">null</span>, <span class="literal">undefined</span>, &#123;x:<span class="number">1</span>&#125;, [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]];</div></pre></td></tr></table></figure>
-<p>看看，是不是啥都有？^_^    </p>
-<h2 id="数组的创建"><a href="#数组的创建" class="headerlink" title="数组的创建"></a>数组的创建</h2><p>直接看代码：    </p>
-<h3 id="字面量形式创建数组："><a href="#字面量形式创建数组：" class="headerlink" title="字面量形式创建数组："></a>字面量形式创建数组：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bat = [<span class="string">"ali"</span>, <span class="string">"tecent"</span>, <span class="string">"baidu"</span>];</div><div class="line"><span class="keyword">var</span> students = [&#123;name:<span class="string">"xiaoming"</span>, age:<span class="number">27</span>&#125;];</div></pre></td></tr></table></figure>
-<p>我们可以用逗号来留空：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> commasArr1 = [<span class="number">1</span>, , <span class="number">2</span>]; <span class="comment">// 1, undefined, 2</span></div><div class="line"><span class="keyword">var</span> commasArr2 = [,,]; <span class="comment">// 允许最后有个多余的逗号，它会被忽略</span></div></pre></td></tr></table></figure>
-<p>数组的长度是有限制的，最小的是0，最大的是2^23-1(4294967295)。   </p>
-<h3 id="Array构造函数创建数组："><a href="#Array构造函数创建数组：" class="headerlink" title="Array构造函数创建数组："></a>Array构造函数创建数组：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"><span class="keyword">var</span> arr100 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">100</span>);</div><div class="line"><span class="keyword">var</span> arrLikesLiteral = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="literal">true</span>, <span class="literal">false</span>, <span class="literal">null</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="string">"hi"</span>);</div></pre></td></tr></table></figure>
-<p>如果你啥都不传，就是一个空数组。<br>如果你传入的仅仅是一个数字，那么它就是这个数组的长度。<br>如果你传入了多个参数，那么它们就成为了数组的内容。    </p>
-<h2 id="数组元素的读写"><a href="#数组元素的读写" class="headerlink" title="数组元素的读写"></a>数组元素的读写</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr[<span class="number">1</span>]; <span class="comment">//2</span></div><div class="line">arr.length; <span class="comment">//5</span></div></pre></td></tr></table></figure>
-<p>楼上我们用索引访问数组元素，用length属性访问它的长度。   </p>
-<h2 id="数组元素的增删"><a href="#数组元素的增删" class="headerlink" title="数组元素的增删"></a>数组元素的增删</h2><p>我们可以动态地给数组赋值来增加它的元素：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr[<span class="number">5</span>] = <span class="number">6</span>;</div><div class="line">arr.length;<span class="comment">// 6</span></div></pre></td></tr></table></figure>
-<p>这样它就多了一个元素，变成了长度为6的数组。    </p>
-<p>我们还可以用push方法在尾部增加元素:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>];</div><div class="line">arr.push(<span class="number">3</span>);</div><div class="line">arr; <span class="comment">// [1,2,3];</span></div></pre></td></tr></table></figure>
-<p>用unshift方法在头部增加元素:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr.unshift(<span class="number">0</span>);</div><div class="line">arr; <span class="comment">//[0,1,2,3,4]</span></div></pre></td></tr></table></figure>
-<p>我们还可以删除数组元素，用delete运算符：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line"><span class="keyword">delete</span> arr[<span class="number">0</span>];</div><div class="line">arr[<span class="number">0</span>]; <span class="comment">//undefined</span></div><div class="line">arr.length; <span class="comment">// 5</span></div></pre></td></tr></table></figure>
-<p>数组长度是不变的，只是把第一个元素变成了undefined而已～～～<br>缩减数组长度，最简单粗暴就是修改length:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</div><div class="line">arr.length -= <span class="number">1</span>;</div><div class="line">arr; <span class="comment">// [1,2,3], 4 is removed</span></div></pre></td></tr></table></figure>
-<p>pop方法删除尾部元素:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</div><div class="line">arr.pop();</div><div class="line">arr; [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div></pre></td></tr></table></figure>
-<p>shift方法删除头部元素:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>];</div><div class="line">arr.shift();</div><div class="line">arr; <span class="comment">// [2,3,4];</span></div></pre></td></tr></table></figure>
-<h2 id="数组迭代"><a href="#数组迭代" class="headerlink" title="数组迭代"></a>数组迭代</h2><p>到数组方法那一块我们会介绍forEach方法，这里我们主要介绍原始策略:    </p>
-<p>最容易想到的数组迭代方式就是for循环：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i = <span class="number">0</span>, n = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line"><span class="keyword">for</span>(; i &lt; n; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(arr[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>或者for in 循环：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(i <span class="keyword">in</span> arr) &#123;</div><div class="line">    <span class="built_in">console</span>.log(arr[i]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意，如果用for in ，数组也是对象，它也有原型，for in会把原型链上的东西也输出。<br>还有个坑， for in是无序的，所以如果想要有序输出，还是for吧！   </p>
-<h2 id="数组的两种特殊形式"><a href="#数组的两种特殊形式" class="headerlink" title="数组的两种特殊形式"></a>数组的两种特殊形式</h2><h3 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h3><p>比如这样的：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]];</div></pre></td></tr></table></figure>
-<p>数组套数组，里面的数组里面不再套数组，这样的就是二维数组。    </p>
-<h3 id="稀疏数组"><a href="#稀疏数组" class="headerlink" title="稀疏数组"></a>稀疏数组</h3><p><strong><em>稀疏数组就是并不含有从0开始的连续索引的数组，一般length属性值比实际元素个数大</em></strong></p>
-<p>举个例子：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr1 = [<span class="literal">undefined</span>];</div><div class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1</span>);</div><div class="line"><span class="number">0</span> <span class="keyword">in</span> arr1;<span class="comment">// true</span></div><div class="line"><span class="number">0</span> <span class="keyword">in</span> arr2;<span class="comment">// false</span></div><div class="line">arr1.length = <span class="number">100</span>;</div><div class="line">arr1[<span class="number">99</span>] = <span class="number">123</span>;</div><div class="line"><span class="number">99</span> <span class="keyword">in</span> arr1;<span class="comment">// true</span></div><div class="line"><span class="number">98</span> <span class="keyword">in</span> arr1;<span class="comment">// false</span></div></pre></td></tr></table></figure>
-<p>第一个中，我们的arr1是有元素的，只不过元素的值是undefined。<br>第二个中，虽然创建了一个长度为1的数组，但是没给它赋值，所以它里面0索引是不存在的。   </p>
-<p>稀疏数组在实际的应用中其实不是很常见，我们一般用in来遍历它，来减少开销。    </p>
-<h2 id="Javascript数组方法"><a href="#Javascript数组方法" class="headerlink" title="Javascript数组方法"></a>Javascript数组方法</h2><p>楼上我们是不是调用了很多数组的方法，数组的方法从哪里来？<br>当然是来自原型链啦！<br>数组对象的原型就是Array.prototype~~   </p>
-<p>让我们来一个全家桶吧！  </p>
-<h3 id="join方法-将数组转换为字符串："><a href="#join方法-将数组转换为字符串：" class="headerlink" title="join方法,将数组转换为字符串："></a>join方法,将数组转换为字符串：</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.join(); <span class="comment">// "1,2,3"</span></div><div class="line">arr.join(<span class="string">"_"</span>); <span class="comment">// "1_2_3"</span></div></pre></td></tr></table></figure>
-<p>不写参数，默认把数组元素以逗号隔开。    </p>
-<h3 id="reverse方法-将数组逆序"><a href="#reverse方法-将数组逆序" class="headerlink" title="reverse方法  将数组逆序"></a>reverse方法  将数组逆序</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">arr.reverse();</div><div class="line">arr; <span class="comment">//[3,2,1];</span></div></pre></td></tr></table></figure>
-<h3 id="sort方法-排序"><a href="#sort方法-排序" class="headerlink" title="sort方法 排序"></a>sort方法 排序</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="string">"a"</span>, <span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"b"</span>];</div><div class="line">arr.sort(); <span class="comment">// ["a", "b", "c", "d"]</span></div></pre></td></tr></table></figure>
-<p>sort方法对什么都是按照字符串的排序方法排序的。<br>因此排序数字时：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">arr = [<span class="number">13</span>, <span class="number">24</span>, <span class="number">51</span>, <span class="number">3</span>];</div><div class="line">arr.sort();</div><div class="line">arr; <span class="comment">// [13, 23, 3, 51]</span></div></pre></td></tr></table></figure>
-<p>非常尴尬<br>因此我们可以自定义sort:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">arr.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> a-b;</div><div class="line">&#125;);</div><div class="line">arr; [<span class="number">3</span>, <span class="number">13</span>, <span class="number">24</span>, <span class="number">51</span>]</div></pre></td></tr></table></figure>
-<p>自定义sort函数，我们在sort中传入我们希望的排序规则，即比较函数。<br>在排序的时候，任两个元素都会被传入比较函数中，如果它的返回值是负数，那么不改变原有的顺序，如果它的返回值是正数，那么交换两个数的顺序～～。    </p>
-<h3 id="concat方法-合并"><a href="#concat方法-合并" class="headerlink" title="concat方法 合并"></a>concat方法 合并</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</div><div class="line">arr.concat(<span class="number">4</span>, <span class="number">5</span>); <span class="comment">// [1,2,3,4,5]</span></div><div class="line">arr; <span class="comment">//[1, 2, 3]</span></div></pre></td></tr></table></figure>
-<p>注意concat和楼上那些方法的不同在于concat并不改变数组本身。<br>concat可以直接传入数组，这样传入的数组会被拉平(只会拉平一次)。  </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">arr.concat([<span class="number">10</span>, <span class="number">11</span>], <span class="number">13</span>);</div><div class="line">arr; <span class="comment">// [1, 2, 3, 10, 11, 13]</span></div></pre></td></tr></table></figure>
-<h3 id="slice-方法-返回数组片段"><a href="#slice-方法-返回数组片段" class="headerlink" title="slice 方法 返回数组片段"></a>slice 方法 返回数组片段</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">arr.slice(<span class="number">1</span>, <span class="number">3</span>); <span class="comment">// [2,3]</span></div><div class="line">arr.slice(<span class="number">1</span>); <span class="comment">// [2,3,4,5]</span></div><div class="line">arr.slice(<span class="number">1</span>, <span class="number">-1</span>); <span class="comment">// [2,3,4]</span></div><div class="line">arr.slice(<span class="number">-4</span>, <span class="number">-3</span>); <span class="comment">// [2]</span></div></pre></td></tr></table></figure>
-<p>第一个参数是截取开始的索引，第二个参数的截取结束的后一个索引。<br>也就是左闭右开区间。   如果第二个参数省略，默认输出后面的所有。<br>－1代表最后一个索引，－2代表倒数第二个索引，以此类推。<br>注意，原数组仍然不被修改。 </p>
-<h3 id="splice方法-数组删除和拼接"><a href="#splice方法-数组删除和拼接" class="headerlink" title="splice方法 数组删除和拼接"></a>splice方法 数组删除和拼接</h3><p>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">arr.splice(<span class="number">2</span>); <span class="comment">//returns [3,4,5]</span></div><div class="line">arr; <span class="comment">// [1,2] 原数组被修改</span></div><div class="line"></div><div class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.splice(<span class="number">2</span>,<span class="number">2</span>); <span class="comment">// return [3,4] </span></div><div class="line">arr; <span class="comment">// [1,2,5]</span></div><div class="line"></div><div class="line">arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">"a"</span>,<span class="string">"b"</span>); <span class="comment">//returns [2]</span></div><div class="line">arr; <span class="comment">// [1,"a","b",3,4,5]</span></div></pre></td></tr></table></figure>
-<p>splice 第一个参数是说你从哪里开始删除，第二个位置是说你要指定删除几个，第三个位置是说你要往删除位置上填补什么东西。<br>后两个都可以省略。<br>第二第三一起省略的时候，就是删除从第一个参数开始包括到最后一个元素全都删除。<br>第三个元素省略的时候，就是删除指定位置指定个数的元素。<br>三个参数全都有，就是说先删除后填补～～    </p>
-<p><strong><em>注意splice方法是修改原数组的</em></strong>   </p>
-<h3 id="forEach方法"><a href="#forEach方法" class="headerlink" title="forEach方法"></a>forEach方法</h3><p>这就是数组迭代那一块我说的forEach方法。   </p>
-<p>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">x, index, a</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(x + <span class="string">"|"</span> + index + <span class="string">"|"</span> + (a===arr));</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 1|0|true</span></div><div class="line"><span class="comment">// 2|1|true</span></div><div class="line"><span class="comment">// 3|2|true</span></div><div class="line"><span class="comment">// 4|3|true</span></div><div class="line"><span class="comment">// 5|4|true</span></div></pre></td></tr></table></figure>
-<p>forEach中的函数有三个参数，第一个是元素的值，第二个是元素的索引，最后的a是指向数组本身。    </p>
-<h3 id="map方法"><a href="#map方法" class="headerlink" title="map方法"></a>map方法</h3><p>对数组做映射的方法。<br>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line">arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x+<span class="number">10</span>;</div><div class="line">&#125;);<span class="comment">// [11,12,13]</span></div><div class="line">arr; <span class="comment">// [1,2,3]</span></div></pre></td></tr></table></figure>
-<p>map会在遍历每一个元素的时候去调用。<br>map的返回值会组成一个新数组，不会修改原来的数组。   </p>
-<h3 id="filter方法-数组过滤"><a href="#filter方法-数组过滤" class="headerlink" title="filter方法 数组过滤"></a>filter方法 数组过滤</h3><p>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr= [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>];</div><div class="line">arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x, index</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> index % <span class="number">3</span> === <span class="number">0</span> || x &gt;= <span class="number">8</span>;</div><div class="line">&#125;); <span class="comment">// returns [1, 4, 7, 8, 9, 10]</span></div></pre></td></tr></table></figure>
-<p>filter中传入一个过滤函数，这个过滤函数有两个参数，分别是元素的值和元素的索引。<br>filter的返回值会组成一个新数组，不会修改原来的数组。 </p>
-<h3 id="every和some方法"><a href="#every和some方法" class="headerlink" title="every和some方法"></a>every和some方法</h3><p>这两个方法都是返回布尔值，所以是对数组元素进行判断的方法。<br>every在<strong>**每个数组元素</strong>作为参数传入它的判断函数中都返回true的情况下返回true。<br>some在<strong>**存在一个数组元素</strong>作为参数传入它的判断函数中返回true的情况下返回true。   </p>
-<p>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</div><div class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x &lt; <span class="number">10</span>;</div><div class="line">&#125;); <span class="comment">//true</span></div><div class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x &lt; <span class="number">3</span>;</div><div class="line">&#125;); <span class="comment">// false</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x === <span class="number">3</span>;</div><div class="line">&#125;); <span class="comment">// true</span></div><div class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x === <span class="number">100</span>;</div><div class="line">&#125;); <span class="comment">// false</span></div></pre></td></tr></table></figure>
-<h3 id="reduce和reduceRight方法"><a href="#reduce和reduceRight方法" class="headerlink" title="reduce和reduceRight方法"></a>reduce和reduceRight方法</h3><p>是对数组元素的两两操作～～<br>reduce🌰：  </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> sum = arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">x, y</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;); <span class="comment">// 6</span></div><div class="line">arr; <span class="comment">// [1,2,3]</span></div></pre></td></tr></table></figure>
-<p>其中x第一次调用的时候是第一个元素，后面调用的时候都是前一次reduce的值。   </p>
-<p>reduceRight和reduce相似，只不过是从右边开始遍历的。  </p>
-<h3 id="indexOf和lastIndexOf"><a href="#indexOf和lastIndexOf" class="headerlink" title="indexOf和lastIndexOf"></a>indexOf和lastIndexOf</h3><p>查找索引的方法。   </p>
-<p>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>];</div><div class="line">arr.indexOf(<span class="number">2</span>); <span class="comment">//1</span></div><div class="line">arr.indexOf(<span class="number">99</span>); <span class="comment">//-1</span></div><div class="line">arr.indexOf(<span class="number">1</span>,<span class="number">1</span>); <span class="comment">//4</span></div><div class="line">arr.indexOf(<span class="number">1</span>,<span class="number">-3</span>); <span class="comment">//4</span></div><div class="line">arr.indexOf(<span class="number">2</span>,<span class="number">-1</span>); <span class="comment">//3</span></div><div class="line">arr.lastIndexOf(<span class="number">2</span>,<span class="number">-2</span>); <span class="comment">//3</span></div><div class="line">arr.lastIndexOf(<span class="number">2</span>,<span class="number">-3</span>); <span class="comment">//1</span></div></pre></td></tr></table></figure>
-<p>第一个参数是我们希望找到的那个值。<br>如果只传入第一个参数，就在整个数组范围内查找。<br>注意返回值在元素存在的情况下是非负整数，在元素不存在的情况下是-1。<br>第二个参数是开始查找的元素的索引。比如我们想要从第二个元素开始查找，就把第二个参数设为1.<br>lastIndexOf大同小异，只是说它查找的顺序从右往左，而楼上是从左往右。   </p>
-<h3 id="Array-isArray方法"><a href="#Array-isArray方法" class="headerlink" title="Array.isArray方法"></a>Array.isArray方法</h3><p>这个是用来判断一个东西是不是数组的。<br>判断是否为数组有很多方法:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Array</span>.isArray([]); <span class="comment">//true</span></div><div class="line">[] <span class="keyword">instanceof</span> <span class="built_in">Array</span>; <span class="comment">//true</span></div><div class="line">(&#123;&#125;).toString.apply([]) === <span class="string">"[object Array]"</span>; <span class="comment">// true</span></div><div class="line">[].constructor === <span class="built_in">Array</span>; <span class="string">"true"</span></div></pre></td></tr></table></figure>
-<h2 id="总结（补充数组和字符串）"><a href="#总结（补充数组和字符串）" class="headerlink" title="总结（补充数组和字符串）"></a>总结（补充数组和字符串）</h2><p>今天复习了数组的概念和方法。<br>其实数组也是对象的一种，只是它自身有一些特殊的机制，是特殊的对象。<br>明显的不同是：   </p>
-<ul>
-<li>数组自动更新length</li>
-<li>按索引访问数组元素的速度比按属性访问对象属性的速度快</li>
-<li>数组对象继承了Array.prototype上的大量数组操作方法</li>
-</ul>
-<p>另外，补充一下，字符串和数组也是很有一些关系的。   </p>
-<p>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"hello world"</span>;</div><div class="line">str.charAt(<span class="number">0</span>); <span class="comment">//"h"</span></div><div class="line">str[<span class="number">1</span>]; <span class="comment">// e</span></div><div class="line"></div><div class="line"><span class="built_in">Array</span>.prototype.join.call(str, <span class="string">"_"</span>);</div><div class="line"><span class="comment">// "h_e_l_l_o__w_o_r_l_d"</span></div></pre></td></tr></table></figure>
-<p>字符串是一种类数组，它有很多类似于数组的操作。<br>它不是数组，只是相似～～<br>但是正因为相似，它可以直接使用数组上的一些方法。   </p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>数组！一个出镜率非常高的数据结构～～<br>定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/21/js7/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1161,8 +1080,7 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>前面我们说属性是有标签的，于是<strong><em>对象也是有标签的</em></strong>。    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>前面我们说属性是有标签的，于是<strong><em>对象也是有标签的</em></strong>。    </p>
 <h2 id="对象标签"><a href="#对象标签" class="headerlink" title="对象标签"></a>对象标签</h2><p>对象标签主要有三种:    </p>
 <ul>
 <li>[[proto]]</li>
@@ -1172,137 +1090,12 @@
 <h3 id="原型和class"><a href="#原型和class" class="headerlink" title="原型和class"></a>原型和class</h3><p>第一个标签对应的是原型，我们可以通过prototype属性来访问。<br>第二个标签没有一个指定的方式去查看或者修改它，我们可以间接地通过Object.prototype.toString方法来获取它。<br>举个例子：    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> toString.call(o).slice(<span class="number">8</span>, <span class="number">-1</span>);</div><div class="line">&#125;    </div><div class="line"></div><div class="line">toString.call(<span class="literal">null</span>); <span class="comment">// "[object Null]"</span></div><div class="line">getType(<span class="literal">null</span>); <span class="comment">// "Null"</span></div><div class="line">getType(<span class="literal">undefined</span>); <span class="comment">// "Undefined"</span></div><div class="line">getType(<span class="number">1</span>); <span class="comment">// "Number"</span></div><div class="line">getType(<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>));<span class="comment">// "object"</span></div><div class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>); <span class="comment">// "object"</span></div><div class="line">getType(<span class="literal">true</span>); <span class="comment">// "Boolean"</span></div><div class="line">getType(<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)); <span class="comment">// "Boolean"</span></div></pre></td></tr></table></figure>
 <p>注意，在调用object.toString方法的时候，它会去把参数转换为对象，然后再作处理。<br>因此slice方法就截去了object那几个字母，只返回我们想看到的对象。    </p>
-<p><strong><em>挖坑</em></strong>：需要搞清楚Object和Function对象上的toString到底什么区别。    </p>
-<h3 id="extensible标签"><a href="#extensible标签" class="headerlink" title="extensible标签"></a>extensible标签</h3><p>extensible标签，表示对象是否可扩展。<br>言外之意，就是你对象上的属性是否可添加。<br>我们用Object.isExtensible这个方法来判断属性是否可添加。<br>如果我们不想让一个属性扩展，可以使用preventExtensions方法。<br>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;x: <span class="number">1</span>, y: <span class="number">2</span>&#125;;</div><div class="line"><span class="built_in">Object</span>.isExtensible(obj); <span class="comment">//true</span></div><div class="line"><span class="built_in">Object</span>.preventExtensions(obj); </div><div class="line"><span class="built_in">Object</span>.isExtensible(obj); <span class="comment">// false</span></div><div class="line">obj.z  = <span class="number">1</span>;</div><div class="line">obj.z; <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>另外，还有一个Object.seal方法，它会在Object.preventExtensions的基础上把所有的属性都变成不可配置的。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.seal(obj);</div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">"x"</span>);</div><div class="line"><span class="comment">// Object &#123;value: 1, writable: true, enumerable: true, configurable: false&#125;</span></div><div class="line">object.isSealed(obj); <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<p>另外 Object.freeze  方法，会在seal方法的基础上把writable也变成false～～    </p>
-<p><strong><em>注意</em></strong>：我的所有操作，只针对对象的自有属性，不影响原型链。     </p>
-<h2 id="序列化-其它对象方法"><a href="#序列化-其它对象方法" class="headerlink" title="序列化 其它对象方法"></a>序列化 其它对象方法</h2><p>啥是对象序列化？<br>有时候我们需要把对象变成字符串方便传送给后端，这时候我们就要对对象进行序列化。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;x: <span class="number">1</span>, y: <span class="literal">true</span>, z: [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], a:<span class="literal">undefined</span>, b: <span class="literal">NaN</span>, c: <span class="literal">Infinity</span>&#125;;</div><div class="line"><span class="built_in">JSON</span>.stringify(obj); <span class="comment">// "["x":1, "y":true,"z":[1,2,3],"b":"null","c":"null"]"</span></div></pre></td></tr></table></figure>
-<p>如果你序列化的值是undefined的话，那么它就不会出现在序列化的结果中。<br>如果你序列化的值是NaN或者Infinity, 它就会被序列化成null。<br>如果你序列化的值是时间对象，它会输出UTC格式的时间。    </p>
-<p>后端如何解析js序列化字符串？   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">obj = <span class="built_in">JSON</span>.parse(<span class="string">'&#123;"x": 1&#125;'</span>);</div><div class="line">obj.x;</div></pre></td></tr></table></figure>
-<p>就是这个JSON.parse方法。   </p>
-<h3 id="其它重要的对象方法补充"><a href="#其它重要的对象方法补充" class="headerlink" title="其它重要的对象方法补充"></a>其它重要的对象方法补充</h3><ul>
-<li>toString方法前面用过很多次了，就是返回对象的class标签 </li>
-<li>valueOf 尝试把对象转换为基本类型的时候会调用的一个方法 一般返回数字（和toString同时存在时候，类型转换优先调用valueOf）</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，对象这一块的知识点终于梳理得差不多了。<br>中间页挖了一些坑，接下来的文章会写更深入的一些话题，加油！^_^</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/17/js5/" itemprop="url">
-                  Javascript系统复习：get和set方法／属性标签深入
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-17T00:00:00+08:00" content="2016-08-17">
-              2016-08-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>上一篇太长了，我给它截成两部分来讲。<br>这一篇会开辟get和set的新世界，然后就上一篇当中的属性标签再往下深入一下。   </p>
-<h2 id="getter和setter方法"><a href="#getter和setter方法" class="headerlink" title="getter和setter方法"></a>getter和setter方法</h2><p>看一段代码:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> kid = &#123;</div><div class="line">    name: <span class="string">"wanzifa"</span>,</div><div class="line">    weibo: <span class="string">"miemie"</span>,</div><div class="line">    get age() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear() - <span class="number">1996</span>;</div><div class="line">    &#125;,</div><div class="line">    set age(val) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"不能修改成"</span> + val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(kid.age);</div><div class="line">kid.age = <span class="number">100</span>;<span class="comment">// 输出 不能修改成100</span></div><div class="line"><span class="built_in">console</span>.log(kid.age);<span class="comment">// 还是27</span></div></pre></td></tr></table></figure>
-<p>get,set方法很特别，它们和一般的方法不一样。<br>一般我们定义一个方法，是方法名:方法体。<br>这两个方法是以get或者set开头，然后直接跟属性名，后面跟方法体。<br>这里面我们定义的get方法按照我们的想法去输出我们想要获取的属性值，<br>set方法按照我们定义的方式去对我们的属性设置操作作出反应。   </p>
-<p>再举个例子： </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> kid = &#123;</div><div class="line">    name: <span class="string">"wanzifa"</span>,</div><div class="line">    $age: <span class="literal">null</span>,</div><div class="line">    get age() &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.$age == <span class="literal">undefined</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear() - <span class="number">1996</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.$age;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    set age(val) &#123;</div><div class="line">        val += val;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">isNaN</span>(val) &amp;&amp; val &gt; <span class="number">0</span> &amp;&amp; val &lt; <span class="number">150</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.$age = +val;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Incorrect val="</span> + val)<span class="string">''</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(kid.age); <span class="comment">// 20</span></div><div class="line">kid.age = <span class="number">100</span>; </div><div class="line"><span class="built_in">console</span>.log(kid.age); <span class="comment">// 100</span></div><div class="line">kid.age = <span class="string">"xixi"</span>; <span class="comment">// 抛出 error:Incorrect val = NaN</span></div></pre></td></tr></table></figure>
-<p>我们对代码进行进一步的处理，让我们的get和set方法分别具备判断功能。<br>get和set方法就像对属性操作进行一个动态的把关。    </p>
-<h2 id="get-set与原型链"><a href="#get-set与原型链" class="headerlink" title="get/set与原型链"></a>get/set与原型链</h2><p>先看一段代码:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(foo.prototype, <span class="string">"z"</span>, &#123;get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">&#125;&#125;);</div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> foo();</div><div class="line">obj.z; <span class="comment">//1</span></div><div class="line">obj.z = <span class="number">10</span>;</div><div class="line">obj.z; <span class="comment">//仍然是1</span></div></pre></td></tr></table></figure>
-<p>诡异！！<br>赋值无法覆盖原型链上的值了！！<br>是的，如果原型链上有某属性对应的get/set方法，那么我们即便给现有对象添加了该属性的设置，<br>在通过当前对象访问属性的时候，仍然优先调用原型链上的get方法返回给你，也就是说你赋值也白赋值。<br>咋办？？？<br>这时候请出强劲的defineProperty方法:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.defineProperty(obj,<span class="string">"z"</span>,</div><div class="line">&#123;value: <span class="number">100</span>, configurable: <span class="literal">true</span>&#125;);</div><div class="line">obj.z; <span class="comment">//100</span></div><div class="line"><span class="keyword">delete</span> obj.z; <span class="comment">//true</span></div><div class="line">obj.z <span class="comment">// 回到1了</span></div></pre></td></tr></table></figure>
-<h2 id="属性标签"><a href="#属性标签" class="headerlink" title="属性标签"></a>属性标签</h2><p>如何查看一个属性的标签。<br>用这个方法:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(对象，属性名);</div></pre></td></tr></table></figure>
-<p>返回一个对象，对象中的键值对就是它的属性标签。<br>比如:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(&#123;pro: <span class="literal">true</span>&#125;, <span class="string">"pro"</span>);</div></pre></td></tr></table></figure>
-<p>返回:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span> &#123;value:<span class="literal">true</span>, writable: <span class="literal">true</span>, enumerable:<span class="literal">true</span>, configurable:<span class="literal">true</span>&#125;</div></pre></td></tr></table></figure>
-<p>其中,value就是属性的值，writable表示属性是否可写，enumerbal表示属性是否可以被遍历（for in遍历，Object.keys方法），configurable表示前面的这些东西能不能被修改，或者该属性能否被删除。    </p>
-<h2 id="另一个定义属性标签的方法"><a href="#另一个定义属性标签的方法" class="headerlink" title="另一个定义属性标签的方法"></a>另一个定义属性标签的方法</h2><p>前有defineProperty,后有defineProperties。<br>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.defineProperties(person,&#123;</div><div class="line">  title: &#123;value, <span class="string">"fe"</span>, enumerable:<span class="literal">true</span>&#125;,</div><div class="line">  corp: &#123;value: <span class="string">"Baba"</span>, enumerable: <span class="literal">true</span>, writable: <span class="literal">true</span>&#125;,</div><div class="line">  salary: &#123;value: <span class="number">50000</span>, enumerable: <span class="literal">true</span>, writable: <span class="literal">true</span>&#125;, </div><div class="line">  luck: &#123;</div><div class="line">    get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.random &gt; <span class="number">0.5</span> ? <span class="string">"good"</span> : <span class="string">"bad"</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  promote: &#123;</div><div class="line">    set: <span class="function"><span class="keyword">function</span>(<span class="params">level</span>) </span>&#123;</div><div class="line">        <span class="keyword">this</span>.salary *= <span class="number">1</span> + level*<span class="number">0.1</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(person, <span class="string">"salary"</span>);</div><div class="line"><span class="comment">// Object &#123;value:50000, writable:true, enumerbale: true, configurable: false&#125;</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(person, <span class="string">"corp"</span>);</div><div class="line"><span class="comment">// Object &#123;value: "BABA", writable:false, enumerable:true, configurable: false&#125;</span></div></pre></td></tr></table></figure>
-<p>嘻嘻，实现了一口气定义一堆标签的梦想哈哈哈哈。<br>注意上面这段代码，我们属性标签中的标签不仅可以是属性，还可以是方法，前提是set/get方法。    </p>
-<h2 id="属性标签小总结"><a href="#属性标签小总结" class="headerlink" title="属性标签小总结"></a>属性标签小总结</h2><p>先上图：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/js5.png" alt="属性标签总结图"><br>从图上我们可以看出，当configurable和writable都为true,我们想干啥干啥。<br>configurable控制的是属性标签和get/set方法的修改和属性的删除。<br>wirtable专注于可写不可写问题。    </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>终于把属性说完啦哈哈哈哈！！！<br>下一篇看一下对象标签和对象序列化！！^_^</p>
-
-          
+<p><strong><em>挖坑</em></strong>：需要搞清楚Object和Function对象上的toString到底什么区别。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/19/js6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1366,12 +1159,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1381,7 +1174,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1445,7 +1238,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

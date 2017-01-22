@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -67,7 +67,7 @@ script1.js:">
 <meta property="og:description" content="前言ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。前段时间用Node写demo的时候，完全离不开modules啊。当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。总之，重要！！
 模块的导出和导入先来看如何写一个模块并把它导出！假设我们现在有同一个目录下的两个文件，script1.js和script2.js
 script1.js:">
-<meta property="og:updated_time" content="2017-01-02T13:50:07.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:58:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记15:ES6中的模块(module)">
 <meta name="twitter:description" content="前言ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。前段时间用Node写demo的时候，完全离不开modules啊。当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。总之，重要！！
@@ -79,7 +79,7 @@ script1.js:">
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -253,7 +253,7 @@ script1.js:">
 <h2 id="模块的导出和导入"><a href="#模块的导出和导入" class="headerlink" title="模块的导出和导入"></a>模块的导出和导入</h2><p>先来看如何写一个模块并把它导出！<br>假设我们现在有同一个目录下的两个文件，script1.js和script2.js</p>
 <p>script1.js:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>;</div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> &#123;fruit, dessert&#125;;</div></pre></td></tr></table></figure>
-<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：   </p>
+<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：<br><a id="more"></a> </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;fruit, dessert&#125; <span class="keyword">from</span> <span class="string">"./script1"</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fruit, dessert);</div></pre></td></tr></table></figure>
 <p>当然，如果想要导入<strong>全部</strong>内容，我们有更简单的写法:   </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> xxx <span class="keyword">from</span> <span class="string">"./script1"</span>;</div></pre></td></tr></table></figure>
@@ -307,6 +307,10 @@ script1.js:">
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/02/react0/" rel="prev" title="React中的JSX和数据流">
+                React中的JSX和数据流 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -370,12 +374,12 @@ script1.js:">
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -385,7 +389,7 @@ script1.js:">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -460,7 +464,7 @@ script1.js:">
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

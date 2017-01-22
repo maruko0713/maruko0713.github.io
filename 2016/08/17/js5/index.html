@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -68,7 +68,7 @@ getter和setter方法看一段代码:
 getter和setter方法看一段代码:   
 12345678910111213var kid = &amp;#123;    name: &quot;wanzifa&quot;,    weibo: &quot;miemie&quot;,    get age() &amp;#123;        return new">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/js5.png">
-<meta property="og:updated_time" content="2017-01-18T14:50:34.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:57:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript系统复习：get和set方法／属性标签深入">
 <meta name="twitter:description" content="前言:上一篇太长了，我给它截成两部分来讲。这一篇会开辟get和set的新世界，然后就上一篇当中的属性标签再往下深入一下。   
@@ -81,7 +81,7 @@ getter和setter方法看一段代码:
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -254,7 +254,7 @@ getter和setter方法看一段代码:
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>上一篇太长了，我给它截成两部分来讲。<br>这一篇会开辟get和set的新世界，然后就上一篇当中的属性标签再往下深入一下。   </p>
 <h2 id="getter和setter方法"><a href="#getter和setter方法" class="headerlink" title="getter和setter方法"></a>getter和setter方法</h2><p>看一段代码:   </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> kid = &#123;</div><div class="line">    name: <span class="string">"wanzifa"</span>,</div><div class="line">    weibo: <span class="string">"miemie"</span>,</div><div class="line">    get age() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear() - <span class="number">1996</span>;</div><div class="line">    &#125;,</div><div class="line">    set age(val) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"不能修改成"</span> + val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(kid.age);</div><div class="line">kid.age = <span class="number">100</span>;<span class="comment">// 输出 不能修改成100</span></div><div class="line"><span class="built_in">console</span>.log(kid.age);<span class="comment">// 还是27</span></div></pre></td></tr></table></figure>
-<p>get,set方法很特别，它们和一般的方法不一样。<br>一般我们定义一个方法，是方法名:方法体。<br>这两个方法是以get或者set开头，然后直接跟属性名，后面跟方法体。<br>这里面我们定义的get方法按照我们的想法去输出我们想要获取的属性值，<br>set方法按照我们定义的方式去对我们的属性设置操作作出反应。   </p>
+<p>get,set方法很特别，它们和一般的方法不一样。<br>一般我们定义一个方法，是方法名:方法体。<br>这两个方法是以get或者set开头，然后直接跟属性名，后面跟方法体。<br>这里面我们定义的get方法按照我们的想法去输出我们想要获取的属性值，<br>set方法按照我们定义的方式去对我们的属性设置操作作出反应。<br><a id="more"></a> </p>
 <p>再举个例子： </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> kid = &#123;</div><div class="line">    name: <span class="string">"wanzifa"</span>,</div><div class="line">    $age: <span class="literal">null</span>,</div><div class="line">    get age() &#123;</div><div class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.$age == <span class="literal">undefined</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear() - <span class="number">1996</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.$age;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    set age(val) &#123;</div><div class="line">        val += val;</div><div class="line">        <span class="keyword">if</span>(<span class="built_in">isNaN</span>(val) &amp;&amp; val &gt; <span class="number">0</span> &amp;&amp; val &lt; <span class="number">150</span>) &#123;</div><div class="line">            <span class="keyword">this</span>.$age = +val;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"Incorrect val="</span> + val)<span class="string">''</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(kid.age); <span class="comment">// 20</span></div><div class="line">kid.age = <span class="number">100</span>; </div><div class="line"><span class="built_in">console</span>.log(kid.age); <span class="comment">// 100</span></div><div class="line">kid.age = <span class="string">"xixi"</span>; <span class="comment">// 抛出 error:Incorrect val = NaN</span></div></pre></td></tr></table></figure>
 <p>我们对代码进行进一步的处理，让我们的get和set方法分别具备判断功能。<br>get和set方法就像对属性操作进行一个动态的把关。    </p>
@@ -371,12 +371,12 @@ getter和setter方法看一段代码:
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -386,7 +386,7 @@ getter和setter方法看一段代码:
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -461,7 +461,7 @@ getter和setter方法看一段代码:
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

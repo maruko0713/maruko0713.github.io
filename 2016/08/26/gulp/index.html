@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -74,7 +74,7 @@ gulp是前端开发过程中对代码进行构建的工具，是自动化项目�
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/gulp3.jpg">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/gulp4.jpg">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/gulp5.jpg">
-<meta property="og:updated_time" content="2016-09-22T12:14:49.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:58:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自动化管理工具gulp的初体验">
 <meta name="twitter:description" content="前言:
@@ -88,7 +88,7 @@ gulp是前端开发过程中对代码进行构建的工具，是自动化项目�
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -263,6 +263,7 @@ gulp是前端开发过程中对代码进行构建的工具，是自动化项目�
 <h2 id="什么是gulp"><a href="#什么是gulp" class="headerlink" title="什么是gulp"></a>什么是gulp</h2><blockquote>
 <p>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。    </p>
 </blockquote>
+<a id="more"></a> 
 <h2 id="gulp如何使用"><a href="#gulp如何使用" class="headerlink" title="gulp如何使用"></a>gulp如何使用</h2><p>使用gulp之前，我们首先要安装gulp<br>因为我是mac的系统，所以采取了命令行安装的形式，如果需要其他帮助，请查看<a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">gulp官方网站</a>的说明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install gulp --g</div></pre></td></tr></table></figure></p>
 <p>通过这个操作，可以完成对gulp的全局安装     </p>
 <p>之后，我们需要在根目录下建立一个名为gulpfile.js的文件，这个文件非常重要，因为我们在后续的更新和重新操作的过程中会反复使用它，因为我的项目不大，所以采取了一些比较基础的操作，如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">"gulp"</span>); <span class="comment">//它是大boss</span></div><div class="line"><span class="keyword">var</span> rev = <span class="built_in">require</span>(<span class="string">"gulp-rev"</span>); <span class="comment">// 插件 用于在更新文件内容后更新文件名</span></div><div class="line"><span class="comment">// 插件(用于在目录下的文件名更新后更新html文件中的文件名)</span></div><div class="line"><span class="keyword">var</span> revReplace = <span class="built_in">require</span>(<span class="string">"gulp-rev-replace"</span>); </div><div class="line"><span class="comment">// 插件(用于分析html文件中带有注释的css文件和js文件)</span></div><div class="line"><span class="keyword">var</span> useref = <span class="built_in">require</span>(<span class="string">"gulp-useref"</span>); </div><div class="line"><span class="keyword">var</span> filter = <span class="built_in">require</span>(<span class="string">"gulp-filter"</span>);<span class="comment">// 插件 用于筛选出已标记的css文件和js文件</span></div><div class="line"><span class="keyword">var</span> uglify = <span class="built_in">require</span>(<span class="string">"gulp-uglify"</span>); <span class="comment">//压缩js文件</span></div><div class="line"><span class="keyword">var</span> csso = <span class="built_in">require</span>(<span class="string">"gulp-csso"</span>); <span class="comment">//压缩css文件</span></div><div class="line">gulp.task(<span class="string">"default"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">//filter操作可以筛选出相应的文件 restore参数表示该文件可以被返回到dist目录下</span></div><div class="line">    <span class="keyword">var</span> jsFilter = filter(<span class="string">"**/*.js"</span>,&#123;restore:<span class="literal">true</span>&#125;);</div><div class="line">    <span class="keyword">var</span> cssFilter = filter(<span class="string">"**/*.css"</span>, &#123;restore:<span class="literal">true</span>&#125;); </div><div class="line">    <span class="comment">//感叹号代表排除 filter内第一个参数可以为字符串也可以为数组</span></div><div class="line">    <span class="keyword">var</span> indexHtmlFilter = filter([<span class="string">"**/*"</span>,<span class="string">"!**/index.html"</span>], &#123;restore:<span class="literal">true</span>&#125;);</div><div class="line">    <span class="keyword">return</span> gulp.src(<span class="string">"src/index.html"</span>) <span class="comment">//找到要处理的文件</span></div><div class="line">        .pipe(useref()) <span class="comment">//分析文件中带有注释标志的地方</span></div><div class="line">        .pipe(jsFilter) <span class="comment">//筛选出标记的js文件 丢进文件流中</span></div><div class="line">        .pipe(uglify()) <span class="comment">//压缩操作</span></div><div class="line">        .pipe(jsFilter.restore) <span class="comment">// 将丢入文件流的文件放回原有的位置</span></div><div class="line">        .pipe(cssFilter) <span class="comment">//将筛选出的css文件丢进文件流 </span></div><div class="line">        .pipe(csso()) <span class="comment">//压缩</span></div><div class="line">        .pipe(cssFilter.restore) <span class="comment">//再丢回去</span></div><div class="line">        .pipe(indexHtmlFilter) <span class="comment">// 把index.html文件取出 剩余的匹配文件丢入文件流</span></div><div class="line">        .pipe(rev()) <span class="comment">//生成此刻文件流中所有文件的版本号</span></div><div class="line">        .pipe(indexHtmlFilter.restore) <span class="comment">//丢回去</span></div><div class="line">        .pipe(revReplace()) <span class="comment">//改名字（名字后面加上文件版本号）</span></div><div class="line">        .pipe(gulp.dest(<span class="string">"dist"</span>)); <span class="comment">// 把文件流扔进dist文件夹</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
@@ -384,12 +385,12 @@ gulp是前端开发过程中对代码进行构建的工具，是自动化项目�
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -399,7 +400,7 @@ gulp是前端开发过程中对代码进行构建的工具，是自动化项目�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -474,7 +475,7 @@ gulp是前端开发过程中对代码进行构建的工具，是自动化项目�
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

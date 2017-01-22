@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -57,14 +57,12 @@
 
 
 
-<meta name="description" content="前言:最近在阅读一本很好的开源电子书——阮一峰老师的ES6入门,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。  
-初识Promise对象正如标题所说,Promise对象的出现，是为了解决层层嵌套的回调地狱。当回调函数太多的时候，会使代码的结构变得糟糕，读代码的时候，你得一层一层扒着往里找半天才能找到自己想看到那个功能效果对应的回调，改代码的时候更糟">
+<meta name="description" content="前言:最近在阅读一本很好的开源电子书——阮一峰老师的ES6入门,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="告别回调地狱－－ES6标准中的Promise对象">
 <meta property="og:url" content="http://maruko.com/2016/08/30/promise/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言:最近在阅读一本很好的开源电子书——阮一峰老师的ES6入门,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。  
-初识Promise对象正如标题所说,Promise对象的出现，是为了解决层层嵌套的回调地狱。当回调函数太多的时候，会使代码的结构变得糟糕，读代码的时候，你得一层一层扒着往里找半天才能找到自己想看到那个功能效果对应的回调，改代码的时候更糟">
+<meta property="og:description" content="前言:最近在阅读一本很好的开源电子书——阮一峰老师的ES6入门,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/promise1.png">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/promise2.png">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/promise4.png">
@@ -74,11 +72,10 @@
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/bq.jpg">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/promise8.png">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/promise9.png">
-<meta property="og:updated_time" content="2016-09-11T00:44:08.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:55:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="告别回调地狱－－ES6标准中的Promise对象">
-<meta name="twitter:description" content="前言:最近在阅读一本很好的开源电子书——阮一峰老师的ES6入门,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。  
-初识Promise对象正如标题所说,Promise对象的出现，是为了解决层层嵌套的回调地狱。当回调函数太多的时候，会使代码的结构变得糟糕，读代码的时候，你得一层一层扒着往里找半天才能找到自己想看到那个功能效果对应的回调，改代码的时候更糟">
+<meta name="twitter:description" content="前言:最近在阅读一本很好的开源电子书——阮一峰老师的ES6入门,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。">
 <meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/promise1.png">
 
 
@@ -86,7 +83,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -256,7 +253,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>最近在阅读一本很好的开源电子书——<a href="http://es6.ruanyifeng.com/#docs/promise#Promise-all" target="_blank" rel="external">阮一峰老师的ES6入门</a>,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。  </p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>最近在阅读一本很好的开源电子书——<a href="http://es6.ruanyifeng.com/#docs/promise#Promise-all" target="_blank" rel="external">阮一峰老师的ES6入门</a>,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。<br><a id="more"></a> </p>
 <h2 id="初识Promise对象"><a href="#初识Promise对象" class="headerlink" title="初识Promise对象"></a>初识Promise对象</h2><p>正如标题所说,Promise对象的出现，是为了解决层层嵌套的回调地狱。当回调函数太多的时候，会使代码的结构变得糟糕，读代码的时候，你得一层一层扒着往里找半天才能找到自己想看到那个功能效果对应的回调，改代码的时候更糟心，删除一个功能还得瞻前顾后连着外函数和内函数一起修改。总之，回调一多，事情就变得麻烦了。<br>上面blabla这么多，我们来看阮一峰老师对Promise的语法上的定义:    </p>
 <blockquote>
 <p>从语法上说，Promise是一个对象，从它可以获取异步操作的消息。Promise提供统一的API，各种异步操作都可以用同样的方法进行处理。</p>
@@ -378,12 +375,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -393,7 +390,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -468,7 +465,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

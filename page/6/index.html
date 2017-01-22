@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="maruko" />
 
 
 
@@ -57,25 +57,22 @@
 
 
 
-<meta name="description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="description" content="大三信息汪 喜欢写代码">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Maruko0713的实验室">
 <meta property="og:url" content="http://maruko.com/page/6/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta property="og:description" content="大三信息汪 喜欢写代码">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maruko0713的实验室">
-<meta name="twitter:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="twitter:description" content="大三信息汪 喜欢写代码">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -209,6 +206,100 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/17/js5/" itemprop="url">
+                  Javascript系统复习：get和set方法／属性标签深入
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T00:00:00+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>上一篇太长了，我给它截成两部分来讲。<br>这一篇会开辟get和set的新世界，然后就上一篇当中的属性标签再往下深入一下。   </p>
+<h2 id="getter和setter方法"><a href="#getter和setter方法" class="headerlink" title="getter和setter方法"></a>getter和setter方法</h2><p>看一段代码:   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> kid = &#123;</div><div class="line">    name: <span class="string">"wanzifa"</span>,</div><div class="line">    weibo: <span class="string">"miemie"</span>,</div><div class="line">    get age() &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear() - <span class="number">1996</span>;</div><div class="line">    &#125;,</div><div class="line">    set age(val) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"不能修改成"</span> + val);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(kid.age);</div><div class="line">kid.age = <span class="number">100</span>;<span class="comment">// 输出 不能修改成100</span></div><div class="line"><span class="built_in">console</span>.log(kid.age);<span class="comment">// 还是27</span></div></pre></td></tr></table></figure>
+<p>get,set方法很特别，它们和一般的方法不一样。<br>一般我们定义一个方法，是方法名:方法体。<br>这两个方法是以get或者set开头，然后直接跟属性名，后面跟方法体。<br>这里面我们定义的get方法按照我们的想法去输出我们想要获取的属性值，<br>set方法按照我们定义的方式去对我们的属性设置操作作出反应。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/17/js5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/16/js4/" itemprop="url">
                   Javascript系统复习：Javascript对象和原型链
                 </a>
@@ -251,75 +342,13 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>对象是js中的一个非常重要的概念。<br>因为在js中，除了基本类型，就是对象。<br>对象中包含一系列属性，这些属性是无序的。<br>每个属性都有一个字符串key和对应的value。    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>对象是js中的一个非常重要的概念。<br>因为在js中，除了基本类型，就是对象。<br>对象中包含一系列属性，这些属性是无序的。<br>每个属性都有一个字符串key和对应的value。    </p>
 <h2 id="对象的key"><a href="#对象的key" class="headerlink" title="对象的key"></a>对象的key</h2><p>key的类型，你在赋值的时候，你可以给key起任何的名字。<br>但是随便起名字归随便起名字，名字起完之后，js解释器还是会自动把你起的名字想方设法地转换为字符串，所以最后<strong><em>key的类型还是字符串</em></strong>。    </p>
-<h2 id="对象中的属性的标签"><a href="#对象中的属性的标签" class="headerlink" title="对象中的属性的标签"></a>对象中的属性的标签</h2><p>每一个属性，它自身都有很多标签，比如:    </p>
-<ul>
-<li>writable</li>
-<li>enumerable</li>
-<li>configurable</li>
-<li>value</li>
-<li>get/set<br>这些东西用于为每一个属性提供它的权限控制，比如是否可写啥的。<br>有点杂，决定单独写篇文章写吧。。。。    </li>
-</ul>
-<h2 id="对象的标签"><a href="#对象的标签" class="headerlink" title="对象的标签"></a>对象的标签</h2><p>除了每个属性都有标签和get／set方法之外，每个对象都有一个原型。  </p>
-<h3 id="对象的prototype标签"><a href="#对象的prototype标签" class="headerlink" title="对象的prototype标签"></a>对象的prototype标签</h3><p>每个对象都有一个prototype属性，设置原型用的。<br>🌰：  </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</div><div class="line">&#125;;</div><div class="line">foo.prototype.z = <span class="number">3</span>;</div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> foo();</div></pre></td></tr></table></figure>
-<p>此时我们如果访问obj.z,是可以返回3的，因为顺着它的原型链，它找到了z。    </p>
-<h3 id="对象的class标签和extensible标签"><a href="#对象的class标签和extensible标签" class="headerlink" title="对象的class标签和extensible标签"></a>对象的class标签和extensible标签</h3><p>class标签表示对象属于哪个种类。<br>extensible标签表示这个对象是否还允许增加新的属性。   </p>
-<h2 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h2><p>创建对象有两种方法:    </p>
-<h3 id="对象字面量"><a href="#对象字面量" class="headerlink" title="对象字面量"></a>对象字面量</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;x: <span class="number">1</span>, y:<span class="number">2</span>&#125;;</div></pre></td></tr></table></figure>
-<h3 id="new-构造函数"><a href="#new-构造函数" class="headerlink" title="new 构造函数"></a>new 构造函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">foo.prototype.z = <span class="number">3</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> foo();</div><div class="line">obj.y = <span class="number">2</span>;</div><div class="line">obj.x = <span class="number">1</span>;</div><div class="line">obj.x;</div><div class="line">obj.y;</div><div class="line">obj.z;</div></pre></td></tr></table></figure>
-<h3 id="Object-create-方法"><a href="#Object-create-方法" class="headerlink" title="Object.create()方法"></a>Object.create()方法</h3><p>看一段代码：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(&#123;x: <span class="number">1</span>&#125;);</div><div class="line">obj.x; <span class="comment">// 1</span></div><div class="line"><span class="keyword">typeof</span> obj.toString <span class="comment">// "function"</span></div><div class="line">obj.hasOwnProperty(<span class="string">"x"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line">obj.toString <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>往create方法里面传入对象，也可以创建一个新对象。<br>注意这个新对象的原型，就是传入的这个参数。<br>如果我们传入的是一个字面量，那么这个字面量创建的对象原型就是Object，自然可以引出它的Object.toString方法。<br>如果我们传入的是null,我们的对象就没有原型，自然也就调用不出toString方法了。    </p>
-<p>这里我们引出了原型。<br>我们访问x和y的时候，都正常输出，但你访问z也可以正常输出，这是为什么。<br>这就是因为我们沿着原型链向上查找了，所以x其实是foo.prototype对象里面的属性。    </p>
-<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2><p>原型链就是每一个构造函数的prototype，一个挨一个向上查找，所组成的链条。<br>每一个对象的原型链溯源尽头都是Object,Object.prototype为null。    </p>
-<p>还是上面那段代码，我们这样做:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="string">"z"</span> <span class="keyword">in</span> obj; <span class="comment">//true</span></div><div class="line">obj.hasOwnProperty(<span class="string">"z"</span>); <span class="comment">//false</span></div></pre></td></tr></table></figure>
-<p>就是说虽然你在obj中可以遍历出z这个属性，但是这个属性并不是这个obj对象上的，而是对象的原型链上的。    </p>
-<p>如果我们这时候这么干：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj.z = <span class="number">10</span>;</div></pre></td></tr></table></figure>
-<p>这个操作，是为obj对象增加一个z属性，并不是修改prototype的z属性，现在obj就有了一个自己的z属性了。<br>只要你给z赋值，那么obj就拥有了一个自由的属性z，而不再使用原型链里的z。    </p>
-<h2 id="对象的属性操作"><a href="#对象的属性操作" class="headerlink" title="对象的属性操作"></a>对象的属性操作</h2><p>对象的属性我们分这几个方面来看:   </p>
-<ul>
-<li>读写对象属性</li>
-<li>属性异常</li>
-<li>删除属性</li>
-<li>检测属性</li>
-<li>枚举属性</li>
-</ul>
-<h3 id="属性的读写"><a href="#属性的读写" class="headerlink" title="属性的读写"></a>属性的读写</h3><p>很常见，就是这样:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;x: <span class="number">1</span>, y: <span class="number">2</span>&#125;;</div><div class="line">obj.x;</div><div class="line">obj[<span class="string">"y"</span>];</div><div class="line"></div><div class="line">obj[<span class="string">"x"</span>];</div><div class="line">obj.y = <span class="number">4</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意我们在遍历属性的时候经常用for in，for in 的一个缺陷就是它会把原型链上的属性也全部都遍历出来。   </p>
-<h3 id="属性读写的异常"><a href="#属性读写的异常" class="headerlink" title="属性读写的异常"></a>属性读写的异常</h3><p>🌰：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;x: <span class="number">1</span>&#125;;</div><div class="line">obj.y;</div><div class="line"><span class="keyword">var</span> yz = obj.y.z;</div><div class="line">obj.y.z = <span class="number">2</span>;</div></pre></td></tr></table></figure>
-<p>常见的异常就是像这样，尝试获取undefined上面的一个属性，就会报错。     </p>
-<h3 id="属性的删除"><a href="#属性的删除" class="headerlink" title="属性的删除"></a>属性的删除</h3><p>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> person = &#123;age: <span class="number">28</span>, title: <span class="string">"fe"</span>&#125;;</div><div class="line"><span class="keyword">delete</span> person.age; <span class="comment">// true</span></div><div class="line"><span class="keyword">delete</span> person[<span class="string">"title"</span>]; <span class="comment">// true</span></div><div class="line">person.age; <span class="comment">// undefined</span></div><div class="line"><span class="keyword">delete</span> person.age; <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<p>注意我们重复删除已经不存在的属性,它仍然返回true。<br>只要这个属性能达到一个不存在的状态，那么都是true。   </p>
-<p>有一些属性是不允许被删除的：     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">delete</span> <span class="built_in">Object</span>.prototype; <span class="comment">//false</span></div></pre></td></tr></table></figure>
-<p>就会false了～～   </p>
-<h3 id="属性的标签"><a href="#属性的标签" class="headerlink" title="属性的标签"></a>属性的标签</h3><p>对于每一个属性，都会有一系列标签，来控制它的权限。<br>简单尝试一下:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> descriptor = <span class="built_in">Object</span>.getOwnPropertyDescriptor(<span class="built_in">Object</span>, <span class="string">"prototype"</span>);</div><div class="line">descriptor.configurable; <span class="comment">// false</span></div></pre></td></tr></table></figure>
-<p>descriptor承接下了prototype的所有标签，比如我们试图输出它是否可配置，答案就是false。    </p>
-<h3 id="var-定义的变量不能被删除"><a href="#var-定义的变量不能被删除" class="headerlink" title="var 定义的变量不能被删除"></a>var 定义的变量不能被删除</h3><p>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> globalVal = <span class="number">1</span>;</div><div class="line"><span class="keyword">delete</span> globalVal;</div></pre></td></tr></table></figure>
-<p>delete是删除不了这样的变量的。<br>我们还是用它删除属性吧。    </p>
-<p>delete删除一个变量，首先就是要看它的声明方式。<br>比如同样是全局变量，我这样:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">delete</span> a; <span class="comment">// false</span></div><div class="line"><span class="built_in">window</span>.a = <span class="number">1</span>;</div><div class="line"><span class="keyword">delete</span> a; <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<p>delete只认变量形式的声明。    </p>
-<h3 id="属性检测"><a href="#属性检测" class="headerlink" title="属性检测"></a>属性检测</h3><p>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> <span class="built_in">Object</span>;</div><div class="line">cat.legs = <span class="number">4</span>;</div><div class="line">cat.name = <span class="string">"kitty"</span>;</div><div class="line"></div><div class="line"><span class="string">"legs"</span> <span class="keyword">in</span> cat;<span class="comment">// true</span></div><div class="line"><span class="string">"abc"</span> <span class="keyword">in</span> cat;<span class="comment">// false</span></div><div class="line"><span class="string">"toString"</span> <span class="keyword">in</span> cat;<span class="comment">// true 继承得到的    </span></div><div class="line">    </div><div class="line">cat.hasOwnProperty(<span class="string">"legs"</span>);<span class="comment">// true</span></div><div class="line">cat.hasOwnProperty(<span class="string">"toString"</span>)<span class="comment">// false</span></div><div class="line"></div><div class="line">cat.propertyIsEnumerable(<span class="string">"legs"</span>);<span class="comment">// true</span></div><div class="line">cat.propertyIsEnumerable(<span class="string">"toString"</span>);<span class="comment">// false</span></div></pre></td></tr></table></figure>
-<p>首先我们用in，我们会发现它自己的属性和方法和原型链中的属性和方法都会被检测出来。<br>检测对象自身的属性我们使用hasOwnProperty。<br>propertyIsEnumerable是用来查看属性是否可以被枚举的。<br>啥叫可枚举？当我们console.log的时候，只会显示对象上的直接属性，这是因为原型链上的大部分属性的Enumerable属性都是false，因此不会显示。    </p>
-<h3 id="定义属性标签"><a href="#定义属性标签" class="headerlink" title="定义属性标签"></a>定义属性标签</h3><p>如何设置属性的标签?<br>用defineProperty()方法。    </p>
-<p>举个例子:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.defineProperty(cat, <span class="string">"price"</span>, &#123;enumerable:<span class="literal">false</span>, value:<span class="number">100</span>&#125;);</div></pre></td></tr></table></figure>
-<p>第一个参数传入对象名，第二个参数传入属性名，最后一个参数传入属性标签的设定。<br>要注意，<strong><em>当我们自己用new Object或者对象字面量创建对象的时候，它默认是属性标签都为true</em></strong>。而我们用defineObject()方法创建一个属性的时候，它的标签如果你不特殊写的话，默认都是false~~~,所以楼上的enumerable有点多此一举啦～～    </p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>没想到写了这么长，只能暂时打住了，不然下次再看会花眼。<br>这篇文章中篇幅比较大的还是属性方面的知识点。<br>下一次会继续复习属性，嘿嘿～～</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/16/js4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -405,107 +434,13 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇博客的两大块，分别是语句和严格模式。<br>Javascript程序由<strong><em>语句</em></strong>组成，语句遵守特定的语法规则。<br>例如: if语句， while语句， with语句等。<br>详细说的话，语句可以分为非常多的种类，这里拣几个重要的来说一下。    </p>
-<p><strong><em>严格模式</em></strong>是一种特殊的执行模式，它修复了部分语言上的不足，提供更强的错误检查，增强安全性。    </p>
-<h2 id="块-block"><a href="#块-block" class="headerlink" title="块 block"></a>块 block</h2><p>块语句常用于组合0～多个语句。<br>块语句用一对花括号定义。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">语法：    </div><div class="line">&#123;</div><div class="line">    语句<span class="number">1</span>；</div><div class="line">    语句<span class="number">2</span>；</div><div class="line">    ...</div><div class="line">    语句n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>一般和if或者while这样的结合起来使用。<br>关于这个花括号的用途，我们要结合语境来看:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;a:<span class="number">1</span>, b:<span class="number">2</span>&#125;;</div><div class="line"><span class="keyword">var</span> o = &#123;a:<span class="number">1</span>, b:<span class="number">2</span>&#125;;</div></pre></td></tr></table></figure>
-<p>楼上 第一句会报错，因为当花括号单独出现在句首的时候，就被认为是一个块语句的开头，往下读发现一个冒号，解释器就不明白了，因为冒号在此处并不能被理解为一个合法的运算符，于是报错。<br>（第二句没毛病）。    </p>
-<p><strong><em>注意: 没有块级作用域</em></strong><br>(ES6里面是有的)    </p>
-<h2 id="声明语句"><a href="#声明语句" class="headerlink" title="声明语句"></a>声明语句</h2><p>就是声明变量的语句。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div></pre></td></tr></table></figure>
-<p>这就是一个标准的声明。    </p>
-<p>这里有个小点：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = b = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line">foo();</div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> a); <span class="comment">// 输出 "undefined"</span></div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> b); <span class="comment">// 输出 "number"</span></div></pre></td></tr></table></figure>
-<p>楼上，我们看到a是正常的，b很奇怪，明明是在函数里面定义的，出了这个作用域怎么还有呢。<br>当我们在声明的同时连续赋值的时候，这个赋值的顺序是从右往左进行的，于是先给b赋值1，b前面并没有var,非严格模式下，b被认为是全局变量赋值了，随后被声明的a才被赋值，于是就有了这样的结果。<br>如果想要实现它们全都在自己当前作用域下，这样做：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">1</span>;</div></pre></td></tr></table></figure>
-<h2 id="try-catch语句"><a href="#try-catch语句" class="headerlink" title="try-catch语句"></a>try-catch语句</h2><p>try-catch是常见的异常捕获机制。<br>先尝试执行try中的代码，然后如果过程中出了错，那么catch语句就去捕获这个错误。<br>js中的三种try-catch有三种形式：    </p>
-<ul>
-<li>try&amp;catch</li>
-<li>try&amp;finally</li>
-<li>try&amp;catch&amp;finally</li>
-</ul>
-<p>我们需要关注的是三者嵌套时的顺序:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"oops"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">finally</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"finally"</span>);</div><div class="line">    &#125;</div><div class="line">&#125; <span class="keyword">catch</span>(ex) &#123;</div><div class="line">    <span class="built_in">console</span>.error(<span class="string">"outer"</span>, ex.message);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>比如这段代码怎么走呢？<br>输出的结果是:  先”finally”, 后”outer” “opps”。<br>为什么呢？就是说里面的那个错误在被抛出之前，必须先把自己的这个系列的代码执行完，然后才能跳出来。<br>再看一种情况:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"oops"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">catch</span>(ex) &#123;</div><div class="line">        <span class="built_in">console</span>.error(<span class="string">"inner"</span>, ex.message);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">finally</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"finally"</span>);</div><div class="line">    &#125;</div><div class="line">&#125; <span class="keyword">catch</span>(ex) &#123;</div><div class="line">    <span class="built_in">console</span>.error(<span class="string">"outer"</span>, ex.message);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>怎么走？<br>肯定是先”inner” “oops”,然后”finally”啊！<br>“outer”不会再输出了，因为错误已经被内部捕获过了^_^。    </p>
-<h2 id="function-函数"><a href="#function-函数" class="headerlink" title="function 函数"></a>function 函数</h2><p>function语句用来定义函数^_^。<br>看一段代码:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fd</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// do sth</span></div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这玩意儿叫做函数声明。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fe = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// do sth;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这玩意儿叫函数表达式。<br>区别是啥？<br>函数声明会被前置，而函数定义表达式不会。<br>在函数声明前面调用这个函数也没差，但是函数定义表达式不行。<br>这个写到函数的时候再细说。    </p>
-<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="for-in-用来遍历对象的属性。"><a href="#for-in-用来遍历对象的属性。" class="headerlink" title="for in 用来遍历对象的属性。"></a>for in 用来遍历对象的属性。</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p;</div><div class="line"><span class="keyword">var</span> obj = &#123;x:<span class="number">1</span>, y:<span class="number">2</span>&#125;;</div><div class="line"></div><div class="line"><span class="keyword">for</span>(p <span class="keyword">in</span> obj) &#123;</div><div class="line">    <span class="comment">// todo</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>楼上就可以遍历obj的所有属性了。<br>需要注意的几点：    </p>
-<ul>
-<li>顺序是不确定的</li>
-<li>enumerable为false时不会出现（这个是对属性的配置 写到对象的时候再复习一遍）</li>
-<li>for in 对象属性受原型链的影响</li>
-</ul>
-<h3 id="switch语句"><a href="#switch语句" class="headerlink" title="switch语句"></a>switch语句</h3><p>这个其实没啥好说的，哈哈。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> val = <span class="number">2</span>;</div><div class="line"><span class="keyword">switch</span>(val) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">2</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">0</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>此处输出的就是2。<br>如果我不写break,它会继续走下去，走下面的default,然后输出2 0。<br>switch如果合写的话：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> val = <span class="number">2</span>;</div><div class="line"><span class="keyword">switch</span>(val) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="number">1</span>:</div><div class="line">    <span class="keyword">case</span> <span class="number">2</span>:</div><div class="line">    <span class="keyword">case</span> <span class="number">3</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">123</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="number">4</span>:</div><div class="line">    <span class="keyword">case</span> <span class="number">5</span>::</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">45</span>);</div><div class="line">      <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>楼上，几种情况如果合写的话，就是前面几个后面啥都不跟，把要作出的反应写在这一系列情况中的最后一个下面就行了。<br>楼上输出123。   </p>
-<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><p>还有while啊， do while啊， for啊，啥的，几乎所有的编程教材都讲的， 就不再说了。    </p>
-<h2 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h2><p>with语句可以修改当前的作用域。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>(&#123;x:<span class="number">1</span>&#125;) &#123;</div><div class="line">    <span class="built_in">console</span>.log(x);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我们看到with后面接个对象的时候，可以直接根据属性名输出。<br>当我们的代码有很多层的时候，我们就可以用with来帮我们省事。<br>比如我们需要处理一个表单:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span>(<span class="built_in">document</span>.forms[<span class="number">0</span>]) &#123;</div><div class="line">    <span class="built_in">console</span>.log(name.value);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>楼上，是不是少些了不少代码？<br>不过我们还有一个少写代码的方法:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.forms[<span class="number">0</span>];</div><div class="line"><span class="built_in">console</span>.log(form.name.value);</div></pre></td></tr></table></figure>
-<p><strong><em>在js中不建议使用with</em></strong><br>原因如下:    </p>
-<ul>
-<li>让js引擎优化更难</li>
-<li>可读性差</li>
-<li>可以被代替</li>
-<li>严格模式下被禁用</li>
-</ul>
-<p>因此，with这块虽然是做个了解，但是以后还是忘了它吧！    </p>
-<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>第二个boss登场。<br>如何进入严格模式？<br>很简单:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div></pre></td></tr></table></figure>
-<p>注意，如果我想给一个函数设置严格模式，我这样做:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;</div><div class="line"><span class="meta">    'use strict'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果我想要给整个文件设置严格模式，我这样做:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line">...</div></pre></td></tr></table></figure>
-<p>从’use strict’往下的部分，就是严格模式执行的范围。   </p>
-<p><strong><em>严格模式的特别之处如下：</em></strong></p>
-<h3 id="不允许使用with"><a href="#不允许使用with" class="headerlink" title="不允许使用with"></a>不允许使用with</h3><p>严格模式下使用了with, 就会报错。    </p>
-<h3 id="不允许未声明变量被赋值"><a href="#不允许未声明变量被赋值" class="headerlink" title="不允许未声明变量被赋值"></a>不允许未声明变量被赋值</h3><p>看这段代码：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    x=<span class="number">1</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">window</span>.x); <span class="comment">//1</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>普通模式下，没毛病，x被当作一个全局变量被声明了。<br>但是严格模式下，直接报错。     </p>
-<h3 id="arguments变为参数的静态副本"><a href="#arguments变为参数的静态副本" class="headerlink" title="arguments变为参数的静态副本"></a>arguments变为参数的静态副本</h3><p>看这段代码：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="number">100</span>;</div><div class="line">    <span class="built_in">console</span>.log(a);</div><div class="line">&#125;)(<span class="number">1</span>);</div></pre></td></tr></table></figure>
-<p>如果我这样做的话，普通模式下，参数a就会被修改为100。<br>但是严格模式下，arguments是一个静态副本，和参数变化不同步。<br>因此，这里输出的a仍然是1。    </p>
-<h3 id="delete参数报错"><a href="#delete参数报错" class="headerlink" title="delete参数报错"></a>delete参数报错</h3><p>看这段代码:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">delete</span> a);</div><div class="line">&#125;)(<span class="number">1</span>);</div></pre></td></tr></table></figure>
-<p>一般模式下，如果想要删除一个参数，是会失败的，但是不会报错。<br>但是如果是严格模式下，就会报错。    </p>
-<h3 id="delete不可配置的属性报错"><a href="#delete不可配置的属性报错" class="headerlink" title="delete不可配置的属性报错"></a>delete不可配置的属性报错</h3><p>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line">    <span class="built_in">Object</span>.defineProperty(obj,</div><div class="line">        <span class="string">"a"</span>,&#123;configurable: <span class="literal">false</span>&#125;);</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">delete</span> obj.a);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>一般模式下，会返回false，不会报错。<br>但是严格模式下，会报错。    </p>
-<h3 id="对象字面量重复属性名报错"><a href="#对象字面量重复属性名报错" class="headerlink" title="对象字面量重复属性名报错"></a>对象字面量重复属性名报错</h3><p>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> obj = &#123;x : <span class="number">1</span>, x : <span class="number">2</span>&#125;;</div><div class="line">    <span class="built_in">console</span>.log(obj.x);</div><div class="line">&#125;)();</div></pre></td></tr></table></figure>
-<p>一般模式下，是没毛病的。<br>严格模式报错。   </p>
-<h3 id="禁止八进制字面量"><a href="#禁止八进制字面量" class="headerlink" title="禁止八进制字面量"></a>禁止八进制字面量</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="number">0123</span>);</div></pre></td></tr></table></figure>
-<p>一般模式下按照八进制输出，严格模式报错。    </p>
-<h3 id="eval-arguments变为关键字，-不能作为变量或者函数名"><a href="#eval-arguments变为关键字，-不能作为变量或者函数名" class="headerlink" title="eval, arguments变为关键字， 不能作为变量或者函数名"></a>eval, arguments变为关键字， 不能作为变量或者函数名</h3><p>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">eval</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">    &#125;;</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">eval</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>一般模式没毛病，严格模式报错。    </p>
-<h3 id="eval独立作用域"><a href="#eval独立作用域" class="headerlink" title="eval独立作用域"></a>eval独立作用域</h3><p>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">eval</span>(<span class="string">"var evalVal = 2"</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">typeof</span> evalVal);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>非严格模式输出 “number”。<br>严格模式下，eval中的代码有一个自己的作用域，此时输出undefined。    </p>
-<p>还有一部分，不展开讲了，但是还是做一下记录:    </p>
-<ul>
-<li>一般函数调用时，this指向null,  而不是全局对象</li>
-<li>若使用apply/call, 传入null或者undefined时， this指向null或者undefined, 而不是全局对象</li>
-<li>试图修改不可写属性（writable=false）时，在不可扩展的对象上添加属性时，全都报错。而不是默默地失败。    </li>
-<li>arguments.caller,arguments.callee被禁用</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章写到这里，我只想说。<br>严格模式好，以后每次都加上一个”use strict”吧！^_^</p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇博客的两大块，分别是语句和严格模式。<br>Javascript程序由<strong><em>语句</em></strong>组成，语句遵守特定的语法规则。<br>例如: if语句， while语句， with语句等。<br>详细说的话，语句可以分为非常多的种类，这里拣几个重要的来说一下。    </p>
+<p><strong><em>严格模式</em></strong>是一种特殊的执行模式，它修复了部分语言上的不足，提供更强的错误检查，增强安全性。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/14/js3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -591,8 +526,7 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>今天对表达式和运算符做总结。   </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>今天对表达式和运算符做总结。   </p>
 <p><strong><em>表达式</em></strong>是指能计算出值的任何可用程序单元。<br>在js中，表达式是一种js短语，可以使js解释器用来产生一个值。   </p>
 <p><strong><em>运算符</em></strong>在js里面也是比较基础的一个东西，它一般用于表达式和表达式之间，做一些运算。   </p>
 <h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><p>一共有六种：    </p>
@@ -604,67 +538,11 @@
 <li>调用表达式</li>
 <li>对象创建表达式</li>
 </ul>
-<p>具体的🌰：</p>
-<h3 id="原始表达式"><a href="#原始表达式" class="headerlink" title="原始表达式"></a>原始表达式</h3><ul>
-<li>常量，直接量： 3, “test”    </li>
-<li>关键字： null, this, true, false</li>
-<li>变量： i, k, j</li>
-</ul>
-<h3 id="复合表达式"><a href="#复合表达式" class="headerlink" title="复合表达式"></a>复合表达式</h3><p>原始表达式和原始表达式加上一个运算符，就是复合表达式。   </p>
-<h3 id="数组，对象的初始化表达式"><a href="#数组，对象的初始化表达式" class="headerlink" title="数组，对象的初始化表达式"></a>数组，对象的初始化表达式</h3><ul>
-<li>[1, 2] 等价于 new Array(1, 2)</li>
-<li>{x:1, y:2} 等价于 var o = new Object();o.x=1;o.y=2;</li>
-</ul>
-<h3 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fe = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)();</div></pre></td></tr></table></figure>
-<p>匿名函数赋值，函数直接调用，这都是函数表达式。    </p>
-<h3 id="属性访问表达式"><a href="#属性访问表达式" class="headerlink" title="属性访问表达式"></a>属性访问表达式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> o = &#123;x:<span class="number">1</span>&#125;;</div><div class="line">o.x;</div><div class="line">o[<span class="string">"x"</span>];</div></pre></td></tr></table></figure>
-<p>访问x的两个表达式就是属性访问表达式。   </p>
-<h3 id="调用表达式"><a href="#调用表达式" class="headerlink" title="调用表达式"></a>调用表达式</h3><p>简单粗暴就是：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">funcName();</div></pre></td></tr></table></figure>
-<p>调用一个已经定义的函数。    </p>
-<h3 id="对象创建表达式"><a href="#对象创建表达式" class="headerlink" title="对象创建表达式"></a>对象创建表达式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> Func(<span class="number">1</span>, <span class="number">2</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Object</span>;</div></pre></td></tr></table></figure>
-<p>调用构造函数，如果不需要传参，那么括号可以省略。    </p>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>运算符按照操作数的数量可以分为:    </p>
-<ul>
-<li>一元运算符 比如 +num</li>
-<li>二元运算符（最常见） 比如 a + b</li>
-<li>三元运算符 比如 c ? a : b</li>
-</ul>
-<p>按照功能分类:</p>
-<ul>
-<li>赋值运算符 x += 1</li>
-<li>比较运算符 a == b</li>
-<li>算术运算符 a + b a - b啥的</li>
-<li>位运算符 a | b</li>
-<li>逻辑运算符 exp1 &amp;&amp; exp2</li>
-<li>字符串拼接  “a” + “b”</li>
-<li>特殊运算符 delete obj.x等等</li>
-</ul>
-<h3 id="特殊运算符举🌰"><a href="#特殊运算符举🌰" class="headerlink" title="特殊运算符举🌰"></a>特殊运算符举🌰</h3><p>比如:    </p>
-<h4 id="条件运算符"><a href="#条件运算符" class="headerlink" title="条件运算符:"></a>条件运算符:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">c ? a : b;</div><div class="line"><span class="keyword">var</span> val = <span class="literal">true</span> ? <span class="number">1</span> : <span class="number">2</span>;</div></pre></td></tr></table></figure>
-<p>val=1。</p>
-<h4 id="逗号运算符"><a href="#逗号运算符" class="headerlink" title="逗号运算符:"></a>逗号运算符:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> val = )(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</div></pre></td></tr></table></figure>
-<p>用逗号隔开表示每个表达式都会被计算，最后取最右面的值。<br>（val＝3）。    </p>
-<h4 id="delete-运算符"><a href="#delete-运算符" class="headerlink" title="delete 运算符:"></a>delete 运算符:</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;x:<span class="number">1</span>&#125;;</div><div class="line">obj.x;</div><div class="line"><span class="keyword">delete</span> obj.x;</div><div class="line">obj.x</div></pre></td></tr></table></figure>
-<p>用于删除一个对象里面的属性。    </p>
-<p><strong><em>并不是所有的属性都可以被删除</em></strong><br>从IE9开始有了一个新方法:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">"x"</span>, &#123;</div><div class="line">  configurable: <span class="literal">false</span>,</div><div class="line">  value: <span class="number">1</span></div><div class="line">&#125;);</div><div class="line"><span class="keyword">delete</span> obj.x;</div><div class="line">obj.x;</div></pre></td></tr></table></figure>
-<p>注意这个defineProperty方法啊。<br>里面的configurable的标签只有是true,属性才可以被删除。    </p>
-<h4 id="in-运算符"><a href="#in-运算符" class="headerlink" title="in 运算符"></a>in 运算符</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.x = <span class="number">1</span>;</div><div class="line"><span class="string">"x"</span> <span class="keyword">in</span> <span class="built_in">window</span>;</div></pre></td></tr></table></figure>
-<p>返回true，用于判断一个属性是否存在于一个对象中。    </p>
-<h4 id="instanceof-typeof啥的"><a href="#instanceof-typeof啥的" class="headerlink" title="instanceof typeof啥的"></a>instanceof typeof啥的</h4><p>在上一篇文章中回顾过了，它们是用来判断类型的。<br>还是举一些🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;&#125; <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">//true 基于原型链判断对象的类型</span></div><div class="line"><span class="keyword">typeof</span> <span class="number">100</span> === <span class="string">"number"</span>; <span class="comment">//true 多用于判断原始类型或者函数的类型</span></div></pre></td></tr></table></figure>
-<h4 id="new-运算符"><a href="#new-运算符" class="headerlink" title="new 运算符"></a>new 运算符</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">Foo.prototype.x = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> Foo();</div><div class="line">obj.x; <span class="comment">//1</span></div><div class="line">obj.hasOwnProperty(<span class="string">"x"</span>); <span class="comment">// false</span></div><div class="line">obj.__proto__.hasOwnProperty(<span class="string">"x"</span>); <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<p>new 根据指定的构造函数生成一个对象，这个对象的原型就是这个构造函数。   </p>
-<h4 id="this-运算符"><a href="#this-运算符" class="headerlink" title="this 运算符"></a>this 运算符</h4><p>在浏览器里面:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>; <span class="comment">// 指向window</span></div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line">obj.func(); <span class="comment">//obj</span></div></pre></td></tr></table></figure>
-<p>this 在不同情况下会有不同的值，这个需要展开讨论，像原型链一样，我会单独写文章。    </p>
-<h4 id="void-运算符"><a href="#void-运算符" class="headerlink" title="void 运算符"></a>void 运算符</h4><p>很少见，一元运算符。<br>不管后面的操作数是谁，最后都返回undefined。    </p>
-<h3 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h3><p>这个从学c语言的时候就开始强调，很杂，我的感觉一个是多写多熟悉，另一个就是实在不行上括号，括号万岁，通俗易懂，省时省力。    </p>
-<p>上图！<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/%E8%BF%90%E7%AE%97%E7%AC%A6%E4%BC%98%E5%85%88%E7%BA%A7.png" alt="运算符优先级"></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>哈哈，写这篇总结，让我有一种回到大一的感觉。<br>真想念熊老师的c语言课啊啊啊啊啊啊～～～<br>好！现在去看会儿别的书～～～^_^</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/12/js2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -750,8 +628,7 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这个系列的文章是对Javascript基础知识的复习和巩固，也是对这段时间读过的书的一个交代。<br>文章的内容来源于对《javascript高级程序设计》，《javascript权威指南》两本书的阅读，总结和反思。很好的书，没有白买。    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这个系列的文章是对Javascript基础知识的复习和巩固，也是对这段时间读过的书的一个交代。<br>文章的内容来源于对《javascript高级程序设计》，《javascript权威指南》两本书的阅读，总结和反思。很好的书，没有白买。    </p>
 <h2 id="Javascript的六种数据类型"><a href="#Javascript的六种数据类型" class="headerlink" title="Javascript的六种数据类型"></a>Javascript的六种数据类型</h2><h3 id="原始类型"><a href="#原始类型" class="headerlink" title="原始类型"></a>原始类型</h3><ul>
 <li>number</li>
 <li>string</li>
@@ -763,59 +640,11 @@
 <li>object</li>
 </ul>
 <p>有的时候，我们把Array也归为一个单独的类型，事实上，它仍然是object的一种体现。    </p>
-<h2 id="弱类型语言"><a href="#弱类型语言" class="headerlink" title="弱类型语言"></a>弱类型语言</h2><p>在js中定义变量的时候，不需要指定类型。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">32</span>;</div><div class="line">num = <span class="string">"this"</span>;</div></pre></td></tr></table></figure>
-<p>上面这样，是没毛病的。<br>因此，js是一个<strong>弱类型</strong>的语言。<br>弱类型虽然在定义的时候省事，但是也因此使我们在进行<strong>隐式转换</strong>的时候要格外留心。    </p>
-<h2 id="隐式转换"><a href="#隐式转换" class="headerlink" title="隐式转换"></a>隐式转换</h2><p>当字符串和数字在一个表达式中同时出现时：   </p>
-<h3 id="加减号"><a href="#加减号" class="headerlink" title="加减号"></a>加减号</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="string">"37"</span> + <span class="number">7</span>;</div><div class="line"><span class="keyword">var</span> y = <span class="string">"37"</span> - <span class="number">7</span>;</div></pre></td></tr></table></figure>
-<p>如果中间是加号，那么加号两边就会都被当成字符串处理。<br>如果中间是减号，那么减号两边都会被当成数字来处理。<br>因此x是377,y是30。   </p>
-<h2 id="等号"><a href="#等号" class="headerlink" title="等号"></a>等号</h2><h3 id="严格等于"><a href="#严格等于" class="headerlink" title="严格等于"></a>严格等于</h3><p>严格等于是三个等号。<br>严格等于首先会判断两遍的类型，如果类型不同，那么直接false。<br>如果类型相同，才会再比下去。<br>对于对象，对象之间比较的是引用（其实就是内存地址）。因此对象和对象之间比的是内存地址噢，    </p>
-<h3 id="非严格等于"><a href="#非严格等于" class="headerlink" title="非严格等于"></a>非严格等于</h3><p>非严格等于是两个等号。<br>当两边类型相同时，它的模式和严格等于是一样的。<br>跨类型的时候，隐式转换就登场了。<br>跨类型举一些🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">null</span> == <span class="literal">undefined</span></div></pre></td></tr></table></figure>
-<p>输出true,这个是死的。这两个类型就是这种关系～    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"1"</span> == <span class="number">1</span>;</div></pre></td></tr></table></figure>
-<p>也是true, 当等号两边是字符串和数字的时候，字符串会转换成数字再比较。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span> == <span class="string">"1"</span>;</div></pre></td></tr></table></figure>
-<p>输出true, 当等号两边有一边是布尔值时，不管另一边是什么，布尔值自己先转换成number再说。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"hi"</span>) == <span class="string">"hi"</span>;</div><div class="line">object == number | string</div></pre></td></tr></table></figure>
-<p>对象和基本类型做比较的时候，只有对于number和string， 它会尝试把自己转换为基本类型再做比较。<br>其它全都是false。    </p>
-<p>注： NaN类型和谁都不等，连NaN ==（＝） NaN都返回的是false。    </p>
-<h2 id="包装对象"><a href="#包装对象" class="headerlink" title="包装对象"></a>包装对象</h2><p>包装对象主要是说string类型和String对象,number类型和Number对象，boolean类型和Boolean对象。<br>以String对象为例：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="string">"string"</span>;</div><div class="line"><span class="keyword">var</span> strObj = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"string"</span>);</div><div class="line">str.t = <span class="number">10</span>;</div><div class="line"><span class="built_in">console</span>.log(str.length);</div><div class="line"><span class="built_in">console</span>.log(strObj.length);</div><div class="line"><span class="built_in">console</span>.log(str.t);</div></pre></td></tr></table></figure>
-<p>输出的是6，6，undefined。<br>当我们尝试用访问String对象的方式访问string类型的时候，js解释器会自动new一个String对象给你，这个String对象的值就是string字符串的值，此时这个字符串就像被包装了一层一样，继续参与下面的运算。因此我们输出str.length，也成功了。<br>正因为每次我们这样尝试调用，都会创建新的String对象，所以每次创建的都不一样。str.t=10这个赋值，赋值给了第一次包装起来的String对象，它随即被释放了，紧接着又创建了一个新的String对象，这个String对象可没有t属性，它只有String类型的内置属性，因此t是undefined。    </p>
-<h2 id="类型检测"><a href="#类型检测" class="headerlink" title="类型检测"></a>类型检测</h2><p>在js中，检测类型的方法有很多：<br>－ typeof运算符</p>
-<ul>
-<li>instanceof运算符</li>
-<li>Object.prototype.toString.apply()方法</li>
-<li>constructor</li>
-<li>duck type</li>
-</ul>
-<h3 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h3><p>最常见的类型运算符。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> <span class="number">100</span>;</div><div class="line"><span class="keyword">typeof</span> <span class="literal">true</span>;</div></pre></td></tr></table></figure>
-<p>输出”number”, “boolean”,它输出的是字符串。<br>特殊的是如果这样输入:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typeof</span> <span class="literal">null</span>;</div></pre></td></tr></table></figure>
-<p>输出的也是object,但是其实null就是null,这个注意一下就行了。    </p>
-<h3 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h3><p>这个在对象里面用的比较多。<br>instanceof是基于原型链来进行判断的。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">obj <span class="keyword">instanceof</span> <span class="built_in">Object</span>;</div></pre></td></tr></table></figure>
-<p>它会判断obj的原型链上是否有Object这个对象。    </p>
-<p>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[<span class="number">1</span>, <span class="number">2</span>] <span class="keyword">instanceof</span> <span class="built_in">Array</span> == <span class="literal">true</span>;</div><div class="line"><span class="keyword">new</span> <span class="built_in">Object</span>() <span class="keyword">instanceof</span> <span class="built_in">Array</span> === <span class="literal">false</span>;</div></pre></td></tr></table></figure>
-<p>两个都是正确的。<br>任何一个构造函数，都会有一个prototype对象属性。<br>这些属性连接起来，就是一个原型链。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//to-do</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="comment">//to-do</span></div><div class="line">&#125;</div><div class="line">Student.prototype = <span class="keyword">new</span> Person();</div><div class="line">Student.prototype.constructor = Student;</div><div class="line"><span class="keyword">var</span> wanzi = <span class="keyword">new</span> Student(); </div><div class="line">wanzi <span class="keyword">instanceof</span> Student;  <span class="comment">// true</span></div><div class="line"><span class="keyword">var</span> wanzi2  = <span class="keyword">new</span> Person();</div><div class="line">wanzi2 <span class="keyword">instanceof</span> Person; <span class="comment">// true</span></div><div class="line">wanzi2 <span class="keyword">instanceof</span> Student; <span class="comment">// false</span></div><div class="line">wanzi <span class="keyword">instanceof</span> Person; <span class="comment">// true</span></div></pre></td></tr></table></figure>
-<p>上面这种情况，就是由原型链造就的。<br>原型链这个得再写个文章了，不急。<br>上面创建了一个wanzi对象，wanzi为什么student和person都是true？<br>首先wanzi有个prototype，它指向的是Student。<br>wanzi instanceof Person这句执行的时候，在第一次查找__proto__(即原型链中的第一个原型对象)属性的时候，没有找到自己想要的Person对象，它就继续向原型链上面查找。wanzi._proto_返回的是Student，它继续查找Student.__proto__,此时找到了Person,于是就断定返回为true了。    </p>
-<h3 id="Object-prototype-toString的方法们"><a href="#Object-prototype-toString的方法们" class="headerlink" title="Object.prototype.toString的方法们"></a>Object.prototype.toString的方法们</h3><p>直接看🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.prototype.toString.apply([]) === <span class="string">"[object]"</span>;</div><div class="line"><span class="built_in">Object</span>.prototype.toString.apply(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;) === <span class="string">"[object Function]"</span>;</div><div class="line"><span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">null</span>) === <span class="string">"[Object Null]"</span>;</div><div class="line"><span class="built_in">Object</span>.prototype.toString.apply(<span class="literal">undefined</span>) === <span class="string">"[Object Undefined]"</span>;</div></pre></td></tr></table></figure>
-<p>我都这么写了，这些等式肯定是都成立的。    </p>
-<h3 id="construtor"><a href="#construtor" class="headerlink" title="construtor"></a>construtor</h3><p>任何一个对象都有一个constructor属性，指向它的构造函数。<br>因为它很容易被改写，所以不靠谱。     </p>
-<h3 id="duck-type"><a href="#duck-type" class="headerlink" title="duck type"></a>duck type</h3><p>duck type 是说通过一些特征来判断数据的类型。    </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>最常见的还是下面两个:    </p>
-<ul>
-<li>typeof 适合基本类型和function的检测，碰到null就狗带</li>
-<li>instanceof 主要用来处理对象</li>
-</ul>
-<p>欧了！数据类型get！</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/10/js1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -879,12 +708,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -894,7 +723,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -958,7 +787,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -67,7 +67,7 @@
 <meta property="og:description" content="前言之前写过一篇ES6中字符串的，主要是每个点都点一下，没有对模版这一块做太多的介绍。今天讲一讲模版字符串的进阶版，标签模版字符串。字符串的第一篇博客在这里: ES6字符串第一篇博客。  
 标签模版字符串的基本形态1let template_string = 函数名`模版字符串`;
 楼上有点丑，我也知道。标签模版字符串的意思是说，把函数名当做一个标签附加到模版字符串的前面，那么这个函数就可以对这个">
-<meta property="og:updated_time" content="2016-12-30T13:13:13.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:58:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记9:字符串更进一步之标签模版字符串">
 <meta name="twitter:description" content="前言之前写过一篇ES6中字符串的，主要是每个点都点一下，没有对模版这一块做太多的介绍。今天讲一讲模版字符串的进阶版，标签模版字符串。字符串的第一篇博客在这里: ES6字符串第一篇博客。  
@@ -79,7 +79,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -254,7 +254,7 @@
 <p>楼上有点丑，我也知道。<br>标签模版字符串的意思是说，把函数名当做一个标签附加到模版字符串的前面，那么这个函数就可以对这个模版字符串做一些处理。<br>标签就是函数，不过是用起来和普通的函数有些区别😁。    </p>
 <h2 id="标签函数用起来！"><a href="#标签函数用起来！" class="headerlink" title="标签函数用起来！"></a>标签函数用起来！</h2><p>来看一段完整的代码:    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">'🍰'</span>,</div><div class="line">    drink  = <span class="string">'🍵'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = kitchen<span class="string">`今天的早餐是</span></div><div class="line">  <span class="subst">$&#123;dessert&#125;</span> 与 <span class="subst">$&#123;drink&#125;</span>!`</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">kitchen</span>(<span class="params">strings, ...values</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(strings);</div><div class="line">    <span class="built_in">console</span>.log(values);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>strings和values分别是两个数组，包含了模版的两个部分。<br>strings就是你手写的那一部分，而values就是${}包含的那部分，变量部分。  </p>
+<p>strings和values分别是两个数组，包含了模版的两个部分。<br>strings就是你手写的那一部分，而values就是${}包含的那部分，变量部分。<br><a id="more"></a> </p>
 <h2 id="标签函数还原原来的字符串"><a href="#标签函数还原原来的字符串" class="headerlink" title="标签函数还原原来的字符串"></a>标签函数还原原来的字符串</h2><p>在第二部分知道了啥是啥之后，我们就可以用这些东西做个组合，比如还原之前的字符串哈哈哈哈！    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">'🍰'</span>,</div><div class="line">    drink  = <span class="string">'🍵'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = kitchen<span class="string">`今天的早餐是</span></div><div class="line">  <span class="subst">$&#123;dessert&#125;</span> 与 <span class="subst">$&#123;drink&#125;</span>!`</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">kitchen</span>(<span class="params">strings, ...values</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> result = <span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;values.length; i++) &#123;</div><div class="line">      result += strings[i];</div><div class="line">      result += values[i];</div><div class="line">    &#125;</div><div class="line">    result += strings[strings.length - <span class="number">1</span>];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;  </div><div class="line"><span class="built_in">console</span>.log(breakfast);</div></pre></td></tr></table></figure>
 <p>如此一来，我们就把拆开的字符串组装回去了。<br>当然，这看起来好像很无聊。。。。（逃）。    </p>
@@ -356,12 +356,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -371,7 +371,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -446,7 +446,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

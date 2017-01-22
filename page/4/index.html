@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="maruko" />
 
 
 
@@ -57,25 +57,22 @@
 
 
 
-<meta name="description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="description" content="大三信息汪 喜欢写代码">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Maruko0713的实验室">
 <meta property="og:url" content="http://maruko.com/page/4/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta property="og:description" content="大三信息汪 喜欢写代码">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maruko0713的实验室">
-<meta name="twitter:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="twitter:description" content="大三信息汪 喜欢写代码">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -209,6 +206,97 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/11/node_mongodb/" itemprop="url">
+                  在node应用中使用mongodb来存储数据
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-11T00:00:00+08:00" content="2016-10-11">
+              2016-10-11
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>这两天用node做了一个<a href="https://github.com/maruko0713/node-demos/tree/master/louNote">在线笔记demo</a>,对于笔记信息和session信息的存储都用到了mongodb。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/11/node_mongodb/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/07/koa_generator/" itemprop="url">
                   koa框架核心--中间件的使用与实现
                 </a>
@@ -251,18 +339,14 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当当当当！我又来说node啦！这次来聊一聊一个可爱的node框架——koa。koa框架的特点就是小，轻量。它不绑定任何中间件（就是说中间件你得全自己写啊），而它的核心也就是这个中间件怎么写的问题。所以今天我们来讲讲这个中间件。    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>当当当当！我又来说node啦！这次来聊一聊一个可爱的node框架——koa。koa框架的特点就是小，轻量。它不绑定任何中间件（就是说中间件你得全自己写啊），而它的核心也就是这个中间件怎么写的问题。所以今天我们来讲讲这个中间件。    </p>
 <h2 id="中间件的demo"><a href="#中间件的demo" class="headerlink" title="中间件的demo"></a>中间件的demo</h2><p>额，这个我就直接上官网的例子嘛，它的形式大概是这样的：    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</div><div class="line"><span class="keyword">var</span> app = koa();</div><div class="line"></div><div class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.body = <span class="string">'Hello World'</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>让我们看向楼上，这个use函数，里面写入的这个回调就是一个中间件。这是中间件“安装”的办法，中间件的关键特性在这里:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'koa'</span>)(),</div><div class="line">    router = <span class="built_in">require</span>(<span class="string">'koa-router'</span>)();</div><div class="line"></div><div class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">    <span class="keyword">yield</span> next;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">5</span>);</div><div class="line">&#125;);</div><div class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params">next</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</div><div class="line">    <span class="keyword">yield</span> next;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">4</span>);</div><div class="line">&#125;);</div><div class="line">app.use(<span class="function"><span class="keyword">function</span> *(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">3000</span>);</div></pre></td></tr></table></figure>
-<p>楼上的接收到请求后的输出结果，熟悉koa和ES6规范中生成器的小伙伴应该知道，是12345.<br>当遇到yield语句时，中间件往下跳，跳进第二个安装上去的中间件，输出一个2又往下跳一下，依此类推。<br>那么中间件机制是咋实现的呢？为啥我输个yield就能往下跳了呢？<br>其实这个next，这里我们可以看作是next(),而next就是一个生成器函数，它返回一个iterator。</p>
-<h2 id="koa中间件的实现－－compose"><a href="#koa中间件的实现－－compose" class="headerlink" title="koa中间件的实现－－compose"></a>koa中间件的实现－－compose</h2><p>compose是koa源码中的一个模块.<br>compose函数中有这么个玩意儿:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span>(i--)&#123;</div><div class="line">    next = middleware[i].call(<span class="keyword">this</span>, next);</div><div class="line">&#125;</div><div class="line"><span class="keyword">yield</span> *next;</div></pre></td></tr></table></figure>
-<p>看到了吧,next就是一个迭代器对象，哈哈，所以我们yield的时候自然可以进入这个迭代器对象啦。<br>详细来说，compose中把所有待执行的中间件写入一个数组，然后next就是数组中下一个中间件产生的一个迭代器对象，因此当我执行yield next时，可以跳进下一个中间件执行里面的代码，直至执行到一个中间件它里面的代码不再往下跳，执行完这个中间件的内容之后，它就开始回跳，逐层向上去执行离它最近的调用方的代码，一直到执行回第一个中间件yield next下面的代码为止。    </p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/07/koa_generator/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -348,31 +432,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前写过一篇关于Promise的文章，介绍了Promise对象的创建，特性等一些基本的知识点。最近用node进行微信公众号实际开发的时候才发现原来Promise的应用到了node这边真是漫天飞呀，今天先说几个用的多的。    </p>
-<h2 id="Promise-resolve和Promise-reject"><a href="#Promise-resolve和Promise-reject" class="headerlink" title="Promise.resolve和Promise.reject"></a>Promise.resolve和Promise.reject</h2><p>先从好啃的写起，抛砖引玉！<br>这是两个静态方法，第一次见到它们，我是懵比的。因为我对Promise的认知仅仅局限于在构造函数里面输入一个小小的”resolve/reject（可选参数）”然后就改变Promise对象的状态，长成这样的我真没见过。感谢万能的吃瓜群众，我找到了它们的内涵:<br>Promise.resolve()等价于这样:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</div><div class="line">    resolve();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>同理Promise.reject()等价于下面这样:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</div><div class="line">    reject();</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<p>看到这里，是不是恍然大悟了？<br>因此：<br>Promise.resolve()/Promise.reject()的作用即使创建一个Promise对象并将其状态置为resolved/rejected。<br>用处：<br>好处大大的有啊！想一想，有的时候我们并不care你的Promise构造函数内的主体是干啥的，只是关心then里面的内容是干啥的，这种情况下，我们省略Promise构造函数内参数的书写，直接来一个静态方法就把它的状态整出来了，这样我们是不是就只用操心我们该操心的then了？？      </p>
-<h2 id="Promise-promisify"><a href="#Promise-promisify" class="headerlink" title="Promise.promisify"></a>Promise.promisify</h2><p>(论科学上网的重要性hhhh)虽然查这个东西花去不少时间，但是最后还是有搜获滴！让我们来看看这玩意儿到底是个啥！    </p>
-<h3 id="promisify方法的用途"><a href="#promisify方法的用途" class="headerlink" title="promisify方法的用途"></a>promisify方法的用途</h3><blockquote>
-<p>prmoisify的作是：将一个 nodeCallback 形式函数调用转为 promise 对象。</p>
-</blockquote>
-<p>写到这里有人要问，啥是nodeCallback?    </p>
-<h3 id="nodeCallback形式的函数"><a href="#nodeCallback形式的函数" class="headerlink" title="nodeCallback形式的函数"></a>nodeCallback形式的函数</h3><p>nodeCallback 是Nodojs中的一个常用词。表达是意思是：Nodejs中，以错误优先的回调函数的总称。<br>这么描述还是有点反人类，它应该长这样：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fooCallBack</span>(<span class="params">err, a, b</span>)</span>&#123;</div><div class="line">  <span class="comment">// something</span></div><div class="line">  <span class="built_in">console</span>.log(a,b);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>重点是啥？<br>重点是第一个参数是err!! 也就是说,noodeCallBack 函数的第一个参数<strong>一定</strong>传入的是 err ，而不能是别的参数。只要满足了这个条件，同时满足了回调函数出现的顺序在异步函数的最后一个，都能称之为nodeCallback函数。    </p>
-<p>比如我们经常见面额readFile小姐:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">fs.readFile(<span class="string">'./test.js'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,data</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>看到没？回调函数位于最后一个参数，回调函数的第一个参数为err,这样的函数就叫做nodeCallback函数.    </p>
-<h3 id="promisify方法的好处"><a href="#promisify方法的好处" class="headerlink" title="promisify方法的好处"></a>promisify方法的好处</h3><p>好处大大的有啊！有了可爱的promisify方法，我们就可以把nodeCallback函数转换为高级的Promise对象，对它进行各种Promise对象的操作，使它具备各种Promise对象才有的高级操作，代码更优雅，书写更舒服。。。。等等等等，总之，还是要善待这个方法！    </p>
-<h3 id="promisify的加强版promisifyAll"><a href="#promisify的加强版promisifyAll" class="headerlink" title="promisify的加强版promisifyAll"></a>promisify的加强版promisifyAll</h3><p>promisify 只能一次转一个函数，那 promisifyall 的作用就是一次把一个库的方法转完,并且给他们都加上一个叫做Async的后缀。     </p>
-<p>拿nodeCallback函数云集的fs库开刀:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> <span class="built_in">Promise</span> = <span class="built_in">require</span>(<span class="string">'bluebird'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> fs = <span class="built_in">Promise</span>.promisifyall(<span class="built_in">require</span>(<span class="string">'fs'</span>));</div><div class="line"></div><div class="line">fs.readFileAsync(<span class="string">'./test.js'</span>).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(data);</div><div class="line">&#125;).catch(<span class="built_in">console</span>.log);</div></pre></td></tr></table></figure>
-<p>楼上的代码运行是没有问题的，由此我们确信，promisify方法可以把传入的对象的所有nodeCallback方法全部转换为promise对象并且给它们取一个有Async后缀的新名字～～    </p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前写过一篇关于Promise的文章，介绍了Promise对象的创建，特性等一些基本的知识点。最近用node进行微信公众号实际开发的时候才发现原来Promise的应用到了node这边真是漫天飞呀，今天先说几个用的多的。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/04/promise2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -458,50 +523,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>额好吧其实这次前言没有什么可写的，如果真的要写些什么的话－－最近在复习css3啊哈哈哈哈。好的嘛其实这是一篇梳理文，也不一定哪天复习到哪里对那个属性来劲了，就写一篇。嗯，就是这样！下面让我们来近距离接触一下backgound-clip和background-origin这对好基友！    </p>
-<h2 id="别忘了background-size"><a href="#别忘了background-size" class="headerlink" title="别忘了background-size"></a>别忘了background-size</h2><p>是的是的，css3中一个很有用的一个可爱的background属性还有它background-size!虽然在话题之外，还是要点一下，这个属性用来设置背景图片的大小，很好用，谁用谁知道！    </p>
-<h2 id="所谓好基友"><a href="#所谓好基友" class="headerlink" title="所谓好基友"></a>所谓好基友</h2><p>所谓好基友，就是说它们很像，不仅长得像（background-前缀），而且功能也类似嘿嘿。   </p>
-<h3 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip"></a>background-clip</h3><p>用于设置背景<em>颜色</em>的占据面积。有三个属性:</p>
-<ul>
-<li>border-box(默认)</li>
-<li>padding-box</li>
-<li>content-box</li>
-</ul>
-<p>上代码之前先来个解释吧:第一个border-box这个是默认的，就是说你不设置它，它背景颜色就默认显示颜色占据到border的外边沿，第二个padding-box这个是说占据到padding的外边沿，第三个content-box是说占据到内容区的外边沿。       </p>
-<p>下面上码:    </p>
-<p>html的body结构:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"div1"</span>&gt;</span>嘻嘻哈哈好我是一个测试<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>ps文字是在最后一个例子才有的，前面两个不需要。    </p>
-<p>默认(border-box的情况)style:    </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.div1</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:red;</div><div class="line">    <span class="attribute">border</span>:<span class="number">10px</span> dotted blue;</div><div class="line">    <span class="attribute">background-clip</span>:border-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>效果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/border-box.png" alt="border-box"></p>
-<p>padding-box的style :    </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.div1</span> &#123;</div><div class="line">     <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">     <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">     <span class="attribute">background</span>:red;</div><div class="line">     <span class="attribute">border</span>:<span class="number">10px</span> dotted blue;</div><div class="line">     <span class="attribute">background-clip</span>:padding-box;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>效果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/padding-box.png" alt="padding-box"><br>看到没有，背景颜色是不是收回来了?    </p>
-<p>content-box的style:    </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.div1</span> &#123;</div><div class="line">     <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">     <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">     <span class="attribute">background</span>:red;</div><div class="line">     <span class="attribute">border</span>:<span class="number">10px</span> dotted blue;</div><div class="line">     <span class="attribute">background-clip</span>:content-box;</div><div class="line">     <span class="attribute">padding</span>:<span class="number">20px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>效果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/content-box.png" alt="content-box">    </p>
-<p>以上，这就是background-clip的用法啦！    </p>
-<p>下面我们来讲讲background-origin的用法.<br>三个属性:    </p>
-<ul>
-<li>padding-box(默认属性，注意和上面的border-box区分)   </li>
-<li>border-box 图片布局从border的最外侧开始</li>
-<li>content-box 图片布局从内容的最外侧开始      </li>
-</ul>
-<p>html部分:     </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"div1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>padding-box(默认)的css:     </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.div1</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(http://img5.imgtn.bdimg.com/it/u=4155302816,15&amp;fm=21&amp;gp=0.jpg) no-repeat;</div><div class="line">    <span class="attribute">border</span>:<span class="number">10px</span> dotted blue;</div><div class="line">    <span class="attribute">background-origin</span>:padding-box;</div><div class="line">    <span class="attribute">background-size</span>:<span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>效果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/padding-box.png" alt="padding2"></p>
-<p>border-box的css：    </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.div1</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(http://img5.imgtn.bdimg.com/it/u=4155302816,15&amp;fm=21&amp;gp=0.jpg) no-repeat;</div><div class="line">    <span class="attribute">border</span>:<span class="number">10px</span> dotted blue;</div><div class="line">    <span class="attribute">background-origin</span>:border-box;</div><div class="line">    <span class="attribute">background-size</span>:<span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>效果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/border-box2.png" alt="border2">    </p>
-<p>content-box的css:    </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.div1</span> &#123;</div><div class="line">    <span class="attribute">height</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">background</span>:<span class="built_in">url</span>(http://img5.imgtn.bdimg.com/it/u=4155302816,1201715785&amp;fm=21&amp;gp=0.jpg) no-repeat;</div><div class="line">    <span class="attribute">border</span>:<span class="number">10px</span> dotted blue;</div><div class="line">    <span class="attribute">background-origin</span>:content-box;</div><div class="line">    <span class="attribute">background-size</span>:<span class="number">100%</span>;</div><div class="line">    <span class="attribute">padding</span>:<span class="number">10px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>效果:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/content-box2.png" alt="content2">    </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>俗话说，实践是检验真理的唯一标准。（啊怎么画风变得有点奇怪嘿嘿）。经过实践，虽然background-clip和background-origin是一对好基友，但是前者的实用性远远大于后者。原因很明显，我要定位图片，直接用background-position,不仅更加灵活，而且可以兼容更多浏览器啊，毕竟不是每个人都在用支持css3的浏览器嘛。所以在今后的开发中，我会更多的使用background-position而非新特性background-origin，以此来避免不必要的兼容性处理问题.    </p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>额好吧其实这次前言没有什么可写的，如果真的要写些什么的话－－最近在复习css3啊哈哈哈哈。好的嘛其实这是一篇梳理文，也不一定哪天复习到哪里对那个属性来劲了，就写一篇。嗯，就是这样！下面让我们来近距离接触一下backgound-clip和background-origin这对好基友！<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/03/clip&origin/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -587,46 +614,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这次的博客内容来源于我的第一个完整的移动端项目练习<a href="https://github.com/maruko0713/Travel_comment_website" target="_blank" rel="external">游客意见数据统计</a>的开发过程总结，集中纪录了几个把我折腾的够呛的坑。在github上的readme里面虽然已经有一份了，但是还是决定把它写成博客，希望能帮更多的人减少踩坑的经历^<em>^</em></p>
-<h2 id="开发笔记"><a href="#开发笔记" class="headerlink" title="开发笔记"></a>开发笔记</h2><h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><p>先看这段代码:<br>css部分:    </p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.mask</span> &#123;</div><div class="line">    <span class="attribute">transition</span>:<span class="number">1s</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>js部分</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">addClass(oMask,<span class="string">"pageShow"</span>);</div><div class="line">oMask.style.opacity=<span class="number">1</span>;</div></pre></td></tr></table></figure>
-<p>我设置了mask模块的转换完成时间为1s，js部分中pageShow的作用是把原来的display:none转换成display:block,目的是先把这个模块显示出来，然后再让它完成一个1s之内从opacity为0到opacity为1的转变。<br>然而结果并没有如我所愿，而是很简单粗暴地直接显示出来了，没有淡入的那个过程，查了一下资料，自己现在理解的原因是： </p>
-<blockquote>
-<p>当display在none和block之间转换的时候，需要时间去渲染，这段代码里，在设置了display:block之后立刻设置了opacity:1,这时浏览器还没把模块渲染出来，就读取了opacity＝1的设定，然后在渲染出来那一刻它就是不透明的了，这个转换就体现不出来了。    </p>
-</blockquote>
-<p>因此我们需要给它留出渲染的时间，等渲染结束了，再去设置opacity，这时候transition就是起作用的了:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">addClass(oMask,<span class="string">"pageShow"</span>);</div><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    oMask.style.opacity=<span class="number">1</span>;  </div><div class="line">&#125;,<span class="number">14</span>);</div></pre></td></tr></table></figure>
-<p>至于这个时间为啥选14，因为在网上查到各浏览器的最小延迟时间都在10-15微秒之间，我就取了个14，这里主要是想取一个尽可能小的时间延迟，就算是这么小的时间延迟，也已经够浏览器渲染出这个模块了。（亲测）    </p>
-<h3 id="坑-1"><a href="#坑-1" class="headerlink" title="坑"></a>坑</h3><p>chrome的模拟器虽然很方便，但是还是不能完全的信任啊啊啊啊，今天用我的5s（难道是因为我的手机太旧？？？）测试了一下，发现input里面的button类型标签在重置了默认样式之后依然无法还原pc端测试出来的效果，一开始我是这样重置的:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">input</span>,<span class="selector-tag">textarea</span>&#123;</div><div class="line">    <span class="attribute">outline</span>:none;</div><div class="line">    <span class="attribute">border</span>:none;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">padding</span>:<span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/79FC9D6F-7566-48BC-85DB-67DAC8B92EFF.png" alt="按钮图片"><br>然后结果呢，反正不长这样，特别丑，为了说明差距很大我用手机截了个屏幕:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/22C3E7C5-59A9-42B4-858B-04F790CE5BA8.png" alt="浏览器默认样式按钮"><br>一脸懵比，这差距大到我想不出来该去重置哪个css属性！<br>论科学上网的重要性，后来我搜出了一个办法，只需一行：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-appearance</span><span class="selector-pseudo">:none</span>;</div></pre></td></tr></table></figure></p>
-<p> 就可以干掉手机safari下独有的这个bug哈哈哈哈。<br> 今晚等室友回来再用她的6测试一下，看一下是不是我手机系统太老的问题.<br> 填坑：不是系统的问题，6里的safari也这个德行，必须-webkit-appearance:none;才行<br> vivo浏览器测试正常(是的我把室友的手机全试了一遍啊哈哈哈)    </p>
-<h3 id="大坑"><a href="#大坑" class="headerlink" title="大坑"></a>大坑</h3><p>大坑就是搞了很久才搞明白而且非常诡异的坑，今天上午我就遇到一个.</p>
-<h4 id="label标签里被隐藏的input会骗人"><a href="#label标签里被隐藏的input会骗人" class="headerlink" title="label标签里被隐藏的input会骗人"></a>label标签里被隐藏的input会骗人</h4><p>这个事情不单独搞出来讲绝对不能解恨，项目里面我在标签选择那一块写了一个事件委托，如果用户戳到span或者label标签那么就去判断input(input我设置了display:none)的checked属性,如果checked属性为真，那么label标签就去掉active状态，反之加上active状态，从而实现一个状态切换的效果。<br>思路看起来好像没问题，但是在我操作的过程中会出现我明明点上了label，但是不变色的现象(active状态是要变色的)，为此，我测试了那一块代码我能测试的几乎所有地方，但是就是改不掉。后来干脆单独写了个demo来检查label标签，它的狐狸尾巴就露出来了: </p>
-<p>html部分:</p>
-<pre><code class="html"><span class="meta">&lt;!DOCTYPE html&gt;</span>
-<span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>
-<span class="tag">&lt;<span class="name">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">title</span>&gt;</span>test<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=200"</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
-<span class="tag">&lt;<span class="name">body</span>&gt;</span>  
-    <span class="tag">&lt;<span class="name">label</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span>
-        <span class="tag">&lt;<span class="name">span</span>&gt;</span>测试<span class="tag">&lt;/<span class="name">span</span>&gt;</span>
-    <span class="tag">&lt;/<span class="name">label</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">html</span>&gt;</span>
-</code></pre>
-<p>css部分:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">label</span> &#123;</div><div class="line">    <span class="attribute">border</span>:<span class="number">1px</span> solid black;</div><div class="line">    <span class="attribute">padding</span>:<span class="number">10px</span>;</div><div class="line">    <span class="attribute">margin</span>:<span class="number">10px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">input</span> &#123;</div><div class="line">    <span class="attribute">display</span>:none;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>js部分:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> oLabel = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"label"</span>)[<span class="number">0</span>];</div><div class="line">    oLabel.addEventListener(<span class="string">"touchend"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> oInput = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"input"</span>)[<span class="number">0</span>];</div><div class="line">        <span class="built_in">console</span>.log(oInput.checked);</div><div class="line">        <span class="built_in">console</span>.log(event.target);</div><div class="line">    &#125;);</div><div class="line">    <span class="built_in">document</span>.addEventListener(<span class="string">"touchend"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event.target.tagName);</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>布局长这样:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/input.png" alt="label标签"><br>注意我戳的位置（是戳不是点，事件名称是touchend,click的话不存在这个bug，因为click你只能点到一个点，而touch却能覆盖一小片区域了）<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/input2.png" alt="加了范围演示的label标签"><br>注意小圆点，这个小圆点（就是你戳手机的时候手指覆盖的范围）一旦有大于一半的面积滞留在label标签外面，神奇的事情就会发生，这时label标签的touch事件不会被触发，但是input的checked值会被改变，别问我为什么，浏览器非这么干，整整一个上午的测试告诉我，就是这样！    </p>
-<h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><p>现在我的办法是，input的checked值既然和touch事件是不同步的，那么我就不用它进行判断。在touch事件被触发的时候，我去判断一个自定义属性，这里我给input新增了一个on属性，on属性只有在touch事件触发的时候才改变，把这个地方改了之后，状态切换就变得很灵敏了。    </p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这次的博客内容来源于我的第一个完整的移动端项目练习<a href="https://github.com/maruko0713/Travel_comment_website">游客意见数据统计</a>的开发过程总结，集中纪录了几个把我折腾的够呛的坑。在github上的readme里面虽然已经有一份了，但是还是决定把它写成博客，希望能帮更多的人减少踩坑的经历^<em>^</em></p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/02/keng/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -712,41 +705,17 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这段时间在学习用nodejs做一个微信公众号的后端开发。node真是百闻不如一见，这回见着了，觉得node和浏览器端js差别还是挺明显的（众：你这不废话吗！）。嘿嘿，今天处理一段request数据时，用了一个办法是先把它转成buffer对象，然后再将其重新编码，所以今天就来侃侃Buffer吧！     </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这段时间在学习用nodejs做一个微信公众号的后端开发。node真是百闻不如一见，这回见着了，觉得node和浏览器端js差别还是挺明显的（众：你这不废话吗！）。嘿嘿，今天处理一段request数据时，用了一个办法是先把它转成buffer对象，然后再将其重新编码，所以今天就来侃侃Buffer吧！     </p>
 <h2 id="Buffer是啥？"><a href="#Buffer是啥？" class="headerlink" title="Buffer是啥？"></a>Buffer是啥？</h2><p>字面理解一下Buffer（缓冲）对象:   </p>
 <blockquote>
 <p>一般编程所说的缓冲区指的是内存缓冲区,这是程序所设置的一块内存区域,用来暂存从其他设备读入的数据或即将写入其他设备的数据.</p>
 </blockquote>
 <p>好，下面我们关心一下node里面的缓冲对象:<br>对于JavaScript来说，对Unicode编码的数据很容易处理的但是对于二进制数据就没什么处理方法了。但是在一些TCP数据流或者在操作一些文件数据流的时候，字节流的处理方法还是必须的。nodeJS中便出了处理的策略方法~提供了与String类似对等的全局构造函数Buffer（与其说与String对等，还不如说与Array类似但是有些不同方面还是需要注意），全局那么自然就不要每次的require了。Buffer是node中储存二进制数据的中介者。</p>
-<h2 id="创建一个Buffer对象！"><a href="#创建一个Buffer对象！" class="headerlink" title="创建一个Buffer对象！"></a>创建一个Buffer对象！</h2><p>形式就是地球人都知道的 var xx = new Buffer()嘿嘿嘿.<br>（啊呸，当然没那么随意！）<br>（正经脸）    </p>
-<ul>
-<li>方式一: new Buffer(size)    </li>
-<li>方式二: new Buffer(array)</li>
-<li>方式三: new Buffer(string, 编码方式)    </li>
-</ul>
-<p>解读:    第一种形式中，size是你想要建立的buffer对象所占的内存的字节个数。第二种形式中，直接传入你想要建立的buffer对象的数组形式，当然数组的每一个元素都是16进制表示的一个字节，第三种方式中，传入一个字符串，然后第二个参数告诉Buffer你字符串的编码方式，它会按照你告诉他的编码方式去拆分这个字符串，把它解码为16进制的字节。     </p>
-<p>示例:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法一    </span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="number">10</span>);</div><div class="line"></div><div class="line"><span class="comment">// 方法二</span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer([<span class="number">01</span>,<span class="number">02</span>,<span class="number">03</span>,<span class="number">04</span>]);</div><div class="line"></div><div class="line"><span class="comment">// 方法三(参数二可选)</span></div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="string">"hello"</span>,<span class="string">"utf-8"</span>);</div></pre></td></tr></table></figure>
-<h2 id="区分Buffer对象和字符串对象"><a href="#区分Buffer对象和字符串对象" class="headerlink" title="区分Buffer对象和字符串对象"></a>区分Buffer对象和字符串对象</h2><p>其实没有什么好区分的（毕竟完全不一样啊喂！😂），这里主要是强调一下它们的读写特征。<br>我们知道，字符串是只读的，比如这样写:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">"hello"</span>;</div><div class="line">a[<span class="number">1</span>] = <span class="string">"b"</span>;</div></pre></td></tr></table></figure>
-<p>猜猜a最后长什么样子？答案是a仍然是”hello”而不是”bello”!因为字符串是只读的，一旦你创建了一个字符串，那么它就在那里，然而我们的缓冲对象是灵活的，你改了它，它就会给你变变变，因此，如果我们想基于一个缓冲对象做一些改变，又不想失去这个对象本身，我们最好这么做:<br>请出伟大的copy方法:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">buf.copy(targetBuffer,[targetStart],[sourceStart],[sourceEnd]);</div></pre></td></tr></table></figure>
-<p>参数解释：<br>在Buffer对象的copy方法中，使用四个参数，第一个参数为必须指定的参数，其余三个参数均为可选参数。第一个参数用于指定复制的目标Buffer对象。第二个参数用于指定目标Buffer对象中从第几个字节开始写入数据，参数值为一个小于目标的Buffer对象长度的整数值，默认值为0(从开始处写入数据)。第三个参数用于指定从复制源Buffer对象中获取数据时的开始位置，默认值为0，即从复制源Buffer对象中的第一个字节开始获取数据，第四个参数用于指定从复制源Buffer对象中获取数据时的结束位置，默认值为复制源Buffer对象的长度，即一直获取完毕复制源Buffer对象中的所有剩余数据。</p>
-<p>来个栗子： </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Buffer(<span class="string">"我喜欢写代码"</span>);</div><div class="line"><span class="keyword">var</span> b1 = <span class="keyword">new</span> Buffer(<span class="number">128</span>);</div><div class="line">b1.fill(<span class="number">0</span>);</div><div class="line">b.copy(b1,<span class="number">10</span>);</div></pre></td></tr></table></figure>
-<p>敲进你的终端里try一下吧！会有新发现的！哈哈～    </p>
-<h2 id="常用的静态方法"><a href="#常用的静态方法" class="headerlink" title="常用的静态方法"></a>常用的静态方法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.isBuffer(obj)</div></pre></td></tr></table></figure>
-<p>用于判断obj对象是否是Buffer类型    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.byteLength(string,[encoding]);</div></pre></td></tr></table></figure>
-<p>用于计算传入的string的字节长度，encoding是编码方式，默认编码方式是utf8.    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.concat(list,[totalLength]);</div></pre></td></tr></table></figure>
-<p>Buffer的连接，用于连接Buffer的数组。我们可以手动分配Buffer对象合并后的Buffer空间大小(参数二)，如果Buffer空间不够了，则数据会被截断。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Buffer.isEncoding(encoding);</div></pre></td></tr></table></figure>
-<p>encoding是编码格式，如果这个编码格式是有效的，比如”utf8”穿进去，那铁定没问题，但是如果是个别的，比如你写个”xixi”,那你就呵呵吧。。。。。（逃。。。。。）    </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>(咦怎么就总结了？？)<br>哈哈，这当然没完，但是以上都是我感觉中Buffer比较基础和核心的部分，所以我把它们记录下来（严肃脸），因为目前对node的各种对象的api的实践都是有限的，所以只能吐这么墨水出来啦。以后随着学习的推进，会增加更丰富的内容的^<em>^</em></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/28/buffer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -832,44 +801,14 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>我之前写过一篇针对jsonp的文章<a href="https://maruko0713.github.io/2016/09/06/jsonp/" target="_blank" rel="external">JSONP全接触：JSONP原理，在js与jQuery中的实现</a>,主要是因为一个阅读器app <a href="https://github.com/maruko0713/Reader" target="_blank" rel="external">reader</a>引发了一些思考。今天把ajax知识点做个整合。    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>我之前写过一篇针对jsonp的文章<a href="https://maruko0713.github.io/2016/09/06/jsonp/">JSONP全接触：JSONP原理，在js与jQuery中的实现</a>,主要是因为一个阅读器app <a href="https://github.com/maruko0713/Reader">reader</a>引发了一些思考。今天把ajax知识点做个整合。    </p>
 <h2 id="Ajax是什么"><a href="#Ajax是什么" class="headerlink" title="Ajax是什么"></a>Ajax是什么</h2><p>Ajax(Asynchronous Javascript and XML 异步javascript和xml),这个概念是2005年提出的，它把静态网页转换成具有交互性能的web应用。  </p>
-<h2 id="Ajax在原生javascript中的实现"><a href="#Ajax在原生javascript中的实现" class="headerlink" title="Ajax在原生javascript中的实现"></a>Ajax在原生javascript中的实现</h2><p>什么都不如直接写代码，让我们用原生js来封装一个简陋版的ajax函数(get方法)：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url,success,fail</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> oAjax = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">if</span>(XMLHttpRequest) &#123;</div><div class="line">        oAjax = <span class="keyword">new</span> XMLHttpRequest();</div><div class="line">    &#125;   <span class="keyword">else</span> &#123;</div><div class="line">        oAjax = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>)</div><div class="line">    &#125;</div><div class="line">    oAjax.open(<span class="string">"GET"</span>,url,<span class="literal">true</span>);</div><div class="line">    oAjax.send();</div><div class="line">    oAjax.onstatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(oAjax.readyState == <span class="number">4</span>) &#123;</div><div class="line">            <span class="keyword">if</span>(oAjax.status == <span class="number">200</span>) &#123;</div><div class="line">                success(oAjax.responseText);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">if</span>(fail)&#123;</div><div class="line">                    fail();</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>好的,这是我们调用ajax(url地址，请求类型，成功回调，失败回调)就可以搞定一个ajax请求啦！<br>下面，让我们仔细研究一下原生ajax api中的猫腻:     </p>
-<h3 id="ajax对象构造函数"><a href="#ajax对象构造函数" class="headerlink" title="ajax对象构造函数:"></a>ajax对象构造函数:</h3><p>在原生js中，我们一般采用XMLHttpRequest对象来构建一个ajax对象，但是低版本ie中没有这个对象，因此我们在else中指定了另一个对象ActiveXObject来构造ajax对象，注意里面需要传入参数，写出来就是这样: new ActiveXObject(“Microsoft.XMLHTTP”).      </p>
-<h3 id="ajax对象常用的api和属性"><a href="#ajax对象常用的api和属性" class="headerlink" title="ajax对象常用的api和属性:"></a>ajax对象常用的api和属性:</h3><ul>
-<li>open方法 （open(请求类型, url, 是否异步)）: 配置要发送的ajax请求，第一个参数传入你的http请求类型，第二个参数传入你想要请求的那个url地址，第三个参数设置为true时，该请求就是一个异步请求，false时是同步的，百分之九十九的情况都是true.    </li>
-<li>send方法:发送http请求。send方法使用get请求时不传参，一旦使用post方法，那么send中就可以传入一个参数作为post的内容，也就是http请求的正文部分。注意，这种情况下，必须在配置完open方法之后，调用send方法之前，写上一句oAjax.setRequestHeader(“Content-Type”,”application/x-www-form-urlencoded;charset=UTF-8”);，设定http请求的头部，然后这个请求内容才能成功地被服务器识别解码.</li>
-<li>onstatechange属性:这个属性可以告诉我们现在ajax请求进展到了那一步</li>
-<li>status属性: 服务器端的响应状态码</li>
-<li>responseText:服务器端响应的正文部分    </li>
-</ul>
-<h3 id="ajax请求的五个状态"><a href="#ajax请求的五个状态" class="headerlink" title="ajax请求的五个状态:"></a>ajax请求的五个状态:</h3><p>这里详细介绍一下onstatechange的5个值对应的ajax请求状态:    </p>
-<ul>
-<li>0:还没有配置,未调用open方法  </li>
-<li>1:send方法已调用，请求在路上    </li>
-<li>2:send方法已经完成,ajax对象已经收到服务器端的响应内容   </li>
-<li>3:ajax对象正在解码服务器端的响应内容    </li>
-<li>4:服务器端的内容解码完成，大功告成    </li>
-</ul>
-<h2 id="jQuery中的ajax"><a href="#jQuery中的ajax" class="headerlink" title="jQuery中的ajax"></a>jQuery中的ajax</h2><h3 id="最简单的load方法"><a href="#最简单的load方法" class="headerlink" title="最简单的load方法"></a>最简单的load方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$(选择器).load(<span class="string">"url地址"</span>,requestData);</div></pre></td></tr></table></figure>
-<p>这个方法把url地址返回的响应内容全部加载进选择器对应的dom节点中，简单粗暴，如果url的返回值恰好是html，那皆大欢喜，然而如果返回个json或者xml啥的，恐怕用户要懵比一会儿了。<br>注意第二个参数可选，没有第二个参数时默认是get请求，有第二个参数时自动变成post请求.</p>
-<h3 id="取得json数据的getJSON方法"><a href="#取得json数据的getJSON方法" class="headerlink" title="取得json数据的getJSON方法"></a>取得json数据的getJSON方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.getJSON(<span class="string">"json文件地址"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">   对data的操作啦啦啦～～ </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>这个方法也不难，第一个参数是json文件地址，第二个是返回成功的回调函数.<br>注意getJSON对jsonp的实现，比如我的jsonp请求地址是 “<a href="http://www.xixi.com/jsonp.php" target="_blank" rel="external">http://www.xixi.com/jsonp.php</a>“ ,服务器端定义了回调函数名应该储存在url的callback参数里，那么我这么写:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$.getJSON(<span class="string">"http://www.xixi.com/jsonp.php?callback=?"</span>)</div></pre></td></tr></table></figure>
-<p>就可以实现一个jsonp请求，而不会报跨域的错误，回调函数里的data就是jsonp加载进来的函数调用代码段中的实参。    </p>
-<h3 id="get方法，post方法"><a href="#get方法，post方法" class="headerlink" title="get方法，post方法"></a>get方法，post方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.get(<span class="string">"url地址"</span>,requestData,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">    回调函数内容</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>第一个参数不多说，第二个参数是我们需要get来通过url传递数据的时候，把想传递的数据当作第二个参数传入，第三个参数就是回调函数。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$.post(<span class="string">"url地址"</span>,requestData,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">    </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>同上，只是请求方法变了，对应的requestData的位置发生变化（从url里变成了请求正文里）。    </p>
-<h3 id="底层ajax方法"><a href="#底层ajax方法" class="headerlink" title="底层ajax方法"></a>底层ajax方法</h3><p>上面所有方法，都是底层ajax方法的变体。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    url:url地址,</div><div class="line">    type:请求类型,</div><div class="line">    data:请求信息,一般是序列化的值或者是json,</div><div class="line">    dataType:希望接收的数据格式,</div><div class="line">    <span class="keyword">async</span>: 默认为<span class="literal">true</span>,是否异步,</div><div class="line">    success:<span class="function"><span class="keyword">function</span>(<span class="params">result,status,xhr</span>)</span>&#123;</div><div class="line">        result是返回的响应正文     </div><div class="line">        status是响应状态码     </div><div class="line">        xhr是原生的ajax请求对象</div><div class="line">    &#125;,</div><div class="line">    error:<span class="function"><span class="keyword">function</span>(<span class="params">xhr,status,error</span>)</span>&#123; </div><div class="line">        同上</div><div class="line">        error是错误类型</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>这就是全部了吗？当然不，ajax的配置项多如天上繁星，这里只是列举几个必须记死的，其它的如果想要了解，查文档也会上手很快。    </p>
-<h3 id="全局ajax方法"><a href="#全局ajax方法" class="headerlink" title="全局ajax方法"></a>全局ajax方法</h3><p>也就是传说中的”观察员”函数.<br>比如$.ajaxStart()和$.ajaxStop(),$.ajaxError().<br>这些方法比较特别，因为无论它们在何处创建，在ajax通信发生时都会调用它们，并且它们只能由document调用.<br>当ajax请求开始并且尚未进行其他传输时，ajaxStart方法被调用;当页面的最后一个ajax请求结束时,ajaxStop方法被调用;当页面中任何一个ajax请求出错时,ajaxError方法被调用，并且ajaxError方法会传递给回调函数一个xhr对象，帮助我们获取相关信息。</p>
-
-          
+<h2 id="Ajax在原生javascript中的实现"><a href="#Ajax在原生javascript中的实现" class="headerlink" title="Ajax在原生javascript中的实现"></a>Ajax在原生javascript中的实现</h2>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/25/ajax/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -955,26 +894,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>虽然对于自动化工具，之前只接触过gulp，但我早就听说过grunt的大名。虽然网上对比这两者的文章也不少，但比起道听途说，经过自己的测试和思考的结论才更能有说服力。今天我拿最近做的一个<a href="https://github.com/maruko0713/Travel_comment_website" target="_blank" rel="external">给旅游景点做评论的移动端项目</a>做了一下grunt的测试，对grunt有了一个基本的认识，然后结合一些文章，对这两个自动化工具有了些自己的想法，趁热打铁做个记录。</p>
-<h2 id="关于gulp"><a href="#关于gulp" class="headerlink" title="关于gulp"></a>关于gulp</h2><p>关于gulp，我写过一篇<a href="https://maruko0713.github.io/2016/08/26/gulp/" target="_blank" rel="external">比较详细的入门博客</a>,里面有概念介绍，也有示例，这里就不再赘述了^_^      </p>
-<h2 id="关于grunt"><a href="#关于grunt" class="headerlink" title="关于grunt"></a>关于grunt</h2><p>同样是一套前端自动化工具，它和gulp相似，一般用于:</p>
-<ul>
-<li>压缩文件</li>
-<li>合并文件</li>
-<li>简单的语法检查</li>
-</ul>
-<h3 id="grunt怎么用"><a href="#grunt怎么用" class="headerlink" title="grunt怎么用"></a>grunt怎么用</h3><p>重点来啦！上code！<br>下面这段代码，可以实现对指定文件的压缩，合并以及语法检查，具体怎么回事，请看注释:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span> (<span class="params">grunt</span>) </span>&#123;</div><div class="line">  <span class="comment">// 项目配置</span></div><div class="line">  grunt.initConfig(&#123;</div><div class="line">    pkg: grunt.file.readJSON(<span class="string">'package.json'</span>),</div><div class="line">    <span class="comment">//代码语法检查</span></div><div class="line">    jshint: &#123;  </div><div class="line">    <span class="comment">//定义用于检测的文件  </span></div><div class="line">    files: [<span class="string">'js/main.js'</span>],  </div><div class="line">    <span class="comment">//配置JSHint (参考文档:http://www.jshint.com/docs)(重写jshint的默认配置选项 )</span></div><div class="line">    options: &#123;  </div><div class="line">       <span class="comment">//全局白名单的设置</span></div><div class="line">        globals: &#123;  </div><div class="line">          jQuery: <span class="literal">true</span>,  </div><div class="line">          <span class="built_in">console</span>: <span class="literal">true</span>,  </div><div class="line">          <span class="built_in">module</span>: <span class="literal">true</span> ,</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//压缩</span></div><div class="line">    uglify: &#123;</div><div class="line">      options: &#123;</div><div class="line">        banner: <span class="string">'/*! &lt;%= pkg.name %&gt; &lt;%= grunt.template.today("yyyy-mm-dd") %&gt; */\n'</span></div><div class="line">      &#125;,</div><div class="line">      <span class="comment">// 对于文件不多的情况,你可以这么写:</span></div><div class="line">      <span class="comment">// build: &#123;</span></div><div class="line">      <span class="comment">//   src: 'js/*.js',</span></div><div class="line">      <span class="comment">//   dest: 'dest/&lt;%= pkg.file[0] %&gt;.min.js'</span></div><div class="line">      <span class="comment">// &#125;</span></div><div class="line">      <span class="comment">// 如果文件很多，那就这么写：</span></div><div class="line">      dist: </div><div class="line">      &#123;</div><div class="line">        files: &#123;</div><div class="line">          <span class="string">"dest/js/main.min.js"</span>:<span class="string">"js/main.js"</span></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">//压缩css文件</span></div><div class="line">    cssmin: &#123;</div><div class="line">      <span class="comment">//给压缩后的文件加上头部的一行注释 显示包名和日期</span></div><div class="line">      options: &#123;</div><div class="line">        banner: <span class="string">'/*! &lt;%= pkg.name %&gt; &lt;%= grunt.template.today("yyyy-mm-dd") %&gt; */\n'</span></div><div class="line">      &#125;,</div><div class="line">      <span class="comment">// 配置压缩后的去向</span></div><div class="line">      target : &#123;</div><div class="line">        files: &#123;</div><div class="line">         <span class="string">"dest/css/main.min.css"</span>:[<span class="string">"css/main.css"</span>]</div><div class="line">       &#125;</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"> &#125;);</div><div class="line">  <span class="comment">// 加载提供每个任务的插件</span></div><div class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-uglify'</span>);</div><div class="line">  grunt.loadNpmTasks(<span class="string">'grunt-contrib-cssmin'</span>);</div><div class="line">  grunt.loadNpmTasks(<span class="string">"grunt-contrib-jshint"</span>);</div><div class="line">  <span class="comment">// 默认任务设置</span></div><div class="line">  grunt.registerTask(<span class="string">'default'</span>, [<span class="string">"jshint"</span>,<span class="string">"uglify"</span>,<span class="string">"cssmin"</span>]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="grunt与gulp"><a href="#grunt与gulp" class="headerlink" title="grunt与gulp"></a>grunt与gulp</h2><p>至少从写法上来看，grunt和gulp差别还是蛮大的^_^。<br>首先说一下自己的想法吧，相比之下，我是比较倾向于用gulp的，但并不完全否定grunt(事实上，许许多多的事情，存在即合理，技术也不例外，更别说是现在还在被广泛使用的grunt了，所以对于一些文章用类似于“抛弃grunt，拥抱更强的gulp”这样的描述做标题，我是没办法认同的)。<br>好，进入正题。我们先说说gulp比grunt强在哪里。我觉得gulp最亮的有三个地方，一个是基于流的工作模式，另一个就是它的异步处理，还有就是它的插件短小精悍，实现了功能上的低耦合。我们着重对比一下grunt和gulp在这几个方面上的表现:    </p>
-<ul>
-<li>基于流的工作模式：  gulp操作一个文件的时候，先把它读进来，然后按照pipe函数设置的顺序使它“流”向各种各样的操作，比如压缩，比如拼接等等，直到所有的操作结束了，你调用了dest函数，此刻它才会把文件流丢回硬盘里去。而grunt就没这么聪明了，比如你想对某一个文件既压缩又检查，那么压缩的时候,grunt会从硬盘里读一次，然后把新生成的文件写进硬盘，读入的文件被释放，然后检查的时候，又读取一次，然后再处理，然后再释放，也就是会在每次操作都会重新读取一遍同一个文件。重复的读取会导致程序的运行速度相对一站到底更慢。    </li>
-<li>异步处理： gulp中，对于注册的不同task默认是是异步的（但可以利用插件实现同步）,对于同个文件（也就是同一个流里）的操作是同步的。而grunt中，操作与操作之间总是同步的，也就是说我在task中这样注册[“uglify”,”jshint”],那么它将严格按照这种顺序执行。其实两者的task都是可以通过一定方式实现同步和异步两种执行模式的。此处区别没有其它两处明显。</li>
-<li>短小精悍，功能单一的插件： grunt中，存在一个插件实现不止一个功能的情况，比如uglify既能压缩，又能进行写文件操作，concat也是如此。那么如果我既uglify又要concat,这个文件就会被先压缩然后写入，然后再读过来进行拼接，再写入，多麻烦呀。gulp就不这样，它的压缩就是压缩，拼接就是拼接，至于放回，是单独的一个功能，这样，压缩也好，拼接也罢，功能再多，我等你所有操作结束后，尘埃落定，再把终极文件一次写入，省去许多不必要的中间环节，运行速度会更快.    </li>
-</ul>
-<p>写了这么多，不知道大家现在对gulp和grunt有没有点想法了？其实grunt也有它强悍的地方，它很成熟，插件很多，有时候你用gulp做不到的事情，grunt就可以帮你实现。因此在自动化处理的需求比较复杂的情况下，grunt还是很有威力的！  </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>gulp与grunt，各有千秋，grunt更成熟更丰富，而gulp更轻量更快速。因为我现在还是学生，对前端这块，更多的是自己摸索，做一些规模不大的小项目来熟悉知识点和开发流程，所以在今后的开发中，我会把gulp作为首选，也会继续对gulp做更多的了解^_^</p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>虽然对于自动化工具，之前只接触过gulp，但我早就听说过grunt的大名。虽然网上对比这两者的文章也不少，但比起道听途说，经过自己的测试和思考的结论才更能有说服力。今天我拿最近做的一个<a href="https://github.com/maruko0713/Travel_comment_website">给旅游景点做评论的移动端项目</a>做了一下grunt的测试，对grunt有了一个基本的认识，然后结合一些文章，对这两个自动化工具有了些自己的想法，趁热打铁做个记录。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/22/grunt/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1174,120 +1099,12 @@
 
       
         
-          
-            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。    </p>
-<h2 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC"></a>什么是MVC</h2><p>MVC是一种软件架构。它是说，可以把软件分成三个部分，视图（view），控制器（controller），<br>模型（model）。这个视图就是说用户界面，控制器就是业务逻辑，模型就是数据保存。它们之间的关系大概是，视图传送指令到控制器，控制器根据情况去改变数据，然后把新的数据反馈给视图层面。<br>视图传送的指令，是由于用户在视图层面的某些操作发出的，其实用户还可以直接跳过视图层，向controller直接传递指令。前者通过DOM事件接收指令，后者直接改变url。    </p>
-<h2 id="什么是MVVM"><a href="#什么是MVVM" class="headerlink" title="什么是MVVM"></a>什么是MVVM</h2><p>MVVM模式中，各部分之间的通信都是双向的。（可以注意到MVC模式中的数据传递都是单向的）。同时视图层不与Model发生接触，一切都通过中间的ViewModel传递(ViewModel简写就是VM)。一个操作的流程大概是这样的：<br>用户通过View层传递指令，View层触发了ViewModel层的变化，然后ViewModel层再去修改Model层，修改之后的Model层又通过ViewModel反馈给了View层。<br>MVVM的特点是，它采用<em>双向绑定</em>，View的变动，会带动ViewModel的变动，反过来，ViewModel的变动，也会带动View的变动，两者是“一根绳上的蚂蚱”，一起变化。    </p>
-<h2 id="AngularJS与MVC-MVVM"><a href="#AngularJS与MVC-MVVM" class="headerlink" title="AngularJS与MVC,MVVM"></a>AngularJS与MVC,MVVM</h2><p>虽然我接触到的许多资料告诉我们AngularJS是一个MVC框架，但是仔细想想，我还是认为<em>AngularJS是一个MVVM框架</em>，原因如下:    </p>
-<ul>
-<li>AngularJS中，数据是双向传递的，View层（视图模版）的变化会引发ViewModel（这里$scope应该充当这个角色）的变化，反过来,ViewModel层的变化也会引发View层的变化.</li>
-<li>View不能直接与Model交互，而是要通过$scope才可以。</li>
-<li>View层和ViewModel层是双向绑定的，两者同步变化<h3 id="AngularJS为什么会被认为是MVC框架"><a href="#AngularJS为什么会被认为是MVC框架" class="headerlink" title="AngularJS为什么会被认为是MVC框架"></a>AngularJS为什么会被认为是MVC框架</h3>其实这么理解也没有错，因为AngularJS中存在一个Controller，但是在我看来，Controller更像是ViewModel层逻辑的一部分。但这个MV后面到底该跟啥，其实没有那么重要，AngularJS的作者希望我们把注意力放在一实现一个成功的，具有好的设计以及遵循“分离关注点”原则的应用程序上，而非专注于概念的争论，因此我们不必在这一点上太过执着。    </li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天这篇文章与其说是想给AngularJS的模式下个定义，不如说是把MVC模式和MVVM模式给整明白了一遍（笑哭）。虽然不必执着于对这个框架模式的死定义，但是这两个模式还是有必要弄清楚的，其实还有一个叫做MVP的模式，MVVM模式有点像是从它里面脱胎的，但没有这两种出镜频率高，因此就着重讲了MVC和MVVM^_^。概念搞清楚了，接下来就开始实战吧！💪</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/08/restful/" itemprop="url">
-                  对RESTful架构的理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-08T00:00:00+08:00" content="2016-09-08">
-              2016-09-08
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>阅读《AngularJS高级程序设计》这本书的第三章，作者对一些概念也是解释的很随意，直接来了一句“我觉得传递json就实现了RESTful”就把我们打发了。实在忍不了，上网搜了一大堆解释，都扯的云里雾里的，现在差不多有点头绪了，记录一下，防止自己以后再蒙圈。    </p>
-<h2 id="一句话概括RESTful"><a href="#一句话概括RESTful" class="headerlink" title="一句话概括RESTful"></a>一句话概括RESTful</h2><p>URL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。    </p>
-<h2 id="为什么会有RESTful"><a href="#为什么会有RESTful" class="headerlink" title="为什么会有RESTful"></a>为什么会有RESTful</h2><p>上面那句绝不是耍流氓，仔细想想RESTful难道不就是这样的吗？？？？<br>要知道RESTful的特性和意义，就必须了解RESTful之前的那个时代。在”古代”网页是前端后端融在一起的，比如之前的PHP，JSP等。近年来移动互联网的发展，各种类型的客户端层出不穷，RESTful可以通过一套统一的接口为 Web，iOS和Android提供服务。另外对于广大平台来说，比如Facebook platform，微博开放平台，微信公共平台等，它们不需要有显式的前端，只需要一套提供服务的接口，于是RESTful更是它们最好的选择。在RESTful架构下，服务器的核心任务是提供数据和改变数据状态，它就是围着数据转，其它的事情让前端去做。相应的，前端就要渲染页面和处理简单的商务逻辑（AngularJS之流就登场了）。    </p>
-<h2 id="RESTful的翻译式理解"><a href="#RESTful的翻译式理解" class="headerlink" title="RESTful的翻译式理解"></a>RESTful的翻译式理解</h2><p>REST – REpresentational State Transfer<br>翻译过来叫“表现层状态转移”<br>这个名字太恶心了，看名字谁知道你想干啥啊。表现层是啥？？？转移到哪里去？？你给我说清楚啊？？？？（掀桌）<br>其实可以这样理解，“表现层”就是数据的表现形式，可以是json，可以是xml，“状态转移”就是这个数据对应的状态的改变，就是我们老生常谈的增删改查。<br>现在我们瞅瞅上面那句“URL定位资源，用HTTP动词（GET,POST,DELETE,PUT）描述操作。”的解释，是不是没啥问题？定位资源（表现层），描述操作（状态转移）。    </p>
-<h2 id="RESTful的特点"><a href="#RESTful的特点" class="headerlink" title="RESTful的特点"></a>RESTful的特点</h2><p>其实上面也已经说了个差不多，我们来做个总结。<br>所谓RESTful，它本质是一种架构设计方式，它的特点是面向<em>资源</em>，资源是核心，服务器端不必操心你的网页长什么样，只需要专心于操作数据和与数据相关的逻辑就可以了。因此在REST里面：    </p>
-<ul>
-<li>一切都被认为是一种资源</li>
-<li>每个资源有唯一的url标识</li>
-<li>客户端程序在建立起的资源url上发送请求，使用<em>请求方法</em>表示期望的操作。</li>
-<li>无状态</li>
-</ul>
-<h2 id="RESTful给前端带来了什么"><a href="#RESTful给前端带来了什么" class="headerlink" title="RESTful给前端带来了什么"></a>RESTful给前端带来了什么</h2><p>其实我到觉得是前端的变化促使了RESTful的产生。随着我们客户端形式的多样化，pc端已经远远不能满足人们的需要，如果一台服务器同时负责pc端页面的渲染，移动端页面的渲染，那不仅服务器会感到很疲惫，它渲染出来的内容咋样还是另一说，另外在使用原生的手机应用时，更是不可能指望把一切都交给服务器端。况且，现在前端能做的事情越来越多了，一些业务逻辑完全可以用js来做，于是乎，服务器端似乎只需要管好数据就行了(当然主要任务是管数据，它还是有它应该有的业务逻辑的)，RESTful应运而生。<br>RESTful架构使得前后端变得泾渭分明，同时因为前后端逻辑的分离，使一台服务器完全可以同时为web页面，安卓和ios应用同时提供服务。说明白点，服务器统一提供一套RESTful API（这里的api不再是我们平时表达的函数接口的意思，而是数据接口），web+ios+android作为同等公民调用API。各端发展到现在，都有一套比较成熟的框架来帮开发者事半功倍。（比如我现在正在学的AngularJS！）    </p>
-<h2 id="挖坑"><a href="#挖坑" class="headerlink" title="挖坑"></a>挖坑</h2><p>写了这么多，都是在给最近正在上手的AngularJS做铺垫。<br>立个flag：<br>下一篇文章绝对要把Angular中的mvc模式整明白！    </p>
-
-          
+          <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>学习任何东西之前，习惯先有一个宏观的认识，AngularJS也不例外。包括在《AngularJS高级程序设计》这本书中，也是先对整体概念做了一些介绍。其中花了一些篇幅解释了MVC模式，上网一搜，这个MVC模式在框架中提到的还真不少，但AngularJS到底是MVC模式还是MVVM模式呢？具体模式在框架里的实现又是怎样的？一开始很是纠结，现在有头绪了，写下来。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/10/mvvm/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1351,12 +1168,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1366,7 +1183,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1430,7 +1247,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

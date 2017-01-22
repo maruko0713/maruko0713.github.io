@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -67,7 +67,7 @@ JS中类的形态其实和java里面没什么差啦！嘿嘿。
 <meta property="og:description" content="前言类！！！！！千呼万唤始出来！！！！    
 JS中类的形态其实和java里面没什么差啦！嘿嘿。    
 1234567891011121314&apos;use strict&apos;class Chef &amp;#123;  constructor(food) &amp;#123;    this.food = food;  &amp;#125;  cook() &amp;#123;    console.log(this.food);">
-<meta property="og:updated_time" content="2017-01-02T13:00:11.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:58:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记13:ES6中的类">
 <meta name="twitter:description" content="前言类！！！！！千呼万唤始出来！！！！    
@@ -79,7 +79,7 @@ JS中类的形态其实和java里面没什么差啦！嘿嘿。
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -252,7 +252,7 @@ JS中类的形态其实和java里面没什么差啦！嘿嘿。
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>类</strong>！！！！！<br>千呼万唤始出来！！！！    </p>
 <h2 id="JS中类的形态"><a href="#JS中类的形态" class="headerlink" title="JS中类的形态"></a>JS中类的形态</h2><p>其实和java里面没什么差啦！嘿嘿。    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cook() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"🍅"</span>);</div><div class="line">wanzi.cook();</div></pre></td></tr></table></figure>
-<p>有没有似曾相识！！有没有似曾相识！！<br>除了基本的语法不太像，这尼玛简直就是java啊！！    </p>
+<p>有没有似曾相识！！有没有似曾相识！！<br>除了基本的语法不太像，这尼玛简直就是java啊！！<br><a id="more"></a> </p>
 <h2 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h2><p>还记得当年学java的时候，最讨厌的就是手写setter和getter,因为属性定义很简单，连写两个方法却很麻烦。。。。。<br>JS中现在也强调getter和setter了哟！    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">    <span class="keyword">this</span>.dish = [];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get menu() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dish;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  set menu(dish) &#123;</div><div class="line">    <span class="keyword">this</span>.dish.push(dish);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cook() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"🍅"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu = <span class="string">"🍹"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu = <span class="string">"🍕"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu);</div></pre></td></tr></table></figure>
 <p>get 属性名，定义我们获取这个属性的时候发生的事情。<br>set 属性名(value)， 定义我们为该属性名赋值的时候发生的事情。    </p>
@@ -362,12 +362,12 @@ JS中类的形态其实和java里面没什么差啦！嘿嘿。
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -377,7 +377,7 @@ JS中类的形态其实和java里面没什么差啦！嘿嘿。
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -452,7 +452,7 @@ JS中类的形态其实和java里面没什么差啦！嘿嘿。
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

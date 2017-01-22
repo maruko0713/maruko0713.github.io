@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://maruko.com/2016/09/06/jsonp/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
 <meta property="og:description" content="前言：让我来记住这个历史性的事件：《jQuery基础教程（第4版）》第133页下面介绍了一种用$.getJSON方法实现跨域请求的办法，这种办法的大概意思就是把方法的第一个参数传递为所需的url地址＋”?callback=?”的形式，于是我们就能实现jsonp了。这个书很多地方都是一笔带过，这个地方也是半页纸就写完了，于是从今天上午到现在（下午四点）我断断续续一直在揣摩这个问题，顺便专门复习了一遍">
-<meta property="og:updated_time" content="2016-09-25T04:58:19.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:56:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSONP全接触：JSONP原理，在js与jQuery中的实现">
 <meta name="twitter:description" content="前言：让我来记住这个历史性的事件：《jQuery基础教程（第4版）》第133页下面介绍了一种用$.getJSON方法实现跨域请求的办法，这种办法的大概意思就是把方法的第一个参数传递为所需的url地址＋”?callback=?”的形式，于是我们就能实现jsonp了。这个书很多地方都是一笔带过，这个地方也是半页纸就写完了，于是从今天上午到现在（下午四点）我断断续续一直在揣摩这个问题，顺便专门复习了一遍">
@@ -73,7 +73,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -244,6 +244,7 @@
 
       
         <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>让我来记住这个历史性的事件：《jQuery基础教程（第4版）》第133页下面介绍了一种用$.getJSON方法实现跨域请求的办法，这种办法的大概意思就是把方法的第一个参数传递为所需的url地址＋”?callback=?”的形式，于是我们就能实现jsonp了。这个书很多地方都是一笔带过，这个地方也是半页纸就写完了，于是从今天上午到现在（下午四点）我断断续续一直在揣摩这个问题，顺便专门复习了一遍jsonp的原理（泪目），网上查出来的文章有不少，但是真正有用的不多，用这篇文章整合一下，也算没白费这么大功夫😂.</p>
+<a id="more"></a> 
 <h2 id="JSONP是啥"><a href="#JSONP是啥" class="headerlink" title="JSONP是啥"></a>JSONP是啥</h2><p>JSONP(JSON with padding,填充式JSON),是一种利用script标签从远程获取JSON数据的手段,这个技术的出现很好地解决了ajax无法进行跨域请求的弊端。JSONP的格式是把标准的JSON文件包装在一对圆括号中，然后圆括号前置任意一个字符串（当然也可以是空字符串），乍一看有一种函数调用的即视感，这个字符串就是所谓的填充padding啦。这样数据传递回来并且被解析时，就可能会导致一次函数调用。那么JSONP这种格式在服务器端的实现是咋整的呢,这样: </p>
 <h3 id="JSONP格式的服务器端实现"><a href="#JSONP格式的服务器端实现" class="headerlink" title="JSONP格式的服务器端实现:"></a>JSONP格式的服务器端实现:</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">  <span class="keyword">print</span>($_GET[<span class="string">'callback'</span>].<span class="string">'('</span>.$data.<span class="string">')'</span>);</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 <p>看不懂PHP也没关系，这段的意思是说，利用$_GET方法从客户端请求过来的url里面截取callback参数，注意这个参数也可以是fn，fx啥的，叫啥名字都行，只要你客户端写url的时候能够照上这个名字，它就能获取过来，然后data就是你想要的数据，中间的小点点是字符串拼接的意思，这整个是说输出一个前面拼接了客户端url指定名称的函数的函数调用（如果被解析成js格式的话）。</p>
@@ -358,12 +359,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -373,7 +374,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -448,7 +449,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

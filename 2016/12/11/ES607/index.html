@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -67,7 +67,7 @@ Proxy之从一个小🌰说起假如我们有一个人，叫做Bob Wood。我们
 <meta property="og:description" content="前言Proxy是ES6引入的一个新的概念。它的用途是从语言层面上去操作一个对象这么说太抽象了，当我没说，看代码吧     
 Proxy之从一个小🌰说起假如我们有一个人，叫做Bob Wood。我们这样形容他:    
 12345var user = &amp;#123;&amp;#125;;user.fname = &apos;Bob&apos;;user.lname = &apos;Wood&apos;;full_name = user.fname">
-<meta property="og:updated_time" content="2016-12-28T01:50:00.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:58:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记7:新概念Proxy登场！">
 <meta name="twitter:description" content="前言Proxy是ES6引入的一个新的概念。它的用途是从语言层面上去操作一个对象这么说太抽象了，当我没说，看代码吧     
@@ -79,7 +79,7 @@ Proxy之从一个小🌰说起假如我们有一个人，叫做Bob Wood。我们
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -252,7 +252,7 @@ Proxy之从一个小🌰说起假如我们有一个人，叫做Bob Wood。我们
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>Proxy</strong>是ES6引入的一个新的概念。<br>它的用途是<strong>从语言层面上去操作一个对象</strong><br>这么说太抽象了，当我没说，看代码吧     </p>
 <h2 id="Proxy之从一个小🌰说起"><a href="#Proxy之从一个小🌰说起" class="headerlink" title="Proxy之从一个小🌰说起"></a>Proxy之从一个小🌰说起</h2><p>假如我们有一个人，叫做Bob Wood。<br>我们这样形容他:    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> user = &#123;&#125;;</div><div class="line">user.fname = <span class="string">'Bob'</span>;</div><div class="line">user.lname = <span class="string">'Wood'</span>;</div><div class="line"></div><div class="line">full_name = user.fname + <span class="string">" "</span> + user.lname;</div></pre></td></tr></table></figure>
-<p>想要获取full_name,我们是手动相加了，如果有很多个这样的人，我们懒得写那么多代码，我们就可以写个方法。    </p>
+<p>想要获取full_name,我们是手动相加了，如果有很多个这样的人，我们懒得写那么多代码，我们就可以写个方法。<br><a id="more"></a> </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> user = &#123;</div><div class="line">    full_name: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.fname + <span class="string">" "</span> + <span class="keyword">this</span>.lname;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">user.lname = <span class="string">'Bob'</span>;</div><div class="line">user.lname = <span class="string">'Wood'</span>;</div><div class="line"><span class="built_in">console</span>.log(user.full_name());</div></pre></td></tr></table></figure>
 <p>此处我们调用方法来给我们实现属性的合并。    </p>
 <p>以上是ES5里面的办法。在ES6里面，我们有一个更先进的解决办法：    </p>
@@ -364,12 +364,12 @@ Proxy之从一个小🌰说起假如我们有一个人，叫做Bob Wood。我们
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -379,7 +379,7 @@ Proxy之从一个小🌰说起假如我们有一个人，叫做Bob Wood。我们
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -454,7 +454,7 @@ Proxy之从一个小🌰说起假如我们有一个人，叫做Bob Wood。我们
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

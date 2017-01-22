@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="maruko" />
 
 
 
@@ -57,25 +57,22 @@
 
 
 
-<meta name="description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="description" content="大三信息汪 喜欢写代码">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Maruko0713的实验室">
 <meta property="og:url" content="http://maruko.com/page/3/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta property="og:description" content="大三信息汪 喜欢写代码">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maruko0713的实验室">
-<meta name="twitter:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="twitter:description" content="大三信息汪 喜欢写代码">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -209,6 +206,106 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/04/ES01/" itemprop="url">
+                  ES6学习笔记1:const命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-04T00:00:00+08:00" content="2016-12-04">
+              2016-12-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇会比较短小，因为仅仅讲一个变量声明嘛～<br>不过还是想要感慨一下下哦，js进化了，连const都出来了，嘻嘻。    </p>
+<h2 id="const基本特性"><a href="#const基本特性" class="headerlink" title="const基本特性"></a>const基本特性</h2><p>const这个声明头之前在强类型语言（比如c和java）中见过，它是声明一个常量。    </p>
+<p>那么js中的const是什么样的呢？    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> a;</div></pre></td></tr></table></figure>
+<p>运行试试，发现报错。<br>说明<strong>const在声明变量时这个变量必须有值</strong>    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> happy = <span class="literal">true</span>;</div><div class="line">happy = <span class="literal">false</span>;</div></pre></td></tr></table></figure>
+<p>报错了，说明<strong>这个值不能被改变，一改就报错</strong>。    </p>
+<h2 id="const声明变量指向一个对象的时候要注意"><a href="#const声明变量指向一个对象的时候要注意" class="headerlink" title="const声明变量指向一个对象的时候要注意"></a>const声明变量指向一个对象的时候要注意</h2><p>看一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> user = &#123;name:<span class="string">"xiaowanzi"</span>&#125;;</div><div class="line"><span class="keyword">const</span> happy = user;</div><div class="line">user.name = <span class="string">"maruko0713"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"user:"</span>,user);</div></pre></td></tr></table></figure>
+<p>运行后发现没有报错，说明user的<strong>值</strong>可以改变。<br>或者你直接这样做:<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/04/ES01/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/03/ES60/" itemprop="url">
                   ES6学习笔记0:let命令
                 </a>
@@ -251,28 +348,15 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看了一下Vue的文档后真的感叹啊现在ES6真是越来越普及了。之前只是零星地接触了一下，缺乏系统的学习。现在觉得很有必要学一下。接下来的博客主要是围绕阮一峰老师的《ES6入门》做教材，杂七杂八的博客做参考，然后自己做一个总结。    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看了一下Vue的文档后真的感叹啊现在ES6真是越来越普及了。之前只是零星地接触了一下，缺乏系统的学习。现在觉得很有必要学一下。接下来的博客主要是围绕阮一峰老师的《ES6入门》做教材，杂七杂八的博客做参考，然后自己做一个总结。    </p>
 <h2 id="let命令之先撸两个demo"><a href="#let命令之先撸两个demo" class="headerlink" title="let命令之先撸两个demo"></a>let命令之先撸两个demo</h2><p>先来一个这样的:     </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</div><div class="line"><span class="keyword">let</span> b=<span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>,b);</div></pre></td></tr></table></figure>
-<p>运行一下，直接输出a和b，没毛病。<br>从这里我们看出，let和var都可以声明一个变量。    </p>
-<p>再来：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="literal">true</span>) &#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">    <span class="keyword">let</span> b = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>,b);</div></pre></td></tr></table></figure>
-<p>然后悲伤的事情发生了，b变成了未定义。    </p>
-<h2 id="let命令之楼上到底是怎么回事？"><a href="#let命令之楼上到底是怎么回事？" class="headerlink" title="let命令之楼上到底是怎么回事？"></a>let命令之楼上到底是怎么回事？</h2><p>这是因为var和let对“域”的限制不同。<br>var是啥？var只要没在函数里，就是全局。 在函数里，就是局部。<br>而这个let，遇到代码块，就是个域。<br>出了这个代码块，let定义的变量就找不着了。    </p>
-<p>除此之外，let在for语句中的情况比较常见。    </p>
-<h2 id="let在for语句中"><a href="#let在for语句中" class="headerlink" title="let在for语句中"></a>let在for语句中</h2><p>举个例子:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"i:"</span>,i);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"i:"</span>,i);</div></pre></td></tr></table></figure>
-<p>输出啥？？？<br>肯定顺序输出0到5啊。<br>然而我们对后来那个i＝5感兴趣吗？并不啊，我们只对参与循环的i感兴趣。<br>于是，我们把var改成let,我们就可以愉快地看到一个报错，说i未定义。<br>这就是let的用法之一。    </p>
-<h2 id="变量提升有毒啊！！！let不用它！"><a href="#变量提升有毒啊！！！let不用它！" class="headerlink" title="变量提升有毒啊！！！let不用它！"></a>变量提升有毒啊！！！let不用它！</h2><p>变量提升是啥？？？？<br>不熟悉真要啪啪打脸了，回去刷红宝书吧你！！<br>不过既然说到了，还是要复习一下:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="keyword">var</span> a;</div></pre></td></tr></table></figure>
-<p>你猜输出啥？？？<br>你猜会报错吗？？？？<br>不会啊朋友！！！<br>因为所有的声明都被提升到代码的最前面啦，所以console语句其实是在var后面执行的，于是我们输出的是一个undefined。<br>其实这样写还是有点不太规范，而且输出一个undefined也必定不是我们想要的结果，很可能会导致进一步的错误，那么我们可以让它直接跳红字告诉我们这里不对劲吗？？？？<br>当然可以啦。      </p>
-<p>所以如果你敢这么做:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</div><div class="line"><span class="keyword">let</span> a;</div></pre></td></tr></table></figure>
-<p>你的命运只能是被愉快地报错，因为let不存在变量声明的提升，所以console在a声明之前就执行了，那么它必定是找不到a的，于是就报错说你有一个未声明的变量呀！     </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>一开始想做个对比，不过想想其实没有必要。<br>因为根本不存在谁更好，只能说谁更合适，在具体的开发情境下。<br>所以需要做的就是对let和var的特性足够熟悉，这就够了，不需要过分解读出一些了不得的东西。<br>就是这样! </p>
-
-          
+<p>运行一下，直接输出a和b，没毛病。<br>从这里我们看出，let和var都可以声明一个变量。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/03/ES60/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -358,22 +442,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    </p>
-<h2 id="12-02填坑"><a href="#12-02填坑" class="headerlink" title="12-02填坑"></a>12-02填坑</h2><p>异步时Node平台开辟的线程池里的i/o（或网络请求之类的需要等待的线程），这些线程所在的进程随着线程的阻塞会一起进入阻塞状态，阻塞状态的进程是不占用cpu的，这正是Node节省时间的关键。至于事件循环对时间的占用，和阻塞对时间的浪费比起来应该是微乎其微的，这也正是Node异步高性能的关键所在。     </p>
-<h2 id="从所谓“单线程”说起"><a href="#从所谓“单线程”说起" class="headerlink" title="从所谓“单线程”说起"></a>从所谓“单线程”说起</h2><p>我们常常听到的一句话是”javascript是单线程的”，然而这句话其实应该是”javascript的主线程师单线程的“，怎么理解呢。我记得在java里面，通过类的继承，我们是可以利用这个语言自己去开辟线程的。然而javascript不可以，整个应用层就只有一个线程从头到尾执行下来。<br>因此我们要说”javascript中开发者的代码是单线程的（只能运行在主线程中）“。    </p>
-<h2 id="异步的实现"><a href="#异步的实现" class="headerlink" title="异步的实现"></a>异步的实现</h2><p>第一次接触到js的异步，是浏览器端的Ajax请求。当时就对上面的单线程有了困惑，查了资料之后知道虽然js是单线程的，但是浏览器是多线程的，因此可以一边运行主线程，一边处理http请求，对http的请求其实相当于开了一个新线程。    </p>
-<p>（这里我有一个疑问，往往认为ajax异步是“不影响”主线程运行的，但是线程与线程之间，微观上应该是有切换的，同一时间一个进程中只能有一个线程在运行，因此切换来切换去，虽然实现了并行，但是总的运行时间并没有减少啊，所以我暂时认为异步会一定程度上放慢主线程的执行速度。如果以后有了新的想法，再回来改正。）<br>（楼上的坑已填 在最上面）      </p>
-<p>Node也是如此，js是单线程的，但是Node这个平台是多线程的，除了我们的主线程，还有负责处理I/O操作的线程池，还有事件循环线程。    </p>
-<p>因此，异步的实现，是依赖于平台的多线程的。    </p>
-<h2 id="事件轮询机制"><a href="#事件轮询机制" class="headerlink" title="事件轮询机制"></a>事件轮询机制</h2><h3 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h3><blockquote>
-<p>在进程启动时，Node就会开辟一个线程，这个线程用来执行一个类似于while(true)的循环，每执行一次循环体的过程就称之为Tick。每一次Tick的时候就查询看是否有待处理的事件，有的话就取出事件和相关的函数，如果存在关联的回调函数，就执行它们。    </p>
-</blockquote>
-<p>以上这段选自朴灵的《深入浅出Node.js》，我觉得写得挺形象的，就直接拿来用了。    </p>
-<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>Node的异步i/o是在线程池中进行的，线程池是Node调用它底层的c++模块实现的。    </p>
-<h3 id="一个异步调用的开始到结束"><a href="#一个异步调用的开始到结束" class="headerlink" title="一个异步调用的开始到结束"></a>一个异步调用的开始到结束</h3><p>主线程抛出一个异步i/o请求之后，封装请求对象，设置参数和回调函数，然后将请求对象放入线程池等待执行。<br>放入线程池这一步可以理解为开辟了一个i/o操作的新线程，然后主线程继续往下走，新线程执行i/o操作，事件循环仍然在不停地检查事件队列里面有没有未执行的事件。<br>某一个时刻，执行i/o操作的线程完成了任务，它就会把执行结果和相应的回调函数一起放进事件队列，这个线程就结束了。<br>事件循环按照事件队列顺序执行队列里的回调函数和事件结果，轮到到事件队列里面新出现的这个事件信息和回调函数时，就连事件信息和回调函数一起取出并且执行。    </p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/30/node_async/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -459,38 +533,15 @@
 
       
         
-          
-            <h2 id="创建一个model"><a href="#创建一个model" class="headerlink" title="创建一个model"></a>创建一个model</h2><p>(前提是你已经创建了一个articles表)<br>命令行:    </p>
+          <h2 id="创建一个model"><a href="#创建一个model" class="headerlink" title="创建一个model"></a>创建一个model</h2><p>(前提是你已经创建了一个articles表)<br>命令行:    </p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model Article</div></pre></td></tr></table></figure>
 <p>执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的articles表呼应的，它用来对articles表进行操作。    </p>
-<p>在laravel的环境下打开一个php解释器：    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan tinker</div></pre></td></tr></table></figure>
-<p>输入:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article = <span class="keyword">new</span> App\Article;</div></pre></td></tr></table></figure>
-<p>你就得到了一个Article对象。<br>你可以对它进行一些操作:    </p>
-<h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$article-&gt;title = <span class="string">"My first Title"</span>;</div><div class="line">$article-&gt;content = <span class="string">"content"</span>;</div></pre></td></tr></table></figure>
-<p>存储这个元组:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article-&gt;save();</div></pre></td></tr></table></figure>
-<p>创建一个新的元组(一般还都是这么做的,快):    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article=App\Article::create([<span class="string">"title"</span>=&gt;<span class="string">"Second title"</span>,<span class="string">"content"</span>=&gt;<span class="string">"second content"</span>]);</div></pre></td></tr></table></figure>
-<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first = App\Article::find(<span class="number">1</span>);</div></pre></td></tr></table></figure>
-<p>这里按照id为1进行查找。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$second = App\Article::where(<span class="string">"content"</span>,<span class="string">"="</span>,<span class="string">"content"</span>)-&gt;get();</div></pre></td></tr></table></figure>
-<p>取出content为content的元组们。<br>这里get()得到一个<strong>collection</strong>对象。<br>这个对象很重要，这里留个坑，以后写笔记会着重纪录。<br>当然你可以这样写:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$second = App\Article::where(<span class="string">"content"</span>,<span class="string">"content"</span>)-&gt;get();</div></pre></td></tr></table></figure>
-<p>效果是一样的。<br>或者有时候你只需要一条数据，一条类型为App\Article的数据:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$third = App\Article::where(<span class="string">"content"</span>,<span class="string">"content"</span>)-&gt;first();</div></pre></td></tr></table></figure>
-<p>直接对它进行Article对象的操作就可以啦。</p>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$first-&gt;title = <span class="string">"update"</span>;</div><div class="line">$first-&gt;save();</div></pre></td></tr></table></figure>
-<p>用数组去更新（更新多个的时候）:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first-&gt;update([<span class="string">"title"</span>=&gt;<span class="string">"update"</span>]);</div></pre></td></tr></table></figure>
-<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>两种方法:    </p>
-<p>实例方法：delete方法:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first-&gt;delete();</div></pre></td></tr></table></figure>
-<p>类方法：destroy方法:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">App\Article::destroy(<span class="number">1</span>);</div><div class="line">App\Article::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</div><div class="line">App\Article::destroy(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</div></pre></td></tr></table></figure>
-
-          
+<p>在laravel的环境下打开一个php解释器：<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/20/laravel5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -576,27 +627,14 @@
 
       
         
-          
-            <h2 id="Migration是啥"><a href="#Migration是啥" class="headerlink" title="Migration是啥"></a>Migration是啥</h2><p>Migration是数据库的版本控制。    </p>
+          <h2 id="Migration是啥"><a href="#Migration是啥" class="headerlink" title="Migration是啥"></a>Migration是啥</h2><p>Migration是数据库的版本控制。    </p>
 <h2 id="Migration命令"><a href="#Migration命令" class="headerlink" title="Migration命令"></a>Migration命令</h2><p>在migrations这个文件夹下面。<br>默认有两个，打开其中的create_users_table文件，里面会有一个对象，对象有up方法和down方法。<br>文件代码:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateUsersTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::create(<span class="string">'users'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">            $table-&gt;increments(<span class="string">'id'</span>);</div><div class="line">            $table-&gt;string(<span class="string">'name'</span>);</div><div class="line">            $table-&gt;string(<span class="string">'email'</span>)-&gt;unique();</div><div class="line">            $table-&gt;string(<span class="string">'password'</span>);</div><div class="line">            $table-&gt;rememberToken();</div><div class="line">            $table-&gt;timestamps();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::drop(<span class="string">'users'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在命令行里输入:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
-<p>将创建migration文件夹下面的所有表。<br>这实质上是把up方法给执行了。    </p>
-<p>那么啥时候执行down呢？<br>这个命令行:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate:rollback</div></pre></td></tr></table></figure>
-<h2 id="创建一个新的migration文件"><a href="#创建一个新的migration文件" class="headerlink" title="创建一个新的migration文件"></a>创建一个新的migration文件</h2><p>用这个命令行来创建新的migration文件:   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration create_表名_table --create=表名</div></pre></td></tr></table></figure>
-<p>其中，”create_表名_table”这个东西是文件名，后面的那个等号后面的表名才是你真正到时候创建出来的表名，不过事实上，它们往往是一致的。    </p>
-<h2 id="数据库中表的字段的设置"><a href="#数据库中表的字段的设置" class="headerlink" title="数据库中表的字段的设置"></a>数据库中表的字段的设置</h2><p>在Schema::create这个方法的第二个参数的函数体里面去写你想要的数据库中的表的格式。<br>举个例子：    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$table-&gt;increments(<span class="string">'id'</span>);</div><div class="line">$table-&gt;string(<span class="string">'name'</span>);</div><div class="line">$table-&gt;string(<span class="string">'email'</span>)-&gt;unique();</div><div class="line">$table-&gt;timestamps();</div></pre></td></tr></table></figure>
-<p>楼上increments是说这个id是自增的，string就是name的格式是string类型的意思，unique是说这个字段必须是唯一的～～～<br>注意这个timestamps方法，它会在表里面生成created_at字段和updated_at字段，这个字段会在你生成一个元组和更新这个元组的时候自动把创建和更新的时间也存进数据库。  </p>
-<h2 id="数据库表的结构的改变"><a href="#数据库表的结构的改变" class="headerlink" title="数据库表的结构的改变"></a>数据库表的结构的改变</h2><p>这个时候需要请出命令行哦。    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:migration add_列名字_column_to_表名字 --table=表名字</div></pre></td></tr></table></figure>
-<p>add_intro_column_to_表名字,这依然是个文件名，没错这个命令行还是创建了一个新文件出来。<br>然后在这个文件的up方法里面，写入你想要的改变，比如添加（上面写过了），删除（dropColumn）和重命名（renameColumn）等等等等。    </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>现在明白了，所谓migration,其实就是通过创建版本文件，然后再利用migrate命令行去执行它的up方法或者利用migrate:rollback命令行去执行它的down方法，从而实现对数据库的一个操作。<br>注意，每个版本文件只能被执行一次。每次migrate的时候只能去执行最新的没有被执行过的那些个up方法。    </p>
-
-          
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateUsersTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></div><div class="line"></span>&#123;</div><div class="line">    <span class="comment">/**</div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></div><div class="line">    </span>&#123;</div><div class="line">        Schema::create(<span class="string">'users'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">            $table-&gt;increments(<span class="string">'id'</span>);</div><div class="line">            $table-&gt;string(<span class="string">'name'</span>);</div><div class="line">            $table-&gt;string(<span class="string">'email'</span>)-&gt;unique();</div><div class="line">            $table-&gt;string(<span class="string">'password'</span>);</div><div class="line">            $table-&gt;rememberToken();</div><div class="line">            $table-&gt;timestamps();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></div><div class="line">    </span>&#123;</div><div class="line">        Schema::drop(<span class="string">'users'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/17/laravel4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -682,24 +720,14 @@
 
       
         
-          
-            <h2 id="Blade模版引擎"><a href="#Blade模版引擎" class="headerlink" title="Blade模版引擎"></a>Blade模版引擎</h2><blockquote>
+          <h2 id="Blade模版引擎"><a href="#Blade模版引擎" class="headerlink" title="Blade模版引擎"></a>Blade模版引擎</h2><blockquote>
 <p>Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blade.php 文件扩展名，并且一般被存放在 resources/views 目录。</p>
 </blockquote>
-<h2 id="Blade实现模版的继承"><a href="#Blade实现模版的继承" class="headerlink" title="Blade实现模版的继承"></a>Blade实现模版的继承</h2><p>如果你想重用一个已经存在的blade.php文件(假设它叫做app.blade.php)，那么你这么做:<br>用这个命令：    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div></pre></td></tr></table></figure>
-<p>你就把它引用进来啦。<br>既然引用了这个文件，那么在文件的基础上如果想要做一些改动，比如说我想要在这个文件内部插入一段自定义的代码(假如是在body标签之间进行插入)，那么在app.blade.php里这样写:        </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    @yield('content');</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>这就告诉了blade，content这个区域是可以自定义的。<br>回到我们的新文件里，我们可以这样写:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'app'</span>)</div><div class="line">@section(<span class="string">'content'</span>)</div><div class="line">&lt;h1&gt;I am maruko0713&lt;/h1&gt;</div><div class="line">@stop</div></pre></td></tr></table></figure>
-<p>注意，每个section末尾都要跟一个stop。      </p>
-<h2 id="Blade里面插入逻辑语句"><a href="#Blade里面插入逻辑语句" class="headerlink" title="Blade里面插入逻辑语句"></a>Blade里面插入逻辑语句</h2><p>格式如下：    </p>
-<p>判断:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">if</span>(判断条件)</div><div class="line">html代码</div><div class="line">@<span class="keyword">else</span></div><div class="line">html代码</div></pre></td></tr></table></figure>
-<p>循环:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">foreach</span>($people <span class="keyword">as</span> $person)</div><div class="line">&lt;li&gt;&#123;&#123; $person &#125;&#125;&lt;/li&gt;</div><div class="line">@<span class="keyword">endforeach</span></div></pre></td></tr></table></figure>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/15/laravel3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -785,33 +813,16 @@
 
       
         
-          
-            <h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><p>前面(laravel1里面)介绍控制器的创建方法:      </p>
+          <h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><p>前面(laravel1里面)介绍控制器的创建方法:      </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:controller WelcomeController</div></pre></td></tr></table></figure>
 <p>然后点开controller目录下的WelcomeController文件，我们会发现里面预写好了很多东西。<br>有时我们不需要laravel为我们做这么多，于是我们可以这样:    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:controller WelcomeController --plain</div></pre></td></tr></table></figure>
 <p>现在再打开看看，是不是除了一个Controller对象，里面啥也没有，空空如也了？^_^    </p>
-<h2 id="向视图传递变量"><a href="#向视图传递变量" class="headerlink" title="向视图传递变量"></a>向视图传递变量</h2><p>视图不是一个写死的文件，它是一个“模版”，所谓模版，就是我们可以往里面动态写入信息，因此就需要向视图传递变量啦。     </p>
-<h3 id="在controller里做工作"><a href="#在controller里做工作" class="headerlink" title="在controller里做工作"></a>在controller里做工作</h3><p>比如我们现在controller里有这样一段逻辑:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</div><div class="line">    $name = <span class="string">'maruko0713'</span>;</div><div class="line">    <span class="keyword">return</span> view(<span class="string">"parent.welcome"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>我想把$name传递进去，此时只要:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</div><div class="line">    $name = <span class="string">'maruko0713'</span>;</div><div class="line">    <span class="keyword">return</span> view(<span class="string">'parent.welcome'</span>)-&gt;with(<span class="string">'name'</span>,$name);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其中,$name,就是我们定义的那个变量，’name’是我们在视图文件中新给它起的名字。    </p>
-<h2 id="在视图文件里做工作"><a href="#在视图文件里做工作" class="headerlink" title="在视图文件里做工作"></a>在视图文件里做工作</h2><p>在视图文件里，我们只需要找个地方:    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="php"><span class="meta">&lt;?</span>= $name <span class="meta">?&gt;</span></span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>注意通配符的格式。这是原生php的写法。<br>看那个“name”现在被放进h1里去啦，打开浏览器，你就可以看到我的名字出现在里面～～～<br>还可以这样，用blade模版引擎的写法:    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; $name &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>如果不需要转义(就是直接把对方当html输出)，就加上两个叹号:   </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;!! $name !!&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="传递很多变量"><a href="#传递很多变量" class="headerlink" title="传递很多变量"></a>传递很多变量</h3><p>把with里面的参数变成数组就行:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> view(<span class="string">'parent.about'</span>)-&gt;with([</div><div class="line">        <span class="string">'first'</span> =&gt; <span class="string">'maruko'</span>,</div><div class="line">        <span class="string">'second'</span> =&gt; <span class="string">'xiaowanzi'</span></div><div class="line">        ]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在视图里：    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#123; $first &#125;&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;&#123; $second &#125;&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="小提示"><a href="#小提示" class="headerlink" title="小提示"></a>小提示</h2><p>在传递变量的时候，尤其是多个变量的时候，我们可以利用php的compact函数:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compact(<span class="string">'first'</span>,<span class="string">'second'</span>);</div></pre></td></tr></table></figure>
-<p>它会直接创建一个包含变量名（我们传入的就是变量名去掉$的样子，php会自己给它加上$）和它对应的值的数组。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/14/laravel2/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -897,29 +908,15 @@
 
       
         
-          
-            <h2 id="这篇博客"><a href="#这篇博客" class="headerlink" title="这篇博客"></a>这篇博客</h2><p>是用来介绍laravel的路由和控制器的。</p>
+          <h2 id="这篇博客"><a href="#这篇博客" class="headerlink" title="这篇博客"></a>这篇博客</h2><p>是用来介绍laravel的路由和控制器的。</p>
 <h2 id="Http目录"><a href="#Http目录" class="headerlink" title="Http目录"></a>Http目录</h2><p>就是用来处理http请求用的<br>路由文件和控制器目录都在Http这个目录下。    </p>
 <h3 id="路由文件routes-php"><a href="#路由文件routes-php" class="headerlink" title="路由文件routes.php"></a>路由文件routes.php</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="string">"hello world!"</span>; </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>它的意思是，当一个get请求访问根目录的时候，我们回应的方式是，把hello world写进你的响应体里去，呈现到浏览器当中.    </p>
-<p>如果你想呈现的是一个文件:     </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">return</span> view(<span class="string">"welcome"</span>); </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>它会在resources这个文件夹下查找welcome.blade.php这个文件，不用关心后面的两个后缀名，laravel里面的模版文件都是这个后缀名，你只需要把名字告诉view函数就行了，它会帮你去找的。    </p>
-<p>如果你的视图文件在一个名为parent的文件夹下面，那么你可以这样:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/&apos;,function() &#123;</div><div class="line">   return view(&quot;parent/welcome&quot;); </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>你还可以这样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/&apos;,function() &#123;</div><div class="line">   return view(&quot;parent.welcome&quot;); </div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>这个“.”很奇怪吧，没关系，laravel认识它就行。    </p>
-<h3 id="路由和控制器"><a href="#路由和控制器" class="headerlink" title="路由和控制器"></a>路由和控制器</h3><p>上面，我们把路由对应的逻辑都写在了一个匿名函数里，事实上，我们一般不这么做。<br>routes这个文件的作用，就是定位，这些路由对应的逻辑，应该写在控制器里。    </p>
-<h3 id="写一个控制器"><a href="#写一个控制器" class="headerlink" title="写一个控制器"></a>写一个控制器</h3><p>对应命令行:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:controller WelcomeController</div></pre></td></tr></table></figure>
-<p>我们写了一个叫做WelcomeController的文件,在Http目录下的Controllers目录里可以找到。<br>laravel会自己给我们生成一些方法，比如有一个方法是这样的:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> view(<span class="string">'welcome'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>在routes文件里这样做:  </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Routes::get(<span class="string">"/"</span>,<span class="string">"SitesController@index"</span>);</div></pre></td></tr></table></figure>
-<p>它的作用和上面匿名函数的作用是一样的。</p>
-<p>总结一下这个用法：在controller里写逻辑，然后在routes文件里对应按这样的格式这样写：指定控制器@指定方法。    </p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/12/laravel1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1005,25 +1002,16 @@
 
       
         
-          
-            <h2 id="Laravel"><a href="#Laravel" class="headerlink" title="Laravel"></a>Laravel</h2><p>一个php框架，百科里说它：    </p>
+          <h2 id="Laravel"><a href="#Laravel" class="headerlink" title="Laravel"></a>Laravel</h2><p>一个php框架，百科里说它：    </p>
 <blockquote>
 <p>是一套简洁、优雅的PHP Web开发框架(PHP Web Framework)。它可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。</p>
 </blockquote>
-<p>它是一个很受欢迎的php框架，也是我学习的第一个php框架。    </p>
-<h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p>php的包管理工具，是现在比较好用的一个。<br>一个很重要的工具，可以下载一些很好用的php的轮子，嘿嘿。<br>想要的包可以在这里找到:<br><a href="https://packagist.org/" target="_blank" rel="external">packgist网站</a><br>下载Composer的网站:<br><a href="https://getcomposer.org/" target="_blank" rel="external">getcomposer</a>    </p>
-<h2 id="利用Composer创建laravel项目"><a href="#利用Composer创建laravel项目" class="headerlink" title="利用Composer创建laravel项目"></a>利用Composer创建laravel项目</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer create-project laravel/laravel LaravelTest</div></pre></td></tr></table></figure>
-<p>LaravelTest是我随便起的名字，不用在意。    </p>
-<h2 id="看看我们的laravel项目长什么样吧-！"><a href="#看看我们的laravel项目长什么样吧-！" class="headerlink" title="看看我们的laravel项目长什么样吧^_^！"></a>看看我们的laravel项目长什么样吧^_^！</h2><p>开启一下php自己的服务器:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -S localhost:8888</div></pre></td></tr></table></figure>
-<p>端口号也是随便写的，8888，发发发发～～～     </p>
-<p>然后你会发现，出现了404错误，这是为什么?<br>因为你现在的根目录是总的那个最大的LaravelTest目录，你需要改变根目录，这样:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php -S localhost:8080 -t public</div></pre></td></tr></table></figure>
-<p>它会自己在根目录下查找index名字的页面哦。<br>加上-t 就可以修改php服务器的根目录啦。<br>然后你会发现，出现了一个很简单，但是很好看的页面，那就是laravel的默认主页面啦.    </p>
-<h2 id="laravel的命令行工具"><a href="#laravel的命令行工具" class="headerlink" title="laravel的命令行工具"></a>laravel的命令行工具</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan + 各种各样的命令</div></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇博客记录了一个laravel小demo诞生的全过程，熟悉了几个命令行，接下来就要走进laravel里面的世界去看一看啦！    </p>
-
-          
+<p>它是一个很受欢迎的php框架，也是我学习的第一个php框架。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/11/11/laravel0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1109,171 +1097,12 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>接触node一段时间了，最近在利用node做一些<a href="https://github.com/maruko0713/node-demos" target="_blank" rel="external">小demo</a>和一个功能相对复杂一些完整一些的<a href="https://github.com/maruko0713/node-blog" target="_blank" rel="external">博客系统</a>.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    </p>
-<h2 id="新工具"><a href="#新工具" class="headerlink" title="新工具"></a>新工具</h2><p>在开发的过程中，我们经常需要修改代码进行debug，但是一旦修改了我们就不得不终止node服务器重启后才可以在浏览器里看到修改后的效果，这样很麻烦，因此，我们可以使用一个叫做supervisor的工具~~~~<br>安装supervisor^_^:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g supervisor</div></pre></td></tr></table></figure>
-<p>启动supervisor：    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">supervisor app.js</div></pre></td></tr></table></figure>
-<p>于是我们就可以实现修改后自动刷新啦！</p>
-<h2 id="选择一个喜欢的模版渲染引擎"><a href="#选择一个喜欢的模版渲染引擎" class="headerlink" title="选择一个喜欢的模版渲染引擎"></a>选择一个喜欢的模版渲染引擎</h2><p>在进行开发的时候，我选用了比较经典的express框架，express框架默认使用jade作为它的渲染引擎。jade的语法虽然有很多人追捧，但是我不太喜欢，我觉得每一行都要小心翼翼地缩进对齐，tab和空格还不能一起用，太痛苦了。我更喜欢ejs,它是一个和原生html长得很像的东西，有了它，我们就可以在html里面嵌入一些js语句了，它的核心用法如下:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;% code %&gt;</div></pre></td></tr></table></figure>
-<p>在两个百分号之间，嵌入的是纯js语句，express会帮你去解释它.    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%= code %&gt;</div></pre></td></tr></table></figure>
-<p>中间的code仍然是js语句，但是这个js语句会有一个返回值，返回的内容即使你传入的内容，不会进行html的解析.    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;%- code %&gt;</div></pre></td></tr></table></figure>
-<p>与楼上很像，但是它返回的内容会被当作html解析。    </p>
-<h2 id="用bootstrap做一个快速的页面布局"><a href="#用bootstrap做一个快速的页面布局" class="headerlink" title="用bootstrap做一个快速的页面布局"></a>用bootstrap做一个快速的页面布局</h2><p>bootstrap是一个非常好用的前端框架，它的用法网上有很多，我就不啰嗦啦，如果不太熟悉boostrap的小伙伴，吃我一发安利噢～～～用力点这个——<a href="http://www.imooc.com/learn/141" target="_blank" rel="external">玩转boostrap</a>  ,这是大漠老师在慕课上的bootstrap基础课程，学完它，你就可以自己飞快地搭建漂亮的页面啦！<br>因为懒（羞羞），也因为还没有用bootstrap进行过真正的项目开发，所以这次我用了一下boostrap。哎呀，不用不知道，一用吓一跳啊！真的好用～～～（捂脸）    </p>
-<h3 id="bootstrap重要功能点复习"><a href="#bootstrap重要功能点复习" class="headerlink" title="bootstrap重要功能点复习"></a>bootstrap重要功能点复习</h3><p>这个模块我要讲一讲开发过程中我遇到的比较厉害的boostrap的用法噢！</p>
-<h4 id="响应式导航条"><a href="#响应式导航条" class="headerlink" title="响应式导航条"></a>响应式导航条</h4><p>我先给你变个魔术吧！^_^<br>如果你想自己玩，可以把我的项目代码克隆到本地，然后这么做:  </p>
-<p>克隆项目到本地:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/maruko0713/node-blog.git node-blog</div></pre></td></tr></table></figure>
-<p>进入项目根目录:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd node-blog</div></pre></td></tr></table></figure>
-<p>安装npm依赖:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
-<p>进入public文件夹:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd public</div></pre></td></tr></table></figure>
-<p>安装bower依赖:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bower install</div></pre></td></tr></table></figure>
-<p>回到根目录:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd ..</div></pre></td></tr></table></figure>
-<p>运行入口文件^_^：    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">node app</div></pre></td></tr></table></figure>
-<p>然后在你的浏览器里输入:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">localhost:3000</div></pre></td></tr></table></figure>
-<p>是不是就可以看到啦？^_^  </p>
-<p>我登录了我的xixi账号，然后我的导航条在浏览器窗口大于等于768px的时候，长这个样子:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/node-project1.png" alt="导航条">    </p>
-<p>如果我把窗口缩小一下呢？<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/node-project2.png" alt="小的导航条">    </p>
-<p>发生了啥????<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/node-project22.png" alt="小小的导航条">    </p>
-<p>嘻嘻，如果你点一下这里，之前消失掉的导航条还是会出现噢！    </p>
-<p>请出前端(ejs)代码:    </p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"navbar-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"collapse"</span> <span class="attr">data-target</span>=<span class="string">"#bs-example-navbar-collapse-1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>Toggle navigation<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/"</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span>&gt;</span>WanBlog<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"collapse navbar-collapse"</span> <span class="attr">id</span>=<span class="string">"bs-example-navbar-collapse-1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span>(<span class="attr">user</span>) &#123; %&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav navbar-left"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/post"</span>&gt;</span>发表<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav navbar-right"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%</span> <span class="attr">if</span>(<span class="attr">user</span>) &#123; %&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"dropdown"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"dropdown-toggle"</span> <span class="attr">data-toggle</span>=<span class="string">"dropdown"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">%=</span> <span class="attr">user.username</span> %&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"caret"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"dropdown-menu"</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/u/&lt;%= user.username %&gt;"</span>&gt;</span>账户信息<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/logout"</span>&gt;</span>退出登录<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%</span> &#125; <span class="attr">else</span> &#123; %&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/login"</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/reg"</span>&gt;</span>注册<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">%</span> &#125; %&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"navbar-form navbar-right"</span> <span class="attr">action</span>=<span class="string">"/search"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"form-group"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">placeholder</span>=<span class="string">"Search"</span> <span class="attr">name</span>=<span class="string">"title"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-default"</span>&gt;</span>搜索<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>有点长，别害怕…<br>因为我们给按钮添加了”navbar-toggle”类名，这使它在宽度小于768px的时候会显示，大于即消失。<br>而data-toggle=”collapse”这句，是写给bootstrap的js代码看的，它会实现我们在点它一下的时候，消失的菜单重新跳出。    </p>
-<p>我们对菜单模块添加了类名collapse navbar-collapse,前者保证它在宽度变小时消失，后者可以实现它小屏和大屏显示下不同的样式变化。<br>于是，响应式导航条就诞生啦！    </p>
-<h2 id="mongodb的使用"><a href="#mongodb的使用" class="headerlink" title="mongodb的使用"></a>mongodb的使用</h2><p>mongodb的使用其实还是那几个套路，在<a href="https://maruko0713.github.io/2016/10/11/node_mongodb/" target="_blank" rel="external">上一篇博客</a>讲过的噢。    </p>
-<h2 id="crypto模块的使用"><a href="#crypto模块的使用" class="headerlink" title="crypto模块的使用"></a>crypto模块的使用</h2><p>crypto模块可以帮助我们对密码进行加密.    </p>
-<p>引入crypto模块:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> crypto = <span class="built_in">require</span>(<span class="string">"crypto"</span>);</div></pre></td></tr></table></figure>
-<p>加密:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> md5 = crypto.createHash(<span class="string">"md5"</span>);</div><div class="line">md5password = md5.update(password).digest(<span class="string">"hex"</span>);</div></pre></td></tr></table></figure>
-<p>第一步我们设置加密的编码格式。第二步我们进行加密，digest中传入参数表明我们想要的返回格式，hex返回十六进制数据，latin1返回字符串，base64返回base64格式，什么都不传就返回buffer对象。    </p>
-<h2 id="moment-js模块的使用"><a href="#moment-js模块的使用" class="headerlink" title="moment.js模块的使用"></a>moment.js模块的使用</h2><p>momentjs可以用于时间日期的格式化～～    </p>
-<p>引入momentjs:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> moment = <span class="built_in">require</span>(<span class="string">"moment"</span>);</div></pre></td></tr></table></figure>
-<p>我想格式化成中文:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>  time = moment(date参数).locale(<span class="string">"zh-cn"</span>).format(<span class="string">"LL"</span>)</div></pre></td></tr></table></figure>
-<p>打开终端 输入node 在解释器里自己试一下吧！^_^</p>
-<p>locale返回的是一个所有信息都被中文化的moment对象，然后format是它的一个格式化方法～～～    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/11/node_mongodb/" itemprop="url">
-                  在node应用中使用mongodb来存储数据
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-11T00:00:00+08:00" content="2016-10-11">
-              2016-10-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h2><p>这两天用node做了一个<a href="https://github.com/maruko0713/node-demos/tree/master/louNote" target="_blank" rel="external">在线笔记demo</a>,对于笔记信息和session信息的存储都用到了mongodb。     </p>
-<h2 id="什么是MongoDB"><a href="#什么是MongoDB" class="headerlink" title="什么是MongoDB"></a>什么是MongoDB</h2><p>MongoDB是时下流行的noSQL数据库之一，MongoDb中有三个非常重要的概念:    </p>
-<ul>
-<li>数据库: 数据库是一个物理容器集合。一个单一的MongoDB服务器通常有多个数据库.    </li>
-<li>集合: 集合是一组MongoDB文档，相当于我们之前在MySQL中表的概念。    </li>
-<li>文档: 文档是一组键值对。很多个文档构成一个集合。 </li>
-</ul>
-<p>从关系上来看，文档组成集合，集合组成数据库，多个数据库可以运行在同一台服务器中。噢耶！</p>
-<h2 id="node中的MongoDB"><a href="#node中的MongoDB" class="headerlink" title="node中的MongoDB"></a>node中的MongoDB</h2><p>node中对MongoDB数据库的操作是通过mongoose库实现的。主要有以下操作：    </p>
-<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</div><div class="line">mongoose.connect(<span class="string">"mongodb://localhost:27017/dbName"</span>);</div></pre></td></tr></table></figure>
-<p>通过connect方法的调用可以实现对数据库的连接，楼上的代码中dbName是你想要打开的数据库的名字，如果没有这个数据库，那么就自动创建一个并且打开，不会报错^_^。    </p>
-<h3 id="建立一个表，存储数据"><a href="#建立一个表，存储数据" class="headerlink" title="建立一个表，存储数据"></a>建立一个表，存储数据</h3><p>mongoose中建表是通过mongoose.Schema这个构造函数。<br>比如我想建立一个用户表:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 引入mongoose</span></div><div class="line"><span class="keyword">var</span> mongoose = <span class="built_in">require</span>(<span class="string">"mongoose"</span>);</div><div class="line"><span class="comment">// 把构造函数搞出来</span></div><div class="line"><span class="keyword">var</span> Schema = mongoose.Schema;</div><div class="line"><span class="comment">// 建立一个模版</span></div><div class="line"><span class="keyword">var</span> userSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">    username: <span class="built_in">String</span>,</div><div class="line">    password: <span class="built_in">String</span>,</div><div class="line">    email:<span class="built_in">String</span>,</div><div class="line">    createTime: &#123;</div><div class="line">        type:<span class="built_in">Date</span>,</div><div class="line">        <span class="keyword">default</span>:<span class="built_in">Date</span>.now</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 针对上面的集合建立一个模型</span></div><div class="line"><span class="keyword">var</span> User = mongoose.model(<span class="string">"User"</span>,userSchema);</div><div class="line"><span class="comment">// 用User模型创建一个新用户</span></div><div class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(&#123;</div><div class="line">    username:<span class="string">"xiaowang"</span>,</div><div class="line">    password:<span class="number">123</span>,</div><div class="line">    email:<span class="string">"hehe@qq.com"</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">// 保存这个用户</span></div><div class="line">user.save(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"fail to save"</span>);</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h2 id="Schema与Model"><a href="#Schema与Model" class="headerlink" title="Schema与Model"></a>Schema与Model</h2><p>Schema-&gt;创建集合<br>Model-&gt;操作集合<br>我们可以这么想,Schema对应的是集合。Model把这个集合抽象出来，通过model可以创建，修改，删除和更新表中的文档。<br>Model是活的，Schema对象作为参数传入model方法后，会作为Model对象的实现标准，但是Model对象本身还具有其它的属性和行为，可以进行数据库操作，而Schema不可以。  </p>
-<h2 id="Model对象的基本方法"><a href="#Model对象的基本方法" class="headerlink" title="Model对象的基本方法"></a>Model对象的基本方法</h2><p>楼上介绍了一个save方法是增加操作。除此之外还有：    </p>
-<h3 id="更新操作"><a href="#更新操作" class="headerlink" title="更新操作:"></a>更新操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 更新操作   </span></div><div class="line">User.update(&#123;_id:someone.id&#125;,&#123;</div><div class="line">    $set:&#123;username:xxxx,password:xxxx&#125;</div><div class="line">    &#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span>(err)&#123;</div><div class="line">            <span class="built_in">console</span>.log(err);</div><div class="line">            <span class="keyword">return</span></div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"更新成功"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作:"></a>删除操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">User.remove(&#123;</div><div class="line">    _id:id</div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(err) &#123;</div><div class="line">        <span class="built_in">console</span>.log(err);</div><div class="line">        <span class="keyword">return</span></div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"删除成功！"</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h3 id="查找操作"><a href="#查找操作" class="headerlink" title="查找操作:"></a>查找操作:</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">User.find(&#123;_id:xxx&#125;)</div><div class="line">    .exec(<span class="function"><span class="keyword">function</span>(<span class="params">err,arts</span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(err)&#123;</div><div class="line">            <span class="built_in">console</span>.log(err);</div><div class="line">            <span class="keyword">return</span> </div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"查找成功！"</span>)</div><div class="line">    &#125;);</div></pre></td></tr></table></figure>
-<p>如此，就是mongoose为我们提供的增删改查啦！     </p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>接触node一段时间了，最近在利用node做一些<a href="https://github.com/maruko0713/node-demos">小demo</a>和一个功能相对复杂一些完整一些的<a href="https://github.com/maruko0713/node-blog">博客系统</a>.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/22/node_blog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1337,12 +1166,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1352,7 +1181,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1416,7 +1245,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

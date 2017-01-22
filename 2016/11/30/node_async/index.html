@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -57,26 +57,23 @@
 
 
 
-<meta name="description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    
-12-02填坑异步时Node平台开辟的线程池里的i/o（或网络请求之类">
+<meta name="description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Node中的异步i/o和事件轮询机制">
 <meta property="og:url" content="http://maruko.com/2016/11/30/node_async/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    
-12-02填坑异步时Node平台开辟的线程池里的i/o（或网络请求之类">
-<meta property="og:updated_time" content="2016-12-02T00:23:44.000Z">
+<meta property="og:description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。">
+<meta property="og:updated_time" content="2017-01-22T06:55:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Node中的异步i/o和事件轮询机制">
-<meta name="twitter:description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    
-12-02填坑异步时Node平台开辟的线程池里的i/o（或网络请求之类">
+<meta name="twitter:description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -246,7 +243,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。    </p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。<br><a id="more"></a> </p>
 <h2 id="12-02填坑"><a href="#12-02填坑" class="headerlink" title="12-02填坑"></a>12-02填坑</h2><p>异步时Node平台开辟的线程池里的i/o（或网络请求之类的需要等待的线程），这些线程所在的进程随着线程的阻塞会一起进入阻塞状态，阻塞状态的进程是不占用cpu的，这正是Node节省时间的关键。至于事件循环对时间的占用，和阻塞对时间的浪费比起来应该是微乎其微的，这也正是Node异步高性能的关键所在。     </p>
 <h2 id="从所谓“单线程”说起"><a href="#从所谓“单线程”说起" class="headerlink" title="从所谓“单线程”说起"></a>从所谓“单线程”说起</h2><p>我们常常听到的一句话是”javascript是单线程的”，然而这句话其实应该是”javascript的主线程师单线程的“，怎么理解呢。我记得在java里面，通过类的继承，我们是可以利用这个语言自己去开辟线程的。然而javascript不可以，整个应用层就只有一个线程从头到尾执行下来。<br>因此我们要说”javascript中开发者的代码是单线程的（只能运行在主线程中）“。    </p>
 <h2 id="异步的实现"><a href="#异步的实现" class="headerlink" title="异步的实现"></a>异步的实现</h2><p>第一次接触到js的异步，是浏览器端的Ajax请求。当时就对上面的单线程有了困惑，查了资料之后知道虽然js是单线程的，但是浏览器是多线程的，因此可以一边运行主线程，一边处理http请求，对http的请求其实相当于开了一个新线程。    </p>
@@ -356,12 +353,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -371,7 +368,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -446,7 +443,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

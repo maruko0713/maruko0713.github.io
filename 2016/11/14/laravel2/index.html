@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -69,7 +69,7 @@
 1php artisan make:controller WelcomeController
 然后点开controller目录下的WelcomeController文件，我们会发现里面预写好了很多东西。有时我们不需要laravel为我们做这么多，于是我们可以这样:    
 1php artisan make:controller">
-<meta property="og:updated_time" content="2016-11-28T01:34:32.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:56:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel笔记2:Laravel向视图传递变量">
 <meta name="twitter:description" content="填坑前面(laravel1里面)介绍控制器的创建方法:      
@@ -82,7 +82,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -257,6 +257,7 @@
 <p>然后点开controller目录下的WelcomeController文件，我们会发现里面预写好了很多东西。<br>有时我们不需要laravel为我们做这么多，于是我们可以这样:    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:controller WelcomeController --plain</div></pre></td></tr></table></figure>
 <p>现在再打开看看，是不是除了一个Controller对象，里面啥也没有，空空如也了？^_^    </p>
+<a id="more"></a> 
 <h2 id="向视图传递变量"><a href="#向视图传递变量" class="headerlink" title="向视图传递变量"></a>向视图传递变量</h2><p>视图不是一个写死的文件，它是一个“模版”，所谓模版，就是我们可以往里面动态写入信息，因此就需要向视图传递变量啦。     </p>
 <h3 id="在controller里做工作"><a href="#在controller里做工作" class="headerlink" title="在controller里做工作"></a>在controller里做工作</h3><p>比如我们现在controller里有这样一段逻辑:    </p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</div><div class="line">    $name = <span class="string">'maruko0713'</span>;</div><div class="line">    <span class="keyword">return</span> view(<span class="string">"parent.welcome"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -373,12 +374,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -388,7 +389,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -463,7 +464,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

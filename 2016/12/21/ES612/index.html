@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -59,30 +59,27 @@
 
 <meta name="description" content="前言ES6中，引入了迭代器和生成器的概念。久违了的名字，上次见到还是在《Python核心编程》里呐！所以说JS越来越正统语言了呀～～～    
 迭代器(Iterators)碎碎念迭代器就是可以迭代输出值的一个东西。迭代器每一次迭代会返回一个对象，这个对象长这样子：   
-1&amp;#123;value: xx, done: true/false&amp;#125;
-value表示返回的值， done表示还有没有">
+1&amp;#123;value: xx, done: true/false&amp;#125;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6学习笔记12:迭代器和生成器">
 <meta property="og:url" content="http://maruko.com/2016/12/21/ES612/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
 <meta property="og:description" content="前言ES6中，引入了迭代器和生成器的概念。久违了的名字，上次见到还是在《Python核心编程》里呐！所以说JS越来越正统语言了呀～～～    
 迭代器(Iterators)碎碎念迭代器就是可以迭代输出值的一个东西。迭代器每一次迭代会返回一个对象，这个对象长这样子：   
-1&amp;#123;value: xx, done: true/false&amp;#125;
-value表示返回的值， done表示还有没有">
-<meta property="og:updated_time" content="2017-01-01T08:38:52.000Z">
+1&amp;#123;value: xx, done: true/false&amp;#125;">
+<meta property="og:updated_time" content="2017-01-22T06:58:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记12:迭代器和生成器">
 <meta name="twitter:description" content="前言ES6中，引入了迭代器和生成器的概念。久违了的名字，上次见到还是在《Python核心编程》里呐！所以说JS越来越正统语言了呀～～～    
 迭代器(Iterators)碎碎念迭代器就是可以迭代输出值的一个东西。迭代器每一次迭代会返回一个对象，这个对象长这样子：   
-1&amp;#123;value: xx, done: true/false&amp;#125;
-value表示返回的值， done表示还有没有">
+1&amp;#123;value: xx, done: true/false&amp;#125;">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -255,6 +252,7 @@ value表示返回的值， done表示还有没有">
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6中，引入了迭代器和生成器的概念。<br>久违了的名字，上次见到还是在《Python核心编程》里呐！<br>所以说JS越来越正统语言了呀～～～    </p>
 <h2 id="迭代器-Iterators-碎碎念"><a href="#迭代器-Iterators-碎碎念" class="headerlink" title="迭代器(Iterators)碎碎念"></a>迭代器(Iterators)碎碎念</h2><p>迭代器就是可以迭代输出值的一个东西。<br>迭代器每一次迭代会返回一个对象，这个对象长这样子：   </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;value: xx, done: <span class="literal">true</span>/<span class="literal">false</span>&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a> 
 <p>value表示返回的值， done表示还有没有可以迭代的东西。<br>如果还可以迭代，那么就是true,否则是false。   </p>
 <p>然后迭代器里面还有一个关键觉得就是next()方法，它是用来进行下一次迭代用的。    </p>
 <p>具备以上要素的东西，就是迭代器。    </p>
@@ -367,12 +365,12 @@ value表示返回的值， done表示还有没有">
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -382,7 +380,7 @@ value表示返回的值， done表示还有没有">
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -457,7 +455,7 @@ value表示返回的值， done表示还有没有">
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

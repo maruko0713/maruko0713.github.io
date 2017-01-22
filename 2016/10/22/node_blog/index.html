@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -57,22 +57,19 @@
 
 
 
-<meta name="description" content="前言:接触node一段时间了，最近在利用node做一些小demo和一个功能相对复杂一些完整一些的博客系统.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    
-新工具在开发的过程中，我们经常需要修改代码进行debug，但是一旦修改了我们就不得不终止node服务器重启后才可以在浏览器里看到修改后的效果，这样很麻烦，因此，我们可以使用一个叫做supervisor的工具~">
+<meta name="description" content="前言:接触node一段时间了，最近在利用node做一些小demo和一个功能相对复杂一些完整一些的博客系统.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用nodejs搭建一个完整的博客系统">
 <meta property="og:url" content="http://maruko.com/2016/10/22/node_blog/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言:接触node一段时间了，最近在利用node做一些小demo和一个功能相对复杂一些完整一些的博客系统.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    
-新工具在开发的过程中，我们经常需要修改代码进行debug，但是一旦修改了我们就不得不终止node服务器重启后才可以在浏览器里看到修改后的效果，这样很麻烦，因此，我们可以使用一个叫做supervisor的工具~">
+<meta property="og:description" content="前言:接触node一段时间了，最近在利用node做一些小demo和一个功能相对复杂一些完整一些的博客系统.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/node-project1.png">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/node-project2.png">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/node-project22.png">
-<meta property="og:updated_time" content="2016-12-01T02:20:06.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:55:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用nodejs搭建一个完整的博客系统">
-<meta name="twitter:description" content="前言:接触node一段时间了，最近在利用node做一些小demo和一个功能相对复杂一些完整一些的博客系统.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    
-新工具在开发的过程中，我们经常需要修改代码进行debug，但是一旦修改了我们就不得不终止node服务器重启后才可以在浏览器里看到修改后的效果，这样很麻烦，因此，我们可以使用一个叫做supervisor的工具~">
+<meta name="twitter:description" content="前言:接触node一段时间了，最近在利用node做一些小demo和一个功能相对复杂一些完整一些的博客系统.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.">
 <meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/node-project1.png">
 
 
@@ -80,7 +77,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -251,6 +248,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>接触node一段时间了，最近在利用node做一些<a href="https://github.com/maruko0713/node-demos" target="_blank" rel="external">小demo</a>和一个功能相对复杂一些完整一些的<a href="https://github.com/maruko0713/node-blog" target="_blank" rel="external">博客系统</a>.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    </p>
+<a id="more"></a> 
 <h2 id="新工具"><a href="#新工具" class="headerlink" title="新工具"></a>新工具</h2><p>在开发的过程中，我们经常需要修改代码进行debug，但是一旦修改了我们就不得不终止node服务器重启后才可以在浏览器里看到修改后的效果，这样很麻烦，因此，我们可以使用一个叫做supervisor的工具~~~~<br>安装supervisor^_^:    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g supervisor</div></pre></td></tr></table></figure>
 <p>启动supervisor：    </p>
@@ -404,12 +402,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -419,7 +417,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -494,7 +492,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

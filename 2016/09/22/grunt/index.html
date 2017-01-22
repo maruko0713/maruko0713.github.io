@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -57,26 +57,23 @@
 
 
 
-<meta name="description" content="前言:虽然对于自动化工具，之前只接触过gulp，但我早就听说过grunt的大名。虽然网上对比这两者的文章也不少，但比起道听途说，经过自己的测试和思考的结论才更能有说服力。今天我拿最近做的一个给旅游景点做评论的移动端项目做了一下grunt的测试，对grunt有了一个基本的认识，然后结合一些文章，对这两个自动化工具有了些自己的想法，趁热打铁做个记录。
-关于gulp关于gulp，我写过一篇比较详细的入门">
+<meta name="description" content="前言:虽然对于自动化工具，之前只接触过gulp，但我早就听说过grunt的大名。虽然网上对比这两者的文章也不少，但比起道听途说，经过自己的测试和思考的结论才更能有说服力。今天我拿最近做的一个给旅游景点做评论的移动端项目做了一下grunt的测试，对grunt有了一个基本的认识，然后结合一些文章，对这两个自动化工具有了些自己的想法，趁热打铁做个记录。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="grunt与gulp的对比和思考">
 <meta property="og:url" content="http://maruko.com/2016/09/22/grunt/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="前言:虽然对于自动化工具，之前只接触过gulp，但我早就听说过grunt的大名。虽然网上对比这两者的文章也不少，但比起道听途说，经过自己的测试和思考的结论才更能有说服力。今天我拿最近做的一个给旅游景点做评论的移动端项目做了一下grunt的测试，对grunt有了一个基本的认识，然后结合一些文章，对这两个自动化工具有了些自己的想法，趁热打铁做个记录。
-关于gulp关于gulp，我写过一篇比较详细的入门">
-<meta property="og:updated_time" content="2016-09-22T13:19:40.000Z">
+<meta property="og:description" content="前言:虽然对于自动化工具，之前只接触过gulp，但我早就听说过grunt的大名。虽然网上对比这两者的文章也不少，但比起道听途说，经过自己的测试和思考的结论才更能有说服力。今天我拿最近做的一个给旅游景点做评论的移动端项目做了一下grunt的测试，对grunt有了一个基本的认识，然后结合一些文章，对这两个自动化工具有了些自己的想法，趁热打铁做个记录。">
+<meta property="og:updated_time" content="2017-01-22T06:58:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="grunt与gulp的对比和思考">
-<meta name="twitter:description" content="前言:虽然对于自动化工具，之前只接触过gulp，但我早就听说过grunt的大名。虽然网上对比这两者的文章也不少，但比起道听途说，经过自己的测试和思考的结论才更能有说服力。今天我拿最近做的一个给旅游景点做评论的移动端项目做了一下grunt的测试，对grunt有了一个基本的认识，然后结合一些文章，对这两个自动化工具有了些自己的想法，趁热打铁做个记录。
-关于gulp关于gulp，我写过一篇比较详细的入门">
+<meta name="twitter:description" content="前言:虽然对于自动化工具，之前只接触过gulp，但我早就听说过grunt的大名。虽然网上对比这两者的文章也不少，但比起道听途说，经过自己的测试和思考的结论才更能有说服力。今天我拿最近做的一个给旅游景点做评论的移动端项目做了一下grunt的测试，对grunt有了一个基本的认识，然后结合一些文章，对这两个自动化工具有了些自己的想法，趁热打铁做个记录。">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -247,6 +244,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>虽然对于自动化工具，之前只接触过gulp，但我早就听说过grunt的大名。虽然网上对比这两者的文章也不少，但比起道听途说，经过自己的测试和思考的结论才更能有说服力。今天我拿最近做的一个<a href="https://github.com/maruko0713/Travel_comment_website" target="_blank" rel="external">给旅游景点做评论的移动端项目</a>做了一下grunt的测试，对grunt有了一个基本的认识，然后结合一些文章，对这两个自动化工具有了些自己的想法，趁热打铁做个记录。</p>
+<a id="more"></a> 
 <h2 id="关于gulp"><a href="#关于gulp" class="headerlink" title="关于gulp"></a>关于gulp</h2><p>关于gulp，我写过一篇<a href="https://maruko0713.github.io/2016/08/26/gulp/" target="_blank" rel="external">比较详细的入门博客</a>,里面有概念介绍，也有示例，这里就不再赘述了^_^      </p>
 <h2 id="关于grunt"><a href="#关于grunt" class="headerlink" title="关于grunt"></a>关于grunt</h2><p>同样是一套前端自动化工具，它和gulp相似，一般用于:</p>
 <ul>
@@ -360,12 +358,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -375,7 +373,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -450,7 +448,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

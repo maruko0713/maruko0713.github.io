@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="maruko" />
 
 
 
@@ -57,25 +57,22 @@
 
 
 
-<meta name="description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="description" content="大三信息汪 喜欢写代码">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Maruko0713的实验室">
 <meta property="og:url" content="http://maruko.com/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
-<meta property="og:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta property="og:description" content="大三信息汪 喜欢写代码">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maruko0713的实验室">
-<meta name="twitter:description" content="大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！">
+<meta name="twitter:description" content="大三信息汪 喜欢写代码">
 
 
 
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -209,6 +206,98 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/02/react0/" itemprop="url">
+                  React中的JSX和数据流
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-02T00:00:00+08:00" content="2017-01-02">
+              2017-01-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>新年快乐!^_^<br>敲代码，看书，写博客，一个学期不知不觉要过去了，考试周也如期而至。这学期主要的精力还是在做自己比较感兴趣的一些事情，包括整个后半学期都在看算法（因为暂时还没想好算法这块的博客该怎么展开叙述，就先忍忍了，还是安静地刷题吧），所以现在开始必须好好看学校的课程了。这几天会适当减少写文章和看技术书籍的时间，不过该看的还是要看的，嗯！<br>然后说说这个React，React,Vue和AngularJs应该是现在比较主流的几个框架了，能活到这一步的框架都有自己厉害的地方，所以我的想法是应该尽量地去了解。从这一篇开始，我会对框架的学习做记录，在此之前我用Angular写过一个小项目，但是在那个项目中，仅仅是用了一些皮毛，目的在于快速地给一个系统写出前端。所以，React是我接触的第一个前端框架。  </p>
+<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>JSX在React中主要是render方法中写模版的时候要用到。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/02/react0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/25/ES615/" itemprop="url">
                   ES6学习笔记15:ES6中的模块(module)
                 </a>
@@ -251,37 +340,16 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。<br>前段时间用Node写demo的时候，完全离不开modules啊。<br>当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。<br>总之，重要！！</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。<br>前段时间用Node写demo的时候，完全离不开modules啊。<br>当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。<br>总之，重要！！</p>
 <h2 id="模块的导出和导入"><a href="#模块的导出和导入" class="headerlink" title="模块的导出和导入"></a>模块的导出和导入</h2><p>先来看如何写一个模块并把它导出！<br>假设我们现在有同一个目录下的两个文件，script1.js和script2.js</p>
 <p>script1.js:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>;</div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> &#123;fruit, dessert&#125;;</div></pre></td></tr></table></figure>
-<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;fruit, dessert&#125; <span class="keyword">from</span> <span class="string">"./script1"</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fruit, dessert);</div></pre></td></tr></table></figure>
-<p>当然，如果想要导入<strong>全部</strong>内容，我们有更简单的写法:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> * <span class="keyword">as</span> xxx <span class="keyword">from</span> <span class="string">"./script1"</span>;</div></pre></td></tr></table></figure>
-<p>经过测试，必须有as!必须有as!!    </p>
-<h2 id="重命名导入导出模块中的东西"><a href="#重命名导入导出模块中的东西" class="headerlink" title="重命名导入导出模块中的东西"></a>重命名导入导出模块中的东西</h2><p>我可以这样写script1.js:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>；</div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">dinner</span>(<span class="params">fruit, dessert</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`今天晚餐是: <span class="subst">$&#123;fruit&#125;</span>与<span class="subst">$&#123;dessert&#125;</span>`</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">export</span> &#123;fruit, dessert, dinner <span class="keyword">as</span> supper&#125;</div></pre></td></tr></table></figure>
-<p>于是script2.js里面必须这样写：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;fruit, dessert, supper&#125; <span class="keyword">from</span> <span class="string">"./script1"</span>;</div></pre></td></tr></table></figure>
-<p>当然我还可以导入的时候再改一次名字:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;fruit, dessert, supper <span class="keyword">as</span> dinner&#125; <span class="keyword">from</span> <span class="string">"./script1"</span>;</div></pre></td></tr></table></figure>
-<p>ok,万事大吉！    </p>
-<h2 id="export-default"><a href="#export-default" class="headerlink" title="export default"></a>export default</h2><p>我们可以设置一下模块默认要导出的东西：   </p>
-<p>script1.js: </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>；</div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">dinner</span>(<span class="params">fruit, dessert</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`今天晚餐是: <span class="subst">$&#123;fruit&#125;</span>与<span class="subst">$&#123;dessert&#125;</span>`</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>或者写成另一种格式:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> &#123;dinner <span class="keyword">as</span> <span class="keyword">default</span>&#125;;</div></pre></td></tr></table></figure>
-<p>然后在script2中就可以这样做啦：    </p>
-<p>script2.js:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> xxx <span class="keyword">from</span> <span class="string">"./script1.js"</span>;</div></pre></td></tr></table></figure>
-<p>xxx是你给这个默认导入的东西起的名字。<br>比如:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> chef <span class="keyword">from</span> <span class="string">"./script1.js"</span>;</div></pre></td></tr></table></figure>
-<p>于是chef就和dinner函数是一个东西！   </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>至此，总算差不多把ES6给整了个差不多明白了。<br>好，开始写demo，写demo，写demo！   </p>
-
-          
+<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/25/ES615/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -367,29 +435,15 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Map!<br>哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。<br>其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！<br>然后说正事！！<br>那个啥！！<br>Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Map!<br>哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。<br>其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！<br>然后说正事！！<br>那个啥！！<br>Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    </p>
 <h2 id="JS中的Map"><a href="#JS中的Map" class="headerlink" title="JS中的Map"></a>JS中的Map</h2><p>其实就还是那回事！    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> food = <span class="keyword">new</span> <span class="built_in">Map</span>();</div><div class="line"><span class="keyword">let</span> fruit = &#123;&#125;, cook = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;, dessert = <span class="string">"甜点"</span>;</div><div class="line"></div><div class="line">food.set(fruit, <span class="string">"🍋"</span>);</div><div class="line">food.set(cook, <span class="string">"🍴"</span>);</div><div class="line">food.set(dessert, <span class="string">"🍩"</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(food);</div></pre></td></tr></table></figure>
-<p>如果你在chrome控制台输出，你会看到:   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Map &#123;Object &#123;&#125; =&gt; &quot;🍋&quot;, </div><div class="line">function function =&gt; &quot;🍴&quot;,</div><div class="line">&quot;甜点&quot; =&gt; &quot;🍩&quot;&#125;</div></pre></td></tr></table></figure>
-<p>哈哈哈哈，简直是对象的究极进化版本！对象也能做键了哈哈哈！！  </p>
-<h2 id="Map的api和属性一锅端"><a href="#Map的api和属性一锅端" class="headerlink" title="Map的api和属性一锅端"></a>Map的api和属性一锅端</h2><p>常见api们！！<br>还拿上面的food开刀吧 ！！   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.size</div></pre></td></tr></table></figure>
-<p>和set一个德性，输出长度！    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.get(fruit);</div></pre></td></tr></table></figure>
-<p>根据键名得到键值。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.delete(dessert);</div></pre></td></tr></table></figure>
-<p>根据键名删除键值。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.has(dessert);</div></pre></td></tr></table></figure>
-<p>判断food中是不是有dessert这个键。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">food.forEach((value, key) =&gt; &#123;</div><div class="line">  <span class="comment">// todo</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>对food中的每个键值对进行操作，value是值， key是键名。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">food.clear();</div></pre></td></tr></table></figure>
-<p>清空这个Map!    </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>至此，ES6中的两个重大的数据类型都说完啦哈哈哈哈。<br>另一个Set类型在这里 <a href="https://maruko0713.github.io/2016/12/12/ES608/" target="_blank" rel="external">Set类型的学习笔记</a>,嘻嘻。<br>马上就要新年啦。<br>要加油！   </p>
-
-          
+<p>如果你在chrome控制台输出，你会看到:<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/23/ES614/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -475,25 +529,15 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>类</strong>！！！！！<br>千呼万唤始出来！！！！    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>类</strong>！！！！！<br>千呼万唤始出来！！！！    </p>
 <h2 id="JS中类的形态"><a href="#JS中类的形态" class="headerlink" title="JS中类的形态"></a>JS中类的形态</h2><p>其实和java里面没什么差啦！嘿嘿。    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cook() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"🍅"</span>);</div><div class="line">wanzi.cook();</div></pre></td></tr></table></figure>
-<p>有没有似曾相识！！有没有似曾相识！！<br>除了基本的语法不太像，这尼玛简直就是java啊！！    </p>
-<h2 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h2><p>还记得当年学java的时候，最讨厌的就是手写setter和getter,因为属性定义很简单，连写两个方法却很麻烦。。。。。<br>JS中现在也强调getter和setter了哟！    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">    <span class="keyword">this</span>.dish = [];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get menu() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dish;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  set menu(dish) &#123;</div><div class="line">    <span class="keyword">this</span>.dish.push(dish);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  cook() &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"🍅"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu = <span class="string">"🍹"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu = <span class="string">"🍕"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.menu);</div></pre></td></tr></table></figure>
-<p>get 属性名，定义我们获取这个属性的时候发生的事情。<br>set 属性名(value)， 定义我们为该属性名赋值的时候发生的事情。    </p>
-<h2 id="静态方法（static-method）"><a href="#静态方法（static-method）" class="headerlink" title="静态方法（static method）"></a>静态方法（static method）</h2><p>静态方法就是不需要实例化就能使用的一个方法。<br>就是可以直接通过类去调用的一个方法～～～<br>来让我们把cook()变成一个静态方法:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(food) &#123;</div><div class="line">    <span class="keyword">this</span>.food = food;</div><div class="line">    <span class="keyword">this</span>.dish = [];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  get menu() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.dish;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  set menu(dish) &#123;</div><div class="line">    <span class="keyword">this</span>.dish.push(dish);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> cook(food) &#123;</div><div class="line">    <span class="built_in">console</span>.log(food);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Chef.cook(<span class="string">"🍹"</span>);</div></pre></td></tr></table></figure>
-<p>嘻嘻，会输出果汁噢！    </p>
-<h2 id="继承-extends"><a href="#继承-extends" class="headerlink" title="继承(extends)"></a>继承(extends)</h2><p>一个类可以通过继承去拥有其它类里面的东西^_^。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.birthday = birthday;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  intro() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.name&#125;</span>, <span class="subst">$&#123;this.birthday&#125;</span>`</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">super</span>(name, birthday);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"wanzi"</span>, <span class="string">"1996-07-13"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.intro());</div></pre></td></tr></table></figure>
-<p>如此，我们就完成了一个最基本的继承工作啦！<br>同时，我们还可以通过super.xxx()来调用父类里面的方法^_^。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.birthday = birthday;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  intro() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;this.name&#125;</span>, <span class="subst">$&#123;this.birthday&#125;</span>`</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  world() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"world"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(name, birthday) &#123;</div><div class="line">    <span class="keyword">super</span>(name, birthday);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  hello() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.world();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"wanzi"</span>, <span class="string">"1996-07-13"</span>);</div><div class="line"><span class="built_in">console</span>.log(wanzi.hello());</div></pre></td></tr></table></figure>
-<p>最后会输出”world”这个单词噢！！    </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>JS终于也是有类的语言啦～！<br>撒花～～～～    </p>
-
-          
+<p>有没有似曾相识！！有没有似曾相识！！<br>除了基本的语法不太像，这尼玛简直就是java啊！！<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/22/ES613/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -579,27 +623,14 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6中，引入了迭代器和生成器的概念。<br>久违了的名字，上次见到还是在《Python核心编程》里呐！<br>所以说JS越来越正统语言了呀～～～    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6中，引入了迭代器和生成器的概念。<br>久违了的名字，上次见到还是在《Python核心编程》里呐！<br>所以说JS越来越正统语言了呀～～～    </p>
 <h2 id="迭代器-Iterators-碎碎念"><a href="#迭代器-Iterators-碎碎念" class="headerlink" title="迭代器(Iterators)碎碎念"></a>迭代器(Iterators)碎碎念</h2><p>迭代器就是可以迭代输出值的一个东西。<br>迭代器每一次迭代会返回一个对象，这个对象长这样子：   </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;value: xx, done: <span class="literal">true</span>/<span class="literal">false</span>&#125;</div></pre></td></tr></table></figure>
-<p>value表示返回的值， done表示还有没有可以迭代的东西。<br>如果还可以迭代，那么就是true,否则是false。   </p>
-<p>然后迭代器里面还有一个关键觉得就是next()方法，它是用来进行下一次迭代用的。    </p>
-<p>具备以上要素的东西，就是迭代器。    </p>
-<h2 id="手工创造迭代器"><a href="#手工创造迭代器" class="headerlink" title="手工创造迭代器"></a>手工创造迭代器</h2><p>手写一个迭代器来看！    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">chef</span>(<span class="params">foods</span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> i = <span class="number">0</span>;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    next() &#123;</div><div class="line">      <span class="keyword">let</span> done = (i &gt;= foods.length);</div><div class="line">      <span class="keyword">let</span> value = !done? foods[i++] : <span class="literal">undefined</span>;</div><div class="line"></div><div class="line">      <span class="keyword">return</span> &#123;</div><div class="line">        value: value,</div><div class="line">        done:done</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = chef([<span class="string">"🍅"</span>, <span class="string">"🍹"</span>]);</div><div class="line"><span class="built_in">console</span>.log(wanzi.next());</div><div class="line"><span class="built_in">console</span>.log(wanzi.next());</div><div class="line"><span class="built_in">console</span>.log(wanzi.next());</div></pre></td></tr></table></figure>
-<p>顺序输出的分别是</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;value: 🍅, done: <span class="literal">false</span>&#125;</div><div class="line">&#123;value: 🍹, done: <span class="literal">false</span>&#125;</div><div class="line">&#123;value: <span class="literal">undefined</span>, done:<span class="literal">true</span>&#125;</div></pre></td></tr></table></figure>
-<p>这上面，wanzi就是一个迭代器。    </p>
-<h2 id="生成器-generators-碎碎念"><a href="#生成器-generators-碎碎念" class="headerlink" title="生成器(generators)碎碎念"></a>生成器(generators)碎碎念</h2><p>楼上那段代码里面，生成迭代器的那个构造函数，就叫做生成器。<br>手动写一个生成器，是不是也够麻烦了。<br>我们可以使用另一种方法简单地做出一个生成器:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">chef</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"🍅"</span>;</div><div class="line">  <span class="keyword">yield</span> <span class="string">"🍹"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = chef();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(wanzi.next());</div><div class="line"><span class="built_in">console</span>.log(wanzi.next());</div><div class="line"><span class="built_in">console</span>.log(wanzi.next());</div></pre></td></tr></table></figure>
-<p>楼上这段代码，输出的东西和上面我们手写输出的东西一毛一样！！   </p>
-<p>让chef生成器进化一下：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> chef = <span class="function"><span class="keyword">function</span>* (<span class="params">foods</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; foods.length; i++) &#123;</div><div class="line">    <span class="keyword">yield</span> foods[i];</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> wanzi = chef([<span class="string">"🍅"</span>, <span class="string">"🍹"</span>]);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(wanzi.next());</div><div class="line"><span class="built_in">console</span>.log(wanzi.next());</div><div class="line"><span class="built_in">console</span>.log(wanzi.next());</div></pre></td></tr></table></figure>
-<p>楼上这段代码，和楼上的楼上，楼上的楼上的楼上实现的效果一毛一样。<br>因此我们看到，这个生成器其实还是函数，仍然可以使用函数定义表达式，可以传参。    </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>上一次接触到生成器和迭代器，还是在学python的时候（15年的暑假）。<br>时间过的真快啊。<br>JS一直在进步，自己每一天也要努力进步啊～～</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/21/ES612/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -685,44 +716,15 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在ES6里面，对象越来越“对象”了。<br>这么说有点奇怪吧，哈哈哈，还是一点一点写代码来看吧。</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在ES6里面，对象越来越“对象”了。<br>这么说有点奇怪吧，哈哈哈，还是一点一点写代码来看吧。</p>
 <h2 id="创建对象的新形式"><a href="#创建对象的新形式" class="headerlink" title="创建对象的新形式"></a>创建对象的新形式</h2><p>先看一段代码:    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>, drink=<span class="string">"🍹"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> food = &#123;</div><div class="line">  dessert: dessert,</div><div class="line">  drink: drink</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(food);</div></pre></td></tr></table></figure>
-<p>我们输出了food，food中是🍰和🍹，没毛病。    </p>
-<p>但是ES6中，给同名的属性和变量提供了便利，我们可以把它写成这样：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>, drink = <span class="string">"🍹"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> food = &#123;</div><div class="line">  dessert,</div><div class="line">  drink</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(food);</div></pre></td></tr></table></figure>
-<p>我们可以得到一样的效果。   </p>
-<p>此外，ES6中方法的定义可以简写：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> food = &#123;</div><div class="line">  breakfast(): &#123;</div><div class="line">    <span class="comment">// todo</span></div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>像楼上这样就可以。    </p>
-<h2 id="Object-is-方法"><a href="#Object-is-方法" class="headerlink" title="Object.is()方法"></a>Object.is()方法</h2><p>对比两个值是否相等，我们以前用”==”和”===”。</p>
-<p>但这样会有一些问题：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">+<span class="number">0</span> == <span class="number">-0</span>;</div><div class="line">+<span class="number">0</span> === <span class="number">-0</span>;</div><div class="line"><span class="literal">NaN</span> == <span class="literal">NaN</span>;</div></pre></td></tr></table></figure>
-<p>前两个都返回了true,而它们显然不是一个东西。<br>最后一个虽然是一个东西，但是它返回了false。<br>对于这个，我们的解决办法是：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.is(<span class="string">"+0"</span>,<span class="string">"-0"</span>);</div><div class="line"><span class="built_in">Object</span>.is(<span class="literal">NaN</span>, <span class="literal">NaN</span>);</div></pre></td></tr></table></figure>
-<p>第一个返回了false,第二个返回了true,得到了我们想要的结果😄。<br>当然大部分情况下我们还是可以使用两个等号或者三个等号来判断两个值是不是相等的。 </p>
-<h2 id="Object-assign-方法"><a href="#Object-assign-方法" class="headerlink" title="Object.assign()方法"></a>Object.assign()方法</h2><p>Object.assign(a, b, ….)可以用来把一个对象中的方法和属性复制到另一个对象里去。<br>如果a和b(以及更后面的对象)中有一样的属性，那么b中的属性会覆盖a中的属性，如果b中的属性a没有，那么b中的这个新属性会添加给a。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="built_in">Object</span>.assign(</div><div class="line">  breakfast,</div><div class="line">  &#123;drink: <span class="string">"🍺"</span>&#125;,</div><div class="line">  &#123;food: <span class="string">"🍎"</span>&#125;</div><div class="line">);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(breakfast);</div></pre></td></tr></table></figure>
-<p>嘻嘻，是不是添加进来啦？    </p>
-<h2 id="ES6中的原型"><a href="#ES6中的原型" class="headerlink" title="ES6中的原型"></a>ES6中的原型</h2><p>ES6中为我们提供了getPrototypeOf()和setPrototypeOf()两个好用的方法。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = &#123;</div><div class="line">  getDrink() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"🍵"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> dinner = &#123;</div><div class="line">  getDrink() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"🍹"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> sunday = <span class="built_in">Object</span>.create(breakfast);</div><div class="line"><span class="built_in">console</span>.log(sunday.getDrink());</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(sunday));</div></pre></td></tr></table></figure>
-<p>这段代码首先基于breakfast创建了一个新对象sunday,然后我们调用了原型对象中的方法，没毛病。最后输出它的原型确实是breakfast,没毛病，嘻嘻。    </p>
-<p>此时我们在它的基础上如果想要更改原型，就可以请出setPrototypeOf()这个方法：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.setPrototypeOf(sunday, dinner);</div></pre></td></tr></table></figure>
-<p>然后我们再输出：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getDrink());</div></pre></td></tr></table></figure>
-<p>输出了🍹啦！    </p>
-<p>再确认一下：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.getPrototypeOf(sunday));</div></pre></td></tr></table></figure>
-<p>输出的就是dinner对象，没毛病！    </p>
-<h2 id="super"><a href="#super" class="headerlink" title="super"></a>super</h2><p>super也来啦！！word妈！JS你这是要上天，越来越像“正统语言”了哈哈哈哈。<br>看一段代码：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> breakfast = &#123;</div><div class="line">  drink() &#123;</div><div class="line">    <span class="keyword">return</span> 🍹;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> sunday = &#123;</div><div class="line">  __proto__: breakfast,</div><div class="line">  getDrink() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">super</span>.getDrink() + <span class="string">"🍼"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(sunday.getDrink());</div></pre></td></tr></table></figure>
-<p>然后就输出了果汁和奶瓶，嘻嘻。    </p>
-<p>就是说如果你需要在子对象的<strong>方法</strong>中使用父对象的方法或者属性，你就应该使用super这个东西。<br>在其它情况下，你调用super,是会报错的。    </p>
-<p>```</p>
-
-          
+<p>我们输出了food，food中是🍰和🍹，没毛病。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/20/ES611/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -808,36 +810,16 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>“…”是ES6中新添加的一种操作符。<br>函数在ES6中有了更强的特性。<br>放在一起梳理一下～～    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>“…”是ES6中新添加的一种操作符。<br>函数在ES6中有了更强的特性。<br>放在一起梳理一下～～    </p>
 <h2 id="…操作符"><a href="#…操作符" class="headerlink" title="…操作符"></a>…操作符</h2><p>主要有两个作用”spread”和”rest”。    </p>
 <p>spread：   </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="string">'use strcit'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruits = [<span class="string">"🍎"</span>, <span class="string">"🍌"</span>],</div><div class="line">    foods = [<span class="string">"🍰"</span>, ...fruits];</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fruits);</div><div class="line"><span class="built_in">console</span>.log(...fruits);</div><div class="line"><span class="built_in">console</span>.log(foods);</div></pre></td></tr></table></figure>
-<p>第一行就是单纯地输出数组，然后第二行会看到数组里面的内容被展开了，分别输出。<br>然后第三行我们可以看到fruits是先被拆开然后放进数组foods里面去的。    </p>
-<p>rest(用在函数参数里):    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">breakfast</span>(<span class="params">dessert, drink, ...foods</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(dessert, drink, foods);</div><div class="line">&#125;</div><div class="line"></div><div class="line">breakfast(<span class="string">"🍰"</span>, <span class="string">"🍎"</span>, <span class="string">"🍹"</span>, <span class="string">"🍐"</span>);</div></pre></td></tr></table></figure>
-<p>表示传进来的参数里剩下的所有值。<br>输出后”🍹”，”🍐”被合并成一个数组，被当作剩余的参数集体被foods接受了～～～    </p>
-<h2 id="函数的新面貌"><a href="#函数的新面貌" class="headerlink" title="函数的新面貌"></a>函数的新面貌</h2><h3 id="ES6为函数新添加了name属性"><a href="#ES6为函数新添加了name属性" class="headerlink" title="ES6为函数新添加了name属性"></a>ES6为函数新添加了name属性</h3><p>看一段代码：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">breakfast</span>(<span class="params">argument</span>) </span>&#123;</div><div class="line">  <span class="comment">// body...</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(</div><div class="line">    breakfast.name;</div><div class="line">);</div></pre></td></tr></table></figure>
-<p>如此我们便能输出函数的名字。    </p>
-<p>换一种定义方式:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = <span class="function"><span class="keyword">function</span>(<span class="params">argument</span>) </span>&#123;</div><div class="line">  <span class="comment">// body</span></div><div class="line">&#125; </div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(</div><div class="line">  breakfast.name;</div><div class="line">)</div></pre></td></tr></table></figure>
-<p>函数定义表达式中，输出的就是函数定义表达式左侧的名字。    </p>
-<p>如果我在函数定义表达式的右侧传递一个非匿名的函数声明：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = <span class="function"><span class="keyword">function</span> <span class="title">super</span>(<span class="params">argument</span>) </span>&#123;</div><div class="line">  <span class="comment">// body</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(</div><div class="line">  breakfast.name;</div><div class="line">);</div></pre></td></tr></table></figure>
-<p>输出的就是super这个名字。    </p>
-<p>所以函数的name属性，当函数表达式和函数声明同时存在的时候，在函数声明非匿名的时候就会认准函数声明中的名字，在函数声明匿名的情况下会认准函数表达式里面的名字。     </p>
-<h2 id="函数的简化写法————箭头函数"><a href="#函数的简化写法————箭头函数" class="headerlink" title="函数的简化写法————箭头函数"></a>函数的简化写法————箭头函数</h2><p>ES6介绍了一种新的定义函数的方法叫做箭头函数:      </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = dessert =&gt; dessert;</div></pre></td></tr></table></figure>
-<p>箭头的左边是参数，右边是return的值。<br>它等价于：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> breakfast = <span class="function"><span class="keyword">function</span> <span class="title">breakfast</span>(<span class="params">dessert</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> dessert;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>如果参数和返回值稍微多点就这样写:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> breakfast = (dessert, drink) =&gt; dessert + drink;</div></pre></td></tr></table></figure>
-<p>如果函数不是简单地返回点东西的话：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = (dessert, drink) =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"我要输出啦！"</span>);</div><div class="line">  <span class="keyword">return</span> dessert + drink;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>…的用法和箭头函数比较重要，因为在实际的开发中它们真的很有用，嘻嘻。</p>
-
-          
+<p>第一行就是单纯地输出数组，然后第二行会看到数组里面的内容被展开了，分别输出。<br>然后第三行我们可以看到fruits是先被拆开然后放进数组foods里面去的。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/19/es610/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -923,19 +905,17 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前写过一篇ES6中字符串的，主要是每个点都点一下，没有对模版这一块做太多的介绍。<br>今天讲一讲模版字符串的进阶版，标签模版字符串。<br>字符串的第一篇博客在这里: <a href="https://maruko0713.github.io/2016/12/09/ES605/" target="_blank" rel="external">ES6字符串第一篇博客</a>。  </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前写过一篇ES6中字符串的，主要是每个点都点一下，没有对模版这一块做太多的介绍。<br>今天讲一讲模版字符串的进阶版，标签模版字符串。<br>字符串的第一篇博客在这里: <a href="https://maruko0713.github.io/2016/12/09/ES605/">ES6字符串第一篇博客</a>。  </p>
 <h2 id="标签模版字符串的基本形态"><a href="#标签模版字符串的基本形态" class="headerlink" title="标签模版字符串的基本形态"></a>标签模版字符串的基本形态</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> template_string = 函数名<span class="string">`模版字符串`</span>;</div></pre></td></tr></table></figure>
 <p>楼上有点丑，我也知道。<br>标签模版字符串的意思是说，把函数名当做一个标签附加到模版字符串的前面，那么这个函数就可以对这个模版字符串做一些处理。<br>标签就是函数，不过是用起来和普通的函数有些区别😁。    </p>
 <h2 id="标签函数用起来！"><a href="#标签函数用起来！" class="headerlink" title="标签函数用起来！"></a>标签函数用起来！</h2><p>来看一段完整的代码:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">'🍰'</span>,</div><div class="line">    drink  = <span class="string">'🍵'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = kitchen<span class="string">`今天的早餐是</span></div><div class="line">  <span class="subst">$&#123;dessert&#125;</span> 与 <span class="subst">$&#123;drink&#125;</span>!`</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">kitchen</span>(<span class="params">strings, ...values</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(strings);</div><div class="line">    <span class="built_in">console</span>.log(values);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>strings和values分别是两个数组，包含了模版的两个部分。<br>strings就是你手写的那一部分，而values就是${}包含的那部分，变量部分。  </p>
-<h2 id="标签函数还原原来的字符串"><a href="#标签函数还原原来的字符串" class="headerlink" title="标签函数还原原来的字符串"></a>标签函数还原原来的字符串</h2><p>在第二部分知道了啥是啥之后，我们就可以用这些东西做个组合，比如还原之前的字符串哈哈哈哈！    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">'🍰'</span>,</div><div class="line">    drink  = <span class="string">'🍵'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = kitchen<span class="string">`今天的早餐是</span></div><div class="line">  <span class="subst">$&#123;dessert&#125;</span> 与 <span class="subst">$&#123;drink&#125;</span>!`</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">kitchen</span>(<span class="params">strings, ...values</span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> result = <span class="string">""</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;values.length; i++) &#123;</div><div class="line">      result += strings[i];</div><div class="line">      result += values[i];</div><div class="line">    &#125;</div><div class="line">    result += strings[strings.length - <span class="number">1</span>];</div><div class="line"></div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;  </div><div class="line"><span class="built_in">console</span>.log(breakfast);</div></pre></td></tr></table></figure>
-<p>如此一来，我们就把拆开的字符串组装回去了。<br>当然，这看起来好像很无聊。。。。（逃）。    </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>楼上先介绍了一下特性，然后玩了个小游戏。<br>我认为这个特性主要的用途还是说，拆开后的字符串，你对它做一些检查，达到筛除不合法字符串的目的。<br>好啦，这块的补充就到这里！^_^</p>
-
-          
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">'🍰'</span>,</div><div class="line">    drink  = <span class="string">'🍵'</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> breakfast = kitchen<span class="string">`今天的早餐是</div><div class="line">  <span class="subst">$&#123;dessert&#125;</span> 与 <span class="subst">$&#123;drink&#125;</span>!`</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">kitchen</span>(<span class="params">strings, ...values</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(strings);</div><div class="line">    <span class="built_in">console</span>.log(values);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>strings和values分别是两个数组，包含了模版的两个部分。<br>strings就是你手写的那一部分，而values就是${}包含的那部分，变量部分。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/18/ES609/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1021,54 +1001,13 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>动画效果也是jQuery库吸引人的地方。<br>通过jQuery的动画方法，能够轻松地为网页添加精彩的视觉效果，给用户一种全新的体验。    </p>
-<h2 id="常用的几个好基友的api"><a href="#常用的几个好基友的api" class="headerlink" title="常用的几个好基友的api"></a>常用的几个好基友的api</h2><h3 id="show-方法和hide-方法"><a href="#show-方法和hide-方法" class="headerlink" title="show()方法和hide()方法"></a>show()方法和hide()方法</h3><p>这两个方法是一对好基友。<br>调用hide()方法时，把元素的display属性设置为none。<br>当调用show()方法时，把元素的display属性设置为block或者inline等等非none的值。    </p>
-<p>注意当你不传参数的时候，它们两个都是刷的一下出现，刷的一下就消失，不会有任何的过渡。<br>有的时候我们希望我们的动画是有速度的，这时候我们可以往括号里面传参数：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 200ms</span></div><div class="line">element.show(<span class="string">"fast"</span>);</div><div class="line"><span class="comment">// 400ms</span></div><div class="line">element.show(<span class="string">"normal"</span>);</div><div class="line"><span class="comment">// 600ms</span></div><div class="line">element.show(<span class="string">"slow"</span>);</div></pre></td></tr></table></figure>
-<p>楼上可以分别在200ms,400ms,600ms内显示元素。<br>当然，如果这个速度满足不了你的需要，你可以直接往里面传数字:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.show(<span class="number">1000</span>);</div></pre></td></tr></table></figure>
-<p>hide方法同理。     </p>
-<p>当我们往里面传了数字的时候，元素会在指定的时间段内从宽度，高度和透明度三个维度进行增加或者减少，最终达到出现或者消失的效果。    </p>
-<h3 id="fadeIn-和fadeOut-方法"><a href="#fadeIn-和fadeOut-方法" class="headerlink" title="fadeIn()和fadeOut()方法"></a>fadeIn()和fadeOut()方法</h3><p>这对好基友比上一对的功能单一多了，它就是改变元素的透明度。    </p>
-<p>fadeIn()会在你指定的一段时间里增加元素的不透明度，然后渐渐显现它。<br>fadeOut()会在你指定的一段时间里减少元素的不透明度，然后渐渐让它消失，最终display:none。    </p>
-<p>用法和上面差不多，都是通过传参数改变速度。    </p>
-<p>不透明度的变化最终值只能是0或者1。    </p>
-<h3 id="slideUp-方法和slideDown-方法"><a href="#slideUp-方法和slideDown-方法" class="headerlink" title="slideUp()方法和slideDown()方法"></a>slideUp()方法和slideDown()方法</h3><p>这个方法只会改变元素的高度。<br>如果一个元素的display为none,调用slideDown()方法时，它会从上到下延伸显示。<br>slideUp()方法正好相反。    </p>
-<p><strong>tip:</strong> jQuery中的任何动画效果，都可以指定3种速度参数，即”slow”, “normal”和”fast”。对应的时间长度就是我们上面提到的600ms, 400ms, 200ms。<br>使用速度关键字的时候记得加引号，使用自定义速度的时候传入数字就行。    </p>
-<h2 id="用animate-来自定义动画"><a href="#用animate-来自定义动画" class="headerlink" title="用animate()来自定义动画"></a>用animate()来自定义动画</h2><p>上一个小节介绍的几对好基友，事实上无法满足我们其它情况下的一些需求。为此，我们需要更灵活的运动方式。所以我们还有animate()方法可以给我们自定义运动方式。    </p>
-<p>语法结构:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">animate(params, speed, callback);</div></pre></td></tr></table></figure>
-<ul>
-<li>params: 一个包含样式属性和值的对象</li>
-<li>speed: 速度参数， 可选</li>
-<li>callback: 在动画完成时的回调函数，可选    </li>
-</ul>
-<h3 id="同时改变多个属性"><a href="#同时改变多个属性" class="headerlink" title="同时改变多个属性"></a>同时改变多个属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">element.animate(&#123;</div><div class="line">    left: <span class="string">"400px"</span>,</div><div class="line">    height: <span class="string">"200px"</span></div><div class="line">&#125;,<span class="number">3000</span>);</div></pre></td></tr></table></figure>
-<h3 id="顺序改变多个属性"><a href="#顺序改变多个属性" class="headerlink" title="顺序改变多个属性"></a>顺序改变多个属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">element.animate(&#123;left: <span class="string">"500px"</span>&#125;, <span class="number">3000</span>)</div><div class="line">       .animate(&#123;height: <span class="string">"200px"</span>&#125;, <span class="number">3000</span>);</div></pre></td></tr></table></figure>
-<h3 id="回调函数的使用"><a href="#回调函数的使用" class="headerlink" title="回调函数的使用"></a>回调函数的使用</h3><p>有时候，我们想要在最后一步切换元素的css样式:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">css(<span class="string">"border"</span>, <span class="string">"5px solid blue"</span>);</div></pre></td></tr></table></figure>
-<p>你如果把这个方法添加到了你的动画方法后面，那么你会发现在刚开始执行动画的时候，css方法就被执行了。<br>因为css方法并不会加入到动画队列中，而是会立即执行。<br>只有动画方法才会排队。    </p>
-<p>因此我们可以使用回调函数来给非动画方法排队:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">element.animate(&#123;left: <span class="string">"500px"</span>&#125;, <span class="number">3000</span>)</div><div class="line">       .animate(&#123;height: <span class="string">"200px"</span>&#125;, <span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            $(<span class="keyword">this</span>).css(<span class="string">"border"</span>, <span class="string">"5px solid blue"</span>);</div><div class="line">        &#125;);</div></pre></td></tr></table></figure>
-<h3 id="其它常见的动画方法"><a href="#其它常见的动画方法" class="headerlink" title="其它常见的动画方法"></a>其它常见的动画方法</h3><h4 id="toggle-方法"><a href="#toggle-方法" class="headerlink" title="toggle()方法"></a>toggle()方法</h4><p>toggle()方法可以切换元素的可见状态。<br>如果元素是可见的，那么切换为隐藏的。<br>如果元素是隐藏的， 那么切换为可见的。    </p>
-<h4 id="slideToggle-方法"><a href="#slideToggle-方法" class="headerlink" title="slideToggle()方法"></a>slideToggle()方法</h4><p>和toggle()方法类似，不过是通过改变元素高度实现的。    </p>
-<h4 id="fadeToggle-方法"><a href="#fadeToggle-方法" class="headerlink" title="fadeToggle()方法"></a>fadeToggle()方法</h4><p>和toggle()方法类似， 不过是通过改变元素透明度实现的。    </p>
-<h4 id="fadeTo-方法"><a href="#fadeTo-方法" class="headerlink" title="fadeTo()方法"></a>fadeTo()方法</h4><p>把元素的不透明度以渐进的方式调整到<strong>指定的值</strong>。    </p>
-<h2 id="停止动画和判断是否处于动画状态"><a href="#停止动画和判断是否处于动画状态" class="headerlink" title="停止动画和判断是否处于动画状态"></a>停止动画和判断是否处于动画状态</h2><h3 id="停止元素的动画"><a href="#停止元素的动画" class="headerlink" title="停止元素的动画"></a>停止元素的动画</h3><p>停止动画需要使用到stop()方法。<br>stop()方法的语法结构:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stop([clearQueue], [gotoEnd]);</div></pre></td></tr></table></figure>
-<ul>
-<li>clearQueue参数，布尔值，表示是否清空未完成的动画队列</li>
-<li>布尔值， 表示是否将当前正在执行的动画跳转到末状态。    </li>
-</ul>
-<h3 id="判断元素是否处于动画状态"><a href="#判断元素是否处于动画状态" class="headerlink" title="判断元素是否处于动画状态"></a>判断元素是否处于动画状态</h3><p>用is()方法:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.is(<span class="string">":animated"</span>);</div></pre></td></tr></table></figure>
-<h3 id="延迟动画"><a href="#延迟动画" class="headerlink" title="延迟动画"></a>延迟动画</h3><p>用delay()方法：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">element.animate(animate信息)</div><div class="line">       .delay(<span class="number">1000</span>)</div><div class="line">       .animate(animate信息);</div></pre></td></tr></table></figure>
-<p>如此就可以推迟队列中动画的执行。    </p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>一定要注意这个排队问题。<br>如果你想让不会排队的方法排队，一定要把它写进回调函数或者queue()方法中。    </p>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>动画效果也是jQuery库吸引人的地方。<br>通过jQuery的动画方法，能够轻松地为网页添加精彩的视觉效果，给用户一种全新的体验。    </p>
+<h2 id="常用的几个好基友的api"><a href="#常用的几个好基友的api" class="headerlink" title="常用的几个好基友的api"></a>常用的几个好基友的api</h2><h3 id="show-方法和hide-方法"><a href="#show-方法和hide-方法" class="headerlink" title="show()方法和hide()方法"></a>show()方法和hide()方法</h3><p>这两个方法是一对好基友。<br>调用hide()方法时，把元素的display属性设置为none。<br>当调用show()方法时，把元素的display属性设置为block或者inline等等非none的值。  </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/17/jQuery4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1154,174 +1093,15 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>前面几篇都在复习用法，这一篇要回忆一下机制。<br>大概的一个轮廓是，事件传播机制（事件冒泡，事件捕获，事件对象）和事件委托（事件绑定）。    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>前面几篇都在复习用法，这一篇要回忆一下机制。<br>大概的一个轮廓是，事件传播机制（事件冒泡，事件捕获，事件对象）和事件委托（事件绑定）。    </p>
 <h2 id="事件的旅程————事件传播机制"><a href="#事件的旅程————事件传播机制" class="headerlink" title="事件的旅程————事件传播机制"></a>事件的旅程————事件传播机制</h2><p>首先再熟悉一遍原生js中的事件传播机制。    </p>
 <p>这里有一个html结构:    </p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"foo"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"bar"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.example.com"</span>&gt;</span>这是一个测试<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h3><p>如果我给a元素绑定了一个click事件，然后我去点击a，此时我的浏览器如果采取的事件传播机制是事件捕获，那么我的事件是从外到里面进来的，就是说如果三个元素上都有事件侦听程序，那么第一个响应的元素是div,第二个响应的元素是bar,最后一个响应事件的才是a元素上的事件监听程序。     </p>
-<p><strong>这种事件首先交给最外层元素，接着再交给更具体的元素</strong>的事件传播过程叫做事件捕获。    </p>
-<h3 id="事件冒泡"><a href="#事件冒泡" class="headerlink" title="事件冒泡"></a>事件冒泡</h3><p>还是这段程序，还是为每个元素都安装事件舰艇程序，我还是去点击a，如果此时我的浏览器采取的是事件冒泡机制，那么事件传播的顺序是a-&gt;span-&gt;foo。<br>反过来了！<br><strong>这种当事件发生时，首先发送给最具体的元素，在这个元素获得响应机会之后，事件向上冒泡到更一般的元素</strong>的事件传播机制叫做事件冒泡。    </p>
-<h3 id="实际应用中的情况"><a href="#实际应用中的情况" class="headerlink" title="实际应用中的情况"></a>实际应用中的情况</h3><p>毫不奇怪，不同的浏览器开发者最初采用的是不同的事件传播模型，因此，最终出台的DOM标准规定应该同时使用这两种策略。<br>首先，事件从一般元素到具体元素逐层捕获。然后事件再通过冒泡返回DOM树的顶层。<br>而事件处理程序也可以注册到这个过程中的任何一个阶段。     </p>
-<h2 id="jQuery中的事件传播模型"><a href="#jQuery中的事件传播模型" class="headerlink" title="jQuery中的事件传播模型"></a>jQuery中的事件传播模型</h2><p>为了确保跨浏览器的一致性，也为了更让人容易理解。<br><strong>jQuery始终会在模型的冒泡阶段注册事件处理程序</strong>  </p>
-<h2 id="jQuery中的事件对象"><a href="#jQuery中的事件对象" class="headerlink" title="jQuery中的事件对象"></a>jQuery中的事件对象</h2><p>我们可以通过在处理函数中添加一个参数的形式引用事件对象：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="string">"#switcher"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(event);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>楼上这段程序，传入的event承接了事件对象，这个event名字不唯一，叫什么都行，只要它是事件处理程序中的第一个参数。    </p>
-<p>利用event对象，我们可以得到事件目标(event.target),还可以利用它来阻止事件冒泡(event.stopPropagation)。      </p>
-<h3 id="阻止默认操作"><a href="#阻止默认操作" class="headerlink" title="阻止默认操作"></a>阻止默认操作</h3><p>有时候浏览器会给我们一些很不讨人喜欢的默认操作。<br>比如我点一下提交按钮，我想给它自定义一个响应，不让它跳转，而让它按我说的做。然后我为它安装事件处理程序，然后我会发现安装后它仍然会直接跳转，这时候怎么办。<br>这个跳转，就是浏览器的一个默认操作，我需要阻止它：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">event.preventDefault()</div></pre></td></tr></table></figure>
-<p>tip: 既想阻止冒泡，又想阻止默认行为，这时候在事件处理函数里面返回一个false就可以了。    </p>
-<h2 id="jQuery中的事件委托机制"><a href="#jQuery中的事件委托机制" class="headerlink" title="jQuery中的事件委托机制"></a>jQuery中的事件委托机制</h2><p>这个比较重要。因为涉及到一个非常重要的方法on。    </p>
-<p>事件委托是利用事件冒泡的一项高级技术。通过事件委托，可以借助一个元素上的事件处理程序完成很多工作。    </p>
-<p>想象一个巨大的表格，它里面有一堆小格子，我希望每个小格子被点击时都有事件处理程序来响应它，那我难不成要给成千上万个小格子都安装事件处理程序？？？<br>不不不，累死了，毁性能毁内存。    </p>
-<p>为了解决这个问题，可以只在DOM的一个祖先元素上指定一个单击处理程序，借助事件冒泡，拦截子元素的事件，然后再作出响应。    </p>
-<h3 id="on-方法"><a href="#on-方法" class="headerlink" title="on()方法"></a>on()方法</h3><p>on()方法的常见调用形式:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.on(事件名， 事件处理程序);</div></pre></td></tr></table></figure>
-<p>利用这种形式，我们可以给一个元素安装指定的事件的事件监听程序。    </p>
-<p>on()方法的事件委托实现:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.on(事件名, 子元素, 事件处理程序);</div></pre></td></tr></table></figure>
-<p>楼上，多出的这个参数，就是事件的委托方，而element是事件的被委托方。<br>（子元素的传入形式是一个选择符表达式）。   </p>
-<p><strong>如果on()方法传入的第二个参数是一个选择符表达式，jQuery会把对应的事件处理程序绑定到element对象，同时比较event.target和选择符表达式，如果匹配，jQuery会把this关键字映射到匹配的元素，否则不会执行事件处理程序</strong>   </p>
-<h2 id="off-方法移除事件处理程序"><a href="#off-方法移除事件处理程序" class="headerlink" title="off()方法移除事件处理程序"></a>off()方法移除事件处理程序</h2><p>off()方法的用法也比较简单，它是和on()方法呼应的，我们直接看一段demo思路就会比较清晰:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">btnClick1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert( <span class="keyword">this</span>.value + <span class="string">"-1"</span> );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">btnClick2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert( <span class="keyword">this</span>.value + <span class="string">"-2"</span> );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> $body = $(<span class="string">"body"</span>);</div><div class="line"></div><div class="line"><span class="comment">// 为所有button元素的click事件绑定事件处理函数btnClick1</span></div><div class="line">$body.on(<span class="string">"click"</span>, <span class="string">":button"</span>, btnClick1 );</div><div class="line"></div><div class="line"><span class="comment">// 为所有button元素的click事件绑定事件处理函数btnClick2</span></div><div class="line">$body.on(<span class="string">"click"</span>, <span class="string">":button"</span>, btnClick2 );</div><div class="line"></div><div class="line"><span class="comment">//为所有a元素绑定click、mouseover、mouseleave事件</span></div><div class="line">$body.on(<span class="string">"click mouseover mouseleave"</span>, <span class="string">"a"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>( event.type == <span class="string">"click"</span> )&#123;</div><div class="line">        alert(<span class="string">"点击事件"</span>);</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>( event.type == <span class="string">"mouseover"</span> )&#123;</div><div class="line">        $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"red"</span>);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        $(<span class="keyword">this</span>).css(<span class="string">"color"</span>, <span class="string">"blue"</span>);       </div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 移除body元素为所有button元素的click事件绑定的事件处理函数btnClick2</span></div><div class="line"><span class="comment">// 点击按钮，btnClick1照样执行</span></div><div class="line">$body.off(<span class="string">"click"</span>, <span class="string">":button"</span>, btnClick2);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 移除body元素为所有button元素的click事件绑定的所有事件处理函数(btnClick1和btnClick2)</span></div><div class="line"><span class="comment">// 点击按钮，不会执行任何事件处理函数</span></div><div class="line"><span class="comment">// $body.off("click", ":button");</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 注意： $body.off("click", "#btn1"); 无法移除btn1的点击事件，off()函数指定的选择器必须与on()函数传入的选择器一致。</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 移除body元素为所有元素(包括button和&lt;a&gt;元素)的click事件绑定的所有处理函数</span></div><div class="line"><span class="comment">// 点击按钮或链接，都不会触发执行任何事件处理函数</span></div><div class="line"><span class="comment">// $("body").off("click");</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 移除body元素为所有元素的任何事件绑定的所有处理函数</span></div><div class="line"><span class="comment">// 点击按钮，或点击链接或者鼠标移入/移出链接，都不会触发执行任何事件处理函数</span></div><div class="line"><span class="comment">// $("body").off( );</span></div></pre></td></tr></table></figure>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>jQuery具有良好的跨浏览器运行能力，对于事件传播机制的处理方式验证了这一点。<br>在jQuery中，不仅有on()方法，还有一个功能类似的delegate()和undelegate()方法。<br>虽然最重要的也最多用的仍然是on()和off()方法，不过另外两个方法也很有说头，我会另写博客做说明。    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/15/jQuery2/" itemprop="url">
-                  jQuery复习2:jQuery中的事件之事件基础篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-15T00:00:00+08:00" content="2016-12-15">
-              2016-12-15
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>js和html之间的交互式通过用户和浏览器操作页面时引发的事件来处理的。<br>文档或者它的某些元素发生某些变化或操作时，浏览器会自动生成一个事件。<br>jQuery增加并且扩展了基本的事件处理机制，增强了事件处理能力。    </p>
-<p>本文着重讲解一些比较重要的api。<br>事件绑定机制，我认为非常重要，所以会和事件冒泡，事件捕获等知识点一起，在下一篇文章单独写。    </p>
-<h2 id="原生js中的事件和jQuery中的事件对比"><a href="#原生js中的事件和jQuery中的事件对比" class="headerlink" title="原生js中的事件和jQuery中的事件对比"></a>原生js中的事件和jQuery中的事件对比</h2><p>举一个最常见的🌰，就是window.onload()和$(document).ready()这两个方法。    </p>
-<h3 id="在执行时机上的差别"><a href="#在执行时机上的差别" class="headerlink" title="在执行时机上的差别"></a>在执行时机上的差别</h3><p>window.onload()需要在整个页面都加载完毕，包括dom树和相关的链接文件全部加载完毕之后触发事件。<br>而$(document).ready()在dom加载完毕之后就会触发，不用等待相关文件的下载，比如图片，视频这些这时候都还没有加载出来，但是只要dom加载出来了，就会触发。    </p>
-<p>window.onload()对应的jQuery事件是$(document).load();    </p>
-<h3 id="在设置机制上的差别"><a href="#在设置机制上的差别" class="headerlink" title="在设置机制上的差别"></a>在设置机制上的差别</h3><p>假如你写了两个函数：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">one</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">"one"</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">two</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    alert(<span class="string">"two"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>你的本意是让window.onload()触发后执行这两个函数，于是你这样做了:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = one;</div><div class="line"><span class="built_in">window</span>.onload = two;</div></pre></td></tr></table></figure>
-<p>运行代码，只会弹出一个”two”。<br>这个是可以想象的，因为我们重复赋值。    </p>
-<p>但是如果我们利用jQuery中的事件，就可以轻易达成我们的目的：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="built_in">document</span>).ready(one);</div><div class="line">$(<span class="built_in">document</span>).ready(two);</div></pre></td></tr></table></figure>
-<p>触发后两个函数会接连运行，成功！    </p>
-<p>tip: 我们要注意$(document).ready()有一个简写是$()这样的，因此我们常常看到：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    函数内容</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>另外.$()里面在不传参数的时候，默认参数是document,此时它就是$(document)这个jQuery对象。    </p>
-<h2 id="原生js里面的特殊绑定事件在jQuery里面形式的改变"><a href="#原生js里面的特殊绑定事件在jQuery里面形式的改变" class="headerlink" title="原生js里面的特殊绑定事件在jQuery里面形式的改变"></a>原生js里面的特殊绑定事件在jQuery里面形式的改变</h2><p>在原生js里面，如果我们想要为一个元素绑定事件，我们一般是这样做的：  </p>
-<p>比如点击事件:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.onclick = 一个函数;</div></pre></td></tr></table></figure>
-<p>在jQuery里面是这样的：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$element.click(一个函数);</div></pre></td></tr></table></figure>
-<p>好处就是可以重复调用这个函数，然后多次添加事件触发函数的内容。<br>同样的，其它的一些我们熟知的常用事件纷纷变成了这样：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$element.mouseover(一个函数);</div><div class="line">$element.mouseout(一个函数);</div></pre></td></tr></table></figure>
-<p>有效减少了代码量～～～～^_^。    </p>
-<h2 id="jQuery的两个合成事件"><a href="#jQuery的两个合成事件" class="headerlink" title="jQuery的两个合成事件"></a>jQuery的两个合成事件</h2><p>jQuery中有两个合成事件:<br>hover()方法和toggle()方法。<br>和ready()方法一样,hover()方法和toggle()方法在原生js中没有对应的原生事件，因此它是jQuery自定义的事件。    </p>
-<h3 id="hover-方法"><a href="#hover-方法" class="headerlink" title="hover()方法"></a>hover()方法</h3><p>hover()方法的语法结构为：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hover(enter, leave);</div></pre></td></tr></table></figure>
-<p>它模仿的是光标的悬停事件，当光标移动到元素上时，会触发指定的第一个函数即enter函数，当光标离开时，会触发指定的第二个函数即leave函数。     </p>
-<h3 id="toggle-方法"><a href="#toggle-方法" class="headerlink" title="toggle()方法"></a>toggle()方法</h3><p>toggle()方法的语法结构为：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">toggle(fn1, fn2, ..., fnN);</div></pre></td></tr></table></figure>
-<p>它模仿的是鼠标连续单击事件，第一次单击元素，触发fn1,第二次单击，触发fn2,然后一直触发到fnN。<br>如果连fnN也被触发了，那么就从头开始，再来一遍。<br>就是这样以此类推，循环往复。     </p>
-<h2 id="特殊性质的事件one"><a href="#特殊性质的事件one" class="headerlink" title="特殊性质的事件one()"></a>特殊性质的事件one()</h2><p>对于只需要触发一次，随后就要立即解除绑定的情况，jQuery提供了一种简写方法：one()方法。<br>one()方法可以为元素绑定一个只能执行一次的处理函数。     </p>
-<p>one()的语法结构如下：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">one(type, [data], fn);</div></pre></td></tr></table></figure>
-<p>一般我们都这样调用:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">element.one(<span class="string">"click"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    函数内容</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>这样就实现了只在第一次点击就执行的效果，其它事件亦然。    </p>
-<h2 id="jQuery中的模拟事件"><a href="#jQuery中的模拟事件" class="headerlink" title="jQuery中的模拟事件"></a>jQuery中的模拟事件</h2><p>所谓模拟事件，就是说模拟用户的操作，来达到触发事件的效果。<br>在jQuery中，这个效果用trigger(type, [data])方法来实现。<br>如下：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.trigger(<span class="string">"click"</span>);</div></pre></td></tr></table></figure>
-<p>传入事件名，就可以模拟触发这个事件的操作，楼上就触发了一次点击操作。    </p>
-<p>有时候我们需要给一个元素绑定一些自定义事件，比如我给我的事件取名字叫做“miemiemie”,那么这个事件原生js里面是没有的，于是我不管怎样操作浏览器，点鼠标也好，砸键盘也好，这个事件都不理我。<br>此时用trigger:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.trigger(<span class="string">"miemiemie"</span>);</div></pre></td></tr></table></figure>
-<p>就可以成功触发我的这个事件处理函数，哈哈哈哈哈哈。<br>trigger的第二个可选参数是data,可以用来传递参数给事件处理函数。<br>比如：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">element.on(<span class="string">"miemiemie"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">content</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(content);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>我在触发的时候，处理函数渴望得到一个content,于是我这样做：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.trigger(<span class="string">"miemiemie"</span>,<span class="string">"miemie is a pig"</span>);</div></pre></td></tr></table></figure>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>这一篇文章的信息量比较小，下一篇文章我会着重讲事件的机制，包括jQuery中事件的绑定，事件本身的冒泡和捕获等等。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/16/jQuery3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1385,12 +1165,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1400,7 +1180,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1464,7 +1244,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

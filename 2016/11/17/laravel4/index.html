@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -67,7 +67,7 @@ Migration命令在migrations这个文件夹下面。默认有两个，打开其�
 <meta property="og:description" content="Migration是啥Migration是数据库的版本控制。    
 Migration命令在migrations这个文件夹下面。默认有两个，打开其中的create_users_table文件，里面会有一个对象，对象有up方法和down方法。文件代码:    
 1234567891011121314151617181920212223242526272829class CreateUsersTab">
-<meta property="og:updated_time" content="2016-11-28T07:25:46.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:56:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel笔记4:Laravel中的数据库和Migration">
 <meta name="twitter:description" content="Migration是啥Migration是数据库的版本控制。    
@@ -79,7 +79,7 @@ Migration命令在migrations这个文件夹下面。默认有两个，打开其�
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -252,6 +252,7 @@ Migration命令在migrations这个文件夹下面。默认有两个，打开其�
         <h2 id="Migration是啥"><a href="#Migration是啥" class="headerlink" title="Migration是啥"></a>Migration是啥</h2><p>Migration是数据库的版本控制。    </p>
 <h2 id="Migration命令"><a href="#Migration命令" class="headerlink" title="Migration命令"></a>Migration命令</h2><p>在migrations这个文件夹下面。<br>默认有两个，打开其中的create_users_table文件，里面会有一个对象，对象有up方法和down方法。<br>文件代码:    </p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateUsersTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></div><div class="line">&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Run the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::create(<span class="string">'users'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</div><div class="line">            $table-&gt;increments(<span class="string">'id'</span>);</div><div class="line">            $table-&gt;string(<span class="string">'name'</span>);</div><div class="line">            $table-&gt;string(<span class="string">'email'</span>)-&gt;unique();</div><div class="line">            $table-&gt;string(<span class="string">'password'</span>);</div><div class="line">            $table-&gt;rememberToken();</div><div class="line">            $table-&gt;timestamps();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Reverse the migrations.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> void</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Schema::drop(<span class="string">'users'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a> 
 <p>在命令行里输入:    </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure>
 <p>将创建migration文件夹下面的所有表。<br>这实质上是把up方法给执行了。    </p>
@@ -364,12 +365,12 @@ Migration命令在migrations这个文件夹下面。默认有两个，打开其�
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -379,7 +380,7 @@ Migration命令在migrations这个文件夹下面。默认有两个，打开其�
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -454,7 +455,7 @@ Migration命令在migrations这个文件夹下面。默认有两个，打开其�
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

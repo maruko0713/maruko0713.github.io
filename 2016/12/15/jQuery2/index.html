@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -67,7 +67,7 @@
 <meta property="og:description" content="前言:js和html之间的交互式通过用户和浏览器操作页面时引发的事件来处理的。文档或者它的某些元素发生某些变化或操作时，浏览器会自动生成一个事件。jQuery增加并且扩展了基本的事件处理机制，增强了事件处理能力。    
 本文着重讲解一些比较重要的api。事件绑定机制，我认为非常重要，所以会和事件冒泡，事件捕获等知识点一起，在下一篇文章单独写。    
 原生js中的事件和jQuery中的事件对比举">
-<meta property="og:updated_time" content="2016-12-27T02:51:39.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:57:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery复习2:jQuery中的事件之事件基础篇">
 <meta name="twitter:description" content="前言:js和html之间的交互式通过用户和浏览器操作页面时引发的事件来处理的。文档或者它的某些元素发生某些变化或操作时，浏览器会自动生成一个事件。jQuery增加并且扩展了基本的事件处理机制，增强了事件处理能力。    
@@ -79,7 +79,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -252,6 +252,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>js和html之间的交互式通过用户和浏览器操作页面时引发的事件来处理的。<br>文档或者它的某些元素发生某些变化或操作时，浏览器会自动生成一个事件。<br>jQuery增加并且扩展了基本的事件处理机制，增强了事件处理能力。    </p>
 <p>本文着重讲解一些比较重要的api。<br>事件绑定机制，我认为非常重要，所以会和事件冒泡，事件捕获等知识点一起，在下一篇文章单独写。    </p>
 <h2 id="原生js中的事件和jQuery中的事件对比"><a href="#原生js中的事件和jQuery中的事件对比" class="headerlink" title="原生js中的事件和jQuery中的事件对比"></a>原生js中的事件和jQuery中的事件对比</h2><p>举一个最常见的🌰，就是window.onload()和$(document).ready()这两个方法。    </p>
+<a id="more"></a> 
 <h3 id="在执行时机上的差别"><a href="#在执行时机上的差别" class="headerlink" title="在执行时机上的差别"></a>在执行时机上的差别</h3><p>window.onload()需要在整个页面都加载完毕，包括dom树和相关的链接文件全部加载完毕之后触发事件。<br>而$(document).ready()在dom加载完毕之后就会触发，不用等待相关文件的下载，比如图片，视频这些这时候都还没有加载出来，但是只要dom加载出来了，就会触发。    </p>
 <p>window.onload()对应的jQuery事件是$(document).load();    </p>
 <h3 id="在设置机制上的差别"><a href="#在设置机制上的差别" class="headerlink" title="在设置机制上的差别"></a>在设置机制上的差别</h3><p>假如你写了两个函数：    </p>
@@ -393,12 +394,12 @@
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -408,7 +409,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -483,7 +484,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

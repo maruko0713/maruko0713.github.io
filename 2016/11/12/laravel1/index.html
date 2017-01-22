@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -69,7 +69,7 @@ Http目录就是用来处理http请求用的路由文件和控制器目录都在
 Http目录就是用来处理http请求用的路由文件和控制器目录都在Http这个目录下。    
 路由文件routes.php123Route::get(&apos;/&apos;,function() &amp;#123;   return &quot;hello world!&quot;; &amp;#125;);
 它的意思是，当一个get请求访问根目录的时候，我们回应的方式是，把hello worl">
-<meta property="og:updated_time" content="2016-11-28T01:07:31.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:56:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Laravel笔记1:Laravel的路由和控制器">
 <meta name="twitter:description" content="这篇博客是用来介绍laravel的路由和控制器的。
@@ -82,7 +82,7 @@ Http目录就是用来处理http请求用的路由文件和控制器目录都在
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -256,6 +256,7 @@ Http目录就是用来处理http请求用的路由文件和控制器目录都在
 <h2 id="Http目录"><a href="#Http目录" class="headerlink" title="Http目录"></a>Http目录</h2><p>就是用来处理http请求用的<br>路由文件和控制器目录都在Http这个目录下。    </p>
 <h3 id="路由文件routes-php"><a href="#路由文件routes-php" class="headerlink" title="路由文件routes.php"></a>路由文件routes.php</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">return</span> <span class="string">"hello world!"</span>; </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>它的意思是，当一个get请求访问根目录的时候，我们回应的方式是，把hello world写进你的响应体里去，呈现到浏览器当中.    </p>
+<a id="more"></a> 
 <p>如果你想呈现的是一个文件:     </p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Route::get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">   <span class="keyword">return</span> view(<span class="string">"welcome"</span>); </div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>它会在resources这个文件夹下查找welcome.blade.php这个文件，不用关心后面的两个后缀名，laravel里面的模版文件都是这个后缀名，你只需要把名字告诉view函数就行了，它会帮你去找的。    </p>
@@ -369,12 +370,12 @@ Http目录就是用来处理http请求用的路由文件和控制器目录都在
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -384,7 +385,7 @@ Http目录就是用来处理http请求用的路由文件和控制器目录都在
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -459,7 +460,7 @@ Http目录就是用来处理http请求用的路由文件和控制器目录都在
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 

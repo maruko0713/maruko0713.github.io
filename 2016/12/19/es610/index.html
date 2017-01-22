@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next muse use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -69,7 +69,7 @@ spread：
 …操作符主要有两个作用”spread”和”rest”。    
 spread：   
 12345678&apos;use strcit&apos;let fruits = [&quot;🍎&quot;, &quot;🍌&quot;],    foods = [&quot;🍰&quot;, ...fruits];console.log(fruits);console.log">
-<meta property="og:updated_time" content="2016-12-31T02:21:12.000Z">
+<meta property="og:updated_time" content="2017-01-22T06:58:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6学习笔记10:函数的新面貌和"..."操作符">
 <meta name="twitter:description" content="前言“…”是ES6中新添加的一种操作符。函数在ES6中有了更强的特性。放在一起梳理一下～～    
@@ -82,7 +82,7 @@ spread：
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -256,7 +256,7 @@ spread：
 <h2 id="…操作符"><a href="#…操作符" class="headerlink" title="…操作符"></a>…操作符</h2><p>主要有两个作用”spread”和”rest”。    </p>
 <p>spread：   </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="string">'use strcit'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> fruits = [<span class="string">"🍎"</span>, <span class="string">"🍌"</span>],</div><div class="line">    foods = [<span class="string">"🍰"</span>, ...fruits];</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(fruits);</div><div class="line"><span class="built_in">console</span>.log(...fruits);</div><div class="line"><span class="built_in">console</span>.log(foods);</div></pre></td></tr></table></figure>
-<p>第一行就是单纯地输出数组，然后第二行会看到数组里面的内容被展开了，分别输出。<br>然后第三行我们可以看到fruits是先被拆开然后放进数组foods里面去的。    </p>
+<p>第一行就是单纯地输出数组，然后第二行会看到数组里面的内容被展开了，分别输出。<br>然后第三行我们可以看到fruits是先被拆开然后放进数组foods里面去的。<br><a id="more"></a> </p>
 <p>rest(用在函数参数里):    </p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">breakfast</span>(<span class="params">dessert, drink, ...foods</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(dessert, drink, foods);</div><div class="line">&#125;</div><div class="line"></div><div class="line">breakfast(<span class="string">"🍰"</span>, <span class="string">"🍎"</span>, <span class="string">"🍹"</span>, <span class="string">"🍐"</span>);</div></pre></td></tr></table></figure>
 <p>表示传进来的参数里剩下的所有值。<br>输出后”🍹”，”🍐”被合并成一个数组，被当作剩余的参数集体被foods接受了～～～    </p>
@@ -376,12 +376,12 @@ spread：
                alt="Maruko0713" />
           <p class="site-author-name" itemprop="name">Maruko0713</p>
           <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
- 只要勇敢地面对自己的内心 就没有无法逾越的难题！</p>
+</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">54</span>
+              <span class="site-state-item-count">55</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -391,7 +391,7 @@ spread：
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -466,7 +466,7 @@ spread：
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
