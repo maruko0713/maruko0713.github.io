@@ -809,25 +809,18 @@
 
       
         
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇博客概括起来比较简单粗暴，就是写函数的常用属性和arguments对象～～<br>(写完之后的我再回过头来看也觉得它意外的短啊。。。😂)   </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇博客概括起来比较简单粗暴，就是写函数的常用属性和arguments对象～～<br>(写完之后的我再回过头来看也觉得它意外的短啊。。。😂)   </p>
 <h2 id="函数的属性"><a href="#函数的属性" class="headerlink" title="函数的属性"></a>函数的属性</h2><ul>
 <li>foo.name 函数名</li>
 <li>foo.length 形参的个数</li>
 <li>arguments.length 实参的个数<br>🌰：    </li>
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x,y,z</span>) </span>&#123;</div><div class="line">    <span class="built_in">arguments</span>.length; <span class="comment">//2</span></div><div class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>]; <span class="comment">//1</span></div><div class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="number">10</span>;</div><div class="line">    x; <span class="comment">//10</span></div><div class="line"></div><div class="line">    <span class="built_in">arguments</span>[<span class="number">2</span>] = <span class="number">100</span>; </div><div class="line">    z; <span class="comment">//undefined</span></div><div class="line">    <span class="built_in">arguments</span>.callee === foo; <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(<span class="number">1</span>,<span class="number">2</span>);</div><div class="line">foo.length;<span class="comment">// 3</span></div><div class="line">foo.name; <span class="comment">//"foo"</span></div></pre></td></tr></table></figure>
-<h2 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h2><p>还是楼上那段代码，来聊聊arguments。<br>arguments是一个<strong><em>类数组</em></strong>的对象。<br>之所以说是类数组，因为它原型并不是Array.prototype。<br>但是我们可以像访问数组一样访问它。<br>我们可以看到，我们可以通过访问arguments来修改形参的值。<br>但是楼上的代码也提示了一个坑:<br>如果某个参数没有传进来，arguments和它就不具有绑定关系。因此当我们给arguments[2]赋值的时候，形参的值并没有改变。<br>因此,我们把arguments理解为<strong><em>和被传值的形参相绑定的类数组对象</em></strong></p>
-<p>arguments.callee返回的是arguments对应的函数对象。<br>在”use strict”模式下，arguments.callee是不能使用的，而且arguments和形参不再具有绑定关系，只是形参的一个副本～～   </p>
-<h2 id="bind方法更进一步"><a href="#bind方法更进一步" class="headerlink" title="bind方法更进一步"></a>bind方法更进一步</h2><p>bind方法上一篇博客说apply和call的时候提了一下，这一篇博客再深入介绍个别的用法：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b,c</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b + c;</div><div class="line">&#125; </div><div class="line"><span class="keyword">var</span> func = add.bind(<span class="literal">undefined</span>, <span class="number">100</span>);</div><div class="line">func(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//103</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> func2 = func.bind(<span class="literal">undefined</span>, <span class="number">200</span>);</div><div class="line">func2(<span class="number">10</span>); <span class="comment">//310</span></div></pre></td></tr></table></figure>
-<p>它不仅可以用来修改this的指向，还可以把一个函数的参数分阶段传入～～<br>只有当最后一个参数被传入的时候，函数才真正被调用了。   </p>
-<h2 id="构造函数和bind"><a href="#构造函数和bind" class="headerlink" title="构造函数和bind"></a>构造函数和bind</h2><p>先看一个🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.b = <span class="number">100</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> func = foo.bind(&#123;a:<span class="number">1</span>&#125;);</div><div class="line"></div><div class="line">func(); <span class="comment">//1</span></div><div class="line"><span class="keyword">new</span> func(); <span class="comment">// &#123;b:100&#125;</span></div></pre></td></tr></table></figure>
-<p>当我们对一个构造函数用bind的时候，如果我们直接调用它，和普通函数的bind没差。<br>如果用了new,return除非是对象，如果return不是对象，那么仍然让原有的this作为返回值。    </p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>啊，这次写的东西意想不到的短啊？？？？？<br>嘿嘿，因为大多数基础的知识点都在上一篇覆盖过了，好像确实是这样😂<br>晚安！^_^</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/25/js10/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
