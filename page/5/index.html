@@ -767,6 +767,110 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/25/js10/" itemprop="url">
+                  Javascript系统复习：函数的重要属性和arguments
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-25T00:00:00+08:00" content="2016-08-25">
+              2016-08-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇博客概括起来比较简单粗暴，就是写函数的常用属性和arguments对象～～<br>(写完之后的我再回过头来看也觉得它意外的短啊。。。😂)   </p>
+<h2 id="函数的属性"><a href="#函数的属性" class="headerlink" title="函数的属性"></a>函数的属性</h2><ul>
+<li>foo.name 函数名</li>
+<li>foo.length 形参的个数</li>
+<li>arguments.length 实参的个数<br>🌰：    </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x,y,z</span>) </span>&#123;</div><div class="line">    <span class="built_in">arguments</span>.length; <span class="comment">//2</span></div><div class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>]; <span class="comment">//1</span></div><div class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="number">10</span>;</div><div class="line">    x; <span class="comment">//10</span></div><div class="line"></div><div class="line">    <span class="built_in">arguments</span>[<span class="number">2</span>] = <span class="number">100</span>; </div><div class="line">    z; <span class="comment">//undefined</span></div><div class="line">    <span class="built_in">arguments</span>.callee === foo; <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(<span class="number">1</span>,<span class="number">2</span>);</div><div class="line">foo.length;<span class="comment">// 3</span></div><div class="line">foo.name; <span class="comment">//"foo"</span></div></pre></td></tr></table></figure>
+<h2 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h2><p>还是楼上那段代码，来聊聊arguments。<br>arguments是一个<strong><em>类数组</em></strong>的对象。<br>之所以说是类数组，因为它原型并不是Array.prototype。<br>但是我们可以像访问数组一样访问它。<br>我们可以看到，我们可以通过访问arguments来修改形参的值。<br>但是楼上的代码也提示了一个坑:<br>如果某个参数没有传进来，arguments和它就不具有绑定关系。因此当我们给arguments[2]赋值的时候，形参的值并没有改变。<br>因此,我们把arguments理解为<strong><em>和被传值的形参相绑定的类数组对象</em></strong></p>
+<p>arguments.callee返回的是arguments对应的函数对象。<br>在”use strict”模式下，arguments.callee是不能使用的，而且arguments和形参不再具有绑定关系，只是形参的一个副本～～   </p>
+<h2 id="bind方法更进一步"><a href="#bind方法更进一步" class="headerlink" title="bind方法更进一步"></a>bind方法更进一步</h2><p>bind方法上一篇博客说apply和call的时候提了一下，这一篇博客再深入介绍个别的用法：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a,b,c</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a + b + c;</div><div class="line">&#125; </div><div class="line"><span class="keyword">var</span> func = add.bind(<span class="literal">undefined</span>, <span class="number">100</span>);</div><div class="line">func(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//103</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> func2 = func.bind(<span class="literal">undefined</span>, <span class="number">200</span>);</div><div class="line">func2(<span class="number">10</span>); <span class="comment">//310</span></div></pre></td></tr></table></figure>
+<p>它不仅可以用来修改this的指向，还可以把一个函数的参数分阶段传入～～<br>只有当最后一个参数被传入的时候，函数才真正被调用了。   </p>
+<h2 id="构造函数和bind"><a href="#构造函数和bind" class="headerlink" title="构造函数和bind"></a>构造函数和bind</h2><p>先看一个🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.b = <span class="number">100</span>;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> func = foo.bind(&#123;a:<span class="number">1</span>&#125;);</div><div class="line"></div><div class="line">func(); <span class="comment">//1</span></div><div class="line"><span class="keyword">new</span> func(); <span class="comment">// &#123;b:100&#125;</span></div></pre></td></tr></table></figure>
+<p>当我们对一个构造函数用bind的时候，如果我们直接调用它，和普通函数的bind没差。<br>如果用了new,return除非是对象，如果return不是对象，那么仍然让原有的this作为返回值。    </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>啊，这次写的东西意想不到的短啊？？？？？<br>嘿嘿，因为大多数基础的知识点都在上一篇覆盖过了，好像确实是这样😂<br>晚安！^_^</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/24/body_html/" itemprop="url">
                   body和html到底有多高&&浏览器的背景色问题
                 </a>
@@ -812,6 +916,105 @@
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在此之前我一直以为在浏览器里html默认和浏览器窗口等高，而body默认和html等高，现在想想自己为什么会这么想，主要是因为这个:    </p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/08/24/body_html/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/08/23/js8/" itemprop="url">
+                  Javascript系统复习：函数和作用域
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-23T00:00:00+08:00" content="2016-08-23">
+              2016-08-23
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>Javascript中的函数和由函数带出的作用域～～<br><strong><em>函数</em></strong>是一块Javascript代码，被定义一次，但是可以被执行和调用多次。<br>JS中的函数也是对象，所以JS函数可以像其它对象那样操作和传递，所以我们也常叫JS中的函数为函数对象。   </p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数中的几个部分:   </p>
+<ul>
+<li>函数名</li>
+<li>参数列表</li>
+<li>函数体</li>
+</ul>
+<p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> x === <span class="string">"number"</span> &amp;&amp; <span class="keyword">typeof</span> y === <span class="string">"number"</span>)&#123;</div><div class="line">        <span class="keyword">return</span> x + y;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">//3</span></div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/23/js8/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -926,198 +1129,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/js7/" itemprop="url">
-                  Javascript系统复习：数组专栏
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T00:00:00+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>数组！一个出镜率非常高的数据结构～～<br>定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/js7/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/19/js6/" itemprop="url">
-                  Javascript系统复习：对象标签和对象序列化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-19T00:00:00+08:00" content="2016-08-19">
-              2016-08-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>前面我们说属性是有标签的，于是<strong><em>对象也是有标签的</em></strong>。    </p>
-<h2 id="对象标签"><a href="#对象标签" class="headerlink" title="对象标签"></a>对象标签</h2><p>对象标签主要有三种:    </p>
-<ul>
-<li>[[proto]]</li>
-<li>[[class]]</li>
-<li>[[extensible]]</li>
-</ul>
-<h3 id="原型和class"><a href="#原型和class" class="headerlink" title="原型和class"></a>原型和class</h3><p>第一个标签对应的是原型，我们可以通过prototype属性来访问。<br>第二个标签没有一个指定的方式去查看或者修改它，我们可以间接地通过Object.prototype.toString方法来获取它。<br>举个例子：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> toString.call(o).slice(<span class="number">8</span>, <span class="number">-1</span>);</div><div class="line">&#125;    </div><div class="line"></div><div class="line">toString.call(<span class="literal">null</span>); <span class="comment">// "[object Null]"</span></div><div class="line">getType(<span class="literal">null</span>); <span class="comment">// "Null"</span></div><div class="line">getType(<span class="literal">undefined</span>); <span class="comment">// "Undefined"</span></div><div class="line">getType(<span class="number">1</span>); <span class="comment">// "Number"</span></div><div class="line">getType(<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>));<span class="comment">// "object"</span></div><div class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>); <span class="comment">// "object"</span></div><div class="line">getType(<span class="literal">true</span>); <span class="comment">// "Boolean"</span></div><div class="line">getType(<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)); <span class="comment">// "Boolean"</span></div></pre></td></tr></table></figure>
-<p>注意，在调用object.toString方法的时候，它会去把参数转换为对象，然后再作处理。<br>因此slice方法就截去了object那几个字母，只返回我们想看到的对象。    </p>
-<p><strong><em>挖坑</em></strong>：需要搞清楚Object和Function对象上的toString到底什么区别。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/19/js6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1164,7 +1175,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">57</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
