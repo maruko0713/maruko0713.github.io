@@ -672,6 +672,102 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/27/js10/" itemprop="url">
+                  Javascript系统复习：闭包,作用域以及ES3执行上下文
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-27T00:00:00+08:00" content="2016-08-27">
+              2016-08-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>闭包和作用域，非常重要的一个点。<br>闭包的官方定义：    </p>
+<blockquote>
+<p>在计算机科学中，闭包（也称词法闭包或函数闭包）是指一个函数或函数的引用，与一个引用环境绑定在一起。这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。</p>
+</blockquote>
+<p>闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，仍可访问本地变量。    </p>
+<p>另外本文还有一个大boss是ES3的执行上下文，我会放在最后说。   </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/27/js10/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/26/gulp/" itemprop="url">
                   自动化管理工具gulp的初体验
                 </a>
@@ -767,7 +863,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/25/js10/" itemprop="url">
+                <a class="post-title-link" href="/2016/08/25/js9/" itemprop="url">
                   Javascript系统复习：函数的重要属性和arguments
                 </a>
               
@@ -817,7 +913,7 @@
 </ul>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x,y,z</span>) </span>&#123;</div><div class="line">    <span class="built_in">arguments</span>.length; <span class="comment">//2</span></div><div class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>]; <span class="comment">//1</span></div><div class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="number">10</span>;</div><div class="line">    x; <span class="comment">//10</span></div><div class="line"></div><div class="line">    <span class="built_in">arguments</span>[<span class="number">2</span>] = <span class="number">100</span>; </div><div class="line">    z; <span class="comment">//undefined</span></div><div class="line">    <span class="built_in">arguments</span>.callee === foo; <span class="literal">true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">foo(<span class="number">1</span>,<span class="number">2</span>);</div><div class="line">foo.length;<span class="comment">// 3</span></div><div class="line">foo.name; <span class="comment">//"foo"</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/25/js10/#more" rel="contents">
+            <a class="btn" href="/2016/08/25/js9/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1033,95 +1129,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/22/hello/" itemprop="url">
-                  About Me
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-22T12:39:04+08:00" content="2016-08-22">
-              2016-08-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>  这里是<a href="https://github.com/maruko0713" target="_blank" rel="external">Maruko0713</a>的技术博客。<br>  Maruko0713是一只大三信息汪，喜欢编程，热爱生活.^_^<br>  认认真真写代码，不懈怠每一天～！</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1168,7 +1175,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">57</span>
+              <span class="site-state-item-count">58</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
