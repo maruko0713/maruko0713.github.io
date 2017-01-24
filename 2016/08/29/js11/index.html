@@ -1,0 +1,592 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言:Javascript中的OOP,其实不止Javascript中有OOP,面向对象思想在很多语言中都有体现。先看一下面向对象的定义:    
+
+面向对象程序设计，是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性，灵活性和扩展性。    
+
+面向对象的几个重点思想：    
+
+继承
+封装
+多态
+抽象
+
+这些思">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript系统复习：Javascript中的面向对象(OOP)之继承和原型">
+<meta property="og:url" content="http://maruko.com/2016/08/29/js11/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言:Javascript中的OOP,其实不止Javascript中有OOP,面向对象思想在很多语言中都有体现。先看一下面向对象的定义:    
+
+面向对象程序设计，是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性，灵活性和扩展性。    
+
+面向对象的几个重点思想：    
+
+继承
+封装
+多态
+抽象
+
+这些思">
+<meta property="og:updated_time" content="2017-01-24T05:37:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript系统复习：Javascript中的面向对象(OOP)之继承和原型">
+<meta name="twitter:description" content="前言:Javascript中的OOP,其实不止Javascript中有OOP,面向对象思想在很多语言中都有体现。先看一下面向对象的定义:    
+
+面向对象程序设计，是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性，灵活性和扩展性。    
+
+面向对象的几个重点思想：    
+
+继承
+封装
+多态
+抽象
+
+这些思">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Javascript系统复习：Javascript中的面向对象(OOP)之继承和原型 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Javascript系统复习：Javascript中的面向对象(OOP)之继承和原型
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-29T00:00:00+08:00" content="2016-08-29">
+              2016-08-29
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>Javascript中的OOP,其实不止Javascript中有OOP,面向对象思想在很多语言中都有体现。<br>先看一下面向对象的定义:    </p>
+<blockquote>
+<p>面向对象程序设计，是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性，灵活性和扩展性。    </p>
+</blockquote>
+<p>面向对象的几个重点思想：    </p>
+<ul>
+<li>继承</li>
+<li>封装</li>
+<li>多态</li>
+<li>抽象</li>
+</ul>
+<p>这些思想在Javascript中都可以体现。   </p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="基于原型的继承"><a href="#基于原型的继承" class="headerlink" title="基于原型的继承"></a>基于原型的继承</h3><p>根据一个构造函数生成的对象会继承这个构造函数原型链上的内容。<br>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.y = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">typeof</span> Foo.prototype; <span class="comment">//"object"</span></div><div class="line">Foo.prototype.x = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> obj3 = <span class="keyword">new</span> Foo();</div><div class="line"></div><div class="line">obj3.y; <span class="comment">//2</span></div><div class="line">obj3.x; <span class="comment">//1</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>那么我们此时来关注一下Foo.prototype这个东西。<br>当我们写出一个空函数的时候，这个函数自动拥有一个prototype属性，并且默认拥有两个属性:   </p>
+<ul>
+<li>constructor</li>
+<li>__proto__</li>
+</ul>
+<h3 id="如何使一个class继承另一个class"><a href="#如何使一个class继承另一个class" class="headerlink" title="如何使一个class继承另一个class?"></a>如何使一个class继承另一个class?</h3><p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name;</div><div class="line">  <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.hi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"Hi my name is"</span> + <span class="keyword">this</span>.name + <span class="string">"I'm"</span> + <span class="keyword">this</span>.age + <span class="string">"years old now"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Person.prototype.LES_NUM = <span class="number">2</span>;</div><div class="line">Person.prototype.ARMS_NUM = <span class="number">2</span>;</div><div class="line">Person.prototype.walk = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">"is walking..."</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, age, className</span>) </span>&#123;</div><div class="line">  Person.call(<span class="keyword">this</span>, name, age);</div><div class="line">  <span class="keyword">this</span>.className = className;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Student.prototype = <span class="built_in">Object</span>.create(Person.prototype);</div><div class="line">Student.prototype.constructor = Student;</div><div class="line"></div><div class="line">Student.prototype.hi = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"Hi my name is "</span> + <span class="keyword">this</span>.name + <span class="string">"years old now, and from"</span> + <span class="keyword">this</span>.className + <span class="string">"."</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Student.prototype.learn = <span class="function"><span class="keyword">function</span>(<span class="params">subject</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">"is learning"</span> + subject + <span class="string">"at"</span> + <span class="keyword">this</span>.className + <span class="string">"."</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//test</span></div><div class="line"><span class="keyword">var</span> wanzi = <span class="keyword">new</span> Student(<span class="string">"wanzi"</span>,<span class="number">20</span>,<span class="string">"class3,grade2"</span>);</div><div class="line">wanzi.hi(); <span class="comment">// Hi, my name is Wanzi, I'm 20 years old now,and from class 3, grade2</span></div><div class="line">wanzi.LEGS_NUM; <span class="comment">//2</span></div><div class="line">wanzi.walk(); <span class="comment">// wanzi is walking</span></div><div class="line">wanzi.learn(<span class="string">"math"</span>); <span class="comment">// wanzi is learning math at class3, grade2</span></div></pre></td></tr></table></figure>
+<p>唔。。。。感觉好像没有什么可以用语言描述的，我认为有必要记住这个套路。   </p>
+<h3 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h3><p>原型和原型之间组成的链条就是原型链，原型链是由__proto__这个属性决定的。<br>我们在研究原型链的时候，是不断地查找每个prototype中的__proto__来找出它的上一个原型～～<br>当我们使用instanecof这个运算符来判断一个实例属于哪个类的时候，我们用的也是原型链，即__proto__组成的那个链条。<br>楼上那段代码，我们在调用hi的时候，发生了啥？<br>它首先看这个对象上有没有hi方法，没有，于是它查找__proto__,根据这个属性找到了构造函数的原型，发现原型上有，于是调用这个。<br>类似地，ARMS_NUM,LEGS_NUM,也都是这种套路。    </p>
+<h3 id="找到原型的方法"><a href="#找到原型的方法" class="headerlink" title="找到原型的方法"></a>找到原型的方法</h3><p>对于一个对象来说，我们有以下方法找到它的原型：   </p>
+<h4 id="用-proto-属性来查找"><a href="#用-proto-属性来查找" class="headerlink" title="用__proto__属性来查找"></a>用__proto__属性来查找</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;x:<span class="number">1</span>&#125;;</div><div class="line">obj.x; <span class="comment">//1</span></div><div class="line">obj.__proto__; <span class="comment">// Object&#123;&#125;</span></div></pre></td></tr></table></figure>
+<h4 id="用Object-getPrototypeOf来查找"><a href="#用Object-getPrototypeOf来查找" class="headerlink" title="用Object.getPrototypeOf来查找"></a>用Object.getPrototypeOf来查找</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;x:<span class="number">1</span>&#125;;</div><div class="line">obj.x; <span class="comment">//1</span></div><div class="line"><span class="built_in">Object</span>.getPrototypeOf(obj); <span class="comment">// &#123;&#125; （指向的还是Object的原型对象）</span></div></pre></td></tr></table></figure>
+<h3 id="并不是所有的对象原型链上都有Object-prototype"><a href="#并不是所有的对象原型链上都有Object-prototype" class="headerlink" title="并不是所有的对象原型链上都有Object.prototype"></a>并不是所有的对象原型链上都有Object.prototype</h3><p>🌰：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(<span class="literal">null</span>);</div><div class="line">obj2.__proto__; <span class="comment">//undefined</span></div></pre></td></tr></table></figure>
+<p>这个对象是没有原型的。    </p>
+<h3 id="并不是所有的函数都有prototype属性"><a href="#并不是所有的函数都有prototype属性" class="headerlink" title="并不是所有的函数都有prototype属性"></a>并不是所有的函数都有prototype属性</h3><p>🌰：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">abc</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> binded = abc.bind(<span class="literal">null</span>);</div><div class="line">binded.prototype; <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
+<h2 id="prototype属性更进一步"><a href="#prototype属性更进一步" class="headerlink" title="prototype属性更进一步"></a>prototype属性更进一步</h2><p>注意，当我们修改prototype的属性值的时候，会影响已经创建的实例。<br>如果直接改动prototype这个东西，也就是重新给prototype赋值，是不会影响已经创建的实例的。<br>🌰（接第一段长代码）：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Student.prototype.x = <span class="number">101</span>;</div><div class="line">wanzi.x; <span class="comment">//101</span></div><div class="line"></div><div class="line">Student.prototype = &#123;y:<span class="number">2</span>&#125;;</div><div class="line">wanzi.y; <span class="comment">//undefined</span></div><div class="line">wanzi.x; <span class="comment">//101</span></div></pre></td></tr></table></figure>
+<p>Object.prototype是原型链的末端，它的<em>\</em>_proto__指向null。   </p>
+<h2 id="基于原型链的instanceof运算符"><a href="#基于原型链的instanceof运算符" class="headerlink" title="基于原型链的instanceof运算符"></a>基于原型链的instanceof运算符</h2><p>instanceof左边是一个对象，右边是一个构造器，它会判断右边的prototype属性是否出现在左边的原型链上。<br>🌰（接在第一大段代码后面）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wanzi <span class="keyword">instanceof</span> Person; <span class="comment">//true</span></div><div class="line">wanzi instanecof Student; <span class="comment">//true</span></div><div class="line">wanzi <span class="keyword">instanceof</span> <span class="built_in">Object</span>; <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>这些true,true,true就是因为左边的原型链上有右边的prototype。    </p>
+<h2 id="实现继承的方式"><a href="#实现继承的方式" class="headerlink" title="实现继承的方式"></a>实现继承的方式</h2><p>用代码来说明:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125; </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125; </div><div class="line">Student.prototype = Person.prototype; <span class="comment">//1</span></div><div class="line">Student.prototype  <span class="keyword">new</span> Person(); <span class="comment">//2</span></div><div class="line">Student.prototype = <span class="built_in">Object</span>.create(Person.prototype); <span class="comment">//3</span></div><div class="line">Student.prototype.constructor = Person;</div></pre></td></tr></table></figure>
+<p>第一种方法是不行的，改变了Student.prototype的同时也会改变Person,这样是不行的。<br>方法2存在一个问题是你如果给Person传了参数就会很奇怪。<br>方法3相对来说是比较合适的。<br>不过注意，Object.create方法是ES5之后才有，对于ES5之前，我写过另一篇文章来模拟一个类似的方法实现继承的，在这里:<a href="https://maruko0713.github.io/2016/09/04/prototype/" target="_blank" rel="external">实现一个正确的长长的原型链</a>。    </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇文章写完，感觉自己的脑袋清醒了很多。<br>原型链继承这一块，我是先看了廖雪峰老师的教程，然后看的书，觉得它们之间配合起来，对我的理解很有帮助。<br>总之，很开心，嘿嘿嘿～～    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/28/对HTML不限制大小写的测试/" rel="next" title="小细节:css中的的大小写区分">
+                <i class="fa fa-chevron-left"></i> 小细节:css中的的大小写区分
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/30/promise/" rel="prev" title="告别回调地狱－－ES6标准中的Promise对象">
+                告别回调地狱－－ES6标准中的Promise对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
+</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">2.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基于原型的继承"><span class="nav-number">2.1.</span> <span class="nav-text">基于原型的继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使一个class继承另一个class"><span class="nav-number">2.2.</span> <span class="nav-text">如何使一个class继承另一个class?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型链"><span class="nav-number">2.3.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#找到原型的方法"><span class="nav-number">2.4.</span> <span class="nav-text">找到原型的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#用-proto-属性来查找"><span class="nav-number">2.4.1.</span> <span class="nav-text">用__proto__属性来查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用Object-getPrototypeOf来查找"><span class="nav-number">2.4.2.</span> <span class="nav-text">用Object.getPrototypeOf来查找</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并不是所有的对象原型链上都有Object-prototype"><span class="nav-number">2.5.</span> <span class="nav-text">并不是所有的对象原型链上都有Object.prototype</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并不是所有的函数都有prototype属性"><span class="nav-number">2.6.</span> <span class="nav-text">并不是所有的函数都有prototype属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#prototype属性更进一步"><span class="nav-number">3.</span> <span class="nav-text">prototype属性更进一步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于原型链的instanceof运算符"><span class="nav-number">4.</span> <span class="nav-text">基于原型链的instanceof运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现继承的方式"><span class="nav-number">5.</span> <span class="nav-text">实现继承的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
