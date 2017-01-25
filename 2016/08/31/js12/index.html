@@ -1,0 +1,563 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言:本文是对面向对象第一篇的一个补充。主要补充下面几点：    
+
+重载
+链式调用
+模块化
+
+模拟重载在Java中，有重载这个说法，js中，我们可以模拟重载的效果，让同样的函数名字根据不同的参数情况实现不同的调用。🌰：定义一个构造函数Person:    
+123456789101112131415161718function Person() &amp;#123;    var args = arg">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript系统复习：Javascript中的面向对象(OOP)之面向对象的其它特性">
+<meta property="og:url" content="http://maruko.com/2016/08/31/js12/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言:本文是对面向对象第一篇的一个补充。主要补充下面几点：    
+
+重载
+链式调用
+模块化
+
+模拟重载在Java中，有重载这个说法，js中，我们可以模拟重载的效果，让同样的函数名字根据不同的参数情况实现不同的调用。🌰：定义一个构造函数Person:    
+123456789101112131415161718function Person() &amp;#123;    var args = arg">
+<meta property="og:updated_time" content="2017-01-25T03:10:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Javascript系统复习：Javascript中的面向对象(OOP)之面向对象的其它特性">
+<meta name="twitter:description" content="前言:本文是对面向对象第一篇的一个补充。主要补充下面几点：    
+
+重载
+链式调用
+模块化
+
+模拟重载在Java中，有重载这个说法，js中，我们可以模拟重载的效果，让同样的函数名字根据不同的参数情况实现不同的调用。🌰：定义一个构造函数Person:    
+123456789101112131415161718function Person() &amp;#123;    var args = arg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Javascript系统复习：Javascript中的面向对象(OOP)之面向对象的其它特性 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Javascript系统复习：Javascript中的面向对象(OOP)之面向对象的其它特性
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
+              2016-08-31
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>本文是对面向对象第一篇的一个补充。<br>主要补充下面几点：    </p>
+<ul>
+<li>重载</li>
+<li>链式调用</li>
+<li>模块化</li>
+</ul>
+<h2 id="模拟重载"><a href="#模拟重载" class="headerlink" title="模拟重载"></a>模拟重载</h2><p>在Java中，有重载这个说法，js中，我们可以模拟重载的效果，让同样的函数名字根据不同的参数情况实现不同的调用。<br>🌰：<br>定义一个构造函数Person:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> args[<span class="number">0</span>] === <span class="string">"object"</span> &amp;&amp; args[<span class="number">0</span>]) &#123;</div><div class="line">        <span class="keyword">if</span>(args[<span class="number">0</span>].name) &#123;</div><div class="line">            <span class="keyword">this</span>.name = args[<span class="number">0</span>].name;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(args[<span class="number">0</span>].age) &#123;</div><div class="line">            <span class="keyword">this</span>.age = args[<span class="number">0</span>].age;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">if</span>(args[<span class="number">0</span>]) &#123;</div><div class="line">            <span class="keyword">this</span>.name = args[<span class="number">0</span>];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(args[<span class="number">1</span>]) &#123;</div><div class="line">            <span class="keyword">this</span>.age = args[<span class="number">1</span>];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>给它设置原型并使用:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Person.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="string">"name"</span> + <span class="keyword">this</span>.name + <span class="string">",age="</span> + <span class="keyword">this</span>.age;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> wanzi = <span class="keyword">new</span> Person(<span class="string">"wanzi"</span>,<span class="number">20</span>);</div><div class="line">wanzi.toString(); <span class="comment">// "name=wanzi,age=20"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> nunn = <span class="keyword">new</span> Person(&#123;name: <span class="string">"Nunn"</span>, age: <span class="number">20</span>&#125;);</div><div class="line">nunn.toString(); <span class="comment">// "name=Nunn, age=20"</span></div></pre></td></tr></table></figure>
+<p>如此，我们在构造函数内部进行参数类型的判断，根据参数类型的不同，进行不同的操作。      </p>
+<a id="more"></a> 
+<h2 id="调用基类方法"><a href="#调用基类方法" class="headerlink" title="调用基类方法"></a>调用基类方法</h2><p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name, className</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.className = className;</div><div class="line">    Person.call(<span class="keyword">this</span>, name);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> wanzi = <span class="keyword">new</span> Student(<span class="string">"wanzi"</span>,<span class="string">"Information02"</span>);</div><div class="line">wanzi;<span class="comment">// Student &#123;className:"Information02", name:"wanzi"&#125;</span></div><div class="line"></div><div class="line">Person.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"></div><div class="line">Student.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="comment">// do sth</span></div><div class="line">    Person.prototype.init.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>通过在子类中使用apply方法，来调用基类中的方法。    </p>
+<h2 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h2><p>链式调用最让人印象深刻的应该是在jQuery中。<br>让我们来模拟一下jQuery中的添加类的链式操作：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">classManager</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">classManager.prototype.addClass = <span class="function"><span class="keyword">function</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"Class"</span> + str + <span class="string">"added"</span>);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> manager = <span class="keyword">new</span> ClassManager();</div><div class="line">manager.addClass(<span class="string">"classA"</span>).addClass(<span class="string">"classB"</span>)</div><div class="line">  .addClass(<span class="string">"classC"</span>);</div></pre></td></tr></table></figure>
+<p>链式调用的玄机就在于最后的return this。    </p>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><p>扶额，写起模块化，还是有一种不知道该怎么表达的感觉。。。。。所以还是写代码吧。<br>有了模块化，我们就可以实现分工协作，可以自由地使用他人写好的代码，减少任务量，等等等等。。。。。     </p>
+<p>模块化本身是有一些类库的，但是模块化这个其实我们自己也是可以来试一试的～～～<br>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> moduleA;</div><div class="line">moduleA = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> prop = <span class="number">1</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        func: func,</div><div class="line">        prop: prop</div><div class="line">    &#125;</div><div class="line">&#125;();</div></pre></td></tr></table></figure>
+<p>或者：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> moduleA;</div><div class="line">moduleA = <span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> prop = <span class="number">1</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">    <span class="keyword">this</span>.func = func;</div><div class="line">    <span class="keyword">this</span>.prop = prop;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>如此如此，我们就手动了模块化。<br>更加成熟的模块化，我们还是需要借助一些库的。     </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>终于把oop这块整完了。<br>然后接下来就是对正则表达式做总结啦～～加油加油^_^。    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/30/promise/" rel="next" title="告别回调地狱－－ES6标准中的Promise对象">
+                <i class="fa fa-chevron-left"></i> 告别回调地狱－－ES6标准中的Promise对象
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/02/js13/" rel="prev" title="Javascript系统复习：Javascript中的正则表达式">
+                Javascript系统复习：Javascript中的正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
+</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">62</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模拟重载"><span class="nav-number">2.</span> <span class="nav-text">模拟重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用基类方法"><span class="nav-number">3.</span> <span class="nav-text">调用基类方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链式调用"><span class="nav-number">4.</span> <span class="nav-text">链式调用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化"><span class="nav-number">5.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
