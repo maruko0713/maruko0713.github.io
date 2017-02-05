@@ -206,8 +206,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/02/react0/" itemprop="url">
-                  React中的JSX和数据流
+                <a class="post-title-link" href="/2017/01/04/React1/" itemprop="url">
+                  React中的生命周期的总结
                 </a>
               
             
@@ -220,8 +220,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-02T00:00:00+08:00" content="2017-01-02">
-              2017-01-02
+            <time itemprop="dateCreated" datetime="2017-01-04T00:00:00+08:00" content="2017-01-04">
+              2017-01-04
             </time>
           </span>
 
@@ -248,10 +248,24 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>新年快乐!^_^<br>敲代码，看书，写博客，一个学期不知不觉要过去了，考试周也如期而至。这学期主要的精力还是在做自己比较感兴趣的一些事情，包括整个后半学期都在看算法（因为暂时还没想好算法这块的博客该怎么展开叙述，就先忍忍了，还是安静地刷题吧），所以现在开始必须好好看学校的课程了。这几天会适当减少写文章和看技术书籍的时间，不过该看的还是要看的，嗯！<br>然后说说这个React，React,Vue和AngularJs应该是现在比较主流的几个框架了，能活到这一步的框架都有自己厉害的地方，所以我的想法是应该尽量地去了解。从这一篇开始，我会对框架的学习做记录，在此之前我用Angular写过一个小项目，但是在那个项目中，仅仅是用了一些皮毛，目的在于快速地给一个系统写出前端。所以，React是我接触的第一个前端框架。  </p>
-<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>JSX在React中主要是render方法中写模版的时候要用到。<br>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在React组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。<br>一个React组件的生命周期从广义上看分为三个部分:   </p>
+<ul>
+<li>挂载</li>
+<li>渲染</li>
+<li>卸载<br>当渲染后的组件需要更新时，我们会重新去渲染组件。因此，我们也可以把React生命周期分为两类:    </li>
+<li>当组件在挂载或卸载时</li>
+<li>当组件接受新的数据，即组件更新时</li>
+</ul>
+<p>不过我还是更加喜欢这个版本的生命周期解释哈哈哈哈哈：    </p>
+<ul>
+<li>实例化</li>
+<li>存在期</li>
+<li>销毁&amp;清理</li>
+</ul>
+<p>一图胜千言：    </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="react生命周期"><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/02/react0/#more" rel="contents">
+            <a class="btn" href="/2017/01/04/React1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -298,8 +312,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/02/React1/" itemprop="url">
-                  React中的生命周期和事件系统
+                <a class="post-title-link" href="/2017/01/02/react0/" itemprop="url">
+                  React中的JSX和数据流
                 </a>
               
             
@@ -340,16 +354,10 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在React组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。<br>一个React组件的生命周期从广义上看分为三个部分:   </p>
-<ul>
-<li>挂载</li>
-<li>渲染</li>
-<li>卸载<br>当渲染后的组件需要更新时，我们会重新去渲染组件。因此，我们也可以把React生命周期分为两类:    </li>
-<li>当组件在挂载或卸载时</li>
-<li>当组件接受新的数据，即组件更新时</li>
-</ul>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>新年快乐!^_^<br>敲代码，看书，写博客，一个学期不知不觉要过去了，考试周也如期而至。这学期主要的精力还是在做自己比较感兴趣的一些事情，包括整个后半学期都在看算法（因为暂时还没想好算法这块的博客该怎么展开叙述，就先忍忍了，还是安静地刷题吧），所以现在开始必须好好看学校的课程了。这几天会适当减少写文章和看技术书籍的时间，不过该看的还是要看的，嗯！<br>然后说说这个React，React,Vue和AngularJs应该是现在比较主流的几个框架了，能活到这一步的框架都有自己厉害的地方，所以我的想法是应该尽量地去了解。从这一篇开始，我会对框架的学习做记录，在此之前我用Angular写过一个小项目，但是在那个项目中，仅仅是用了一些皮毛，目的在于快速地给一个系统写出前端。所以，React是我接触的第一个前端框架。  </p>
+<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>JSX在React中主要是render方法中写模版的时候要用到。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/02/React1/#more" rel="contents">
+            <a class="btn" href="/2017/01/02/react0/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
