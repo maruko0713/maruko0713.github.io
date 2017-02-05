@@ -65,7 +65,7 @@
 当组件在挂载或卸载时
 当组件接受新的数据，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React中的生命周期的总结">
+<meta property="og:title" content="React组件生命周期的总结">
 <meta property="og:url" content="http://maruko.com/2017/01/04/React1/index.html">
 <meta property="og:site_name" content="Maruko0713的实验室">
 <meta property="og:description" content="前言:在React组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。一个React组件的生命周期从广义上看分为三个部分:   
@@ -77,9 +77,9 @@
 当组件接受新的数据，">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/%E8%A7%A6%E5%8F%91render%E7%9A%84%E6%96%B9%E5%BC%8F.png">
-<meta property="og:updated_time" content="2017-02-05T07:32:42.000Z">
+<meta property="og:updated_time" content="2017-02-05T07:52:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React中的生命周期的总结">
+<meta name="twitter:title" content="React组件生命周期的总结">
 <meta name="twitter:description" content="前言:在React组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。一个React组件的生命周期从广义上看分为三个部分:   
 
 挂载
@@ -105,7 +105,7 @@
   };
 </script>
 
-  <title> React中的生命周期的总结 | Maruko0713的实验室 </title>
+  <title> React组件生命周期的总结 | Maruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -225,7 +225,7 @@
             
             
               
-                React中的生命周期的总结
+                React组件生命周期的总结
               
             
           </h1>
@@ -310,7 +310,121 @@
 </ul>
 <p>一图胜千言:    </p>
 <p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/%E8%A7%A6%E5%8F%91render%E7%9A%84%E6%96%B9%E5%BC%8F.png" alt="触发render的方式"></p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这里的方法这块，我们可以做一个对应。<br>componentWillMount, componentDidMount和componentWillUpdate,componentDidUpdate可以对应起来。<br>区别是，前者只在挂载（也就是初次见面）的时候会被调用。<br>后者在每次更新渲染之后都会被调用。    </p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这里的方法这块，我们可以做一个对应。<br>componentWillMount, componentDidMount和componentWillUpdate,componentDidUpdate可以对应起来。<br>区别是，前者只在挂载（也就是初次见面）的时候会被调用。<br>后者在每次更新渲染之后都会被调用。<br>另外之前看到的一个很不错的小🌰可以解释生命周期的，贴一下:    </p>
+<p>(我真的要绝望了求助markdown如何正确显示es6代码？？？？？)<br>(朋友们实在不行就选中点亮了再看吧！！！（捂脸逃。。。。。）)</p>
+<pre><code class="js"><span class="class"><span class="keyword">class</span> <span class="title">LifeCycle</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>{
+    <span class="keyword">constructor</span>(props) {
+        <span class="keyword">super</span>(props);
+        alert(<span class="string">"Initial render"</span>);
+        alert(<span class="string">"constructor"</span>);
+        <span class="keyword">this</span>.state = {str: <span class="string">"hello"</span>};
+    }
+
+    componentWillMount() {
+        alert(<span class="string">"componentWillMount"</span>);
+    }
+
+    componentDidMount() {
+        alert(<span class="string">"componentDidMount"</span>);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        alert(<span class="string">"componentWillReceiveProps"</span>);
+    }
+
+    shouldComponentUpdate() {
+        alert(<span class="string">"shouldComponentUpdate"</span>);
+        <span class="keyword">return</span> <span class="literal">true</span>;        <span class="comment">// 记得要返回true</span>
+    }
+
+    componentWillUpdate() {
+        alert(<span class="string">"componentWillUpdate"</span>);
+    }
+
+    componentDidUpdate() {
+        alert(<span class="string">"componentDidUpdate"</span>);
+    }
+
+    componentWillUnmount() {
+        alert(<span class="string">"componentWillUnmount"</span>);
+    }
+
+    setTheState() {
+        <span class="keyword">let</span> s = <span class="string">"hello"</span>;
+        <span class="keyword">if</span> (<span class="keyword">this</span>.state.str === s) {
+            s = <span class="string">"HELLO"</span>;
+        }
+        <span class="keyword">this</span>.setState({
+            str: s
+        });
+    }
+
+    forceItUpdate() {
+        <span class="keyword">this</span>.forceUpdate();
+    }
+
+    render() {
+        alert(<span class="string">"render"</span>);
+        <span class="keyword">return</span>(
+            &lt;div&gt;
+                &lt;span&gt;{"Props:"}&lt;h2&gt;{parseInt(this.props.num)}&lt;/h2&gt;&lt;/span&gt;
+                &lt;br /&gt;
+                &lt;span&gt;{"State:"}&lt;h2&gt;{this.state.str}&lt;/h2&gt;&lt;/span&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+
+<span class="class"><span class="keyword">class</span> <span class="title">Container</span>  <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>{
+    <span class="keyword">constructor</span>(props) {
+        <span class="keyword">super</span>(props);
+        <span class="keyword">this</span>.state = {
+            num: <span class="built_in">Math</span>.random() * <span class="number">100</span>
+        };
+    }
+
+    propsChange() {
+        <span class="keyword">this</span>.setState({
+            num: <span class="built_in">Math</span>.random() * <span class="number">100</span>
+        });
+    }
+
+    setLifeCycleState() {
+        <span class="keyword">this</span>.refs.rLifeCycle.setTheState();
+    }
+
+    forceLifeCycleUpdate() {
+        <span class="keyword">this</span>.refs.rLifeCycle.forceItUpdate();
+    }
+
+    unmountLifeCycle() {
+        <span class="comment">// 这里卸载父组件也会导致卸载子组件</span>
+        React.unmountComponentAtNode(<span class="built_in">document</span>.getElementById(<span class="string">"container"</span>));
+    }
+
+    parentForceUpdate() {
+        <span class="keyword">this</span>.forceUpdate();
+    }
+
+    render() {
+        <span class="keyword">return</span> (
+            &lt;div&gt;
+                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.propsChange.bind(this)}&gt;propsChange&lt;/a&gt;
+                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.setLifeCycleState.bind(this)}&gt;setState&lt;/a&gt;
+                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.forceLifeCycleUpdate.bind(this)}&gt;forceUpdate&lt;/a&gt;
+                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.unmountLifeCycle.bind(this)}&gt;unmount&lt;/a&gt;
+                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.parentForceUpdate.bind(this)}&gt;parentForceUpdateWithoutChange&lt;/a&gt;
+                &lt;LifeCycle ref="rLifeCycle" num={this.state.num}&gt;&lt;/LifeCycle&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+
+ReactDom.render(
+    &lt;Container&gt;&lt;/Container&gt;,
+    <span class="built_in">document</span>.getElementById(<span class="string">'container'</span>)
+);
+</code></pre>
 
       
     </div>
