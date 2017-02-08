@@ -168,6 +168,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -366,11 +376,11 @@
     render() {
         alert(<span class="string">"render"</span>);
         <span class="keyword">return</span>(
-            &lt;div&gt;
-                &lt;span&gt;{"Props:"}&lt;h2&gt;{parseInt(this.props.num)}&lt;/h2&gt;&lt;/span&gt;
-                &lt;br /&gt;
-                &lt;span&gt;{"State:"}&lt;h2&gt;{this.state.str}&lt;/h2&gt;&lt;/span&gt;
-            &lt;/div&gt;
+            <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">span</span>&gt;</span>{"Props:"}<span class="tag">&lt;<span class="name">h2</span>&gt;</span>{parseInt(this.props.num)}<span class="tag">&lt;/<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">br</span> /&gt;</span>
+                <span class="tag">&lt;<span class="name">span</span>&gt;</span>{"State:"}<span class="tag">&lt;<span class="name">h2</span>&gt;</span>{this.state.str}<span class="tag">&lt;/<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
+            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
         );
     }
 }
@@ -408,20 +418,20 @@
 
     render() {
         <span class="keyword">return</span> (
-            &lt;div&gt;
-                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.propsChange.bind(this)}&gt;propsChange&lt;/a&gt;
-                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.setLifeCycleState.bind(this)}&gt;setState&lt;/a&gt;
-                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.forceLifeCycleUpdate.bind(this)}&gt;forceUpdate&lt;/a&gt;
-                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.unmountLifeCycle.bind(this)}&gt;unmount&lt;/a&gt;
-                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.parentForceUpdate.bind(this)}&gt;parentForceUpdateWithoutChange&lt;/a&gt;
-                &lt;LifeCycle ref="rLifeCycle" num={this.state.num}&gt;&lt;/LifeCycle&gt;
-            &lt;/div&gt;
+            <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.propsChange.bind(this)}</span>&gt;</span>propsChange<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.setLifeCycleState.bind(this)}</span>&gt;</span>setState<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.forceLifeCycleUpdate.bind(this)}</span>&gt;</span>forceUpdate<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.unmountLifeCycle.bind(this)}</span>&gt;</span>unmount<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.parentForceUpdate.bind(this)}</span>&gt;</span>parentForceUpdateWithoutChange<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
+                <span class="tag">&lt;<span class="name">LifeCycle</span> <span class="attr">ref</span>=<span class="string">"rLifeCycle"</span> <span class="attr">num</span>=<span class="string">{this.state.num}</span>&gt;</span><span class="tag">&lt;/<span class="name">LifeCycle</span>&gt;</span>
+            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
         );
     }
 }
 
 ReactDom.render(
-    &lt;Container&gt;&lt;/Container&gt;,
+    <span class="xml"><span class="tag">&lt;<span class="name">Container</span>&gt;</span><span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span>,
     <span class="built_in">document</span>.getElementById(<span class="string">'container'</span>)
 );
 </code></pre>
