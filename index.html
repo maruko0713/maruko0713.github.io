@@ -216,8 +216,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/23/rn1/" itemprop="url">
-                  RN|很RN的部分|样式相关
+                <a class="post-title-link" href="/2017/03/23/rn2/" itemprop="url">
+                  RN|很RN的部分|基础组件篇
                 </a>
               
             
@@ -258,20 +258,20 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很“RN”的部分是相对于上一篇中很React的部分来说的。也就是说RN作为一个用于移动端开发的框架，它有一些特性是正常的前端框架所没有，而和移动开发关系很紧密的性质。</p>
-<h2 id="RN没有长度单位"><a href="#RN没有长度单位" class="headerlink" title="RN没有长度单位"></a>RN没有长度单位</h2><p>这一点很特别，在RN中，我们写长度宽度啥的都直接写数字。然后，它会根据你手机的类型自动适配一个单位。如果是安卓系统，单位就是dp,如果是ios系统，单位就是pt。<br>dp这个单位还因手机而异，但是pt就是一个绝对单位，它代表1/72英寸。  </p>
-<p>##RN不能设置百分比<br>RN中不能通过设置百分比来设置宽度或者高度～～    </p>
-<p>tips： </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RN中有一些提前为我们写好的最基本的组件。它们是:    </p>
 <ul>
-<li>可以通过Dimensions模块来获取宽高   </li>
-<li>可以通过全局对象PixelRatio来获取像素密度 （即每英寸屏幕所拥有的像素数）   </li>
+<li>视图组件 View</li>
+<li>文本组件 Text</li>
+<li>图像组件 Image</li>
+<li>列表视图组件 ListView</li>
 </ul>
-<h2 id="轴的概念"><a href="#轴的概念" class="headerlink" title="轴的概念"></a>轴的概念</h2><p>在RN的布局方向上，有一个轴的概念，我们区分主轴和侧轴。<br>主轴是谁，侧轴是谁，要根据flexDirection这个属性的具体设置来看。<br>默认情况下，y轴为主轴，x轴为侧轴。 </p>
-<h2 id="RN中的样式设置方式"><a href="#RN中的样式设置方式" class="headerlink" title="RN中的样式设置方式"></a>RN中的样式设置方式</h2><p>在RN中，样式是写在style属性里面的。<br>样式本身，是以对象的形式呈现的。<br>比如：    </p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;View style=&#123;&#123;flexDirection:<span class="string">"row"</span>,backgroundColor:<span class="string">"gray"</span>&#125;&#125;&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></div></pre></td></tr></table></figure>
-<h2 id="RN中样式的写法注意"><a href="#RN中样式的写法注意" class="headerlink" title="RN中样式的写法注意"></a>RN中样式的写法注意</h2><p>RN中的样式写法，其实除了下文我们点名的这些新属性，其余都是与css中的样式名称写法一致的。<br>唯一的不同是，css中我们习惯把两个单词中间加短横线连接，RN中采用首字母小写的驼峰法：<br>border-bottom-&gt;borderBottom<br>margin-right-&gt;marginRight<br>以此类推～～    </p>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>View组件是创建用户界面的一个最基本的组件，类似于我们html里面div标签。<br>我们可以给它添加一些样式，添加事件等等。<br>它当然必须是可以嵌套的:    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">View</span>&gt;</span><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>当我们写出上述jsx代码的时候，它底层自动帮我们对应了ios的UIView组件，或者安卓的android.view组件。     </p>
+<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><p>顾名思义是写文本用的，注意它的用法规则是必须要嵌套在一个View组件里面～～<br>同样可以嵌套:    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">400</span>"&#125;&#125;&gt;</span></div><div class="line">        我是小丸子    </div><div class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">600</span>"&#125;&#125;&gt;</span>你呢<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/23/rn1/#more" rel="contents">
+            <a class="btn" href="/2017/03/23/rn2/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -318,8 +318,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/03/22/rn2/" itemprop="url">
-                  RN|很RN的部分|基础组件篇
+                <a class="post-title-link" href="/2017/03/22/rn1/" itemprop="url">
+                  RN|很RN的部分|样式相关
                 </a>
               
             
@@ -360,20 +360,20 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RN中有一些提前为我们写好的最基本的组件。它们是:    </p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很“RN”的部分是相对于上一篇中很React的部分来说的。也就是说RN作为一个用于移动端开发的框架，它有一些特性是正常的前端框架所没有，而和移动开发关系很紧密的性质。</p>
+<h2 id="RN没有长度单位"><a href="#RN没有长度单位" class="headerlink" title="RN没有长度单位"></a>RN没有长度单位</h2><p>这一点很特别，在RN中，我们写长度宽度啥的都直接写数字。然后，它会根据你手机的类型自动适配一个单位。如果是安卓系统，单位就是dp,如果是ios系统，单位就是pt。<br>dp这个单位还因手机而异，但是pt就是一个绝对单位，它代表1/72英寸。  </p>
+<h2 id="RN不能设置百分比"><a href="#RN不能设置百分比" class="headerlink" title="RN不能设置百分比"></a>RN不能设置百分比</h2><p>RN中不能通过设置百分比来设置宽度或者高度～～    </p>
+<p>tips： </p>
 <ul>
-<li>视图组件 View</li>
-<li>文本组件 Text</li>
-<li>图像组件 Image</li>
-<li>列表视图组件 ListView</li>
+<li>可以通过Dimensions模块来获取宽高   </li>
+<li>可以通过全局对象PixelRatio来获取像素密度 （即每英寸屏幕所拥有的像素数）   </li>
 </ul>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>View组件是创建用户界面的一个最基本的组件，类似于我们html里面div标签。<br>我们可以给它添加一些样式，添加事件等等。<br>它当然必须是可以嵌套的:    </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">View</span>&gt;</span><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>当我们写出上述jsx代码的时候，它底层自动帮我们对应了ios的UIView组件，或者安卓的android.view组件。     </p>
-<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><p>顾名思义是写文本用的，注意它的用法规则是必须要嵌套在一个View组件里面～～<br>同样可以嵌套:    </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">400</span>"&#125;&#125;&gt;</span></div><div class="line">        我是小丸子    </div><div class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">600</span>"&#125;&#125;&gt;</span>你呢<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="轴的概念"><a href="#轴的概念" class="headerlink" title="轴的概念"></a>轴的概念</h2><p>在RN的布局方向上，有一个轴的概念，我们区分主轴和侧轴。<br>主轴是谁，侧轴是谁，要根据flexDirection这个属性的具体设置来看。<br>默认情况下，y轴为主轴，x轴为侧轴。 </p>
+<h2 id="RN中的样式设置方式"><a href="#RN中的样式设置方式" class="headerlink" title="RN中的样式设置方式"></a>RN中的样式设置方式</h2><p>在RN中，样式是写在style属性里面的。<br>样式本身，是以对象的形式呈现的。<br>比如：    </p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;View style=&#123;&#123;flexDirection:<span class="string">"row"</span>,backgroundColor:<span class="string">"gray"</span>&#125;&#125;&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<h2 id="RN中样式的写法注意"><a href="#RN中样式的写法注意" class="headerlink" title="RN中样式的写法注意"></a>RN中样式的写法注意</h2><p>RN中的样式写法，其实除了下文我们点名的这些新属性，其余都是与css中的样式名称写法一致的。<br>唯一的不同是，css中我们习惯把两个单词中间加短横线连接，RN中采用首字母小写的驼峰法：<br>border-bottom-&gt;borderBottom<br>margin-right-&gt;marginRight<br>以此类推～～    </p>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/22/rn2/#more" rel="contents">
+            <a class="btn" href="/2017/03/22/rn1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
