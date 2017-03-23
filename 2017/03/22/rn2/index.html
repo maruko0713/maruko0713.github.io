@@ -1,0 +1,564 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React Native," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言RN中有一些提前为我们写好的最基本的组件。它们是:    
+
+视图组件 View
+文本组件 Text
+图像组件 Image
+列表视图组件 ListView
+
+ViewView组件是创建用户界面的一个最基本的组件，类似于我们html里面div标签。我们可以给它添加一些样式，添加事件等等。它当然必须是可以嵌套的:    
+123&amp;lt;View&amp;gt;    &amp;lt;View&amp;gt;&amp;lt;/Vi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RN中,很RN的部分之基础组件篇">
+<meta property="og:url" content="http://maruko.com/2017/03/22/rn2/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言RN中有一些提前为我们写好的最基本的组件。它们是:    
+
+视图组件 View
+文本组件 Text
+图像组件 Image
+列表视图组件 ListView
+
+ViewView组件是创建用户界面的一个最基本的组件，类似于我们html里面div标签。我们可以给它添加一些样式，添加事件等等。它当然必须是可以嵌套的:    
+123&amp;lt;View&amp;gt;    &amp;lt;View&amp;gt;&amp;lt;/Vi">
+<meta property="og:updated_time" content="2017-03-23T13:30:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RN中,很RN的部分之基础组件篇">
+<meta name="twitter:description" content="前言RN中有一些提前为我们写好的最基本的组件。它们是:    
+
+视图组件 View
+文本组件 Text
+图像组件 Image
+列表视图组件 ListView
+
+ViewView组件是创建用户界面的一个最基本的组件，类似于我们html里面div标签。我们可以给它添加一些样式，添加事件等等。它当然必须是可以嵌套的:    
+123&amp;lt;View&amp;gt;    &amp;lt;View&amp;gt;&amp;lt;/Vi">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> RN中,很RN的部分之基础组件篇 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                RN中,很RN的部分之基础组件篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-22T00:00:00+08:00" content="2017-03-22">
+              2017-03-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RN中有一些提前为我们写好的最基本的组件。它们是:    </p>
+<ul>
+<li>视图组件 View</li>
+<li>文本组件 Text</li>
+<li>图像组件 Image</li>
+<li>列表视图组件 ListView</li>
+</ul>
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>View组件是创建用户界面的一个最基本的组件，类似于我们html里面div标签。<br>我们可以给它添加一些样式，添加事件等等。<br>它当然必须是可以嵌套的:    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">View</span>&gt;</span><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>当我们写出上述jsx代码的时候，它底层自动帮我们对应了ios的UIView组件，或者安卓的android.view组件。     </p>
+<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><p>顾名思义是写文本用的，注意它的用法规则是必须要嵌套在一个View组件里面～～<br>同样可以嵌套:    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">400</span>"&#125;&#125;&gt;</span></div><div class="line">        我是小丸子    </div><div class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">600</span>"&#125;&#125;&gt;</span>你呢<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a> 
+<h3 id="自定义一个文本组件"><a href="#自定义一个文本组件" class="headerlink" title="自定义一个文本组件"></a>自定义一个文本组件</h3><p>是的，有时候我们需要全局保持一个文本样式，但是又总不能个挨个给每一个组件增加一个同样的style，这时候我们可以自定义一个组件，然后在接下来的开发中都使用这一个组件:<br>比如:    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">class HeaderText extends React.Component &#123;</div><div class="line">    render (</div><div class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;color:</span>"#<span class="attr">fff</span>"&#125;&#125;&gt;</span></div><div class="line">            &#123;this.props.children&#125;</div><div class="line">        <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">    )    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><p>图像组件<br>Image咋用??我们把图片链接放在source属性里:    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Image</span></span></div><div class="line">        <span class="attr">style</span>=<span class="string">&#123;这里写样式&#125;</span> </div><div class="line">        <span class="attr">source</span>=<span class="string">&#123;require(</span>"这里写地址")&#125; /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">Image</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>Image只能自关闭吗？<br>当然不啦！<br>因为RN中没有单独设置背景图像的属性，所以这时候我们要使用有开始有结束的标签了:    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">Image</span></span></div><div class="line">        <span class="attr">style</span>=<span class="string">&#123;&#123;styles.backgroundImage&#125;&#125;</span></div><div class="line">        <span class="attr">source</span>=<span class="string">&#123;require(</span>"这里写地址")&#125;</div><div class="line">        &gt;</div><div class="line">        <span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">Text</span>&gt;</span></div><div class="line">                我是写在Image上的文字哦～～～    </div><div class="line">            <span class="tag">&lt;/<span class="name">Text</span>/&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">Image</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="ListView"><a href="#ListView" class="headerlink" title="ListView"></a>ListView</h2><p>ListView组件用于显示一个垂直的滚动列表，其中的元素之间结构近似而仅数据不同。<br>因此，数据是关键。<br>ListView组件必须的两个属性是dataSource和renderRow。dataSource是列表的数据源，而renderRow则逐个解析数据源中的数据，然后返回一个设定好格式的组件来渲染。<br>dataSource这个属性需要我们预先初始化：     </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">class ListViewBasics extends Component &#123;</div><div class="line">    constructor(props) &#123;</div><div class="line">        super(props);</div><div class="line">        let movies = [&#123;</div><div class="line">          &#123;title:"你的名字"&#125;,</div><div class="line">          &#123;title:"大鱼海棠"&#125;,</div><div class="line">          &#123;title:"模仿游戏"&#125;</div><div class="line">        &#125;];</div><div class="line"></div><div class="line">        let dataSource = new ListView.DataSource(&#123;</div><div class="line">            // 必须手动写的一个方法，判断每行的数据是否更改了</div><div class="line">            rowHasChanged:(row1,row2) =&gt; row1!==row2</div><div class="line">        &#125;);</div><div class="line">        this.state = &#123;</div><div class="line">            // 注入要处理的数据</div><div class="line">            movies: dataSource.cloneWithRows(movies);</div><div class="line">        &#125;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    render() &#123;</div><div class="line">        return &#123;</div><div class="line">            <span class="tag">&lt;<span class="name">View</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">ListView</span></span></div><div class="line">                    <span class="attr">data</span>=<span class="string">&#123;this.state.movies&#125;</span></div><div class="line">                    // 用<span class="attr">renderRow</span>属性迭代<span class="attr">movies</span>的每一个子元素进行渲染</div><div class="line">                    <span class="attr">renderRow</span>=<span class="string">&#123;</span></div><div class="line">                        <span class="attr">movie</span> =&gt; <span class="tag">&lt;<span class="name">Text</span>&gt;</span>&#123;movie.title&#125;<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></div><div class="line">                    &#125;</div><div class="line">                    /&gt;</div><div class="line">            <span class="tag">&lt;/<span class="name">View</span>&gt;</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>既然有最基础的组件，那么就有其它的组件哈哈哈哈～～<br>下一篇会写一写其它的组件啦～～～</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag">#React Native</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/22/rn1/" rel="next" title="RN中,很RN的部分之样式相关">
+                <i class="fa fa-chevron-left"></i> RN中,很RN的部分之样式相关
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
+</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View"><span class="nav-number">2.</span> <span class="nav-text">View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text"><span class="nav-number">3.</span> <span class="nav-text">Text</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义一个文本组件"><span class="nav-number">3.1.</span> <span class="nav-text">自定义一个文本组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Image"><span class="nav-number">3.2.</span> <span class="nav-text">Image</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ListView"><span class="nav-number">4.</span> <span class="nav-text">ListView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
