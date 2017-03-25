@@ -1,0 +1,617 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React Native," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言RN中有一些提前为我们写好的各种各样的其它组件。它们是:   
+
+TextInput 文本框组件
+ScrollView 滚动视图组件
+Touchable触摸交互组件
+
+TextInput这个组件可以类比为HTML标签里的input标签。    
+TextInput的常见属性有：
+
+placeholder 就和input标签的placeholder是一个东西
+value 是默认的文本框内的文本值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RN|很RN的部分|其它组件篇">
+<meta property="og:url" content="http://maruko.com/2017/03/25/rn3/index.html">
+<meta property="og:site_name" content="Maruko0713的实验室">
+<meta property="og:description" content="前言RN中有一些提前为我们写好的各种各样的其它组件。它们是:   
+
+TextInput 文本框组件
+ScrollView 滚动视图组件
+Touchable触摸交互组件
+
+TextInput这个组件可以类比为HTML标签里的input标签。    
+TextInput的常见属性有：
+
+placeholder 就和input标签的placeholder是一个东西
+value 是默认的文本框内的文本值">
+<meta property="og:updated_time" content="2017-03-25T14:04:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RN|很RN的部分|其它组件篇">
+<meta name="twitter:description" content="前言RN中有一些提前为我们写好的各种各样的其它组件。它们是:   
+
+TextInput 文本框组件
+ScrollView 滚动视图组件
+Touchable触摸交互组件
+
+TextInput这个组件可以类比为HTML标签里的input标签。    
+TextInput的常见属性有：
+
+placeholder 就和input标签的placeholder是一个东西
+value 是默认的文本框内的文本值">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> RN|很RN的部分|其它组件篇 | Maruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Maruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                RN|很RN的部分|其它组件篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-25T00:00:00+08:00" content="2017-03-25">
+              2017-03-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RN中有一些提前为我们写好的各种各样的其它组件。它们是:   </p>
+<ul>
+<li>TextInput 文本框组件</li>
+<li>ScrollView 滚动视图组件</li>
+<li>Touchable触摸交互组件</li>
+</ul>
+<h2 id="TextInput"><a href="#TextInput" class="headerlink" title="TextInput"></a>TextInput</h2><p>这个组件可以类比为HTML标签里的input标签。    </p>
+<p>TextInput的常见属性有：</p>
+<ul>
+<li>placeholder 就和input标签的placeholder是一个东西</li>
+<li>value 是默认的文本框内的文本值</li>
+<li>multiline 默认为false 是说文本框内不会自动换行 设置为true反之</li>
+<li>password 表示是否是用*这个符号来显示你输入的内容<br>。。。。。。<br>常见事件比如:     </li>
+<li>onTextChange事件 接受一个函数，而此函数会在文本变化时被调用 改变后的文本会作为参数传入</li>
+<li>onChange事件 和上面那个唯一的区别就是 改变后的文本不会传入<br>其它各种乱七八糟事件都在这里:<br><a href="http://reactnative.cn/docs/0.20/textinput.html" target="_blank" rel="external">react native文档之TextInput部分</a></li>
+</ul>
+<p>tip: 注意这个在写的时候必须手动设置高度，不然高度默认为0，它几乎没用。。。。     </p>
+<p>🌰：    </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">TextInput</span></span></div><div class="line">    <span class="attr">style</span>=<span class="string">&#123;&#123;height:40,borderWidth:</span> <span class="attr">1</span>&#125;&#125;</div><div class="line">    <span class="attr">onChangeText</span> = <span class="string">&#123;(text)</span>=&gt;console.log(text)&#125;</div><div class="line">    placeholder=&#123;"测试一下"&#125;</div><div class="line">    multiline=&#123;true&#125;</div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a> 
+<h2 id="ScrollView"><a href="#ScrollView" class="headerlink" title="ScrollView"></a>ScrollView</h2><blockquote>
+<p>ScrollView是一个通用的可滚动的容器，你可以在其中放入多个组件和视图，而且这些组件并不需要是同类型的。ScrollView不仅可以垂直滚动，还能水平滚动（通过horizontal属性来设置）。<br>ScrollView适合用来显示数量不多的滚动元素。放置在ScollView中的所有组件都会被渲染，哪怕有些组件因为内容太长被挤出了屏幕外。如果你需要显示较长的滚动列表，那么应该使用功能差不多但性能更好的ListView组件。</p>
+</blockquote>
+<p>其实这个应该和ListView放在一起写的。但是既然都分开了，就不改了。。。。😂<br>SrcollView在使用的时候有两个要点:</p>
+<ul>
+<li>必须有一个确定的高度才能工作(不建议直接给scrollView加高度，建议给它的父控件加高度)</li>
+<li>响应事件时 它内部的其它响应者无法阻止它本身成为响应者    </li>
+</ul>
+<p>常见的属性:</p>
+<ul>
+<li>contentContainerStyle  样式风格属性(传入StyleSheet创建的Style文件)。该样式会作用于被ScrollView包裹的所有的子视图。<br>🌰：    </li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">return (</div><div class="line">      <span class="tag">&lt;<span class="name">ScrollView</span> <span class="attr">contentContainerStyle</span>=<span class="string">&#123;styles.contentContainer&#125;</span>&gt;</span> <span class="tag">&lt;/<span class="name">ScrollView</span>&gt;</span></div><div class="line">      );</div><div class="line">   …</div><div class="line"> var styles = StyleSheet.create(&#123;</div><div class="line">          contentContainer:&#123;</div><div class="line">                   paddingVertical:20</div><div class="line">               &#125;</div><div class="line">         &#125;);</div></pre></td></tr></table></figure>
+<p>常用的属性:    </p>
+<ul>
+<li>keyboardDismissMode：用户拖拽滚动视图的时候，是否要隐藏软键盘。<br>none（默认值），拖拽时不隐藏软键盘<br>on-drag 当拖拽开始的时候隐藏软键盘<br>interactive 软键盘伴随拖拽操作同步地消失，并且如果往上滑动会恢复键盘。安卓设备上不<br>项，会表现的和none一样。</li>
+<li>horizontal：当此属性为true的时候，所有的的子视图会在水平方向上排成一行，而不是默认的在垂直方向上排成一列。默认值为false</li>
+<li>showsHorizontalScrollIndicator：当此属性为true的时候，显示一个水平方向的滚动条</li>
+<li>showsVerticalScrollIndicator：当此属性为true的时候，显示一个垂直方向的滚动条</li>
+</ul>
+<h2 id="Touchable触摸交互组件"><a href="#Touchable触摸交互组件" class="headerlink" title="Touchable触摸交互组件"></a>Touchable触摸交互组件</h2><p>Touchable 一共有四种形式：</p>
+<ul>
+<li><p>TouchableHighlight: 当按下的时候，封装的视图的不透明度会降低，同时会有一个底层的颜色透过而被用户看到，使得视图变暗或变亮。</p>
+</li>
+<li><p>TouchableNativeFeedback:(仅限Android平台) 在Android设备上，这个组件利用原生状态来渲染触摸的反馈。</p>
+</li>
+<li><p>TouchableOpacity: 当按下的时候，封装的视图的不透明度会降低。这个过程并不会真正改变视图层级，大部分情况下很容易添加到应用中而不会带来一些奇怪的副作用。</p>
+</li>
+<li><p>TouchableWithoutFeedback: 所有能够响应触屏操作的元素在触屏后都应该有一个视觉上的反馈,然而本组件没有任何视觉反馈,仍会触发触摸事件的响应</p>
+</li>
+</ul>
+<p>触摸组件通用的常见属性\事件:   </p>
+<ul>
+<li>onPress事件 当触摸操作结束时调用，但如果被取消了则不调用（譬如响应者被一个滚动操作取代）。     </li>
+<li>onLongPress事件 当用户长时间按压组件(长按效果)的时候调用该方法。</li>
+<li>disabled属性 布尔值 如果设置为true 则禁止此组件的一切交互</li>
+<li>onPressIn/onPressOut 这两个方法分别是当用户开始点击按钮时与点击结束后被回调。</li>
+</ul>
+<p>扩展出来的属性\事件：     </p>
+<h3 id="TouchableHighLight"><a href="#TouchableHighLight" class="headerlink" title="TouchableHighLight"></a>TouchableHighLight</h3><ul>
+<li>underlayColor 设置TouchableHighlight 被按下去的颜色，默认状态下为balck黑色。</li>
+<li>onHideUnderlay事件 当衬底被隐藏的时候调用。</li>
+<li>onShowUnderlay 当衬底显示的时候调用。</li>
+</ul>
+<h3 id="TouchableOpacity"><a href="#TouchableOpacity" class="headerlink" title="TouchableOpacity"></a>TouchableOpacity</h3><ul>
+<li>activeOpacity属性 同TouchableHighlight的activeOpacity。另外我们也可以通过TouchableOpacity的setOpacityTo(value, duration)方法来动态修改TouchableOpacity被按下去的不透明度。</li>
+</ul>
+<p>注意:<br><strong><em>无论是TouchableWithoutFeedback还是其他三种Touchable组件，都是在根节点都是只支持一个组件，如果你需要多个组件同时响应单击事件，可以用一个View将它们包裹着，它的这种根节点只支持一个组件的特性和ScrollView很类似。</em></strong><br><strong><em>默认的不透明度是0.85</em></strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天这篇博客虽然没有很长，但我确实写了很久。。。。有一些不太确定的，都反复查了源码，参考了别人的文章。。。。。<br>也是累瞎😂<br>下一篇大概还是讲一下组件这块的东西。嗯嗯～～   </p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag">#React Native</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/23/rn2/" rel="next" title="RN|很RN的部分|基础组件篇">
+                <i class="fa fa-chevron-left"></i> RN|很RN的部分|基础组件篇
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="Maruko0713" />
+          <p class="site-author-name" itemprop="name">Maruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
+</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TextInput"><span class="nav-number">2.</span> <span class="nav-text">TextInput</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ScrollView"><span class="nav-number">3.</span> <span class="nav-text">ScrollView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Touchable触摸交互组件"><span class="nav-number">4.</span> <span class="nav-text">Touchable触摸交互组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TouchableHighLight"><span class="nav-number">4.1.</span> <span class="nav-text">TouchableHighLight</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TouchableOpacity"><span class="nav-number">4.2.</span> <span class="nav-text">TouchableOpacity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结-1"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Maruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
