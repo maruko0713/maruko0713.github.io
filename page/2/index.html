@@ -216,6 +216,100 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/20/ES611/" itemprop="url">
+                  ES6学习笔记11:对象的新面貌
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-20T00:00:00+08:00" content="2016-12-20">
+              2016-12-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在ES6里面，对象越来越“对象”了。<br>这么说有点奇怪吧，哈哈哈，还是一点一点写代码来看吧。</p>
+<h2 id="创建对象的新形式"><a href="#创建对象的新形式" class="headerlink" title="创建对象的新形式"></a>创建对象的新形式</h2><p>先看一段代码:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>, drink=<span class="string">"🍹"</span>;</div><div class="line"></div><div class="line"><span class="keyword">let</span> food = &#123;</div><div class="line">  dessert: dessert,</div><div class="line">  drink: drink</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(food);</div></pre></td></tr></table></figure>
+<p>我们输出了food，food中是🍰和🍹，没毛病。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/20/ES611/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/19/es610/" itemprop="url">
                   ES6学习笔记10:函数的新面貌和"..."操作符
                 </a>
@@ -1042,99 +1136,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/10/ES606/" itemprop="url">
-                  ES6学习笔记6:新数据类型!Symbol登场！
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-10T00:00:00+08:00" content="2016-12-10">
-              2016-12-10
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES标准以前有啥数据类型？？？<br>回顾一下：     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="literal">undefined</span></div><div class="line"><span class="literal">null</span></div><div class="line"><span class="built_in">Boolean</span></div><div class="line"><span class="built_in">String</span></div><div class="line"><span class="built_in">Number</span></div><div class="line"><span class="built_in">Object</span></div></pre></td></tr></table></figure>
-<p>一共六种 没了！<br>ES6新增了一种了叫做<strong>Symbol</strong>的数据类型  </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/10/ES606/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1180,7 +1181,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-count">66</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

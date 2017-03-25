@@ -216,6 +216,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/19/js6/" itemprop="url">
+                  Javascript系统复习：对象标签和对象序列化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-19T00:00:00+08:00" content="2016-08-19">
+              2016-08-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>前面我们说属性是有标签的，于是<strong><em>对象也是有标签的</em></strong>。    </p>
+<h2 id="对象标签"><a href="#对象标签" class="headerlink" title="对象标签"></a>对象标签</h2><p>对象标签主要有三种:    </p>
+<ul>
+<li>[[proto]]</li>
+<li>[[class]]</li>
+<li>[[extensible]]</li>
+</ul>
+<h3 id="原型和class"><a href="#原型和class" class="headerlink" title="原型和class"></a>原型和class</h3><p>第一个标签对应的是原型，我们可以通过prototype属性来访问。<br>第二个标签没有一个指定的方式去查看或者修改它，我们可以间接地通过Object.prototype.toString方法来获取它。<br>举个例子：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params">o</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> toString.call(o).slice(<span class="number">8</span>, <span class="number">-1</span>);</div><div class="line">&#125;    </div><div class="line"></div><div class="line">toString.call(<span class="literal">null</span>); <span class="comment">// "[object Null]"</span></div><div class="line">getType(<span class="literal">null</span>); <span class="comment">// "Null"</span></div><div class="line">getType(<span class="literal">undefined</span>); <span class="comment">// "Undefined"</span></div><div class="line">getType(<span class="number">1</span>); <span class="comment">// "Number"</span></div><div class="line">getType(<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>));<span class="comment">// "object"</span></div><div class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>); <span class="comment">// "object"</span></div><div class="line">getType(<span class="literal">true</span>); <span class="comment">// "Boolean"</span></div><div class="line">getType(<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)); <span class="comment">// "Boolean"</span></div></pre></td></tr></table></figure>
+<p>注意，在调用object.toString方法的时候，它会去把参数转换为对象，然后再作处理。<br>因此slice方法就截去了object那几个字母，只返回我们想看到的对象。    </p>
+<p><strong><em>挖坑</em></strong>：需要搞清楚Object和Function对象上的toString到底什么区别。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/19/js6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/17/js5/" itemprop="url">
                   Javascript系统复习：get和set方法／属性标签深入
                 </a>
@@ -722,7 +823,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-count">66</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
