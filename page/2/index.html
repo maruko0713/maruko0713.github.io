@@ -216,6 +216,99 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/21/ES612/" itemprop="url">
+                  ES6学习笔记12:迭代器和生成器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-21T00:00:00+08:00" content="2016-12-21">
+              2016-12-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6中，引入了迭代器和生成器的概念。<br>久违了的名字，上次见到还是在《Python核心编程》里呐！<br>所以说JS越来越正统语言了呀～～～    </p>
+<h2 id="迭代器-Iterators-碎碎念"><a href="#迭代器-Iterators-碎碎念" class="headerlink" title="迭代器(Iterators)碎碎念"></a>迭代器(Iterators)碎碎念</h2><p>迭代器就是可以迭代输出值的一个东西。<br>迭代器每一次迭代会返回一个对象，这个对象长这样子：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;value: xx, done: <span class="literal">true</span>/<span class="literal">false</span>&#125;</div></pre></td></tr></table></figure>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/21/ES612/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/20/ES611/" itemprop="url">
                   ES6学习笔记11:对象的新面貌
                 </a>
@@ -1042,100 +1135,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/11/ES607/" itemprop="url">
-                  ES6学习笔记7:新概念Proxy登场！
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-11T00:00:00+08:00" content="2016-12-11">
-              2016-12-11
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>Proxy</strong>是ES6引入的一个新的概念。<br>它的用途是<strong>从语言层面上去操作一个对象</strong><br>这么说太抽象了，当我没说，看代码吧     </p>
-<h2 id="Proxy之从一个小🌰说起"><a href="#Proxy之从一个小🌰说起" class="headerlink" title="Proxy之从一个小🌰说起"></a>Proxy之从一个小🌰说起</h2><p>假如我们有一个人，叫做Bob Wood。<br>我们这样形容他:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> user = &#123;&#125;;</div><div class="line">user.fname = <span class="string">'Bob'</span>;</div><div class="line">user.lname = <span class="string">'Wood'</span>;</div><div class="line"></div><div class="line">full_name = user.fname + <span class="string">" "</span> + user.lname;</div></pre></td></tr></table></figure>
-<p>想要获取full_name,我们是手动相加了，如果有很多个这样的人，我们懒得写那么多代码，我们就可以写个方法。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/11/ES607/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1181,7 +1180,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
