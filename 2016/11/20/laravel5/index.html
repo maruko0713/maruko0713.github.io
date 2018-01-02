@@ -256,34 +256,34 @@
 
       
         <h2 id="创建一个model"><a href="#创建一个model" class="headerlink" title="创建一个model"></a>创建一个model</h2><p>(前提是你已经创建了一个articles表)<br>命令行:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan make:model Article</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:model Article</span><br></pre></td></tr></table></figure>
 <p>执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的articles表呼应的，它用来对articles表进行操作。    </p>
 <p>在laravel的环境下打开一个php解释器：<br><a id="more"></a> </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan tinker</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan tinker</span><br></pre></td></tr></table></figure>
 <p>输入:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article = <span class="keyword">new</span> App\Article;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$article = <span class="keyword">new</span> App\Article;</span><br></pre></td></tr></table></figure>
 <p>你就得到了一个Article对象。<br>你可以对它进行一些操作:    </p>
-<h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$article-&gt;title = <span class="string">"My first Title"</span>;</div><div class="line">$article-&gt;content = <span class="string">"content"</span>;</div></pre></td></tr></table></figure>
+<h3 id="增加"><a href="#增加" class="headerlink" title="增加"></a>增加</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$article-&gt;title = <span class="string">"My first Title"</span>;</span><br><span class="line">$article-&gt;content = <span class="string">"content"</span>;</span><br></pre></td></tr></table></figure>
 <p>存储这个元组:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article-&gt;save();</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$article-&gt;save();</span><br></pre></td></tr></table></figure>
 <p>创建一个新的元组(一般还都是这么做的,快):    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$article=App\Article::create([<span class="string">"title"</span>=&gt;<span class="string">"Second title"</span>,<span class="string">"content"</span>=&gt;<span class="string">"second content"</span>]);</div></pre></td></tr></table></figure>
-<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first = App\Article::find(<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$article=App\Article::create([<span class="string">"title"</span>=&gt;<span class="string">"Second title"</span>,<span class="string">"content"</span>=&gt;<span class="string">"second content"</span>]);</span><br></pre></td></tr></table></figure>
+<h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$first = App\Article::find(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
 <p>这里按照id为1进行查找。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$second = App\Article::where(<span class="string">"content"</span>,<span class="string">"="</span>,<span class="string">"content"</span>)-&gt;get();</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$second = App\Article::where(<span class="string">"content"</span>,<span class="string">"="</span>,<span class="string">"content"</span>)-&gt;get();</span><br></pre></td></tr></table></figure>
 <p>取出content为content的元组们。<br>这里get()得到一个<strong>collection</strong>对象。<br>这个对象很重要，这里留个坑，以后写笔记会着重纪录。<br>当然你可以这样写:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$second = App\Article::where(<span class="string">"content"</span>,<span class="string">"content"</span>)-&gt;get();</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$second = App\Article::where(<span class="string">"content"</span>,<span class="string">"content"</span>)-&gt;get();</span><br></pre></td></tr></table></figure>
 <p>效果是一样的。<br>或者有时候你只需要一条数据，一条类型为App\Article的数据:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$third = App\Article::where(<span class="string">"content"</span>,<span class="string">"content"</span>)-&gt;first();</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$third = App\Article::where(<span class="string">"content"</span>,<span class="string">"content"</span>)-&gt;first();</span><br></pre></td></tr></table></figure>
 <p>直接对它进行Article对象的操作就可以啦。</p>
-<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$first-&gt;title = <span class="string">"update"</span>;</div><div class="line">$first-&gt;save();</div></pre></td></tr></table></figure>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$first-&gt;title = <span class="string">"update"</span>;</span><br><span class="line">$first-&gt;save();</span><br></pre></td></tr></table></figure>
 <p>用数组去更新（更新多个的时候）:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first-&gt;update([<span class="string">"title"</span>=&gt;<span class="string">"update"</span>]);</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$first-&gt;update([<span class="string">"title"</span>=&gt;<span class="string">"update"</span>]);</span><br></pre></td></tr></table></figure>
 <h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><p>两种方法:    </p>
 <p>实例方法：delete方法:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$first-&gt;delete();</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$first-&gt;delete();</span><br></pre></td></tr></table></figure>
 <p>类方法：destroy方法:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">App\Article::destroy(<span class="number">1</span>);</div><div class="line">App\Article::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</div><div class="line">App\Article::destroy(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">App\Article::destroy(<span class="number">1</span>);</span><br><span class="line">App\Article::destroy([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]);</span><br><span class="line">App\Article::destroy(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);</span><br></pre></td></tr></table></figure>
 
       
     </div>

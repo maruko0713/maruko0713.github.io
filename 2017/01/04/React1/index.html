@@ -275,25 +275,25 @@
 <p>一图胜千言：    </p>
 <p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="react生命周期"><br><a id="more"></a></p>
 <h2 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h2><p>在ES6中，一个React组件是用一个class来表示的：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>只有你继承了Component类，其中定义的一些生命周期的相关函数才有意义。<br>相关的函数有：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">constructor</span>(props, context)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">constructor</span>(props, context)</span><br></pre></td></tr></table></figure>
 <p>这个是构造函数，在创建组件的时候调用。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> componentWillMount()</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> componentWillMount()</span><br></pre></td></tr></table></figure>
 <p>这个是在组件挂载之前调用一次。<br>注意如果在这个函数里面调用setState,render函数就能看到更新后的state，并且只渲染一次。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> componentDidMount()</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> componentDidMount()</span><br></pre></td></tr></table></figure>
 <p>这个是在组件（包括子组件）挂载后调用的。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> componentWillReceiveProps(nextProps)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> componentWillReceiveProps(nextProps)</span><br></pre></td></tr></table></figure>
 <p>props是父组件传递给子组件的。<br>父组件每次render子组件都会调用这个方法。<br>这与props有没有更新，父子组件之间有没有数据交换是没有关系的。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bool shouldComponentUpdate(nextProps, nextState)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool shouldComponentUpdate(nextProps, nextState)</span><br></pre></td></tr></table></figure>
 <p>组件挂载之后，每次调用setState都会调用这个方法。<br>这个方法用来判断是否需要重新渲染组件。<br>默认返回值是true。<br>如果是true，那么就再次render。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> componentWillUpdate(nextProps, nextState)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> componentWillUpdate(nextProps, nextState)</span><br></pre></td></tr></table></figure>
 <p>当shouldComponentUpdate返回true活着调用了forceUpdate之后，这个方法会被调用。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> componentDidUpdate()</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> componentDidUpdate()</span><br></pre></td></tr></table></figure>
 <p>除非是第一次render之后调用了componentDidMount。<br>其它render结束之后都要调用这个方法。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ReactElement render()</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ReactElement render()</span><br></pre></td></tr></table></figure>
 <p>这个方法很重要，它是核心函数。<br>上面的其它函数都不是必须的，但是它是必须的。<br><strong><em>render里面不能修改state</em></strong></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">void</span> componentWillUnmount()</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> componentWillUnmount()</span><br></pre></td></tr></table></figure>
 <p>组件被卸载的时候调用的。<br>一般componentDidMount里注册的事件会在这里删除。    </p>
 <h2 id="如何触发核心函数render"><a href="#如何触发核心函数render" class="headerlink" title="如何触发核心函数render?"></a>如何触发核心函数render?</h2><p>一般有四种方法:    </p>
 <ul>
@@ -311,7 +311,7 @@
         <span class="keyword">super</span>(props);
         alert(<span class="string">"Initial render"</span>);
         alert(<span class="string">"constructor"</span>);
-        <span class="keyword">this</span>.state = {str: <span class="string">"hello"</span>};
+        <span class="keyword">this</span>.state = {<span class="attr">str</span>: <span class="string">"hello"</span>};
     }
 
     componentWillMount() {
@@ -360,62 +360,62 @@
     render() {
         alert(<span class="string">"render"</span>);
         <span class="keyword">return</span>(
-            <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">span</span>&gt;</span>{"Props:"}<span class="tag">&lt;<span class="name">h2</span>&gt;</span>{parseInt(this.props.num)}<span class="tag">&lt;/<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">br</span> /&gt;</span>
-                <span class="tag">&lt;<span class="name">span</span>&gt;</span>{"State:"}<span class="tag">&lt;<span class="name">h2</span>&gt;</span>{this.state.str}<span class="tag">&lt;/<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
-        );
-    }
-}
-
-<span class="class"><span class="keyword">class</span> <span class="title">Container</span>  <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>{
-    <span class="keyword">constructor</span>(props) {
-        <span class="keyword">super</span>(props);
-        <span class="keyword">this</span>.state = {
-            num: <span class="built_in">Math</span>.random() * <span class="number">100</span>
-        };
-    }
-
-    propsChange() {
-        <span class="keyword">this</span>.setState({
-            num: <span class="built_in">Math</span>.random() * <span class="number">100</span>
-        });
-    }
-
-    setLifeCycleState() {
-        <span class="keyword">this</span>.refs.rLifeCycle.setTheState();
-    }
-
-    forceLifeCycleUpdate() {
-        <span class="keyword">this</span>.refs.rLifeCycle.forceItUpdate();
-    }
-
-    unmountLifeCycle() {
-        <span class="comment">// 这里卸载父组件也会导致卸载子组件</span>
-        React.unmountComponentAtNode(<span class="built_in">document</span>.getElementById(<span class="string">"container"</span>));
-    }
-
-    parentForceUpdate() {
-        <span class="keyword">this</span>.forceUpdate();
-    }
-
-    render() {
-        <span class="keyword">return</span> (
-            <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.propsChange.bind(this)}</span>&gt;</span>propsChange<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.setLifeCycleState.bind(this)}</span>&gt;</span>setState<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.forceLifeCycleUpdate.bind(this)}</span>&gt;</span>forceUpdate<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.unmountLifeCycle.bind(this)}</span>&gt;</span>unmount<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">className</span>=<span class="string">"weui_btn weui_btn_primary"</span> <span class="attr">onClick</span>=<span class="string">{this.parentForceUpdate.bind(this)}</span>&gt;</span>parentForceUpdateWithoutChange<span class="tag">&lt;/<span class="name">a</span>&gt;</span>
-                <span class="tag">&lt;<span class="name">LifeCycle</span> <span class="attr">ref</span>=<span class="string">"rLifeCycle"</span> <span class="attr">num</span>=<span class="string">{this.state.num}</span>&gt;</span><span class="tag">&lt;/<span class="name">LifeCycle</span>&gt;</span>
-            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>
-        );
-    }
-}
-
-ReactDom.render(
-    <span class="xml"><span class="tag">&lt;<span class="name">Container</span>&gt;</span><span class="tag">&lt;/<span class="name">Container</span>&gt;</span></span>,
+            &lt;div&gt;
+                &lt;span&gt;{<span class="string">"Props:"</span>}&lt;h2&gt;{<span class="built_in">parseInt</span>(<span class="keyword">this</span>.props.num)}&lt;<span class="regexp">/h2&gt;&lt;/</span>span&gt;
+                &lt;br /&gt;
+                &lt;span&gt;{<span class="string">"State:"</span>}&lt;h2&gt;{<span class="keyword">this</span>.state.str}&lt;<span class="regexp">/h2&gt;&lt;/</span>span&gt;
+            &lt;<span class="regexp">/div&gt;</span>
+<span class="regexp">        );</span>
+<span class="regexp">    }</span>
+<span class="regexp">}</span>
+<span class="regexp"></span>
+<span class="regexp">class Container  extends React.Component {</span>
+<span class="regexp">    constructor(props) {</span>
+<span class="regexp">        super(props);</span>
+<span class="regexp">        this.state = {</span>
+<span class="regexp">            num: Math.random() * 100</span>
+<span class="regexp">        };</span>
+<span class="regexp">    }</span>
+<span class="regexp"></span>
+<span class="regexp">    propsChange() {</span>
+<span class="regexp">        this.setState({</span>
+<span class="regexp">            num: Math.random() * 100</span>
+<span class="regexp">        });</span>
+<span class="regexp">    }</span>
+<span class="regexp"></span>
+<span class="regexp">    setLifeCycleState() {</span>
+<span class="regexp">        this.refs.rLifeCycle.setTheState();</span>
+<span class="regexp">    }</span>
+<span class="regexp"></span>
+<span class="regexp">    forceLifeCycleUpdate() {</span>
+<span class="regexp">        this.refs.rLifeCycle.forceItUpdate();</span>
+<span class="regexp">    }</span>
+<span class="regexp"></span>
+<span class="regexp">    unmountLifeCycle() {</span>
+<span class="regexp">        /</span><span class="regexp">/ 这里卸载父组件也会导致卸载子组件</span>
+<span class="regexp">        React.unmountComponentAtNode(document.getElementById("container"));</span>
+<span class="regexp">    }</span>
+<span class="regexp"></span>
+<span class="regexp">    parentForceUpdate() {</span>
+<span class="regexp">        this.forceUpdate();</span>
+<span class="regexp">    }</span>
+<span class="regexp"></span>
+<span class="regexp">    render() {</span>
+<span class="regexp">        return (</span>
+<span class="regexp">            &lt;div&gt;</span>
+<span class="regexp">                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.propsChange.bind(this)}&gt;propsChange&lt;/</span>a&gt;
+                &lt;a href=<span class="string">"javascript:;"</span> className=<span class="string">"weui_btn weui_btn_primary"</span> onClick={<span class="keyword">this</span>.setLifeCycleState.bind(<span class="keyword">this</span>)}&gt;setState&lt;<span class="regexp">/a&gt;</span>
+<span class="regexp">                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.forceLifeCycleUpdate.bind(this)}&gt;forceUpdate&lt;/</span>a&gt;
+                &lt;a href=<span class="string">"javascript:;"</span> className=<span class="string">"weui_btn weui_btn_primary"</span> onClick={<span class="keyword">this</span>.unmountLifeCycle.bind(<span class="keyword">this</span>)}&gt;unmount&lt;<span class="regexp">/a&gt;</span>
+<span class="regexp">                &lt;a href="javascript:;" className="weui_btn weui_btn_primary" onClick={this.parentForceUpdate.bind(this)}&gt;parentForceUpdateWithoutChange&lt;/</span>a&gt;
+                &lt;LifeCycle ref=<span class="string">"rLifeCycle"</span> num={<span class="keyword">this</span>.state.num}&gt;<span class="xml"><span class="tag">&lt;/<span class="name">LifeCycle</span>&gt;</span></span>
+            &lt;<span class="regexp">/div&gt;</span>
+<span class="regexp">        );</span>
+<span class="regexp">    }</span>
+<span class="regexp">}</span>
+<span class="regexp"></span>
+<span class="regexp">ReactDom.render(</span>
+<span class="regexp">    &lt;Container&gt;&lt;/</span>Container&gt;,
     <span class="built_in">document</span>.getElementById(<span class="string">'container'</span>)
 );
 </code></pre>

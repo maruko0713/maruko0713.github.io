@@ -258,22 +258,22 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一篇应该会是最短的一篇，也是最轻松的一篇了，也算是对这个系列文章做一个小的补充和调剂，讲一个其它语言里面基本都有的数据结构，叫做Set。<br>现在js里面也有啦！    </p>
 <h2 id="Set基本概念"><a href="#Set基本概念" class="headerlink" title="Set基本概念"></a>Set基本概念</h2><p>在java，python这样的后端语言里面，我们都可以见到Set的身影。<br>所谓Set，就是对一组数据去重，然后无序存放。    </p>
 <h2 id="Set小🌰"><a href="#Set小🌰" class="headerlink" title="Set小🌰"></a>Set小🌰</h2><p>看代码：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>]);</div><div class="line"><span class="built_in">console</span>.log(s);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(s);</span><br></pre></td></tr></table></figure>
 <p>输出的结果是:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Set</span> &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set</span> &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>这就是Set的特点，它里面的值全都是唯一的。<br><a id="more"></a> </p>
 <h2 id="Set的常用api总结"><a href="#Set的常用api总结" class="headerlink" title="Set的常用api总结"></a>Set的常用api总结</h2><p>一锅端！    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.size;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.size;</span><br></pre></td></tr></table></figure>
 <p>size属性相当于其它数据结构里面的length，输出长度。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.add(<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.add(<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
 <p>添加操作用add实现。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.delete(<span class="number">2</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.delete(<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
 <p>删除操作用delete实现。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.has(<span class="number">5</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.has(<span class="number">5</span>);</span><br></pre></td></tr></table></figure>
 <p>返回一个布尔值，判断s中是否有5这个数存在。  </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.forEach(一个函数);</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.forEach(一个函数);</span><br></pre></td></tr></table></figure>
 <p>对集合里面的每个元素实施某种操作。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">s.clear();</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.clear();</span><br></pre></td></tr></table></figure>
 <p>把Set里面的值全部清空。    </p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>到现在，ES6系列的学习笔记就告一段落了。<br>其实还有一些关键点没有写，像import export。<br>但是这说到底还是我一个人的学习记录，而不是一个规范的教程。<br>更多的还是根据自己的感觉来对一些点做一下纪录。<br>日后如果有新的知识或者发现，我会及时更新，可能是在原文，也可能是新写，总之，知识在往前走，我也不会停下，加油！    </p>
 
