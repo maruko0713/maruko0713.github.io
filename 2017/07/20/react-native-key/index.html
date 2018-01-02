@@ -57,27 +57,20 @@
 
 
 
-<meta name="description" content="前言:最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:  
-当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:
-
-确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？准确地说，">
+<meta name="description" content="前言:最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:   当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:  确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？准确地说，">
+<meta name="keywords" content="React Native">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一图开发手记：React中的key属性踩坑">
 <meta property="og:url" content="http://mieruko.com/2017/07/20/react-native-key/index.html">
 <meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="前言:最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:  
-当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:
-
-确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？准确地说，">
+<meta property="og:description" content="前言:最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:   当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:  确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？准确地说，">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/key1.jpeg">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/key2.jpeg">
 <meta property="og:updated_time" content="2017-08-02T04:03:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一图开发手记：React中的key属性踩坑">
-<meta name="twitter:description" content="前言:最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:  
-当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:
-
-确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？准确地说，">
+<meta name="twitter:description" content="前言:最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:   当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:  确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？准确地说，">
 <meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/key1.jpeg">
 
 
@@ -318,6 +311,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/01/01/redux_context/" rel="prev" title="在使用Redux重构应用之前:从React的context属性说开去">
+                在使用Redux重构应用之前:从React的context属性说开去 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -380,7 +377,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -390,7 +387,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -451,7 +448,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

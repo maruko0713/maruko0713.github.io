@@ -57,32 +57,19 @@
 
 
 
-<meta name="description" content="前言:闭包和作用域，非常重要的一个点。闭包的官方定义：    
-
-在计算机科学中，闭包（也称词法闭包或函数闭包）是指一个函数或函数的引用，与一个引用环境绑定在一起。这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。
-
-闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，仍可访问本地变量。    
-另外本文还有一个大boss是ES3的执行上下文，我会放在最后说。">
+<meta name="description" content="前言:闭包和作用域，非常重要的一个点。闭包的官方定义：      在计算机科学中，闭包（也称词法闭包或函数闭包）是指一个函数或函数的引用，与一个引用环境绑定在一起。这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。  闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，仍可访问本地变量。     另外本文还有一个大boss是ES3的执行上下文，我会放在最后说。">
+<meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript系统复习：闭包,作用域以及ES3执行上下文">
 <meta property="og:url" content="http://mieruko.com/2016/08/27/js10/index.html">
 <meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="前言:闭包和作用域，非常重要的一个点。闭包的官方定义：    
-
-在计算机科学中，闭包（也称词法闭包或函数闭包）是指一个函数或函数的引用，与一个引用环境绑定在一起。这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。
-
-闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，仍可访问本地变量。    
-另外本文还有一个大boss是ES3的执行上下文，我会放在最后说。">
+<meta property="og:description" content="前言:闭包和作用域，非常重要的一个点。闭包的官方定义：      在计算机科学中，闭包（也称词法闭包或函数闭包）是指一个函数或函数的引用，与一个引用环境绑定在一起。这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。  闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，仍可访问本地变量。     另外本文还有一个大boss是ES3的执行上下文，我会放在最后说。">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/%E4%B8%8A%E4%B8%8B%E6%96%87.png">
 <meta property="og:updated_time" content="2017-01-23T08:40:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript系统复习：闭包,作用域以及ES3执行上下文">
-<meta name="twitter:description" content="前言:闭包和作用域，非常重要的一个点。闭包的官方定义：    
-
-在计算机科学中，闭包（也称词法闭包或函数闭包）是指一个函数或函数的引用，与一个引用环境绑定在一起。这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。
-
-闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，仍可访问本地变量。    
-另外本文还有一个大boss是ES3的执行上下文，我会放在最后说。">
+<meta name="twitter:description" content="前言:闭包和作用域，非常重要的一个点。闭包的官方定义：      在计算机科学中，闭包（也称词法闭包或函数闭包）是指一个函数或函数的引用，与一个引用环境绑定在一起。这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。  闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，仍可访问本地变量。     另外本文还有一个大boss是ES3的执行上下文，我会放在最后说。">
 <meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/%E4%B8%8A%E4%B8%8B%E6%96%87.png">
 
 
@@ -419,7 +406,7 @@ this——赋值；
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -429,7 +416,7 @@ this——赋值；
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -490,7 +477,7 @@ this——赋值；
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
