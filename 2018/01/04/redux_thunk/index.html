@@ -1,0 +1,544 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="redux,middleware," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="缘起我是在去年暑假第一次有了“该用redux代替烦死人的props传递了”的概念后，在github上扒拉别人的redux项目看，然后第一次见到thunk这个中间件。后来一图重构，我记得我们的redux里是用了这个中间件。选用的契机是，文档和别人的开源项目告诉我们，它有用。。。。然后最近总是遇到一个相同的问题：如果我有一个异步请求，需要把请求回来的数据给放进store里，我该咋办？？？嗨呀，既然我都">
+<meta name="keywords" content="redux,middleware">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从redux-thunk的14行源码和dispatch函数的实现过程，说说我眼中的redux中间件">
+<meta property="og:url" content="http://mieruko.com/2018/01/04/redux_thunk/index.html">
+<meta property="og:site_name" content="Mieruko0713的实验室">
+<meta property="og:description" content="缘起我是在去年暑假第一次有了“该用redux代替烦死人的props传递了”的概念后，在github上扒拉别人的redux项目看，然后第一次见到thunk这个中间件。后来一图重构，我记得我们的redux里是用了这个中间件。选用的契机是，文档和别人的开源项目告诉我们，它有用。。。。然后最近总是遇到一个相同的问题：如果我有一个异步请求，需要把请求回来的数据给放进store里，我该咋办？？？嗨呀，既然我都">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-07T13:42:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从redux-thunk的14行源码和dispatch函数的实现过程，说说我眼中的redux中间件">
+<meta name="twitter:description" content="缘起我是在去年暑假第一次有了“该用redux代替烦死人的props传递了”的概念后，在github上扒拉别人的redux项目看，然后第一次见到thunk这个中间件。后来一图重构，我记得我们的redux里是用了这个中间件。选用的契机是，文档和别人的开源项目告诉我们，它有用。。。。然后最近总是遇到一个相同的问题：如果我有一个异步请求，需要把请求回来的数据给放进store里，我该咋办？？？嗨呀，既然我都">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 从redux-thunk的14行源码和dispatch函数的实现过程，说说我眼中的redux中间件 | Mieruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mieruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                从redux-thunk的14行源码和dispatch函数的实现过程，说说我眼中的redux中间件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-04T00:00:00+08:00" content="2018-01-04">
+              2018-01-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>我是在去年暑假第一次有了“该用redux代替烦死人的props传递了”的概念后，在github上扒拉别人的redux项目看，然后第一次见到thunk这个中间件。后来一图重构，我记得我们的redux里是用了这个中间件。选用的契机是，文档和别人的开源项目告诉我们，它有用。。。。<br>然后最近总是遇到一个相同的问题：如果我有一个异步请求，需要把请求回来的数据给放进store里，我该咋办？？？<br>嗨呀，既然我都这么写了，肯定是用thunk中间件呀。。。。。。😂    </p>
+<h2 id="Redux中间件"><a href="#Redux中间件" class="headerlink" title="Redux中间件"></a>Redux中间件</h2><p>本来想贴个定义，结果查完百科上的定义，我感觉我可能用的都是假的中间件。。。所以这里就说说我自己的理解吧。<br>中间件我一般是在后端里用的比较多，比如express框架，django框架里的中间件。“中间”，我的理解是，从服务器接收到request，到路由开始处理request这中间的“中间”。<br>再说说这个redux中间件吧，类比来理解，重点说说“中间”。这里的“中间”，指的是从redux的action派发开始，到到达reducer之前的这段时机。    </p>
+<h3 id="为什么需要Redux中间件"><a href="#为什么需要Redux中间件" class="headerlink" title="为什么需要Redux中间件"></a>为什么需要Redux中间件</h3><p>在redux-thunk的文档里，给了我们一个stackoverflow的链接，试图向我们解释，为啥我们需要使用这玩意。其中有一个回答开头这样说道：“Don’t fall into the trap of thinking a library should prescribe how to do everything.”。<br><strong>翻译过来就是，不要认为说一个库（redux）可以帮我们做任何事</strong><br>说得再直接一点，redux还不够强，并不能满足所有的开发情境，要带上它的中间件，它才够强。   </p>
+<h2 id="初识：14行源代码"><a href="#初识：14行源代码" class="headerlink" title="初识：14行源代码"></a>初识：14行源代码</h2><p><strong>Thunk中间件可以帮我们做什么</strong><br>回到正题，Thunk中间件做了什么，我们得从它的源代码说起：<br>（之所以一直说14行 是因为我第一次看到的时候，被这段源代码惊到了。。。不仅短，而且容易懂，看完彻底不抓瞎了，特别开心）    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleware</span>(<span class="params">extraArgument</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">&#123; dispatch, getState &#125;</span>) =&gt;</span> next =&gt; <span class="function"><span class="params">action</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> thunk = createThunkMiddleware();</span><br><span class="line">thunk.withExtraArgument = createThunkMiddleware;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> thunk;</span><br></pre></td></tr></table></figure>
+<p>我来解释一下这段代码（虽然可能并不需要我解释。。。。/捂脸）<br>首先，thunk中间件抓住了我们派发的action对象，然后给它裹一层，在它的外层，把dispatch和getState方法传进来了。随后，对action的种类进行判断，如果action是一个函数，那么就把dispatch和getState都传进去，然后执行这个函数。     </p>
+<a id="more"></a> 
+<p>然后说说这段代码的用意吧。它希望我们把action写成一个函数，于是它就可以利用裹一层这种方式把dispatch和getState给传进去了，于是我们就可以在action里派发对象和查看state状态了，于是action从一个手无缚鸡之力的对象，变成了一个可以操作state树的函数~      </p>
+<p>所以Thunk的目的就是，帮助我们把action变成函数，从而把dispatch放在action这一步。我们可以注意到，Thunk中间件最后直接return了action的结果，根本没把action往reducer那里发送了。在action是function的情况下，reducer只能在一边自己玩。     </p>
+<p>说得再清楚一点，Thunk把reducer踹开了，于是我们在action函数里为所欲为（也就是可以实现异步操作）。    </p>
+<h2 id="更进一步：为啥这样做（理解dispatch函数到底做了什么）"><a href="#更进一步：为啥这样做（理解dispatch函数到底做了什么）" class="headerlink" title="更进一步：为啥这样做（理解dispatch函数到底做了什么）"></a>更进一步：为啥这样做（理解dispatch函数到底做了什么）</h2><p>读完Thunk的源代码，我只想问：为啥要把reducer架空？reducer做错了什么？？？？<br>对呀，因为我们以往的state更新操作，是在reducer里计算返回的。<br>简单地理解的话，问题是在于，reducer这个东西，规矩比较多，它是一个纯函数，只允许我们在里面计算，state都不让你改，你还想发异步请求？？？？naive！/微笑       </p>
+<p>退一万步说，就算没有这个规定了，你在reducer里发送个请求试试？要是能拿到数据，Thunk中间件原地吃翔好不好？？？<br>为啥这么说，是因为reducer是一个同步的函数。要是还不清楚（当初我就没清楚），就得看看redux源代码里对reducer的一个处理了，这里我们贴一下dispatch函数的源码：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dispatch</span>(<span class="params">action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!isPlainObject(action)) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">      <span class="string">'Actions must be plain objects. '</span> +</span><br><span class="line">        <span class="string">'Use custom middleware for async actions.'</span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> action.type === <span class="string">'undefined'</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(</span><br><span class="line">      <span class="string">'Actions may not have an undefined "type" property. '</span> +</span><br><span class="line">        <span class="string">'Have you misspelled a constant?'</span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (isDispatching) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Reducers may not dispatch actions.'</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    isDispatching = <span class="literal">true</span></span><br><span class="line">    currentState = currentReducer(currentState, action)</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    isDispatching = <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> listeners = (currentListeners = nextListeners)</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; listeners.length; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> listener = listeners[i]</span><br><span class="line">    listener()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> action</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  为了突出重点，其实可以只看这一段：      </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  isDispatching = <span class="literal">true</span></span><br><span class="line">  currentState = currentReducer(currentState, action)</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  isDispatching = <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者只看这一句：      </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentState = currentReducer(currentState, action)</span><br></pre></td></tr></table></figure>
+<p>是的，死心吧，currentState要的是currentReducer的同步的返回值。reducer只能是个同步的，不可能async/await(这样currentReducer这位哥就是一个async函数了，它调用时前面必须有个await，然而没有），也不可能Generator/yield（那样返回的就是一个生成器对象，不是currentState想要的，就更离谱了，可拉倒吧）。        </p>
+<p>综上所述，reducer只能是一个同步的东西，即刻返回，不会等任何人。  </p>
+<p>而使用Thunk提供给我们的方案，action变成函数，这个函数随便你怎么折腾怎么调用，异步不在话下，歪瑞ok呀~~~！   </p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>是的，<strong>因为reducer不能帮我们做太多</strong>，所以我们要用中间件。<br>这是Thunk中间件所教会我的，redux中中间件的意义。翻阅<a href="http://www.redux.org.cn/docs/advanced/Middleware.html" target="_blank" rel="noopener">redux文档的中间件部分</a>，我们可以看到中间件的作用，不仅仅是封装dispatch这么简单。这篇文章，也只是针对实际的需要，谈谈自己的体会~    </p>
+<p>中间件可以认为是redux功能上的一个补充。有了它，redux的功能更加完整，也更能适应我们实际开发的需要~肥肠的棒！    </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/redux/" rel="tag">#redux</a>
+          
+            <a href="/tags/middleware/" rel="tag">#middleware</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/01/redux_context/" rel="next" title="在使用Redux重构应用之前:从React的context属性说开去">
+                <i class="fa fa-chevron-left"></i> 在使用Redux重构应用之前:从React的context属性说开去
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="mieruko0713" />
+          <p class="site-author-name" itemprop="name">mieruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大三信息汪 喜欢写代码 
+</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">69</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/maruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redux中间件"><span class="nav-number">2.</span> <span class="nav-text">Redux中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要Redux中间件"><span class="nav-number">2.1.</span> <span class="nav-text">为什么需要Redux中间件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初识：14行源代码"><span class="nav-number">3.</span> <span class="nav-text">初识：14行源代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更进一步：为啥这样做（理解dispatch函数到底做了什么）"><span class="nav-number">4.</span> <span class="nav-text">更进一步：为啥这样做（理解dispatch函数到底做了什么）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mieruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

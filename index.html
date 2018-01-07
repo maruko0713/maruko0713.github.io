@@ -217,6 +217,102 @@
             
               
                 
+                <a class="post-title-link" href="/2018/01/04/redux_thunk/" itemprop="url">
+                  从redux-thunk的14行源码和dispatch函数的实现过程，说说我眼中的redux中间件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-04T00:00:00+08:00" content="2018-01-04">
+              2018-01-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>我是在去年暑假第一次有了“该用redux代替烦死人的props传递了”的概念后，在github上扒拉别人的redux项目看，然后第一次见到thunk这个中间件。后来一图重构，我记得我们的redux里是用了这个中间件。选用的契机是，文档和别人的开源项目告诉我们，它有用。。。。<br>然后最近总是遇到一个相同的问题：如果我有一个异步请求，需要把请求回来的数据给放进store里，我该咋办？？？<br>嗨呀，既然我都这么写了，肯定是用thunk中间件呀。。。。。。😂    </p>
+<h2 id="Redux中间件"><a href="#Redux中间件" class="headerlink" title="Redux中间件"></a>Redux中间件</h2><p>本来想贴个定义，结果查完百科上的定义，我感觉我可能用的都是假的中间件。。。所以这里就说说我自己的理解吧。<br>中间件我一般是在后端里用的比较多，比如express框架，django框架里的中间件。“中间”，我的理解是，从服务器接收到request，到路由开始处理request这中间的“中间”。<br>再说说这个redux中间件吧，类比来理解，重点说说“中间”。这里的“中间”，指的是从redux的action派发开始，到到达reducer之前的这段时机。    </p>
+<h3 id="为什么需要Redux中间件"><a href="#为什么需要Redux中间件" class="headerlink" title="为什么需要Redux中间件"></a>为什么需要Redux中间件</h3><p>在redux-thunk的文档里，给了我们一个stackoverflow的链接，试图向我们解释，为啥我们需要使用这玩意。其中有一个回答开头这样说道：“Don’t fall into the trap of thinking a library should prescribe how to do everything.”。<br><strong>翻译过来就是，不要认为说一个库（redux）可以帮我们做任何事</strong><br>说得再直接一点，redux还不够强，并不能满足所有的开发情境，要带上它的中间件，它才够强。   </p>
+<h2 id="初识：14行源代码"><a href="#初识：14行源代码" class="headerlink" title="初识：14行源代码"></a>初识：14行源代码</h2><p><strong>Thunk中间件可以帮我们做什么</strong><br>回到正题，Thunk中间件做了什么，我们得从它的源代码说起：<br>（之所以一直说14行 是因为我第一次看到的时候，被这段源代码惊到了。。。不仅短，而且容易懂，看完彻底不抓瞎了，特别开心）    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleware</span>(<span class="params">extraArgument</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">&#123; dispatch, getState &#125;</span>) =&gt;</span> next =&gt; <span class="function"><span class="params">action</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> thunk = createThunkMiddleware();</span><br><span class="line">thunk.withExtraArgument = createThunkMiddleware;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> thunk;</span><br></pre></td></tr></table></figure>
+<p>我来解释一下这段代码（虽然可能并不需要我解释。。。。/捂脸）<br>首先，thunk中间件抓住了我们派发的action对象，然后给它裹一层，在它的外层，把dispatch和getState方法传进来了。随后，对action的种类进行判断，如果action是一个函数，那么就把dispatch和getState都传进去，然后执行这个函数。     </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/01/04/redux_thunk/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/01/01/redux_context/" itemprop="url">
                   在使用Redux重构应用之前:从React的context属性说开去
                 </a>
@@ -1087,101 +1183,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/25/ES615/" itemprop="url">
-                  ES6学习笔记15:ES6中的模块(module)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-25T00:00:00+08:00" content="2016-12-25">
-              2016-12-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。<br>前段时间用Node写demo的时候，完全离不开modules啊。<br>当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。<br>总之，重要！！</p>
-<h2 id="模块的导出和导入"><a href="#模块的导出和导入" class="headerlink" title="模块的导出和导入"></a>模块的导出和导入</h2><p>先来看如何写一个模块并把它导出！<br>假设我们现在有同一个目录下的两个文件，script1.js和script2.js</p>
-<p>script1.js:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>;</span><br><span class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;fruit, dessert&#125;;</span><br></pre></td></tr></table></figure>
-<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/25/ES615/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1227,7 +1228,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">69</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1237,7 +1238,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
