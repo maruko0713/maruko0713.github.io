@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ES6," />
+  <meta name="keywords" content="React," />
 
 
 
@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对数组形式做一个记录。    变量的解构赋值之基本用法以前如果你想要给几个变量同时赋值，你这样做：     123var a = 1;var b = 2;var c = 3; 简化后:     1var a = 1, b = 2, c = 3; 但是在ES6中，你还可以这样搞:     1var [a, b, c] =">
-<meta name="keywords" content="ES6">
+<meta name="description" content="前言之前我对setState这个api的理解，仅限于：它管组件自己的数据，它是异步。如此而已。前两天被一个前辈问到说“setState后究竟发生了什么？”。除了数生命周期外我竟什么都说不出来。这两天读了点东西，才知道正是因为对setState的一个巧妙的处理，React才表现出那么好的性能。（当然性能好这一点是多方面的，比如虚拟dom也功不可没）。要想理解React，必须理解setState。">
+<meta name="keywords" content="React">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6学习笔记2:变量的解构赋值数组篇">
-<meta property="og:url" content="http://mieruko.com/2016/12/05/ES602/index.html">
+<meta property="og:title" content="理解React中的setState">
+<meta property="og:url" content="http://mieruko.com/2017/09/25/setState/index.html">
 <meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对数组形式做一个记录。    变量的解构赋值之基本用法以前如果你想要给几个变量同时赋值，你这样做：     123var a = 1;var b = 2;var c = 3; 简化后:     1var a = 1, b = 2, c = 3; 但是在ES6中，你还可以这样搞:     1var [a, b, c] =">
+<meta property="og:description" content="前言之前我对setState这个api的理解，仅限于：它管组件自己的数据，它是异步。如此而已。前两天被一个前辈问到说“setState后究竟发生了什么？”。除了数生命周期外我竟什么都说不出来。这两天读了点东西，才知道正是因为对setState的一个巧妙的处理，React才表现出那么好的性能。（当然性能好这一点是多方面的，比如虚拟dom也功不可没）。要想理解React，必须理解setState。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-01-22T06:59:18.000Z">
+<meta property="og:updated_time" content="2018-01-08T10:44:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6学习笔记2:变量的解构赋值数组篇">
-<meta name="twitter:description" content="前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对数组形式做一个记录。    变量的解构赋值之基本用法以前如果你想要给几个变量同时赋值，你这样做：     123var a = 1;var b = 2;var c = 3; 简化后:     1var a = 1, b = 2, c = 3; 但是在ES6中，你还可以这样搞:     1var [a, b, c] =">
+<meta name="twitter:title" content="理解React中的setState">
+<meta name="twitter:description" content="前言之前我对setState这个api的理解，仅限于：它管组件自己的数据，它是异步。如此而已。前两天被一个前辈问到说“setState后究竟发生了什么？”。除了数生命周期外我竟什么都说不出来。这两天读了点东西，才知道正是因为对setState的一个巧妙的处理，React才表现出那么好的性能。（当然性能好这一点是多方面的，比如虚拟dom也功不可没）。要想理解React，必须理解setState。">
 
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> ES6学习笔记2:变量的解构赋值数组篇 | Mieruko0713的实验室 </title>
+  <title> 理解React中的setState | Mieruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -216,7 +216,7 @@
             
             
               
-                ES6学习笔记2:变量的解构赋值数组篇
+                理解React中的setState
               
             
           </h1>
@@ -228,8 +228,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-05T00:00:00+08:00" content="2016-12-05">
-              2016-12-05
+            <time itemprop="dateCreated" datetime="2017-09-25T00:00:00+08:00" content="2017-09-25">
+              2017-09-25
             </time>
           </span>
 
@@ -255,27 +255,16 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>变量的解构赋值。<br>一个使多变量赋值变得更加简单的东西。<br>它有很多形式，这篇博客是对数组形式做一个记录。   </p>
-<h2 id="变量的解构赋值之基本用法"><a href="#变量的解构赋值之基本用法" class="headerlink" title="变量的解构赋值之基本用法"></a>变量的解构赋值之基本用法</h2><p>以前如果你想要给几个变量同时赋值，你这样做：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-<p>简化后:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-<p>但是在ES6中，你还可以这样搞:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
-<p>你还可以随便往里面加括号:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a, [b, c]] = [<span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>]];</span><br></pre></td></tr></table></figure>
-<p>这样也没问题。     </p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前我对setState这个api的理解，仅限于：它管组件自己的数据，它是异步。如此而已。<br>前两天被一个前辈问到说“setState后究竟发生了什么？”。除了数生命周期外我竟什么都说不出来。这两天读了点东西，才知道正是因为对setState的一个巧妙的处理，React才表现出那么好的性能。（当然性能好这一点是多方面的，比如虚拟dom也功不可没）。要想理解React，必须理解setState。    </p>
+<h2 id="setState之后-到底发生了什么"><a href="#setState之后-到底发生了什么" class="headerlink" title="setState之后 到底发生了什么"></a>setState之后 到底发生了什么</h2><p>这次当然不能数生命周期了。<br>需要引入一个概念，就是React中有这么一个属性叫isBatchingUpdates，这个属性并不是全局的，但是它是<strong>唯一</strong>的。我自己的理解哈，这个属性就像操作系统里咱们学的那个“锁”一样的。怎么说呢？setState有同步和异步两种更新方式，具体怎么区分，我这里是借助了知乎上<a href="https://zhuanlan.zhihu.com/p/26069727" target="_blank" rel="noopener">程墨前辈的一篇文章</a>来理解的。这篇文章里提到说：</p>
+<blockquote>
+<p>如果是由React引发的事件处理（比如通过onClick引发的事件处理），调用setState不会同步更新this.state，除此之外的setState调用会同步执行this.state。所谓“除此之外”，指的是绕过React通过addEventListener直接添加的事件处理函数，还有通过setTimeout/setInterval产生的异步调用。</p>
+</blockquote>
+<p>讲的非常清楚，读完这段足以对同步异步进行区分。然后我想说的是这个同步异步的区分是怎么来的(原文也有介绍，但是把我整蒙了)，我结合这几天看过的文章和代码来说说自己的理解吧：    </p>
 <a id="more"></a> 
-<h2 id="变量的解构赋值之一堆小🌰"><a href="#变量的解构赋值之一堆小🌰" class="headerlink" title="变量的解构赋值之一堆小🌰"></a>变量的解构赋值之一堆小🌰</h2><h3 id="挑着赋值"><a href="#挑着赋值" class="headerlink" title="挑着赋值"></a>挑着赋值</h3><p>如果你只想赋值a,c而此时却只有一个三个元素的数组，你还可以这样:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a, , c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
-<p>挑着赋值，嘻嘻。  </p>
-<h3 id="多元素赋值"><a href="#多元素赋值" class="headerlink" title="多元素赋值"></a>多元素赋值</h3><p>有时候我们希望把剩下的一堆元素全部赋值给一个变量。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a, ...c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>, a);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"c:"</span>, c);</span><br></pre></td></tr></table></figure>
-<p>这段程序输出的c是一个数组[2, 3]。<br>c会自动把里面的元素组成一个数组。    </p>
-<h3 id="存在默认值"><a href="#存在默认值" class="headerlink" title="存在默认值"></a>存在默认值</h3><p>有时候我们会见到默认值存在的情况。比如:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a, b, c=<span class="string">"default"</span>, d=<span class="string">"default"</span>] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>,b);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"c:"</span>,c);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"d:"</span>,d);</span><br></pre></td></tr></table></figure>
-<p>输出结果是d:default;<br>虽然等号右边的元素并不够，但是d还是顺利输出了。     </p>
-<h2 id="解构赋值的好处"><a href="#解构赋值的好处" class="headerlink" title="解构赋值的好处"></a>解构赋值的好处</h2><p>很明显，我们的代码变得简单了，用更少的信息量，表达了我们想表达的东西。<br>所以解构赋值大法好呀！^_^</p>
+<p>然后说回这个”锁”吧，它默认值是个false。setState是异步的，但是React是同步的。说得清楚点，就是说一个时刻里不能执行两个调用。当React自己去引发事件处理的时候，它首先会把这个isBatchingUpdates设置为true。然后当setState执行的时候，甭管事件是谁引发的，它都会去检查这个isBatchingUpdates这个“锁”。一看，true，好的，我这边的状态等着，一直等到这个调用执行完了，把“锁”给设回false了，状态才开始更新。<br>怎么等呢，如果发现锁是true，你意欲更新这个组件会带着它身上的这些意欲更新的状态（装在pendingQueue里），被推入一个队列里，这个队列叫做“dirtyComponents”。这中间你要是试图对一个组件进行多次setState，这多个setState会被继续推入组件自己身上的pendingQueue里。于是当锁被解开了，轮到该组件进行更新的时候，它能一口气把好几个state合并成一个，然后只更新一次，这样就大大节省了开销呀~~    </p>
+<p>同理，如果调用不是由React触发的，那么就不管这个锁，锁就原地false。false的情况下，组件不会进dirtyComponents等待了，它直接更新了，没错，这时它就是一个同步的状态更新~     </p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>不知道为什么费了这么大劲弄明白的地方，写出来竟然只有这么点。。。。😂<br>总感觉怪怪的，但又不知道自己少说了什么。😂先立一个flag：本文常年更新，欢迎各种指正各种完善呀呀呀呀呀~     </p>
 
       
     </div>
@@ -290,7 +279,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ES6/" rel="tag">#ES6</a>
+            <a href="/tags/React/" rel="tag">#React</a>
           
         </div>
       
@@ -299,16 +288,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/04/ES01/" rel="next" title="ES6学习笔记1:const命令">
-                <i class="fa fa-chevron-left"></i> ES6学习笔记1:const命令
+              <a href="/2017/07/20/react-native-key/" rel="next" title="一图开发手记：React中的key属性踩坑">
+                <i class="fa fa-chevron-left"></i> 一图开发手记：React中的key属性踩坑
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/06/ES603/" rel="prev" title="ES6学习笔记3:变量的解构赋值对象篇">
-                ES6学习笔记3:变量的解构赋值对象篇 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/01/redux_context/" rel="prev" title="在使用Redux重构应用之前:从React的context属性说开去">
+                在使用Redux重构应用之前:从React的context属性说开去 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -425,7 +414,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的解构赋值之基本用法"><span class="nav-number">2.</span> <span class="nav-text">变量的解构赋值之基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量的解构赋值之一堆小🌰"><span class="nav-number">3.</span> <span class="nav-text">变量的解构赋值之一堆小🌰</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#挑着赋值"><span class="nav-number">3.1.</span> <span class="nav-text">挑着赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多元素赋值"><span class="nav-number">3.2.</span> <span class="nav-text">多元素赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存在默认值"><span class="nav-number">3.3.</span> <span class="nav-text">存在默认值</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解构赋值的好处"><span class="nav-number">4.</span> <span class="nav-text">解构赋值的好处</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setState之后-到底发生了什么"><span class="nav-number">2.</span> <span class="nav-text">setState之后 到底发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
           </div>
         </section>
