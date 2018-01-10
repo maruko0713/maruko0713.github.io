@@ -411,6 +411,116 @@
             
               
                 
+                <a class="post-title-link" href="/2017/10/02/macro/" itemprop="url">
+                  重新理解事件循环和异步队列：区分macro和micro
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-02T00:00:00+08:00" content="2017-10-02">
+              2017-10-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前两天看到一段代码，代码具体长啥样记不起来了，重点里面有个setTimeout（A君）,有个promise.then（B君）调用。我琢磨着大家都是异步，异步就是进队列等着，先进先出，那么肯定是A君的回调先执行，然后B君。结果那段代码跑出来是promise的调用先执行了。由此发现哈哈哈哈哈我自以为理解得很清楚的javascript异步队列其实理解得就是一坨。。。。。。:)<br>感谢万能的知乎和简书，这次在没翻墙的情况下就读到了不少好文章。昨天晚上加今天早上，终于在吃早饭之前把异步队列这个micro和macro的辨析给整明白了。赶紧记下来。。。。    </p>
+<h2 id="重新理解事件循环：macro-micro-大不同"><a href="#重新理解事件循环：macro-micro-大不同" class="headerlink" title="重新理解事件循环：macro, micro 大不同"></a>重新理解事件循环：macro, micro 大不同</h2><p>理解js的事件循环，不仅要知道有异步队列这么个东西，还要知道队列有两种，一种是macro(宏任务)，一种是micro(微任务)。在<a href="https://www.jianshu.com/p/d2f672502966?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">简书这篇文章</a>里，还给我们科普了：</p>
+<blockquote>
+<p>任务队列又分为macro-task（宏任务）与micro-task（微任务），在最新标准中，它们被分别称为task与jobs。</p>
+</blockquote>
+<p>ok,先记住这俩名字。然后我来梳理一下事件循环的过程:   </p>
+<ol>
+<li>全局上下文被推入调用栈，同步代码执行</li>
+<li>同步代码执行完了，栈空。然后把所有的micro任务给执行了。</li>
+<li>micro执行完了。开始执行macro。任务队列可以有多个，这里只要执行完其中的一个就行了。</li>
+<li>然后，再开始执行micro，执行完。</li>
+<li>然后再开始执行macro<br>…<br>…<br>…<br>一直执行到队列也彻底空了，啥也没有了，ok，循环结束。    </li>
+</ol>
+<p>大致就是这么个流程，然后需要注意的是下面几点:    </p>
+<blockquote>
+<p>具体的分类规则：macro-task大概包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering。<br>micro-task大概包括: process.nextTick, Promise, Object.observe(已废弃), MutationObserver(html5新特性)</p>
+</blockquote>
+<p>(上面这段是从知乎柳兮的一个<a href="https://zhuanlan.zhihu.com/p/26238030" target="_blank" rel="noopener">专栏文章</a>里摘抄的，这篇文章非常好，还给出了详尽的例子，帮了我大忙了。)   </p>
+<ul>
+<li>数量区别：一个事件循环中只有一个micro队列，它空了又补补了又空。但是可有多个macro队列，因此我们说macro每次循环它的时候当前这个macro队列执行完就可以了。     </li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>经过这么一折腾，异步队列，事件循环这一块，可算是整明白了。<br>所以说平时不应该不舍得花时间理解原理，不然代码跑出来都不知道是咋错的，说不定还会怀疑电脑坏了。。。。/捂脸<br>（逃。。。。。。。。。。。。。      </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/09/25/setState/" itemprop="url">
                   理解React中的setState
                 </a>
@@ -1080,117 +1190,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/04/React1/" itemprop="url">
-                  React组件生命周期的总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T00:00:00+08:00" content="2017-01-04">
-              2017-01-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在React组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。<br>一个React组件的生命周期从广义上看分为三个部分:   </p>
-<ul>
-<li>挂载</li>
-<li>渲染</li>
-<li>卸载<br>当渲染后的组件需要更新时，我们会重新去渲染组件。因此，我们也可以把React生命周期分为两类:    </li>
-<li>当组件在挂载或卸载时</li>
-<li>当组件接受新的数据，即组件更新时</li>
-</ul>
-<p>不过我还是更加喜欢这个版本的生命周期解释哈哈哈哈哈：    </p>
-<ul>
-<li>实例化</li>
-<li>存在期</li>
-<li>销毁&amp;清理</li>
-</ul>
-<p>一图胜千言：    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="react生命周期"><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/04/React1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1231,7 +1235,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-count">71</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
