@@ -217,6 +217,117 @@
             
               
                 
+                <a class="post-title-link" href="/2018/01/27/emitter/" itemprop="url">
+                  不懂为什么，突然想写一个Event-Emitter
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-27T00:00:00+08:00" content="2018-01-27">
+              2018-01-27
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。<br>读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做<a href="https://github.com/developit/mitt" target="_blank" rel="noopener">mitt</a>，就是专门来做这个事的。只有200行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。</p>
+<h2 id="mitt的思路"><a href="#mitt的思路" class="headerlink" title="mitt的思路"></a>mitt的思路</h2><p>不仅是mitt的思路，其实bus也是这样，几乎所有的Event-Emitter都是这样的，理解了mitt的思路，我们就可以举一反三，mitt是这样的：<br>首先创建一个对象，这个对象是一个大boss，在这里面存储我们的事件队列，队列（实现出来是js数组）主要有这么两类:     </p>
+<ul>
+<li>按照事件类型划分，队列根据不同的事件名称为自己命名</li>
+<li>特殊的’*‘队列，通配符在这里的意思是，不管你触发了哪一个类型的事件，在执行完指定事件类型对应的事件队列后，我都要执行*对应的那个队列里的事件们。它像一个小尾巴一样，只要有事件触发，不论你是谁，我都要跟在后面跑一跑。<br>然后后面每当有事件触发，触发的过程就是一个函数出队的过程，依照我们绑定的顺序去一个个入栈执行它们。<br>大概的思路就是这样子啦~  </li>
+</ul>
+<h2 id="写一个更完整的Event-Emitter"><a href="#写一个更完整的Event-Emitter" class="headerlink" title="写一个更完整的Event-Emitter"></a>写一个更完整的Event-Emitter</h2><p>理解了mitt的思路，就可以自己尝试写一个类似的东西试试看了。     </p>
+<p>相对于mitt的话，我下面实现的这个myEmitt增加了once（只监听一次事件的触发）和clear（清除所有的监听器）方法，具体的代码是这样的：   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myEmitt</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="keyword">this</span>.eventHome = &#123;<span class="string">'*'</span>:[]&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    on(type, handler) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!(handler <span class="keyword">instanceof</span> <span class="built_in">Function</span>)) &#123;<span class="string">``</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"哥 你错了 请传一个函数"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">this</span>.eventHome[type]) &#123;</span><br><span class="line">            <span class="keyword">this</span>.eventHome[type] = []</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.eventHome[type].push(handler)</span><br><span class="line">    &#125;</span><br><span class="line">    emit(type, params) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.eventHome[type]) &#123;</span><br><span class="line">            <span class="keyword">this</span>.eventHome[type].forEach(<span class="function">(<span class="params">handler, index</span>)=&gt;</span> &#123;</span><br><span class="line">                handler(params)</span><br><span class="line">                <span class="keyword">if</span>(handler.once) &#123;</span><br><span class="line">                    <span class="keyword">this</span>.eventHome[type].splice(index, <span class="number">1</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.eventHome[<span class="string">'*'</span>].forEach(<span class="function">(<span class="params">handler</span>) =&gt;</span> &#123;</span><br><span class="line">            handler(type, params)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    off(type, handler) &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>.eventHome[type]) &#123;</span><br><span class="line">            <span class="keyword">this</span>.eventHome[type].splice(<span class="keyword">this</span>.eventHome[type].indexOf(handler)&gt;&gt;&gt;<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    once(type, handler) &#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">this</span>.eventHome[type]) &#123;</span><br><span class="line">            <span class="keyword">this</span>.eventHome[type] = []</span><br><span class="line">        &#125;</span><br><span class="line">        handler.once = <span class="literal">true</span></span><br><span class="line">        <span class="keyword">this</span>.eventHome[type].push(handler)</span><br><span class="line">    &#125;</span><br><span class="line">    clear() &#123;</span><br><span class="line">        <span class="keyword">this</span>.eventHome = &#123;<span class="string">'*'</span>:[]&#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = myEmitt</span><br></pre></td></tr></table></figure>
+<p>这段代码经测试是可以正常使用的。<br>然后之所以要贴代码，是因为有一些可圈可点的地方，希望自己以后遇到类似的场景，可以想起来。     </p>
+<h2 id="可圈可点的小细节"><a href="#可圈可点的小细节" class="headerlink" title="可圈可点的小细节"></a>可圈可点的小细节</h2><h3 id="无符号按位右移运算符-gt-gt-gt"><a href="#无符号按位右移运算符-gt-gt-gt" class="headerlink" title="无符号按位右移运算符 &gt;&gt;&gt;"></a>无符号按位右移运算符 &gt;&gt;&gt;</h3><p>读过的代码还不是特别多，这是我第一次在语法书以外的地方见到这个东西。<br>具体的语句是这一句:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.eventHome[type].splice(<span class="keyword">this</span>.eventHome[type].indexOf(handler)&gt;&gt;&gt;<span class="number">0</span>,<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>为什么这么做?<br>indexOf平时会被我们用来确定一个东西到底在不在数组里。在这行代码来看，我们的用意是在数组里找到对应的函数，然后把它给删掉。这里就有两种情况:   </p>
+<ul>
+<li>数组里有这么个函数，我们返回了一个正常的索引，于是切除成功，万事大吉。这种情况&gt;&gt;&gt;0对它不起作用   </li>
+<li>数组里压根没有，这种情况不用&gt;&gt;&gt;比较恐怖，因为splice方法喜欢把-1解读为当前数组的最后一个元素，这样子的话，在压根没有对应函数可以删的情况下，不管三七二十一就把最后一个元素给干掉了，有点鬼畜。<br>>>>就这点好，具体它干了啥，看一下运行结果：     </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">a.indexOf(<span class="number">4</span>)</span><br><span class="line"><span class="comment">// 返回-1</span></span><br><span class="line">a.indexOf(<span class="number">4</span>) &gt;&gt;&gt; <span class="number">0</span></span><br><span class="line"><span class="comment">// 输出4294967295</span></span><br><span class="line">a.splice(<span class="number">4294967295</span>, <span class="number">1</span>)</span><br><span class="line"><span class="comment">// 啥也没干 a还是它自己</span></span><br></pre></td></tr></table></figure>
+<p>神奇，-1不见了，取而代之的是一个巨大的数，这个数是谁呢，在二进制下，它就是！     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">4294967295</span>).toString(<span class="number">2</span>)</span><br><span class="line"><span class="comment">// 输出 '11111111111111111111111111111111'</span></span><br></pre></td></tr></table></figure>
+<p>就是它没错了，一个32位全是1的二进制数。<br>为啥是这样，大家可以写一下-1的二进制，负数二进制这么算，先把1的二进制写出来，然后减1，取反，得到的就是11111111111111111111111111111111。<br>前面说到&gt;&gt;&gt;的作用是把一个数变成无符号的，然后再右移。这里明显没有右移，我们仅仅是想告诉js引擎，别再把这个数当做负数去解析了，直接返回它的二进制结果吧，于是就有了一个巨大的无聊的数。这个数splice是找不到的，找不到就不删，于是一切保持原状，皆大欢喜。<br>妙不妙？<br>妙呀！    </p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>今天的想法是，读一个库不能仅仅局限于读懂。<br>楼上的myEmitt在写成之前改了好多次，如果仅仅是，读懂了，知道思路了，就pass，就失去了一个发现自己编码恶习的机会。比如我第一次写的时候，虽然也实现了所有的接口功能，要用forEach我用了map，且把eventHome写在全局导致每次new新对象的时候仍然只能使用唯一的一个事件队列对象，等等等等。<br>要写出来才知道有没有懂。<br>要写出来才知道有没有懂。<br>要写出来才知道有没有懂。<br>重要的事情说三遍。     </p>
+<p>去吃晚饭^_^ </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/01/04/redux_thunk/" itemprop="url">
                   从redux-thunk的14行源码和dispatch函数的实现过程，说说我眼中的redux中间件
                 </a>
@@ -1078,103 +1189,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/19/rn0/" itemprop="url">
-                  RN初相见,哇你好厉害呀&React前置知识
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-19T00:00:00+08:00" content="2017-03-19">
-              2017-03-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>再次回到博客看下日期真是惊出一身汗我。。。。😂，好久没有记东西了。<br>这两个月学算法去了。。。。。。<br>忙成狗的三月，在被一个巨麻烦的专业课老师禁止我带电脑上课之后，写代码的时间就更紧凑了。。。。于是也好久没有弹琴，每天都处于炸毛状态～～<br>忍过去就好了。。。。。       </p>
-<p>扯远了。。。。。<br>最近为了做一个app于是顺势开始接触rn,因为每次接触一个东西喜欢先把内容整理一下，于是我又开始写博客了。。。😂。<br>其实算法也想写博客的，但是盯着屏幕良久发现自己竟然不知道除了贴代码还能说啥?????😂遂放弃。<br>这大概是传说中的只可意会不可言传？？？？<br>不明白。。。😂      </p>
-<h2 id="关于RN"><a href="#关于RN" class="headerlink" title="关于RN"></a>关于RN</h2><p>这个东西简单来说就是一个基于React的前端框架，用它就能做出跨平台的app，既能在安卓系统上跑又能在ios系统上跑～～～<br>虽然说是基于React，我之前粗略翻了些资料以为就是React语法换了个运行环境，然而现在看来不是这样。RN有许多方面是和移动开发相关的，这也是为什么有的人本身没有开发过前端项目，大概了解一些js，但因为很熟悉安卓或ios的开发模式，于是很顺利地上手了RN的原因。</p>
-<h2 id="RN中很React的地方"><a href="#RN中很React的地方" class="headerlink" title="RN中很React的地方"></a>RN中很React的地方</h2><p>这部分就是RN中React原封不动移植来的东西。<br>可以算是预备知识吧～～      </p>
-<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p>复习！<br>如何在React|RN中创建一个组件？？？？<br>如果是ES6(大势所趋….这个是重点):    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    xxx() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    xxx() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    xxx() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> HelloComponent;</span><br></pre></td></tr></table></figure>
-<p>继承Component类，然后在里面写生命周期方法。<br>xxx就是方法名，比如render啊，constructor啊啥的。<br>啥都能没有,render必须有～～    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/19/rn0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1220,7 +1234,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-count">72</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1230,7 +1244,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
