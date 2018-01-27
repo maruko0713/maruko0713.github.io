@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="前言最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做mitt，就是专门来做这个事的。只有200行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。 mi">
+<meta name="description" content="前言最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做mitt，就是专门来做这个事的。只有60行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。 mit">
 <meta name="keywords" content="vue,event">
 <meta property="og:type" content="article">
 <meta property="og:title" content="不懂为什么，突然想写一个Event-Emitter">
 <meta property="og:url" content="http://mieruko.com/2018/01/27/emitter/index.html">
 <meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="前言最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做mitt，就是专门来做这个事的。只有200行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。 mi">
+<meta property="og:description" content="前言最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做mitt，就是专门来做这个事的。只有60行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。 mit">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-27T09:18:43.000Z">
+<meta property="og:updated_time" content="2018-01-27T09:24:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="不懂为什么，突然想写一个Event-Emitter">
-<meta name="twitter:description" content="前言最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做mitt，就是专门来做这个事的。只有200行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。 mi">
+<meta name="twitter:description" content="前言最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做mitt，就是专门来做这个事的。只有60行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。 mit">
 
 
 
@@ -255,7 +255,7 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。<br>读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做<a href="https://github.com/developit/mitt" target="_blank" rel="noopener">mitt</a>，就是专门来做这个事的。只有200行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。<br>读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做<a href="https://github.com/developit/mitt" target="_blank" rel="noopener">mitt</a>，就是专门来做这个事的。只有60行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。</p>
 <h2 id="mitt的思路"><a href="#mitt的思路" class="headerlink" title="mitt的思路"></a>mitt的思路</h2><p>不仅是mitt的思路，其实bus也是这样，几乎所有的Event-Emitter都是这样的，理解了mitt的思路，我们就可以举一反三，mitt是这样的：<br>首先创建一个对象，这个对象是一个大boss，在这里面存储我们的事件队列，队列（实现出来是js数组）主要有这么两类:     </p>
 <ul>
 <li>按照事件类型划分，队列根据不同的事件名称为自己命名</li>
