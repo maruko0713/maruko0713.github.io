@@ -217,6 +217,100 @@
             
               
                 
+                <a class="post-title-link" href="/2018/02/22/network/" itemprop="url">
+                  异步网络请求进化史：从ajax到fetch到axios
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-02-22T00:00:00+08:00" content="2018-02-22">
+              2018-02-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="不是前言的前言"><a href="#不是前言的前言" class="headerlink" title="不是前言的前言"></a>不是前言的前言</h2><p>其实原生ajax和fetch已经很久没用了。。。毕竟axios真是太好用了。   </p>
+<h2 id="原生ajax"><a href="#原生ajax" class="headerlink" title="原生ajax"></a>原生ajax</h2><p>其实就是XMLHttpRequest。<br>或许每个前端在入门js基础的时候都见过这样一段代码:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">success</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'xxx'</span>);</span><br><span class="line">    textarea.value = text;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fail</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'xxx'</span>);</span><br><span class="line">    textarea.value = <span class="string">'Error code: '</span> + code;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest(); <span class="comment">// 新建XMLHttpRequest对象</span></span><br><span class="line"></span><br><span class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 状态发生变化时，函数被回调</span></span><br><span class="line">    <span class="keyword">if</span> (request.readyState === <span class="number">4</span>) &#123; <span class="comment">// 成功完成</span></span><br><span class="line">        <span class="comment">// 判断响应结果:</span></span><br><span class="line">        <span class="keyword">if</span> (request.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="comment">// 成功，通过responseText拿到响应的文本:</span></span><br><span class="line">            <span class="keyword">return</span> success(request.responseText);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 失败，根据响应码判断失败原因:</span></span><br><span class="line">            <span class="keyword">return</span> fail(request.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// HTTP请求还在继续...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送请求:</span></span><br><span class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/api/categories'</span>);</span><br><span class="line">request.send();</span><br></pre></td></tr></table></figure>
+<p>这就是最最最原始的ajax请求发送办法了。先new一个xhr对象，然后各种配置。<br>open方法配置包括method和url在内的几种参数，send方法发送出去。然后onreadystatechange设置回调监听请求抛出之后发生了什么，走到了哪一步。<br>当然这是最简单的情况，有时候你为了设置头信息，还不得不调用一个setRequestHeader()。<br>这么多属性和api，也记不住呀。。。😂<br>xhr对象的配置繁琐而冗长，不太可爱。   </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/02/22/network/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2018/02/07/rv-setState/" itemprop="url">
                   状态更新策略对比：React setState vs Vue nextTick
                 </a>
@@ -1073,108 +1167,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/23/rn2/" itemprop="url">
-                  RN|很RN的部分|基础组件篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-23T00:00:00+08:00" content="2017-03-23">
-              2017-03-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RN中有一些提前为我们写好的最基本的组件。它们是:    </p>
-<ul>
-<li>视图组件 View</li>
-<li>文本组件 Text</li>
-<li>图像组件 Image</li>
-<li>列表视图组件 ListView</li>
-</ul>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>View组件是创建用户界面的一个最基本的组件，类似于我们html里面div标签。<br>我们可以给它添加一些样式，添加事件等等。<br>它当然必须是可以嵌套的:    </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">View</span>&gt;</span><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>当我们写出上述jsx代码的时候，它底层自动帮我们对应了ios的UIView组件，或者安卓的android.view组件。     </p>
-<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><p>顾名思义是写文本用的，注意它的用法规则是必须要嵌套在一个View组件里面～～<br>同样可以嵌套:    </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">400</span>"&#125;&#125;&gt;</span></span><br><span class="line">        我是小丸子    </span><br><span class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">600</span>"&#125;&#125;&gt;</span>你呢<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/23/rn2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1220,7 +1212,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

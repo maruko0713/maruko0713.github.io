@@ -217,6 +217,102 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/09/ES605/" itemprop="url">
+                  ES6学习笔记5:字符串的新面貌
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-09T00:00:00+08:00" content="2016-12-09">
+              2016-12-09
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6中的字符串要登场啦！！<br>这一篇会写的有点杂，因为我想把字符串一锅端哈哈哈哈哈哈～～    </p>
+<h2 id="新增字符串方法"><a href="#新增字符串方法" class="headerlink" title="新增字符串方法"></a>新增字符串方法</h2><h3 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h3><p>以前我们如果想要在字符串里面找一个字母，我们这样做:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"yo"</span>.indexOf(<span class="string">"Y"</span>) !== <span class="number">-1</span>);</span><br></pre></td></tr></table></figure>
+<p>我们用indexOf方法，如果可以返回一个非-1索引，那么就存在,否则不存在。<br>在ES6中，有了一个更好的办法：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"yo"</span>.includes(<span class="string">"Y"</span>));</span><br></pre></td></tr></table></figure>
+<p>字符串对象多了一个includes方法，直接返回布尔值，当我们只想知道它是否存在，而不care<br>它存在于哪里时，就可以这样啦！<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/09/ES605/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/08/ES604/" itemprop="url">
                   ES6学习笔记4:变量的解构赋值杂七杂八一锅端篇
                 </a>
@@ -1054,101 +1150,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/14/laravel2/" itemprop="url">
-                  Laravel笔记2:Laravel向视图传递变量
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-14T00:00:00+08:00" content="2016-11-14">
-              2016-11-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><p>前面(laravel1里面)介绍控制器的创建方法:      </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller WelcomeController</span><br></pre></td></tr></table></figure>
-<p>然后点开controller目录下的WelcomeController文件，我们会发现里面预写好了很多东西。<br>有时我们不需要laravel为我们做这么多，于是我们可以这样:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller WelcomeController --plain</span><br></pre></td></tr></table></figure>
-<p>现在再打开看看，是不是除了一个Controller对象，里面啥也没有，空空如也了？^_^    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/14/laravel2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1194,7 +1195,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">73</span>
+              <span class="site-state-item-count">74</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
