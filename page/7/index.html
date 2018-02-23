@@ -217,6 +217,97 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/30/promise/" itemprop="url">
+                  告别回调地狱－－ES6标准中的Promise对象
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
+              2016-08-30
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>最近在阅读一本很好的开源电子书——<a href="http://es6.ruanyifeng.com/#docs/promise#Promise-all" target="_blank" rel="noopener">阮一峰老师的ES6入门</a>,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/30/promise/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/29/js11/" itemprop="url">
                   Javascript系统复习：Javascript中的面向对象(OOP)之继承和原型
                 </a>
@@ -1061,100 +1152,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/17/js5/" itemprop="url">
-                  Javascript系统复习：get和set方法／属性标签深入
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-17T00:00:00+08:00" content="2016-08-17">
-              2016-08-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>上一篇太长了，我给它截成两部分来讲。<br>这一篇会开辟get和set的新世界，然后就上一篇当中的属性标签再往下深入一下。   </p>
-<h2 id="getter和setter方法"><a href="#getter和setter方法" class="headerlink" title="getter和setter方法"></a>getter和setter方法</h2><p>看一段代码:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> kid = &#123;</span><br><span class="line">    name: <span class="string">"wanzifa"</span>,</span><br><span class="line">    weibo: <span class="string">"miemie"</span>,</span><br><span class="line">    get age() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear() - <span class="number">1996</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    set age(val) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"不能修改成"</span> + val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(kid.age);</span><br><span class="line">kid.age = <span class="number">100</span>;<span class="comment">// 输出 不能修改成100</span></span><br><span class="line"><span class="built_in">console</span>.log(kid.age);<span class="comment">// 还是27</span></span><br></pre></td></tr></table></figure>
-<p>get,set方法很特别，它们和一般的方法不一样。<br>一般我们定义一个方法，是方法名:方法体。<br>这两个方法是以get或者set开头，然后直接跟属性名，后面跟方法体。<br>这里面我们定义的get方法按照我们的想法去输出我们想要获取的属性值，<br>set方法按照我们定义的方式去对我们的属性设置操作作出反应。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/17/js5/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1200,7 +1197,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

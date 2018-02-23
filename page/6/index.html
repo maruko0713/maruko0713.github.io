@@ -217,6 +217,102 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/28/buffer/" itemprop="url">
+                  node中的Buffer对象
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-28T00:00:00+08:00" content="2016-09-28">
+              2016-09-28
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这段时间在学习用nodejs做一个微信公众号的后端开发。node真是百闻不如一见，这回见着了，觉得node和浏览器端js差别还是挺明显的（众：你这不废话吗！）。嘿嘿，今天处理一段request数据时，用了一个办法是先把它转成buffer对象，然后再将其重新编码，所以今天就来侃侃Buffer吧！     </p>
+<h2 id="Buffer是啥？"><a href="#Buffer是啥？" class="headerlink" title="Buffer是啥？"></a>Buffer是啥？</h2><p>字面理解一下Buffer（缓冲）对象:   </p>
+<blockquote>
+<p>一般编程所说的缓冲区指的是内存缓冲区,这是程序所设置的一块内存区域,用来暂存从其他设备读入的数据或即将写入其他设备的数据.</p>
+</blockquote>
+<p>好，下面我们关心一下node里面的缓冲对象:<br>对于JavaScript来说，对Unicode编码的数据很容易处理的但是对于二进制数据就没什么处理方法了。但是在一些TCP数据流或者在操作一些文件数据流的时候，字节流的处理方法还是必须的。nodeJS中便出了处理的策略方法~提供了与String类似对等的全局构造函数Buffer（与其说与String对等，还不如说与Array类似但是有些不同方面还是需要注意），全局那么自然就不要每次的require了。Buffer是node中储存二进制数据的中介者。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/28/buffer/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/25/ajax/" itemprop="url">
                   Ajax全接触：原生js中的ajax和jQuery中的ajax
                 </a>
@@ -1115,97 +1211,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/30/promise/" itemprop="url">
-                  告别回调地狱－－ES6标准中的Promise对象
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-30T00:00:00+08:00" content="2016-08-30">
-              2016-08-30
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>最近在阅读一本很好的开源电子书——<a href="http://es6.ruanyifeng.com/#docs/promise#Promise-all" target="_blank" rel="noopener">阮一峰老师的ES6入门</a>,其中对这个Promise对象印象很深刻，而且刚好最近写一个小demo用到了，今天来研究一下它。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/30/promise/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1251,7 +1256,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">74</span>
+              <span class="site-state-item-count">75</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
