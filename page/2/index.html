@@ -530,6 +530,99 @@
             
               
                 
+                <a class="post-title-link" href="/2017/03/21/new_es601/" itemprop="url">
+                  重新理解ES6：是什么和为什么-变量声明篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-21T00:00:00+08:00" content="2017-03-21">
+              2017-03-21
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用ES6进行App和网页开发已经有近一年的时间了，用法天天见，不知所以然。前几天同期的培森向我推荐了《深入理解ES6》这本书，真是一本好书，一个个短小精悍的代码片段仿佛对读者的一番番质问：嗨，你真的懂我吗？？<br>如果说各种各样的ES6语法讲解是在陈述事实，那么本书更倾向于做一道证明题：为什么ES6是这样的？（为什么需要这样？）  </p>
+<h3 id="帮助与支持"><a href="#帮助与支持" class="headerlink" title="帮助与支持:"></a>帮助与支持:</h3><p>一年前，阮一峰的<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="noopener">《ES6入门》</a>让我见识了ES6的魔法。<br>一年后，Zakas的<a href="https://book.douban.com/subject/27072230/" target="_blank" rel="noopener">《深入理解ES6》</a>，揭开了魔法背后的玄机。<br>另外不得不提一下<a href="https://segmentfault.com/q/1010000007541743" target="_blank" rel="noopener">segmentdefault这篇问答</a>，for循环里的let到底是怎么回事，我之前的认知一直都比较模糊，本文对这个操作做了去糖处理，整个思路非常清晰。</p>
+<h2 id="前置知识：-块级作用域的出现"><a href="#前置知识：-块级作用域的出现" class="headerlink" title="前置知识： 块级作用域的出现"></a>前置知识： 块级作用域的出现</h2><p>ES6之前，js只划分全局作用域和函数作用域。如今，新增了块级作用域的概念。<br>let和const声明的变量，会自动绑定当前的块级作用域。<strong>外层作用域无法读取内层作用域的变量</strong>    </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/21/new_es601/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/03/19/rn0/" itemprop="url">
                   RN初相见,哇你好厉害呀&React前置知识
                 </a>
@@ -1087,99 +1180,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/21/ES612/" itemprop="url">
-                  ES6学习笔记12:迭代器和生成器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-21T00:00:00+08:00" content="2016-12-21">
-              2016-12-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6中，引入了迭代器和生成器的概念。<br>久违了的名字，上次见到还是在《Python核心编程》里呐！<br>所以说JS越来越正统语言了呀～～～    </p>
-<h2 id="迭代器-Iterators-碎碎念"><a href="#迭代器-Iterators-碎碎念" class="headerlink" title="迭代器(Iterators)碎碎念"></a>迭代器(Iterators)碎碎念</h2><p>迭代器就是可以迭代输出值的一个东西。<br>迭代器每一次迭代会返回一个对象，这个对象长这样子：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">value</span>: xx, <span class="attr">done</span>: <span class="literal">true</span>/<span class="literal">false</span>&#125;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/21/ES612/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1225,7 +1225,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">75</span>
+              <span class="site-state-item-count">76</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

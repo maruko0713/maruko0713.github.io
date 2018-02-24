@@ -217,6 +217,107 @@
             
               
                 
+                <a class="post-title-link" href="/2016/08/31/js12/" itemprop="url">
+                  Javascript系统复习：Javascript中的面向对象(OOP)之面向对象的其它特性
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-31T00:00:00+08:00" content="2016-08-31">
+              2016-08-31
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>本文是对面向对象第一篇的一个补充。<br>主要补充下面几点：    </p>
+<ul>
+<li>重载</li>
+<li>链式调用</li>
+<li>模块化</li>
+</ul>
+<h2 id="模拟重载"><a href="#模拟重载" class="headerlink" title="模拟重载"></a>模拟重载</h2><p>在Java中，有重载这个说法，js中，我们可以模拟重载的效果，让同样的函数名字根据不同的参数情况实现不同的调用。<br>🌰：<br>定义一个构造函数Person:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> args[<span class="number">0</span>] === <span class="string">"object"</span> &amp;&amp; args[<span class="number">0</span>]) &#123;</span><br><span class="line">        <span class="keyword">if</span>(args[<span class="number">0</span>].name) &#123;</span><br><span class="line">            <span class="keyword">this</span>.name = args[<span class="number">0</span>].name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(args[<span class="number">0</span>].age) &#123;</span><br><span class="line">            <span class="keyword">this</span>.age = args[<span class="number">0</span>].age;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(args[<span class="number">0</span>]) &#123;</span><br><span class="line">            <span class="keyword">this</span>.name = args[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(args[<span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">this</span>.age = args[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>给它设置原型并使用:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Person.prototype.toString = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"name"</span> + <span class="keyword">this</span>.name + <span class="string">",age="</span> + <span class="keyword">this</span>.age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> wanzi = <span class="keyword">new</span> Person(<span class="string">"wanzi"</span>,<span class="number">20</span>);</span><br><span class="line">wanzi.toString(); <span class="comment">// "name=wanzi,age=20"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> nunn = <span class="keyword">new</span> Person(&#123;<span class="attr">name</span>: <span class="string">"Nunn"</span>, <span class="attr">age</span>: <span class="number">20</span>&#125;);</span><br><span class="line">nunn.toString(); <span class="comment">// "name=Nunn, age=20"</span></span><br></pre></td></tr></table></figure>
+<p>如此，我们在构造函数内部进行参数类型的判断，根据参数类型的不同，进行不同的操作。      </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/31/js12/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/30/promise/" itemprop="url">
                   告别回调地狱－－ES6标准中的Promise对象
                 </a>
@@ -1051,107 +1152,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/19/js6/" itemprop="url">
-                  Javascript系统复习：对象标签和对象序列化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-19T00:00:00+08:00" content="2016-08-19">
-              2016-08-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>前面我们说属性是有标签的，于是<strong><em>对象也是有标签的</em></strong>。    </p>
-<h2 id="对象标签"><a href="#对象标签" class="headerlink" title="对象标签"></a>对象标签</h2><p>对象标签主要有三种:    </p>
-<ul>
-<li>[[proto]]</li>
-<li>[[class]]</li>
-<li>[[extensible]]</li>
-</ul>
-<h3 id="原型和class"><a href="#原型和class" class="headerlink" title="原型和class"></a>原型和class</h3><p>第一个标签对应的是原型，我们可以通过prototype属性来访问。<br>第二个标签没有一个指定的方式去查看或者修改它，我们可以间接地通过Object.prototype.toString方法来获取它。<br>举个例子：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> toString.call(o).slice(<span class="number">8</span>, <span class="number">-1</span>);</span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line">toString.call(<span class="literal">null</span>); <span class="comment">// "[object Null]"</span></span><br><span class="line">getType(<span class="literal">null</span>); <span class="comment">// "Null"</span></span><br><span class="line">getType(<span class="literal">undefined</span>); <span class="comment">// "Undefined"</span></span><br><span class="line">getType(<span class="number">1</span>); <span class="comment">// "Number"</span></span><br><span class="line">getType(<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>));<span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>); <span class="comment">// "object"</span></span><br><span class="line">getType(<span class="literal">true</span>); <span class="comment">// "Boolean"</span></span><br><span class="line">getType(<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)); <span class="comment">// "Boolean"</span></span><br></pre></td></tr></table></figure>
-<p>注意，在调用object.toString方法的时候，它会去把参数转换为对象，然后再作处理。<br>因此slice方法就截去了object那几个字母，只返回我们想看到的对象。    </p>
-<p><strong><em>挖坑</em></strong>：需要搞清楚Object和Function对象上的toString到底什么区别。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/19/js6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1197,7 +1197,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">75</span>
+              <span class="site-state-item-count">76</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

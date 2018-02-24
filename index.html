@@ -217,8 +217,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/02/22/network/" itemprop="url">
-                  异步网络请求进化史：从ajax到fetch到axios
+                <a class="post-title-link" href="/2018/02/22/rv-setState/" itemprop="url">
+                  状态更新策略对比：React setState vs Vue nextTick
                 </a>
               
             
@@ -259,100 +259,6 @@
 
       
         
-          <h2 id="不是前言的前言"><a href="#不是前言的前言" class="headerlink" title="不是前言的前言"></a>不是前言的前言</h2><p>其实原生ajax和fetch已经很久没用了。。。毕竟axios真是太好用了。   </p>
-<h2 id="原生ajax"><a href="#原生ajax" class="headerlink" title="原生ajax"></a>原生ajax</h2><p>其实就是XMLHttpRequest。<br>或许每个前端在入门js基础的时候都见过这样一段代码:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">success</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'xxx'</span>);</span><br><span class="line">    textarea.value = text;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fail</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'xxx'</span>);</span><br><span class="line">    textarea.value = <span class="string">'Error code: '</span> + code;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest(); <span class="comment">// 新建XMLHttpRequest对象</span></span><br><span class="line"></span><br><span class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 状态发生变化时，函数被回调</span></span><br><span class="line">    <span class="keyword">if</span> (request.readyState === <span class="number">4</span>) &#123; <span class="comment">// 成功完成</span></span><br><span class="line">        <span class="comment">// 判断响应结果:</span></span><br><span class="line">        <span class="keyword">if</span> (request.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="comment">// 成功，通过responseText拿到响应的文本:</span></span><br><span class="line">            <span class="keyword">return</span> success(request.responseText);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 失败，根据响应码判断失败原因:</span></span><br><span class="line">            <span class="keyword">return</span> fail(request.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// HTTP请求还在继续...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送请求:</span></span><br><span class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/api/categories'</span>);</span><br><span class="line">request.send();</span><br></pre></td></tr></table></figure>
-<p>这就是最最最原始的ajax请求发送办法了。先new一个xhr对象，然后各种配置。<br>open方法配置包括method和url在内的几种参数，send方法发送出去。然后onreadystatechange设置回调监听请求抛出之后发生了什么，走到了哪一步。<br>当然这是最简单的情况，有时候你为了设置头信息，还不得不调用一个setRequestHeader()。<br>这么多属性和api，也记不住呀。。。😂<br>xhr对象的配置繁琐而冗长，不太可爱。   </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/22/network/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/07/rv-setState/" itemprop="url">
-                  状态更新策略对比：React setState vs Vue nextTick
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-07T00:00:00+08:00" content="2018-02-07">
-              2018-02-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可能会是一篇有点长的源码阅读笔记。。。。。。      </p>
 <p>之前Medium上有一位兄台曾经写过这样一篇文章:     </p>
 <p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/1.png" alt="medium博客标题"><br>这个标题说出了包括曾经的我在内的React开发者的心声。<br>但是在读完<a href="https://zhuanlan.zhihu.com/p/20328570" target="_blank" rel="noopener">知乎杨森：React 源码剖析系列 － 解密 setState</a>这篇文章后，我不这么想了。<br>具体setState的机制，在文中也有讲解，我之前也开博记录过自己的理解（<a href="http://mieruko.cn/2017/09/25/setState/" target="_blank" rel="noopener">理解React中的setState</a>)。<br>今天这篇文章意在介绍vue的异步更新策略，然后把两者放在一起做个对比。  </p>
@@ -365,100 +271,7 @@
 </li>
 </ul>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/07/rv-setState/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/02/new_es601/" itemprop="url">
-                  重新理解ES6：是什么和为什么-变量声明篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-02T00:00:00+08:00" content="2018-02-02">
-              2018-02-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用ES6进行App和网页开发已经有近一年的时间了，用法天天见，不知所以然。前几天同期的培森向我推荐了《深入理解ES6》这本书，真是一本好书，一个个短小精悍的代码片段仿佛对读者的一番番质问：嗨，你真的懂我吗？？<br>如果说各种各样的ES6语法讲解是在陈述事实，那么本书更倾向于做一道证明题：为什么ES6是这样的？（为什么需要这样？）  </p>
-<h3 id="帮助与支持"><a href="#帮助与支持" class="headerlink" title="帮助与支持:"></a>帮助与支持:</h3><p>一年前，阮一峰的<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="noopener">《ES6入门》</a>让我见识了ES6的魔法。<br>一年后，Zakas的<a href="https://book.douban.com/subject/27072230/" target="_blank" rel="noopener">《深入理解ES6》</a>，揭开了魔法背后的玄机。<br>另外不得不提一下<a href="https://segmentfault.com/q/1010000007541743" target="_blank" rel="noopener">segmentdefault这篇问答</a>，for循环里的let到底是怎么回事，我之前的认知一直都比较模糊，本文对这个操作做了去糖处理，整个思路非常清晰。</p>
-<h2 id="前置知识：-块级作用域的出现"><a href="#前置知识：-块级作用域的出现" class="headerlink" title="前置知识： 块级作用域的出现"></a>前置知识： 块级作用域的出现</h2><p>ES6之前，js只划分全局作用域和函数作用域。如今，新增了块级作用域的概念。<br>let和const声明的变量，会自动绑定当前的块级作用域。<strong>外层作用域无法读取内层作用域的变量</strong>    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/02/new_es601/#more" rel="contents">
+            <a class="btn" href="/2018/02/22/rv-setState/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -652,6 +465,100 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleware</span>(<span class="params">extraArgument</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">&#123; dispatch, getState &#125;</span>) =&gt;</span> next =&gt; <span class="function"><span class="params">action</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> thunk = createThunkMiddleware();</span><br><span class="line">thunk.withExtraArgument = createThunkMiddleware;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> thunk;</span><br></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2018/01/04/redux_thunk/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/02/network/" itemprop="url">
+                  异步网络请求进化史：从ajax到fetch到axios
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-01-02T00:00:00+08:00" content="2018-01-02">
+              2018-01-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="不是前言的前言"><a href="#不是前言的前言" class="headerlink" title="不是前言的前言"></a>不是前言的前言</h2><p>其实原生ajax和fetch已经很久没用了。。。毕竟axios真是太好用了。   </p>
+<h2 id="原生ajax"><a href="#原生ajax" class="headerlink" title="原生ajax"></a>原生ajax</h2><p>其实就是XMLHttpRequest。<br>或许每个前端在入门js基础的时候都见过这样一段代码:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">success</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'xxx'</span>);</span><br><span class="line">    textarea.value = text;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fail</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'xxx'</span>);</span><br><span class="line">    textarea.value = <span class="string">'Error code: '</span> + code;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest(); <span class="comment">// 新建XMLHttpRequest对象</span></span><br><span class="line"></span><br><span class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 状态发生变化时，函数被回调</span></span><br><span class="line">    <span class="keyword">if</span> (request.readyState === <span class="number">4</span>) &#123; <span class="comment">// 成功完成</span></span><br><span class="line">        <span class="comment">// 判断响应结果:</span></span><br><span class="line">        <span class="keyword">if</span> (request.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="comment">// 成功，通过responseText拿到响应的文本:</span></span><br><span class="line">            <span class="keyword">return</span> success(request.responseText);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 失败，根据响应码判断失败原因:</span></span><br><span class="line">            <span class="keyword">return</span> fail(request.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// HTTP请求还在继续...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送请求:</span></span><br><span class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/api/categories'</span>);</span><br><span class="line">request.send();</span><br></pre></td></tr></table></figure>
+<p>这就是最最最原始的ajax请求发送办法了。先new一个xhr对象，然后各种配置。<br>open方法配置包括method和url在内的几种参数，send方法发送出去。然后onreadystatechange设置回调监听请求抛出之后发生了什么，走到了哪一步。<br>当然这是最简单的情况，有时候你为了设置头信息，还不得不调用一个setRequestHeader()。<br>这么多属性和api，也记不住呀。。。😂<br>xhr对象的配置繁琐而冗长，不太可爱。   </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2018/01/02/network/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1151,6 +1058,124 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/04/25/newprototype/" itemprop="url">
+                  笔记：原型链，继承，闭包和作用域概念梳理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-04-25T00:00:00+08:00" content="2017-04-25">
+              2017-04-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>继承是ES5中非常重要的一个点。<br>即便现在我们有了ES6，有了类，有了更轻松的写法，但继承的本质是不变的。要理解继承我们就必须理解原型链。  </p>
+<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>写一个构造函数:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">this</span>.class = <span class="string">'class-1'</span></span><br><span class="line">  <span class="comment">// return this  默认有这一行</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> Foo(<span class="string">'miemie'</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure></p>
+<p>构造函数一般以大写字母开头。<br>构造函数tips:    </p>
+<ul>
+<li>var a = {} 其实是 var a = new Object()的语法糖</li>
+<li>var a = [] 其实是 var a = new Array()的语法糖</li>
+<li>function Foo(){}其实是var Foo = new Function(…)的语法糖</li>
+<li>使用instanceof判断一个函数是否是一个变量的构造函数</li>
+</ul>
+<h2 id="原型规则"><a href="#原型规则" class="headerlink" title="原型规则"></a>原型规则</h2><p>原型规则是学习原型链的基础</p>
+<ul>
+<li>所有的引用类型，都具有对象特性，即可自由扩展属性（null除外）</li>
+<li>所有的引用类型，都有一个<strong>proto</strong>属性，属性值是一个普通的对象(隐式原型)</li>
+<li>所有的函数，都有一个prototype属性，属性值也是一个普通的对象(显式原型)</li>
+<li>所有的引用类型， <strong>proto</strong>属性指向它构造函数的prototype属性</li>
+</ul>
+<h2 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h2><p>this的指向是在执行时确定的。  </p>
+<ul>
+<li>作为构造函数执行</li>
+<li>作为对象属性执行</li>
+<li>作为普通函数执行</li>
+<li>call/apply/bind</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> Foo(<span class="string">'miemie'</span>)</span><br><span class="line"><span class="comment">// 指向新生成的对象</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span>js</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  name: <span class="string">'A'</span>,</span><br><span class="line">  printName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.printName()</span><br><span class="line"><span class="comment">// 指向obj</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>) </span><br><span class="line">&#125;</span><br><span class="line">fn()</span><br><span class="line"><span class="comment">// 指向window</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  alert(name)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">fn.call(&#123;<span class="attr">x</span>: <span class="number">100</span>&#125;, <span class="string">'name'</span>)</span><br><span class="line"><span class="comment">// 指向call里的对象</span></span><br></pre></td></tr></table></figure>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>作用域只是一个“地盘”，其中没有变量。变量是通过作用域对应的执行上下文环境中的变量对象来实现的。<br>作用域是一个范围，上下文是这个范围里可访问的数据集合</p>
+<h3 id="自由变量"><a href="#自由变量" class="headerlink" title="自由变量"></a>自由变量</h3><p>首先要知道一个叫<strong>自由变量</strong>的概念<br>当前作用域没有定义，但是因为父级作用域定义了它，故而我可以在当前作用域引用到它，这样的变量叫做自由变量。    </p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>闭包是引用了自由变量的函数。自由变量即是说当前作用域内为定义的变量，我们可以通过一层一层地向父级作用域查找来访问它。<br>它形成的条件是函数作为返回值返回。<br>它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中。</p>
+<h2 id="ES5实现继承"><a href="#ES5实现继承" class="headerlink" title="ES5实现继承"></a>ES5实现继承</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = <span class="string">'parent'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">child</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  Parent.call(<span class="keyword">this</span>)</span><br><span class="line">  <span class="keyword">this</span>.type = <span class="string">'child'</span></span><br><span class="line">&#125;</span><br><span class="line">Child.prototype = <span class="built_in">Object</span>.create(Parent.prototype)</span><br><span class="line"><span class="comment">// Create 创建一个新的对象 该对象的原型是Parent</span></span><br><span class="line">Child.prototype.constructor = Child</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1196,7 +1221,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">75</span>
+              <span class="site-state-item-count">76</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
