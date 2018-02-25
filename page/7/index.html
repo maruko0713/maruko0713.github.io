@@ -217,6 +217,151 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/02/js13/" itemprop="url">
+                  Javascript系统复习：Javascript中的正则表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-02T00:00:00+08:00" content="2016-09-02">
+              2016-09-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>正则表达式用来匹配字符，它并不依附于某种特殊的语言而存在，它是一个独立的东西。<br>但是正因为非常有用，许多语言都提供了对它的支持，包括javascript。<br>官方的定义是:    </p>
+<blockquote>
+<p>在常见的字符串检索或替换中，我们需要提供一种模式来表示检索或替换的规则。正则表达式使用单个字符串来描述，匹配一系列符合某个句法规则的字符串。    </p>
+</blockquote>
+<h2 id="在javascript中使用正则"><a href="#在javascript中使用正则" class="headerlink" title="在javascript中使用正则"></a>在javascript中使用正则</h2><h2 id="正则表达式对象的创建"><a href="#正则表达式对象的创建" class="headerlink" title="正则表达式对象的创建"></a>正则表达式对象的创建</h2><p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/\d\d\d/.test(<span class="string">"123"</span>); <span class="comment">// true</span></span><br><span class="line">/\d\d\d/.test(<span class="string">"abc"</span>); <span class="comment">// false</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"wanzi"</span>).test(<span class="string">"hi wanzi"</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>像两个斜杠中间直接写的，这是正则表达式的字面量，这是比较简单的一种创建方式。<br>当然我们还可以显式使用构造函数来创建，它和字面量是等价的～～    </p>
+<h2 id="正则表达式基础"><a href="#正则表达式基础" class="headerlink" title="正则表达式基础"></a>正则表达式基础</h2><p>正则表达式的匹配规则，其实网上还是有蛮多专门讲这个的文章的，这里我们用一张图来覆盖一下比较基本的知识点：    </p>
+<h3 id="表示字符匹配的符号"><a href="#表示字符匹配的符号" class="headerlink" title="表示字符匹配的符号:"></a>表示字符匹配的符号:</h3><p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/%E6%AD%A3%E5%88%99.png" alt="正则表达式基础"></p>
+<h3 id="表示范围的符号"><a href="#表示范围的符号" class="headerlink" title="表示范围的符号:"></a>表示范围的符号:</h3><p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/%E6%AD%A3%E5%88%99%E8%8C%83%E5%9B%B4.png" alt="正则表达式表示范围的符号"></p>
+<h3 id="正则表达式分组匹配"><a href="#正则表达式分组匹配" class="headerlink" title="正则表达式分组匹配:"></a>正则表达式分组匹配:</h3><p>通过分组，我们可以把每一组单独记录起来，然后可以针对这个分组进行操作～～<br>反斜杠后面跟的数字是这个分组对应的组序号^_^，这种写法是对已经匹配过的分组的一个引用。      </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%88%86%E7%BB%84.png" alt="正则表达式的分组">    </p>
+<h3 id="正则表达式中的重复"><a href="#正则表达式中的重复" class="headerlink" title="正则表达式中的重复"></a>正则表达式中的重复</h3><p>贪婪算法就是匹配尽可能多的，非贪婪算法就是匹配尽可能少的～～～    </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/%E6%AD%A3%E5%88%99%E9%87%8D%E5%A4%8D.png" alt="正则表达式中的重复"></p>
+<h2 id="正则表达式特殊字符的转义"><a href="#正则表达式特殊字符的转义" class="headerlink" title="正则表达式特殊字符的转义"></a>正则表达式特殊字符的转义</h2><p>看这样一个🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/\^abc/.test(<span class="string">"^abc"</span>);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>从test中参数，很明显我们可以看出目的在于匹配一个以^开头的字符串。但是我们刚刚才看到^本身是正则表达式的一个特殊字符，它用来表示行首。为了让它变成一般字符，就是可以匹配它自己的一般字符，我们需要给它加上反斜杠转义～～～        </p>
+<h2 id="正则中的三个flag"><a href="#正则中的三个flag" class="headerlink" title="正则中的三个flag"></a>正则中的三个flag</h2><p>正则中的三个标志位即:   </p>
+<ul>
+<li>g:global （匹配所有的情况 默认匹配一个就结束）</li>
+<li>i:ignoreCase (不区分大小写 默认区分大小写)</li>
+<li>m:multiline （在有换行的时候自动换行检索）</li>
+</ul>
+<p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/abc/gim.test(<span class="string">"ABC"</span>); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>写成构造函数形式就是：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"abc"</span>,<span class="string">"mgi"</span>);</span><br></pre></td></tr></table></figure>
+<p>注意顺序是无所谓的～～～     </p>
+<h2 id="RegExp对象属性"><a href="#RegExp对象属性" class="headerlink" title="RegExp对象属性"></a>RegExp对象属性</h2><p>常见的几个属性是:    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/abc/g.global; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>输出是否全局   </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/abc/g.ignoreCase; <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>输出是否忽略大小写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/abc/g.multiline; <span class="comment">//fa;se</span></span><br></pre></td></tr></table></figure>
+<p>输出是否换行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/abc/g.source; <span class="comment">//"abc"</span></span><br></pre></td></tr></table></figure>
+<p>输出源字符串     </p>
+<h2 id="RegExp对象方法"><a href="#RegExp对象方法" class="headerlink" title="RegExp对象方法"></a>RegExp对象方法</h2><p>常用的几个方法是:   </p>
+<ul>
+<li>compile (改变正则的一些属性 比如改变它的内容)</li>
+<li>exec (返回匹配的结果)</li>
+<li>test (返回匹配没匹配到)</li>
+<li><p>toString (返回整个正则的内容)</p>
+<p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> /abc/.exec(<span class="string">"abcdef"</span>); <span class="comment">//"abc"</span></span><br><span class="line"> /abc/.test(<span class="string">"abcde"</span>); <span class="comment">//true</span></span><br><span class="line"> /abc/.toString(); <span class="comment">// "/abc/"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> reg = <span class="regexp">/abc/</span>;</span><br><span class="line">reg.compile(<span class="string">"def"</span>);</span><br><span class="line">reg.test(<span class="string">"def"</span>);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="String类型与正则相关的方法"><a href="#String类型与正则相关的方法" class="headerlink" title="String类型与正则相关的方法"></a>String类型与正则相关的方法</h2><p>在String类型中，是存在一些可以以正则表达式为参数的方法的。<br>比如:   </p>
+<ul>
+<li>String.prototype.search 返回匹配到的第一个索引</li>
+<li>String.prototype.replace 返回替换的结果</li>
+<li>String.prototype.match 返回匹配的结果</li>
+<li>String.prototype.split 返回切割的结果</li>
+</ul>
+<p>🌰：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"abcabcdef"</span>.search(<span class="regexp">/(abc)\1/</span>); <span class="comment">//0</span></span><br><span class="line"><span class="string">"aabbbbcc"</span>.replace(<span class="regexp">/b+?/</span>, <span class="string">"1"</span>); <span class="comment">//aa1bbbcc</span></span><br><span class="line"><span class="string">"aabbbbcc"</span>.match(<span class="regexp">/b+/</span>); <span class="comment">//["bbbb"]</span></span><br><span class="line"><span class="string">"aabbbbccbbaa"</span>.match(<span class="regexp">/b+/g</span>);<span class="comment">//["bbbb", "bb"];</span></span><br><span class="line"><span class="string">"aabbbbccbbaa"</span>.split(<span class="regexp">/b+/</span>); <span class="comment">//["aa","cc","aa"]</span></span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>正则表达式博大精深！<br>正则的复杂的细节情况，一篇博客绝对写不完。<br>这里推荐《精通正则表达式》这本书^_^<br>或者查询更多的资料，进行更深入的学习。    </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/08/31/js12/" itemprop="url">
                   Javascript系统复习：Javascript中的面向对象(OOP)之面向对象的其它特性
                 </a>
@@ -1061,97 +1206,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/js7/" itemprop="url">
-                  Javascript系统复习：数组专栏
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T00:00:00+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>数组！一个出镜率非常高的数据结构～～<br>定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/js7/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1197,7 +1251,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">76</span>
+              <span class="site-state-item-count">77</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
