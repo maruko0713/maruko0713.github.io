@@ -217,106 +217,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/04/ES01/" itemprop="url">
-                  ES6学习笔记1:const命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-04T00:00:00+08:00" content="2016-12-04">
-              2016-12-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇会比较短小，因为仅仅讲一个变量声明嘛～<br>不过还是想要感慨一下下哦，js进化了，连const都出来了，嘻嘻。    </p>
-<h2 id="const基本特性"><a href="#const基本特性" class="headerlink" title="const基本特性"></a>const基本特性</h2><p>const这个声明头之前在强类型语言（比如c和java）中见过，它是声明一个常量。    </p>
-<p>那么js中的const是什么样的呢？    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a;</span><br></pre></td></tr></table></figure>
-<p>运行试试，发现报错。<br>说明<strong>const在声明变量时这个变量必须有值</strong>    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> happy = <span class="literal">true</span>;</span><br><span class="line">happy = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-<p>报错了，说明<strong>这个值不能被改变，一改就报错</strong>。    </p>
-<h2 id="const声明变量指向一个对象的时候要注意"><a href="#const声明变量指向一个对象的时候要注意" class="headerlink" title="const声明变量指向一个对象的时候要注意"></a>const声明变量指向一个对象的时候要注意</h2><p>看一下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;<span class="attr">name</span>:<span class="string">"xiaowanzi"</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> happy = user;</span><br><span class="line">user.name = <span class="string">"maruko0713"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"user:"</span>,user);</span><br></pre></td></tr></table></figure>
-<p>运行后发现没有报错，说明user的<strong>值</strong>可以改变。<br>或者你直接这样做:<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/04/ES01/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/12/03/ES60/" itemprop="url">
                   ES6学习笔记0:let命令
                 </a>
@@ -1167,11 +1067,102 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/22/node_blog/" itemprop="url">
+                  用nodejs搭建一个完整的博客系统
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-22T00:00:00+08:00" content="2016-10-22">
+              2016-10-22
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>接触node一段时间了，最近在利用node做一些<a href="https://github.com/maruko0713/node-demos" target="_blank" rel="noopener">小demo</a>和一个功能相对复杂一些完整一些的<a href="https://github.com/maruko0713/node-blog" target="_blank" rel="noopener">博客系统</a>.后者走心一些，实现了增删改查，页面也多一些，这一篇是对重要技术点的一个总结.    </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/22/node_blog/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1212,7 +1203,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">81</span>
+              <span class="site-state-item-count">80</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
