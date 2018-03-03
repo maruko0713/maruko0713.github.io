@@ -1121,8 +1121,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/25/kuayu/" itemprop="url">
-                  前端跨域通信解决方案总结
+                <a class="post-title-link" href="/2016/12/25/ES615/" itemprop="url">
+                  ES6学习笔记15:ES6中的模块(module)
                 </a>
               
             
@@ -1163,38 +1163,16 @@
 
       
         
-          
-            <h2 id="什么是同源策略及限制"><a href="#什么是同源策略及限制" class="headerlink" title="什么是同源策略及限制"></a>什么是同源策略及限制</h2><blockquote>
-<p>同源策略限制从一个源加载的文件或脚本如何与来自另一个源的资源进行交互<br>这是一个用于隔离潜在恶意文件的关键的安全机制   </p>
-</blockquote>
-<p>源 包括协议 域名和端口， 有一个不一样就是跨域    </p>
-<h3 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h3><ul>
-<li>Cookie, LocalStorage和indexDB无法读取</li>
-<li>DOM无法获得</li>
-<li>AJAX请求不能发送</li>
-</ul>
-<h2 id="跨域通信的几种方式"><a href="#跨域通信的几种方式" class="headerlink" title="跨域通信的几种方式"></a>跨域通信的几种方式</h2><ul>
-<li>JSONP</li>
-<li>WebSocket</li>
-<li>Hash</li>
-<li>CORS</li>
-<li>postMessage  </li>
-</ul>
-<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><p>JSON只能用于GET请求。<br>通过script标签的动态加载实现的。    </p>
-<blockquote>
-<p>网页通过添加一个script标签，向服务器请求JSON数据，这种做法不受同源政策限制；<br>服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。</p>
-</blockquote>
-<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><p>WebSocket是H5的新的通信协议，使用ws://（非加密）和wss://（加密）作为协议前缀。该协议不实行同源政策，只要服务器支持，就可以通过它进行跨源通信。</p>
-<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>在当前窗口打开一个iframe，我们可以通过给iframe的页面url设置hash的内容来实现数据的传递。    </p>
-<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。<br>服务器端对于CORS的支持，主要就是通过设置Access-Control-Allow-Origin来进行的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。<br>CORS 的请求分两种，简单请求，非简单请求。<br>对于简单的跨域请求，浏览器会自动在请求的头信息加上Origin字段，表示本次请求来自哪个源（协议+域名+端口），服务端会获取到这个值，然后判断是否同意这次请求并返回。<br>非简单请求请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。<br>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。一旦服务器通过了”预检”请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。<br>浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的XMLHttpRequest请求，否则就报错。</p>
-<h2 id="postMessage"><a href="#postMessage" class="headerlink" title="postMessage"></a>postMessage</h2><p>允许跨窗口通信，不论这两个窗口是否同源。<br>postMessage方法的第一个参数是具体的信息内容，第二个参数是接收消息的窗口的源（origin），即”协议 + 域名 + 端口”。也可以设为*，表示不限制域名，向所有窗口发送。<br>接收方可以通过message事件，监听对方的消息。message事件的事件对象event，提供以下三个属性：   </p>
-<ul>
-<li>event.source：发送消息的窗口。</li>
-<li>event.origin：消息发向的网址。</li>
-<li>event.data：消息内容。</li>
-</ul>
-
-          
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。<br>前段时间用Node写demo的时候，完全离不开modules啊。<br>当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。<br>总之，重要！！</p>
+<h2 id="模块的导出和导入"><a href="#模块的导出和导入" class="headerlink" title="模块的导出和导入"></a>模块的导出和导入</h2><p>先来看如何写一个模块并把它导出！<br>假设我们现在有同一个目录下的两个文件，script1.js和script2.js</p>
+<p>script1.js:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>;</span><br><span class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;fruit, dessert&#125;;</span><br></pre></td></tr></table></figure>
+<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/25/ES615/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
