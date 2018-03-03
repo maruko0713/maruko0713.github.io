@@ -1,0 +1,568 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="React," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="前言可能会是一篇有点长的源码阅读笔记。。。。。。       之前Medium上有一位兄台曾经写过这样一篇文章:      这个标题说出了包括曾经的我在内的React开发者的心声。但是在读完知乎杨森：React 源码剖析系列 － 解密 setState这篇文章后，我不这么想了。具体setState的机制，在文中也有讲解，我之前也开博记录过自己的理解（理解React中的setState)。今天这篇文">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="状态更新策略对比：React setState vs Vue nextTick">
+<meta property="og:url" content="http://mieruko.com/2018/03/01/rv-setState/index.html">
+<meta property="og:site_name" content="Mieruko0713的实验室">
+<meta property="og:description" content="前言可能会是一篇有点长的源码阅读笔记。。。。。。       之前Medium上有一位兄台曾经写过这样一篇文章:      这个标题说出了包括曾经的我在内的React开发者的心声。但是在读完知乎杨森：React 源码剖析系列 － 解密 setState这篇文章后，我不这么想了。具体setState的机制，在文中也有讲解，我之前也开博记录过自己的理解（理解React中的setState)。今天这篇文">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/1.png">
+<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/5.png">
+<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/12.png">
+<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/13.png">
+<meta property="og:updated_time" content="2018-03-03T09:30:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="状态更新策略对比：React setState vs Vue nextTick">
+<meta name="twitter:description" content="前言可能会是一篇有点长的源码阅读笔记。。。。。。       之前Medium上有一位兄台曾经写过这样一篇文章:      这个标题说出了包括曾经的我在内的React开发者的心声。但是在读完知乎杨森：React 源码剖析系列 － 解密 setState这篇文章后，我不这么想了。具体setState的机制，在文中也有讲解，我之前也开博记录过自己的理解（理解React中的setState)。今天这篇文">
+<meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 状态更新策略对比：React setState vs Vue nextTick | Mieruko0713的实验室 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mieruko0713的实验室</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                状态更新策略对比：React setState vs Vue nextTick
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-03-01T00:00:00+08:00" content="2018-03-01">
+              2018-03-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可能会是一篇有点长的源码阅读笔记。。。。。。      </p>
+<p>之前Medium上有一位兄台曾经写过这样一篇文章:     </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/1.png" alt="medium博客标题"><br>这个标题说出了包括曾经的我在内的React开发者的心声。<br>但是在读完<a href="https://zhuanlan.zhihu.com/p/20328570" target="_blank" rel="noopener">知乎杨森：React 源码剖析系列 － 解密 setState</a>这篇文章后，我不这么想了。<br>具体setState的机制，在文中也有讲解，我之前也开博记录过自己的理解（<a href="http://mieruko.cn/2017/09/25/setState/" target="_blank" rel="noopener">理解React中的setState</a>)。<br>今天这篇文章意在介绍vue的异步更新策略，然后把两者放在一起做个对比。  </p>
+<h2 id="setState源码细节拾遗"><a href="#setState源码细节拾遗" class="headerlink" title="setState源码细节拾遗"></a>setState源码细节拾遗</h2><p>上一篇写setState的文章还是比较粗糙，其实setState源码里有很多<del>陈独秀同学</del>值得关注和学习的小细节，今天我就先把它们po一下~~~     </p>
+<ul>
+<li>Instance 分为 public 和 internal 两种。从而避免部分内部状态直接暴露于外部，有被修改的风险</li>
+<li><p>状态队列在需要时才会被初始化，避免了不必要的开销<br>（以上两点见下图）<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/5.png" alt="enqueueUpdate函数"></p>
+</li>
+<li><p>通过批量更新的方式提高性能(如下)<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/12.png" alt="批量更新"></p>
+</li>
+</ul>
+<a id="more"></a>  
+<h2 id="Vue状态更新策略分析"><a href="#Vue状态更新策略分析" class="headerlink" title="Vue状态更新策略分析"></a>Vue状态更新策略分析</h2><p>我们知道React的状态更新是否异步，是需要看锁的状态的。如果锁是死的，那么就是异步；如果锁是开的，就可以即刻更新。<br>但是在Vue里面，就简单粗暴许多了，没有什么锁不锁的，全部都是异步。<br>大概的思路是这样子的：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/13.png" alt="Vue异步更新概述">   </p>
+<p>异步任务有两种，macro（宏任务）和micro（微任务），如果对这个不熟悉，<a href="http://mieruko.cn/2017/10/02/macro/" target="_blank" rel="noopener">重新理解事件循环和异步队列：区分macro和micro
+</a>这篇文章也可以帮到你~~~~     </p>
+<p>具体来说，Vue每次想要更新一个状态的时候，会先把它这个更新操作给包装成一个异步操作派发出去。<br>这件事情，是在一个叫做nextTick的函数里完成的~~~   </p>
+<p>以macro和micro的特性为前置知识，我们来看一下Vue的nextTick这部分源代码（分析在注释里）：  </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">nextTick</span> (<span class="params">cb?: Function, ctx?: Object</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> _resolve</span><br><span class="line">  callbacks.push(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (cb) &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        cb.call(ctx)</span><br><span class="line">      &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">        handleError(e, ctx, <span class="string">'nextTick'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (_resolve) &#123;</span><br><span class="line">      _resolve(ctx)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="comment">// 当前的任务队列是否未派发为异步任务</span></span><br><span class="line">  <span class="keyword">if</span> (!pending) &#123;</span><br><span class="line">    pending = <span class="literal">true</span></span><br><span class="line">    <span class="comment">// 是否要求一定要派发为macro任务</span></span><br><span class="line">    <span class="keyword">if</span> (useMacroTask) &#123;</span><br><span class="line">      macroTimerFunc()</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 如果不说明一定要macro 你们就全都是micro</span></span><br><span class="line">      microTimerFunc()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// $flow-disable-line</span></span><br><span class="line">  <span class="keyword">if</span> (!cb &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">Promise</span> !== <span class="string">'undefined'</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">      _resolve = resolve</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>macro和micro任务的派发具体是这么实现的:     </p>
+<p>macro:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// macro首选setImmediate 这个兼容性最差</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> setImmediate !== <span class="string">'undefined'</span> &amp;&amp; isNative(setImmediate)) &#123;</span><br><span class="line">  macroTimerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setImmediate(flushCallbacks)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> MessageChannel !== <span class="string">'undefined'</span> &amp;&amp; (</span><br><span class="line">    isNative(MessageChannel) ||</span><br><span class="line">    <span class="comment">// PhantomJS</span></span><br><span class="line">    MessageChannel.toString() === <span class="string">'[object MessageChannelConstructor]'</span></span><br><span class="line">  )) &#123;</span><br><span class="line">  <span class="keyword">const</span> channel = <span class="keyword">new</span> MessageChannel()</span><br><span class="line">  <span class="keyword">const</span> port = channel.port2</span><br><span class="line">  channel.port1.onmessage = flushCallbacks</span><br><span class="line">  macroTimerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    port.postMessage(<span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// 兼容性最好的派发方式是setTimeout</span></span><br><span class="line">  macroTimerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setTimeout(flushCallbacks, <span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>micro:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单粗暴 不是ios全都给我去Promise 如果不兼容promise 那么你只能将就一下变成macro了</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Promise</span> !== <span class="string">'undefined'</span> &amp;&amp; isNative(<span class="built_in">Promise</span>)) &#123;</span><br><span class="line">  <span class="keyword">const</span> p = <span class="built_in">Promise</span>.resolve()</span><br><span class="line">  microTimerFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    p.then(flushCallbacks)</span><br><span class="line">    <span class="comment">// in problematic UIWebViews, Promise.then doesn't completely break, but</span></span><br><span class="line">    <span class="comment">// it can get stuck in a weird state where callbacks are pushed into the</span></span><br><span class="line">    <span class="comment">// microtask queue but the queue isn't being flushed, until the browser</span></span><br><span class="line">    <span class="comment">// needs to do some other work, e.g. handle a timer. Therefore we can</span></span><br><span class="line">    <span class="comment">// "force" the microtask queue to be flushed by adding an empty timer.</span></span><br><span class="line">    <span class="keyword">if</span> (isIOS) setTimeout(noop)</span><br><span class="line">  &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// fallback to macro</span></span><br><span class="line">  microTimerFunc = macroTimerFunc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>ps这里提一下，其实nextTick这里micro的实现方法，以前有个文章分析过。当时我记得里面描述了好多种包括MO在内的micro派发方式。<br>但是我刚去看最新版本的vue源码，确实只有promise，可能是因为浏览器们现在对promise支持得比较好了吧。。。。     </p>
+<h2 id="为什么Vue的nextTick优先派发micro任务"><a href="#为什么Vue的nextTick优先派发micro任务" class="headerlink" title="为什么Vue的nextTick优先派发micro任务"></a>为什么Vue的nextTick优先派发micro任务</h2><p>思考这个问题之前，我们需要一点更细致的前置知识:<br>事件循环并非只有macro和micro的轮流交替，事实上，每一轮事件循环分三步走（macro,micro,渲染UI)。准确地说，是四步走，最后一步是对workerGlobal对象的一个判断。<br>但是这一步跟我们今天讲的东西没啥关系，大家有兴趣可以去了解一下<a href="https://html.spec.whatwg.org/multipage/webappapis.html#event-loop-processing-model" target="_blank" rel="noopener">详细的事件循环模型</a>。</p>
+<p>优先派发micro任务，并不是空穴来风，而是有所权衡。比起macro任务，micro的优点有:     </p>
+<ul>
+<li>优先级高，可以尽快的执行</li>
+<li>考虑时间循环三步走的顺序。定义一个异步的 UI 修改任务，如果用Microtask，则可以在当前循环结束时见到最新的UI，而MacroTask中则需要等待渲染两次才能拿到最新的UI     </li>
+</ul>
+<h2 id="setState-vs-nextTick"><a href="#setState-vs-nextTick" class="headerlink" title="setState vs nextTick"></a>setState vs nextTick</h2><p>了解了React和Vue各自的状态更新机制之后，我们可以察觉到它们各自的特点:   </p>
+<p>Vue:     </p>
+<ul>
+<li>依赖浏览器Api与事件处理队列</li>
+<li>不可控(我们无法通过编码改变它)</li>
+<li>Vue自动优化，无论是否是Vue发起的调用（全都是异步的）</li>
+</ul>
+<p>React:</p>
+<ul>
+<li>纯JS实现，不依赖浏览器Api</li>
+<li>可控性强，可手动调用(因为可编码)</li>
+<li>是否异步需要看具体场景，易出错(需要对源码有了解)    </li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>这篇文章是基于我在团队分享会上讲的一个ppt来改制而成的。<br>当时我刚把ppt讲完的时候，说Vue状态更新这一点决定它不适用于较大规模的项目。<br>但是”较大规模”到底有多大，难以定义。兵哥说我们现在开发的这个应用的规模，Vue是可以支撑的。    </p>
+<p>从状态更新这一点我们也可以看出，框架各有千秋。Vue轻，React全，并不只是说说而已。     </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag">#React</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/22/react-yitu/" rel="next" title="React更进一步：在实践中理解React工作原理">
+                <i class="fa fa-chevron-left"></i> React更进一步：在实践中理解React工作原理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
+               alt="mieruko0713" />
+          <p class="site-author-name" itemprop="name">mieruko0713</p>
+          <p class="site-description motion-element" itemprop="description">大四信息汪 喜欢写代码 
+</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">80</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mieruko0713" target="_blank">
+                  
+                    <i class="fa fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setState源码细节拾遗"><span class="nav-number">2.</span> <span class="nav-text">setState源码细节拾遗</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue状态更新策略分析"><span class="nav-number">3.</span> <span class="nav-text">Vue状态更新策略分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么Vue的nextTick优先派发micro任务"><span class="nav-number">4.</span> <span class="nav-text">为什么Vue的nextTick优先派发micro任务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#setState-vs-nextTick"><span class="nav-number">5.</span> <span class="nav-text">setState vs nextTick</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">6.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mieruko0713</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
