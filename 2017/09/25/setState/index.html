@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Mieruko0713的实验室">
 <meta property="og:description" content="前言之前我对setState这个api的理解，仅限于：它管组件自己的数据，它是异步。如此而已。前两天被一个前辈问到说“setState后究竟发生了什么？”。除了数生命周期外我竟什么都说不出来。这两天读了点东西，才知道正是因为对setState的一个巧妙的处理，React才表现出那么好的性能。（当然性能好这一点是多方面的，比如虚拟dom也功不可没）。要想理解React，必须理解setState。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-14T11:11:47.000Z">
+<meta property="og:updated_time" content="2018-03-05T13:42:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解React中的setState">
 <meta name="twitter:description" content="前言之前我对setState这个api的理解，仅限于：它管组件自己的数据，它是异步。如此而已。前两天被一个前辈问到说“setState后究竟发生了什么？”。除了数生命周期外我竟什么都说不出来。这两天读了点东西，才知道正是因为对setState的一个巧妙的处理，React才表现出那么好的性能。（当然性能好这一点是多方面的，比如虚拟dom也功不可没）。要想理解React，必须理解setState。">
@@ -258,7 +258,7 @@
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前我对setState这个api的理解，仅限于：它管组件自己的数据，它是异步。如此而已。<br>前两天被一个前辈问到说“setState后究竟发生了什么？”。除了数生命周期外我竟什么都说不出来。这两天读了点东西，才知道正是因为对setState的一个巧妙的处理，React才表现出那么好的性能。（当然性能好这一点是多方面的，比如虚拟dom也功不可没）。要想理解React，必须理解setState。    </p>
 <h2 id="setState之后-到底发生了什么"><a href="#setState之后-到底发生了什么" class="headerlink" title="setState之后 到底发生了什么"></a>setState之后 到底发生了什么</h2><p>这次当然不能数生命周期了。<br>需要引入一个概念，就是React中有这么一个属性叫isBatchingUpdates，这个属性并不是全局的，但是它是<strong>唯一</strong>的。我自己的理解哈，这个属性就像操作系统里咱们学的那个“锁”一样的。怎么说呢？setState有同步和异步两种更新方式，具体怎么区分，我这里是借助了知乎上<a href="https://zhuanlan.zhihu.com/p/26069727" target="_blank" rel="noopener">程墨前辈的一篇文章</a>来理解的。这篇文章里提到说：</p>
 <blockquote>
-<p>如果是由React引发的事件处理（比如通过onClick引发的事件处理），调用setState不会同步更新this.state，除此之外的setState调用会同步执行this.state。所谓“除此之外”，指的是绕过React通过addEventListener直接添加的事件处理函数，还有通过setTimeout/setInterval产生的异步调用。</p>
+<p>在 React 调用事件、渲染根组件时调用setState不会同步更新this.state，除此之外的setState调用会同步执行this.state。所谓“除此之外”，指的是绕过React通过addEventListener直接添加的事件处理函数，还有通过setTimeout/setInterval产生的异步调用。</p>
 </blockquote>
 <p>讲的非常清楚，读完这段足以对同步异步进行区分。然后我想说的是这个同步异步的区分是怎么来的(原文也有介绍，但是把我整蒙了)，我结合这几天看过的文章和代码来说说自己的理解吧：    </p>
 <a id="more"></a> 
