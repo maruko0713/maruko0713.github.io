@@ -57,18 +57,20 @@
 
 
 
-<meta name="description" content="前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结    先上图：      冒泡排序(O(n^2))冒泡排序的思想就是通过与相邻元素的比较和交换来把大的数交换到最后面。      选择排序(O(n^2))首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元">
+<meta name="description" content="前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结    先上图： 冒泡排序(O(n^2))冒泡排序的思想就是通过与相邻元素的比较和交换来把大的数交换到最后面。      选择排序(O(n^2))首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，然后放">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法笔记：排序">
 <meta property="og:url" content="http://mieruko.com/2017/06/10/alg-sort/index.html">
 <meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结    先上图：      冒泡排序(O(n^2))冒泡排序的思想就是通过与相邻元素的比较和交换来把大的数交换到最后面。      选择排序(O(n^2))首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元">
+<meta property="og:description" content="前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结    先上图： 冒泡排序(O(n^2))冒泡排序的思想就是通过与相邻元素的比较和交换来把大的数交换到最后面。      选择排序(O(n^2))首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，然后放">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-10T14:56:39.000Z">
+<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/%E7%AE%97%E6%B3%95.png">
+<meta property="og:updated_time" content="2018-03-10T15:01:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法笔记：排序">
-<meta name="twitter:description" content="前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结    先上图：      冒泡排序(O(n^2))冒泡排序的思想就是通过与相邻元素的比较和交换来把大的数交换到最后面。      选择排序(O(n^2))首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元">
+<meta name="twitter:description" content="前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结    先上图： 冒泡排序(O(n^2))冒泡排序的思想就是通过与相邻元素的比较和交换来把大的数交换到最后面。      选择排序(O(n^2))首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，然后放">
+<meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/%E7%AE%97%E6%B3%95.png">
 
 
 
@@ -256,7 +258,7 @@
 
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><del>算法系列不需要前言</del><br>本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。<br>不是错题本，不是OJ参考答案(这个在<a href="https://github.com/mieruko0713/mieruko_algorithms" target="_blank" rel="noopener">这里</a>)，只是总结   </p>
-<p>先上图：     </p>
+<p>先上图：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/%E7%AE%97%E6%B3%95.png" alt="算法"></p>
 <h2 id="冒泡排序-O-n-2"><a href="#冒泡排序-O-n-2" class="headerlink" title="冒泡排序(O(n^2))"></a>冒泡排序(O(n^2))</h2><p>冒泡排序的思想就是通过与相邻元素的比较和交换来把大的数交换到最后面。     </p>
 <h2 id="选择排序-O-n-2"><a href="#选择排序-O-n-2" class="headerlink" title="选择排序(O(n^2))"></a>选择排序(O(n^2))</h2><p>首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，然后放到排序序列第二位。以此类推，直到所有元素均排序完毕。</p>
 <h2 id="插入排序-O-n-2"><a href="#插入排序-O-n-2" class="headerlink" title="插入排序(O(n^2))"></a>插入排序(O(n^2))</h2><p>步骤：    </p>
