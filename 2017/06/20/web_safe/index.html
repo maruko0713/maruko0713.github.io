@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Mieruko0713的实验室">
 <meta property="og:description" content="前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。     CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。 CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个toke">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-11T02:46:05.000Z">
+<meta property="og:updated_time" content="2018-03-11T02:50:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web安全常识总结">
 <meta name="twitter:description" content="前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。     CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。 CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个toke">
@@ -270,7 +270,7 @@
 <h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>加密和解密都是使用的同一个密钥。    </p>
 <h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>加密使用的密钥和解密使用的密钥是不相同的，分别称为：公钥、私钥<br>公钥加密的只有私钥才可以解密，私钥加密的只有公钥才可以解密。    </p>
 <p><strong>HTTPS将对称加密和非对称加密做了结合</strong>   </p>
-<h3 id="SSL建立连接的过程"><a href="#SSL建立连接的过程" class="headerlink" title="SSL建立连接的过程"></a>SSL建立连接的过程</h3><ul>
+<h3 id="SSL建立连接的过程-摘自阮一峰博客"><a href="#SSL建立连接的过程-摘自阮一峰博客" class="headerlink" title="SSL建立连接的过程(摘自阮一峰博客)"></a>SSL建立连接的过程(摘自<a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html" target="_blank" rel="noopener">阮一峰博客</a>)</h3><ul>
 <li>客户端给出协议的版本号、一个客户端生成的随机数和客户端支持的加密算法；</li>
 <li>服务端在客户端给出的加密算法列表中选出一种，并给出数字证书和一个服务端生成的额随机数；</li>
 <li>客户端确认数字证书的有效性，然后生成一个新的随机数，并使用数字证书中的公钥加密这个随机数；</li>
@@ -300,16 +300,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/10/alg-sort/" rel="next" title="算法笔记：排序">
-                <i class="fa fa-chevron-left"></i> 算法笔记：排序
+              <a href="/2017/06/20/alg-tu/" rel="next" title="算法笔记：图论">
+                <i class="fa fa-chevron-left"></i> 算法笔记：图论
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/06/20/alg-tu/" rel="prev" title="算法笔记：图论">
-                算法笔记：图论 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/20/react-native-key/" rel="prev" title="一图开发手记：React中的key属性踩坑">
+                一图开发手记：React中的key属性踩坑 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -426,7 +426,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF-跨站请求伪造"><span class="nav-number">2.</span> <span class="nav-text">CSRF-跨站请求伪造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS-跨站请求攻击"><span class="nav-number">3.</span> <span class="nav-text">XSS-跨站请求攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">4.</span> <span class="nav-text">HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对称加密"><span class="nav-number">4.1.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非对称加密"><span class="nav-number">4.2.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL建立连接的过程"><span class="nav-number">4.3.</span> <span class="nav-text">SSL建立连接的过程</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF-跨站请求伪造"><span class="nav-number">2.</span> <span class="nav-text">CSRF-跨站请求伪造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS-跨站请求攻击"><span class="nav-number">3.</span> <span class="nav-text">XSS-跨站请求攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">4.</span> <span class="nav-text">HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对称加密"><span class="nav-number">4.1.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非对称加密"><span class="nav-number">4.2.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL建立连接的过程-摘自阮一峰博客"><span class="nav-number">4.3.</span> <span class="nav-text">SSL建立连接的过程(摘自阮一峰博客)</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
