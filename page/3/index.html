@@ -217,8 +217,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/01/02/react0/" itemprop="url">
-                  React中的JSX和数据流
+                <a class="post-title-link" href="/2017/01/04/React1/" itemprop="url">
+                  React组件生命周期的总结
                 </a>
               
             
@@ -231,8 +231,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-02T00:00:00+08:00" content="2017-01-02">
-              2017-01-02
+            <time itemprop="dateCreated" datetime="2017-01-04T00:00:00+08:00" content="2017-01-04">
+              2017-01-04
             </time>
           </span>
 
@@ -259,10 +259,24 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>新年快乐!^_^<br>敲代码，看书，写博客，一个学期不知不觉要过去了，考试周也如期而至。这学期主要的精力还是在做自己比较感兴趣的一些事情，包括整个后半学期都在看算法（因为暂时还没想好算法这块的博客该怎么展开叙述，就先忍忍了，还是安静地刷题吧），所以现在开始必须好好看学校的课程了。这几天会适当减少写文章和看技术书籍的时间，不过该看的还是要看的，嗯！<br>然后说说这个React，React,Vue和AngularJs应该是现在比较主流的几个框架了，能活到这一步的框架都有自己厉害的地方，所以我的想法是应该尽量地去了解。从这一篇开始，我会对框架的学习做记录，在此之前我用Angular写过一个小项目，但是在那个项目中，仅仅是用了一些皮毛，目的在于快速地给一个系统写出前端。所以，React是我接触的第一个前端框架。  </p>
-<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>JSX在React中主要是render方法中写模版的时候要用到。<br>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在React组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。<br>一个React组件的生命周期从广义上看分为三个部分:   </p>
+<ul>
+<li>挂载</li>
+<li>渲染</li>
+<li>卸载<br>当渲染后的组件需要更新时，我们会重新去渲染组件。因此，我们也可以把React生命周期分为两类:    </li>
+<li>当组件在挂载或卸载时</li>
+<li>当组件接受新的数据，即组件更新时</li>
+</ul>
+<p>不过我还是更加喜欢这个版本的生命周期解释哈哈哈哈哈：    </p>
+<ul>
+<li>实例化</li>
+<li>存在期</li>
+<li>销毁&amp;清理</li>
+</ul>
+<p>一图胜千言：    </p>
+<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="react生命周期"><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/02/react0/#more" rel="contents">
+            <a class="btn" href="/2017/01/04/React1/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -309,8 +323,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/25/ES615/" itemprop="url">
-                  ES6学习笔记15:ES6中的模块(module)
+                <a class="post-title-link" href="/2017/01/02/react0/" itemprop="url">
+                  React中的JSX和数据流
                 </a>
               
             
@@ -323,8 +337,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-25T00:00:00+08:00" content="2016-12-25">
-              2016-12-25
+            <time itemprop="dateCreated" datetime="2017-01-02T00:00:00+08:00" content="2017-01-02">
+              2017-01-02
             </time>
           </span>
 
@@ -351,13 +365,10 @@
 
       
         
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。<br>前段时间用Node写demo的时候，完全离不开modules啊。<br>当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。<br>总之，重要！！</p>
-<h2 id="模块的导出和导入"><a href="#模块的导出和导入" class="headerlink" title="模块的导出和导入"></a>模块的导出和导入</h2><p>先来看如何写一个模块并把它导出！<br>假设我们现在有同一个目录下的两个文件，script1.js和script2.js</p>
-<p>script1.js:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>;</span><br><span class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;fruit, dessert&#125;;</span><br></pre></td></tr></table></figure>
-<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：<br>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>新年快乐!^_^<br>敲代码，看书，写博客，一个学期不知不觉要过去了，考试周也如期而至。这学期主要的精力还是在做自己比较感兴趣的一些事情，包括整个后半学期都在看算法（因为暂时还没想好算法这块的博客该怎么展开叙述，就先忍忍了，还是安静地刷题吧），所以现在开始必须好好看学校的课程了。这几天会适当减少写文章和看技术书籍的时间，不过该看的还是要看的，嗯！<br>然后说说这个React，React,Vue和AngularJs应该是现在比较主流的几个框架了，能活到这一步的框架都有自己厉害的地方，所以我的想法是应该尽量地去了解。从这一篇开始，我会对框架的学习做记录，在此之前我用Angular写过一个小项目，但是在那个项目中，仅仅是用了一些皮毛，目的在于快速地给一个系统写出前端。所以，React是我接触的第一个前端框架。  </p>
+<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>JSX在React中主要是render方法中写模版的时候要用到。<br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/25/ES615/#more" rel="contents">
+            <a class="btn" href="/2017/01/02/react0/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -478,6 +489,101 @@
 </ul>
 
           
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/25/ES615/" itemprop="url">
+                  ES6学习笔记15:ES6中的模块(module)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-25T00:00:00+08:00" content="2016-12-25">
+              2016-12-25
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。<br>前段时间用Node写demo的时候，完全离不开modules啊。<br>当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。<br>总之，重要！！</p>
+<h2 id="模块的导出和导入"><a href="#模块的导出和导入" class="headerlink" title="模块的导出和导入"></a>模块的导出和导入</h2><p>先来看如何写一个模块并把它导出！<br>假设我们现在有同一个目录下的两个文件，script1.js和script2.js</p>
+<p>script1.js:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>;</span><br><span class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;fruit, dessert&#125;;</span><br></pre></td></tr></table></figure>
+<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/25/ES615/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1066,98 +1172,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/17/jQuery4/" itemprop="url">
-                  jQuery复习4:jQuery中的动画效果
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-17T00:00:00+08:00" content="2016-12-17">
-              2016-12-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>动画效果也是jQuery库吸引人的地方。<br>通过jQuery的动画方法，能够轻松地为网页添加精彩的视觉效果，给用户一种全新的体验。    </p>
-<h2 id="常用的几个好基友的api"><a href="#常用的几个好基友的api" class="headerlink" title="常用的几个好基友的api"></a>常用的几个好基友的api</h2><h3 id="show-方法和hide-方法"><a href="#show-方法和hide-方法" class="headerlink" title="show()方法和hide()方法"></a>show()方法和hide()方法</h3><p>这两个方法是一对好基友。<br>调用hide()方法时，把元素的display属性设置为none。<br>当调用show()方法时，把元素的display属性设置为block或者inline等等非none的值。  </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/17/jQuery4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1203,7 +1217,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">82</span>
+              <span class="site-state-item-count">83</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1213,7 +1227,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

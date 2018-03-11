@@ -217,6 +217,98 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/17/jQuery4/" itemprop="url">
+                  jQuery复习4:jQuery中的动画效果
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-17T00:00:00+08:00" content="2016-12-17">
+              2016-12-17
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>动画效果也是jQuery库吸引人的地方。<br>通过jQuery的动画方法，能够轻松地为网页添加精彩的视觉效果，给用户一种全新的体验。    </p>
+<h2 id="常用的几个好基友的api"><a href="#常用的几个好基友的api" class="headerlink" title="常用的几个好基友的api"></a>常用的几个好基友的api</h2><h3 id="show-方法和hide-方法"><a href="#show-方法和hide-方法" class="headerlink" title="show()方法和hide()方法"></a>show()方法和hide()方法</h3><p>这两个方法是一对好基友。<br>调用hide()方法时，把元素的display属性设置为none。<br>当调用show()方法时，把元素的display属性设置为block或者inline等等非none的值。  </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/17/jQuery4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/16/jQuery3/" itemprop="url">
                   jQuery复习3:jQuery中的事件传播机制和事件委托
                 </a>
@@ -1045,103 +1137,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/06/ES603/" itemprop="url">
-                  ES6学习笔记3:变量的解构赋值对象篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-06T00:00:00+08:00" content="2016-12-06">
-              2016-12-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>变量的解构赋值。<br>一个使多变量赋值变得更加简单的东西。<br>它有很多形式，这篇博客是对对象形式做一个记录。   </p>
-<h2 id="变量的解构赋值之基本用法"><a href="#变量的解构赋值之基本用法" class="headerlink" title="变量的解构赋值之基本用法"></a>变量的解构赋值之基本用法</h2><p>以前如果你想要提取出来对象中的一些值，你这样做：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = obj.a;</span><br><span class="line"><span class="keyword">var</span> b = obj.b;</span><br></pre></td></tr></table></figure>
-<p>ES6中，我们不这样做。<br>它变简单了：     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> &#123;a, b&#125; = obj;</span><br></pre></td></tr></table></figure>
-<p>如果你尝试输出a, b,你会发现就是你想要的结果。    </p>
-<h2 id="对象解构赋值过程中要注意的点"><a href="#对象解构赋值过程中要注意的点" class="headerlink" title="对象解构赋值过程中要注意的点"></a>对象解构赋值过程中要注意的点</h2><p>楼上我们的全局变量是a, b,这个全局变量是可以随便起名字吗？？？？<br>答案是不，因为对象里面的元素的无序的，所以无法像数组里那样去根据顺序一一对应。<br>因此我们必须把全局变量设置为对象里面属性名一模一样的一个名字，才能把对象中对应的属性名给召唤出来。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/06/ES603/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1187,7 +1182,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">82</span>
+              <span class="site-state-item-count">83</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1197,7 +1192,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

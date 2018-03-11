@@ -217,6 +217,103 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/06/ES603/" itemprop="url">
+                  ES6学习笔记3:变量的解构赋值对象篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-06T00:00:00+08:00" content="2016-12-06">
+              2016-12-06
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>变量的解构赋值。<br>一个使多变量赋值变得更加简单的东西。<br>它有很多形式，这篇博客是对对象形式做一个记录。   </p>
+<h2 id="变量的解构赋值之基本用法"><a href="#变量的解构赋值之基本用法" class="headerlink" title="变量的解构赋值之基本用法"></a>变量的解构赋值之基本用法</h2><p>以前如果你想要提取出来对象中的一些值，你这样做：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = obj.a;</span><br><span class="line"><span class="keyword">var</span> b = obj.b;</span><br></pre></td></tr></table></figure>
+<p>ES6中，我们不这样做。<br>它变简单了：     </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> &#123;a, b&#125; = obj;</span><br></pre></td></tr></table></figure>
+<p>如果你尝试输出a, b,你会发现就是你想要的结果。    </p>
+<h2 id="对象解构赋值过程中要注意的点"><a href="#对象解构赋值过程中要注意的点" class="headerlink" title="对象解构赋值过程中要注意的点"></a>对象解构赋值过程中要注意的点</h2><p>楼上我们的全局变量是a, b,这个全局变量是可以随便起名字吗？？？？<br>答案是不，因为对象里面的元素的无序的，所以无法像数组里那样去根据顺序一一对应。<br>因此我们必须把全局变量设置为对象里面属性名一模一样的一个名字，才能把对象中对应的属性名给召唤出来。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/06/ES603/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/05/ES602/" itemprop="url">
                   ES6学习笔记2:变量的解构赋值数组篇
                 </a>
@@ -1078,100 +1175,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/12/laravel1/" itemprop="url">
-                  Laravel笔记1:Laravel的路由和控制器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-12T00:00:00+08:00" content="2016-11-12">
-              2016-11-12
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="这篇博客"><a href="#这篇博客" class="headerlink" title="这篇博客"></a>这篇博客</h2><p>是用来介绍laravel的路由和控制器的。</p>
-<h2 id="Http目录"><a href="#Http目录" class="headerlink" title="Http目录"></a>Http目录</h2><p>就是用来处理http请求用的<br>路由文件和控制器目录都在Http这个目录下。    </p>
-<h3 id="路由文件routes-php"><a href="#路由文件routes-php" class="headerlink" title="路由文件routes.php"></a>路由文件routes.php</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Route::get(<span class="string">'/'</span>,<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="string">"hello world!"</span>; </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>它的意思是，当一个get请求访问根目录的时候，我们回应的方式是，把hello world写进你的响应体里去，呈现到浏览器当中.    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/12/laravel1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1217,7 +1220,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">82</span>
+              <span class="site-state-item-count">83</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1227,7 +1230,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

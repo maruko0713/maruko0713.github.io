@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="laravel," />
+  <meta name="keywords" content="Web安全," />
 
 
 
@@ -57,18 +57,18 @@
 
 
 
-<meta name="description" content="Laravel一个php框架，百科里说它：      是一套简洁、优雅的PHP Web开发框架(PHP Web Framework)。它可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。  它是一个很受欢迎的php框架，也是我学习的第一个php框架。">
-<meta name="keywords" content="laravel">
+<meta name="description" content="前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。     CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。 CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个toke">
+<meta name="keywords" content="Web安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Laravel笔记0:Laravel的安装和相关的工具">
-<meta property="og:url" content="http://mieruko.com/2016/11/11/laravel0/index.html">
+<meta property="og:title" content="Web安全常识总结">
+<meta property="og:url" content="http://mieruko.com/2017/06/20/web_safe/index.html">
 <meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="Laravel一个php框架，百科里说它：      是一套简洁、优雅的PHP Web开发框架(PHP Web Framework)。它可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。  它是一个很受欢迎的php框架，也是我学习的第一个php框架。">
+<meta property="og:description" content="前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。     CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。 CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个toke">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-01-22T06:56:29.000Z">
+<meta property="og:updated_time" content="2018-03-11T02:46:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Laravel笔记0:Laravel的安装和相关的工具">
-<meta name="twitter:description" content="Laravel一个php框架，百科里说它：      是一套简洁、优雅的PHP Web开发框架(PHP Web Framework)。它可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。  它是一个很受欢迎的php框架，也是我学习的第一个php框架。">
+<meta name="twitter:title" content="Web安全常识总结">
+<meta name="twitter:description" content="前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。     CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。 CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个toke">
 
 
 
@@ -86,7 +86,7 @@
   };
 </script>
 
-  <title> Laravel笔记0:Laravel的安装和相关的工具 | Mieruko0713的实验室 </title>
+  <title> Web安全常识总结 | Mieruko0713的实验室 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -216,7 +216,7 @@
             
             
               
-                Laravel笔记0:Laravel的安装和相关的工具
+                Web安全常识总结
               
             
           </h1>
@@ -228,8 +228,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-11T00:00:00+08:00" content="2016-11-11">
-              2016-11-11
+            <time itemprop="dateCreated" datetime="2017-06-20T00:00:00+08:00" content="2017-06-20">
+              2017-06-20
             </time>
           </span>
 
@@ -255,22 +255,28 @@
       
 
       
-        <h2 id="Laravel"><a href="#Laravel" class="headerlink" title="Laravel"></a>Laravel</h2><p>一个php框架，百科里说它：    </p>
-<blockquote>
-<p>是一套简洁、优雅的PHP Web开发框架(PHP Web Framework)。它可以让你从面条一样杂乱的代码中解脱出来；它可以帮你构建一个完美的网络APP，而且每行代码都可以简洁、富于表达力。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。    </p>
+<h2 id="CSRF-跨站请求伪造"><a href="#CSRF-跨站请求伪造" class="headerlink" title="CSRF-跨站请求伪造"></a>CSRF-跨站请求伪造</h2><p>CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。<br>要完成一次CSRF攻击，受害者必须依次完成两个步骤。<br>1.登录受新人的网站A,并在本地生成Cookie。<br>2.在不登出A的情况下，访问危险网站B。</p>
+<p>CSRF的最终解决方案是使用CSRF-TOKEN。<br>具体的做法是：<br>服务器发送给客户端一个token。<br>客户端提交的表单中带着这个token。<br>如果这个token不合法，那么服务器拒绝这个请求。</p>
+<h2 id="XSS-跨站请求攻击"><a href="#XSS-跨站请求攻击" class="headerlink" title="XSS-跨站请求攻击"></a>XSS-跨站请求攻击</h2><p>XSS是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。</p>
+<p>XSS的解决方案：    </p>
+<ul>
+<li>常见的解决方案是将用户提供的内容进行转义，许多语言都有提供对html的过滤</li>
+<li>针对cookie的一个预防方案是在响应头的set-cookie字段设置一个http-only，如此我们便无法通过脚本去获取和修改cookie了。     </li>
+</ul>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><blockquote>
+<p>HTTPS 协议（HyperText Transfer Protocol over Secure Socket Layer）：可以理解为HTTP+SSL/TLS， 即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL，用于安全的 HTTP 数据传输。  </p>
 </blockquote>
-<p>它是一个很受欢迎的php框架，也是我学习的第一个php框架。<br><a id="more"></a> </p>
-<h2 id="Composer"><a href="#Composer" class="headerlink" title="Composer"></a>Composer</h2><p>php的包管理工具，是现在比较好用的一个。<br>一个很重要的工具，可以下载一些很好用的php的轮子，嘿嘿。<br>想要的包可以在这里找到:<br><a href="https://packagist.org/" target="_blank" rel="noopener">packgist网站</a><br>下载Composer的网站:<br><a href="https://getcomposer.org/" target="_blank" rel="noopener">getcomposer</a>    </p>
-<h2 id="利用Composer创建laravel项目"><a href="#利用Composer创建laravel项目" class="headerlink" title="利用Composer创建laravel项目"></a>利用Composer创建laravel项目</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">composer create-project laravel/laravel LaravelTest</span><br></pre></td></tr></table></figure>
-<p>LaravelTest是我随便起的名字，不用在意。    </p>
-<h2 id="看看我们的laravel项目长什么样吧-！"><a href="#看看我们的laravel项目长什么样吧-！" class="headerlink" title="看看我们的laravel项目长什么样吧^_^！"></a>看看我们的laravel项目长什么样吧^_^！</h2><p>开启一下php自己的服务器:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -S localhost:8888</span><br></pre></td></tr></table></figure>
-<p>端口号也是随便写的，8888，发发发发～～～     </p>
-<p>然后你会发现，出现了404错误，这是为什么?<br>因为你现在的根目录是总的那个最大的LaravelTest目录，你需要改变根目录，这样:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -S localhost:8080 -t public</span><br></pre></td></tr></table></figure>
-<p>它会自己在根目录下查找index名字的页面哦。<br>加上-t 就可以修改php服务器的根目录啦。<br>然后你会发现，出现了一个很简单，但是很好看的页面，那就是laravel的默认主页面啦.    </p>
-<h2 id="laravel的命令行工具"><a href="#laravel的命令行工具" class="headerlink" title="laravel的命令行工具"></a>laravel的命令行工具</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan + 各种各样的命令</span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这篇博客记录了一个laravel小demo诞生的全过程，熟悉了几个命令行，接下来就要走进laravel里面的世界去看一看啦！    </p>
+<h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>加密和解密都是使用的同一个密钥。    </p>
+<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>加密使用的密钥和解密使用的密钥是不相同的，分别称为：公钥、私钥<br>公钥加密的只有私钥才可以解密，私钥加密的只有公钥才可以解密。    </p>
+<p><strong>HTTPS将对称加密和非对称加密做了结合</strong>   </p>
+<h3 id="SSL建立连接的过程"><a href="#SSL建立连接的过程" class="headerlink" title="SSL建立连接的过程"></a>SSL建立连接的过程</h3><ul>
+<li>客户端给出协议的版本号、一个客户端生成的随机数和客户端支持的加密算法；</li>
+<li>服务端在客户端给出的加密算法列表中选出一种，并给出数字证书和一个服务端生成的额随机数；</li>
+<li>客户端确认数字证书的有效性，然后生成一个新的随机数，并使用数字证书中的公钥加密这个随机数；</li>
+<li>服务端使用私钥解密，获取客户端发来的随机数；</li>
+<li>客户端和服务端根据约定的加密方法，使用之前的三个随机数，生成对话密钥，这个密钥会用来加密接下来的整个通信过程</li>
+</ul>
 
       
     </div>
@@ -285,7 +291,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/laravel/" rel="tag">#laravel</a>
+            <a href="/tags/Web安全/" rel="tag">#Web安全</a>
           
         </div>
       
@@ -294,16 +300,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/22/node_blog/" rel="next" title="用nodejs搭建一个完整的博客系统">
-                <i class="fa fa-chevron-left"></i> 用nodejs搭建一个完整的博客系统
+              <a href="/2017/06/10/alg-sort/" rel="next" title="算法笔记：排序">
+                <i class="fa fa-chevron-left"></i> 算法笔记：排序
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/11/12/laravel1/" rel="prev" title="Laravel笔记1:Laravel的路由和控制器">
-                Laravel笔记1:Laravel的路由和控制器 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/20/alg-tu/" rel="prev" title="算法笔记：图论">
+                算法笔记：图论 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -420,7 +426,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Laravel"><span class="nav-number">1.</span> <span class="nav-text">Laravel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Composer"><span class="nav-number">2.</span> <span class="nav-text">Composer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用Composer创建laravel项目"><span class="nav-number">3.</span> <span class="nav-text">利用Composer创建laravel项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#看看我们的laravel项目长什么样吧-！"><span class="nav-number">4.</span> <span class="nav-text">看看我们的laravel项目长什么样吧^_^！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#laravel的命令行工具"><span class="nav-number">5.</span> <span class="nav-text">laravel的命令行工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CSRF-跨站请求伪造"><span class="nav-number">2.</span> <span class="nav-text">CSRF-跨站请求伪造</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XSS-跨站请求攻击"><span class="nav-number">3.</span> <span class="nav-text">XSS-跨站请求攻击</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS"><span class="nav-number">4.</span> <span class="nav-text">HTTPS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对称加密"><span class="nav-number">4.1.</span> <span class="nav-text">对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非对称加密"><span class="nav-number">4.2.</span> <span class="nav-text">非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL建立连接的过程"><span class="nav-number">4.3.</span> <span class="nav-text">SSL建立连接的过程</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

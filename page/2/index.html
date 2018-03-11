@@ -311,6 +311,116 @@
             
               
                 
+                <a class="post-title-link" href="/2017/06/20/web_safe/" itemprop="url">
+                  Web安全常识总结
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-06-20T00:00:00+08:00" content="2017-06-20">
+              2017-06-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。    </p>
+<h2 id="CSRF-跨站请求伪造"><a href="#CSRF-跨站请求伪造" class="headerlink" title="CSRF-跨站请求伪造"></a>CSRF-跨站请求伪造</h2><p>CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。<br>要完成一次CSRF攻击，受害者必须依次完成两个步骤。<br>1.登录受新人的网站A,并在本地生成Cookie。<br>2.在不登出A的情况下，访问危险网站B。</p>
+<p>CSRF的最终解决方案是使用CSRF-TOKEN。<br>具体的做法是：<br>服务器发送给客户端一个token。<br>客户端提交的表单中带着这个token。<br>如果这个token不合法，那么服务器拒绝这个请求。</p>
+<h2 id="XSS-跨站请求攻击"><a href="#XSS-跨站请求攻击" class="headerlink" title="XSS-跨站请求攻击"></a>XSS-跨站请求攻击</h2><p>XSS是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。</p>
+<p>XSS的解决方案：    </p>
+<ul>
+<li>常见的解决方案是将用户提供的内容进行转义，许多语言都有提供对html的过滤</li>
+<li>针对cookie的一个预防方案是在响应头的set-cookie字段设置一个http-only，如此我们便无法通过脚本去获取和修改cookie了。     </li>
+</ul>
+<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><blockquote>
+<p>HTTPS 协议（HyperText Transfer Protocol over Secure Socket Layer）：可以理解为HTTP+SSL/TLS， 即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL，用于安全的 HTTP 数据传输。  </p>
+</blockquote>
+<h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>加密和解密都是使用的同一个密钥。    </p>
+<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>加密使用的密钥和解密使用的密钥是不相同的，分别称为：公钥、私钥<br>公钥加密的只有私钥才可以解密，私钥加密的只有公钥才可以解密。    </p>
+<p><strong>HTTPS将对称加密和非对称加密做了结合</strong>   </p>
+<h3 id="SSL建立连接的过程"><a href="#SSL建立连接的过程" class="headerlink" title="SSL建立连接的过程"></a>SSL建立连接的过程</h3><ul>
+<li>客户端给出协议的版本号、一个客户端生成的随机数和客户端支持的加密算法；</li>
+<li>服务端在客户端给出的加密算法列表中选出一种，并给出数字证书和一个服务端生成的额随机数；</li>
+<li>客户端确认数字证书的有效性，然后生成一个新的随机数，并使用数字证书中的公钥加密这个随机数；</li>
+<li>服务端使用私钥解密，获取客户端发来的随机数；</li>
+<li>客户端和服务端根据约定的加密方法，使用之前的三个随机数，生成对话密钥，这个密钥会用来加密接下来的整个通信过程</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/06/10/alg-sort/" itemprop="url">
                   算法笔记：排序
                 </a>
@@ -1113,112 +1223,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/04/React1/" itemprop="url">
-                  React组件生命周期的总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T00:00:00+08:00" content="2017-01-04">
-              2017-01-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在React组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。<br>一个React组件的生命周期从广义上看分为三个部分:   </p>
-<ul>
-<li>挂载</li>
-<li>渲染</li>
-<li>卸载<br>当渲染后的组件需要更新时，我们会重新去渲染组件。因此，我们也可以把React生命周期分为两类:    </li>
-<li>当组件在挂载或卸载时</li>
-<li>当组件接受新的数据，即组件更新时</li>
-</ul>
-<p>不过我还是更加喜欢这个版本的生命周期解释哈哈哈哈哈：    </p>
-<ul>
-<li>实例化</li>
-<li>存在期</li>
-<li>销毁&amp;清理</li>
-</ul>
-<p>一图胜千言：    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="react生命周期"><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/04/React1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1264,7 +1268,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">82</span>
+              <span class="site-state-item-count">83</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1274,7 +1278,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
