@@ -217,102 +217,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/12/18/ES609/" itemprop="url">
-                  ES6学习笔记9:字符串更进一步之标签模版字符串
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-18T00:00:00+08:00" content="2016-12-18">
-              2016-12-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前写过一篇ES6中字符串的，主要是每个点都点一下，没有对模版这一块做太多的介绍。<br>今天讲一讲模版字符串的进阶版，标签模版字符串。<br>字符串的第一篇博客在这里: <a href="https://maruko0713.github.io/2016/12/09/ES605/" target="_blank" rel="noopener">ES6字符串第一篇博客</a>。  </p>
-<h2 id="标签模版字符串的基本形态"><a href="#标签模版字符串的基本形态" class="headerlink" title="标签模版字符串的基本形态"></a>标签模版字符串的基本形态</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> template_string = 函数名<span class="string">`模版字符串`</span>;</span><br></pre></td></tr></table></figure>
-<p>楼上有点丑，我也知道。<br>标签模版字符串的意思是说，把函数名当做一个标签附加到模版字符串的前面，那么这个函数就可以对这个模版字符串做一些处理。<br>标签就是函数，不过是用起来和普通的函数有些区别😁。    </p>
-<h2 id="标签函数用起来！"><a href="#标签函数用起来！" class="headerlink" title="标签函数用起来！"></a>标签函数用起来！</h2><p>来看一段完整的代码:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dessert = <span class="string">'🍰'</span>,</span><br><span class="line">    drink  = <span class="string">'🍵'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> breakfast = kitchen<span class="string">`今天的早餐是</span></span><br><span class="line"><span class="string">  <span class="subst">$&#123;dessert&#125;</span> 与 <span class="subst">$&#123;drink&#125;</span>!`</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">kitchen</span>(<span class="params">strings, ...values</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(strings);</span><br><span class="line">    <span class="built_in">console</span>.log(values);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>strings和values分别是两个数组，包含了模版的两个部分。<br>strings就是你手写的那一部分，而values就是${}包含的那部分，变量部分。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/18/ES609/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/12/17/jQuery4/" itemprop="url">
                   jQuery复习4:jQuery中的动画效果
                 </a>
@@ -1112,6 +1016,102 @@
 <p>字符串对象多了一个includes方法，直接返回布尔值，当我们只想知道它是否存在，而不care<br>它存在于哪里时，就可以这样啦！<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/12/09/ES605/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/12/08/ES604/" itemprop="url">
+                  ES6学习笔记4:变量的解构赋值杂七杂八一锅端篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-08T00:00:00+08:00" content="2016-12-08">
+              2016-12-08
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>变量的解构赋值。<br>一个使多变量赋值变得更加简单的东西。<br>它有很多形式，前面我记录了数组形式，对象形式，这是对基本知识点的一个归纳。然而仍然有很多杂七杂八的小发现没有提到，这里一起说。     </p>
+<h2 id="字符串类型的小发现"><a href="#字符串类型的小发现" class="headerlink" title="字符串类型的小发现"></a>字符串类型的小发现</h2><p>字符串，它用双引号括起来的形式，常常让我们忘记它是引用类型的现实。    </p>
+<p>看这样一段代码：    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123;length&#125; = <span class="string">'yo.'</span>;</span><br></pre></td></tr></table></figure>
+<p>不会报错，为什么？<br>因为这里我们其实只是把String类型对象的一个属性给调出来用了！^_^，虽然你看着也许会有点不顺眼，但是想一想这个类型，想一想字符串装箱，拆箱的过程，是不是一下子就明白了？      </p>
+<p>字符串的特别之处，还在于有时候它可以被看作是数组。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/08/ES604/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

@@ -217,100 +217,6 @@
             
               
                 
-                <a class="post-title-link" href="/2017/07/20/react-native-key/" itemprop="url">
-                  一图开发手记：React中的key属性踩坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-20T00:00:00+08:00" content="2017-07-20">
-              2017-07-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/key1.jpeg" alt="书目列表1">  </p>
-<p>当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:</p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/key2.jpeg" alt="书目列表2"></p>
-<p>确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？<br>准确地说，为啥它似乎看起来像是继承了它楼上那本书(陈景润传)的样式一样？？？？？<br>这个就是因为，作为开发者，我没有用好React中的key属性。    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/07/20/react-native-key/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2017/06/20/web_safe/" itemprop="url">
                   Web安全常识总结
                 </a>
@@ -1195,6 +1101,103 @@
 <h2 id="前置知识：-块级作用域的出现"><a href="#前置知识：-块级作用域的出现" class="headerlink" title="前置知识： 块级作用域的出现"></a>前置知识： 块级作用域的出现</h2><p>ES6之前，js只划分全局作用域和函数作用域。如今，新增了块级作用域的概念。<br>let和const声明的变量，会自动绑定当前的块级作用域。<strong>外层作用域无法读取内层作用域的变量</strong>    </p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2017/03/21/new_es601/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/03/19/rn0/" itemprop="url">
+                  RN初相见,哇你好厉害呀&React前置知识
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-19T00:00:00+08:00" content="2017-03-19">
+              2017-03-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>再次回到博客看下日期真是惊出一身汗我。。。。😂，好久没有记东西了。<br>这两个月学算法去了。。。。。。<br>忙成狗的三月，在被一个巨麻烦的专业课老师禁止我带电脑上课之后，写代码的时间就更紧凑了。。。。于是也好久没有弹琴，每天都处于炸毛状态～～<br>忍过去就好了。。。。。       </p>
+<p>扯远了。。。。。<br>最近为了做一个app于是顺势开始接触rn,因为每次接触一个东西喜欢先把内容整理一下，于是我又开始写博客了。。。😂。<br>其实算法也想写博客的，但是盯着屏幕良久发现自己竟然不知道除了贴代码还能说啥?????😂遂放弃。<br>这大概是传说中的只可意会不可言传？？？？<br>不明白。。。😂      </p>
+<h2 id="关于RN"><a href="#关于RN" class="headerlink" title="关于RN"></a>关于RN</h2><p>这个东西简单来说就是一个基于React的前端框架，用它就能做出跨平台的app，既能在安卓系统上跑又能在ios系统上跑～～～<br>虽然说是基于React，我之前粗略翻了些资料以为就是React语法换了个运行环境，然而现在看来不是这样。RN有许多方面是和移动开发相关的，这也是为什么有的人本身没有开发过前端项目，大概了解一些js，但因为很熟悉安卓或ios的开发模式，于是很顺利地上手了RN的原因。</p>
+<h2 id="RN中很React的地方"><a href="#RN中很React的地方" class="headerlink" title="RN中很React的地方"></a>RN中很React的地方</h2><p>这部分就是RN中React原封不动移植来的东西。<br>可以算是预备知识吧～～      </p>
+<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p>复习！<br>如何在React|RN中创建一个组件？？？？<br>如果是ES6(大势所趋….这个是重点):    </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    xxx() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    xxx() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    xxx() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> HelloComponent;</span><br></pre></td></tr></table></figure>
+<p>继承Component类，然后在里面写生命周期方法。<br>xxx就是方法名，比如render啊，constructor啊啥的。<br>啥都能没有,render必须有～～    </p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/03/19/rn0/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
