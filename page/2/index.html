@@ -268,6 +268,7 @@
 <ul>
 <li>常见的解决方案是将用户提供的内容进行转义，许多语言都有提供对html的过滤</li>
 <li>针对cookie的一个预防方案是在响应头的set-cookie字段设置一个http-only，如此我们便无法通过脚本去获取和修改cookie了。     </li>
+<li>csp。在meta标签里设置content-security-policy,设置指定的域名，只有这个域名下的资源才去加载。有了这个标签，浏览器就不再识别非指定源的脚本了。   </li>
 </ul>
 <h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><blockquote>
 <p>HTTPS 协议（HyperText Transfer Protocol over Secure Socket Layer）：可以理解为HTTP+SSL/TLS， 即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL，用于安全的 HTTP 数据传输。  </p>
