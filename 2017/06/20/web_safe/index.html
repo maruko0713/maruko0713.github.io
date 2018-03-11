@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Mieruko0713的实验室">
 <meta property="og:description" content="前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。     CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。 CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个toke">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-11T02:50:39.000Z">
+<meta property="og:updated_time" content="2018-03-11T13:45:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web安全常识总结">
 <meta name="twitter:description" content="前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。     CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。 CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个toke">
@@ -272,7 +272,7 @@
 <p><strong>HTTPS将对称加密和非对称加密做了结合</strong>   </p>
 <h3 id="SSL建立连接的过程-摘自阮一峰博客"><a href="#SSL建立连接的过程-摘自阮一峰博客" class="headerlink" title="SSL建立连接的过程(摘自阮一峰博客)"></a>SSL建立连接的过程(摘自<a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html" target="_blank" rel="noopener">阮一峰博客</a>)</h3><ul>
 <li>客户端给出协议的版本号、一个客户端生成的随机数和客户端支持的加密算法；</li>
-<li>服务端在客户端给出的加密算法列表中选出一种，并给出数字证书和一个服务端生成的额随机数；</li>
+<li>服务端在客户端给出的加密算法列表中选出一种，并给出数字证书和一个服务端生成的随机数；</li>
 <li>客户端确认数字证书的有效性，然后生成一个新的随机数，并使用数字证书中的公钥加密这个随机数；</li>
 <li>服务端使用私钥解密，获取客户端发来的随机数；</li>
 <li>客户端和服务端根据约定的加密方法，使用之前的三个随机数，生成对话密钥，这个密钥会用来加密接下来的整个通信过程</li>
@@ -374,7 +374,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">83</span>
+              <span class="site-state-item-count">84</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
