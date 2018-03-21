@@ -65,7 +65,7 @@
 <meta property="og:site_name" content="Mieruko0713的实验室">
 <meta property="og:description" content="前言前两天看到一段代码，代码具体长啥样记不起来了，重点里面有个setTimeout（A君）,有个promise.then（B君）调用。我琢磨着大家都是异步，异步就是进队列等着，先进先出，那么肯定是A君的回调先执行，然后B君。结果那段代码跑出来是promise的调用先执行了。由此发现哈哈哈哈哈我自以为理解得很清楚的javascript异步队列其实理解得就是一坨。。。。。。:)感谢万能的知乎和简书，这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-10T10:11:22.000Z">
+<meta property="og:updated_time" content="2018-03-21T14:05:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重新理解事件循环和异步队列：区分macro和micro">
 <meta name="twitter:description" content="前言前两天看到一段代码，代码具体长啥样记不起来了，重点里面有个setTimeout（A君）,有个promise.then（B君）调用。我琢磨着大家都是异步，异步就是进队列等着，先进先出，那么肯定是A君的回调先执行，然后B君。结果那段代码跑出来是promise的调用先执行了。由此发现哈哈哈哈哈我自以为理解得很清楚的javascript异步队列其实理解得就是一坨。。。。。。:)感谢万能的知乎和简书，这">
@@ -264,8 +264,8 @@
 <p>ok,先记住这俩名字。然后我来梳理一下事件循环的过程:   </p>
 <ol>
 <li>全局上下文被推入调用栈，同步代码执行</li>
-<li>同步代码执行完了，栈空。然后把所有的micro任务给执行了。</li>
-<li>micro执行完了。开始执行macro。任务队列可以有多个，这里只要执行完其中的一个就行了。</li>
+<li>同步代码执行完了，栈空。然后把所有的micro任务给执行了（队列清空）。</li>
+<li>micro执行完了。开始执行macro。队列里的任务可以有多个，这里只要执行完其中的一个就行了。</li>
 <li>然后，再开始执行micro，执行完。</li>
 <li>然后再开始执行macro<br>…<br>…<br>…<br>一直执行到队列也彻底空了，啥也没有了，ok，循环结束。    </li>
 </ol>
@@ -274,9 +274,6 @@
 <p>具体的分类规则：macro-task大概包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering。<br>micro-task大概包括: process.nextTick, Promise, Object.observe(已废弃), MutationObserver(html5新特性)</p>
 </blockquote>
 <p>(上面这段摘自知乎柳兮的一个<a href="https://zhuanlan.zhihu.com/p/26238030" target="_blank" rel="noopener">专栏文章</a>，这篇文章非常好，还给出了详尽的例子，帮了我大忙了。)   </p>
-<ul>
-<li>数量区别：一个事件循环中只有一个micro队列，它空了又补补了又空。但是可有多个macro队列，因此我们说macro每次循环它的时候当前这个macro队列执行完就可以了。     </li>
-</ul>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>经过这么一折腾，异步队列，事件循环这一块，可算是整明白了。<br>所以说平时不应该不舍得花时间理解原理，不然代码跑出来都不知道是咋错的，说不定还会怀疑电脑坏了。。。。/捂脸<br>（逃。。。。。。。。。。。。。      </p>
 
       
