@@ -1,268 +1,195 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="大四信息汪 喜欢写代码 
+">
+    <meta name="keyword"  content="咩咩丸,前端,前端博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          从实际应用的角度认识BFC - Mieruko的实验室
+        
+    </title>
+
+    <link rel="canonical" href="http://mieruko.com/2017/11/25/bfc/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
 
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="css," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="前言:BFC，即块级格式化上下文。对BFC好奇起源于工作当中的两个现象，一个是垂直方向上的边距重叠问题，一个是清除浮动。其实这俩现象在曾经的我眼里都是非常正常并可以理解的现象，前两天同事突然提到说这个其实是可以用BFC解决的。今天没啥事，刚好有空坐下来瞅瞅这个BFC。      帮助与支持：感谢网易考拉前端团队的学习 BFC (Block Formatting Context)这篇文章。 什么是B">
-<meta name="keywords" content="css">
-<meta property="og:type" content="article">
-<meta property="og:title" content="从实际应用的角度认识BFC">
-<meta property="og:url" content="http://mieruko.com/2017/11/25/bfc/index.html">
-<meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="前言:BFC，即块级格式化上下文。对BFC好奇起源于工作当中的两个现象，一个是垂直方向上的边距重叠问题，一个是清除浮动。其实这俩现象在曾经的我眼里都是非常正常并可以理解的现象，前两天同事突然提到说这个其实是可以用BFC解决的。今天没啥事，刚好有空坐下来瞅瞅这个BFC。      帮助与支持：感谢网易考拉前端团队的学习 BFC (Block Formatting Context)这篇文章。 什么是B">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/3A187677-A963-45B3-BC26-74734A3805C1.png">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/2FEC6BDE-8D41-4301-A010-9353D1C7B1EF.png">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/1647E7C5-144B-4B5E-930A-D677E0372E37.png">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/4BB3E89F-FB12-471C-A3CC-3B9297B43AFF.png">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/0A33FAAA-A2F4-4E4F-BDB4-3C375C9B74A5.png">
-<meta property="og:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/7695A23C-C1B5-4E9D-8438-A02A11FFCB34.png">
-<meta property="og:updated_time" content="2018-03-03T09:29:22.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从实际应用的角度认识BFC">
-<meta name="twitter:description" content="前言:BFC，即块级格式化上下文。对BFC好奇起源于工作当中的两个现象，一个是垂直方向上的边距重叠问题，一个是清除浮动。其实这俩现象在曾经的我眼里都是非常正常并可以理解的现象，前两天同事突然提到说这个其实是可以用BFC解决的。今天没啥事，刚好有空坐下来瞅瞅这个BFC。      帮助与支持：感谢网易考拉前端团队的学习 BFC (Block Formatting Context)这篇文章。 什么是B">
-<meta name="twitter:image" content="http://7xl4oh.com1.z0.glb.clouddn.com/3A187677-A963-45B3-BC26-74734A3805C1.png">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> 从实际应用的角度认识BFC | Mieruko0713的实验室 </title>
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Mieruko0713的实验室</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                从实际应用的角度认识BFC
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-11-25T00:00:00+08:00" content="2017-11-25">
-              2017-11-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mieruko的实验室</a>
         </div>
-      </header>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
     
+<!-- Image to hack wechat -->
+<!-- <img src="http://mieruko.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('https://cdn.lxxyx.cn/2018-06-04-589111528085301_.pic_hd.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#css" title="css">css</a>
+                        
+                    </div>
+                    <h1>从实际应用的角度认识BFC</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by mieruko on
+                        2017-11-25
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-    <div class="post-body" itemprop="articleBody">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-      
-      
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>BFC，即块级格式化上下文。<br>对BFC好奇起源于工作当中的两个现象，一个是垂直方向上的边距重叠问题，一个是清除浮动。<br>其实这俩现象在曾经的我眼里都是非常正常并可以理解的现象，前两天同事突然提到说这个其实是可以用BFC解决的。今天没啥事，刚好有空坐下来瞅瞅这个BFC。     </p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>BFC，即块级格式化上下文。<br>对BFC好奇起源于工作当中的两个现象，一个是垂直方向上的边距重叠问题，一个是清除浮动。<br>其实这俩现象在曾经的我眼里都是非常正常并可以理解的现象，前两天同事突然提到说这个其实是可以用BFC解决的。今天没啥事，刚好有空坐下来瞅瞅这个BFC。     </p>
 <p>帮助与支持：<br>感谢网易考拉前端团队的<a href="https://juejin.im/post/59b73d5bf265da064618731d" target="_blank" rel="noopener">学习 BFC (Block Formatting Context)</a>这篇文章。</p>
 <h2 id="什么是BFC"><a href="#什么是BFC" class="headerlink" title="什么是BFC"></a>什么是BFC</h2><blockquote>
 <p>Formatting context(格式化上下文) 是 W3C CSS2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。</p>
@@ -295,269 +222,198 @@
 <h3 id="使元素不被浮动元素覆盖"><a href="#使元素不被浮动元素覆盖" class="headerlink" title="使元素不被浮动元素覆盖"></a>使元素不被浮动元素覆盖</h3><p>我们知道浮动元素的特点是，脱离文档流，但不脱离文本流。<br>看一个例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    .left &#123;</span></span><br><span class="line"><span class="undefined">      height: 100px;</span></span><br><span class="line"><span class="undefined">      width: 100px;</span></span><br><span class="line"><span class="undefined">      background: yellow;</span></span><br><span class="line"><span class="undefined">      float: left;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .normal &#123;</span></span><br><span class="line"><span class="undefined">      height:200px;</span></span><br><span class="line"><span class="undefined">      width:200px;</span></span><br><span class="line"><span class="undefined">      background:red;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"left"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"normal"</span>&gt;</span>我是一个测试<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>效果如图：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/0A33FAAA-A2F4-4E4F-BDB4-3C375C9B74A5.png" alt="增加BFC之前"><br>这符合我们对浮动的认知。<br>但如果我们希望右侧元素完全不受左侧元素浮动的影响，我们可以利用BFC，比如说，我们可以尝试在normal元素的样式里写一个display:inline-block。<br>效果如下:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/7695A23C-C1B5-4E9D-8438-A02A11FFCB34.png" alt="增加BFC之后"><br>如此，我们便利用BFC实现了对浮动元素覆盖的避免。     </p>
 
-      
-    </div>
 
-    <div>
-      
-        
-      
-    </div>
+                <hr>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/css/" rel="tag">#css</a>
-          
-        </div>
-      
+                
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/10/02/macro/" rel="next" title="重新理解事件循环和异步队列：区分macro和micro">
-                <i class="fa fa-chevron-left"></i> 重新理解事件循环和异步队列：区分macro和micro
-              </a>
-            
-          </div>
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2018/01/01/redux_context/" data-toggle="tooltip" data-placement="top" title="在使用Redux重构应用之前:从React的context属性说开去">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2017/10/02/macro/" data-toggle="tooltip" data-placement="top" title="重新理解事件循环和异步队列：区分macro和micro">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/01/redux_context/" rel="prev" title="在使用Redux重构应用之前:从React的context属性说开去">
-                在使用Redux重构应用之前:从React的context属性说开去 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
+                
 
-      
-      
-    </footer>
-  </article>
+                
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
-               alt="mieruko0713" />
-          <p class="site-author-name" itemprop="name">mieruko0713</p>
-          <p class="site-description motion-element" itemprop="description">大四信息汪 喜欢写代码 
-</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">84</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
             </div>
-          
-
-        </nav>
-
+    <!-- Side Catalog Container -->
         
 
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/mieruko0713" target="_blank">
-                  
-                    <i class="fa fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#css" title="css">css</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
         </div>
+    </div>
+</article>
 
-        
-        
 
-        
-        <div class="links-of-blogroll motion-element">
-          
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Mieruko">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mieruko的实验室 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
         </div>
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是BFC"><span class="nav-number">2.</span> <span class="nav-text">什么是BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#触发BFC"><span class="nav-number">3.</span> <span class="nav-text">触发BFC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFC的应用"><span class="nav-number">4.</span> <span class="nav-text">BFC的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决边距重合问题"><span class="nav-number">4.1.</span> <span class="nav-text">解决边距重合问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#清除浮动"><span class="nav-number">4.2.</span> <span class="nav-text">清除浮动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使元素不被浮动元素覆盖"><span class="nav-number">4.3.</span> <span class="nav-text">使元素不被浮动元素覆盖</span></a></li></ol></li></ol></div>
-            
-          </div>
-        </section>
-      
-
     </div>
-  </aside>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
 
 
-        
-      </div>
-    </main>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">mieruko0713</span>
-</div>
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
 
 
-  
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://mieruko.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
 
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+<!-- Google Analytics -->
 
 
 
-  
-  
 
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+<!-- Baidu Tongji -->
 
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+<!-- Side Catalog -->
 
 
 
-  
 
 
-
-  
-
-
-
-  
-  
-  
-
-  
-
-  
+<!-- Image to hack wechat -->
+<img src="http://mieruko.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
+
 </html>

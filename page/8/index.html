@@ -1,1357 +1,750 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="大四信息汪 喜欢写代码 
+">
+    <meta name="keyword"  content="咩咩丸,前端,前端博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Mieruko的实验室
+        
+    </title>
+
+    <link rel="canonical" href="http://mieruko.com/page/8/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
 
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="maruko" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="大四信息汪 喜欢写代码">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mieruko0713的实验室">
-<meta property="og:url" content="http://mieruko.com/page/8/index.html">
-<meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="大四信息汪 喜欢写代码">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mieruko0713的实验室">
-<meta name="twitter:description" content="大四信息汪 喜欢写代码">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Mieruko0713的实验室 </title>
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Mieruko0713的实验室</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/29/js11/" itemprop="url">
-                  Javascript系统复习：Javascript中的面向对象(OOP)之继承和原型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-29T00:00:00+08:00" content="2016-08-29">
-              2016-08-29
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mieruko的实验室</a>
         </div>
-      </header>
-    
 
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>Javascript中的OOP,其实不止Javascript中有OOP,面向对象思想在很多语言中都有体现。<br>先看一下面向对象的定义:    </p>
-<blockquote>
-<p>面向对象程序设计，是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性，灵活性和扩展性。    </p>
-</blockquote>
-<p>面向对象的几个重点思想：    </p>
-<ul>
-<li>继承</li>
-<li>封装</li>
-<li>多态</li>
-<li>抽象</li>
-</ul>
-<p>这些思想在Javascript中都可以体现。   </p>
-<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><h3 id="基于原型的继承"><a href="#基于原型的继承" class="headerlink" title="基于原型的继承"></a>基于原型的继承</h3><p>根据一个构造函数生成的对象会继承这个构造函数原型链上的内容。<br>🌰：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.y = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">typeof</span> Foo.prototype; <span class="comment">//"object"</span></span><br><span class="line">Foo.prototype.x = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> obj3 = <span class="keyword">new</span> Foo();</span><br><span class="line"></span><br><span class="line">obj3.y; <span class="comment">//2</span></span><br><span class="line">obj3.x; <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/29/js11/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/28/对HTML不限制大小写的测试/" itemprop="url">
-                  小细节:css中的的大小写区分
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-28T00:00:00+08:00" content="2016-08-28">
-              2016-08-28
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇文章看起来可能没有什么技术含量，是对一个小细节的验证。起因是读《javascript权威指南》这本书时，里面提到说js是大小写敏感的语言，而html不是，因此html中设定属性时属性名属性值不限制大小写，标签名也不限制。由此想到，css中的属性名和属性值以及选择器是否限制大小写呢，今天就是为了验证一下这个问题。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/28/对HTML不限制大小写的测试/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/27/js10/" itemprop="url">
-                  Javascript系统复习：闭包,作用域以及ES3执行上下文
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-27T00:00:00+08:00" content="2016-08-27">
-              2016-08-27
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>闭包和作用域，非常重要的一个点。<br>闭包的官方定义：    </p>
-<blockquote>
-<p>在计算机科学中，闭包（也称词法闭包或函数闭包）是指一个函数或函数的引用，与一个引用环境绑定在一起。这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。</p>
-</blockquote>
-<p>闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，仍可访问本地变量。    </p>
-<p>另外本文还有一个大boss是ES3的执行上下文，我会放在最后说。   </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/27/js10/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/26/gulp/" itemprop="url">
-                  自动化管理工具gulp的初体验
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-26T00:00:00+08:00" content="2016-08-26">
-              2016-08-26
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>前言:</p>
-<p>最近写了一个响应式的demo，推在github上<a href="https://github.com/maruko0713/To_Be_Responsive" target="_blank" rel="noopener">响应式demo</a>,在这个项目里，我第一次接触前端自动化管理工具，结合我自己的情况，我选择了gulp。这篇文章主要是对gulp的学习和使用做一个记录，同时文章后面会做一些gulp的比较好的插件的推荐.    </p>
-<h2 id="什么是gulp"><a href="#什么是gulp" class="headerlink" title="什么是gulp"></a>什么是gulp</h2><blockquote>
-<p>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用她，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。    </p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/26/gulp/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/25/js9/" itemprop="url">
-                  Javascript系统复习：函数的重要属性和arguments
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-25T00:00:00+08:00" content="2016-08-25">
-              2016-08-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>这篇博客概括起来比较简单粗暴，就是写函数的常用属性和arguments对象～～<br>(写完之后的我再回过头来看也觉得它意外的短啊。。。😂)   </p>
-<h2 id="函数的属性"><a href="#函数的属性" class="headerlink" title="函数的属性"></a>函数的属性</h2><ul>
-<li>foo.name 函数名</li>
-<li>foo.length 形参的个数</li>
-<li>arguments.length 实参的个数<br>🌰：    </li>
-</ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x,y,z</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">arguments</span>.length; <span class="comment">//2</span></span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>]; <span class="comment">//1</span></span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">    x; <span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">arguments</span>[<span class="number">2</span>] = <span class="number">100</span>; </span><br><span class="line">    z; <span class="comment">//undefined</span></span><br><span class="line">    <span class="built_in">arguments</span>.callee === foo; <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">foo.length;<span class="comment">// 3</span></span><br><span class="line">foo.name; <span class="comment">//"foo"</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/25/js9/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/24/body_html/" itemprop="url">
-                  body和html到底有多高&&浏览器的背景色问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-24T00:00:00+08:00" content="2016-08-24">
-              2016-08-24
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在此之前我一直以为在浏览器里html默认和浏览器窗口等高，而body默认和html等高，现在想想自己为什么会这么想，主要是因为这个:    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/24/body_html/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/23/js8/" itemprop="url">
-                  Javascript系统复习：函数和作用域
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-23T00:00:00+08:00" content="2016-08-23">
-              2016-08-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>Javascript中的函数和由函数带出的作用域～～<br><strong><em>函数</em></strong>是一块Javascript代码，被定义一次，但是可以被执行和调用多次。<br>JS中的函数也是对象，所以JS函数可以像其它对象那样操作和传递，所以我们也常叫JS中的函数为函数对象。   </p>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>函数中的几个部分:   </p>
-<ul>
-<li>函数名</li>
-<li>参数列表</li>
-<li>函数体</li>
-</ul>
-<p>🌰：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> x === <span class="string">"number"</span> &amp;&amp; <span class="keyword">typeof</span> y === <span class="string">"number"</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> x + y;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">//3</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/23/js8/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/21/js7/" itemprop="url">
-                  Javascript系统复习：数组专栏
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-21T00:00:00+08:00" content="2016-08-21">
-              2016-08-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>数组！一个出镜率非常高的数据结构～～<br>定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/21/js7/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/19/js6/" itemprop="url">
-                  Javascript系统复习：对象标签和对象序列化
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-19T00:00:00+08:00" content="2016-08-19">
-              2016-08-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>前面我们说属性是有标签的，于是<strong><em>对象也是有标签的</em></strong>。    </p>
-<h2 id="对象标签"><a href="#对象标签" class="headerlink" title="对象标签"></a>对象标签</h2><p>对象标签主要有三种:    </p>
-<ul>
-<li>[[proto]]</li>
-<li>[[class]]</li>
-<li>[[extensible]]</li>
-</ul>
-<h3 id="原型和class"><a href="#原型和class" class="headerlink" title="原型和class"></a>原型和class</h3><p>第一个标签对应的是原型，我们可以通过prototype属性来访问。<br>第二个标签没有一个指定的方式去查看或者修改它，我们可以间接地通过Object.prototype.toString方法来获取它。<br>举个例子：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> toString = <span class="built_in">Object</span>.prototype.toString;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getType</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> toString.call(o).slice(<span class="number">8</span>, <span class="number">-1</span>);</span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line">toString.call(<span class="literal">null</span>); <span class="comment">// "[object Null]"</span></span><br><span class="line">getType(<span class="literal">null</span>); <span class="comment">// "Null"</span></span><br><span class="line">getType(<span class="literal">undefined</span>); <span class="comment">// "Undefined"</span></span><br><span class="line">getType(<span class="number">1</span>); <span class="comment">// "Number"</span></span><br><span class="line">getType(<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>));<span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">1</span>); <span class="comment">// "object"</span></span><br><span class="line">getType(<span class="literal">true</span>); <span class="comment">// "Boolean"</span></span><br><span class="line">getType(<span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>)); <span class="comment">// "Boolean"</span></span><br></pre></td></tr></table></figure>
-<p>注意，在调用object.toString方法的时候，它会去把参数转换为对象，然后再作处理。<br>因此slice方法就截去了object那几个字母，只返回我们想看到的对象。    </p>
-<p><strong><em>挖坑</em></strong>：需要搞清楚Object和Function对象上的toString到底什么区别。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/19/js6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/17/js5/" itemprop="url">
-                  Javascript系统复习：get和set方法／属性标签深入
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-17T00:00:00+08:00" content="2016-08-17">
-              2016-08-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>上一篇太长了，我给它截成两部分来讲。<br>这一篇会开辟get和set的新世界，然后就上一篇当中的属性标签再往下深入一下。   </p>
-<h2 id="getter和setter方法"><a href="#getter和setter方法" class="headerlink" title="getter和setter方法"></a>getter和setter方法</h2><p>看一段代码:   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> kid = &#123;</span><br><span class="line">    name: <span class="string">"wanzifa"</span>,</span><br><span class="line">    weibo: <span class="string">"miemie"</span>,</span><br><span class="line">    get age() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Date</span>().getFullYear() - <span class="number">1996</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">    set age(val) &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"不能修改成"</span> + val);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(kid.age);</span><br><span class="line">kid.age = <span class="number">100</span>;<span class="comment">// 输出 不能修改成100</span></span><br><span class="line"><span class="built_in">console</span>.log(kid.age);<span class="comment">// 还是27</span></span><br></pre></td></tr></table></figure>
-<p>get,set方法很特别，它们和一般的方法不一样。<br>一般我们定义一个方法，是方法名:方法体。<br>这两个方法是以get或者set开头，然后直接跟属性名，后面跟方法体。<br>这里面我们定义的get方法按照我们的想法去输出我们想要获取的属性值，<br>set方法按照我们定义的方式去对我们的属性设置操作作出反应。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/17/js5/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
-               alt="mieruko0713" />
-          <p class="site-author-name" itemprop="name">mieruko0713</p>
-          <p class="site-description motion-element" itemprop="description">大四信息汪 喜欢写代码 
-</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">84</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
             </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/mieruko0713" target="_blank">
-                  
-                    <i class="fa fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
         </div>
-
-        
-        
-
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
+        <!-- /.navbar-collapse -->
     </div>
-  </aside>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">mieruko0713</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('https://cdn.lxxyx.cn/2018-06-04-589111528085301_.pic_hd.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Mieruko的实验室</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 
 
-  
-  
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
 
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-
-
-  
-
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
 
 
-  
-  
-  
+<div class="post-preview">
 
-  
+    <a href="/2016/08/29/js11/">
+        <h2 class="post-title">
+            Javascript系统复习：Javascript中的面向对象(OOP)之继承和原型
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:Javascript中的OOP,其实不止Javascript中有OOP,面向对象思想在很多语言中都有体现。先看一下面向对象的定义:    
 
-  
+面向对象程序设计，是一种程序设计范型，同时也是一种程序开发的方法。对象指的是类的实例。它将对象作为程序的基本单元，将程序和数据封装其中，以提高软件的重用性，灵活性和扩展性。    
+
+面向对象的几个重点思想：    
+
+继承
+封装
+多态
+抽象
+
+......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-29
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/28/对HTML不限制大小写的测试/">
+        <h2 class="post-title">
+            小细节:css中的的大小写区分
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:这篇文章看起来可能没有什么技术含量，是对一个小细节的验证。起因是读《javascript权威指南》这本书时，里面提到说js是大小写敏感的语言，而html不是，因此html中设定属性时属性名属性值不限制大小写，标签名也不限制。由此想到，css中的属性名和属性值以及选择器是否限制大小写呢，今天就是为了验证一下这个问题。 
+对HTML不限制大小写的测试js大小写敏感还是比较明显比较常见的，先......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-28
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/27/js10/">
+        <h2 class="post-title">
+            Javascript系统复习：闭包,作用域以及ES3执行上下文
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:闭包和作用域，非常重要的一个点。闭包的官方定义：    
+
+在计算机科学中，闭包（也称词法闭包或函数闭包）是指一个函数或函数的引用，与一个引用环境绑定在一起。这个引用环境是一个存储该函数每个非局部变量（也叫自由变量）的表。
+
+闭包不同于一般的函数，它允许一个函数在立即词法作用域外调用时，仍可访问本地变量。    
+另外本文还有一个大boss是ES3的执行上下文，我会放在最后说。   
+......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-27
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/26/gulp/">
+        <h2 class="post-title">
+            自动化管理工具gulp的初体验
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:
+最近写了一个响应式的demo，推在github上响应式demo,在这个项目里，我第一次接触前端自动化管理工具，结合我自己的情况，我选择了gulp。这篇文章主要是对gulp的学习和使用做一个记录，同时文章后面会做一些gulp的比较好的插件的推荐.    
+什么是gulp
+gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；她不仅能对网站资源进行优化，而且在开发过程中很......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-26
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/25/js9/">
+        <h2 class="post-title">
+            Javascript系统复习：函数的重要属性和arguments
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:这篇博客概括起来比较简单粗暴，就是写函数的常用属性和arguments对象～～(写完之后的我再回过头来看也觉得它意外的短啊。。。😂)   
+函数的属性
+foo.name 函数名
+foo.length 形参的个数
+arguments.length 实参的个数🌰：    
+
+1234567891011121314function foo(x,y,z) &#123;    argumen......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/24/body_html/">
+        <h2 class="post-title">
+            body和html到底有多高&&浏览器的背景色问题
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:在此之前我一直以为在浏览器里html默认和浏览器窗口等高，而body默认和html等高，现在想想自己为什么会这么想，主要是因为这个:    
+ 
+body和html的高度测试代码123body&#123;    background:blue;&#125;
+当我这么干的时候，得到了这个结果：看，body的背景色占据了整个浏览器窗口，这样想来body撑开浏览器什么的也不是匪夷所思了，但书......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-24
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/23/js8/">
+        <h2 class="post-title">
+            Javascript系统复习：函数和作用域
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:Javascript中的函数和由函数带出的作用域～～函数是一块Javascript代码，被定义一次，但是可以被执行和调用多次。JS中的函数也是对象，所以JS函数可以像其它对象那样操作和传递，所以我们也常叫JS中的函数为函数对象。   
+函数函数中的几个部分:   
+
+函数名
+参数列表
+函数体
+
+🌰：   
+123456789function foo(x, y) &#123;    i......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-23
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/21/js7/">
+        <h2 class="post-title">
+            Javascript系统复习：数组专栏
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:数组！一个出镜率非常高的数据结构～～定义： 数组是值的有序集合，每个值叫做元素，每个元素在数组中都有数字位置编号，也就是索引。JS中数组是弱类型的， 即数组中可以含有不同类型的元素。数组元素甚至可以是对象或其它数组。     
+ 
+🌰：   
+1var arr = [1, true, null, undefined, &#123;x:1&#125;, [1,2,3]];
+看看，是不是......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-21
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/19/js6/">
+        <h2 class="post-title">
+            Javascript系统复习：对象标签和对象序列化
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:前面我们说属性是有标签的，于是对象也是有标签的。    
+对象标签对象标签主要有三种:    
+
+[[proto]]
+[[class]]
+[[extensible]]
+
+原型和class第一个标签对应的是原型，我们可以通过prototype属性来访问。第二个标签没有一个指定的方式去查看或者修改它，我们可以间接地通过Object.prototype.toString方法来获取它。举个例子......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-19
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/08/17/js5/">
+        <h2 class="post-title">
+            Javascript系统复习：get和set方法／属性标签深入
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:上一篇太长了，我给它截成两部分来讲。这一篇会开辟get和set的新世界，然后就上一篇当中的属性标签再往下深入一下。   
+getter和setter方法看一段代码:   
+12345678910111213var kid = &#123;    name: "wanzifa",    weibo: "miemie",    get age() &#123;        return ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-08-17
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/page/7/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/page/9/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                            <a href="/tags/#ES6" title="ES6" rel="20">ES6</a>
+                            
+                        
+                            
+                            <a href="/tags/#React" title="React" rel="6">React</a>
+                            
+                        
+                            
+                            <a href="/tags/#jQuery" title="jQuery" rel="7">jQuery</a>
+                            
+                        
+                            
+                            <a href="/tags/#ajax" title="ajax" rel="3">ajax</a>
+                            
+                        
+                            
+                            <a href="/tags/#javascript" title="javascript" rel="18">javascript</a>
+                            
+                        
+                            
+                            <a href="/tags/#算法" title="算法" rel="2">算法</a>
+                            
+                        
+                            
+                            <a href="/tags/#css" title="css" rel="5">css</a>
+                            
+                        
+                            
+                            <a href="/tags/#Node" title="Node" rel="6">Node</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#前端工具" title="前端工具" rel="2">前端工具</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTTP" title="HTTP" rel="2">HTTP</a>
+                            
+                        
+                            
+                            <a href="/tags/#移动web" title="移动web" rel="2">移动web</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#laravel" title="laravel" rel="6">laravel</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#原型链" title="原型链" rel="2">原型链</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#React Native" title="React Native" rel="5">React Native</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="https://cdn.lxxyx.cn/2018-06-04-041616.png" />
+                        
+
+                        
+                            <p>我要成为魔法师!</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+
+                            
+
+                            
+
+                            
+                                <li>
+                                    <a target="_blank"  href="https://github.com/Mieruko">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Friends Blog -->
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Mieruko">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mieruko的实验室 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://mieruko.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://mieruko.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
+
 </html>

@@ -1,261 +1,195 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="大四信息汪 喜欢写代码 
+">
+    <meta name="keyword"  content="咩咩丸,前端,前端博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Node中的异步i/o和事件轮询机制 - Mieruko的实验室
+        
+    </title>
+
+    <link rel="canonical" href="http://mieruko.com/2016/11/30/node_async/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
 
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Node," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。">
-<meta name="keywords" content="Node">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Node中的异步i&#x2F;o和事件轮询机制">
-<meta property="og:url" content="http://mieruko.com/2016/11/30/node_async/index.html">
-<meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-01-22T06:55:45.000Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node中的异步i&#x2F;o和事件轮询机制">
-<meta name="twitter:description" content="前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Node中的异步i/o和事件轮询机制 | Mieruko0713的实验室 </title>
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Mieruko0713的实验室</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Node中的异步i/o和事件轮询机制
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-30T00:00:00+08:00" content="2016-11-30">
-              2016-11-30
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mieruko的实验室</a>
         </div>
-      </header>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
     
+<!-- Image to hack wechat -->
+<!-- <img src="http://mieruko.com/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}" width="0" height="0"> -->
 
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        background-image: url('https://cdn.lxxyx.cn/2018-06-04-589111528085301_.pic_hd.jpg')
+    }
+</style>
+<header class="intro-header" >
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                          <a class="tag" href="/tags/#Node" title="Node">Node</a>
+                        
+                    </div>
+                    <h1>Node中的异步i/o和事件轮询机制</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        Posted by mieruko on
+                        2016-11-30
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-    <div class="post-body" itemprop="articleBody">
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-      
-      
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。<br><a id="more"></a> </p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。<br><a id="more"></a> </p>
 <h2 id="12-02填坑"><a href="#12-02填坑" class="headerlink" title="12-02填坑"></a>12-02填坑</h2><p>异步时Node平台开辟的线程池里的i/o（或网络请求之类的需要等待的线程），这些线程所在的进程随着线程的阻塞会一起进入阻塞状态，阻塞状态的进程是不占用cpu的，这正是Node节省时间的关键。至于事件循环对时间的占用，和阻塞对时间的浪费比起来应该是微乎其微的，这也正是Node异步高性能的关键所在。     </p>
 <h2 id="从所谓“单线程”说起"><a href="#从所谓“单线程”说起" class="headerlink" title="从所谓“单线程”说起"></a>从所谓“单线程”说起</h2><p>我们常常听到的一句话是”javascript是单线程的”，然而这句话其实应该是”javascript的主线程师单线程的“，怎么理解呢。我记得在java里面，通过类的继承，我们是可以利用这个语言自己去开辟线程的。然而javascript不可以，整个应用层就只有一个线程从头到尾执行下来。<br>因此我们要说”javascript中开发者的代码是单线程的（只能运行在主线程中）“。    </p>
 <h2 id="异步的实现"><a href="#异步的实现" class="headerlink" title="异步的实现"></a>异步的实现</h2><p>第一次接触到js的异步，是浏览器端的Ajax请求。当时就对上面的单线程有了困惑，查了资料之后知道虽然js是单线程的，但是浏览器是多线程的，因此可以一边运行主线程，一边处理http请求，对http的请求其实相当于开了一个新线程。    </p>
@@ -269,269 +203,198 @@
 <h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><p>Node的异步i/o是在线程池中进行的，线程池是Node调用它底层的c++模块实现的。    </p>
 <h3 id="一个异步调用的开始到结束"><a href="#一个异步调用的开始到结束" class="headerlink" title="一个异步调用的开始到结束"></a>一个异步调用的开始到结束</h3><p>主线程抛出一个异步i/o请求之后，封装请求对象，设置参数和回调函数，然后将请求对象放入线程池等待执行。<br>放入线程池这一步可以理解为开辟了一个i/o操作的新线程，然后主线程继续往下走，新线程执行i/o操作，事件循环仍然在不停地检查事件队列里面有没有未执行的事件。<br>某一个时刻，执行i/o操作的线程完成了任务，它就会把执行结果和相应的回调函数一起放进事件队列，这个线程就结束了。<br>事件循环按照事件队列顺序执行队列里的回调函数和事件结果，轮到到事件队列里面新出现的这个事件信息和回调函数时，就连事件信息和回调函数一起取出并且执行。    </p>
 
-      
-    </div>
 
-    <div>
-      
-        
-      
-    </div>
+                <hr>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Node/" rel="tag">#Node</a>
-          
-        </div>
-      
+                
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/11/25/http/" rel="next" title="HTTP协议学习总结">
-                <i class="fa fa-chevron-left"></i> HTTP协议学习总结
-              </a>
-            
-          </div>
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/2016/12/03/ES60/" data-toggle="tooltip" data-placement="top" title="ES6学习笔记0:let命令">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/2016/11/25/http/" data-toggle="tooltip" data-placement="top" title="HTTP协议学习总结">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
 
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/03/ES60/" rel="prev" title="ES6学习笔记0:let命令">
-                ES6学习笔记0:let命令 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
+                
 
-      
-      
-    </footer>
-  </article>
+                
 
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
-               alt="mieruko0713" />
-          <p class="site-author-name" itemprop="name">mieruko0713</p>
-          <p class="site-description motion-element" itemprop="description">大四信息汪 喜欢写代码 
-</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">84</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
             </div>
-          
-
-        </nav>
-
+    <!-- Side Catalog Container -->
         
 
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/mieruko0713" target="_blank">
-                  
-                    <i class="fa fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
+    <!-- Sidebar Container -->
+
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#Node" title="Node">Node</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+
         </div>
+    </div>
+</article>
 
-        
-        
 
-        
-        <div class="links-of-blogroll motion-element">
-          
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Mieruko">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mieruko的实验室 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
         </div>
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-02填坑"><span class="nav-number">2.</span> <span class="nav-text">12-02填坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从所谓“单线程”说起"><span class="nav-number">3.</span> <span class="nav-text">从所谓“单线程”说起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步的实现"><span class="nav-number">4.</span> <span class="nav-text">异步的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#事件轮询机制"><span class="nav-number">5.</span> <span class="nav-text">事件轮询机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#事件循环"><span class="nav-number">5.1.</span> <span class="nav-text">事件循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池"><span class="nav-number">5.2.</span> <span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个异步调用的开始到结束"><span class="nav-number">5.3.</span> <span class="nav-text">一个异步调用的开始到结束</span></a></li></ol></li></ol></div>
-            
-          </div>
-        </section>
-      
-
     </div>
-  </aside>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
 
 
-        
-      </div>
-    </main>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">mieruko0713</span>
-</div>
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
 
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
 
 
-  
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://mieruko.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
 
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+<!-- Google Analytics -->
 
 
 
-  
-  
 
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+<!-- Baidu Tongji -->
 
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+<!-- Side Catalog -->
 
 
 
-  
 
 
-
-  
-
-
-
-  
-  
-  
-
-  
-
-  
+<!-- Image to hack wechat -->
+<img src="http://mieruko.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
+
 </html>

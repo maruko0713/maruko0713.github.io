@@ -1,1426 +1,728 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="大四信息汪 喜欢写代码 
+">
+    <meta name="keyword"  content="咩咩丸,前端,前端博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Mieruko的实验室
+        
+    </title>
+
+    <link rel="canonical" href="http://mieruko.com/page/2/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
 
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="maruko" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="大四信息汪 喜欢写代码">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mieruko0713的实验室">
-<meta property="og:url" content="http://mieruko.com/page/2/index.html">
-<meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="大四信息汪 喜欢写代码">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mieruko0713的实验室">
-<meta name="twitter:description" content="大四信息汪 喜欢写代码">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Mieruko0713的实验室 </title>
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Mieruko0713的实验室</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/20/web_safe/" itemprop="url">
-                  Web安全常识总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-20T00:00:00+08:00" content="2017-06-20">
-              2017-06-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mieruko的实验室</a>
         </div>
-      </header>
-    
 
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。    </p>
-<h2 id="CSRF-跨站请求伪造"><a href="#CSRF-跨站请求伪造" class="headerlink" title="CSRF-跨站请求伪造"></a>CSRF-跨站请求伪造</h2><p>CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。<br>要完成一次CSRF攻击，受害者必须依次完成两个步骤。<br>1.登录受新人的网站A,并在本地生成Cookie。<br>2.在不登出A的情况下，访问危险网站B。</p>
-<p>CSRF的最终解决方案是使用CSRF-TOKEN。<br>具体的做法是：<br>服务器发送给客户端一个token。<br>客户端提交的表单中带着这个token。<br>如果这个token不合法，那么服务器拒绝这个请求。</p>
-<h2 id="XSS-跨站请求攻击"><a href="#XSS-跨站请求攻击" class="headerlink" title="XSS-跨站请求攻击"></a>XSS-跨站请求攻击</h2><p>XSS是一种网站应用程序的安全漏洞攻击，是代码注入的一种。它允许恶意用户将代码注入到网页上，其他用户在观看网页时就会受到影响。这类攻击通常包含了HTML以及用户端脚本语言。</p>
-<p>XSS的解决方案：    </p>
-<ul>
-<li>常见的解决方案是将用户提供的内容进行转义，许多语言都有提供对html的过滤</li>
-<li>针对cookie的一个预防方案是在响应头的set-cookie字段设置一个http-only，如此我们便无法通过脚本去获取和修改cookie了。     </li>
-<li>csp。在meta标签里设置content-security-policy,设置指定的域名，只有这个域名下的资源才去加载。有了这个标签，浏览器就不再识别非指定源的脚本了。   </li>
-</ul>
-<h2 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h2><blockquote>
-<p>HTTPS 协议（HyperText Transfer Protocol over Secure Socket Layer）：可以理解为HTTP+SSL/TLS， 即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL，用于安全的 HTTP 数据传输。  </p>
-</blockquote>
-<h3 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h3><p>加密和解密都是使用的同一个密钥。    </p>
-<h3 id="非对称加密"><a href="#非对称加密" class="headerlink" title="非对称加密"></a>非对称加密</h3><p>加密使用的密钥和解密使用的密钥是不相同的，分别称为：公钥、私钥<br>公钥加密的只有私钥才可以解密，私钥加密的只有公钥才可以解密。    </p>
-<p><strong>HTTPS将对称加密和非对称加密做了结合</strong>   </p>
-<h3 id="SSL建立连接的过程-摘自阮一峰博客"><a href="#SSL建立连接的过程-摘自阮一峰博客" class="headerlink" title="SSL建立连接的过程(摘自阮一峰博客)"></a>SSL建立连接的过程(摘自<a href="http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html" target="_blank" rel="noopener">阮一峰博客</a>)</h3><ul>
-<li>客户端给出协议的版本号、一个客户端生成的随机数和客户端支持的加密算法；</li>
-<li>服务端在客户端给出的加密算法列表中选出一种，并给出数字证书和一个服务端生成的随机数；</li>
-<li>客户端确认数字证书的有效性，然后生成一个新的随机数，并使用数字证书中的公钥加密这个随机数；</li>
-<li>服务端使用私钥解密，获取客户端发来的随机数；</li>
-<li>客户端和服务端根据约定的加密方法，使用之前的三个随机数，生成对话密钥，这个密钥会用来加密接下来的整个通信过程</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/20/alg-tu/" itemprop="url">
-                  算法笔记：图论
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-20T00:00:00+08:00" content="2017-06-20">
-              2017-06-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><del>算法系列不需要前言</del><br>本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。<br>不是错题本，不是OJ参考答案(这个在<a href="https://github.com/mieruko0713/mieruko_algorithms" target="_blank" rel="noopener">这里</a>)，只是总结   </p>
-<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><p>深度优先搜索以”深度”作为第一关键词，每次都是沿着路径到不能再前进时才退回到最近的岔道口。    </p>
-<h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><p>广度优先搜索以”广度”作为第一关键词，每次以扩散的方式向外访问顶点。<br>使用BFS遍历图需要用到一个队列，通过反复取出队首顶点，将该顶点可到达的未曾加入过队列的顶点全部入队，直到队列为空时遍历结束。    </p>
-<h2 id="最短路径"><a href="#最短路径" class="headerlink" title="最短路径"></a>最短路径</h2><p>最短路径是图论中一个很经典的问题：<br>给定图(V,E)，求一条从起点到终点的路径，使这条路径上经过的所有边的边权之和最小。   </p>
-<h3 id="单源最短路-迪杰斯特拉算法"><a href="#单源最短路-迪杰斯特拉算法" class="headerlink" title="单源最短路-迪杰斯特拉算法"></a>单源最短路-迪杰斯特拉算法</h3><p>对图设置集合S，存放已被访问的顶点，然后每次从集合中选择与起点s的距离最短的一个顶点u，访问并加入集合S。<br>然后令u为中介点，优化从起点s到所有通过u能抵达的顶点之间的距离。这样操作n次（n为顶点个数），直到集合S已包含了所有的顶点。    </p>
-<h3 id="多源最短路-佛洛依德算法"><a href="#多源最短路-佛洛依德算法" class="headerlink" title="多源最短路-佛洛依德算法"></a>多源最短路-佛洛依德算法</h3><p>如果存在顶点K，使以K作中介点时顶点i和顶点j的当前最短距离缩短，就使用顶点K作为i和j的中介点，基于此来优化i和j之间的距离。    </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/10/alg-sort/" itemprop="url">
-                  算法笔记：排序
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-10T00:00:00+08:00" content="2017-06-10">
-              2017-06-10
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><del>算法系列不需要前言</del><br>本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。<br>不是错题本，不是OJ参考答案(这个在<a href="https://github.com/mieruko0713/mieruko_algorithms" target="_blank" rel="noopener">这里</a>)，只是总结   </p>
-<p>先上图：<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/%E7%AE%97%E6%B3%95.png" alt="算法"></p>
-<h2 id="冒泡排序-O-n-2"><a href="#冒泡排序-O-n-2" class="headerlink" title="冒泡排序(O(n^2))"></a>冒泡排序(O(n^2))</h2><p>冒泡排序的思想就是通过与相邻元素的比较和交换来把大的数交换到最后面。     </p>
-<h2 id="选择排序-O-n-2"><a href="#选择排序-O-n-2" class="headerlink" title="选择排序(O(n^2))"></a>选择排序(O(n^2))</h2><p>首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，然后放到排序序列第二位。以此类推，直到所有元素均排序完毕。</p>
-<h2 id="插入排序-O-n-2"><a href="#插入排序-O-n-2" class="headerlink" title="插入排序(O(n^2))"></a>插入排序(O(n^2))</h2><p>步骤：    </p>
-<ul>
-<li>从第一个元素开始，该元素可以认为已经被排序</li>
-<li>取出下一个元素，在已经排序的元素序列中从后向前扫描</li>
-<li>如果该元素（已排序）大于新元素，将该元素移到下一位置</li>
-<li>重复步骤3，直到找到已排序的元素小于或者等于新元素的位置</li>
-<li>将新元素插入到该位置中</li>
-<li>重复步骤2</li>
-</ul>
-<h2 id="快速排序-不稳定的，平均时间复杂度O-nlogn"><a href="#快速排序-不稳定的，平均时间复杂度O-nlogn" class="headerlink" title="快速排序(不稳定的，平均时间复杂度O(nlogn))"></a>快速排序(不稳定的，平均时间复杂度O(nlogn))</h2><p>冒泡+二分+递归分治<br>其思想是来自冒泡排序，冒泡排序是通过相邻元素的比较和交换把最大的冒泡到最末端，而快速排序是比较和交换小数和大数，这样一来不仅把小数冒泡到上面同时也把大数沉到下面。<br>步骤:   </p>
-<ul>
-<li>从数列中挑出一个元素，称为 “基准”（pivot）</li>
-<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。</li>
-<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序</li>
-</ul>
-<h2 id="归并排序（稳定，平均时间复杂度O-nlogn-空间复杂度O-n-）"><a href="#归并排序（稳定，平均时间复杂度O-nlogn-空间复杂度O-n-）" class="headerlink" title="归并排序（稳定，平均时间复杂度O(nlogn),空间复杂度O(n)）"></a>归并排序（稳定，平均时间复杂度O(nlogn),空间复杂度O(n)）</h2><p>归并排序使用了递归分治的思想。<br>其基本思想是，先递归划分子问题，然后合并结果。<br>把待排序列看成由两个有序的子序列，然后合并两个子序列，然后把子序列看成由两个有序序列。。。。。倒着来看，其实就是先两两合并，然后四四合并。。。最终形成有序序列。空间复杂度为O(n)，时间复杂度为O(nlogn)。</p>
-<h2 id="堆排序（时间复杂度nlogn）"><a href="#堆排序（时间复杂度nlogn）" class="headerlink" title="堆排序（时间复杂度nlogn）"></a>堆排序（时间复杂度nlogn）</h2><p>首先，实现堆排序需要解决两个问题：</p>
-<ol>
-<li><p>如何由一个无序序列键成一个堆？<br>可以直接使用线性数组来表示一个堆，由初始的无序序列建成一个堆就需要自底向上从第一个非叶元素开始挨个调整成一个堆。</p>
-</li>
-<li><p>如何在输出堆顶元素之后，调整剩余元素成为一个新的堆？<br>怎么调整成堆？首先是将堆顶元素和最后一个元素交换。然后比较当前堆顶元素的左右孩子节点，因为除了当前的堆顶元素，左右孩子堆均满足条件，这时需要选择当前堆顶元素与左右孩子节点的较大者（大顶堆）交换，直至叶子节点。我们称这个自堆顶自叶子的调整成为筛选。  </p>
-</li>
-</ol>
-<h2 id="希尔排序-时间复杂度n-1-3"><a href="#希尔排序-时间复杂度n-1-3" class="headerlink" title="希尔排序(时间复杂度n^1.3)"></a>希尔排序(时间复杂度n^1.3)</h2><p>插入排序的改进版本<br>先将整个待排记录序列分割成为若干子序列分别进行直接插入排序，待整个序列中的记录基本有序时再对全体记录进行一次直接插入排序。</p>
-<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><p>基数排序是一种借助多关键字排序思想对单逻辑关键字进行排序的方法。所谓的多关键字排序就是有多个优先级不同的关键字。比如说成绩的排序，如果两个人总分相同，则语文高的排在前面，语文成绩也相同则数学高的排在前面。。。如果对数字进行排序，那么个位、十位、百位就是不同优先级的关键字，如果要进行升序排序，那么个位、十位、百位优先级一次增加。基数排序是通过多次的收分配和收集来实现的，关键字优先级低的先进行分配和收集。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/07/170607/" itemprop="url">
-                  考试周的非常规打卡
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-06-07T00:00:00+08:00" content="2017-06-07">
-              2017-06-07
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天没有什么内容要记录，而且今天是考试周中的一天，所以专业课还没有看到1/4的我在今天出现看起来好像很奇怪。燃鹅我还是来写日志了，嘻嘻。<br>在过去的没有更博的两个多月里，和小伙伴做了一个叫做<strong><a href="https://github.com/1ibrary/1ibrary-front-end" target="_blank" rel="noopener">一图:图书馆的另一半</a></strong>的图书馆周边应用，一边做一边学，虽然没有开博记录，但是还是学到了很多东西，超开心。<br>真的真的感谢这一次的经历，一图带给我的除了技术视野的开阔，更重要的是并肩作战的伙伴，一起努力的回忆，还有因为一图才会有的种种美好的相遇，认识比自己厉害的人，更好的人，超开心超开心！！！<br>另外，今天也是高考的第一天，三年前的今天，没睡醒的我在一张语文卷子上完成了中学时代的最后一次胡写乱画之后，没所谓地就把自己丢到了华师这个鬼畜的学校，却也竟然正是在这个文科得不能再文科师范得不能再师范的地方与代码结缘，开始了独自战斗的程序生涯。所以人生中重要的种种并不会介意你中间到底经历了什么，它像早就约定好了一样，虽然没告诉你，但它一定会来，只是在恰当的时候，它才会出现在你面前，不管是在什么地点，以何种形式，反正它会出现就是了。嘻嘻，生活原来是这么温油的呀～～～<br>说完了QAQ，我去复习了，让我过吧让我过吧，16号之后就可以彻底和贵系say goodbye然后愉快地开始写代码了～～ 再见噢您！不会再想回来了我👋👋👋</p>
-<p>17.06.07 于桂子山</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/25/newprototype/" itemprop="url">
-                  笔记：原型链，继承，闭包和作用域概念梳理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-25T00:00:00+08:00" content="2017-03-25">
-              2017-03-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>继承是ES5中非常重要的一个点。<br>即便现在我们有了ES6，有了类，有了更轻松的写法，但继承的本质是不变的。要理解继承我们就必须理解原型链。  </p>
-<h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><p>写一个构造函数:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">this</span>.class = <span class="string">'class-1'</span></span><br><span class="line">  <span class="comment">// return this  默认有这一行</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> Foo(<span class="string">'miemie'</span>, <span class="number">20</span>)</span><br></pre></td></tr></table></figure></p>
-<p>构造函数一般以大写字母开头。<br>构造函数tips:    </p>
-<ul>
-<li>var a = {} 其实是 var a = new Object()的语法糖</li>
-<li>var a = [] 其实是 var a = new Array()的语法糖</li>
-<li>function Foo(){}其实是var Foo = new Function(…)的语法糖</li>
-<li>使用instanceof判断一个函数是否是一个变量的构造函数</li>
-</ul>
-<h2 id="原型规则"><a href="#原型规则" class="headerlink" title="原型规则"></a>原型规则</h2><p>原型规则是学习原型链的基础</p>
-<ul>
-<li>所有的引用类型，都具有对象特性，即可自由扩展属性（null除外）</li>
-<li>所有的引用类型，都有一个<strong>proto</strong>属性，属性值是一个普通的对象(隐式原型)</li>
-<li>所有的函数，都有一个prototype属性，属性值也是一个普通的对象(显式原型)</li>
-<li>所有的引用类型， <strong>proto</strong>属性指向它构造函数的prototype属性</li>
-</ul>
-<h2 id="this的指向"><a href="#this的指向" class="headerlink" title="this的指向"></a>this的指向</h2><p>this的指向是在执行时确定的。  </p>
-<ul>
-<li>作为构造函数执行</li>
-<li>作为对象属性执行</li>
-<li>作为普通函数执行</li>
-<li>call/apply/bind</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/25/newprototype/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/25/rn3/" itemprop="url">
-                  RN|很RN的部分|其它组件篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-25T00:00:00+08:00" content="2017-03-25">
-              2017-03-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RN中有一些提前为我们写好的各种各样的其它组件。它们是:   </p>
-<ul>
-<li>TextInput 文本框组件</li>
-<li>ScrollView 滚动视图组件</li>
-<li>Touchable触摸交互组件</li>
-</ul>
-<h2 id="TextInput"><a href="#TextInput" class="headerlink" title="TextInput"></a>TextInput</h2><p>这个组件可以类比为HTML标签里的input标签。    </p>
-<p>TextInput的常见属性有：</p>
-<ul>
-<li>placeholder 就和input标签的placeholder是一个东西</li>
-<li>value 是默认的文本框内的文本值</li>
-<li>multiline 默认为false 是说文本框内不会自动换行 设置为true反之</li>
-<li>password 表示是否是用*这个符号来显示你输入的内容<br>。。。。。。<br>常见事件比如:     </li>
-<li>onTextChange事件 接受一个函数，而此函数会在文本变化时被调用 改变后的文本会作为参数传入</li>
-<li>onChange事件 和上面那个唯一的区别就是 改变后的文本不会传入<br>其它各种乱七八糟事件都在这里:<br><a href="http://reactnative.cn/docs/0.20/textinput.html" target="_blank" rel="noopener">react native文档之TextInput部分</a></li>
-</ul>
-<p>tip: 注意这个在写的时候必须手动设置高度，不然高度默认为0，它几乎没用。。。。     </p>
-<p>🌰：    </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextInput</span></span></span><br><span class="line"><span class="tag">    <span class="attr">style</span>=<span class="string">&#123;&#123;height:40,borderWidth:</span> <span class="attr">1</span>&#125;&#125;</span></span><br><span class="line"><span class="tag">    <span class="attr">onChangeText</span> = <span class="string">&#123;(text)</span>=&gt;</span>console.log(text)&#125;</span><br><span class="line">    placeholder=&#123;"测试一下"&#125;</span><br><span class="line">    multiline=&#123;true&#125;</span><br><span class="line">    /&gt;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/25/rn3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/23/rn2/" itemprop="url">
-                  RN|很RN的部分|基础组件篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-23T00:00:00+08:00" content="2017-03-23">
-              2017-03-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>RN中有一些提前为我们写好的最基本的组件。它们是:    </p>
-<ul>
-<li>视图组件 View</li>
-<li>文本组件 Text</li>
-<li>图像组件 Image</li>
-<li>列表视图组件 ListView</li>
-</ul>
-<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>View组件是创建用户界面的一个最基本的组件，类似于我们html里面div标签。<br>我们可以给它添加一些样式，添加事件等等。<br>它当然必须是可以嵌套的:    </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">View</span>&gt;</span><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>当我们写出上述jsx代码的时候，它底层自动帮我们对应了ios的UIView组件，或者安卓的android.view组件。     </p>
-<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><p>顾名思义是写文本用的，注意它的用法规则是必须要嵌套在一个View组件里面～～<br>同样可以嵌套:    </p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">View</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">400</span>"&#125;&#125;&gt;</span></span><br><span class="line">        我是小丸子    </span><br><span class="line">        <span class="tag">&lt;<span class="name">Text</span> <span class="attr">style</span>=<span class="string">&#123;&#123;fontWeight:</span>"<span class="attr">600</span>"&#125;&#125;&gt;</span>你呢<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/23/rn2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/22/rn1/" itemprop="url">
-                  RN|很RN的部分|样式相关
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-22T00:00:00+08:00" content="2017-03-22">
-              2017-03-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>很“RN”的部分是相对于上一篇中很React的部分来说的。也就是说RN作为一个用于移动端开发的框架，它有一些特性是正常的前端框架所没有，而和移动开发关系很紧密的性质。</p>
-<h2 id="RN没有长度单位"><a href="#RN没有长度单位" class="headerlink" title="RN没有长度单位"></a>RN没有长度单位</h2><p>这一点很特别，在RN中，我们写长度宽度啥的都直接写数字。然后，它会根据你手机的类型自动适配一个单位。如果是安卓系统，单位就是dp,如果是ios系统，单位就是pt。<br>dp这个单位还因手机而异，但是pt就是一个绝对单位，它代表1/72英寸。  </p>
-<h2 id="RN不能设置百分比"><a href="#RN不能设置百分比" class="headerlink" title="RN不能设置百分比"></a>RN不能设置百分比</h2><p>RN中不能通过设置百分比来设置宽度或者高度～～    </p>
-<p>tips： </p>
-<ul>
-<li>可以通过Dimensions模块来获取宽高   </li>
-<li>可以通过全局对象PixelRatio来获取像素密度 （即每英寸屏幕所拥有的像素数）   </li>
-</ul>
-<h2 id="轴的概念"><a href="#轴的概念" class="headerlink" title="轴的概念"></a>轴的概念</h2><p>在RN的布局方向上，有一个轴的概念，我们区分主轴和侧轴。<br>主轴是谁，侧轴是谁，要根据flexDirection这个属性的具体设置来看。<br>默认情况下，y轴为主轴，x轴为侧轴。 </p>
-<h2 id="RN中的样式设置方式"><a href="#RN中的样式设置方式" class="headerlink" title="RN中的样式设置方式"></a>RN中的样式设置方式</h2><p>在RN中，样式是写在style属性里面的。<br>样式本身，是以对象的形式呈现的。<br>比如：    </p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;View style=&#123;&#123;<span class="attr">flexDirection</span>:<span class="string">"row"</span>,<span class="attr">backgroundColor</span>:<span class="string">"gray"</span>&#125;&#125;&gt;</span><br><span class="line">&lt;<span class="regexp">/View&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="RN中样式的写法注意"><a href="#RN中样式的写法注意" class="headerlink" title="RN中样式的写法注意"></a>RN中样式的写法注意</h2><p>RN中的样式写法，其实除了下文我们点名的这些新属性，其余都是与css中的样式名称写法一致的。<br>唯一的不同是，css中我们习惯把两个单词中间加短横线连接，RN中采用首字母小写的驼峰法：<br>border-bottom-&gt;borderBottom<br>margin-right-&gt;marginRight<br>以此类推～～    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/22/rn1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/21/new_es601/" itemprop="url">
-                  重新理解ES6：是什么和为什么-变量声明篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-21T00:00:00+08:00" content="2017-03-21">
-              2017-03-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用ES6进行App和网页开发已经有一段的时间了，用法天天见，不知所以然。前几天同期的培森向我推荐了《深入理解ES6》这本书，真是一本好书，一个个短小精悍的代码片段仿佛对读者的一番番质问：嗨，你真的懂我吗？？<br>如果说各种各样的ES6语法讲解是在陈述事实，那么本书更倾向于做一道证明题：为什么ES6是这样的？（为什么需要这样？）  </p>
-<h3 id="帮助与支持"><a href="#帮助与支持" class="headerlink" title="帮助与支持:"></a>帮助与支持:</h3><p>阮一峰的<a href="http://es6.ruanyifeng.com/#README" target="_blank" rel="noopener">《ES6入门》</a>让我见识了ES6的魔法。<br>Zakas的<a href="https://book.douban.com/subject/27072230/" target="_blank" rel="noopener">《深入理解ES6》</a>，揭开了魔法背后的玄机。<br>另外不得不提一下<a href="https://segmentfault.com/q/1010000007541743" target="_blank" rel="noopener">segmentdefault这篇问答</a>，for循环里的let到底是怎么回事，我之前的认知一直都比较模糊，本文对这个操作做了去糖处理，整个思路非常清晰。</p>
-<h2 id="前置知识：-块级作用域的出现"><a href="#前置知识：-块级作用域的出现" class="headerlink" title="前置知识： 块级作用域的出现"></a>前置知识： 块级作用域的出现</h2><p>ES6之前，js只划分全局作用域和函数作用域。如今，新增了块级作用域的概念。<br>let和const声明的变量，会自动绑定当前的块级作用域。<strong>外层作用域无法读取内层作用域的变量</strong>    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/21/new_es601/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/03/19/rn0/" itemprop="url">
-                  RN初相见,哇你好厉害呀&React前置知识
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-19T00:00:00+08:00" content="2017-03-19">
-              2017-03-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>再次回到博客看下日期真是惊出一身汗我。。。。😂，好久没有记东西了。<br>这两个月学算法去了。。。。。。<br>忙成狗的三月，在被一个巨麻烦的专业课老师禁止我带电脑上课之后，写代码的时间就更紧凑了。。。。于是也好久没有弹琴，每天都处于炸毛状态～～<br>忍过去就好了。。。。。       </p>
-<p>扯远了。。。。。<br>最近为了做一个app于是顺势开始接触rn,因为每次接触一个东西喜欢先把内容整理一下，于是我又开始写博客了。。。😂。<br>其实算法也想写博客的，但是盯着屏幕良久发现自己竟然不知道除了贴代码还能说啥?????😂遂放弃。<br>这大概是传说中的只可意会不可言传？？？？<br>不明白。。。😂      </p>
-<h2 id="关于RN"><a href="#关于RN" class="headerlink" title="关于RN"></a>关于RN</h2><p>这个东西简单来说就是一个基于React的前端框架，用它就能做出跨平台的app，既能在安卓系统上跑又能在ios系统上跑～～～<br>虽然说是基于React，我之前粗略翻了些资料以为就是React语法换了个运行环境，然而现在看来不是这样。RN有许多方面是和移动开发相关的，这也是为什么有的人本身没有开发过前端项目，大概了解一些js，但因为很熟悉安卓或ios的开发模式，于是很顺利地上手了RN的原因。</p>
-<h2 id="RN中很React的地方"><a href="#RN中很React的地方" class="headerlink" title="RN中很React的地方"></a>RN中很React的地方</h2><p>这部分就是RN中React原封不动移植来的东西。<br>可以算是预备知识吧～～      </p>
-<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><p>复习！<br>如何在React|RN中创建一个组件？？？？<br>如果是ES6(大势所趋….这个是重点):    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloComponent</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    xxx() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    xxx() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">    xxx() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> HelloComponent;</span><br></pre></td></tr></table></figure>
-<p>继承Component类，然后在里面写生命周期方法。<br>xxx就是方法名，比如render啊，constructor啊啥的。<br>啥都能没有,render必须有～～    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/03/19/rn0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
-               alt="mieruko0713" />
-          <p class="site-author-name" itemprop="name">mieruko0713</p>
-          <p class="site-description motion-element" itemprop="description">大四信息汪 喜欢写代码 
-</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">84</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
             </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/mieruko0713" target="_blank">
-                  
-                    <i class="fa fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
         </div>
-
-        
-        
-
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
+        <!-- /.navbar-collapse -->
     </div>
-  </aside>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">mieruko0713</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('https://cdn.lxxyx.cn/2018-06-04-589111528085301_.pic_hd.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Mieruko的实验室</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 
 
-  
-  
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
 
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-
-
-  
-
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
 
 
-  
-  
-  
+<div class="post-preview">
 
-  
+    <a href="/2017/06/20/web_safe/">
+        <h2 class="post-title">
+            Web安全常识总结
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。    
+CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。
+CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个t......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-06-20
+    </p>
 
-  
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/06/20/alg-tu/">
+        <h2 class="post-title">
+            算法笔记：图论
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结   
+图的遍历深度优先搜索深度优先搜索以”深度”作为第一关键词，每次都是沿着路径到不能再前进时才退回到最近的岔道口。    
+广度优先搜索广度优先搜索以”广度”作为第一关键词，每次以扩散的方式向外访问顶点。使用BFS遍历图需要用到一个队列，通过反......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-06-20
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/06/10/alg-sort/">
+        <h2 class="post-title">
+            算法笔记：排序
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结   
+先上图：
+冒泡排序(O(n^2))冒泡排序的思想就是通过与相邻元素的比较和交换来把大的数交换到最后面。     
+选择排序(O(n^2))首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小元素，......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-06-10
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/06/07/170607/">
+        <h2 class="post-title">
+            考试周的非常规打卡
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            今天没有什么内容要记录，而且今天是考试周中的一天，所以专业课还没有看到1/4的我在今天出现看起来好像很奇怪。燃鹅我还是来写日志了，嘻嘻。在过去的没有更博的两个多月里，和小伙伴做了一个叫做一图:图书馆的另一半的图书馆周边应用，一边做一边学，虽然没有开博记录，但是还是学到了很多东西，超开心。真的真的感谢这一次的经历，一图带给我的除了技术视野的开阔，更重要的是并肩作战的伙伴，一起努力的回忆，还有因......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-06-07
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/25/newprototype/">
+        <h2 class="post-title">
+            笔记：原型链，继承，闭包和作用域概念梳理
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言继承是ES5中非常重要的一个点。即便现在我们有了ES6，有了类，有了更轻松的写法，但继承的本质是不变的。要理解继承我们就必须理解原型链。  
+构造函数写一个构造函数:1234567function Foo(name, age) &#123;  this.name = name  this.age = age  this.class = 'class-1'  // return this ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-03-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/25/rn3/">
+        <h2 class="post-title">
+            RN|很RN的部分|其它组件篇
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言RN中有一些提前为我们写好的各种各样的其它组件。它们是:   
+
+TextInput 文本框组件
+ScrollView 滚动视图组件
+Touchable触摸交互组件
+
+TextInput这个组件可以类比为HTML标签里的input标签。    
+TextInput的常见属性有：
+
+placeholder 就和input标签的placeholder是一个东西
+value 是默认的文本框内的......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-03-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/23/rn2/">
+        <h2 class="post-title">
+            RN|很RN的部分|基础组件篇
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言RN中有一些提前为我们写好的最基本的组件。它们是:    
+
+视图组件 View
+文本组件 Text
+图像组件 Image
+列表视图组件 ListView
+
+ViewView组件是创建用户界面的一个最基本的组件，类似于我们html里面div标签。我们可以给它添加一些样式，添加事件等等。它当然必须是可以嵌套的:    
+123&lt;View&gt;    &lt;View&gt;&lt;......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-03-23
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/22/rn1/">
+        <h2 class="post-title">
+            RN|很RN的部分|样式相关
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言很“RN”的部分是相对于上一篇中很React的部分来说的。也就是说RN作为一个用于移动端开发的框架，它有一些特性是正常的前端框架所没有，而和移动开发关系很紧密的性质。
+RN没有长度单位这一点很特别，在RN中，我们写长度宽度啥的都直接写数字。然后，它会根据你手机的类型自动适配一个单位。如果是安卓系统，单位就是dp,如果是ios系统，单位就是pt。dp这个单位还因手机而异，但是pt就是一个绝......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-03-22
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/21/new_es601/">
+        <h2 class="post-title">
+            重新理解ES6：是什么和为什么-变量声明篇
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言使用ES6进行App和网页开发已经有一段的时间了，用法天天见，不知所以然。前几天同期的培森向我推荐了《深入理解ES6》这本书，真是一本好书，一个个短小精悍的代码片段仿佛对读者的一番番质问：嗨，你真的懂我吗？？如果说各种各样的ES6语法讲解是在陈述事实，那么本书更倾向于做一道证明题：为什么ES6是这样的？（为什么需要这样？）  
+帮助与支持:阮一峰的《ES6入门》让我见识了ES6的魔法。Z......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-03-21
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/19/rn0/">
+        <h2 class="post-title">
+            RN初相见,哇你好厉害呀&React前置知识
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言再次回到博客看下日期真是惊出一身汗我。。。。😂，好久没有记东西了。这两个月学算法去了。。。。。。忙成狗的三月，在被一个巨麻烦的专业课老师禁止我带电脑上课之后，写代码的时间就更紧凑了。。。。于是也好久没有弹琴，每天都处于炸毛状态～～忍过去就好了。。。。。       
+扯远了。。。。。最近为了做一个app于是顺势开始接触rn,因为每次接触一个东西喜欢先把内容整理一下，于是我又开始写博客了......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-03-19
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/page/3/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                            <a href="/tags/#ES6" title="ES6" rel="20">ES6</a>
+                            
+                        
+                            
+                            <a href="/tags/#React" title="React" rel="6">React</a>
+                            
+                        
+                            
+                            <a href="/tags/#jQuery" title="jQuery" rel="7">jQuery</a>
+                            
+                        
+                            
+                            <a href="/tags/#ajax" title="ajax" rel="3">ajax</a>
+                            
+                        
+                            
+                            <a href="/tags/#javascript" title="javascript" rel="18">javascript</a>
+                            
+                        
+                            
+                            <a href="/tags/#算法" title="算法" rel="2">算法</a>
+                            
+                        
+                            
+                            <a href="/tags/#css" title="css" rel="5">css</a>
+                            
+                        
+                            
+                            <a href="/tags/#Node" title="Node" rel="6">Node</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#前端工具" title="前端工具" rel="2">前端工具</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTTP" title="HTTP" rel="2">HTTP</a>
+                            
+                        
+                            
+                            <a href="/tags/#移动web" title="移动web" rel="2">移动web</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#laravel" title="laravel" rel="6">laravel</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#原型链" title="原型链" rel="2">原型链</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#React Native" title="React Native" rel="5">React Native</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="https://cdn.lxxyx.cn/2018-06-04-041616.png" />
+                        
+
+                        
+                            <p>我要成为魔法师!</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+
+                            
+
+                            
+
+                            
+                                <li>
+                                    <a target="_blank"  href="https://github.com/Mieruko">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Friends Blog -->
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Mieruko">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mieruko的实验室 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://mieruko.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://mieruko.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
+
 </html>

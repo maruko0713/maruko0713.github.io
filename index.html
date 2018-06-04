@@ -1,1371 +1,706 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="大四信息汪 喜欢写代码 
+">
+    <meta name="keyword"  content="咩咩丸,前端,前端博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Mieruko的实验室
+        
+    </title>
+
+    <link rel="canonical" href="http://mieruko.com/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
 
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="maruko" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="大四信息汪 喜欢写代码">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mieruko0713的实验室">
-<meta property="og:url" content="http://mieruko.com/index.html">
-<meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="大四信息汪 喜欢写代码">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mieruko0713的实验室">
-<meta name="twitter:description" content="大四信息汪 喜欢写代码">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Mieruko0713的实验室 </title>
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Mieruko0713的实验室</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/01/rv-setState/" itemprop="url">
-                  状态更新策略对比：React setState vs Vue nextTick
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-03-01T00:00:00+08:00" content="2018-03-01">
-              2018-03-01
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mieruko的实验室</a>
         </div>
-      </header>
-    
 
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>可能会是一篇有点长的源码阅读笔记。。。。。。      </p>
-<p>之前Medium上有一位兄台曾经写过这样一篇文章:     </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/1.png" alt="medium博客标题"><br>这个标题说出了包括曾经的我在内的React开发者的心声。<br>但是在读完<a href="https://zhuanlan.zhihu.com/p/20328570" target="_blank" rel="noopener">知乎杨森：React 源码剖析系列 － 解密 setState</a>这篇文章后，我不这么想了。<br>具体setState的机制，在文中也有讲解，我之前也开博记录过自己的理解（<a href="http://mieruko.cn/2017/09/25/setState/" target="_blank" rel="noopener">理解React中的setState</a>)。<br>今天这篇文章意在介绍vue的异步更新策略，然后把两者放在一起做个对比。  </p>
-<h2 id="setState源码细节拾遗"><a href="#setState源码细节拾遗" class="headerlink" title="setState源码细节拾遗"></a>setState源码细节拾遗</h2><p>上一篇写setState的文章还是比较粗糙，其实setState源码里有很多<del>陈独秀同学</del>值得关注和学习的小细节，今天我就先把它们po一下~~~     </p>
-<ul>
-<li>Instance 分为 public 和 internal 两种。从而避免部分内部状态直接暴露于外部，有被修改的风险</li>
-<li><p>状态队列在需要时才会被初始化，避免了不必要的开销<br>（以上两点见下图）<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/5.png" alt="enqueueUpdate函数"></p>
-</li>
-<li><p>通过批量更新的方式提高性能(如下)<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/12.png" alt="批量更新"></p>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/03/01/rv-setState/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/22/react-yitu/" itemprop="url">
-                  React更进一步：在实践中理解React工作原理
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-02-22T00:00:00+08:00" content="2018-02-22">
-              2018-02-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近读了程墨前辈的<a href="https://book.douban.com/subject/27033213/" target="_blank" rel="noopener">《深入浅出React和Redux》</a>这本书，很庆幸自己是用RN写过些东西之后读的这本书，一边读一边回忆自己曾经实践的过程，对React的理解又加深了一层，特别开心。<br>这篇文章是想结合之前写过的项目，对React的运行机制，实践原则做一个自己的梳理。<br>驱使我了解React，学习React的项目，是”一图”。<br>（突然觉得我博客里给一图打的广告是不是太多了哈哈哈哈，既然如此那我就再打一次吧哈哈哈哈哈）<br>开源代码地址： <a href="https://github.com/1ibrary/1ibrary-front-end" target="_blank" rel="noopener">一图:图书馆的另一半</a>。<br>希望大家不要烦，我保证过段时间就不推一图了。。。。到时候你们会发现满屏幕的一图变成了满屏幕的双生。。。。<br>“双生”是当下我和小伙伴在着手的另一个RN的开源项目。但其实双生的项目结构和一图相比并没有特别大的改动，是对既有模式的又一次实践。<br>考虑到大部分的知识，原理以及实践模式都是在开发一图的过程中习得，所以本文需要结合实际代码实例的部分仍然会截取一图的代码来说事情。     </p>
-<h2 id="React：-工作原理"><a href="#React：-工作原理" class="headerlink" title="React： 工作原理"></a>React： 工作原理</h2><p>React本质上是什么？<br>React细分的知识点可以写一本书，但是React最重要的特点是以下三点:</p>
-<ul>
-<li>数据驱动(f = UI(data)) </li>
-<li>一切都是组件</li>
-<li>声明式编程 </li>
-</ul>
-<h3 id="数据驱动"><a href="#数据驱动" class="headerlink" title="数据驱动"></a>数据驱动</h3><p>我们看到的界面，可以理解为是UI这个函数生成的一个结果。<br>所有的改动都是data的改动，通过data的改动去驱动界面的改变。<br>就是说在render函数确定的情况下，最后生成的界面是什么样子，只跟我们的数据有关。<br>这一点主要是区别于jQuery，在jQuery里，你除了操心data的改动，你还需要手动去操作DOM，但是用了React，你就不需要费这个力气了。    </p>
-<p>不需要我们操作DOM，React帮我们去修改DOM，那么修改的过程是什么样的呢？难道是大家一起整个组件重新渲染吗？？不不不，React很聪明，它有自己的更新机制，即虚拟DOM+Diff算法：     </p>
-<h4 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h4><p>大家都知道DOM是结构化文本（即HTML）文本的抽象，我们的虚拟DOM就是在DOM的基础上的进一步抽象，它不涉及和浏览器有关的那一部分，只是一个存在于js空间的一个树形结构。它和真实的DOM节点一一对应。当渲染发生时，会对比这一次产生的虚拟DOM树和之前那颗虚拟DOM树，看看到底哪里是真正需要更新的，再有选择地去更新。<br>“发现两棵树的差别”（这个过程叫做调和）这一点非常关键，如果是用传统的算法对两棵树做完全的比较，时间复杂度是O(n^3)。这是一个可怕的复杂度。。。还好React没有这么做，它内部使用了优化过的diff算法，保证了时间复杂度只有O(n)。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/02/22/react-yitu/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/27/emitter/" itemprop="url">
-                  不懂为什么，突然想写一个Event-Emitter
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-27T00:00:00+08:00" content="2018-01-27">
-              2018-01-27
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。<br>读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做<a href="https://github.com/developit/mitt" target="_blank" rel="noopener">mitt</a>，就是专门来做这个事的。只有60行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。</p>
-<h2 id="mitt的思路"><a href="#mitt的思路" class="headerlink" title="mitt的思路"></a>mitt的思路</h2><p>不仅是mitt的思路，其实bus也是这样，几乎所有的Event-Emitter都是这样的，理解了mitt的思路，我们就可以举一反三，mitt是这样的：<br>首先创建一个对象，这个对象是一个大boss，在这里面存储我们的事件队列，队列（实现出来是js数组）主要有这么两类:     </p>
-<ul>
-<li>按照事件类型划分，队列根据不同的事件名称为自己命名</li>
-<li>特殊的’*‘队列，通配符在这里的意思是，不管你触发了哪一个类型的事件，在执行完指定事件类型对应的事件队列后，我都要执行*对应的那个队列里的事件们。它像一个小尾巴一样，只要有事件触发，不论你是谁，我都要跟在后面跑一跑。<br>然后后面每当有事件触发，触发的过程就是一个函数出队的过程，依照我们绑定的顺序去一个个入栈执行它们。<br>大概的思路就是这样子啦~  </li>
-</ul>
-<h2 id="写一个更完整的Event-Emitter"><a href="#写一个更完整的Event-Emitter" class="headerlink" title="写一个更完整的Event-Emitter"></a>写一个更完整的Event-Emitter</h2><p>理解了mitt的思路，就可以自己尝试写一个类似的东西试试看了。     </p>
-<p>相对于mitt的话，我下面实现的这个myEmitt增加了once（只监听一次事件的触发）和clear（清除所有的监听器）方法，具体的代码是这样的：   </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/27/emitter/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/04/redux_thunk/" itemprop="url">
-                  从redux-thunk的14行源码和dispatch函数的实现过程，说说我眼中的redux中间件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-04T00:00:00+08:00" content="2018-01-04">
-              2018-01-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>我是在去年暑假第一次有了“该用redux代替烦死人的props传递了”的概念后，在github上扒拉别人的redux项目看，然后第一次见到thunk这个中间件。后来一图重构，我记得我们的redux里是用了这个中间件。选用的契机是，文档和别人的开源项目告诉我们，它有用。。。。<br>然后最近总是遇到一个相同的问题：如果我有一个异步请求，需要把请求回来的数据给放进store里，我该咋办？？？<br>嗨呀，既然我都这么写了，肯定是用thunk中间件呀。。。。。。😂    </p>
-<h2 id="Redux中间件"><a href="#Redux中间件" class="headerlink" title="Redux中间件"></a>Redux中间件</h2><p>本来想贴个定义，结果查完百科上的定义，我感觉我可能用的都是假的中间件。。。所以这里就说说我自己的理解吧。<br>中间件我一般是在后端里用的比较多，比如express框架，django框架里的中间件。“中间”，我的理解是，从服务器接收到request，到路由开始处理request这中间的“中间”。<br>再说说这个redux中间件吧，类比来理解，重点说说“中间”。这里的“中间”，指的是从redux的action派发开始，到到达reducer之前的这段时机。    </p>
-<h3 id="为什么需要Redux中间件"><a href="#为什么需要Redux中间件" class="headerlink" title="为什么需要Redux中间件"></a>为什么需要Redux中间件</h3><p>在redux-thunk的文档里，给了我们一个stackoverflow的链接，试图向我们解释，为啥我们需要使用这玩意。其中有一个回答开头这样说道：“Don’t fall into the trap of thinking a library should prescribe how to do everything.”。<br><strong>翻译过来就是，不要认为说一个库（redux）可以帮我们做任何事</strong><br>说得再直接一点，redux还不够强，并不能满足所有的开发情境，要带上它的中间件，它才够强。   </p>
-<h2 id="初识：14行源代码"><a href="#初识：14行源代码" class="headerlink" title="初识：14行源代码"></a>初识：14行源代码</h2><p><strong>Thunk中间件可以帮我们做什么</strong><br>回到正题，Thunk中间件做了什么，我们得从它的源代码说起：<br>（之所以一直说14行 是因为我第一次看到的时候，被这段源代码惊到了。。。不仅短，而且容易懂，看完彻底不抓瞎了，特别开心）    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createThunkMiddleware</span>(<span class="params">extraArgument</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function">(<span class="params">&#123; dispatch, getState &#125;</span>) =&gt;</span> next =&gt; <span class="function"><span class="params">action</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> action === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> action(dispatch, getState, extraArgument);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> next(action);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> thunk = createThunkMiddleware();</span><br><span class="line">thunk.withExtraArgument = createThunkMiddleware;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> thunk;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/04/redux_thunk/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/02/network/" itemprop="url">
-                  异步网络请求进化史：从ajax到fetch到axios
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-02T00:00:00+08:00" content="2018-01-02">
-              2018-01-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="不是前言的前言"><a href="#不是前言的前言" class="headerlink" title="不是前言的前言"></a>不是前言的前言</h2><p>其实原生ajax和fetch已经很久没用了。。。毕竟axios真是太好用了。   </p>
-<h2 id="原生ajax"><a href="#原生ajax" class="headerlink" title="原生ajax"></a>原生ajax</h2><p>其实就是XMLHttpRequest。<br>或许每个前端在入门js基础的时候都见过这样一段代码:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">success</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'xxx'</span>);</span><br><span class="line">    textarea.value = text;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fail</span>(<span class="params">code</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> textarea = <span class="built_in">document</span>.getElementById(<span class="string">'xxx'</span>);</span><br><span class="line">    textarea.value = <span class="string">'Error code: '</span> + code;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> XMLHttpRequest(); <span class="comment">// 新建XMLHttpRequest对象</span></span><br><span class="line"></span><br><span class="line">request.onreadystatechange = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="comment">// 状态发生变化时，函数被回调</span></span><br><span class="line">    <span class="keyword">if</span> (request.readyState === <span class="number">4</span>) &#123; <span class="comment">// 成功完成</span></span><br><span class="line">        <span class="comment">// 判断响应结果:</span></span><br><span class="line">        <span class="keyword">if</span> (request.status === <span class="number">200</span>) &#123;</span><br><span class="line">            <span class="comment">// 成功，通过responseText拿到响应的文本:</span></span><br><span class="line">            <span class="keyword">return</span> success(request.responseText);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 失败，根据响应码判断失败原因:</span></span><br><span class="line">            <span class="keyword">return</span> fail(request.status);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// HTTP请求还在继续...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送请求:</span></span><br><span class="line">request.open(<span class="string">'GET'</span>, <span class="string">'/api/categories'</span>);</span><br><span class="line">request.send();</span><br></pre></td></tr></table></figure>
-<p>这就是最最最原始的ajax请求发送办法了。先new一个xhr对象，然后各种配置。<br>open方法配置包括method和url在内的几种参数，send方法发送出去。然后onreadystatechange设置回调监听请求抛出之后发生了什么，走到了哪一步。<br>当然这是最简单的情况，有时候你为了设置头信息，还不得不调用一个setRequestHeader()。<br>这么多属性和api，也记不住呀。。。😂<br>xhr对象的配置繁琐而冗长，不太可爱。   </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/02/network/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/01/redux_context/" itemprop="url">
-                  在使用Redux重构应用之前:从React的context属性说开去
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-01T00:00:00+08:00" content="2018-01-01">
-              2018-01-01
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><h3 id="和Redux不得不说的故事"><a href="#和Redux不得不说的故事" class="headerlink" title="和Redux不得不说的故事"></a>和Redux不得不说的故事</h3><p>（这一段是生活流水账 也就是写给自己看的废话 可以跳过不看 Redux直走下一个加粗小标题就可以~）       </p>
-<p>第一次使用RN构建完整的上架应用,是去年四月份开始的<a href="https://1ibrary.github.io" target="_blank" rel="noopener">一图：图书馆的另一半</a>（<a href="https://github.com/1ibrary/1ibrary-front-end" target="_blank" rel="noopener">开源代码地址在这里</a>）这个项目。当时学React的时候搜索到的资源,基本上多多少少都会把Redux,React-Router捎带着讲一下。但是因为初次开发,我的思路比较原始,一直到重构的时候,才脱非入欧用起了方便快捷的<a href="https://github.com/aksonov/react-native-router-flux" target="_blank" rel="noopener">react-native-router-flux</a>这个插件,后面Redux刚开了个头,就把下面重构任务拆分给新加入的队友做了,于是和Redux的第一次理论到实践的飞跃就这么白白了。这两天开始和小伙伴做另一个叫做 <a href="https://github.com/oh-bear/2life" target="_blank" rel="noopener">双生:遇见另一半的美好：）</a>（众：踏马为啥总在写另一半？？？？：））这么一个新的无比文艺的开源项目,刚好前端需要做比较大规模的重构,终于有了写Redux的机会。肥肠激动。<br>使用Redux写项目,最初思路是依赖于“模仿”,就是cosplay别人的项目或者看着文档来写demo。但是其实有一些地方我是不知道它在干啥的,只知道“没有它就跑不起来”,今天坐下来把迷糊的地方梳理了一遍,供日后的小丸子和小丸子的伙伴们回忆~   </p>
-<h3 id="为什么要用Redux"><a href="#为什么要用Redux" class="headerlink" title="为什么要用Redux"></a>为什么要用Redux</h3><p><strong>因为有用相对更合适的办法管理全局状态的需要。</strong><br>React项目中,状态这一块可以分为本地状态和全局状态。本地状态我们直接用React实现给我们的state就够了。但是有一些状态,我们希望“牵一发而动全身”,就是说我在A组件里改了状态a,遥远彼岸的B组件里其实有个和状态a同步的数据,我们希望它一起变。以前,我们要想实现遥远的组件与组件间的数据传递,需要把props一级传一级,哪怕中间的那些层级根本不关心你A组件想对B组件说什么奇怪的悄悄话,它也必须完成传声筒的使命,把状态a附着在自己的props里,而苦逼的程序员（我们）也就不得不手写一堆a=this.props.a这样的垃圾代码。这样一个是<strong>非常麻烦很伤手腕</strong>,另一个就是乱乱乱乱乱,代码没有章法,读起来也很累很<strong>伤眼睛</strong> 。<br>起初我是不想用它的。。。因为觉得能手动撸出来的事情,干嘛要花时间去学一个新的框架,实现完全一样的效果。 但是反复检查了几个demo并且请教了身边的大佬之后,我认为Redux至少有以下的好处: </p>
-<ul>
-<li>省时省力（如上文） 因为它实现了数据的跨层级传递 以前你只会一步步走 现在你会跳了！！！     </li>
-<li>Redux自身有很多规矩,这些规矩可以用来约束程序员,使得每一次数据的改变都有迹可循（因为有Action这个线索),并且每一个版本的state都会有一个版本的记录,一切都是有线索的,可以预测的,不会是杂乱无章的,神秘兮兮的,不会是写代码的人自己最后写迷了都不知道自己的props到底是从哪传哪了（比如我）。</li>
-</ul>
-<p>下面的思路是用一个demo,来自问自答那些我纠结过的原理：     </p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> (</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;Counter/&gt;</span><br><span class="line">  &lt;<span class="regexp">/Provider&gt;</span></span><br><span class="line"><span class="regexp">);</span></span><br><span class="line"><span class="regexp">`</span></span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2018/01/01/redux_context/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/11/25/bfc/" itemprop="url">
-                  从实际应用的角度认识BFC
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-11-25T00:00:00+08:00" content="2017-11-25">
-              2017-11-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>BFC，即块级格式化上下文。<br>对BFC好奇起源于工作当中的两个现象，一个是垂直方向上的边距重叠问题，一个是清除浮动。<br>其实这俩现象在曾经的我眼里都是非常正常并可以理解的现象，前两天同事突然提到说这个其实是可以用BFC解决的。今天没啥事，刚好有空坐下来瞅瞅这个BFC。     </p>
-<p>帮助与支持：<br>感谢网易考拉前端团队的<a href="https://juejin.im/post/59b73d5bf265da064618731d" target="_blank" rel="noopener">学习 BFC (Block Formatting Context)</a>这篇文章。</p>
-<h2 id="什么是BFC"><a href="#什么是BFC" class="headerlink" title="什么是BFC"></a>什么是BFC</h2><blockquote>
-<p>Formatting context(格式化上下文) 是 W3C CSS2.1 规范中的一个概念。它是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。</p>
-</blockquote>
-<p>具有BFC特性的元素可以看作是隔离了的独立容器，容器里面的元素不会在布局上影响到外面的元素，并且 BFC 具有普通容器所没有的一些特性。</p>
-<p>从应用的角度出发，我对BFC有以下认知：   </p>
-<ul>
-<li>同一个BFC下外边距会发生重叠</li>
-<li>BFC可以包含浮动的元素（清除浮动）</li>
-<li>BFC可以阻止元素被浮动元素覆盖
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/11/25/bfc/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/02/macro/" itemprop="url">
-                  重新理解事件循环和异步队列：区分macro和micro
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-10-02T00:00:00+08:00" content="2017-10-02">
-              2017-10-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前两天看到一段代码，代码具体长啥样记不起来了，重点里面有个setTimeout（A君）,有个promise.then（B君）调用。我琢磨着大家都是异步，异步就是进队列等着，先进先出，那么肯定是A君的回调先执行，然后B君。结果那段代码跑出来是promise的调用先执行了。由此发现哈哈哈哈哈我自以为理解得很清楚的javascript异步队列其实理解得就是一坨。。。。。。:)<br>感谢万能的知乎和简书，这次在没翻墙的情况下就读到了不少好文章。昨天晚上加今天早上，终于在吃早饭之前把异步队列这个micro和macro的辨析给整明白了。赶紧记下来。。。。    </p>
-<h2 id="重新理解事件循环：macro-micro-大不同"><a href="#重新理解事件循环：macro-micro-大不同" class="headerlink" title="重新理解事件循环：macro, micro 大不同"></a>重新理解事件循环：macro, micro 大不同</h2><p>理解js的事件循环，不仅要知道有异步队列这么个东西，还要知道队列有两种，一种是macro(宏任务)，一种是micro(微任务)。在<a href="https://www.jianshu.com/p/d2f672502966?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">简书这篇文章</a>里，还给我们科普了：</p>
-<blockquote>
-<p>任务队列又分为macro-task（宏任务）与micro-task（微任务），在最新标准中，它们被分别称为task与jobs。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/10/02/macro/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/09/25/setState/" itemprop="url">
-                  理解React中的setState
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-09-25T00:00:00+08:00" content="2017-09-25">
-              2017-09-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前我对setState这个api的理解，仅限于：它管组件自己的数据，它是异步。如此而已。<br>前两天被一个前辈问到说“setState后究竟发生了什么？”。除了数生命周期外我竟什么都说不出来。这两天读了点东西，才知道正是因为对setState的一个巧妙的处理，React才表现出那么好的性能。（当然性能好这一点是多方面的，比如虚拟dom也功不可没）。要想理解React，必须理解setState。    </p>
-<h2 id="setState之后-到底发生了什么"><a href="#setState之后-到底发生了什么" class="headerlink" title="setState之后 到底发生了什么"></a>setState之后 到底发生了什么</h2><p>这次当然不能数生命周期了。<br>需要引入一个概念，就是React中有这么一个属性叫isBatchingUpdates，这个属性并不是全局的，但是它是<strong>唯一</strong>的。我自己的理解哈，这个属性就像操作系统里咱们学的那个“锁”一样的。怎么说呢？setState有同步和异步两种更新方式，具体怎么区分，我这里是借助了知乎上<a href="https://zhuanlan.zhihu.com/p/26069727" target="_blank" rel="noopener">程墨前辈的一篇文章</a>来理解的。这篇文章里提到说：</p>
-<blockquote>
-<p>如果是由React引发的事件处理（比如通过onClick引发的事件处理），在 React 调用事件、渲染根组件时<br>调用setState不会同步更新this.state，除此之外的setState调用会同步执行this.state。所谓“除此之外”，指的是绕过React通过addEventListener直接添加的事件处理函数，还有通过setTimeout/setInterval产生的异步调用。</p>
-</blockquote>
-<p>说得不够准确，查实源代码后发现，React是在调用事件<strong>以及</strong>渲染根组件时会触发这个锁的检查和改变。然后我想说的是这个同步异步的区分是怎么来的(原文也有介绍，但是把我整蒙了)，我结合这几天看过的文章和代码来说说自己的理解吧：    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/09/25/setState/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/07/20/react-native-key/" itemprop="url">
-                  一图开发手记：React中的key属性踩坑
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-20T00:00:00+08:00" content="2017-07-20">
-              2017-07-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:<br><img src="http://7xl4oh.com1.z0.glb.clouddn.com/key1.jpeg" alt="书目列表1">  </p>
-<p>当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:</p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/key2.jpeg" alt="书目列表2"></p>
-<p>确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？<br>准确地说，为啥它似乎看起来像是继承了它楼上那本书(陈景润传)的样式一样？？？？？<br>这个就是因为，作为开发者，我没有用好React中的key属性。    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/07/20/react-native-key/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
-               alt="mieruko0713" />
-          <p class="site-author-name" itemprop="name">mieruko0713</p>
-          <p class="site-description motion-element" itemprop="description">大四信息汪 喜欢写代码 
-</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">84</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
             </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/mieruko0713" target="_blank">
-                  
-                    <i class="fa fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
         </div>
-
-        
-        
-
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
+        <!-- /.navbar-collapse -->
     </div>
-  </aside>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">mieruko0713</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('https://cdn.lxxyx.cn/2018-06-04-589111528085301_.pic_hd.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Mieruko的实验室</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 
 
-  
-  
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
 
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-
-
-  
-
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
 
 
-  
-  
-  
+<div class="post-preview">
 
-  
+    <a href="/2018/03/01/rv-setState/">
+        <h2 class="post-title">
+            状态更新策略对比：React setState vs Vue nextTick
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言可能会是一篇有点长的源码阅读笔记。。。。。。      
+之前Medium上有一位兄台曾经写过这样一篇文章:     
+这个标题说出了包括曾经的我在内的React开发者的心声。但是在读完知乎杨森：React 源码剖析系列 － 解密 setState这篇文章后，我不这么想了。具体setState的机制，在文中也有讲解，我之前也开博记录过自己的理解（理解React中的setState)。今天......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2018-03-01
+    </p>
 
-  
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/02/22/react-yitu/">
+        <h2 class="post-title">
+            React更进一步：在实践中理解React工作原理
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言最近读了程墨前辈的《深入浅出React和Redux》这本书，很庆幸自己是用RN写过些东西之后读的这本书，一边读一边回忆自己曾经实践的过程，对React的理解又加深了一层，特别开心。这篇文章是想结合之前写过的项目，对React的运行机制，实践原则做一个自己的梳理。驱使我了解React，学习React的项目，是”一图”。（突然觉得我博客里给一图打的广告是不是太多了哈哈哈哈，既然如此那我就再打......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2018-02-22
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/01/27/emitter/">
+        <h2 class="post-title">
+            不懂为什么，突然想写一个Event-Emitter
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言最近学习使用Vue进行团队项目的开发，看到main.js里有个叫bus的东西，觉得bus这个名字也太可爱了吧，想着它到底是啥呢🤔。读完之后知道，这里的bus就是在Vue里写一个Event-Emitter。Event-Emitter是一个很常用的东西，github有一个开源库叫做mitt，就是专门来做这个事的。只有60行，读完之后觉得代码虽少，但还是有可圈可点的地方，所以有了这篇博客。
+......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2018-01-27
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/01/04/redux_thunk/">
+        <h2 class="post-title">
+            从redux-thunk的14行源码和dispatch函数的实现过程，说说我眼中的redux中间件
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            缘起我是在去年暑假第一次有了“该用redux代替烦死人的props传递了”的概念后，在github上扒拉别人的redux项目看，然后第一次见到thunk这个中间件。后来一图重构，我记得我们的redux里是用了这个中间件。选用的契机是，文档和别人的开源项目告诉我们，它有用。。。。然后最近总是遇到一个相同的问题：如果我有一个异步请求，需要把请求回来的数据给放进store里，我该咋办？？？嗨呀，既......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2018-01-04
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/01/02/network/">
+        <h2 class="post-title">
+            异步网络请求进化史：从ajax到fetch到axios
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            不是前言的前言其实原生ajax和fetch已经很久没用了。。。毕竟axios真是太好用了。   
+原生ajax其实就是XMLHttpRequest。或许每个前端在入门js基础的时候都见过这样一段代码:    
+123456789101112131415161718192021222324252627282930function success(text) &#123;    var text......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2018-01-02
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2018/01/01/redux_context/">
+        <h2 class="post-title">
+            在使用Redux重构应用之前:从React的context属性说开去
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:和Redux不得不说的故事（这一段是生活流水账 也就是写给自己看的废话 可以跳过不看 Redux直走下一个加粗小标题就可以~）       
+第一次使用RN构建完整的上架应用,是去年四月份开始的一图：图书馆的另一半（开源代码地址在这里）这个项目。当时学React的时候搜索到的资源,基本上多多少少都会把Redux,React-Router捎带着讲一下。但是因为初次开发,我的思路比较原始,......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2018-01-01
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/11/25/bfc/">
+        <h2 class="post-title">
+            从实际应用的角度认识BFC
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:BFC，即块级格式化上下文。对BFC好奇起源于工作当中的两个现象，一个是垂直方向上的边距重叠问题，一个是清除浮动。其实这俩现象在曾经的我眼里都是非常正常并可以理解的现象，前两天同事突然提到说这个其实是可以用BFC解决的。今天没啥事，刚好有空坐下来瞅瞅这个BFC。     
+帮助与支持：感谢网易考拉前端团队的学习 BFC (Block Formatting Context)这篇文章。
+什......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-11-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/10/02/macro/">
+        <h2 class="post-title">
+            重新理解事件循环和异步队列：区分macro和micro
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言前两天看到一段代码，代码具体长啥样记不起来了，重点里面有个setTimeout（A君）,有个promise.then（B君）调用。我琢磨着大家都是异步，异步就是进队列等着，先进先出，那么肯定是A君的回调先执行，然后B君。结果那段代码跑出来是promise的调用先执行了。由此发现哈哈哈哈哈我自以为理解得很清楚的javascript异步队列其实理解得就是一坨。。。。。。:)感谢万能的知乎和简......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-10-02
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/09/25/setState/">
+        <h2 class="post-title">
+            理解React中的setState
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言之前我对setState这个api的理解，仅限于：它管组件自己的数据，它是异步。如此而已。前两天被一个前辈问到说“setState后究竟发生了什么？”。除了数生命周期外我竟什么都说不出来。这两天读了点东西，才知道正是因为对setState的一个巧妙的处理，React才表现出那么好的性能。（当然性能好这一点是多方面的，比如虚拟dom也功不可没）。要想理解React，必须理解setState......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-09-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/07/20/react-native-key/">
+        <h2 class="post-title">
+            一图开发手记：React中的key属性踩坑
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:  
+当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:
+
+确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？准确......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-07-20
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+    
+        <li class="next">
+            <a href="/page/2/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                            <a href="/tags/#ES6" title="ES6" rel="20">ES6</a>
+                            
+                        
+                            
+                            <a href="/tags/#React" title="React" rel="6">React</a>
+                            
+                        
+                            
+                            <a href="/tags/#jQuery" title="jQuery" rel="7">jQuery</a>
+                            
+                        
+                            
+                            <a href="/tags/#ajax" title="ajax" rel="3">ajax</a>
+                            
+                        
+                            
+                            <a href="/tags/#javascript" title="javascript" rel="18">javascript</a>
+                            
+                        
+                            
+                            <a href="/tags/#算法" title="算法" rel="2">算法</a>
+                            
+                        
+                            
+                            <a href="/tags/#css" title="css" rel="5">css</a>
+                            
+                        
+                            
+                            <a href="/tags/#Node" title="Node" rel="6">Node</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#前端工具" title="前端工具" rel="2">前端工具</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTTP" title="HTTP" rel="2">HTTP</a>
+                            
+                        
+                            
+                            <a href="/tags/#移动web" title="移动web" rel="2">移动web</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#laravel" title="laravel" rel="6">laravel</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#原型链" title="原型链" rel="2">原型链</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#React Native" title="React Native" rel="5">React Native</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="https://cdn.lxxyx.cn/2018-06-04-041616.png" />
+                        
+
+                        
+                            <p>我要成为魔法师!</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+
+                            
+
+                            
+
+                            
+                                <li>
+                                    <a target="_blank"  href="https://github.com/Mieruko">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Friends Blog -->
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Mieruko">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mieruko的实验室 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://mieruko.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://mieruko.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
+
 </html>

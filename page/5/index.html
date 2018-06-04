@@ -1,1377 +1,736 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="大四信息汪 喜欢写代码 
+">
+    <meta name="keyword"  content="咩咩丸,前端,前端博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Mieruko的实验室
+        
+    </title>
+
+    <link rel="canonical" href="http://mieruko.com/page/5/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
 
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="maruko" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="大四信息汪 喜欢写代码">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mieruko0713的实验室">
-<meta property="og:url" content="http://mieruko.com/page/5/index.html">
-<meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="大四信息汪 喜欢写代码">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mieruko0713的实验室">
-<meta name="twitter:description" content="大四信息汪 喜欢写代码">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Mieruko0713的实验室 </title>
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Mieruko0713的实验室</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/06/ES603/" itemprop="url">
-                  ES6学习笔记3:变量的解构赋值对象篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-06T00:00:00+08:00" content="2016-12-06">
-              2016-12-06
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mieruko的实验室</a>
         </div>
-      </header>
-    
 
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>变量的解构赋值。<br>一个使多变量赋值变得更加简单的东西。<br>它有很多形式，这篇博客是对对象形式做一个记录。   </p>
-<h2 id="变量的解构赋值之基本用法"><a href="#变量的解构赋值之基本用法" class="headerlink" title="变量的解构赋值之基本用法"></a>变量的解构赋值之基本用法</h2><p>以前如果你想要提取出来对象中的一些值，你这样做：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a = obj.a;</span><br><span class="line"><span class="keyword">var</span> b = obj.b;</span><br></pre></td></tr></table></figure>
-<p>ES6中，我们不这样做。<br>它变简单了：     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> &#123;a, b&#125; = obj;</span><br></pre></td></tr></table></figure>
-<p>如果你尝试输出a, b,你会发现就是你想要的结果。    </p>
-<h2 id="对象解构赋值过程中要注意的点"><a href="#对象解构赋值过程中要注意的点" class="headerlink" title="对象解构赋值过程中要注意的点"></a>对象解构赋值过程中要注意的点</h2><p>楼上我们的全局变量是a, b,这个全局变量是可以随便起名字吗？？？？<br>答案是不，因为对象里面的元素的无序的，所以无法像数组里那样去根据顺序一一对应。<br>因此我们必须把全局变量设置为对象里面属性名一模一样的一个名字，才能把对象中对应的属性名给召唤出来。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/06/ES603/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/05/ES602/" itemprop="url">
-                  ES6学习笔记2:变量的解构赋值数组篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-05T00:00:00+08:00" content="2016-12-05">
-              2016-12-05
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>变量的解构赋值。<br>一个使多变量赋值变得更加简单的东西。<br>它有很多形式，这篇博客是对数组形式做一个记录。   </p>
-<h2 id="变量的解构赋值之基本用法"><a href="#变量的解构赋值之基本用法" class="headerlink" title="变量的解构赋值之基本用法"></a>变量的解构赋值之基本用法</h2><p>以前如果你想要给几个变量同时赋值，你这样做：    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> c = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-<p>简化后:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, b = <span class="number">2</span>, c = <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
-<p>但是在ES6中，你还可以这样搞:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a, b, c] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br></pre></td></tr></table></figure>
-<p>你还可以随便往里面加括号:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> [a, [b, c]] = [<span class="number">1</span>, [<span class="number">2</span>, <span class="number">3</span>]];</span><br></pre></td></tr></table></figure>
-<p>这样也没问题。     </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/05/ES602/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/04/ES01/" itemprop="url">
-                  ES6学习笔记1:const命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-04T00:00:00+08:00" content="2016-12-04">
-              2016-12-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇会比较短小，因为仅仅讲一个变量声明嘛～<br>不过还是想要感慨一下下哦，js进化了，连const都出来了，嘻嘻。    </p>
-<h2 id="const基本特性"><a href="#const基本特性" class="headerlink" title="const基本特性"></a>const基本特性</h2><p>const这个声明头之前在强类型语言（比如c和java）中见过，它是声明一个常量。    </p>
-<p>那么js中的const是什么样的呢？    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a;</span><br></pre></td></tr></table></figure>
-<p>运行试试，发现报错。<br>说明<strong>const在声明变量时这个变量必须有值</strong>    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> happy = <span class="literal">true</span>;</span><br><span class="line">happy = <span class="literal">false</span>;</span><br></pre></td></tr></table></figure>
-<p>报错了，说明<strong>这个值不能被改变，一改就报错</strong>。    </p>
-<h2 id="const声明变量指向一个对象的时候要注意"><a href="#const声明变量指向一个对象的时候要注意" class="headerlink" title="const声明变量指向一个对象的时候要注意"></a>const声明变量指向一个对象的时候要注意</h2><p>看一下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> user = &#123;<span class="attr">name</span>:<span class="string">"xiaowanzi"</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> happy = user;</span><br><span class="line">user.name = <span class="string">"maruko0713"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"user:"</span>,user);</span><br></pre></td></tr></table></figure>
-<p>运行后发现没有报错，说明user的<strong>值</strong>可以改变。<br>或者你直接这样做:<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/04/ES01/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/03/ES60/" itemprop="url">
-                  ES6学习笔记0:let命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-03T00:00:00+08:00" content="2016-12-03">
-              2016-12-03
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看了一下Vue的文档后真的感叹啊现在ES6真是越来越普及了。之前只是零星地接触了一下，缺乏系统的学习。现在觉得很有必要学一下。接下来的博客主要是围绕阮一峰老师的《ES6入门》做教材，杂七杂八的博客做参考，然后自己做一个总结。    </p>
-<h2 id="let命令之先撸两个demo"><a href="#let命令之先撸两个demo" class="headerlink" title="let命令之先撸两个demo"></a>let命令之先撸两个demo</h2><p>先来一个这样的:     </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">let</span> b=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"a:"</span>,a);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"b:"</span>,b);</span><br></pre></td></tr></table></figure>
-<p>运行一下，直接输出a和b，没毛病。<br>从这里我们看出，let和var都可以声明一个变量。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/03/ES60/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/30/node_async/" itemprop="url">
-                  Node中的异步i/o和事件轮询机制
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-30T00:00:00+08:00" content="2016-11-30">
-              2016-11-30
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/30/node_async/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/25/http/" itemprop="url">
-                  HTTP协议学习总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-25T00:00:00+08:00" content="2016-11-25">
-              2016-11-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="HTTP协议的特点"><a href="#HTTP协议的特点" class="headerlink" title="HTTP协议的特点"></a>HTTP协议的特点</h2><ul>
-<li>简单快速: 统一资源符（uri）是固定的</li>
-<li>灵活: 可以传输不同的数据类型</li>
-<li>无连接: 每连接一次都会断掉</li>
-<li>无状态: 对于之前的交互没有记录。HTTP 协议是没有办法记住之前的一次请求的，服务端是无法区分下一次连接和上一次连接者的身份的</li>
-</ul>
-<h2 id="HTTP报文的组成部分"><a href="#HTTP报文的组成部分" class="headerlink" title="HTTP报文的组成部分"></a>HTTP报文的组成部分</h2><p>请求报文： 请求行 请求头 空行 请求体<br>响应报文： 状态行 响应头 空行 响应体</p>
-<p>请求行:  </p>
-<blockquote>
-<p>GET/POST [url] HTTP/[version]   GET / HTTP/1.1</p>
-</blockquote>
-<p>请求头 是一些key-value值: </p>
-<blockquote>
-<p>Host: miemie.com<br>  User-Agent: curl/7.43.0<br>  Accept: <em>/</em></p>
-</blockquote>
-<p>状态行：</p>
-<blockquote>
-<p>HTTP[版本号] [状态码] [状态信息]<br>HTTP/1.1 200 OK</p>
-</blockquote>
-<p>响应头:</p>
-<blockquote>
-<p>[ header 名]: [ header 值]<br>这些信息基本上都是用来描述后面要介绍的响应主体数据的</p>
-</blockquote>
-<h2 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h2><p>GET(获取资源),POST(传输资源),PUT(更新资源),DELETE(删除资源),HEAD(获得报文首部),OPTION</p>
-<h2 id="POST和GET的区别"><a href="#POST和GET的区别" class="headerlink" title="POST和GET的区别"></a>POST和GET的区别</h2><ul>
-<li>GET请求的参数会被完整保存在浏览器历史记录里，而POST不会</li>
-<li>GET请求传输的参数是有长度限制的，而POST没有</li>
-<li>对参数的数据类型，GET只能接受ASCII字符，而POST没有限制</li>
-<li>GET参数通过URL来传递，而POST通过请求体来传递<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2>1xx：指示信息-表示信息已接收，继续处理<br>2xx：成功<br>3xx：重定向<br>4xx：客户端错误-请求有语法错误或者请求无法实现<br>5xx：服务器错误</li>
-</ul>
-<p>200：请求成功<br>301：永久重定向<br>302：临时重定向<br>400：请求有语法错误，不能被服务器所理解<br>403：资源禁止被访问<br>404：请求资源不存在<br>500：服务器内部错误  </p>
-<h2 id="什么是持久连接"><a href="#什么是持久连接" class="headerlink" title="什么是持久连接"></a>什么是持久连接</h2><p>HTTP持久连接可以重用已建立的TCP连接，减少三次握手的RTT延迟。浏览器在请求时带上 connection: keep-alive 的头部，服务器收到后就要发送完响应后保持连接一段时间，浏览器在下一次对该服务器的请求时，就可以直接拿来用。<br>当使用KEEP-ALIVE模式时，KEEP-ALIVE功能使客户端到服务端的连接持续有效，当有后续请求时，该功能避免了建立或者重新建立连接。    </p>
-<h2 id="什么是管线化"><a href="#什么是管线化" class="headerlink" title="什么是管线化"></a>什么是管线化</h2><p>它是建立在持久连接之上，是把所有请求一并发给服务器，但是服务器需要按照顺序一个一个响应，而不是等到一个响应回来才能发下一个请求</p>
-<h2 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h2><p>管线化机制以持久连接为前提，仅HTTP/1.1支持此技术<br>只有GET和HEAD支持管线化，而POST有所限制   </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/20/laravel5/" itemprop="url">
-                  Laravel笔记5:laravel中的Model的创建和数据库表的基本操作
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-20T00:00:00+08:00" content="2016-11-20">
-              2016-11-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="创建一个model"><a href="#创建一个model" class="headerlink" title="创建一个model"></a>创建一个model</h2><p>(前提是你已经创建了一个articles表)<br>命令行:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:model Article</span><br></pre></td></tr></table></figure>
-<p>执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的articles表呼应的，它用来对articles表进行操作。    </p>
-<p>在laravel的环境下打开一个php解释器：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/20/laravel5/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/17/laravel4/" itemprop="url">
-                  Laravel笔记4:Laravel中的数据库和Migration
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-17T00:00:00+08:00" content="2016-11-17">
-              2016-11-17
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Migration是啥"><a href="#Migration是啥" class="headerlink" title="Migration是啥"></a>Migration是啥</h2><p>Migration是数据库的版本控制。    </p>
-<h2 id="Migration命令"><a href="#Migration命令" class="headerlink" title="Migration命令"></a>Migration命令</h2><p>在migrations这个文件夹下面。<br>默认有两个，打开其中的create_users_table文件，里面会有一个对象，对象有up方法和down方法。<br>文件代码:    </p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CreateUsersTable</span> <span class="keyword">extends</span> <span class="title">Migration</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Run the migrations.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Schema::create(<span class="string">'users'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Blueprint $table)</span> </span>&#123;</span><br><span class="line">            $table-&gt;increments(<span class="string">'id'</span>);</span><br><span class="line">            $table-&gt;string(<span class="string">'name'</span>);</span><br><span class="line">            $table-&gt;string(<span class="string">'email'</span>)-&gt;unique();</span><br><span class="line">            $table-&gt;string(<span class="string">'password'</span>);</span><br><span class="line">            $table-&gt;rememberToken();</span><br><span class="line">            $table-&gt;timestamps();</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Reverse the migrations.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> void</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Schema::drop(<span class="string">'users'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/17/laravel4/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/15/laravel3/" itemprop="url">
-                  Laravel笔记3:Laravel中的Blade模版引擎
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-15T00:00:00+08:00" content="2016-11-15">
-              2016-11-15
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="Blade模版引擎"><a href="#Blade模版引擎" class="headerlink" title="Blade模版引擎"></a>Blade模版引擎</h2><blockquote>
-<p>Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .blade.php 文件扩展名，并且一般被存放在 resources/views 目录。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/15/laravel3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/14/laravel2/" itemprop="url">
-                  Laravel笔记2:Laravel向视图传递变量
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-14T00:00:00+08:00" content="2016-11-14">
-              2016-11-14
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="填坑"><a href="#填坑" class="headerlink" title="填坑"></a>填坑</h2><p>前面(laravel1里面)介绍控制器的创建方法:      </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller WelcomeController</span><br></pre></td></tr></table></figure>
-<p>然后点开controller目录下的WelcomeController文件，我们会发现里面预写好了很多东西。<br>有时我们不需要laravel为我们做这么多，于是我们可以这样:    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php artisan make:controller WelcomeController --plain</span><br></pre></td></tr></table></figure>
-<p>现在再打开看看，是不是除了一个Controller对象，里面啥也没有，空空如也了？^_^    </p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/14/laravel2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
-               alt="mieruko0713" />
-          <p class="site-author-name" itemprop="name">mieruko0713</p>
-          <p class="site-description motion-element" itemprop="description">大四信息汪 喜欢写代码 
-</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">84</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
             </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/mieruko0713" target="_blank">
-                  
-                    <i class="fa fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
         </div>
-
-        
-        
-
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
+        <!-- /.navbar-collapse -->
     </div>
-  </aside>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">mieruko0713</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('https://cdn.lxxyx.cn/2018-06-04-589111528085301_.pic_hd.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Mieruko的实验室</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 
 
-  
-  
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
 
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-
-
-  
-
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
 
 
-  
-  
-  
+<div class="post-preview">
 
-  
+    <a href="/2016/12/06/ES603/">
+        <h2 class="post-title">
+            ES6学习笔记3:变量的解构赋值对象篇
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对对象形式做一个记录。   
+变量的解构赋值之基本用法以前如果你想要提取出来对象中的一些值，你这样做：    
+1234567var obj = &#123;    a: 1,    b: 2&#125;var a = obj.a;var b = obj.b;
+ES6中，我们不这样做。它变简单了：     
+12......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-06
+    </p>
 
-  
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/05/ES602/">
+        <h2 class="post-title">
+            ES6学习笔记2:变量的解构赋值数组篇
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言变量的解构赋值。一个使多变量赋值变得更加简单的东西。它有很多形式，这篇博客是对数组形式做一个记录。   
+变量的解构赋值之基本用法以前如果你想要给几个变量同时赋值，你这样做：    
+123var a = 1;var b = 2;var c = 3;
+简化后:    
+1var a = 1, b = 2, c = 3;
+但是在ES6中，你还可以这样搞:    
+1var [a, b, c......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-05
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/04/ES01/">
+        <h2 class="post-title">
+            ES6学习笔记1:const命令
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言这篇会比较短小，因为仅仅讲一个变量声明嘛～不过还是想要感慨一下下哦，js进化了，连const都出来了，嘻嘻。    
+const基本特性const这个声明头之前在强类型语言（比如c和java）中见过，它是声明一个常量。    
+那么js中的const是什么样的呢？    
+1const a;
+运行试试，发现报错。说明const在声明变量时这个变量必须有值    
+12const happ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-04
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/03/ES60/">
+        <h2 class="post-title">
+            ES6学习笔记0:let命令
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言看了一下Vue的文档后真的感叹啊现在ES6真是越来越普及了。之前只是零星地接触了一下，缺乏系统的学习。现在觉得很有必要学一下。接下来的博客主要是围绕阮一峰老师的《ES6入门》做教材，杂七杂八的博客做参考，然后自己做一个总结。    
+let命令之先撸两个demo先来一个这样的:     
+12345var a=1;let b=2;console.log("a:",a);console.l......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-03
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/11/30/node_async/">
+        <h2 class="post-title">
+            Node中的异步i/o和事件轮询机制
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言这篇文章既然写了，接下来的一段时间我就会不断更新它。关于Node中的一些机制，因为我暂时还没有一个非常扎实的操作系统基础，眼下主要是通过《深入浅出Node.js》和一些网上的文章来理解它们。《计算机操作系统》这本书我还没有读完，但是我想写一下这个阶段自己对这些东西的一个理解，顺便记录一下自己困惑的地方，以后来填坑。 
+12-02填坑异步时Node平台开辟的线程池里的i/o（或网络请求之类......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-11-30
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/11/25/http/">
+        <h2 class="post-title">
+            HTTP协议学习总结
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            HTTP协议的特点
+简单快速: 统一资源符（uri）是固定的
+灵活: 可以传输不同的数据类型
+无连接: 每连接一次都会断掉
+无状态: 对于之前的交互没有记录。HTTP 协议是没有办法记住之前的一次请求的，服务端是无法区分下一次连接和上一次连接者的身份的
+
+HTTP报文的组成部分请求报文： 请求行 请求头 空行 请求体响应报文： 状态行 响应头 空行 响应体
+请求行:  
+
+GET/POST ......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-11-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/11/20/laravel5/">
+        <h2 class="post-title">
+            Laravel笔记5:laravel中的Model的创建和数据库表的基本操作
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            创建一个model(前提是你已经创建了一个articles表)命令行:    
+1php artisan make:model Article
+执行完之后，你会在laravel的app目录下发现一个叫做Article.php的文件，这个文件是和你的articles表呼应的，它用来对articles表进行操作。    
+在laravel的环境下打开一个php解释器： 
+1php artisan......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-11-20
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/11/17/laravel4/">
+        <h2 class="post-title">
+            Laravel笔记4:Laravel中的数据库和Migration
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Migration是啥Migration是数据库的版本控制。    
+Migration命令在migrations这个文件夹下面。默认有两个，打开其中的create_users_table文件，里面会有一个对象，对象有up方法和down方法。文件代码:    
+1234567891011121314151617181920212223242526272829class CreateUsers......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-11-17
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/11/15/laravel3/">
+        <h2 class="post-title">
+            Laravel笔记3:Laravel中的Blade模版引擎
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            Blade模版引擎
+Blade 是 Laravel 提供的一个既简单又强大的模板引擎。和其他流行的 PHP 模板引擎不一样，Blade 并不限制你在视图（view）中使用原生 PHP 代码。所有 Blade 视图页面都将被编译成原生 PHP 代码并缓存起来，除非你的模板文件被修改了，否则不会重新编译，这就意味着 Blade 基本上不会给你的应用增加任何额外负担。Blade 视图文件使用 .b......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-11-15
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/11/14/laravel2/">
+        <h2 class="post-title">
+            Laravel笔记2:Laravel向视图传递变量
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            填坑前面(laravel1里面)介绍控制器的创建方法:      
+1php artisan make:controller WelcomeController
+然后点开controller目录下的WelcomeController文件，我们会发现里面预写好了很多东西。有时我们不需要laravel为我们做这么多，于是我们可以这样:    
+1php artisan make:controll......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-11-14
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/page/4/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/page/6/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                            <a href="/tags/#ES6" title="ES6" rel="20">ES6</a>
+                            
+                        
+                            
+                            <a href="/tags/#React" title="React" rel="6">React</a>
+                            
+                        
+                            
+                            <a href="/tags/#jQuery" title="jQuery" rel="7">jQuery</a>
+                            
+                        
+                            
+                            <a href="/tags/#ajax" title="ajax" rel="3">ajax</a>
+                            
+                        
+                            
+                            <a href="/tags/#javascript" title="javascript" rel="18">javascript</a>
+                            
+                        
+                            
+                            <a href="/tags/#算法" title="算法" rel="2">算法</a>
+                            
+                        
+                            
+                            <a href="/tags/#css" title="css" rel="5">css</a>
+                            
+                        
+                            
+                            <a href="/tags/#Node" title="Node" rel="6">Node</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#前端工具" title="前端工具" rel="2">前端工具</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTTP" title="HTTP" rel="2">HTTP</a>
+                            
+                        
+                            
+                            <a href="/tags/#移动web" title="移动web" rel="2">移动web</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#laravel" title="laravel" rel="6">laravel</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#原型链" title="原型链" rel="2">原型链</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#React Native" title="React Native" rel="5">React Native</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="https://cdn.lxxyx.cn/2018-06-04-041616.png" />
+                        
+
+                        
+                            <p>我要成为魔法师!</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+
+                            
+
+                            
+
+                            
+                                <li>
+                                    <a target="_blank"  href="https://github.com/Mieruko">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Friends Blog -->
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Mieruko">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mieruko的实验室 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://mieruko.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://mieruko.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
+
 </html>

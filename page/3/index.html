@@ -1,1374 +1,737 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 
-
-
-  
-
-
-<html class="theme-next muse use-motion">
+<!-- Head tag -->
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="大四信息汪 喜欢写代码 
+">
+    <meta name="keyword"  content="咩咩丸,前端,前端博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+          Mieruko的实验室
+        
+    </title>
+
+    <link rel="canonical" href="http://mieruko.com/page/3/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
 
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="maruko" />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="大四信息汪 喜欢写代码">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Mieruko0713的实验室">
-<meta property="og:url" content="http://mieruko.com/page/3/index.html">
-<meta property="og:site_name" content="Mieruko0713的实验室">
-<meta property="og:description" content="大四信息汪 喜欢写代码">
-<meta property="og:locale" content="zh-Hans">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mieruko0713的实验室">
-<meta name="twitter:description" content="大四信息汪 喜欢写代码">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Muse',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Mieruko0713的实验室 </title>
+    <!-- ga & ba script hoook -->
+    <script></script>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
 
-
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Mieruko0713的实验室</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle"></p>
-</div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/04/React1/" itemprop="url">
-                  React组件生命周期的总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-04T00:00:00+08:00" content="2017-01-04">
-              2017-01-04
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Mieruko的实验室</a>
         </div>
-      </header>
-    
 
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>在React组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。<br>一个React组件的生命周期从广义上看分为三个部分:   </p>
-<ul>
-<li>挂载</li>
-<li>渲染</li>
-<li>卸载<br>当渲染后的组件需要更新时，我们会重新去渲染组件。因此，我们也可以把React生命周期分为两类:    </li>
-<li>当组件在挂载或卸载时</li>
-<li>当组件接受新的数据，即组件更新时</li>
-</ul>
-<p>不过我还是更加喜欢这个版本的生命周期解释哈哈哈哈哈：    </p>
-<ul>
-<li>实例化</li>
-<li>存在期</li>
-<li>销毁&amp;清理</li>
-</ul>
-<p>一图胜千言：    </p>
-<p><img src="http://7xl4oh.com1.z0.glb.clouddn.com/react%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png" alt="react生命周期"><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/04/React1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/02/react0/" itemprop="url">
-                  React中的JSX和数据流
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-02T00:00:00+08:00" content="2017-01-02">
-              2017-01-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>新年快乐!^_^<br>敲代码，看书，写博客，一个学期不知不觉要过去了，考试周也如期而至。这学期主要的精力还是在做自己比较感兴趣的一些事情，包括整个后半学期都在看算法（因为暂时还没想好算法这块的博客该怎么展开叙述，就先忍忍了，还是安静地刷题吧），所以现在开始必须好好看学校的课程了。这几天会适当减少写文章和看技术书籍的时间，不过该看的还是要看的，嗯！<br>然后说说这个React，React,Vue和AngularJs应该是现在比较主流的几个框架了，能活到这一步的框架都有自己厉害的地方，所以我的想法是应该尽量地去了解。从这一篇开始，我会对框架的学习做记录，在此之前我用Angular写过一个小项目，但是在那个项目中，仅仅是用了一些皮毛，目的在于快速地给一个系统写出前端。所以，React是我接触的第一个前端框架。  </p>
-<h2 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h2><p>JSX在React中主要是render方法中写模版的时候要用到。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2017/01/02/react0/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/25/ES615/" itemprop="url">
-                  ES6学习笔记15:ES6中的模块(module)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-25T00:00:00+08:00" content="2016-12-25">
-              2016-12-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。<br>前段时间用Node写demo的时候，完全离不开modules啊。<br>当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。<br>总之，重要！！</p>
-<h2 id="模块的导出和导入"><a href="#模块的导出和导入" class="headerlink" title="模块的导出和导入"></a>模块的导出和导入</h2><p>先来看如何写一个模块并把它导出！<br>假设我们现在有同一个目录下的两个文件，script1.js和script2.js</p>
-<p>script1.js:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fruit = <span class="string">"🍋"</span>;</span><br><span class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123;fruit, dessert&#125;;</span><br></pre></td></tr></table></figure>
-<p>好！导出了！<br>现在如果你想在另一个文件(script2.js)里导入它：<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/25/ES615/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/25/kuayu/" itemprop="url">
-                  前端跨域通信解决方案总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-25T00:00:00+08:00" content="2016-12-25">
-              2016-12-25
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="什么是同源策略及限制"><a href="#什么是同源策略及限制" class="headerlink" title="什么是同源策略及限制"></a>什么是同源策略及限制</h2><blockquote>
-<p>同源策略限制从一个源加载的文件或脚本如何与来自另一个源的资源进行交互<br>这是一个用于隔离潜在恶意文件的关键的安全机制   </p>
-</blockquote>
-<p>源 包括协议 域名和端口， 有一个不一样就是跨域    </p>
-<h3 id="限制"><a href="#限制" class="headerlink" title="限制"></a>限制</h3><ul>
-<li>Cookie, LocalStorage和indexDB无法读取</li>
-<li>DOM无法获得</li>
-<li>AJAX请求不能发送</li>
-</ul>
-<h2 id="跨域通信的几种方式"><a href="#跨域通信的几种方式" class="headerlink" title="跨域通信的几种方式"></a>跨域通信的几种方式</h2><ul>
-<li>JSONP</li>
-<li>WebSocket</li>
-<li>Hash</li>
-<li>CORS</li>
-<li>postMessage  </li>
-</ul>
-<h2 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h2><p>JSON只能用于GET请求。<br>通过script标签的动态加载实现的。    </p>
-<blockquote>
-<p>网页通过添加一个script标签，向服务器请求JSON数据，这种做法不受同源政策限制；<br>服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。</p>
-</blockquote>
-<h2 id="WebSocket"><a href="#WebSocket" class="headerlink" title="WebSocket"></a>WebSocket</h2><p>WebSocket是H5的新的通信协议，使用ws://（非加密）和wss://（加密）作为协议前缀。该协议不实行同源政策，只要服务器支持，就可以通过它进行跨源通信。</p>
-<h2 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h2><p>在当前窗口打开一个iframe，我们可以通过给iframe的页面url设置hash的内容来实现数据的传递。    </p>
-<h2 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h2><p>CORS就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是失败。<br>服务器端对于CORS的支持，主要就是通过设置Access-Control-Allow-Origin来进行的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。<br>CORS 的请求分两种，简单请求，非简单请求。<br>对于简单的跨域请求，浏览器会自动在请求的头信息加上Origin字段，表示本次请求来自哪个源（协议+域名+端口），服务端会获取到这个值，然后判断是否同意这次请求并返回。<br>非简单请求请求方法是PUT或DELETE，或者Content-Type字段的类型是application/json。<br>非简单请求的CORS请求，会在正式通信之前，增加一次HTTP查询请求，称为”预检”请求（preflight）。一旦服务器通过了”预检”请求，以后每次浏览器正常的CORS请求，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。<br>浏览器先询问服务器，当前网页所在的域名是否在服务器的许可名单之中，以及可以使用哪些HTTP动词和头信息字段。只有得到肯定答复，浏览器才会发出正式的XMLHttpRequest请求，否则就报错。</p>
-<h2 id="postMessage"><a href="#postMessage" class="headerlink" title="postMessage"></a>postMessage</h2><p>允许跨窗口通信，不论这两个窗口是否同源。<br>postMessage方法的第一个参数是具体的信息内容，第二个参数是接收消息的窗口的源（origin），即”协议 + 域名 + 端口”。也可以设为*，表示不限制域名，向所有窗口发送。<br>接收方可以通过message事件，监听对方的消息。message事件的事件对象event，提供以下三个属性：   </p>
-<ul>
-<li>event.source：发送消息的窗口。</li>
-<li>event.origin：消息发向的网址。</li>
-<li>event.data：消息内容。</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/23/ES614/" itemprop="url">
-                  ES6学习笔记14:撒花！欢迎新数据类型Map~~~!
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-23T00:00:00+08:00" content="2016-12-23">
-              2016-12-23
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Map!<br>哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。<br>其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！<br>然后说正事！！<br>那个啥！！<br>Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    </p>
-<h2 id="JS中的Map"><a href="#JS中的Map" class="headerlink" title="JS中的Map"></a>JS中的Map</h2><p>其实就还是那回事！    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> food = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"><span class="keyword">let</span> fruit = &#123;&#125;, cook = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;, dessert = <span class="string">"甜点"</span>;</span><br><span class="line"></span><br><span class="line">food.set(fruit, <span class="string">"🍋"</span>);</span><br><span class="line">food.set(cook, <span class="string">"🍴"</span>);</span><br><span class="line">food.set(dessert, <span class="string">"🍩"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(food);</span><br></pre></td></tr></table></figure>
-<p>如果你在chrome控制台输出，你会看到:<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/23/ES614/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/22/ES613/" itemprop="url">
-                  ES6学习笔记13:ES6中的类
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-22T00:00:00+08:00" content="2016-12-22">
-              2016-12-22
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>类</strong>！！！！！<br>千呼万唤始出来！！！！    </p>
-<h2 id="JS中类的形态"><a href="#JS中类的形态" class="headerlink" title="JS中类的形态"></a>JS中类的形态</h2><p>其实和java里面没什么差啦！嘿嘿。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Chef</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(food) &#123;</span><br><span class="line">    <span class="keyword">this</span>.food = food;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  cook() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.food);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> wanzi = <span class="keyword">new</span> Chef(<span class="string">"🍅"</span>);</span><br><span class="line">wanzi.cook();</span><br></pre></td></tr></table></figure>
-<p>有没有似曾相识！！有没有似曾相识！！<br>除了基本的语法不太像，这尼玛简直就是java啊！！<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/22/ES613/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/21/ES612/" itemprop="url">
-                  ES6学习笔记12:迭代器和生成器
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-21T00:00:00+08:00" content="2016-12-21">
-              2016-12-21
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>ES6中，引入了迭代器和生成器的概念。<br>久违了的名字，上次见到还是在《Python核心编程》里呐！<br>所以说JS越来越正统语言了呀～～～    </p>
-<h2 id="迭代器-Iterators-碎碎念"><a href="#迭代器-Iterators-碎碎念" class="headerlink" title="迭代器(Iterators)碎碎念"></a>迭代器(Iterators)碎碎念</h2><p>迭代器就是可以迭代输出值的一个东西。<br>迭代器每一次迭代会返回一个对象，这个对象长这样子：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">value</span>: xx, <span class="attr">done</span>: <span class="literal">true</span>/<span class="literal">false</span>&#125;</span><br></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/21/ES612/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/20/ES611/" itemprop="url">
-                  ES6学习笔记11:对象的新面貌
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-20T00:00:00+08:00" content="2016-12-20">
-              2016-12-20
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在ES6里面，对象越来越“对象”了。<br>这么说有点奇怪吧，哈哈哈，还是一点一点写代码来看吧。</p>
-<h2 id="创建对象的新形式"><a href="#创建对象的新形式" class="headerlink" title="创建对象的新形式"></a>创建对象的新形式</h2><p>先看一段代码:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dessert = <span class="string">"🍰"</span>, drink=<span class="string">"🍹"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> food = &#123;</span><br><span class="line">  dessert: dessert,</span><br><span class="line">  drink: drink</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(food);</span><br></pre></td></tr></table></figure>
-<p>我们输出了food，food中是🍰和🍹，没毛病。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/20/ES611/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/19/es610/" itemprop="url">
-                  ES6学习笔记10:函数的新面貌和"..."操作符
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-19T00:00:00+08:00" content="2016-12-19">
-              2016-12-19
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>“…”是ES6中新添加的一种操作符。<br>函数在ES6中有了更强的特性。<br>放在一起梳理一下～～    </p>
-<h2 id="…操作符"><a href="#…操作符" class="headerlink" title="…操作符"></a>…操作符</h2><p>主要有两个作用”spread”和”rest”。    </p>
-<p>spread：   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'use strcit'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> fruits = [<span class="string">"🍎"</span>, <span class="string">"🍌"</span>],</span><br><span class="line">    foods = [<span class="string">"🍰"</span>, ...fruits];</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(fruits);</span><br><span class="line"><span class="built_in">console</span>.log(...fruits);</span><br><span class="line"><span class="built_in">console</span>.log(foods);</span><br></pre></td></tr></table></figure>
-<p>第一行就是单纯地输出数组，然后第二行会看到数组里面的内容被展开了，分别输出。<br>然后第三行我们可以看到fruits是先被拆开然后放进数组foods里面去的。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/19/es610/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/18/ES609/" itemprop="url">
-                  ES6学习笔记9:字符串更进一步之标签模版字符串
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-18T00:00:00+08:00" content="2016-12-18">
-              2016-12-18
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前写过一篇ES6中字符串的，主要是每个点都点一下，没有对模版这一块做太多的介绍。<br>今天讲一讲模版字符串的进阶版，标签模版字符串。<br>字符串的第一篇博客在这里: <a href="https://maruko0713.github.io/2016/12/09/ES605/" target="_blank" rel="noopener">ES6字符串第一篇博客</a>。  </p>
-<h2 id="标签模版字符串的基本形态"><a href="#标签模版字符串的基本形态" class="headerlink" title="标签模版字符串的基本形态"></a>标签模版字符串的基本形态</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> template_string = 函数名<span class="string">`模版字符串`</span>;</span><br></pre></td></tr></table></figure>
-<p>楼上有点丑，我也知道。<br>标签模版字符串的意思是说，把函数名当做一个标签附加到模版字符串的前面，那么这个函数就可以对这个模版字符串做一些处理。<br>标签就是函数，不过是用起来和普通的函数有些区别😁。    </p>
-<h2 id="标签函数用起来！"><a href="#标签函数用起来！" class="headerlink" title="标签函数用起来！"></a>标签函数用起来！</h2><p>来看一段完整的代码:    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> dessert = <span class="string">'🍰'</span>,</span><br><span class="line">    drink  = <span class="string">'🍵'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> breakfast = kitchen<span class="string">`今天的早餐是</span></span><br><span class="line"><span class="string">  <span class="subst">$&#123;dessert&#125;</span> 与 <span class="subst">$&#123;drink&#125;</span>!`</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">kitchen</span>(<span class="params">strings, ...values</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(strings);</span><br><span class="line">    <span class="built_in">console</span>.log(values);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>strings和values分别是两个数组，包含了模版的两个部分。<br>strings就是你手写的那一部分，而values就是${}包含的那部分，变量部分。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/12/18/ES609/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://7xl4oh.com1.z0.glb.clouddn.com/IMG_6574.JPG"
-               alt="mieruko0713" />
-          <p class="site-author-name" itemprop="name">mieruko0713</p>
-          <p class="site-description motion-element" itemprop="description">大四信息汪 喜欢写代码 
-</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">84</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">28</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archives/">Archives</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
             </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/mieruko0713" target="_blank">
-                  
-                    <i class="fa fa-github"></i>
-                  
-                  GitHub
-                </a>
-              </span>
-            
-          
         </div>
-
-        
-        
-
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
-
-      </section>
-
-      
-
+        <!-- /.navbar-collapse -->
     </div>
-  </aside>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
 
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">mieruko0713</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
-  </a>
-</div>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+    <!-- Main Content -->
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('https://cdn.lxxyx.cn/2018-06-04-589111528085301_.pic_hd.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>Mieruko的实验室</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 
 
-  
-  
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        
 
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-
-
-  
-
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+            
+                <!-- Main Content -->
 
 
-  
-  
-  
+<div class="post-preview">
 
-  
+    <a href="/2017/01/04/React1/">
+        <h2 class="post-title">
+            React组件生命周期的总结
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:在React组件的整个生命周期中，随着该组件的props或者state发生改变，其DOM表现也会有相应的变化。一个组件就是一个状态机，对于特定地输入，它总返回一致的输出。一个React组件的生命周期从广义上看分为三个部分:   
 
-  
+挂载
+渲染
+卸载当渲染后的组件需要更新时，我们会重新去渲染组件。因此，我们也可以把React生命周期分为两类:    
+当组件在挂载或卸载时
+当组件接受新的......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-01-04
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/01/02/react0/">
+        <h2 class="post-title">
+            React中的JSX和数据流
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:新年快乐!^_^敲代码，看书，写博客，一个学期不知不觉要过去了，考试周也如期而至。这学期主要的精力还是在做自己比较感兴趣的一些事情，包括整个后半学期都在看算法（因为暂时还没想好算法这块的博客该怎么展开叙述，就先忍忍了，还是安静地刷题吧），所以现在开始必须好好看学校的课程了。这几天会适当减少写文章和看技术书籍的时间，不过该看的还是要看的，嗯！然后说说这个React，React,Vue和A......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-01-02
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/25/ES615/">
+        <h2 class="post-title">
+            ES6学习笔记15:ES6中的模块(module)
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言ES6的这个变化（引入模块的概念）非常重要，尤其是在后端编程来看。前段时间用Node写demo的时候，完全离不开modules啊。当然，浏览器端也是用的越来越多的，新版本的框架全家桶齐刷刷上了ES6，齐刷刷用了modules。总之，重要！！
+模块的导出和导入先来看如何写一个模块并把它导出！假设我们现在有同一个目录下的两个文件，script1.js和script2.js
+script1.j......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/25/kuayu/">
+        <h2 class="post-title">
+            前端跨域通信解决方案总结
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            什么是同源策略及限制
+同源策略限制从一个源加载的文件或脚本如何与来自另一个源的资源进行交互这是一个用于隔离潜在恶意文件的关键的安全机制   
+
+源 包括协议 域名和端口， 有一个不一样就是跨域    
+限制
+Cookie, LocalStorage和indexDB无法读取
+DOM无法获得
+AJAX请求不能发送
+
+跨域通信的几种方式
+JSONP
+WebSocket
+Hash
+CORS
+post......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/23/ES614/">
+        <h2 class="post-title">
+            ES6学习笔记14:撒花！欢迎新数据类型Map~~~!
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言Map!哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！然后说正事！！那个啥！！Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    
+JS中的Map其实就还是那回事！    
+12345678910'u......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-23
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/22/ES613/">
+        <h2 class="post-title">
+            ES6学习笔记13:ES6中的类
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言类！！！！！千呼万唤始出来！！！！    
+JS中类的形态其实和java里面没什么差啦！嘿嘿。    
+1234567891011121314'use strict'class Chef &#123;  constructor(food) &#123;    this.food = food;  &#125;  cook() &#123;    console.log(this.food......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-22
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/21/ES612/">
+        <h2 class="post-title">
+            ES6学习笔记12:迭代器和生成器
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言ES6中，引入了迭代器和生成器的概念。久违了的名字，上次见到还是在《Python核心编程》里呐！所以说JS越来越正统语言了呀～～～    
+迭代器(Iterators)碎碎念迭代器就是可以迭代输出值的一个东西。迭代器每一次迭代会返回一个对象，这个对象长这样子：   
+1&#123;value: xx, done: true/false&#125;
+ 
+value表示返回的值， done表......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-21
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/20/ES611/">
+        <h2 class="post-title">
+            ES6学习笔记11:对象的新面貌
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言在ES6里面，对象越来越“对象”了。这么说有点奇怪吧，哈哈哈，还是一点一点写代码来看吧。
+创建对象的新形式先看一段代码:    
+12345678910'use strict'let dessert = "🍰", drink="🍹";let food = &#123;  dessert: dessert,  drink: drink&#125;console.log(food);
+我......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-20
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/19/es610/">
+        <h2 class="post-title">
+            ES6学习笔记10:函数的新面貌和"..."操作符
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言“…”是ES6中新添加的一种操作符。函数在ES6中有了更强的特性。放在一起梳理一下～～    
+…操作符主要有两个作用”spread”和”rest”。    
+spread：   
+12345678'use strcit'let fruits = ["🍎", "🍌"],    foods = ["🍰", ...fruits];console.log(fruits);console.......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-19
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2016/12/18/ES609/">
+        <h2 class="post-title">
+            ES6学习笔记9:字符串更进一步之标签模版字符串
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言之前写过一篇ES6中字符串的，主要是每个点都点一下，没有对模版这一块做太多的介绍。今天讲一讲模版字符串的进阶版，标签模版字符串。字符串的第一篇博客在这里: ES6字符串第一篇博客。  
+标签模版字符串的基本形态1let template_string = 函数名`模版字符串`;
+楼上有点丑，我也知道。标签模版字符串的意思是说，把函数名当做一个标签附加到模版字符串的前面，那么这个函数就可以......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2016-12-18
+    </p>
+
+</div>
+<hr>
+
+
+
+<!-- Pager -->
+
+<ul class="pager">
+    
+        <li class="previous">
+            <a href="/page/2/">&larr; Newer Posts</a>
+        </li>
+    
+    
+        <li class="next">
+            <a href="/page/4/">Older Posts &rarr;</a>
+        </li>
+    
+</ul>
+
+
+
+                <!-- 如果开启评论功能 -->
+                
+
+            </div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                            
+                            <a href="/tags/#ES6" title="ES6" rel="20">ES6</a>
+                            
+                        
+                            
+                            <a href="/tags/#React" title="React" rel="6">React</a>
+                            
+                        
+                            
+                            <a href="/tags/#jQuery" title="jQuery" rel="7">jQuery</a>
+                            
+                        
+                            
+                            <a href="/tags/#ajax" title="ajax" rel="3">ajax</a>
+                            
+                        
+                            
+                            <a href="/tags/#javascript" title="javascript" rel="18">javascript</a>
+                            
+                        
+                            
+                            <a href="/tags/#算法" title="算法" rel="2">算法</a>
+                            
+                        
+                            
+                            <a href="/tags/#css" title="css" rel="5">css</a>
+                            
+                        
+                            
+                            <a href="/tags/#Node" title="Node" rel="6">Node</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#前端工具" title="前端工具" rel="2">前端工具</a>
+                            
+                        
+                            
+                            <a href="/tags/#HTTP" title="HTTP" rel="2">HTTP</a>
+                            
+                        
+                            
+                            <a href="/tags/#移动web" title="移动web" rel="2">移动web</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#laravel" title="laravel" rel="6">laravel</a>
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#原型链" title="原型链" rel="2">原型链</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                            <a href="/tags/#React Native" title="React Native" rel="5">React Native</a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+
+                        
+                            <img src="https://cdn.lxxyx.cn/2018-06-04-041616.png" />
+                        
+
+                        
+                            <p>我要成为魔法师!</p>
+                        
+
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+
+                            
+
+                            
+
+                            
+                                <li>
+                                    <a target="_blank"  href="https://github.com/Mieruko">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fa fa-circle fa-stack-2x"></i>
+                                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            
+                            
+                            
+                            
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Friends Blog -->
+                
+            </div>
+        
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Mieruko">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Mieruko的实验室 2018 
+                    <br>
+                    Theme by <a href="http://huangxuan.me">Hux</a> 
+                    <span style="display: inline-block; margin: 0 5px;">
+                        <i class="fa fa-heart"></i>
+                    </span> 
+                    Ported by <a href="http://blog.kaijun.rocks">Kaijun</a> | 
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=kaijun&repo=hexo-theme-huxblog&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://mieruko.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Side Catalog -->
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="http://mieruko.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
 
 </body>
+
 </html>
