@@ -14,11 +14,11 @@
 
     <title>
         
-          ES6学习笔记14:撒花！欢迎新数据类型Map~~~! - Mieruko的实验室
+          （个人向）《你不知道的javascript（上）》细节拾遗 - Mieruko的实验室
         
     </title>
 
-    <link rel="canonical" href="http://mieruko.com/2016/12/23/ES614/">
+    <link rel="canonical" href="http://mieruko.com/2018/06/07/（个人向）《你不知道的javascript》细节拾遗/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -163,14 +163,14 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                          <a class="tag" href="/tags/#ES6" title="ES6">ES6</a>
+                          <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
                         
                     </div>
-                    <h1>ES6学习笔记14:撒花！欢迎新数据类型Map~~~!</h1>
+                    <h1>（个人向）《你不知道的javascript（上）》细节拾遗</h1>
                     <h2 class="subheading"></h2>
                     <span class="meta">
                         Posted by mieruko on
-                        2016-12-23
+                        2018-06-07
                     </span>
                 </div>
             </div>
@@ -189,26 +189,31 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Map!<br>哈哈哈相信学过C++和Java的小伙伴都对它不陌生啦。<br>其实为了学好算法，这两个月我也是狂撸c++啊（捂心口），希望明年三月的pat一切顺利！！！<br>然后说正事！！<br>那个啥！！<br>Map,我对它最深的印象就是在c++里，它可以接受多种数据类型作为键名和键值，而不会受到像JS对象那种键只能是特定类型（字符串）的限制。    </p>
-<h2 id="JS中的Map"><a href="#JS中的Map" class="headerlink" title="JS中的Map"></a>JS中的Map</h2><p>其实就还是那回事！    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> food = <span class="keyword">new</span> <span class="built_in">Map</span>();</span><br><span class="line"><span class="keyword">let</span> fruit = &#123;&#125;, cook = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;, dessert = <span class="string">"甜点"</span>;</span><br><span class="line"></span><br><span class="line">food.set(fruit, <span class="string">"🍋"</span>);</span><br><span class="line">food.set(cook, <span class="string">"🍴"</span>);</span><br><span class="line">food.set(dessert, <span class="string">"🍩"</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(food);</span><br></pre></td></tr></table></figure>
-<p>如果你在chrome控制台输出，你会看到:<br><a id="more"></a> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Map &#123;Object &#123;&#125; =&gt; &quot;🍋&quot;, </span><br><span class="line">function function =&gt; &quot;🍴&quot;,</span><br><span class="line">&quot;甜点&quot; =&gt; &quot;🍩&quot;&#125;</span><br></pre></td></tr></table></figure>
-<p>哈哈哈哈，简直是对象的究极进化版本！对象也能做键了哈哈哈！！  </p>
-<h2 id="Map的api和属性一锅端"><a href="#Map的api和属性一锅端" class="headerlink" title="Map的api和属性一锅端"></a>Map的api和属性一锅端</h2><p>常见api们！！<br>还拿上面的food开刀吧 ！！   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">food.size</span><br></pre></td></tr></table></figure>
-<p>和set一个德性，输出长度！    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">food.get(fruit);</span><br></pre></td></tr></table></figure>
-<p>根据键名得到键值。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">food.delete(dessert);</span><br></pre></td></tr></table></figure>
-<p>根据键名删除键值。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">food.has(dessert);</span><br></pre></td></tr></table></figure>
-<p>判断food中是不是有dessert这个键。   </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">food.forEach(<span class="function">(<span class="params">value, key</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// todo</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>对food中的每个键值对进行操作，value是值， key是键名。    </p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">food.clear();</span><br></pre></td></tr></table></figure>
-<p>清空这个Map!    </p>
-<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>至此，ES6中的两个重大的数据类型都说完啦哈哈哈哈。<br>另一个Set类型在这里 <a href="https://maruko0713.github.io/2016/12/12/ES608/" target="_blank" rel="noopener">Set类型的学习笔记</a>,嘻嘻。<br>马上就要新年啦。<br>要加油！   </p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>“命运安排我们各自长大，总有她温柔的用意”    </p>
+<p>我又在高考这一天来写博客了。<br>时间过得，真快呀。   </p>
+<p>终于终于，过去的六个月里完成了许许多多的愿望，谢谢你，2018❤️      </p>
+<h2 id="关于本文"><a href="#关于本文" class="headerlink" title="关于本文"></a>关于本文</h2><p>“Mieruko的实验室”这个站点的开设，有两个用意。<br>主要的用意是分享自己开发过程中的所得，帮助更多的小伙伴少走弯路，一起进步。<br>次要的用意是记录自己的成长和困惑，这部分的读者也就是自己啦。<br>这篇文章是单纯的个人向，属于后者。    </p>
+<h2 id="咩迷糊的小迷糊们"><a href="#咩迷糊的小迷糊们" class="headerlink" title="咩迷糊的小迷糊们"></a>咩迷糊的小迷糊们</h2><p>原句：（P58）词法作用域的最重要特征是它的定义过程发生在代码的书写阶段。<br>这个”代码的书写阶段”使我感到抓瞎。js代码有两个阶段，”编译阶段”和”运行阶段”。我是否可以将”代码书写阶段”理解为作用域的划分和确认是在编译阶段完成的呢？<br>其实存在这个困惑，应该也和我对动态作用域了解太少有关。这个词法作用域的定义，大概是相对于动态作用域来说的。    </p>
+<p>原句：（P62文字第一段）<br>我完全不知道这段话试图描述什么，也不知道这段话头上那段代码试图解决的是一个什么问题。我想象不到它对应的场景，我感到难受。包括这段话下面那段的let-er那个工具，我也不知道它想要解决什么问题。这到底都是啥。   </p>
+<p>原句：（P63）B.3性能部分。<br>IIFE创建作用域这种说法多次出现了。我无法理解。作用域在js里只分为全局作用域和函数作用域，再多就是块作用域。它这个明明是立即执行函数从而达成对变量的一个快照一样的效果，仍然是函数作用域啊，哪来的创建作用域呢。<br>  以及这部分的正数第三段，我不确定我是否正确地理解了作者试图表达的内容。   </p>
+<p>原句：（P75文字最后一段)”显示传递上下文会让代码变得混乱”<br>可能是我写的代码太少了，我至今幻想不出因此导致代码混乱的场景。   </p>
+<p>原句：（P84倒数第二段开始）”这里有一个微妙但非常重要的细节。。。。”<br>从代码上来看，我理解了作者想要表达的信息。但是从文字上来看，我完全不知道他说的都是啥和啥。   </p>
+<p>原句：（P89文字第一段）<br>我不确定我是否真正理解了硬绑定和显式绑定的区别。显式绑定是说apply和call，硬绑定是说bind，对吗？   </p>
+<p>原句：（P94 instanceof fNOP是在干啥？）<br>虽然知道这一步的意思是想判断构造函数与否还是不知道原理罢了  </p>
+<p>原句：（P95第一行说new中用了硬绑定）<br>这个我结合不来上下文，前面哪里用了硬绑定？</p>
+<p>原句：（P96倒数第二段）说副作用，如果某个第三方库确实使用了this，那么默认绑定规则会把this绑定到全局对象<br>它在说什么？有例子吗？    </p>
+<p>原句：（P97 2.4.2上面一段）使用一个dmz哪里安全了。<br>使用dmz无非是让this绑定到undefined罢了，我看不出有啥意义。    </p>
+<p>插播小问题：早就想知道了，我每次在控制台调用Object对象的原型，都是返回{}。为啥是这样，它原型上不是有很多默认的方法吗。我怎么才能看到。   </p>
+<p>原句：（P98 2.4.3）软绑定<br>这一部分我能看懂代码 也能读懂代码 我就是不知道这有啥意义     </p>
+<p>原句：（P100底部两个tip）<br>我完全不知道你在说什么罢了   </p>
+<p>原句：（P105第三段）文字形式 构造形式 字面量<br>文字形式和字面量不是一个东西？？？   </p>
+<p>原句：（P105 3.3第二段）存储对象内部的是这些属性的名称，它们就像指针一样，指向这些值真正的存储位置。<br>什么？难道obj.a=1 a也是个指针罢了？    </p>
+<p>原句：(P107顶部)说我们一般使用的都是Symbol的符号名称罢了<br>不理解，名称可以重复，而实际值是独一无二的。我们用它做键名难道不就是图个独一无二吗。   </p>
+<p>原句：（P110页第一个大段的最后一句话）”这样就会因为循环引用导致死循环”<br>引用的死循环会造成什么后果吗。结合前面的代码我幻想了一下那个相互引用的情形，我没找出毛病。。。   </p>
+<p>原句：110页 保证JSON对象是安全的<br>并没有说JSON对象何时是安全的  </p>
+<p>原句：（P112第一段代码后面那句话）ES6默认是严格模式会报错<br>我试了一下竟然没报错。。。    </p>
+<p>原句：（P114不变性小标题下面最后一句）假设代码中的myImmutableObject已经被创建而且是不可变的<br>请问这个假设如何实现      </p>
+<p>原句：（P124最下面） “不过有时候构造形式可以提供更多选项”<br>“有时候” 是什么时候？？？    </p>
 
 
                 <hr>
@@ -217,13 +222,9 @@
 
                 <ul class="pager">
                     
-                        <li class="previous">
-                            <a href="/2016/12/25/ES615/" data-toggle="tooltip" data-placement="top" title="ES6学习笔记15:ES6中的模块(module)">&larr; Previous Post</a>
-                        </li>
-                    
                     
                         <li class="next">
-                            <a href="/2016/12/22/ES613/" data-toggle="tooltip" data-placement="top" title="ES6学习笔记13:ES6中的类">Next Post &rarr;</a>
+                            <a href="/2018/03/01/rv-setState/" data-toggle="tooltip" data-placement="top" title="状态更新策略对比：React setState vs Vue nextTick">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -250,7 +251,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#ES6" title="ES6">ES6</a>
+                          <a class="tag" href="/tags/#javascript" title="javascript">javascript</a>
                         
                     </div>
                 </section>
