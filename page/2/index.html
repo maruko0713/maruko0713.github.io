@@ -206,17 +206,17 @@
 
 <div class="post-preview">
 
-    <a href="/2017/06/20/web_safe/">
+    <a href="/2017/06/20/alg-tu/">
         <h2 class="post-title">
-            Web安全常识总结
+            算法笔记：图论
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。    
-CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。
-CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个t......
+            前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结   
+图的遍历深度优先搜索深度优先搜索以”深度”作为第一关键词，每次都是沿着路径到不能再前进时才退回到最近的岔道口。    
+广度优先搜索广度优先搜索以”广度”作为第一关键词，每次以扩散的方式向外访问顶点。使用BFS遍历图需要用到一个队列，通过反......
         </div>
     </a>
     <p class="post-meta">
@@ -229,17 +229,17 @@ CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发
 
 <div class="post-preview">
 
-    <a href="/2017/06/20/alg-tu/">
+    <a href="/2017/06/20/web_safe/">
         <h2 class="post-title">
-            算法笔记：图论
+            Web安全常识总结
         </h2>
         <h3 class="post-subtitle">
             
         </h3>
         <div class="post-content-preview">
-            前言算法系列不需要前言本系列力求以尽可能简洁的语言对传统算法作可理解的描述，不贴代码/伪代码。不是错题本，不是OJ参考答案(这个在这里)，只是总结   
-图的遍历深度优先搜索深度优先搜索以”深度”作为第一关键词，每次都是沿着路径到不能再前进时才退回到最近的岔道口。    
-广度优先搜索广度优先搜索以”广度”作为第一关键词，每次以扩散的方式向外访问顶点。使用BFS遍历图需要用到一个队列，通过反......
+            前言我所接触到的Web安全话题当下看来就是CSRF，XSS和HTTPS。    
+CSRF-跨站请求伪造CSRF 顾名思义，是伪造请求，冒充用户在站内的正常操作。要完成一次CSRF攻击，受害者必须依次完成两个步骤。1.登录受新人的网站A,并在本地生成Cookie。2.在不登出A的情况下，访问危险网站B。
+CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发送给客户端一个t......
         </div>
     </a>
     <p class="post-meta">
@@ -297,28 +297,6 @@ CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发
 
 <div class="post-preview">
 
-    <a href="/2017/03/25/newprototype/">
-        <h2 class="post-title">
-            笔记：原型链，继承，闭包和作用域概念梳理
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            前言继承是ES5中非常重要的一个点。即便现在我们有了ES6，有了类，有了更轻松的写法，但继承的本质是不变的。要理解继承我们就必须理解原型链。  
-构造函数写一个构造函数:1234567function Foo(name, age) &#123;  this.name = name  this.age = age  this.class = 'class-1'  // return this ......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mieruko on
-        2017-03-25
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/2017/03/25/rn3/">
         <h2 class="post-title">
             RN|很RN的部分|其它组件篇
@@ -338,6 +316,28 @@ TextInput的常见属性有：
 
 placeholder 就和input标签的placeholder是一个东西
 value 是默认的文本框内的......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-03-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/25/newprototype/">
+        <h2 class="post-title">
+            笔记：原型链，继承，闭包和作用域概念梳理
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言继承是ES5中非常重要的一个点。即便现在我们有了ES6，有了类，有了更轻松的写法，但继承的本质是不变的。要理解继承我们就必须理解原型链。  
+构造函数写一个构造函数:1234567function Foo(name, age) &#123;  this.name = name  this.age = age  this.class = 'class-1'  // return this ......
         </div>
     </a>
     <p class="post-meta">
@@ -466,6 +466,14 @@ RN没有长度单位这一点很特别，在RN中，我们写长度宽度啥的�
                             
                         
                             
+                            <a href="/tags/#React" title="React" rel="6">React</a>
+                            
+                        
+                            
+                            <a href="/tags/#javascript" title="javascript" rel="19">javascript</a>
+                            
+                        
+                            
                             <a href="/tags/#jQuery" title="jQuery" rel="7">jQuery</a>
                             
                         
@@ -474,7 +482,7 @@ RN没有长度单位这一点很特别，在RN中，我们写长度宽度啥的�
                             
                         
                             
-                            <a href="/tags/#javascript" title="javascript" rel="19">javascript</a>
+                            <a href="/tags/#算法" title="算法" rel="2">算法</a>
                             
                         
                             
@@ -488,11 +496,7 @@ RN没有长度单位这一点很特别，在RN中，我们写长度宽度啥的�
                             
                         
                             
-                            <a href="/tags/#React" title="React" rel="6">React</a>
-                            
                         
-                            
-                            <a href="/tags/#算法" title="算法" rel="2">算法</a>
                             
                         
                             
@@ -501,10 +505,6 @@ RN没有长度单位这一点很特别，在RN中，我们写长度宽度啥的�
                         
                             
                             <a href="/tags/#HTTP" title="HTTP" rel="2">HTTP</a>
-                            
-                        
-                            
-                        
                             
                         
                             
