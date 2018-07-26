@@ -95,14 +95,14 @@
 
                         
                         <li>
-                            <a href="/archives/">Archives</a>
+                            <a href="/tags/">Tags</a>
                         </li>
                         
                     
 
                         
                         <li>
-                            <a href="/tags/">Tags</a>
+                            <a href="/archives/">Archives</a>
                         </li>
                         
                     
@@ -179,6 +179,30 @@
             
                 <!-- Main Content -->
 
+
+<div class="post-preview">
+
+    <a href="/2017/07/20/react-native-key/">
+        <h2 class="post-title">
+            一图开发手记：React中的key属性踩坑
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言:最近在重构一图的过程中，拾起了初次开发时的一个历史遗留问题。这个问题出现在一图app的书单内容页面，点开一个书单的书目列表，在我将第一本书向左滑动使其显示删除按钮后，它大概长下面这样:  
+当我点击删除按钮的时候，我的意思是，希望本书消失，然后下面的书顶上来，然而它呈现了这个效果给我:
+
+确实顶上来了，但是为什么我根本没有滑动哲学大辞典，它还是自己向左移动并把删除按钮露出来了？？？准确......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-07-20
+    </p>
+
+</div>
+<hr>
 
 <div class="post-preview">
 
@@ -273,28 +297,6 @@ CSRF的最终解决方案是使用CSRF-TOKEN。具体的做法是：服务器发
 
 <div class="post-preview">
 
-    <a href="/2017/03/25/newprototype/">
-        <h2 class="post-title">
-            笔记：原型链，继承，闭包和作用域概念梳理
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            前言继承是ES5中非常重要的一个点。即便现在我们有了ES6，有了类，有了更轻松的写法，但继承的本质是不变的。要理解继承我们就必须理解原型链。  
-构造函数写一个构造函数:1234567function Foo(name, age) &#123;  this.name = name  this.age = age  this.class = 'class-1'  // return this ......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mieruko on
-        2017-03-25
-    </p>
-
-</div>
-<hr>
-
-<div class="post-preview">
-
     <a href="/2017/03/25/rn3/">
         <h2 class="post-title">
             RN|很RN的部分|其它组件篇
@@ -314,6 +316,28 @@ TextInput的常见属性有：
 
 placeholder 就和input标签的placeholder是一个东西
 value 是默认的文本框内的......
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by mieruko on
+        2017-03-25
+    </p>
+
+</div>
+<hr>
+
+<div class="post-preview">
+
+    <a href="/2017/03/25/newprototype/">
+        <h2 class="post-title">
+            笔记：原型链，继承，闭包和作用域概念梳理
+        </h2>
+        <h3 class="post-subtitle">
+            
+        </h3>
+        <div class="post-content-preview">
+            前言继承是ES5中非常重要的一个点。即便现在我们有了ES6，有了类，有了更轻松的写法，但继承的本质是不变的。要理解继承我们就必须理解原型链。  
+构造函数写一个构造函数:1234567function Foo(name, age) &#123;  this.name = name  this.age = age  this.class = 'class-1'  // return this ......
         </div>
     </a>
     <p class="post-meta">
@@ -397,28 +421,6 @@ RN没有长度单位这一点很特别，在RN中，我们写长度宽度啥的�
 </div>
 <hr>
 
-<div class="post-preview">
-
-    <a href="/2017/03/19/rn0/">
-        <h2 class="post-title">
-            RN初相见,哇你好厉害呀&React前置知识
-        </h2>
-        <h3 class="post-subtitle">
-            
-        </h3>
-        <div class="post-content-preview">
-            前言再次回到博客看下日期真是惊出一身汗我。。。。😂，好久没有记东西了。这两个月学算法去了。。。。。。忙成狗的三月，在被一个巨麻烦的专业课老师禁止我带电脑上课之后，写代码的时间就更紧凑了。。。。于是也好久没有弹琴，每天都处于炸毛状态～～忍过去就好了。。。。。       
-扯远了。。。。。最近为了做一个app于是顺势开始接触rn,因为每次接触一个东西喜欢先把内容整理一下，于是我又开始写博客了......
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by mieruko on
-        2017-03-19
-    </p>
-
-</div>
-<hr>
-
 
 
 <!-- Pager -->
@@ -464,31 +466,15 @@ RN没有长度单位这一点很特别，在RN中，我们写长度宽度啥的�
                             
                         
                             
-                            <a href="/tags/#React" title="React" rel="6">React</a>
-                            
-                        
-                            
-                            <a href="/tags/#jQuery" title="jQuery" rel="7">jQuery</a>
-                            
-                        
-                            
-                            <a href="/tags/#ajax" title="ajax" rel="3">ajax</a>
-                            
-                        
-                            
-                            <a href="/tags/#javascript" title="javascript" rel="18">javascript</a>
-                            
-                        
-                            
                             <a href="/tags/#算法" title="算法" rel="2">算法</a>
                             
                         
                             
-                            <a href="/tags/#Node" title="Node" rel="6">Node</a>
+                            <a href="/tags/#css" title="css" rel="5">css</a>
                             
                         
                             
-                            <a href="/tags/#css" title="css" rel="5">css</a>
+                            <a href="/tags/#Node" title="Node" rel="6">Node</a>
                             
                         
                             
@@ -506,13 +492,29 @@ RN没有长度单位这一点很特别，在RN中，我们写长度宽度啥的�
                             
                         
                             
-                            <a href="/tags/#移动web" title="移动web" rel="2">移动web</a>
+                            <a href="/tags/#jQuery" title="jQuery" rel="7">jQuery</a>
+                            
+                        
+                            
+                            <a href="/tags/#ajax" title="ajax" rel="3">ajax</a>
+                            
+                        
+                            
+                            <a href="/tags/#javascript" title="javascript" rel="18">javascript</a>
+                            
+                        
+                            
+                            <a href="/tags/#React" title="React" rel="6">React</a>
                             
                         
                             
                         
                             
                             <a href="/tags/#laravel" title="laravel" rel="6">laravel</a>
+                            
+                        
+                            
+                            <a href="/tags/#移动web" title="移动web" rel="2">移动web</a>
                             
                         
                             
@@ -527,6 +529,8 @@ RN没有长度单位这一点很特别，在RN中，我们写长度宽度啥的�
                         
                             
                             <a href="/tags/#React Native" title="React Native" rel="5">React Native</a>
+                            
+                        
                             
                         
                             
